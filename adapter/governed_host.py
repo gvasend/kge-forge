@@ -24,18 +24,30 @@ class Scope:
     def __init__(self, root):
         self.id = "scope-" + uuid.uuid4().hex; self.root = Path(root).resolve(); self.state="ACTIVE"
         self.proc = None; self.created = time.monotonic(); self.revoked = None; self.quiescent = None
+        self.process_group = None
     def launch(self, argv, cwd):
         if self.state != "ACTIVE": raise Denied("scope is not active")
         cwd = Path(cwd).resolve()
         if self.root not in cwd.parents and cwd != self.root: raise Denied("cwd outside scope")
         self.proc = subprocess.Popen(['/usr/bin/bwrap','--die-with-parent','--unshare-pid','--new-session','--proc','/proc','--dev','/dev','--bind',str(self.root),'/scope','--chdir','/scope','--ro-bind','/usr','/usr','--ro-bind','/bin','/bin','--ro-bind','/lib','/lib','--ro-bind','/lib64','/lib64','--unshare-net',*argv], start_new_session=True)
+        self.process_group = os.getpgid(self.proc.pid)
         return self.proc
+    def members(self):
+        """Independently observe host processes in this launch process group."""
+        if self.process_group is None: return []
+        try: return [p.pid for p in os.scandir('/proc') if p.name.isdigit() and os.getpgid(int(p.name)) == self.process_group]
+        except (OSError, ProcessLookupError): return []
     def revoke(self):
         self.state="REVOKING"; self.revoked=time.monotonic()
         if self.proc and self.proc.poll() is None:
-            try: self.proc.terminate(); self.proc.wait(.5)
-            except subprocess.TimeoutExpired: self.proc.kill(); self.proc.wait(2)
-        self.state="QUIESCENT" if not self.proc or self.proc.poll() is not None else "REVOCATION_FAILED"
+            try: os.killpg(self.process_group, signal.SIGTERM); self.proc.wait(.5)
+            except subprocess.TimeoutExpired:
+                try: os.killpg(self.process_group, signal.SIGKILL)
+                except ProcessLookupError: pass
+                self.proc.wait(2)
+        deadline=time.monotonic()+2
+        while self.members() and time.monotonic()<deadline: time.sleep(.02)
+        self.state="QUIESCENT" if not self.members() else "REVOCATION_FAILED"
         self.quiescent=time.monotonic() if self.state=="QUIESCENT" else None
 
 class GovernedHost:
