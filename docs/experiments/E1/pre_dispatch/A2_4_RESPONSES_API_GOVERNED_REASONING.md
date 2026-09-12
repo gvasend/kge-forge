@@ -32,3 +32,13 @@ quiescence remains open. No E1-WP-001 implementation or product-repository chang
 was made. A later authorized qualification must run the real API loop with a
 reachable approved endpoint, then exercise denial, escalation, replay, prompt
 injection, and scratch programming scenarios before closing A2.4.
+# A2.4c Stateless Tool-Result Continuation
+
+The live qualification uses Responses API `store=false` for every request and
+does not send `previous_response_id`. The continuation input is caller-owned:
+the complete initial `output` item sequence (including reasoning items) is
+replayed, followed by the matching `function_call_output`. A live `gpt-5`
+run completed one `governed_read` and a `finish_task`; a mismatched continuation
+was rejected with HTTP 400 before any governed invocation.
+
+Evidence: `/tmp/a24c-live/REPORT.json` (credentials excluded).
