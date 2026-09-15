@@ -35,7 +35,7 @@ class Scope:
     def members(self):
         """Independently observe host processes in this launch process group."""
         if self.process_group is None: return []
-        try: return [p.pid for p in os.scandir('/proc') if p.name.isdigit() and os.getpgid(int(p.name)) == self.process_group]
+        try: return [int(p.name) for p in os.scandir('/proc') if p.name.isdigit() and os.getpgid(int(p.name)) == self.process_group]
         except (OSError, ProcessLookupError): return []
     def revoke(self):
         self.state="REVOKING"; self.revoked=time.monotonic()
