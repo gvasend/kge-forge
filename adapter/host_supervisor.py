@@ -45,6 +45,11 @@ class HostScopeSupervisor:
             s=self._scopes.get(sid)
             if not s or s['state'] not in ('CLOSED','DRAINING'): return False
             members=self.members(sid)
-            if members: s['state']='DRAINING'; return False
+            try:
+                events=dict(line.split() for line in (s['path']/'cgroup.events').read_text().splitlines())
+            except (OSError, ValueError) as e: raise SupervisorError('population indeterminate') from e
+            if events.get('populated') not in ('0','1'):
+                raise SupervisorError('population indeterminate')
+            if members or events['populated']=='1': s['state']='DRAINING'; return False
             s['state']='QUIESCENT'; return True
     def state(self, sid): return self._scopes[sid]['state']

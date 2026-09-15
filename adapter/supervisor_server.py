@@ -1,5 +1,5 @@
 """Narrow host-side Unix-socket facade for HostScopeSupervisor (A2.1f)."""
-import json, os, socket, sys
+import json, os, socket, sys, time
 import subprocess
 from .host_supervisor import HostScopeSupervisor, SupervisorError
 from .launch_broker import recv_frame, send_frame
@@ -8,7 +8,7 @@ def serve(path):
     try: os.unlink(path)
     except FileNotFoundError: pass
     s=socket.socket(socket.AF_UNIX); s.bind(path); os.chmod(path,0o600); s.listen(4)
-    sup=HostScopeSupervisor()
+    sup=HostScopeSupervisor(); held={}
     while True:
         c,_=s.accept()
         try:
@@ -23,6 +23,29 @@ def serve(path):
                 out['admitted']=sup.admit(sid,p.pid)
                 out['members']=sup.members(sid)
                 p.stdin.write(b'1'); p.stdin.flush(); out['released']=True
+            elif op=='qual_spawn':
+                if not sid: raise SupervisorError('scope required')
+                read_fd, write_fd=os.pipe()
+                p=subprocess.Popen(['python3','-m','adapter.qual_launcher',str(read_fd)],
+                                   stdin=subprocess.PIPE,stdout=subprocess.PIPE,
+                                   pass_fds=(read_fd,))
+                os.close(read_fd)
+                try:
+                    admitted=sup.admit(sid,p.pid)
+                    admission_ns=time.monotonic_ns()
+                    p.stdin.write(b'1'); p.stdin.close()
+                    result=json.loads(p.stdout.readline())
+                    p.wait(timeout=5)
+                    held[sid]=write_fd
+                    out={'admitted':admitted,'admission_ns':admission_ns,
+                         'launcher_pid':p.pid,'launcher_exit_ns':time.monotonic_ns(),
+                         'launcher_returncode':p.returncode, **result}
+                except Exception:
+                    os.close(write_fd); p.kill(); p.wait(); raise
+            elif op=='qual_release':
+                if sup.state(sid) not in ('CLOSED','DRAINING'): raise SupervisorError('scope must be closed')
+                fd=held.pop(sid); os.write(fd,b'1'); os.close(fd)
+                out={'released_ns':time.monotonic_ns()}
             elif op=='create': out={'scope_id':sup.create(req.get('scope_id'))}
             elif op=='admit': out={'admitted':sup.admit(sid,req['pid'])}
             elif op=='members': out={'members':sup.members(sid)}
