@@ -5,15 +5,25 @@ It is a substrate component; no product semantics live here.
 """
 from dataclasses import dataclass, field
 from pathlib import Path
-import hashlib, json, os, shutil, signal, subprocess, tempfile, time, uuid
+import hashlib, json, os, tempfile, threading, time, uuid
+from .forward_bridge import ForwardBridge, BridgeError
+from .execution_snapshot import construct as construct_snapshot, observe as observe_snapshot, SnapshotDenied
+from .context_binding import ContextDenied
+from .recovery_ledger import reconstruct, RecoveryDenied
+from .invocation_ownership import InvocationOwnership, OwnershipDenied
 
 class Denied(Exception): pass
+class Indeterminate(Exception): pass
 
 @dataclass(frozen=True)
 class WorkAuthorization:
     authorization_id: str; revision: int; work_package_id: str; session_id: str; turn_id: str
     read_roots: tuple = (); write_roots: tuple = (); deny_roots: tuple = ()
     exec_bins: tuple = (); shell: bool = False; network: bool = False; state: str = "ACTIVE"
+    context_binding: object = None
+    exec_argv_allowlist: tuple = ()
+    read_deny_roots: tuple = (); write_deny_roots: tuple = ()
+    ownership_ledger: str = ""
 
 @dataclass
 class Invocation:
@@ -21,85 +31,401 @@ class Invocation:
     start: float = 0.0; end: float = 0.0; result: dict = field(default_factory=dict)
 
 class Scope:
-    def __init__(self, root):
-        self.id = "scope-" + uuid.uuid4().hex; self.root = Path(root).resolve(); self.state="ACTIVE"
-        self.proc = None; self.created = time.monotonic(); self.revoked = None; self.quiescent = None
-        self.process_group = None
-    def launch(self, argv, cwd):
-        if self.state != "ACTIVE": raise Denied("scope is not active")
-        cwd = Path(cwd).resolve()
-        if self.root not in cwd.parents and cwd != self.root: raise Denied("cwd outside scope")
-        self.proc = subprocess.Popen(['/usr/bin/bwrap','--die-with-parent','--unshare-pid','--new-session','--proc','/proc','--dev','/dev','--bind',str(self.root),'/scope','--chdir','/scope','--ro-bind','/usr','/usr','--ro-bind','/bin','/bin','--ro-bind','/lib','/lib','--ro-bind','/lib64','/lib64','--unshare-net',*argv], start_new_session=True)
-        self.process_group = os.getpgid(self.proc.pid)
-        return self.proc
-    def members(self):
-        """Independently observe host processes in this launch process group."""
-        if self.process_group is None: return []
-        try: return [int(p.name) for p in os.scandir('/proc') if p.name.isdigit() and os.getpgid(int(p.name)) == self.process_group]
-        except (OSError, ProcessLookupError): return []
-    def revoke(self):
-        self.state="REVOKING"; self.revoked=time.monotonic()
-        if self.proc and self.proc.poll() is None:
-            try: os.killpg(self.process_group, signal.SIGTERM); self.proc.wait(.5)
-            except subprocess.TimeoutExpired:
-                try: os.killpg(self.process_group, signal.SIGKILL)
-                except ProcessLookupError: pass
-                self.proc.wait(2)
-        deadline=time.monotonic()+2
-        while self.members() and time.monotonic()<deadline: time.sleep(.02)
-        self.state="QUIESCENT" if not self.members() else "REVOCATION_FAILED"
-        self.quiescent=time.monotonic() if self.state=="QUIESCENT" else None
+    def __init__(self, scope_id, root, action_id, source_root=None, snapshot=None):
+        self.id=scope_id; self.root=Path(root).resolve(); self.action_id=action_id
+        self.source_root=Path(source_root or root).resolve(); self.snapshot=snapshot
+        self.state='OPEN'; self.bridge=None; self.result=None; self.quiescent=None
+        self.recovery=None; self.recovery_eligible=False
+    def launch(self, *_args, **_kwargs):
+        raise Denied('legacy direct launch disabled')
+
+@dataclass(frozen=True)
+class ExecPermit:
+    action_request_id: str; scope_id: str; argv: tuple; root: str; token: object
 
 class GovernedHost:
     def __init__(self, authorization, audit_path):
-        self.auth=authorization; self.audit=Path(audit_path); self.audit.parent.mkdir(parents=True,exist_ok=True)
+        self.auth=authorization; self.audit=Path(audit_path).resolve()
+        if authorization.context_binding is not None:
+            binding=authorization.context_binding
+            if authorization.work_package_id!=binding.manifest.get('work_id'):
+                raise Denied('work package and committed context mismatch')
+            try: binding.verify()
+            except ContextDenied as exc: raise Denied(str(exc)) from exc
+        for raw_root in (*authorization.read_roots,*authorization.write_roots):
+            grant=Path(raw_root).resolve()
+            if self.audit==grant or grant in self.audit.parents:
+                raise Denied('governance evidence must be outside agent grants')
+        self.audit.parent.mkdir(parents=True,exist_ok=True)
+        self.ownership=InvocationOwnership(authorization.ownership_ledger) if \
+            authorization.ownership_ledger else None
+        if self.ownership is not None and any(
+                self.ownership.path==Path(root).resolve() or
+                Path(root).resolve() in self.ownership.path.parents
+                for root in (*authorization.read_roots,*authorization.write_roots)):
+            raise Denied('ownership evidence inside agent grant')
         self.scope=None; self.invocations=[]; self.architectural_state="AUTHORIZED"
-        self._write({"event":"authorization_issued","authorization":authorization.__dict__})
+        self._exec_lock=threading.Lock(); self._permit_token=object(); self._pending=None
+        self._dispatcher_token=None
+        self._interruption_requested=False
+        self._source_effects={}
+        try: self.reconstruction=reconstruct(self.audit,authorization)
+        except RecoveryDenied as exc: raise Denied('controller recovery denied: '+str(exc)) from exc
+        if self.reconstruction is not None:
+            prior=self.reconstruction
+            self._interruption_requested=(prior['interruption_requested'] or
+                                          prior['category'] in ('ACTIVE','UNCERTAIN','INTERRUPTED'))
+            self.architectural_state=prior['category']
+            recovered=prior['scope']
+            if recovered and recovered.get('workspace_root') and recovered.get('source_root'):
+                self.scope=Scope(recovered['scope_id'],recovered['workspace_root'],
+                    recovered['action_request_id'],recovered['source_root'])
+                self.scope.state=recovered.get('state','INDETERMINATE')
+                self.scope.recovery_eligible=recovered.get('eligible_for_reconcile',False)
+                if self.scope.recovery_eligible:
+                    self.scope.bridge=ForwardBridge(authorization.session_id,
+                        authorization.authorization_id,self.scope.id,
+                        self.scope.action_id,self.scope.root)
+        record={**authorization.__dict__}
+        if authorization.context_binding is not None:
+            record['context_binding']={'context_sha256':authorization.context_binding.digest,
+                'capture_commit':authorization.context_binding.capture_commit,
+                'baseline_id':authorization.context_binding.manifest.get('baseline_id'),
+                'work_id':authorization.context_binding.manifest.get('work_id')}
+        self._write({"event":"authorization_issued","authorization":record})
+        if self.reconstruction is not None:
+            self._write({'event':'controller_reconstructed',
+                'category':self.reconstruction['category'],
+                'scope':self.reconstruction['scope'],
+                'interruption_requested':self._interruption_requested})
     def _write(self, event):
-        with self.audit.open("a") as f: f.write(json.dumps({"time":time.monotonic(),**event})+"\n")
+        fd=os.open(self.audit,os.O_WRONLY|os.O_APPEND|os.O_CREAT|os.O_NOFOLLOW,0o600)
+        with os.fdopen(fd,'w') as f:
+            f.write(json.dumps({"time":time.monotonic(),**event})+"\n")
+            f.flush(); os.fsync(f.fileno())
     def _path(self, repo, rel, write=False):
-        root=Path(repo).resolve(); p=(root/rel).resolve()
+        root=Path(repo).resolve(); relative=Path(rel)
+        if relative.is_absolute() or '..' in relative.parts:
+            raise Denied('absolute or traversing path denied')
+        candidate=root/relative
+        cursor=candidate
+        while cursor!=root and root in cursor.parents:
+            if cursor.is_symlink(): raise Denied('symlink path denied')
+            cursor=cursor.parent
+        p=candidate.resolve()
         if root not in p.parents and p != root: raise Denied("path escape")
-        if any(p==Path(d).resolve() or Path(d).resolve() in p.parents for d in self.auth.deny_roots): raise Denied("denied path")
+        if p==self.audit.resolve(): raise Denied("governance evidence path")
+        if write and self.auth.context_binding is not None and \
+                p in self.auth.context_binding.protected_paths:
+            raise Denied('captured context is outside agent write authority')
+        typed_denies=self.auth.write_deny_roots if write else self.auth.read_deny_roots
+        if any(p==Path(d).resolve() or Path(d).resolve() in p.parents
+               for d in (*self.auth.deny_roots,*typed_denies)):
+            raise Denied("denied path")
         roots=self.auth.write_roots if write else self.auth.read_roots
         if not any(p==Path(x).resolve() or Path(x).resolve() in p.parents for x in roots): raise Denied("outside grant")
         return p
     def _inv(self, tool, fn):
         i=Invocation("inv-"+uuid.uuid4().hex,tool,"AUTHORIZED",self.auth.authorization_id,self.scope.id if self.scope else "",time.monotonic())
+        self.invocations.append(i)
         try: i.result=fn(); i.decision="SUCCEEDED"
         except Denied as e: i.decision="DENIED"; i.result={"error":str(e)}; raise
-        finally: i.end=time.monotonic(); self.invocations.append(i); self._write({"event":"invocation","invocation":i.__dict__})
+        except Indeterminate as e: i.decision="INDETERMINATE"; i.result={"error":str(e)}; raise
+        finally: i.end=time.monotonic(); self._write({"event":"invocation","invocation":i.__dict__})
         return i.result
     def governed_read(self, repo, rel, limit=65536):
+        if type(limit) is not int or not 1<=limit<=65536: raise Denied('read limit denied')
         return self._inv("governed_read",lambda:{"path":str(self._path(repo,rel)),"content":self._path(repo,rel).read_bytes()[:limit].decode(errors="replace")})
-    def governed_write(self, repo, rel, content):
+    def governed_list(self, repo, rel, limit=100):
+        def run():
+            if not 1 <= limit <= 1000: raise Denied('list limit denied')
+            directory=self._path(repo,rel)
+            if not directory.is_dir(): raise Denied('not a directory')
+            entries=[]
+            for child in sorted(directory.iterdir(),key=lambda p:p.name):
+                try: self._path(repo,str(child.relative_to(Path(repo).resolve())))
+                except Denied: continue
+                entries.append({'name':child.name,'directory':child.is_dir()})
+                if len(entries)>=limit: break
+            return {'path':str(directory),'entries':entries}
+        return self._inv('governed_list',run)
+    def governed_search(self, repo, rel, query, limit=100):
+        def run():
+            if not query or not 1 <= limit <= 100: raise Denied('search limit denied')
+            base=self._path(repo,rel)
+            if not base.is_dir(): raise Denied('not a directory')
+            matches=[]; scanned=0
+            for directory,subdirs,files in os.walk(base,followlinks=False):
+                subdirs[:]=sorted(d for d in subdirs if not (Path(directory)/d).is_symlink())
+                for name in sorted(files):
+                    candidate=Path(directory)/name
+                    try: path=self._path(repo,str(candidate.relative_to(Path(repo).resolve())))
+                    except Denied: continue
+                    if not path.is_file() or path.stat().st_size>1_000_000: continue
+                    scanned+=1
+                    if scanned>2000: return {'matches':matches,'truncated':True}
+                    for number,line in enumerate(path.read_text(errors='replace').splitlines(),1):
+                        if query in line:
+                            matches.append({'path':str(path),'line':number,'text':line[:500]})
+                            if len(matches)>=limit: return {'matches':matches,'truncated':True}
+            return {'matches':matches,'truncated':False}
+        return self._inv('governed_search',run)
+    def governed_write(self, repo, rel, content, action_request_id=None):
+        if not isinstance(content,str) or len(content.encode())>1_000_000:
+            raise Denied('write content limit denied')
         def f():
-            p=self._path(repo,rel,True); p.parent.mkdir(parents=True,exist_ok=True); fd,tmp=tempfile.mkstemp(dir=p.parent); os.write(fd,content.encode()); os.fsync(fd); os.close(fd); os.replace(tmp,p); return {"path":str(p),"sha256":hashlib.sha256(content.encode()).hexdigest()}
-        return self._inv("governed_write",f)
-    def governed_patch(self, repo, changes):
-        def f():
-            paths=[self._path(repo,c["path"],True) for c in changes]
-            for c,p in zip(changes,paths):
-                if c["op"]!="write": raise Denied("unsupported patch operation")
-            originals={p:p.read_bytes() if p.exists() else None for p in paths}
+            p=self._path(repo,rel,True)
+            missing=[]; cursor=p.parent
+            while not cursor.exists() and cursor!=Path(repo).resolve():
+                missing.append(cursor); cursor=cursor.parent
+            if cursor.is_symlink() or not cursor.is_dir(): raise Denied('write parent denied')
+            for directory in reversed(missing): directory.mkdir()
+            fd,tmp=tempfile.mkstemp(dir=p.parent)
             try:
-                for c,p in zip(changes,paths): p.parent.mkdir(parents=True,exist_ok=True); p.write_text(c["content"])
-            except Exception:
-                for p,v in originals.items():
-                    if v is None and p.exists(): p.unlink()
-                    elif v is not None: p.write_bytes(v)
-                raise
-            return {"count":len(paths)}
+                with os.fdopen(fd,'wb') as stream:
+                    stream.write(content.encode()); stream.flush(); os.fsync(stream.fileno())
+                os.replace(tmp,p)
+            finally:
+                if os.path.exists(tmp): os.unlink(tmp)
+            digest=hashlib.sha256(content.encode()).hexdigest()
+            if action_request_id is not None:
+                self._source_effects[str(p)]={'kind':'governed_action',
+                    'action_request_id':action_request_id,'sha256':digest}
+            return {"path":str(p),"sha256":digest,
+                    "created_directories":[str(d) for d in reversed(missing)]}
+        return self._inv("governed_write",f)
+    def governed_patch(self, repo, changes, action_request_id=None):
+        if not isinstance(changes,list) or len(changes)!=1 or not isinstance(changes[0],dict):
+            raise Denied('patch requires one bounded file change')
+        if changes[0].get('op')!='write' or not isinstance(changes[0].get('content'),str) or \
+                len(changes[0]['content'].encode())>1_000_000:
+            raise Denied('patch operation or content denied')
+        def f():
+            c=changes[0]; p=self._path(repo,c['path'],True)
+            if not p.parent.is_dir(): raise Denied('patch parent unavailable')
+            fd,tmp=tempfile.mkstemp(dir=p.parent)
+            try:
+                with os.fdopen(fd,'wb') as stream:
+                    stream.write(c['content'].encode()); stream.flush(); os.fsync(stream.fileno())
+                os.replace(tmp,p)
+            finally:
+                if os.path.exists(tmp): os.unlink(tmp)
+            digest=hashlib.sha256(c['content'].encode()).hexdigest()
+            if action_request_id is not None:
+                self._source_effects[str(p)]={'kind':'governed_action',
+                    'action_request_id':action_request_id,'sha256':digest}
+            return {'count':1,'path':str(p),'sha256':digest}
         return self._inv("governed_patch",f)
-    def governed_exec(self, argv, cwd):
-        if not argv or Path(argv[0]).name not in self.auth.exec_bins: raise Denied("executable denied")
-        if not self.scope: self.scope=Scope(cwd); self.architectural_state="RUNNING"
-        return self._inv("governed_exec",lambda:{"scope":self.scope.id,"pid":self.scope.launch(list(argv),cwd).pid})
+    def bind_dispatcher(self, token):
+        if self._dispatcher_token is not None: raise Denied('dispatcher already bound')
+        self._dispatcher_token=token
+    def issue_exec_permit(self, action_request_id, argv, cwd, injected_scope_id=None,
+                          inputs=None,
+                          dispatcher_token=None):
+        if dispatcher_token is not self._dispatcher_token or dispatcher_token is None:
+            raise Denied('authorized dispatcher required')
+        if not action_request_id or self.auth.state!='ACTIVE' or self._interruption_requested:
+            raise Denied('authorization inactive or interrupted')
+        if (not argv or Path(argv[0]).name=='bwrap' or
+            Path(argv[0]).name not in self.auth.exec_bins): raise Denied('executable denied')
+        if (len(argv)>64 or not all(isinstance(part,str) and part and '\x00' not in part
+                                   for part in argv) or sum(len(part.encode()) for part in argv)>8192):
+            raise Denied('execution argv limit denied')
+        if self.auth.exec_argv_allowlist and tuple(argv) not in self.auth.exec_argv_allowlist:
+            raise Denied('execution command outside exact allowlist')
+        root=Path(cwd).resolve()
+        if not root.is_dir(): raise Denied('cwd unavailable')
+        if not any(root==Path(x).resolve() or Path(x).resolve() in root.parents
+                   for x in self.auth.read_roots): raise Denied('cwd outside execution grant')
+        if injected_scope_id is not None: raise Denied('execution scope identity supplied by caller')
+        with self._exec_lock:
+            if self._pending or (self.scope and self.scope.state!='QUIESCENT'):
+                raise Denied('prior scope not authoritatively quiescent')
+            sid='scope-'+uuid.uuid4().hex
+            binding=self.auth.context_binding
+            def input_provenance(path,digest):
+                try: captured=binding.captured_file(path)
+                except ContextDenied as exc:
+                    raise SnapshotDenied(str(exc)) from exc
+                if captured is not None and captured['sha256']==digest: return captured
+                effect=self._source_effects.get(str(Path(path).resolve()))
+                if effect is not None and effect['sha256']==digest: return effect
+                raise SnapshotDenied('execution input is stale or unattributed')
+            identity=None if binding is None else {'context_sha256':binding.digest,
+                'capture_commit':binding.capture_commit,
+                'work_id':binding.manifest['work_id'],
+                'authorization_id':self.auth.authorization_id,
+                'authorization_revision':self.auth.revision}
+            try:
+                workspace,manifest,_=construct_snapshot(
+                    root,inputs if inputs is not None else ['.'],
+                    lambda rel:self._path(root,rel),self.audit.parent,sid,
+                    input_provenance if binding is not None else None,identity)
+            except (SnapshotDenied,OSError) as exc:
+                raise Denied('execution snapshot denied: '+str(exc)) from exc
+            if self.ownership is not None:
+                try: self.ownership.reserve(sid,action_request_id,
+                    self.auth.session_id,self.auth.authorization_id,self.audit)
+                except (OwnershipDenied,OSError) as exc:
+                    raise Denied('execution ownership denied: '+str(exc)) from exc
+                self._write({'event':'execution_ownership_reserved',
+                    'execution_scope_id':sid,'action_request_id':action_request_id,
+                    'ownership_ledger':str(self.ownership.path)})
+            self.scope=Scope(sid,workspace,action_request_id,root,manifest)
+            permit=ExecPermit(action_request_id,sid,tuple(argv),str(root),self._permit_token)
+            self._pending=permit; self.architectural_state='RUNNING'
+            self._write({'event':'execution_snapshot_created','action_request_id':action_request_id,
+                         'execution_scope_id':sid,'source_root':str(root),
+                         'workspace_root':str(workspace),
+                         'manifest_sha256':manifest['manifest_sha256'],
+                         'files':len(manifest['files']),'omitted':manifest['omitted']})
+            self._write({'event':'execution_scope_reserved','action_request_id':action_request_id,
+                         'execution_scope_id':sid})
+            return permit
+    def governed_exec(self, argv, cwd, permit=None):
+        if (not isinstance(permit,ExecPermit) or permit.token is not self._permit_token or
+            permit is not self._pending or not self.scope or
+            permit.scope_id!=self.scope.id or permit.action_request_id!=self.scope.action_id or
+            permit.argv!=tuple(argv) or permit.root!=str(Path(cwd).resolve())):
+            raise Denied('authorized ActionRequest permit required')
+        self._pending=None
+        scope=self.scope
+        if Path(cwd).resolve()!=scope.source_root: raise Denied('execution root mismatch')
+        def run():
+            bridge=ForwardBridge(self.auth.session_id,self.auth.authorization_id,
+                                 scope.id,permit.action_request_id,scope.root)
+            scope.bridge=bridge
+            try:
+                created=bridge.exchange('create')
+                if created.get('scope_id')!=scope.id: raise Indeterminate('scope creation mismatch')
+                self._write({'event':'execution_scope_created','action_request_id':scope.action_id,
+                             'execution_scope_id':scope.id})
+                spawned=bridge.exchange('production_spawn',root=str(scope.root),argv=list(argv))
+                if (spawned.get('scope_id')!=scope.id or
+                    spawned.get('action_request_id')!=scope.action_id or
+                    not spawned.get('admitted')): raise Indeterminate('admission binding mismatch')
+                scope.state='ACTIVE'; scope.result=spawned.get('result')
+                self._write({'event':'execution_result_available','action_request_id':scope.action_id,
+                             'execution_scope_id':scope.id,'launcher_pid':spawned['launcher_pid'],
+                             'result':scope.result,'initial_cgroup':spawned['initial_cgroup']})
+                closed=bridge.exchange('close')
+                if closed.get('state')!='CLOSED': raise Indeterminate('admission closure unconfirmed')
+                scope.state='CLOSED'
+                self._write({'event':'execution_scope_closed','action_request_id':scope.action_id,
+                             'execution_scope_id':scope.id})
+                deadline=time.monotonic()+15
+                while time.monotonic()<deadline:
+                    state=bridge.exchange('quiescent')
+                    recovered=scope.recovery
+                    recovery_quiescent=(recovered is not None and
+                        recovered.get('result')=='QUIESCENT' and
+                        recovered.get('final_observation',{}).get('members')==[] and
+                        recovered.get('final_observation',{}).get('populated')==0)
+                    if (state.get('quiescent') is True and state.get('state')=='QUIESCENT') or \
+                            (state.get('state')=='QUIESCENT' and recovery_quiescent):
+                        status=bridge.exchange('production_status')
+                        if status.get('returncode') is None:
+                            raise Indeterminate('launcher exit indeterminate')
+                        if status.get('returncode')!=0:
+                            raise Indeterminate('payload launcher failed')
+                        observation=observe_snapshot(scope.root,scope.snapshot)
+                        self._write({'event':'execution_workspace_observed',
+                                     'action_request_id':scope.action_id,
+                                     'execution_scope_id':scope.id,
+                                     'snapshot_manifest_sha256':scope.snapshot['manifest_sha256'],
+                                     'effects':observation})
+                        if self._interruption_requested and recovered and \
+                                recovered.get('termination_action_count',0)>0:
+                            raise Indeterminate('execution interrupted by authorized recovery')
+                        scope.state='QUIESCENT'; scope.quiescent=time.monotonic()
+                        if self.ownership is not None:
+                            self.ownership.release(scope.id,scope.action_id,
+                                self.auth.session_id,self.auth.authorization_id)
+                            self._write({'event':'execution_ownership_released',
+                                'execution_scope_id':scope.id,
+                                'action_request_id':scope.action_id})
+                        self.architectural_state='QUIESCENT'
+                        self._write({'event':'execution_scope_quiescent','action_request_id':scope.action_id,
+                                     'execution_scope_id':scope.id,'kernel_state':'populated 0',
+                                     'interruption_requested':self._interruption_requested})
+                        return {'scope_id':scope.id,'execution_scope_id':scope.id,
+                                'action_request_id':scope.action_id,'launcher_pid':spawned['launcher_pid'],
+                                'result':scope.result,'quiescent':True,
+                                'interruption_requested':self._interruption_requested,
+                                'source_root':str(scope.source_root),
+                                'snapshot_manifest_sha256':scope.snapshot['manifest_sha256'],
+                                'workspace_effects':observation}
+                    if state.get('state')=='QUIESCENT' and recovered is None:
+                        time.sleep(.05); continue
+                    if state.get('state') not in ('DRAINING','CLOSED','QUIESCENT'):
+                        raise Indeterminate('scope state indeterminate')
+                    time.sleep(.05)
+                raise Indeterminate('kernel drain timeout')
+            except (BridgeError,Indeterminate,SnapshotDenied,OwnershipDenied,KeyError,ValueError) as exc:
+                if scope.recovery and scope.recovery.get('result')=='QUIESCENT' and \
+                        scope.recovery.get('final_observation',{}).get('members')==[] and \
+                        scope.recovery.get('final_observation',{}).get('populated')==0:
+                    scope.state='QUIESCENT'; self.architectural_state='QUIESCENT'
+                    self._write({'event':'execution_outcome_indeterminate',
+                                 'action_request_id':scope.action_id,
+                                 'execution_scope_id':scope.id,'reason':str(exc),
+                                 'kernel_state':'populated 0'})
+                else:
+                    scope.state='INDETERMINATE'; self.architectural_state='FAILED'
+                    self._write({'event':'execution_scope_indeterminate','action_request_id':scope.action_id,
+                                 'execution_scope_id':scope.id,'reason':str(exc)})
+                raise Indeterminate(str(exc)) from exc
+        return self._inv('governed_exec',run)
     def expansion(self, capability, action, resources, reason):
         e={"event":"authority_expansion","id":"exp-"+uuid.uuid4().hex,"authorization_id":self.auth.authorization_id,"capability":capability,"action":action,"resources":resources,"reason":reason,"decision":"PENDING"};self._write(e);return e
     def revoke(self):
-        self.architectural_state="INTERRUPTING"; self._write({"event":"revoke"})
-        if self.scope: self.scope.revoke()
-        self.architectural_state="QUIESCENT" if not self.scope or self.scope.state=="QUIESCENT" else "FAILED"
-        self._write({"event":"architectural_state","state":self.architectural_state,"scope":self.scope.state if self.scope else "NONE"}); return self.architectural_state
-    def status(self): return {"authorization_id":self.auth.authorization_id,"turn_id":self.auth.turn_id,"scope_id":self.scope.id if self.scope else None,"scope_state":self.scope.state if self.scope else "NONE","architectural_state":self.architectural_state,"active_invocations":sum(i.end==0 for i in self.invocations)}
+        self._interruption_requested=True
+        self.architectural_state="INTERRUPTING"
+        self._write({"event":"interruption_requested","scope_id":self.scope.id if self.scope else None})
+        if self.scope and self.scope.bridge and \
+                (self.scope.state not in ('QUIESCENT','INDETERMINATE') or
+                 self.scope.recovery_eligible):
+            try:
+                scope=self.scope
+                recovery_id='recovery-'+uuid.uuid4().hex
+                self._write({'event':'recovery_request','recovery_request_id':recovery_id,
+                    'session_id':self.auth.session_id,
+                    'authorization_id':self.auth.authorization_id,
+                    'action_request_id':scope.action_id,'execution_scope_id':scope.id})
+                recovery_bridge=ForwardBridge(self.auth.session_id,self.auth.authorization_id,
+                    scope.id,scope.action_id,scope.root)
+                response=recovery_bridge.exchange('terminate_reconcile',
+                    recovery_request_id=recovery_id)
+                scope.recovery=response
+                if (response.get('result')=='QUIESCENT' and
+                    response.get('final_observation',{}).get('members')==[] and
+                    response.get('final_observation',{}).get('populated')==0):
+                    scope.state='QUIESCENT'; scope.quiescent=time.monotonic()
+                    self._write({'event':'recovery_scope_quiescent','recovery_request_id':recovery_id,
+                        'action_request_id':scope.action_id,'execution_scope_id':scope.id,
+                        'final_observation':response['final_observation']})
+                    if self.ownership is not None:
+                        self.ownership.release(scope.id,scope.action_id,
+                            self.auth.session_id,self.auth.authorization_id)
+                        self._write({'event':'execution_ownership_released',
+                            'execution_scope_id':scope.id,
+                            'action_request_id':scope.action_id,
+                            'recovery_request_id':recovery_id})
+                else:
+                    scope.state='INDETERMINATE'
+                    self._write({'event':'recovery_scope_indeterminate','recovery_request_id':recovery_id,
+                        'action_request_id':scope.action_id,'execution_scope_id':scope.id,
+                        'response':response})
+            except (BridgeError,OwnershipDenied) as exc:
+                self.scope.state='INDETERMINATE'
+                self._write({'event':'recovery_channel_indeterminate',
+                    'execution_scope_id':self.scope.id,'reason':str(exc)})
+        if not self.scope or self.scope.state=='QUIESCENT':
+            self.architectural_state='QUIESCENT'
+        elif self.scope.state=='INDETERMINATE':
+            self.architectural_state='FAILED'
+        self._write({"event":"architectural_state","state":self.architectural_state,
+                     "scope":self.scope.state if self.scope else "NONE",
+                     "interruption_requested":True})
+        return self.architectural_state
+    def status(self): return {"authorization_id":self.auth.authorization_id,"turn_id":self.auth.turn_id,"scope_id":self.scope.id if self.scope else None,"scope_state":self.scope.state if self.scope else "NONE","architectural_state":self.architectural_state,"interruption_requested":self._interruption_requested,"reconstruction_class":self.reconstruction['category'] if self.reconstruction else 'NEW',"active_invocations":sum(i.end==0 for i in self.invocations)}

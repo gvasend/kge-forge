@@ -19,14 +19,21 @@ def recv_frame(stream):
     except json.JSONDecodeError as e: raise ValueError('invalid json') from e
 
 class BrokerProtocol:
-    def __init__(self, session, authorization, scope):
-        self.session=session; self.authorization=authorization; self.scope=scope; self.seen=set(); self.closed=False
+    def __init__(self, session, authorization, scope, action):
+        self.session=session; self.authorization=authorization; self.scope=scope
+        self.action=action; self.seen=set(); self.closed=False
     def validate(self, req):
         if self.closed: raise ValueError('channel closed')
         if req.get('protocol_version')!=1: raise ValueError('protocol mismatch')
-        rid=req.get('action_request_id')
+        rid=req.get('broker_request_id')
         if not rid or rid in self.seen: raise ValueError('replay or missing request')
-        if req.get('session_id')!=self.session or req.get('authorization_id')!=self.authorization or req.get('execution_scope_id')!=self.scope: raise ValueError('binding mismatch')
-        if req.get('op') not in {'create','admit','members','close','quiescent'}: raise ValueError('operation denied')
+        if (req.get('session_id')!=self.session or
+            req.get('authorization_id')!=self.authorization or
+            req.get('execution_scope_id')!=self.scope or
+            req.get('scope_id')!=self.scope or
+            req.get('action_request_id')!=self.action): raise ValueError('binding mismatch')
+        if req.get('op') not in {'create','production_spawn','production_status',
+                                'members','close','quiescent',
+                                'terminate_reconcile'}: raise ValueError('operation denied')
         self.seen.add(rid); return True
     def fail(self): self.closed=True

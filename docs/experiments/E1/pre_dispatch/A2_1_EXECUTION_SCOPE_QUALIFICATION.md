@@ -1,6 +1,14 @@
 # A2.1 — Execution-Scope Quiescence and No-Bypass Closure
 
-Status: **INCOMPLETE / BLOCKED**
+Current status: **PASS for the KGE Forge-owned Responses Programmer substrate**;
+see `A2_1P_FORGE_OWNED_PROGRAMMER_SUBSTRATE_2026-09-15.md` for the replacement
+runtime's live execution and no-bypass evidence. The former Codex-host path
+remains unqualified and must not be used as the Experiment 1 Programmer.
+
+Historical A2.1 status: **FAIL — GOVERNED EXECUTION BYPASSES AUTHORITATIVE SCOPE**.
+A2.1c lifecycle semantics are accepted as PASS. See
+`A2_1_FINAL_GOVERNED_EXECUTION_INTEGRATION_2026-09-15.md` for the current
+production-path evidence.
 
 The A2.1 increment strengthened the scratch supervisor to record a process group,
 revoke by group (SIGTERM, bounded SIGKILL), and perform an external `/proc`

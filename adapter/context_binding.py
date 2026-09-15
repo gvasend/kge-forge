@@ -1,0 +1,122 @@
+"""Controller-owned committed context binding for governed agent turns."""
+from pathlib import Path
+import hashlib, json, os, re, subprocess
+
+class ContextDenied(RuntimeError): pass
+
+FULL_COMMIT=re.compile(r'^[0-9a-f]{40}$')
+
+def _sha(data): return hashlib.sha256(data).hexdigest()
+
+def _blob(root, revision, relative):
+    if not FULL_COMMIT.fullmatch(revision): raise ContextDenied('unbound source revision')
+    env={'PATH':'/usr/bin:/bin','GIT_CONFIG_NOSYSTEM':'1',
+         'GIT_CONFIG_GLOBAL':'/dev/null','GIT_OPTIONAL_LOCKS':'0'}
+    try:
+        sized=subprocess.run(['/usr/bin/git','-C',str(root),'cat-file','-s',
+                              revision+':'+relative],env=env,stdout=subprocess.PIPE,
+                             stderr=subprocess.DEVNULL,timeout=10,check=True)
+        if int(sized.stdout.strip())>8*1024*1024:
+            raise ContextDenied('committed source exceeds bound')
+        result=subprocess.run(['/usr/bin/git','-C',str(root),'cat-file','blob',
+                               revision+':'+relative],env=env,stdout=subprocess.PIPE,
+                              stderr=subprocess.DEVNULL,timeout=10,check=True)
+    except (OSError,ValueError,subprocess.SubprocessError) as exc:
+        raise ContextDenied('committed source unavailable') from exc
+    return result.stdout
+
+class CommittedContext:
+    def __init__(self, manifest_path, capture_commit):
+        self.path=Path(manifest_path).resolve()
+        if not FULL_COMMIT.fullmatch(capture_commit): raise ContextDenied('capture commit required')
+        self.capture_commit=capture_commit
+        try: self.manifest=json.loads(self.path.read_bytes())
+        except (OSError,ValueError) as exc: raise ContextDenied('context unavailable') from exc
+        if self.manifest.get('schema_version')!='E1-CONTEXT-1':
+            raise ContextDenied('context schema unsupported')
+        repos=self.manifest.get('repositories')
+        if not isinstance(repos,dict) or not repos: raise ContextDenied('repositories missing')
+        self.repos={name:Path(record['root']).resolve() for name,record in repos.items()}
+        forge=self.repos.get('forge')
+        if forge is None or forge not in self.path.parents:
+            raise ContextDenied('context outside designated Forge repository')
+        relative=self.path.relative_to(forge).as_posix()
+        self.digest=_sha(self.path.read_bytes())
+        if _sha(_blob(forge,capture_commit,relative))!=self.digest:
+            raise ContextDenied('context not captured at designated commit')
+        sources=self.manifest.get('sources')
+        if not isinstance(sources,list) or not sources: raise ContextDenied('sources missing')
+        self.sources={}
+        for source in sources:
+            sid=source.get('id'); alias=source.get('repository'); rel=source.get('path')
+            if not isinstance(sid,str) or not sid or sid in self.sources or alias not in self.repos or \
+                    not isinstance(rel,str) or not rel or Path(rel).is_absolute() or \
+                    '..' in Path(rel).parts:
+                raise ContextDenied('source identity or path invalid')
+            revision=source.get('revision')
+            binding=source.get('revision_binding')
+            if bool(revision)==bool(binding) or (binding and binding!='package_capture_commit'):
+                raise ContextDenied('source revision ambiguous')
+            self.sources[sid]=source
+        mandatory=self.manifest.get('mandatory_roots')
+        if not isinstance(mandatory,list) or not mandatory or \
+                any(sid not in self.sources for sid in mandatory):
+            raise ContextDenied('mandatory context missing')
+        visited=set(); active=set()
+        def visit(sid):
+            if sid in active: raise ContextDenied('context dependency cycle')
+            if sid in visited: return
+            active.add(sid)
+            for dep in self.sources[sid].get('dependencies',[]):
+                if dep not in self.sources: raise ContextDenied('context dependency missing')
+                visit(dep)
+            active.remove(sid); visited.add(sid)
+        for sid in mandatory: visit(sid)
+        self.closure=frozenset(visited)
+        self.protected_paths=frozenset(self.repos[s['repository']]/s['path']
+                                       for s in self.sources.values())|{self.path}
+        self.verify()
+    def verify(self):
+        if _sha(self.path.read_bytes())!=self.digest:
+            raise ContextDenied('context changed after capture')
+        for sid,source in self.sources.items():
+            root=self.repos[source['repository']]; rel=source['path']
+            path=root/rel
+            if path.is_symlink() or not path.is_file() or path.resolve()!=path:
+                raise ContextDenied('source path changed: '+sid)
+            revision=source.get('revision') or self.capture_commit
+            expected=source.get('sha256')
+            if not isinstance(expected,str) or len(expected)!=64 or \
+                    _sha(path.read_bytes())!=expected or \
+                    _sha(_blob(root,revision,rel))!=expected:
+                raise ContextDenied('source stale or contradictory: '+sid)
+            for derived in source.get('derived_from',[]):
+                parent=self.sources.get(derived.get('source_id'))
+                if parent is None or derived.get('sha256')!=parent.get('sha256'):
+                    raise ContextDenied('derivation stale: '+sid)
+        return True
+    def captured_file(self, path):
+        """Return the designated committed byte identity for a repository file."""
+        candidate=Path(path).resolve()
+        for alias,root in self.repos.items():
+            if candidate==root or root in candidate.parents:
+                rel=candidate.relative_to(root).as_posix()
+                record=self.manifest['repositories'][alias]
+                revision=self.capture_commit if alias=='forge' else \
+                    record.get('working_revision')
+                if not revision: raise ContextDenied('repository revision missing')
+                try: digest=_sha(_blob(root,revision,rel))
+                except ContextDenied: return None
+                return {'kind':'captured_commit','repository':alias,
+                        'revision':revision,'sha256':digest}
+        raise ContextDenied('execution input outside designated repositories')
+    def model_context(self):
+        return {'schema_version':'E1-CONTEXT-1','baseline_id':self.manifest['baseline_id'],
+                'work_id':self.manifest['work_id'],'capture_commit':self.capture_commit,
+                'context_sha256':self.digest,'mandatory_sources':sorted(self.closure),
+                'repositories':{name:str(root) for name,root in self.repos.items()},
+                'knowledge_status':{sid:self.sources[sid].get('knowledge_status')
+                                    for sid in sorted(self.closure)},
+                'scope':self.manifest.get('scope',{}),
+                'prerequisites':self.manifest.get('prerequisites',[]),
+                'unresolved_issues':self.manifest.get('unresolved_issues',[])}
