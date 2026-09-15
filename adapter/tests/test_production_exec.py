@@ -25,7 +25,14 @@ class FakeSupervisorBridge:
         if op=='quiescent':
             return {'quiescent':self.owner.release.is_set(),
                     'state':'QUIESCENT' if self.owner.release.is_set() else 'DRAINING'}
-        if op=='production_status': return {'returncode':0}
+        if op=='production_status':
+            self.owner.status_release.wait(2)
+            return {'returncode':0}
+        if op=='terminate_reconcile':
+            self.owner.release.set()
+            return {'result':'QUIESCENT','state':'QUIESCENT',
+                    'termination_action_count':1,
+                    'final_observation':{'members':[],'populated':0}}
         raise AssertionError(op)
 
 
@@ -33,6 +40,7 @@ class BridgeFactory:
     def __init__(self):
         self.calls=[]; self.bindings=[]; self.release=threading.Event()
         self.result_available=threading.Event(); self.loss=False
+        self.status_release=threading.Event(); self.status_release.set()
     def __call__(self, session, authorization, scope, action_id, root):
         return FakeSupervisorBridge(self,session,authorization,scope,action_id,root)
 
@@ -128,6 +136,24 @@ class ProductionExecTests(unittest.TestCase):
         self.assertEqual(self.host.scope.state,'INDETERMINATE')
         self.assertEqual(self.request('req-2')['result'],'DENIED')
         self.assertNotIn('execution_scope_quiescent',self.audit.read_text())
+
+    def test_interruption_status_waits_for_terminal_action_audit(self):
+        self.bridge.status_release.clear()
+        first=[]
+        thread=threading.Thread(target=lambda:first.append(self.request()),daemon=True)
+        thread.start(); self.assertTrue(self.bridge.result_available.wait(2))
+        self.assertEqual(self.host.revoke(),'INTERRUPTING')
+        self.bridge.status_release.set()
+        thread.join(2)
+        self.assertFalse(thread.is_alive())
+        self.assertEqual(first[0]['result'],'INDETERMINATE')
+        self.assertEqual(self.host.status()['architectural_state'],'QUIESCENT')
+        events=[json.loads(line) for line in self.audit.read_text().splitlines()]
+        self.assertLess(next(i for i,event in enumerate(events)
+            if event['event']=='action_result' and event.get('action_request_id')=='req-1'),
+            next(i for i,event in enumerate(events)
+            if event['event']=='architectural_state' and
+               event.get('pending_action_requests')==0))
 
     def test_start_barrier_prevents_payload_before_release(self):
         class Stdin: buffer=io.BytesIO(b'')

@@ -66,6 +66,7 @@ class GovernedHost:
             raise Denied('ownership evidence inside agent grant')
         self.scope=None; self.invocations=[]; self.architectural_state="AUTHORIZED"
         self._exec_lock=threading.Lock(); self._permit_token=object(); self._pending=None
+        self._action_lock=threading.Lock(); self._actions_inflight=set()
         self._dispatcher_token=None
         self._interruption_requested=False
         self._source_effects={}
@@ -94,6 +95,12 @@ class GovernedHost:
                 'work_id':authorization.context_binding.manifest.get('work_id')}
         self._write({"event":"authorization_issued","authorization":record})
         if self.reconstruction is not None:
+            for rid in self.reconstruction['incomplete']:
+                outcome=self.reconstruction['results'][rid]
+                self._write({'event':'action_result','action_request_id':rid,
+                    'type':outcome.get('type'),'result':'INDETERMINATE',
+                    'digest':hashlib.sha256(json.dumps(outcome,sort_keys=True).encode()).hexdigest(),
+                    'payload':outcome,'reconstructed_interruption':True})
             self._write({'event':'controller_reconstructed',
                 'category':self.reconstruction['category'],
                 'scope':self.reconstruction['scope'],
@@ -103,6 +110,34 @@ class GovernedHost:
         with os.fdopen(fd,'w') as f:
             f.write(json.dumps({"time":time.monotonic(),**event})+"\n")
             f.flush(); os.fsync(f.fileno())
+    def action_started(self,rid):
+        with self._action_lock: self._actions_inflight.add(rid)
+    def action_terminal(self,rid):
+        with self._action_lock:
+            self._actions_inflight.discard(rid)
+            remaining=len(self._actions_inflight)
+        if remaining==0 and self.scope and self.scope.state=='QUIESCENT' and \
+                self.ownership is not None:
+            try:
+                active=self.ownership.active()
+                if active is not None:
+                    self.ownership.release(self.scope.id,self.scope.action_id,
+                        self.auth.session_id,self.auth.authorization_id)
+                    self._write({'event':'execution_ownership_released',
+                        'execution_scope_id':self.scope.id,
+                        'action_request_id':self.scope.action_id,
+                        'after_terminal_action_result':rid})
+            except (OwnershipDenied,OSError) as exc:
+                self.architectural_state='FAILED'
+                self._write({'event':'execution_ownership_indeterminate',
+                    'execution_scope_id':self.scope.id,'reason':str(exc)})
+                return
+        if remaining==0 and self._interruption_requested and \
+                self.scope and self.scope.state=='QUIESCENT':
+            self.architectural_state='QUIESCENT'
+            self._write({'event':'architectural_state','state':'QUIESCENT',
+                'scope':'QUIESCENT','interruption_requested':True,
+                'pending_action_requests':0})
     def _path(self, repo, rel, write=False):
         root=Path(repo).resolve(); relative=Path(rel)
         if relative.is_absolute() or '..' in relative.parts:
@@ -338,12 +373,6 @@ class GovernedHost:
                                 recovered.get('termination_action_count',0)>0:
                             raise Indeterminate('execution interrupted by authorized recovery')
                         scope.state='QUIESCENT'; scope.quiescent=time.monotonic()
-                        if self.ownership is not None:
-                            self.ownership.release(scope.id,scope.action_id,
-                                self.auth.session_id,self.auth.authorization_id)
-                            self._write({'event':'execution_ownership_released',
-                                'execution_scope_id':scope.id,
-                                'action_request_id':scope.action_id})
                         self.architectural_state='QUIESCENT'
                         self._write({'event':'execution_scope_quiescent','action_request_id':scope.action_id,
                                      'execution_scope_id':scope.id,'kernel_state':'populated 0',
@@ -404,7 +433,8 @@ class GovernedHost:
                     self._write({'event':'recovery_scope_quiescent','recovery_request_id':recovery_id,
                         'action_request_id':scope.action_id,'execution_scope_id':scope.id,
                         'final_observation':response['final_observation']})
-                    if self.ownership is not None:
+                    with self._action_lock: pending=len(self._actions_inflight)
+                    if self.ownership is not None and pending==0:
                         self.ownership.release(scope.id,scope.action_id,
                             self.auth.session_id,self.auth.authorization_id)
                         self._write({'event':'execution_ownership_released',
@@ -420,12 +450,25 @@ class GovernedHost:
                 self.scope.state='INDETERMINATE'
                 self._write({'event':'recovery_channel_indeterminate',
                     'execution_scope_id':self.scope.id,'reason':str(exc)})
-        if not self.scope or self.scope.state=='QUIESCENT':
+        with self._action_lock: pending=len(self._actions_inflight)
+        if (not self.scope or self.scope.state=='QUIESCENT') and pending==0:
             self.architectural_state='QUIESCENT'
         elif self.scope.state=='INDETERMINATE':
             self.architectural_state='FAILED'
         self._write({"event":"architectural_state","state":self.architectural_state,
                      "scope":self.scope.state if self.scope else "NONE",
                      "interruption_requested":True})
-        return self.architectural_state
-    def status(self): return {"authorization_id":self.auth.authorization_id,"turn_id":self.auth.turn_id,"scope_id":self.scope.id if self.scope else None,"scope_state":self.scope.state if self.scope else "NONE","architectural_state":self.architectural_state,"interruption_requested":self._interruption_requested,"reconstruction_class":self.reconstruction['category'] if self.reconstruction else 'NEW',"active_invocations":sum(i.end==0 for i in self.invocations)}
+        return self.status()['architectural_state']
+    def status(self):
+        with self._action_lock: pending=len(self._actions_inflight)
+        active=sum(i.end==0 for i in self.invocations)
+        state=self.architectural_state
+        if (pending or active) and state=='QUIESCENT':
+            state='INTERRUPTING' if self._interruption_requested else 'RUNNING'
+        return {"authorization_id":self.auth.authorization_id,"turn_id":self.auth.turn_id,
+            "scope_id":self.scope.id if self.scope else None,
+            "scope_state":self.scope.state if self.scope else "NONE",
+            "architectural_state":state,
+            "interruption_requested":self._interruption_requested,
+            "reconstruction_class":self.reconstruction['category'] if self.reconstruction else 'NEW',
+            "active_invocations":active,"pending_action_requests":pending}

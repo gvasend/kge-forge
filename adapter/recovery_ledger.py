@@ -88,8 +88,10 @@ def reconstruct(controller_audit, authorization, supervisor_audit=SUPERVISOR_AUD
             if name=='execution_snapshot_created':
                 scope['workspace_root']=event.get('workspace_root')
                 scope['source_root']=event.get('source_root')
+    incomplete=[]
     for rid,request in requests.items():
         if rid not in results:
+            incomplete.append(rid)
             results[rid]={'action_request_id':rid,'result':'INDETERMINATE',
                           'type':request['type'],'error':'controller interrupted before terminal result'}
     if len(scopes)>1:
@@ -146,4 +148,5 @@ def reconstruct(controller_audit, authorization, supervisor_audit=SUPERVISOR_AUD
     if any(result['result']=='INDETERMINATE' for result in results.values()) and category=='COMPLETED':
         category='UNCERTAIN'
     return {'category':category,'interruption_requested':interruption,
-            'requests':requests,'results':results,'scope':current}
+            'requests':requests,'results':results,'incomplete':incomplete,
+            'scope':current}

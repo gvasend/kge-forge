@@ -3,6 +3,7 @@ from dataclasses import asdict
 import json, hashlib, threading, time, uuid
 from .governed_host import GovernedHost, WorkAuthorization, Denied, Indeterminate
 from .context_binding import ContextDenied
+from .invocation_ownership import OwnershipDenied
 
 PROTOCOL_VERSION = 1
 EFFECT_ACTIONS = {'write','patch','exec'}
@@ -35,6 +36,7 @@ class ReasoningOrchestrator:
                 return self.results[rid]
             if rid in self._inflight: return {'action_request_id':rid,'result':'DENIED','error':'request in flight'}
             self._inflight.add(rid)
+        self.host.action_started(rid)
         typ=raw.get('type');
         if typ not in ACTION_TYPES: return self._deny(rid,'unknown action',raw)
         expected={'session_id':self.host.auth.session_id,'turn_id':self.host.auth.turn_id,'authorization_id':self.host.auth.authorization_id,'authorization_revision':self.host.auth.revision}
@@ -73,6 +75,12 @@ class ReasoningOrchestrator:
                 raise Denied('authorization not released')
             if self.host._interruption_requested and typ in EFFECT_ACTIONS|{'finish'}:
                 raise Denied('turn interrupted; new effects denied')
+            if self.host.ownership is not None and typ in EFFECT_ACTIONS|{'finish'}:
+                try: active_owner=self.host.ownership.active()
+                except (OwnershipDenied,OSError) as exc:
+                    raise Denied('execution ownership evidence unavailable') from exc
+                if active_owner is not None:
+                    raise Denied('prior execution ownership unresolved')
             if self.host.auth.context_binding is not None:
                 try: self.host.auth.context_binding.verify()
                 except ContextDenied as exc: raise Denied(str(exc)) from exc
@@ -95,9 +103,11 @@ class ReasoningOrchestrator:
             out={'action_request_id':rid,'result':'SUCCEEDED','type':typ,'data':result}
         except Indeterminate as e: out={'action_request_id':rid,'result':'INDETERMINATE','type':typ,'execution_scope_id':self.host.scope.id if self.host.scope else None,'error':str(e)}
         except (Denied,KeyError,ValueError,TypeError) as e: out={'action_request_id':rid,'result':'DENIED','type':typ,'error':str(e)}
+        self.host._write({'event':'action_result','action_request_id':rid,'execution_scope_id':out.get('data',{}).get('execution_scope_id') if isinstance(out.get('data'),dict) else out.get('execution_scope_id'),'type':typ,'result':out['result'],'digest':hashlib.sha256(json.dumps(out,sort_keys=True).encode()).hexdigest(),'payload':out})
         with self._lock:
             self.results[rid]=out; self._inflight.discard(rid)
-        self.host._write({'event':'action_result','action_request_id':rid,'execution_scope_id':out.get('data',{}).get('execution_scope_id') if isinstance(out.get('data'),dict) else out.get('execution_scope_id'),'type':typ,'result':out['result'],'digest':hashlib.sha256(json.dumps(out,sort_keys=True).encode()).hexdigest(),'payload':out}); return out
+        self.host.action_terminal(rid)
+        return out
     def _deny(self,rid,error,raw):
         try: digest=hashlib.sha256(json.dumps(raw,sort_keys=True).encode()).hexdigest()
         except (TypeError,ValueError): digest=None
@@ -109,10 +119,12 @@ class ReasoningOrchestrator:
             'authorization_revision':self.host.auth.revision,
             'request_sha256':digest,'rejection':error})
         out={'action_request_id':rid,'result':'DENIED','error':error}
-        with self._lock:
-            self.results[rid]=out; self._inflight.discard(rid)
         self.host._write({'event':'action_result','action_request_id':rid,'result':'DENIED','error':error,
             'digest':hashlib.sha256(json.dumps(out,sort_keys=True).encode()).hexdigest(),
-            'payload':out});return out
+            'payload':out})
+        with self._lock:
+            self.results[rid]=out; self._inflight.discard(rid)
+        self.host.action_terminal(rid)
+        return out
 
 def action(**fields): return {'protocol_version':PROTOCOL_VERSION, **fields}
