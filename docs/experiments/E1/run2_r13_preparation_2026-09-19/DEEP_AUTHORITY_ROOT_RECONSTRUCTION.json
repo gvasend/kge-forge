@@ -1,0 +1,70 @@
+{
+  "schema": "DEEP-AUTHORITY-ROOT-RECONSTRUCTION-1",
+  "verdict": "DEEPER_AUTHORITY_ROOT_MISSING",
+  "qualification_domain": "SUCCESSOR_RUNTIME_QUALIFICATION",
+  "production_mutation": false,
+  "production": {
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+    "store_generation": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "r13": "UNISSUED_UNOWNED",
+    "model_requests": 0,
+    "e1_effects": 0
+  },
+  "lowest_missing_root": {
+    "node": "ReleaseAuthority",
+    "referenced_identity": "E1-RELEASE-AUTHORITY-sha256:bb1808a5ffbd720cd8447db29dc7946dbc7e50f336d4ca6c809ea82b321b3e30",
+    "status": "MISSING_CANONICAL_AUTHORITY_AND_DERIVATION",
+    "finding": "The live dispatch and runtime-head selection reference this identity, but no canonical ReleaseAuthority object or authorized derivation chain producing it was found.",
+    "not_roots": ["dispatch copy", "invocation copy", "WorkAuthorization copy", "qualification report", "historical release identities"]
+  },
+  "release_dependency_analysis": {
+    "historical_derivation_logic": "Earlier release amendments use predecessor release authority plus an explicitly identified amendment and Architect decision.",
+    "current_record": "No matching current amendment/decision chain producing bb1808a was located.",
+    "resolved_prerequisites": [
+      "R4 runtime identity",
+      "runtime-head authority",
+      "G4 selection",
+      "released profile object reference",
+      "model payload/projection references",
+      "supervisor/succession references"
+    ],
+    "unresolved_prerequisites": ["canonical current ReleaseAuthority record", "authorized current release derivation"],
+    "classification": "DEEPER_AUTHORITY_ROOT_MISSING"
+  },
+  "downstream_status": {
+    "OperationalContext": "BLOCKED_ON_RELEASE_AUTHORITY",
+    "OperationalBinding": "BLOCKED_ON_OPERATIONAL_CONTEXT",
+    "Dispatch": "HISTORICAL_REFERENCE_REQUIRES_RECONSTRUCTION",
+    "Invocation": "HISTORICAL_REFERENCE_REQUIRES_RECONSTRUCTION",
+    "ApplicabilityReconciliation": "REQUIRES_RECONSTRUCTION",
+    "WorkAuthorization": "REQUIRES_RECONSTRUCTION",
+    "Template": "REQUIRES_RECONSTRUCTION_IF_SCOPE_CHANGES",
+    "IssuanceAuthority": "REQUIRES_RECONSTRUCTION_IF_WORKAUTH_CHANGES"
+  },
+  "authority_dag": {
+    "edges": [
+      ["ArchitectDecision", "RuntimeHeadAuthority", "AUTHORITY_DEPENDENCY"],
+      ["RuntimeHeadAuthority", "Runtime", "AUTHORITY_DEPENDENCY"],
+      ["Runtime", "ReleaseAuthority", "DERIVATION_DEPENDENCY"],
+      ["ReleaseAuthority", "OperationalContext", "DERIVATION_DEPENDENCY"],
+      ["OperationalContext", "OperationalBinding", "DERIVATION_DEPENDENCY"],
+      ["OperationalBinding", "WorkAuthorization", "DERIVATION_DEPENDENCY"],
+      ["WorkAuthorization", "Lifecycle", "AUTHORITY_DEPENDENCY"],
+      ["Lifecycle", "Ownership", "AUTHORITY_DEPENDENCY"],
+      ["Invocation", "OperationalBinding", "CONSISTENCY_CHECK"],
+      ["Dispatch", "OperationalBinding", "CONSISTENCY_CHECK"],
+      ["OperationalContext", "Dispatch", "CONSISTENCY_CHECK"]
+    ],
+    "acyclicity": "PASS_AS_GRAPH",
+    "grounding": "FAIL_RELEASE_AUTHORITY_LEAF_UNRESOLVED"
+  },
+  "historical_interpretation": {
+    "bb1808a": "REFERENCE_ONLY_OR_IMPROPERLY_PROMOTED",
+    "prior_release_records": "HISTORICAL_VALID_UNDER_OLD_MODEL",
+    "artifacts_rewritten": false
+  },
+  "required_external_authority": "Canonical current ReleaseAuthority record or an explicit Architect-authorized release derivation chain identifying its predecessor, amendment, and source decision.",
+  "successor_integration": "SUSPENDED",
+  "resolver_changes": "NONE",
+  "confirmation": ["R4-final remains CURRENT", "G4 remains CURRENT", "r13 remains UNISSUED/UNOWNED", "zero provider/model/E1 effects"]
+}

@@ -1,0 +1,439 @@
+{
+  "schema": "E1-ARCHITECT-DECISION-REVIEW-1",
+  "report": {
+    "DECISION_ID": "DEC-BUDGET",
+    "STATUS": "DECISION_READY",
+    "OPTIONS": [
+      "A: authority reference",
+      "B: complete policy body",
+      "C: explicit typed projection"
+    ],
+    "RECOMMENDED_MINIMUM_IF_SUPPORTED": "NONE",
+    "FACT_BLOCKED_DECISIONS": [
+      "DEC-IMPLEMENTATION",
+      "DEC-EXEC",
+      "DEC-AUDIT",
+      "DEC-RUNTIME_HEAD",
+      "DEC-SUPERVISOR"
+    ],
+    "ARCHITECT_DECISION_REQUIRED": "YES",
+    "ROOT_CONDITIONS_RESOLVED": 0,
+    "SLOTS_RESOLVED": 0,
+    "TEMPLATE1_CONSTRUCTION_READY": "NO",
+    "CANDIDATE3_RESUMPTION_READY": "NO",
+    "PRODUCTION_EFFECT": "NO"
+  },
+  "question": "Which exact canonical type/representation shall authenticated_inputs.budget_policy use: A authority reference, B entire policy value, or C explicitly typed projection? Choose one or defer/reject; no inferred default.",
+  "exact_governing_proposition": "Adopt exactly one of A, B or C below as the canonical representation and exact source-projection contract for authenticated_inputs.budget_policy, for the recorded StatusBudgetAuthority snapshot. Preserve all existing budget values, scope, lineage and controls. This establishes representation policy only; it does not establish current applicability, qualify source use, implement validation, perform mapping, or authorize execution.",
+  "authoritative_source": {
+    "identity": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+    "recorded_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+    "recorded_lineage": "R4-final CURRENT UNIQUE",
+    "body_sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+    "body_byte_length": 1189
+  },
+  "unchanged_budget_value_semantics": {
+    "policy": {
+      "schema": "E1-RUN-CONTROL-1",
+      "seconds": {
+        "cycle": [
+          120,
+          300
+        ],
+        "no_progress": [
+          180,
+          300
+        ],
+        "invocation": [
+          1200,
+          1800
+        ],
+        "phase": [
+          30,
+          120
+        ]
+      },
+      "requests": [
+        8,
+        12
+      ],
+      "tokens": [
+        100000,
+        150000
+      ],
+      "automatic_retry": false,
+      "usage_unknown": "TIME_AND_REQUEST_LIMITS_ONLY"
+    },
+    "controls": {
+      "single_use": true,
+      "authority_expansion": "NONE",
+      "hard_exhaustion": "close admission; cancellation/recovery; QUIESCENT; no future execution",
+      "cancellation": "authoritative cancellation; release ownership; no unconfirmed transmission claim",
+      "recovery": "durable counters/policy/identity; no reset; ambiguity blocks",
+      "escalation": "FAIL_CLOSED"
+    },
+    "interpretation": "Preserve exact ordered endpoint arrays and existing source semantics; no threshold reinterpretation, reset or change proposed."
+  },
+  "options": [
+    {
+      "id": "A",
+      "name": "Authority reference",
+      "exact_canonical_json": "\"StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99\"",
+      "type": "string",
+      "source_selector": "/authority_id",
+      "source_relationship": "Reference resolves to the hash-verified full source body; policy is exactly /policy of that body. All source controls remain authoritative.",
+      "identity_consequences": "Small field; mandatory source resolution remains external to value. Field canonical bytes differ from B and C; identity-covered bodies therefore differ.",
+      "consumer_consequences": "Constructor currently stores/hashes the supplied string but does not authenticate or dereference it. A later approved CONTRACT-T1/validator must require exact reference type plus independently supplied verified source; no new resolver availability is claimed.",
+      "mapping_consequences": "Copy the complete authority ID including StatusBudgetAuthority-sha256 prefix, exactly; field denotes AUTHORITY_IDENTITY, not content identity.",
+      "freshness_consequences": "Authenticated source and exact current applicability/freshness must be established independently before mapping/use. Neither reference nor copied policy nor embedded scope proves currentness. Changed source bytes stale dependent evidence.",
+      "advantages": "Smallest displayed field (95 canonical bytes), with an explicit authority identity linking the complete source record.",
+      "disadvantages": "Policy is not inline. A verified owning source must remain independently available; existing constructor neither resolves nor authenticates the reference.",
+      "potentially_unlocked": "REEVAL-BUDGET only after an explicit authenticated decision record; subsequent actions retain all gates.",
+      "authority_granted_if_approved": "Only the exact selected representation/source-projection policy; no operational authority.",
+      "authority_not_granted": [
+        "budget expansion or counter reset",
+        "new authority/source creation",
+        "implementation or validator changes",
+        "map or candidate construction",
+        "WorkAuthorization acceptance/issuance/use",
+        "Template-1 or Candidate-3 construction",
+        "runtime/lifecycle/ownership/repository/transmission effects"
+      ],
+      "canonical_byte_length": 95,
+      "canonical_field_sha256": "42de4041f9408b344d002017ef982d698ae59beb557d1578e563bb2a5d7f8f67"
+    },
+    {
+      "id": "B",
+      "name": "Complete policy body",
+      "exact_canonical_json": "{\"automatic_retry\":false,\"requests\":[8,12],\"schema\":\"E1-RUN-CONTROL-1\",\"seconds\":{\"cycle\":[120,300],\"invocation\":[1200,1800],\"no_progress\":[180,300],\"phase\":[30,120]},\"tokens\":[100000,150000],\"usage_unknown\":\"TIME_AND_REQUEST_LIMITS_ONLY\"}",
+      "type": "object",
+      "source_selector": "/policy (entire object, no omitted members)",
+      "source_relationship": "A separate mandatory provenance/validation input pins the full source authority_id and exact /policy selector. Body equality alone does not confer authority; the full authority controls remain enforced from authenticated source. This dossier supplies the source link, but does not authorize adding another Template-1 key.",
+      "identity_consequences": "Self-contained numerical policy in this field; ownership/applicability linkage still requires independent source proof. No changes to the 22-input key set.",
+      "consumer_consequences": "Constructor hashes the supplied object but lacks field-specific source/type validation. Later contract/validator must compare it against the entire authenticated /policy; full-record controls cannot be discarded because absent from this subtree.",
+      "mapping_consequences": "Copy the exact complete /policy JSON subtree including schema, seconds, requests, tokens, automatic_retry and usage_unknown. This is a policy value, not an authority ID or full authority record.",
+      "freshness_consequences": "Authenticated source and exact current applicability/freshness must be established independently before mapping/use. Neither reference nor copied policy nor embedded scope proves currentness. Changed source bytes stale dependent evidence.",
+      "advantages": "Carries the complete numerical policy directly in the field, with no new projection discriminator.",
+      "disadvantages": "The field alone lacks owning authority/scope/control linkage. Mandatory external provenance and full-source validation remain necessary; policy equality is not authority.",
+      "potentially_unlocked": "REEVAL-BUDGET only after an explicit authenticated decision record; subsequent actions retain all gates.",
+      "authority_granted_if_approved": "Only the exact selected representation/source-projection policy; no operational authority.",
+      "authority_not_granted": [
+        "budget expansion or counter reset",
+        "new authority/source creation",
+        "implementation or validator changes",
+        "map or candidate construction",
+        "WorkAuthorization acceptance/issuance/use",
+        "Template-1 or Candidate-3 construction",
+        "runtime/lifecycle/ownership/repository/transmission effects"
+      ],
+      "canonical_byte_length": 239,
+      "canonical_field_sha256": "b25973ad894b287ca758552a9fdfd4e22ddbef671485b280a199c2c9b03dc177"
+    },
+    {
+      "id": "C",
+      "name": "Explicit typed projection with authority link",
+      "exact_canonical_json": "{\"authority_id\":\"StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99\",\"controller_store\":\"AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff\",\"controls\":{\"authority_expansion\":\"NONE\",\"cancellation\":\"authoritative cancellation; release ownership; no unconfirmed transmission claim\",\"escalation\":\"FAIL_CLOSED\",\"hard_exhaustion\":\"close admission; cancellation/recovery; QUIESCENT; no future execution\",\"recovery\":\"durable counters/policy/identity; no reset; ambiguity blocks\",\"single_use\":true},\"lineage\":\"R4-final CURRENT UNIQUE\",\"policy\":{\"automatic_retry\":false,\"requests\":[8,12],\"schema\":\"E1-RUN-CONTROL-1\",\"seconds\":{\"cycle\":[120,300],\"invocation\":[1200,1800],\"no_progress\":[180,300],\"phase\":[30,120]},\"tokens\":[100000,150000],\"usage_unknown\":\"TIME_AND_REQUEST_LIMITS_ONLY\"},\"programmer_profile\":\"ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67\",\"runtime\":\"sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761\",\"schema\":\"E1-TEMPLATE1-BUDGET-PROJECTION-1\",\"scope\":\"LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION\"}",
+      "type": "object with exact fixed keys",
+      "source_selector": {
+        "schema": "literal E1-TEMPLATE1-BUDGET-PROJECTION-1 (PROPOSED, unadopted)",
+        "authority_id": "/authority_id",
+        "scope": "/scope",
+        "lineage": "/lineage",
+        "runtime": "/runtime",
+        "controller_store": "/controller_store",
+        "programmer_profile": "/programmer_profile",
+        "policy": "/policy",
+        "controls": {
+          "single_use": "/single_use",
+          "authority_expansion": "/authority_expansion",
+          "hard_exhaustion": "/hard_exhaustion",
+          "cancellation": "/cancellation",
+          "recovery": "/recovery",
+          "escalation": "/escalation"
+        }
+      },
+      "source_relationship": "authority_id authenticates the full owning record; all included identity/scope/policy/control members must equal their named source paths. The envelope is a canonical value with authority provenance, never new authority.",
+      "identity_consequences": "More redundant data; exact equality checks prevent drift between embedded policy/scope/controls and owning source. No extra top-level Template-1 input key or migration is implied.",
+      "consumer_consequences": "Current generic constructor can include JSON objects in hashing; it does not validate this proposed schema. Adopting it would require explicit CONTRACT-T1 treatment and separately authorized validation; no implementation grant or working consumer support is claimed.",
+      "mapping_consequences": "Construct exactly the displayed object; preserve every selected value and complete policy/control subtrees. The literal schema is a proposed discriminator, not an existing adopted contract. No additional or omitted keys.",
+      "freshness_consequences": "Authenticated source and exact current applicability/freshness must be established independently before mapping/use. Neither reference nor copied policy nor embedded scope proves currentness. Changed source bytes stale dependent evidence.",
+      "advantages": "Carries an explicit typed discriminator, authority link, applicability references, full policy and selected controls together; exact source-equality checks can detect drift.",
+      "disadvantages": "Largest displayed field (1166 canonical bytes), duplicated source members and a proposed schema requiring explicit contract treatment and strict consistency validation. Generic object hashing does not establish consumer support.",
+      "potentially_unlocked": "REEVAL-BUDGET only after an explicit authenticated decision record; subsequent actions retain all gates.",
+      "authority_granted_if_approved": "Only the exact selected representation/source-projection policy; no operational authority.",
+      "authority_not_granted": [
+        "budget expansion or counter reset",
+        "new authority/source creation",
+        "implementation or validator changes",
+        "map or candidate construction",
+        "WorkAuthorization acceptance/issuance/use",
+        "Template-1 or Candidate-3 construction",
+        "runtime/lifecycle/ownership/repository/transmission effects"
+      ],
+      "canonical_byte_length": 1166,
+      "canonical_field_sha256": "4e226f1e89617fba3243c01575505f459dc5a3a9d01542098cacbb19fa38da81"
+    }
+  ],
+  "consequence_analysis": [
+    {
+      "answer": "APPROVE_A",
+      "root_conditions_eligible_for_reevaluation": [
+        "root:budget"
+      ],
+      "slots_eligible_for_reevaluation": [
+        "authenticated_inputs.budget_policy"
+      ],
+      "actions_potentially_newly_actionable": [
+        "REEVAL-BUDGET"
+      ],
+      "eventual_downstream_actions": [
+        "DEC-INTERFACES",
+        "CONTRACT-T1",
+        "MAP-BUDGET"
+      ],
+      "remaining_gates": {
+        "REEVAL-BUDGET": [
+          "DEC-BUDGET"
+        ],
+        "DEC-INTERFACES": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET"
+        ],
+        "CONTRACT-T1": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET",
+          "DEC-EXEC",
+          "DEC-INTERFACES"
+        ],
+        "MAP-BUDGET": [
+          "CONTRACT-T1",
+          "REEVAL-BUDGET"
+        ]
+      },
+      "rule": "Only a separately recorded, authenticated, explicit approval of the exact reviewed option permits REEVAL-BUDGET; its original full semantic/source acceptance must still pass. All other prerequisites remain.",
+      "root_or_slot_satisfied_by_answer": false,
+      "CONTRACT_T1_READY": false,
+      "TEMPLATE1_CONSTRUCTION_READY": false,
+      "CANDIDATE3_RESUMPTION_READY": false
+    },
+    {
+      "answer": "APPROVE_B",
+      "root_conditions_eligible_for_reevaluation": [
+        "root:budget"
+      ],
+      "slots_eligible_for_reevaluation": [
+        "authenticated_inputs.budget_policy"
+      ],
+      "actions_potentially_newly_actionable": [
+        "REEVAL-BUDGET"
+      ],
+      "eventual_downstream_actions": [
+        "DEC-INTERFACES",
+        "CONTRACT-T1",
+        "MAP-BUDGET"
+      ],
+      "remaining_gates": {
+        "REEVAL-BUDGET": [
+          "DEC-BUDGET"
+        ],
+        "DEC-INTERFACES": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET"
+        ],
+        "CONTRACT-T1": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET",
+          "DEC-EXEC",
+          "DEC-INTERFACES"
+        ],
+        "MAP-BUDGET": [
+          "CONTRACT-T1",
+          "REEVAL-BUDGET"
+        ]
+      },
+      "rule": "Only a separately recorded, authenticated, explicit approval of the exact reviewed option permits REEVAL-BUDGET; its original full semantic/source acceptance must still pass. All other prerequisites remain.",
+      "root_or_slot_satisfied_by_answer": false,
+      "CONTRACT_T1_READY": false,
+      "TEMPLATE1_CONSTRUCTION_READY": false,
+      "CANDIDATE3_RESUMPTION_READY": false
+    },
+    {
+      "answer": "APPROVE_C",
+      "root_conditions_eligible_for_reevaluation": [
+        "root:budget"
+      ],
+      "slots_eligible_for_reevaluation": [
+        "authenticated_inputs.budget_policy"
+      ],
+      "actions_potentially_newly_actionable": [
+        "REEVAL-BUDGET"
+      ],
+      "eventual_downstream_actions": [
+        "DEC-INTERFACES",
+        "CONTRACT-T1",
+        "MAP-BUDGET"
+      ],
+      "remaining_gates": {
+        "REEVAL-BUDGET": [
+          "DEC-BUDGET"
+        ],
+        "DEC-INTERFACES": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET"
+        ],
+        "CONTRACT-T1": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET",
+          "DEC-EXEC",
+          "DEC-INTERFACES"
+        ],
+        "MAP-BUDGET": [
+          "CONTRACT-T1",
+          "REEVAL-BUDGET"
+        ]
+      },
+      "rule": "Only a separately recorded, authenticated, explicit approval of the exact reviewed option permits REEVAL-BUDGET; its original full semantic/source acceptance must still pass. All other prerequisites remain.",
+      "root_or_slot_satisfied_by_answer": false,
+      "CONTRACT_T1_READY": false,
+      "TEMPLATE1_CONSTRUCTION_READY": false,
+      "CANDIDATE3_RESUMPTION_READY": false
+    },
+    {
+      "answer": "REJECT",
+      "root_conditions_eligible_for_reevaluation": [],
+      "slots_eligible_for_reevaluation": [],
+      "actions_potentially_newly_actionable": [],
+      "eventual_downstream_actions": [],
+      "remaining_gates": {
+        "REEVAL-BUDGET": [
+          "DEC-BUDGET"
+        ],
+        "DEC-INTERFACES": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET"
+        ],
+        "CONTRACT-T1": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET",
+          "DEC-EXEC",
+          "DEC-INTERFACES"
+        ],
+        "MAP-BUDGET": [
+          "CONTRACT-T1",
+          "REEVAL-BUDGET"
+        ]
+      },
+      "rule": "No selected representation, approval or downstream proof; retain blocked reevaluation. A new proposal requires new bounded preparation/readiness review.",
+      "root_or_slot_satisfied_by_answer": false,
+      "CONTRACT_T1_READY": false,
+      "TEMPLATE1_CONSTRUCTION_READY": false,
+      "CANDIDATE3_RESUMPTION_READY": false
+    },
+    {
+      "answer": "DEFER",
+      "root_conditions_eligible_for_reevaluation": [],
+      "slots_eligible_for_reevaluation": [],
+      "actions_potentially_newly_actionable": [],
+      "eventual_downstream_actions": [],
+      "remaining_gates": {
+        "REEVAL-BUDGET": [
+          "DEC-BUDGET"
+        ],
+        "DEC-INTERFACES": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET"
+        ],
+        "CONTRACT-T1": [
+          "REEVAL-IMPLEMENTATION",
+          "REEVAL-BUDGET",
+          "DEC-EXEC",
+          "DEC-INTERFACES"
+        ],
+        "MAP-BUDGET": [
+          "CONTRACT-T1",
+          "REEVAL-BUDGET"
+        ]
+      },
+      "rule": "No selected representation, approval or downstream proof; retain blocked reevaluation. A new proposal requires new bounded preparation/readiness review.",
+      "root_or_slot_satisfied_by_answer": false,
+      "CONTRACT_T1_READY": false,
+      "TEMPLATE1_CONSTRUCTION_READY": false,
+      "CANDIDATE3_RESUMPTION_READY": false
+    }
+  ],
+  "fact_blocked_context": [
+    {
+      "decision": "DEC-IMPLEMENTATION",
+      "missing": "Distinct implementation-domain owning record, identity contract and exact canonical selector; partial dossier is FACT_BLOCKED."
+    },
+    {
+      "decision": "DEC-EXEC",
+      "missing": "Concrete independent executable-policy source/projector or exact independently grounded permission proposal; no argv-derived permission."
+    },
+    {
+      "decision": "DEC-AUDIT",
+      "missing": "Concrete namespace/store identity, owning provenance and independently evidenced outside-agent-root placement."
+    },
+    {
+      "decision": "DEC-RUNTIME_HEAD",
+      "missing": "Concrete current R4/G4 head selector/authority body, publication target and scoped lineage evidence."
+    },
+    {
+      "decision": "DEC-SUPERVISOR",
+      "missing": "Concrete supervisor selector and owning current-release/context selection and freshness/lineage evidence."
+    }
+  ],
+  "other_blocked_context": "DEC-INTERFACES remains blocked on REEVAL-IMPLEMENTATION and REEVAL-BUDGET; informational, not presented for decision.",
+  "remaining_action_gates": {
+    "REEVAL-BUDGET": [
+      "DEC-BUDGET"
+    ],
+    "DEC-INTERFACES": [
+      "REEVAL-IMPLEMENTATION",
+      "REEVAL-BUDGET"
+    ],
+    "CONTRACT-T1": [
+      "REEVAL-IMPLEMENTATION",
+      "REEVAL-BUDGET",
+      "DEC-EXEC",
+      "DEC-INTERFACES"
+    ],
+    "MAP-BUDGET": [
+      "CONTRACT-T1",
+      "REEVAL-BUDGET"
+    ]
+  },
+  "state_changes": [],
+  "provenance": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_RESULT.md",
+      "sha256": "d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84",
+      "location": "Accepted action result and readiness audit"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.md",
+      "sha256": "5ebf7b266d3dc6129257114a184c31396b1322306eb1ce705e3507870cb05e0b",
+      "location": "All three prepared alternatives"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+      "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+      "location": "Exact proposed values/selectors and source provenance"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json",
+      "sha256": "b5bd277f17c65ff534e1cd407ef0252905cd1ababd0c8945774cebedec37715f",
+      "location": "Current execution state, readiness gate and action prerequisites"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json",
+      "sha256": "5f95d8b0cb3b4ba3a8d659f1028a6626afff020553b27b8690b60e0b89d2af39",
+      "location": "Root/slot state baseline"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md",
+      "sha256": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205",
+      "location": "Fact-blocked outcome"
+    }
+  ]
+}

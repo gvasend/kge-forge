@@ -1,0 +1,249 @@
+"""Controller-owned append-only governance, supplementary to an immutable release.
+
+The outer specification is an issued authorization, not model input. Exact approved
+record digests are its trust anchor; authority labels in an unapproved record grant
+nothing. Material records are retained as evidence but cannot inherit a release.
+"""
+import json
+from pathlib import Path
+from .context_projection import canonical, digest, sha, read_exact
+from .controller_authority_store import authority_bytes, read_authority_ref
+
+
+NON_MATERIAL = 'NON_MATERIAL_TO_RELEASE_AUTHORITY'
+MATERIAL = 'MATERIAL_TO_RELEASE_AUTHORITY'
+UNCHANGED = ('task', 'grants', 'transmission_clearance', 'execution_authority',
+             'requirements_architecture', 'acceptance', 'destinations_trust')
+
+
+def reference(path):
+    path = Path(path).resolve()
+    return {'path': str(path), 'sha256': sha(path.read_bytes())}
+
+
+def read_ref(ref):
+    return json.loads(read_authority_ref(ref))
+
+
+def next_identity(basis, decision, predecessor, records):
+    return 'E1-OPERATIONAL-CONTEXT-sha256:' + digest({
+        'ReleaseBasisId': basis, 'ReleaseDecisionId': decision,
+        'predecessor': predecessor, 'ordered_records': records})
+
+
+class GovernanceContinuation:
+    def __init__(self, spec, historical=False):
+        self.historical = historical
+        self.spec = json.loads(canonical(spec))
+        self._issued_digest = digest(self.spec)
+        self.verify()
+
+    def verify(self):
+        s = self.spec
+        if s.get('schema') == 6:
+            from .attempt_transition import verify
+            return verify(self)
+        if s.get('schema') == 5:
+            from .attempt_context import verify
+            return verify(self)
+        if s.get('schema') == 4:
+            if self.historical: raise ValueError('Run-2 context requires current verification')
+            from .run2_context import verify
+            return verify(self)
+        if s.get('schema') == 3:
+            if self.historical: raise ValueError('material authority cannot bypass current checks')
+            from .supervisor_amendment import verify_governance
+            return verify_governance(self)
+        if s.get('schema') == 2:
+            if self.historical: raise ValueError('canonical history cannot bypass current checks')
+            from .continuation_envelope import verify
+            return verify(self)
+        if digest(s) != self._issued_digest or s.get('schema') != 1:
+            raise ValueError('governance specification changed')
+        basis = read_ref(s['release_basis'])
+        basis_id = 'E1-RELEASE-BASIS-sha256:' + s['release_basis']['sha256']
+        decision = read_ref(s['release_decision'])
+        decision_id = 'E1-RELEASE-DECISION-sha256:' + s['release_decision']['sha256']
+        profile = read_ref(s['released_profile'])
+        if (decision['ReleaseBasisId'] != basis_id or
+                decision['released_profile_sha256'] != digest(profile) or
+                basis['production_profile_sha256'] != digest(profile) or
+                decision['decision'] != {'PD06': 'RELEASED', 'E1_B01': 'PASS'} or
+                not decision['authority']):
+            raise ValueError('release decision attribution mismatch')
+        # A file hash and the canonical profile hash have distinct meanings.
+        required = decision['required_fingerprints']
+        if (required['context_identities'] != basis['context_identities'] or
+                required['release_capture_sha256'] != s['release_basis']['sha256']):
+            raise ValueError('release basis fingerprint mismatch')
+        read_authority_ref(decision['authority_source'])
+        source_rows = basis.get('current_inputs', basis.get('inputs'))
+        blobs = Path(s['release_basis']['path']).parent / 'blobs'
+        # Verify historical release bytes without claiming mutable audits are live pins.
+        for row in source_rows.values():
+            authority_bytes('sha256:' + row['sha256'], evidence_path=str(blobs / row['sha256']))
+        clearance = read_ref(s['clearance'])
+        if profile['context_projection']['clearance_sha256'] != s['clearance']['sha256']:
+            raise ValueError('clearance replaced')
+        if not s['chain'] or s['approved_records'] != [r['sha256'] for r in s['chain']]:
+            raise ValueError('continuation approval/order mismatch')
+        if len(set(s['approved_records'])) != len(s['approved_records']):
+            raise ValueError('continuation replay')
+        predecessor = basis_id
+        ordered = []
+        changes = {}
+        for index, ref in enumerate(s['chain']):
+            row = read_ref(ref)
+            if (row['version'] != 1 or row['sequence'] != index + 1 or
+                    row['predecessor'] != predecessor or not row['authority'] or
+                    not row['reason'] or row['classification'] != NON_MATERIAL or
+                    row['alters_released_task_authority'] is not False or
+                    row['unchanged'] != {k: True for k in UNCHANGED} or
+                    row['delta_classification'] != 'LOCAL_ONLY'):
+                raise ValueError('material or contradictory continuation requires assessment')
+            read_authority_ref(row['authority_source'])
+            path = row['artifact']
+            if path not in source_rows or any(x in Path(path).parts for x in ('.git', '.codex', '.agents')):
+                raise ValueError('continuation artifact outside release')
+            previous = changes.get(path, {}).get('new_sha256', source_rows[path]['sha256'])
+            if row['previous_sha256'] != previous:
+                raise ValueError('continuation predecessor content mismatch')
+            before = authority_bytes('sha256:' + previous, evidence_path=row['previous_blob'])
+            after = authority_bytes('sha256:' + row['new_sha256'], evidence_path=row['new_blob'])
+            if (not after.startswith(before) or len(after) <= len(before) or
+                    row['delta'] != {'start_byte': len(before), 'end_byte_exclusive': len(after),
+                                     'sha256': sha(after[len(before):])}):
+                raise ValueError('continuation is not exact append')
+            for cleared in clearance['inputs']:
+                if cleared['canonical_path'] != path or cleared['classification'] != 'TRANSMIT':
+                    continue
+                if cleared['designation'] == 'COMPLETE_FILE':
+                    raise ValueError('complete-file clearance changed')
+                for span in cleared['spans']:
+                    start, end = span['start_byte'], span['end_byte_exclusive']
+                    if not 0 <= start < end <= len(before) or sha(after[start:end]) != span['sha256']:
+                        raise ValueError('cleared range changed')
+            if index == 0 and (path != decision['recorded_artifact'] or
+                               row['new_sha256'] != decision['recorded_artifact_sha256']):
+                raise ValueError('first continuation must record exact release decision')
+            body = dict(row); body.pop('OperationalContextId')
+            ordered.append(digest(body))
+            expected = next_identity(basis_id, decision_id, predecessor, ordered)
+            if row['OperationalContextId'] != expected:
+                raise ValueError('operational identity mismatch')
+            changes[path] = row
+            predecessor = expected
+        for path, row in changes.items():
+            if not self.historical: read_exact(path, row['new_sha256'])
+        identities = {'ReleaseBasisId': basis_id, 'ReleaseDecisionId': decision_id,
+                      'OperationalContextId': predecessor,
+                      'continuation_chain_digest': digest(s['approved_records'])}
+        if identities != s['identities']:
+            raise ValueError('issued chain head changed')
+        # Explicit implementation supplement: never use it to replace task,
+        # governing, grant, clearance or transport selections.
+        supplement = read_ref(s['implementation_supplement'])
+        read_authority_ref(supplement['authority_source'])
+        for path, row in supplement['inputs'].items():
+            if path not in s['implementation_paths']:
+                raise ValueError('unapproved implementation path')
+            runtime_root = profile.get('runtime', {}).get('cwd')
+            if (runtime_root is None or Path(runtime_root) / 'adapter' not in Path(path).parents or
+                    Path(path).suffix != '.py' or any(x in Path(path).parts for x in ('.git', '.codex', '.agents'))):
+                raise ValueError('supplement cannot replace governing release selections')
+            if row['previous_sha256'] != source_rows.get(path, {}).get('sha256'):
+                raise ValueError('implementation predecessor mismatch')
+            if not self.historical: read_exact(path, row['sha256'])
+        if set(supplement['inputs']) != set(s['implementation_paths']):
+            raise ValueError('incomplete implementation supplement')
+        self.changes = changes
+        self.identities = identities
+        self.supplement = supplement
+        return identities
+
+    def current_hash(self, path, released_hash):
+        row = self.changes.get(path)
+        if row is None:
+            return released_hash
+        # The first identity always comes from the immutable basis, not a caller.
+        basis = read_ref(self.spec['release_basis'])
+        source = basis.get('current_inputs', basis.get('inputs'))[path]['sha256']
+        if source != released_hash:
+            raise ValueError('source not attributable to release basis')
+        return row['new_sha256']
+
+    def projected_source(self, path, released_hash):
+        read_exact(path, self.current_hash(path, released_hash))
+        basis = read_ref(self.spec['release_basis'])
+        if basis.get('current_inputs', basis.get('inputs'))[path]['sha256'] != released_hash:
+            raise ValueError('projection source not released')
+        return authority_bytes('sha256:' + released_hash, evidence_path=str(Path(self.spec['release_basis']['path']).parent / 'blobs' / released_hash))
+
+    def implementation_hash(self, path, previous):
+        row = self.supplement['inputs'].get(path)
+        if row is None:
+            return previous
+        if row['previous_sha256'] != previous:
+            raise ValueError('implementation source not released')
+        return row['sha256']
+
+
+def verify_authorization(auth):
+    op = json.loads(auth.operational_binding)
+    if op['governance'].get('schema') == 6:
+        from .attempt_transition import verify_authorization as terminal_verify
+        return terminal_verify(auth)
+    if op['governance'].get('schema') == 5:
+        from .attempt_context import verify_authorization as attempt_verify
+        return attempt_verify(auth)
+    if op['governance'].get('schema') == 4:
+        from .run2_context import verify_authorization as run2_verify
+        return run2_verify(auth)
+    binding = auth.context_binding
+    if binding is None or binding.governance is None or op['governance'] != binding.governance.spec:
+        raise ValueError('operational authorization binding mismatch')
+    binding.verify()
+    g = binding.governance
+    launch = read_ref(op['released_launch'])
+    basis = read_ref(g.spec['release_basis'])
+    inputs = basis.get('current_inputs', basis.get('inputs'))
+    if inputs[op['released_launch']['path']]['sha256'] != op['released_launch']['sha256']:
+        raise ValueError('launch not in release basis')
+    expected = dict(launch['authorization']); expected.pop('operational_binding', None)
+    if 'invocation_identity' in op:
+        allocated = op['invocation_identity']
+        if set(allocated) != {'authorization_id', 'revision', 'session_id', 'turn_id'}:
+            raise ValueError('invalid operational identity allocation')
+        if (type(allocated['revision']) is not int or allocated['revision'] <= expected['revision'] or
+                any(not isinstance(allocated[k], str) or not allocated[k] for k in
+                    ('authorization_id', 'session_id', 'turn_id'))):
+            raise ValueError('invalid operational identity values')
+        expected.update(allocated)
+    # Inactivity is not dispatch authority. A later ACTIVE invocation needs its
+    # own exact controller-held Architect dispatch decision; none is inferred
+    # from PD-06 or from a non-material continuation.
+    if expected['state'] == 'INACTIVE' and auth.state == 'ACTIVE':
+        dispatch = read_ref(op['dispatch_authorization']) if op.get('dispatch_authorization') else None
+        historical = None
+        if g.spec.get('schema') in (2,3) and dispatch is not None:
+            from .continuation_envelope import dispatch_ancestor
+            historical = dispatch_ancestor(auth, dispatch)
+        required_dispatch = {
+            'decision': 'DISPATCH_AUTHORIZED', 'authority': 'Architect',
+            'work_package_id': expected['work_package_id'],
+            'released_profile_sha256': launch['profile_sha256'],
+            **(historical['governance']['identities'] if historical else g.identities),
+            'ModelProjectionDigest': (historical or op)['context_identities']['ModelProjectionDigest'],
+            'invocation_identity': {k: expected[k] for k in
+                ('authorization_id', 'revision', 'session_id', 'turn_id')}}
+        if dispatch is None or any(dispatch.get(k) != v for k, v in required_dispatch.items()):
+            raise ValueError('separate Architect dispatch authorization required')
+        read_authority_ref(dispatch['authority_source'])
+        expected['state'] = 'ACTIVE'
+    actual = dict(auth.__dict__); actual.pop('operational_binding')
+    actual['context_binding'] = {'capture_commit': binding.capture_commit, 'context_sha256': binding.digest}
+    if json.loads(canonical(actual)) != expected:
+        raise ValueError('operational supplement changed released authority')
+    if launch['profile_sha256'] != digest(read_ref(g.spec['released_profile'])):
+        raise ValueError('launch/profile disagreement')
+    return op

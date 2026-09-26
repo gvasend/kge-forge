@@ -1,0 +1,12 @@
+{
+  "schema":"E1-CORRECTED-WORKAUTH-RUNTIME-QUALIFICATION-1",
+  "verdict":"BLOCKED_CORRECTED_RUNTIME_LIFECYCLE_INTEGRATION_NOT_FULLY_QUALIFIED",
+  "successor_runtime_identity":"sha256:4858e889f4c8492dba18441b8aa8c45782d2da2b7a1e26d247683377b8a37c1c",
+  "predecessor_runtime":"sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+  "correction_manifest":{"adapter/workauth_template_v2.py":"1b971e7d2d371204d29f42b2be8a13498eedd3fcc3d8bcff6cf54d37bbf6c39e","adapter/workauth_issuance.py":"a29c3f4bcd1f76c3e214006b2db875dc715a8e0db5b4610ed53e96441e3de3ed","adapter/corrected_workauth_lifecycle.py":"e0944051df2c7b61d6d0b47b3f5790018355e78c5ffb4a79c390eceaa8d7aec6"},
+  "boundary_qualification":{"template":"PASS","issuance_authority":"PASS","inactive_no_ownership":"PASS","negative_binding_replay_audit":"PASS"},
+  "missing_qualification":["durable INACTIVE recovery integration","activation/ownership integration","ACTIVE recovery","cancellation/QUIESCENT integration","dispatcher and host construction","MODEL_REQUEST_READY status path","ordinary successor runtime evolution"],
+  "reason":"The corrected consumer currently validates the three independent authorities and returns an INACTIVE boundary, but it is not integrated with the existing activation, recovery, cancellation, dispatcher, and host-construction path as an exact successor runtime.",
+  "materiality":"MATERIAL_WORKAUTH_LIFECYCLE_AUTHORITY_MODEL_CORRECTION",
+  "production":{"r4":"CURRENT_UNIQUE","g4":"CURRENT","template_published":false,"issuance_published":false,"r13":"UNISSUED_UNOWNED","model_requests":0,"effects":0}
+}

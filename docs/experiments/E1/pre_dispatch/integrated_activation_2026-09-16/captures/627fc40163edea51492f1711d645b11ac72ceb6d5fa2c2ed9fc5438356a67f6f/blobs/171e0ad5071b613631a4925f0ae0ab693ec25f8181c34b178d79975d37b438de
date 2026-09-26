@@ -1,0 +1,159 @@
+{
+  "classification": "NON_MATERIAL_IMPLEMENTATION_CONTINUATION",
+  "evidence": [
+    "synthetic/live/LIVE_REPORT.json",
+    "FAILURE_BOUNDARIES.json",
+    "TARGETED_REGRESSIONS.txt",
+    "FINAL_RESOURCE_IDENTITY_REGRESSIONS.txt",
+    "TRANSMISSION_REGRESSION.txt"
+  ],
+  "execution_scope": "scope-ff87e97308c64bc2af388b803384bd07",
+  "invariants": [
+    {
+      "comparison": "unchanged released task and synthetic G5-NON-IMPLEMENTATION; no E1 task effects",
+      "id": 1,
+      "name": "Exact task identity",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "tool_definitions AST unchanged; same nine registered tools",
+      "id": 2,
+      "name": "Tool registry",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "_path/read/list/search bodies unchanged; added owned lifecycle admission",
+      "id": 3,
+      "name": "Read authority",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "promotion bodies unchanged; same leaf/directory/protected-path rules; added owned lifecycle admission",
+      "id": 4,
+      "name": "Write/patch authority",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "same exact runtime, argv/cwd/inputs/environment and sealed snapshot; added activation/ownership admission",
+      "id": 5,
+      "name": "Execution authority",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "model_transmission/context_projection modules unchanged; local marker absent from live requests",
+      "id": 6,
+      "name": "Model transmission",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "runtime/transport/snapshot enforcement unchanged; bounded payload network attempt denied",
+      "id": 7,
+      "name": "Network prohibition",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "snapshot, broker and execution-boundary modules unchanged; synthetic writes remained snapshot-only",
+      "id": 8,
+      "name": "Filesystem/snapshot isolation",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "outside-grant policy checked by validator; new controller fence is outside grants and not model-visible",
+      "id": 9,
+      "name": "Audit/evidence isolation",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "same ForwardBridge and supervisor; live scope_created exact owner evidence",
+      "id": 10,
+      "name": "ExecutionScope admission",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "result \u2192 CLOSED \u2192 kernel QUIESCENT \u2192 terminal ActionResult observed; no early next request",
+      "id": 11,
+      "name": "QUIESCENT before success",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "same per-scope reservation/release, now nested within durable invocation reservation and exclusive controller lock",
+      "id": 12,
+      "name": "Sequential ownership",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "combined durable lifecycle and ledger plus live controller fence; independent-process ACTIVE/terminal/pending recovery",
+      "id": 13,
+      "name": "Recovery",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "existing non-self-authorizing request path unchanged",
+      "id": 14,
+      "name": "Authority expansion",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "same derive/verify/clearance algorithms rechecked at activation and every handoff; stale local/task denied",
+      "id": 15,
+      "name": "Context/projection binding",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "historical bytes and canonical fingerprint unchanged; no new dispatch fields",
+      "id": 16,
+      "name": "Released production profile",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "unchanged controller-only Responses transport; no real model calls and no payload network authority",
+      "id": 17,
+      "name": "External destinations",
+      "verdict": "PRESERVED"
+    },
+    {
+      "comparison": "dispatch required; release alone cannot activate; current real E1 remains blocked pending separately approved rebind",
+      "id": 18,
+      "name": "Human/Architect boundaries",
+      "verdict": "PRESERVED"
+    }
+  ],
+  "limitations": [
+    "No E1 runtime activation or E1 model call qualified or performed.",
+    "Model transport endpoint itself not called; model continuation uses a recording stub, real execution uses production supervisor.",
+    "Failure fixtures retain quarantined incomplete/ACTIVE ownership histories under separate synthetic ledgers; no persistent-effect retry or cleanup inferred.",
+    "One older regression defaults to superseded real E1 decision bytes; rerun with synthetic acceptance inputs passed. No governing content was changed to satisfy it.",
+    "Proposed continuation is review-only. Existing dispatch/operational pins still deny changed implementation until Architect-approved continuation/rebinding is implemented and validated."
+  ],
+  "live_activation_event": "E1-AUTHORIZATION-LIFECYCLE-sha256:4c34837138ed6d760523fabcb663c6a56909f53dd76845622c73abfd44725c9a",
+  "live_reservation": "INVOCATION-RESERVATION-sha256:0d86c6a25ee88f13b9e6f5843c5fc10ab9752b39008cc2c74186b2d75e8ac9e1",
+  "new_controller_effects": [
+    "fsynced production validation receipt",
+    "durable invocation reservation on existing common ledger",
+    "non-transmittable per-ledger .controller-lock fence",
+    "durable terminal lifecycle and invocation release"
+  ],
+  "ordering": [
+    "exclusive controller fence",
+    "ledger and audit locks",
+    "production fact validation",
+    "durable validation receipt",
+    "durable activation intent",
+    "durable ownership reservation",
+    "durable ACTIVE bound to receipt/intent/reservation",
+    "independent combined recovery",
+    "profile attach and current-binding verification",
+    "model handoff"
+  ],
+  "qualification": "PASS",
+  "reason": "Only the mechanism realizing already-authorized validation, INACTIVE\u2192ACTIVE, owned handoff and terminal release changes. No released grant, model disclosure, task, executable, destination or decision-making authority is expanded.",
+  "scope": "original five-file lifecycle delta plus explicitly identified activation_transaction.py and invocation_ownership.py integration dependencies",
+  "trust_assumptions": "Existing trusted controller and controller-owned local audit/ledger filesystem with flock+fsync semantics. No new external principal/service. Same-user hostile host mutation remains outside prior trust model; current inode, source, profile and kernel mismatches deny.",
+  "validator": {
+    "authority_sources": "immutable dispatch bindings + released profile/launch + release basis/decision/clearance/continuation; live audit, ledger and host observations",
+    "identity_schema": "PRODUCTION-DISPATCH-VALIDATION-1; DISPATCH-VALIDATION-sha256:canonical-body-digest",
+    "module": "adapter.activation_transaction",
+    "operation": "validate_production",
+    "sha256": "411016342d9c8a833c3899400ebf382aa1d8b40e4d7f793a59558c5c5426968e"
+  }
+}

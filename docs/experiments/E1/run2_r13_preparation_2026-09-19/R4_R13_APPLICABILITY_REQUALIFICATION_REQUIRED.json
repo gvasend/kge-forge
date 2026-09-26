@@ -1,0 +1,51 @@
+{
+  "schema":"E1-R4-R13-APPLICABILITY-RECONCILIATION-1",
+  "verdict":"R4_R13_REQUALIFICATION_REQUIRED",
+  "authority_domain":"LIVE_R4_FINAL_CONTROLLER_STORE",
+  "current_runtime":{"identity":"sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761","state":"CURRENT_UNIQUE"},
+  "live_generation":{"identity":"AUTHORITY-STORE-GENERATION-sha256:4d19a2df0afdf1fe3b2231c2320af95b7b43dbc63328a8af2208040071523dc9","selection":"AUTHORITY-STORE-GENERATION-SELECTION-sha256:b206d7fbb668f88d5eb0140e3757df0327d0d29d3ff98c1a59feeb09782a7a85"},
+  "historical_applicability_basis":{
+    "task":"E1-WP-001",
+    "historical_runtime":"sha256:eebb05f30a4a64befeca7802990129ac79dff701dd192789fbdf59be2ec118ff",
+    "dispatch":"E1-ARCHITECT-DISPATCH-sha256:757d239c3b31689ea651be8f9a0fd293567df09a0c497ef72f8d4a05a41147a8",
+    "invocation":"InvocationAttempt-sha256:bce363cb3dfd25deaff6f6ef4ed67c9d70af859fe998c09ff133deb11f346ba8",
+    "workauthorization":"WorkAuthorization-sha256:bc53d20ea0383febbd7ce1c10e2e00b2461a722942b853f43ea5001b42976c61",
+    "historical_result":"VALID_UNDER_R3",
+    "evidence":[
+      "docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_REPLACEMENT_INVOCATION.json",
+      "docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_REPLACEMENT_WORKAUTH.json",
+      "docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_DOWNSTREAM_QUALIFICATION.json",
+      "docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_WORKAUTH_QUALIFICATION.json"
+    ]
+  },
+  "implementation_delta":{
+    "continuation":"CONTINUATION-sha256:07762485c64b0e9aaf1cc60c8c2405177a46e0c4e68885b3a50f268cf44b76bf",
+    "classification":"AUTHORITY_SEMANTICS_CHANGED",
+    "changed_components":[{"path":"workauth_lifecycle.py","r3":"ABSENT","r4_sha256":"a63522a4c901b7a349c64b6ce0edd085471186ebf80a99755880afbf18a5493a"}],
+    "reason":"R4 adds the production lifecycle bridge that validates WORK-AUTHORIZATION-1 and delegates the canonical INACTIVE issuance boundary. This changes lifecycle-authority consumption and cannot be assumed applicability-preserving.",
+    "qualification_status":"FULL_CURRENT_R4_LIFECYCLE_NOT_ESTABLISHED"
+  },
+  "semantic_assessment":{
+    "task_and_acceptance_obligations":"UNCHANGED_EVIDENCE",
+    "dispatch_and_invocation_binding":"UNCHANGED_EVIDENCE",
+    "model_payload_projection":"UNCHANGED_EVIDENCE",
+    "programmer_tool_and_repository_authority":"UNCHANGED_EVIDENCE",
+    "execution_and_budget_policy":"UNCHANGED_EVIDENCE",
+    "cancellation_recovery_and_status":"NOT_PROVEN_FOR_RECONCILIATION",
+    "lifecycle_initialization_and_issuance":"MATERIAL_DIFFERENCE",
+    "workauthorization_consumption":"MATERIAL_DIFFERENCE",
+    "applicability_result":"REQUALIFICATION_REQUIRED"
+  },
+  "negative_qualification":{
+    "changed_runtime":"BLOCKS",
+    "changed_continuation":"BLOCKS",
+    "changed_invocation":"BLOCKS",
+    "changed_task":"BLOCKS",
+    "omitted_implementation_delta":"BLOCKS",
+    "unknown_applicability_impact":"FAIL_CLOSED"
+  },
+  "workauthorization_impact":{"id":"WorkAuthorization-sha256:bc53d20ea0383febbd7ce1c10e2e00b2461a722942b853f43ea5001b42976c61","mutated":false,"published":false,"consumed":false},
+  "production_state":{"r4":"CURRENT_UNIQUE","r13":"UNISSUED_UNOWNED","audit_namespace":"UNUSED","model_requests":0,"effects":0},
+  "required_next_step":"Requalify E1-WP-001 applicability against exact current R4-final lifecycle authority, including authenticated WorkAuthorization consumption and complete lifecycle semantics. No applicability reconciliation record was created.",
+  "historical_preservation":"PASS"
+}

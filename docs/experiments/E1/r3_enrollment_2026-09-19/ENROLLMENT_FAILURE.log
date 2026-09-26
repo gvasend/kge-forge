@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/r3_enrollment_2026-09-19/enroll.py", line 70, in <module>
+    b.fresh_supervisor(base,record);en.validate(s,en.delegation(s),cr,qr,gr)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/kge-forge-prospective-enrollment/r1-r3-e57b9e8f1fb07c594e1bf666876575abf43863d608fe864d77dbda619db0bba6/continuation_enrollment.py", line 59, in validate
+    for ref in q['evidence']: read(store, ref)
+                              ^^^^^^^^^^^^^^^^
+  File "/tmp/forge-r3-ordinary-4pm01a8l/historical-consumer/adapter/runtime_adoption.py", line 42, in read
+    return json.loads(b)
+           ^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)

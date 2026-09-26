@@ -1,0 +1,31 @@
+{
+  "endpoint": "https://api.openai.com/v1/responses",
+  "model": "gpt-5",
+  "store": false,
+  "parallel_tool_calls": false,
+  "continuation": "caller-owned; no previous_response_id; include reasoning.encrypted_content",
+  "credential_reference": "controller environment variable OPENAI_API_KEY; value never in profile, audit or payload environment",
+  "transport": {
+    "implementation": "unchanged urllib.request.Request/urlopen with default HTTPS certificate verification",
+    "proxy_policy": "DIRECT_ONLY; controller launch must reject presence of http_proxy, https_proxy, all_proxy or no_proxy (case-insensitive); no proxy secrets or values recorded",
+    "custom_opener": "prohibited; require urllib.request._opener is None at launch",
+    "redirect_policy": "No alternate information destination is authorized. Current urllib default redirect handling is not a destination-confinement proof; controller configuration is trusted, and runtime redirect confinement is unresolved.",
+    "endpoint_selection": "controller only; exact endpoint above; no model override or alternate endpoint grant"
+  },
+  "authorized_information_categories": [
+    "E1-WP-001 task text and committed mandatory governing sources/context metadata, including repository identities and declared unresolved blockers",
+    "Ordinary files, directory names and bounded literal search results under the two designated repository roots after .git/.codex/.agents exclusions; scope of G1/C, not arbitrary host directories",
+    "In-scope implementation source, test fixtures and implementation evidence produced through governed writes/patches",
+    "Bounded governed action results, execution stdout/stderr, status, hashes, provenance, denied-request explanations, expansion requests and finish summaries",
+    "Prior model outputs and encrypted reasoning continuation items needed for the qualified stateless loop"
+  ],
+  "excluded_information_categories": [
+    "credentials and secret values",
+    "all excluded hidden-directory contents",
+    "controller/supervisor private audit and ownership contents",
+    "unrelated host files or connector data"
+  ],
+  "unresolved_content_condition": "Read policy is path-based, not a secret detector. Controller must obtain scoped content-suitability assurance for allowed ordinary files/results; no new redaction mechanism or whole-repository secret scan is claimed.",
+  "authority": "Architect G3 authorizes approved Responses destination, controller model selection, store=false and reference-only credential; ordinary repository categories derive from C/W as narrowed by G1.",
+  "enforcement_status": "PROPOSED_CONTROLLER_CONFIGURATION; no API call, transport change, launcher integration or active E1 run performed"
+}

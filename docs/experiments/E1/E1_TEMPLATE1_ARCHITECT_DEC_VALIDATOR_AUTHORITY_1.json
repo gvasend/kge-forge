@@ -1,0 +1,45 @@
+{
+  "schema": "E1-ARCHITECT-DECISION-AUTHORITY-1",
+  "record_type": "DEC-VALIDATOR",
+  "status": "ISSUED",
+  "decision": "APPROVED_OPTION_1",
+  "issuer": "Architect (explicit user instruction in this conversation)",
+  "issuance_basis": "E1 ARCHITECT DECISION \u2014 TEMPLATE-1 DECISION BATCH 1; three independent explicit approvals",
+  "scope": "adapter/workauth_lifecycle.py::consume_and_issue pre-effect stage; adapter/workauth_issuance.py::validate; adapter/invocation_constructor.py canonical checks; directly associated isolated adapter/tests qualification and only helpers necessary for this seam.",
+  "source_artifacts": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md",
+      "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+      "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+    }
+  ],
+  "authority_not_granted": "No Template-1/Candidate-3 construction or release, WorkAuthorization acceptance/issuance/use, authority consumption, lifecycle/ownership/audit/host/provider/model effects, unrelated repairs, or expansion of existing policy. Preparation grants nothing. A validator PASS does not authorize acceptance or issuance of WorkAuthorization. No context/governance/transmission repair, budget/identity decision or ignored-key policy is implicitly approved.",
+  "production_effect": "CONTROL_PLANE_AUTHORITY_OR_CONTRACT_ISSUANCE_ONLY",
+  "runtime_effects_authorized": false,
+  "candidate3_authority_consumed": false,
+  "canonical_identity_rule": "SHA-256 of sorted-key compact UTF-8 JSON excluding authority_id only; full body otherwise included.",
+  "authorized_operation": "Bounded shared-validator implementation and qualification only, preserving all dossier tests and effect prohibitions.",
+  "preconditions": [
+    "CONTRACT-T1"
+  ],
+  "api": "validate_for_issuance(candidate, current_state)",
+  "sharing_requirement": "Same authoritative private pre-effect validation logic used by consume_and_issue(); preserve exact scope, T1 identity checks, all \u00a74 qualification and atomic freshness obligations.",
+  "validator_pass_grants_authority": false,
+  "validation_prohibited_effects": [
+    "accept",
+    "issue",
+    "consume",
+    "activate",
+    "own",
+    "transmit",
+    "execute",
+    "audit write",
+    "repository effects",
+    "host/provider/model effects"
+  ],
+  "implementation_performed": false,
+  "authority_id": "E1-ArchitectDecisionAuthority-sha256:ddd8e36587e2780f640b7babb0e44951b4f5510955822af1db8a00aa74fdd629"
+}

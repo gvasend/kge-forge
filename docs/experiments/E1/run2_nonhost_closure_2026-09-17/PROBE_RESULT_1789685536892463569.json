@@ -1,0 +1,10 @@
+{
+  "Run2_started": false,
+  "base": "/tmp/run2-nonhost-candidate-39qfwgzq",
+  "exception": "AuthorityDenied",
+  "mode": "NON_EFFECTING_QUALIFICATION",
+  "reason": "Run-2 implementation changed",
+  "result": "BLOCKED",
+  "samples": [],
+  "traceback": "Traceback (most recent call last):\n  File \"docs/experiments/E1/run2_nonhost_closure_2026-09-17/qualify_context.py\", line 116, in <module>\n    auth=reconstruct_authorization(s,A)\n  File \"/home/gvasend/app/kge-forge/adapter/validation_spans.py\", line 25, in wrapped\n    with span(name):return fn(*args,**kwargs)\n  File \"/home/gvasend/app/kge-forge/adapter/authority_bootstrap.py\", line 97, in reconstruct_authorization\n    raw['context_binding'] = CommittedContext(saved['path'], saved['capture_commit'],\n  File \"/home/gvasend/app/kge-forge/adapter/context_binding.py\", line 24, in __init__\n    self.governance = GovernanceContinuation(governance)\n  File \"/home/gvasend/app/kge-forge/adapter/governance_continuation.py\", line 39, in __init__\n    self.verify()\n  File \"/home/gvasend/app/kge-forge/adapter/governance_continuation.py\", line 46, in verify\n    return verify(self)\n  File \"/home/gvasend/app/kge-forge/adapter/validation_spans.py\", line 25, in wrapped\n    with span(name):return fn(*args,**kwargs)\n  File \"/home/gvasend/app/kge-forge/adapter/run2_context.py\", line 111, in verify\n    sel,candidate,c,prior,inventory=content(s)\n  File \"/home/gvasend/app/kge-forge/adapter/validation_spans.py\", line 25, in wrapped\n    with span(name):return fn(*args,**kwargs)\n  File \"/home/gvasend/app/kge-forge/adapter/run2_context.py\", line 54, in content\n    require(actual==inventory['inventory'],'Run-2 implementation changed')\n  File \"/home/gvasend/app/kge-forge/adapter/run2_amendment.py\", line 22, in require\n    raise AuthorityDenied(message)\nadapter.controller_authority_store.AuthorityDenied: Run-2 implementation changed\n"
+}

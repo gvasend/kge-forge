@@ -1,0 +1,31 @@
+test_binding_substitution_before_dispatch_denied (__main__.Integrated) ... ok
+test_complete_dispatcher_handoff_and_cancellation (__main__.Integrated) ... ok
+test_dispatching_projection_from_authoritative_ACTIVE (__main__.Integrated) ... ACTIVE_STATUS {"action_requests":{"accepted":0,"denied":0,"pending":0},"action_results":0,"activity_freshness":"FRESH","activity_is_progress":false,"authoritative_effects":0,"authority_basis":{"audit_sha256":"4b9cda20aef170f8d29a0b3854f8bb4bbb733036e2758340bcbab176fcebd888","ledger_sha256":"76e648fc5644e0c6595cf303ee83bf6337410cc7c4ca9081146fbef4af1b936d","lifecycle_event":"E1-AUTHORIZATION-LIFECYCLE-sha256:4235394f97745cf1666c602863b9c323e65a44b576c2df91a577d474487bec75"},"authority_freshness":"FRESH","authorization_state":"ACTIVE","budget_state":{},"current_subphase":"reasoning_construction","cycle":0,"executions":0,"freshness":"FRESH","handoff_eligible":false,"identity":{"authorization_id":"projection-fixture","invocation_id":"projection-turn","session_id":"projection-session","work_package_id":"G5-NON-IMPLEMENTATION"},"last_event_age":0.2703361511230469,"last_substantive_progress":null,"latest_safe_event":"span_start","lifecycle_state":"ACTIVE","live_telemetry_freshness":"FRESH","model_requests":0,"operational_state":"DISPATCHING","outstanding_operation":"reasoning_construction","ownership":"OWNERSHIP_HELD","progress_age":1.6724145412445068,"projection_generated":1789758084.956029,"projection_seconds":0.24692653300007805,"reported_cumulative_tokens":null,"responses":0,"schema":"E1-RECONCILED-OPERATOR-STATUS-1","source_sequence":10,"subphase_start":1789758084.6854708,"supervisor_readiness":"UNKNOWN","terminal_disposition":null,"token_budget_state":"USAGE_UNKNOWN","token_ceiling_enforced":false,"uncertainty":null,"usage_state":"USAGE_UNKNOWN"}
+ok
+test_failure_between_sessions_no_authority_lost (__main__.Integrated) ... ok
+test_live_all_phases_with_exact_ownership (__main__.Integrated) ... INTENT_STATUS [{"activity_freshness":"UNKNOWN","activity_uncertainty":"STALE_OR_ABSENT_LIVE_ACTIVITY_SOURCE","authority_basis":{"audit_sha256":"9ac09006171ff9c48e53364eafd4f8712056de397b5759c8677bf3db0fdb4391","ledger_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","lifecycle_event":null},"authority_freshness":"FRESH","authorization_state":"INACTIVE","current_subphase":"UNKNOWN","freshness":"FRESH","handoff_eligible":false,"lifecycle_state":"INACTIVE","live_telemetry_freshness":null,"operational_state":"INACTIVE","outstanding_operation":"UNKNOWN","ownership":"NONE","projection_generated":1789758093.620924,"projection_seconds":0.19012267998186871,"reason":"NO_TIMING_EVIDENCE","schema":"E1-RECONCILED-OPERATOR-STATUS-1","state":"UNKNOWN","uncertainty":null},{"action_requests":{"accepted":0,"denied":0,"pending":0},"action_results":0,"activity_freshness":"FRESH","activity_is_progress":false,"authoritative_effects":0,"authority_basis":{"audit_sha256":"797a3fed3c0ec7008ee65c5052b14fd279499f0cf707e5a82d0cde00bc950c1e","ledger_sha256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","lifecycle_event":"E1-AUTHORIZATION-LIFECYCLE-sha256:5a049bb18135965e1c317e9a69488f7c4a160df4e6bfe6e73464dabd56552197"},"authority_freshness":"FRESH","authorization_state":"INACTIVE","budget_state":{},"current_subphase":null,"cycle":0,"executions":0,"freshness":"FRESH","handoff_eligible":false,"identity":{"authorization_id":"projection-fixture","invocation_id":"projection-turn","session_id":"projection-session","work_package_id":"G5-NON-IMPLEMENTATION"},"last_event_age":1.2334179878234863,"last_substantive_progress":null,"latest_safe_event":"invocation_start","lifecycle_state":"INACTIVE","live_telemetry_freshness":"FRESH","model_requests":0,"operational_state":"ACTIVATING","outstanding_operation":null,"ownership":"ACTIVATING","progress_age":1.2334179878234863,"projection_generated":1789758094.858302,"projection_seconds":0.22679800499463454,"reported_cumulative_tokens":null,"responses":0,"schema":"E1-RECONCILED-OPERATOR-STATUS-1","source_sequence":1,"subphase_start":null,"supervisor_readiness":"UNKNOWN","terminal_disposition":null,"token_budget_state":"USAGE_UNKNOWN","token_ceiling_enforced":false,"uncertainty":"LIFECYCLE_RECONCILIATION_REQUIRED","usage_state":"USAGE_UNKNOWN"}]
+ok
+test_nested_session_guard_preserved (__main__.Integrated) ... ok
+test_ownership_gating_survives_restart_and_cancellation (__main__.Integrated) ... ok
+test_stale_active_projection_is_unknown (__main__.Integrated) ... ok
+test_terminal_authority_dominates_stale_provisional_status (__main__.Integrated) ... ok
+test_warning_persisted_under_transaction_without_nested_lock (__main__.Integrated) ... WARNING_TIMING {"append_and_fsync_seconds":0.020456116006243974,"created_monotonic":284950.350371369,"created_wall":1789758115.9105625,"creation_to_persistence_seconds":0.02048307901713997,"durable_monotonic":284950.370852592,"durable_wall":1789758115.9310439,"lock_wait_seconds":2.00001522898674e-07,"warning_record_sha256":"19b6ed2b316baf408a289063a2947c2004ebca77620d1374b10aa1a3d0071ea3","warning_sequence":10}
+ok
+test_competing_tuple_blocks (__main__.Ownership) ... ok
+test_duplicate_or_self_ancestry (__main__.Ownership) ... ok
+test_duplicate_reservations_rejected (__main__.Ownership) ... ok
+test_each_predecessor_owner_blocks (__main__.Ownership) ... ok
+test_exact_current_owner_is_attribution_not_handoff (__main__.Ownership) ... ok
+test_intent_owned_remains_uncertain (__main__.Ownership) ... ok
+test_lifecycle_reservation_exact (__main__.Ownership) ... ok
+test_reservation_substitution_rejected (__main__.Ownership) ... ok
+test_restart_owner_attribution_and_release (__main__.Ownership) ... ok
+test_scope_attribution (__main__.Ownership) ... ok
+test_unknown_owner_blocks (__main__.Ownership) ... ok
+test_unowned_initial (__main__.Ownership) ... ok
+test_wrong_lifecycle_blocks (__main__.Ownership) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 55.517s
+
+OK

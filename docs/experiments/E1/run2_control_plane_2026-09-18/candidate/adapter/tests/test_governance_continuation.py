@@ -1,0 +1,236 @@
+"""Synthetic committed governance continuation and released-authority regression."""
+from dataclasses import replace
+from pathlib import Path
+import json, tempfile, unittest
+from unittest.mock import patch
+from adapter.tests.test_context_projection import prepared, live_qualify
+from adapter.context_binding import CommittedContext
+from adapter.context_projection import sha, digest, canonical, specification, derive
+from adapter.governance_continuation import (reference, GovernanceContinuation,
+    NON_MATERIAL, MATERIAL, UNCHANGED, next_identity)
+from adapter.governed_host import GovernedHost, Denied
+from adapter.orchestrator import ReasoningOrchestrator
+from adapter.responses_orchestrator import ResponsesReasoning
+
+
+def write(path, value):
+    path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(canonical(value)); return reference(path)
+
+
+def construct(out, basis_ref, profile_path, launch_path, clearance_path,
+              artifact, authority, implementation_inputs):
+    """Evidence construction only; caller explicitly approves the exact delta."""
+    out = Path(out); out.mkdir(parents=True, exist_ok=True)
+    basis = json.loads(Path(basis_ref['path']).read_bytes())
+    rows = basis.get('current_inputs', basis.get('inputs'))
+    before_hash = rows[str(artifact)]['sha256']
+    before_path = Path(basis_ref['path']).parent / 'blobs' / before_hash
+    before = before_path.read_bytes(); after = Path(artifact).read_bytes()
+    assert after.startswith(before) and len(after) > len(before)
+    new_blob = out / 'blobs' / sha(after); new_blob.parent.mkdir(exist_ok=True)
+    new_blob.write_bytes(after)
+    basis_id = 'E1-RELEASE-BASIS-sha256:' + basis_ref['sha256']
+    decision = {'ReleaseBasisId': basis_id, 'decision': {'PD06': 'RELEASED', 'E1_B01': 'PASS'},
+        'authority': 'Architect', 'authority_source': reference(authority),
+        'released_profile_sha256': digest(json.loads(Path(profile_path).read_bytes())),
+        'required_fingerprints': {'release_capture_sha256': basis_ref['sha256'],
+                                  'context_identities': basis['context_identities']},
+        'recorded_artifact': str(artifact), 'recorded_artifact_sha256': sha(after)}
+    dr = write(out / 'RELEASE_DECISION.json', decision)
+    decision_id = 'E1-RELEASE-DECISION-sha256:' + dr['sha256']
+    row = {'version': 1, 'sequence': 1, 'predecessor': basis_id,
+        'artifact': str(artifact), 'previous_sha256': before_hash, 'new_sha256': sha(after),
+        'previous_blob': str(before_path), 'new_blob': str(new_blob),
+        'authority': 'Architect', 'authority_source': reference(authority),
+        'reason': 'Recording already-made PD-06 RELEASED / E1-B01 PASS decision only',
+        'classification': NON_MATERIAL, 'alters_released_task_authority': False,
+        'unchanged': {k: True for k in UNCHANGED}, 'delta_classification': 'LOCAL_ONLY',
+        'delta': {'start_byte': len(before), 'end_byte_exclusive': len(after), 'sha256': sha(after[len(before):])}}
+    row['OperationalContextId'] = next_identity(basis_id, decision_id, basis_id, [digest(row)])
+    cr = write(out / 'CONTINUATION_0001.json', row)
+    sr = write(out / 'IMPLEMENTATION_SUPPLEMENT.json', {
+        'authority_source': reference(authority), 'inputs': implementation_inputs,
+        'reason': 'Explicitly authorized governance-continuation implementation; qualification required; no released selections changed'})
+    spec = {'schema': 1, 'release_basis': basis_ref, 'release_decision': dr,
+        'released_profile': reference(profile_path), 'clearance': reference(clearance_path),
+        'chain': [cr], 'approved_records': [cr['sha256']],
+        'implementation_supplement': sr, 'implementation_paths': sorted(implementation_inputs),
+        'identities': {'ReleaseBasisId': basis_id, 'ReleaseDecisionId': decision_id,
+            'OperationalContextId': row['OperationalContextId'],
+            'continuation_chain_digest': digest([cr['sha256']])}}
+    GovernanceContinuation(spec)
+    write(out / 'GOVERNANCE_SPECIFICATION.json', spec)
+    return spec
+
+
+def continued(out, inactive=False, production_metadata=None):
+    out = Path(out)
+    root, old, auth, spec, original, clearance = prepared(out)
+    # A committed governing file with a bounded, separately cleared excerpt.
+    clear = json.loads(clearance.read_bytes())
+    for row in clear['inputs']:
+        if row['canonical_path'] == str(root / 'public.txt'):
+            row['designation'] = 'BOUNDED_CONTENT'
+    write(clearance, clear)
+    spec = specification(old, spec['capture_path'], clearance, root / 'task.txt', {})
+    original = derive(spec, old)
+    policy = json.loads(auth.model_transmission); policy['file_clearances'] = []
+    auth = replace(auth, context_projection=canonical(spec), model_transmission=canonical(policy),
+                   ownership_ledger=str(out / 'ownership.jsonl'))
+    if inactive: auth = replace(auth, state='INACTIVE')
+    pp = out / 'RELEASED_PROFILE.json'
+    profile = {'context_projection': spec, 'grants': list(auth.write_roots)}
+    extra_inputs=[]
+    if production_metadata is not None:
+        extra,extra_inputs=production_metadata(root,auth)
+        profile.update(extra)
+    write(pp, profile)
+    raw = dict(auth.__dict__)
+    raw['context_binding'] = {'capture_commit': old.capture_commit, 'context_sha256': old.digest}
+    lp = out / 'RELEASED_LAUNCH.json'; write(lp, {'profile_sha256': digest(profile), 'authorization': raw})
+    historical = json.loads(Path(spec['capture_path']).read_bytes())
+    rows = dict(historical['inputs'])
+    for path in (pp, lp, *extra_inputs): rows[str(path)] = {'sha256': sha(path.read_bytes())}
+    basis = out / 'release-basis'; (basis / 'blobs').mkdir(parents=True)
+    for path, row in rows.items(): (basis / 'blobs' / row['sha256']).write_bytes(Path(path).read_bytes())
+    br = write(basis / 'MANIFEST.json', {'inputs': rows, 'production_profile_sha256': digest(profile),
+        'context_identities': {k: original[k] for k in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest')}})
+    authority = out / 'AUTHORITY.md'; authority.write_text('Synthetic Architect approves exact LOCAL_ONLY decision append.\n')
+    artifact = root / 'public.txt'; artifact.write_bytes(artifact.read_bytes() + b'LOCAL_ONLY_RELEASE_DECISION_7fa2: PD06 RELEASED E1-B01 PASS\n')
+    gov = construct(out / 'continuation', br, pp, lp, clearance, artifact, authority, {})
+    binding = CommittedContext(old.path, old.capture_commit, gov)
+    projection = derive(spec, binding)
+    op = {'schema': 1, 'governance': gov, 'released_launch': reference(lp),
+          'context_identities': {k: projection[k] for k in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest')}}
+    auth = replace(auth, context_binding=binding, operational_binding=canonical(op))
+    write(out / 'OPERATIONAL_BINDING.json', op)
+    assert projection['projection']['payload'] == original['projection']['payload']
+    return root, binding, auth, spec, projection, clearance
+
+
+def qualify(out):
+    out = Path(out); root, binding, auth, spec, projection, clearance = continued(out)
+    g = binding.governance; before = dict(g.identities)
+    immutable = {r['path']: Path(r['path']).read_bytes() for r in
+                 (g.spec['release_basis'], g.spec['released_profile'], g.spec['release_decision'])}
+    class Model(ResponsesReasoning):
+        def __init__(self, orch): super().__init__(orch); self.payloads = []
+        def _call(self, payload):
+            self.payloads.append(payload); n = len(self.payloads)
+            if n <= 3:
+                args = {'repository': str(root), 'path': ('public.txt', 'local.txt', 'private.txt')[n-1], 'limit': 65536}
+                return {'output': [{'type': 'function_call', 'name': 'governed_read', 'call_id': str(n), 'arguments': json.dumps(args)}]}
+            if n == 4:
+                return {'output': [{'type': 'function_call', 'name': 'finish_task', 'call_id': 'done', 'arguments': '{"summary":"synthetic done"}'}]}
+            return {'output': []}
+    host = GovernedHost(auth, out / 'controller.jsonl'); runner = Model(ReasoningOrchestrator(host))
+    payload = projection['projection']['payload']; result = runner.run(payload['task'], payload['context'], 5)
+    assert result['status'] == 'COMPLETE'
+    requests = canonical(runner.payloads)
+    forbidden = ('LOCAL_ONLY_RELEASE_DECISION_7fa2', 'LOCAL_ONLY_MARKER_5eb43', 'NEVER_TRANSMIT_MARKER_b8c22')
+    assert all(x not in requests for x in forbidden)
+    assert 'CLEARED_PUBLIC_ONLY' in requests
+    rebuilt = CommittedContext(binding.path, binding.capture_commit, json.loads(auth.operational_binding)['governance'])
+    recovered = replace(auth, context_binding=rebuilt)
+    resumed = Model(ReasoningOrchestrator(GovernedHost(recovered, out / 'controller.jsonl')))
+    assert resumed.projection.verify()['ModelProjectionDigest'] == projection['ModelProjectionDigest']
+    denied = []
+    def reject(name, call):
+        try: call()
+        except (ValueError, RuntimeError): denied.append(name)
+        else: raise AssertionError('accepted ' + name)
+    for rel in ('public.txt', 'local.txt', 'task.txt'):
+        path = root / rel; data = path.read_bytes(); path.write_bytes(data + b'UNAUTHORIZED')
+        try: reject('unauthorized-' + rel, resumed.projection.verify)
+        finally: path.write_bytes(data)
+    for kind in ('deletion', 'replay', 'substitution', 'reordering'):
+        altered = json.loads(canonical(g.spec))
+        if kind == 'deletion': altered['chain'] = []
+        elif kind == 'replay': altered['chain'] *= 2; altered['approved_records'] *= 2
+        elif kind == 'substitution': altered['chain'][0]['sha256'] = '0' * 64
+        else:
+            altered['chain'].insert(0, altered['release_decision'])
+        reject(kind, lambda: GovernanceContinuation(altered))
+    row = json.loads(Path(g.spec['chain'][0]['path']).read_bytes())
+    row['classification'] = MATERIAL; row['alters_released_task_authority'] = True
+    material = write(out / 'MATERIAL_APPROVED.json', row)
+    altered = json.loads(canonical(g.spec)); altered['chain'] = [material]; altered['approved_records'] = [material['sha256']]
+    reject('authorized-material', lambda: GovernanceContinuation(altered))
+    reject('changed-grants', lambda: GovernedHost(replace(auth, shell=True), out / 'bad.jsonl'))
+    for path, data in immutable.items(): assert Path(path).read_bytes() == data
+    assert g.verify() == before
+    report = {'result': 'PASS', 'identities': before, 'context_identities': json.loads(auth.operational_binding)['context_identities'],
+        'denied': denied, 'model_requests': runner.payloads, 'forbidden_markers_absent': list(forbidden),
+        'recovery': 'PASS', 'historical_basis_profile_decision_unchanged': True,
+        'payload_byte_identical': True, 'api_calls': 0, 'E1_activated': False, 'E1_dispatched': False,
+        'synthetic_commit': binding.capture_commit}
+    write(out / 'REPORT.json', report)
+    return report
+
+
+def live(out):
+    with patch('adapter.tests.test_context_projection.prepared', continued):
+        return live_qualify(out)
+
+
+class GovernanceContinuationTests(unittest.TestCase):
+    def test_release_does_not_authorize_activation(self):
+        with tempfile.TemporaryDirectory(prefix='synthetic-dispatch-gate-') as out:
+            root, binding, auth, _, _, _ = continued(out, inactive=True)
+            with self.assertRaises((ValueError, Denied)):
+                GovernedHost(replace(auth, state='ACTIVE'), Path(out) / 'denied.jsonl')
+            op = json.loads(auth.operational_binding)
+            launch = json.loads(Path(op['released_launch']['path']).read_bytes())
+            fixture_permission = {'decision': 'DISPATCH_AUTHORIZED', 'authority': 'Architect',
+                'work_package_id': auth.work_package_id, 'released_profile_sha256': launch['profile_sha256'],
+                **binding.governance.identities, 'ModelProjectionDigest': op['context_identities']['ModelProjectionDigest'],
+                'invocation_identity': {k: getattr(auth, k) for k in ('authorization_id', 'revision', 'session_id', 'turn_id')},
+                'authority_source': reference(Path(out) / 'AUTHORITY.md'),
+                'fixture_only': True}
+            op['dispatch_authorization'] = write(Path(out) / 'SYNTHETIC_DISPATCH_PERMISSION.json', fixture_permission)
+            active = replace(auth, state='ACTIVE', operational_binding=canonical(op))
+            # Dispatch permission is necessary but no longer sufficient: ACTIVE
+            # also requires the qualified durable lifecycle in the exact audit.
+            with self.assertRaises(Denied):
+                GovernedHost(active, Path(out) / 'synthetic-authorized.jsonl')
+            fixture_permission['OperationalContextId'] = 'substituted'
+            op['dispatch_authorization'] = write(Path(out) / 'SYNTHETIC_WRONG_PERMISSION.json', fixture_permission)
+            with self.assertRaises((ValueError, Denied)):
+                GovernedHost(replace(active, operational_binding=canonical(op)), Path(out) / 'wrong.jsonl')
+
+    def test_qualified_continuation(self):
+        with tempfile.TemporaryDirectory(prefix='governance-continuation-') as out:
+            self.assertEqual(qualify(out)['result'], 'PASS')
+
+    def test_two_authorized_records_cannot_be_reordered_or_truncated(self):
+        with tempfile.TemporaryDirectory(prefix='governance-chain-') as out:
+            root, binding, auth, _, _, _ = continued(out)
+            s = json.loads(canonical(binding.governance.spec))
+            first = json.loads(Path(s['chain'][0]['path']).read_bytes())
+            path = root / 'public.txt'; previous = path.read_bytes()
+            path.write_bytes(previous + b'LOCAL_ONLY_SECOND_APPROVED_RECORD\n')
+            second = dict(first)
+            blob = Path(out) / 'second-blob'; blob.write_bytes(path.read_bytes())
+            second.update(sequence=2, predecessor=first['OperationalContextId'],
+                previous_sha256=sha(previous), new_sha256=sha(path.read_bytes()),
+                previous_blob=first['new_blob'], new_blob=str(blob),
+                delta={'start_byte': len(previous), 'end_byte_exclusive': path.stat().st_size,
+                       'sha256': sha(path.read_bytes()[len(previous):])})
+            second.pop('OperationalContextId')
+            body = dict(first); body.pop('OperationalContextId')
+            second['OperationalContextId'] = next_identity(s['identities']['ReleaseBasisId'],
+                s['identities']['ReleaseDecisionId'], first['OperationalContextId'], [digest(body), digest(second)])
+            ref = write(Path(out) / 'CONTINUATION_0002.json', second)
+            s['chain'].append(ref); s['approved_records'].append(ref['sha256'])
+            s['identities']['OperationalContextId'] = second['OperationalContextId']
+            s['identities']['continuation_chain_digest'] = digest(s['approved_records'])
+            self.assertEqual(GovernanceContinuation(s).identities, s['identities'])
+            reversed_spec = json.loads(canonical(s))
+            reversed_spec['chain'].reverse(); reversed_spec['approved_records'].reverse()
+            with self.assertRaises(ValueError): GovernanceContinuation(reversed_spec)
+            truncated = json.loads(canonical(s)); truncated['chain'].pop(); truncated['approved_records'].pop()
+            with self.assertRaises(ValueError): GovernanceContinuation(truncated)
+
+
+if __name__ == '__main__': unittest.main()

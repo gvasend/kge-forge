@@ -1,0 +1,501 @@
+--- released-r9/activation_transaction.py
++++ candidate-r10/activation_transaction.py
+@@ -82,6 +82,9 @@
+ def validate_production(auth,audit,dispatch_ref,ledger_fd, *, allow_owned=None, idle_host=True):
+     if any(json.loads(line).get('qualification_only') for line in Path(audit).read_bytes().splitlines()):
+         raise LifecycleDenied('qualification audit cannot authorize production activation')
++    if json.loads(auth.operational_binding)['governance'].get('schema')==6:
++        from .attempt_transition import require_issued
++        require_issued(auth)
+     if json.loads(auth.operational_binding)['governance'].get('schema')==5:
+         from .attempt_context import require_issued
+         require_issued(auth)
+@@ -116,7 +119,10 @@
+     if _preissuance:
+         store=require_store(auth)
+         from .controller_authority_store import outside
+-        from .attempt_context import selected
++        if json.loads(auth.operational_binding)['governance'].get('schema')==6:
++            from .attempt_transition import selected
++        else:
++            from .attempt_context import selected
+         if selected()['mode']!='PREPARED' or auth.state!='INACTIVE':raise LifecycleDenied('unissued preflight only')
+         planned=store.catalog['private_state'][auth.authorization_id+':audit']['path']
+         outside(planned,store.catalog['programmer_roots'])
+@@ -159,7 +165,7 @@
+     spec=json.loads(auth.context_projection)
+     projection=derive(spec,auth.context_binding)
+     identity_keys=('AuthoritativeContextId','FullContextDigest','ModelProjectionDigest')
+-    if op['governance'].get('schema') in (2,3,4,5):identity_keys+=('ModelPayloadDigest','ModelProjectionBindingDigest')
++    if op['governance'].get('schema') in (2,3,4,5,6):identity_keys+=('ModelPayloadDigest','ModelProjectionBindingDigest')
+     if any(projection[k]!=op['context_identities'][k] for k in identity_keys):
+         raise LifecycleDenied('projection binding stale')
+     # Use the actual transmission/read validator without emitting audit during
+--- released-r9/attempt_transition.py
++++ candidate-r10/attempt_transition.py
+@@ -0,0 +1,150 @@
++"""Authenticated, exact r9-to-r10 material transition. PREPARED is non-effecting."""
++import json,os
++from pathlib import Path
++from .context_projection import canonical,digest,sha,read_exact
++from .controller_authority_store import current,read_authority_ref,outside
++from .attempt_context import require,read,ident,unseal,peer,predecessor,identities
++from .continuation_envelope import seal,BODY_KEYS
++from .terminal_attempt import classify
++PROPOSAL_SHA='35fde13e12ee9318fca076c5a28aa898718e83074e65c3ada7f14e54830363e4'
++REASON='PRE_MODEL_DISPATCHER_SESSION_COMPOSITION_FAILURE_NO_EFFECTS'
++PREVIOUS='E1-RELEASE-AUTHORITY-sha256:a8e228850a699e201cd2202b76c6de7de976e7aa34890f3247afda4a599f0708'
++RULES=('exact_dispatch_and_attempt_ancestry','terminal_CANCELLED','ownership_released','no_execution_scope',
++ 'no_model_or_provider_request','no_ActionRequest_or_effect','no_uncertainty','specific_successor_authorization',
++ 'new_unused_audit','no_inherited_lifecycle_ownership_counters','no_automatic_retry')
++def selected(store=None):
++ store=store or current();require(store is not None,'private store required')
++ s=json.loads(store.resolve(store.applicability['authorization_id']+':terminal-attempt-context'))
++ require(set(s)=={'mode','amendment','continuation','specific_invocation_authorization','qualification'},'selection shape')
++ require(s['mode'] in ('PREPARED','ISSUED'),'unknown selection mode');return s
++
++def terminal(store,a,p,proof):
++ from .activation_transaction import invocation,_read
++ from .invocation_ownership import InvocationOwnership
++ from .run_control import events
++ t=proof['terminal'];require(t['audit']==p['predecessor']['audit'] and t['audit_sha256']==p['predecessor']['audit_sha256'],'predecessor audit substituted')
++ read_exact(t['audit'],t['audit_sha256'])
++ # Fresh mutable ownership; cached immutable proof never suppresses this check.
++ fd=os.open(proof['authorization']['ownership_ledger'],os.O_RDONLY|os.O_NOFOLLOW)
++ try:
++  before=_read(fd);held=os.fstat(fd);named=os.stat(proof['authorization']['ownership_ledger'],follow_symlinks=False)
++  require((held.st_dev,held.st_ino)==(named.st_dev,named.st_ino),'ownership ledger replaced')
++  owner=invocation(fd);scope=InvocationOwnership.__new__(InvocationOwnership)._history(fd)
++  require(before==_read(fd),'ownership changed during observation')
++ finally:os.close(fd)
++ predecessor_id=p['predecessor']['authorization_id']
++ predecessor_owner=owner if owner and owner.get('authorization_id')==predecessor_id else None
++ predecessor_scope=scope if scope and scope.get('authorization_id')==predecessor_id else None
++ require(classify(events(Path(t['audit'])),t['lifecycle'],t['actions'],predecessor_owner,predecessor_scope,predecessor_id)=='ACTIVE_CANCELLED_PRE_MODEL_NO_EFFECTS','unqualified predecessor class for this transition')
++ require(t['ownership'] is None and t['scope'] is None,'captured terminal proof unresolved')
++ return t
++
++def decision(spec):
++ store=current();s=selected();require(s['amendment']==spec['amendment'] and s['continuation']==spec['continuation'],'unselected transition')
++ amendment=read(spec['amendment']);a=unseal(amendment,'E1-RUN2-TERMINAL-ATTEMPT-AMENDMENT')
++ require(a['schema']=='E1-RUN2-TERMINAL-ATTEMPT-1' and a['rules']==list(RULES) and a['reason']==REASON,'transition rules changed')
++ require(a['predecessor_release_authority']==PREVIOUS and a['proposal']['sha256']==PROPOSAL_SHA,'unaccepted transition')
++ source=read(a['authority_source'])
++ require(source=={'authority':'Architect','channel':'user','decision':'AUTHORIZE_QUALIFICATION_AND_CONSTRUCTION_OF_EXACT_R9_TO_R10_TRANSITION',
++  'accepted_candidate':a['proposal'],'predecessor_release_authority':PREVIOUS,'parent_dispatch':a['parent_dispatch'],
++  'rules':list(RULES),'reason':REASON,'issuance_authorized':False},'unattributed material transition')
++ p=read(a['proposal']);require(p['invocation_identity']['authorization_id']==store.applicability['authorization_id'],'alternate successor forbidden')
++ require(p['schema']=='PROPOSED-INVOCATION-ATTEMPT-BINDING-1' and p['automatic_retry'] is False and
++  p['ownership']=='NONE' and p['proposed_initial_state']=='INACTIVE' and not any(p['inheritance'].values()),'attempt inherits authority')
++ require(p['dispatch']==a['parent_dispatch'] and p['replacement_reason']==REASON,'dispatch/reason substituted')
++ original=read(a['parent_dispatch']);require(original['authority']=='Architect' and original['decision']=='DISPATCH_AUTHORIZED' and
++  p['DispatchAuthorizationId']==a['parent_dispatch']['authority_id'],'original dispatch unauthenticated')
++ c=read(spec['continuation']);body={k:c[k] for k in BODY_KEYS}
++ require(c==seal(body,c['approval']) and c['classification']=='NON_MATERIAL_IMPLEMENTATION_CONTINUATION','invalid correction candidate')
++ require(c['approval'] is None,'unissued candidate cannot fabricate continuation adoption')
++ require(a['correction_continuation']==spec['continuation'] and body['authority']==a['authority_source'] and body['authority_invariants']==p['bindings'],'corrections change authority')
++ q=read(body['evidence']);require(q['status']=='PASS_SYNTHETIC_NOT_PRODUCTION_ADOPTION','correction qualification absent')
++ require({Path(x['path']).name for x in body['artifacts']}=={'orchestration_boundary.py','operator_projection.py','run_control.py'},'unrelated non-material delta')
++ for x in body['artifacts']:require(sha(read_authority_ref(x['new_content']))==x['new_sha256'],'correction content substituted')
++ runtime=read(a['controller_runtime']);require(runtime['identity']=='sha256:'+digest(runtime['files']),'runtime identity mismatch')
++ root=Path(runtime['root']);outside(root,store.catalog['programmer_roots'])
++ require(Path(__file__).resolve().parent==root/'adapter' and {f.name:sha(f.read_bytes()) for f in (root/'adapter').glob('*.py')}==runtime['files'],'unexplained implementation')
++ for x in body['artifacts']:require(runtime['files'][Path(x['path']).name]==x['new_sha256'],'correction not integrated')
++ return s,amendment,a,c,p,original,runtime
++
++def verify(owner):
++ store=current();spec=owner.spec
++ require(set(spec)=={'schema','amendment','continuation','identities','release_basis','release_decision','released_profile','clearance'} and spec['schema']==6 and digest(spec)==owner._issued_digest,'transition context changed')
++ s,amendment,a,c,p,original,runtime=decision(spec);proof=predecessor(store,a);old=proof['governance'];oldop=json.loads(proof['authorization']['operational_binding'])
++ require(old['run5']['release_authority']==PREVIOUS and proof['dispatch']['parent_dispatch']==a['parent_dispatch'],'released attempt ancestry changed')
++ require(proof['authorization']['authorization_id']==p['predecessor']['authorization_id'] and
++  old['run5']['proposal']['predecessor']==p['historical_r8'],'r8/r9 attempt ancestry changed')
++ for k in ('release_basis','release_decision','released_profile','clearance'):require(spec[k]==oldop['governance'][k],'profile/clearance authority replaced')
++ # Accepted candidate names prior authority; this append-only amendment derives context-only changes.
++ expected=dict(p['bindings']);checks={**old['identities'],**{k:proof['context'][k] for k in ('FullContextDigest','ModelPayloadDigest','ModelProjectionBindingDigest')},'release_authority':PREVIOUS}
++ for k,v in checks.items():require(expected[k]==v,'candidate prior context mismatch: '+k)
++ for k in ('current_supervisor','succession_head','work_package_id','released_profile_sha256','budget_policy_identity','transmission_retention_identity','implementation_identity','material_amendment'):
++  require(expected[k]==old['run5']['proposal']['bindings'][k],'released binding changed: '+k)
++ require(expected['controller_runtime_identity']==old['supplement']['controller_runtime']['identity'],'predecessor implementation substituted')
++ terminal(store,a,p,proof)
++ require(c['predecessor_OperationalContextId']==old['identities']['OperationalContextId'] and c['predecessor_chain_digest']==old['identities']['continuation_chain_digest'],'correction ancestry changed')
++ release,ids=identities(amendment,c,dict(old['identities'],release_authority=PREVIOUS))
++ require(ids==spec['identities'] and store.applicability==dict(ids,authorization_id=p['invocation_identity']['authorization_id']),'context ancestry substituted')
++ for name in ('changes','authority_invariants','anchor_projection','anchor_op','ancestor_ops'):setattr(owner,name,old[name])
++ owner.identities=ids;owner.supplement=json.loads(canonical(old['supplement']))
++ owner.supplement['controller_runtime']={'identity':runtime['identity'],'authority':spec['amendment'],'corrections':spec['continuation']}
++ owner.ancestry=old['ancestry']+[{'terminal_attempt_amendment':amendment['id'],'release_authority':release,'implementation_continuation':c['continuation_id'],**ids}]
++ owner.run6={'release_authority':release,'proposal':p,'amendment':a,'selection':s,'predecessor':proof,'continuation':c}
++ return ids
++
++def verify_authorization(auth):
++ g=auth.context_binding.governance;g.verify();op=json.loads(auth.operational_binding)
++ require(set(op)-{'dispatch_authorization'}=={'governance','released_launch','invocation_identity','context_identities'} and op['governance']==g.spec,'authorization context substituted')
++ expected=json.loads(canonical(g.run6['predecessor']['authorization']));expected.update(g.run6['proposal']['invocation_identity']);expected.pop('operational_binding')
++ actual=dict(auth.__dict__);actual.pop('operational_binding');actual['context_binding']={'path':str(auth.context_binding.path),'capture_commit':auth.context_binding.capture_commit}
++ if actual['state']=='ACTIVE':require_issued(auth);expected['state']='ACTIVE'
++ require(json.loads(canonical(actual))==expected,'successor authority expanded or substituted')
++ oldop=json.loads(g.run6['predecessor']['authorization']['operational_binding'])
++ require(op['released_launch']==oldop['released_launch'] and op['invocation_identity']==g.run6['proposal']['invocation_identity'],'launch or invocation substitution')
++ return op
++
++def issuance_expectation(auth):
++ g=auth.context_binding.governance
++ return {'authority':'Architect','decision':'AUTHORIZE_EXACT_TERMINAL_ATTEMPT_ISSUANCE',
++  'proposal':g.run6['amendment']['proposal'],'amendment':g.spec['amendment'],
++  'continuation':g.spec['continuation'],'release_authority':g.run6['release_authority'],
++  'OperationalContextId':g.identities['OperationalContextId'],
++  'continuation_chain_digest':g.identities['continuation_chain_digest'],
++  'predecessor':g.run6['proposal']['predecessor'],'automatic_retry':False}
++
++def verify_specific_grant(selection,expected):
++ require(selection['mode']=='ISSUED' and selection['specific_invocation_authorization'] is not None,'specific Architect r10 issuance absent')
++ grant=read(selection['specific_invocation_authorization'])
++ require(set(grant)==set(expected)|{'authority_source'} and all(grant[k]==v for k,v in expected.items()),'wrong specific issuance decision')
++ require(read(grant['authority_source'])==dict(expected,channel='user'),'unattributed specific issuance')
++ return grant
++
++def require_issued(auth):
++ g=auth.context_binding.governance;g.verify();s=selected()
++ grant=verify_specific_grant(s,issuance_expectation(auth))
++ q=read(s['qualification'])
++ require(q['result']=='PASS' and q['amendment']==g.spec['amendment'] and
++  q['controller_runtime']==g.run6['amendment']['controller_runtime'] and
++  q['accepted_proposal']==g.run6['amendment']['proposal'],'transition production qualification absent')
++ return grant
++
++def derive_dispatch(auth):
++ g=auth.context_binding.governance;p=g.run6['proposal'];op=json.loads(auth.operational_binding)
++ mode=selected()['mode']
++ d=dict(g.run6['predecessor']['dispatch']);d.update(g.identities);d.update(op['context_identities'])
++ d.update(invocation_identity=p['invocation_identity'],decision='PROPOSED_DISPATCH' if mode=='PREPARED' else 'DISPATCH_AUTHORIZED',parent_dispatch=p['dispatch'],
++  attempt_authority=g.spec['amendment'],accepted_attempt_binding=g.run6['amendment']['proposal'],
++  authority_source=g.run6['amendment']['authority_source'],release_authority=g.run6['release_authority'])
++ original=dict(op);original.pop('dispatch_authorization',None)
++ d['all_authorized_bindings']=dict(d['all_authorized_bindings'],audit=p['audit'],operational_binding_sha256=digest(original))
++ return d
++
++def verify_dispatch(auth,decision):
++ auth.context_binding.governance.verify()
++ if selected()['mode']=='ISSUED':require_issued(auth)
++ require(decision==derive_dispatch(auth),'dispatch derivation substituted')
++ return 'PROSPECTIVE' if selected()['mode']=='PREPARED' else 'ISSUED'
++
++def readiness(auth,store,historical,check_scopes,legacy_check):
++ g=auth.context_binding.governance;g.verify();r=peer(g.run6['predecessor']['governance']['run5']['amendment'],'readiness');r.pop('immutable_witness',None)
++ require(r['SupervisorInstanceId']==g.run6['proposal']['bindings']['current_supervisor'] and r['SupervisorSuccessionHead']==g.run6['proposal']['bindings']['succession_head'],'supervisor substitution');return r
+--- released-r9/authorization_lifecycle.py
++++ candidate-r10/authorization_lifecycle.py
+@@ -69,6 +69,9 @@
+     profile = json.loads(read_authority_ref(op['governance']['released_profile']))
+     historical=None
+     run2_mode=None
++    if op['governance'].get('schema') == 6:
++        from .attempt_transition import verify_dispatch
++        run2_mode=verify_dispatch(auth,decision)
+     if op['governance'].get('schema') == 5:
+         from .attempt_context import verify_dispatch
+         run2_mode=verify_dispatch(auth,decision)
+--- released-r9/context_projection.py
++++ candidate-r10/context_projection.py
+@@ -145,10 +145,10 @@
+         g=binding.governance
+         profile=json.loads(read_authority_ref(g.spec['released_profile']))
+         authority=g.identities
+-        if g.spec.get('schema') in (2,3,4,5):
++        if g.spec.get('schema') in (2,3,4,5,6):
+             if payload_id!=g.authority_invariants['ModelPayloadDigest']:
+                 raise ValueError('released model payload changed')
+-            if g.spec.get('schema') not in (4,5):historical_projection=digest(g.anchor_projection)
++            if g.spec.get('schema') not in (4,5,6):historical_projection=digest(g.anchor_projection)
+     else:
+         profile={};authority={'AuthoritativeContextId':authority_id}
+     binding_id=projection_binding(payload_id,{'path':spec['clearance_path'],'sha256':spec['clearance_sha256']},
+@@ -206,7 +206,7 @@
+             elif self.binding.governance:
+                 raise ValueError('operational authorization supplement required')
+             names=('AuthoritativeContextId','FullContextDigest','ModelProjectionDigest')
+-            if self.binding.governance and self.binding.governance.spec.get('schema') in (2,3,4,5):
++            if self.binding.governance and self.binding.governance.spec.get('schema') in (2,3,4,5,6):
+                 names+=('ModelPayloadDigest','ModelProjectionBindingDigest')
+             for name in names:
+                 if result[name] != expected[name]:
+--- released-r9/controlled_dispatch.py
++++ candidate-r10/controlled_dispatch.py
+@@ -16,6 +16,9 @@
+     tx=None;host=None;runner=None;control=None
+     with store.session():
+         raw=json.loads(store.resolve(authorization_id))
++        if json.loads(raw['operational_binding'])['governance'].get('schema')==6:
++            from .attempt_transition import selected
++            if selected()['mode']!='ISSUED':raise ValueError('specific Architect r10 issuance authorization absent')
+         if json.loads(raw['operational_binding'])['governance'].get('schema')==5:
+             from .attempt_context import selected
+             if selected()['mode']!='ISSUED':raise ValueError('specific Architect invocation issuance authorization absent')
+--- released-r9/governance_continuation.py
++++ candidate-r10/governance_continuation.py
+@@ -40,6 +40,9 @@
+ 
+     def verify(self):
+         s = self.spec
++        if s.get('schema') == 6:
++            from .attempt_transition import verify
++            return verify(self)
+         if s.get('schema') == 5:
+             from .attempt_context import verify
+             return verify(self)
+@@ -187,6 +190,9 @@
+ 
+ def verify_authorization(auth):
+     op = json.loads(auth.operational_binding)
++    if op['governance'].get('schema') == 6:
++        from .attempt_transition import verify_authorization as terminal_verify
++        return terminal_verify(auth)
+     if op['governance'].get('schema') == 5:
+         from .attempt_context import verify_authorization as attempt_verify
+         return attempt_verify(auth)
+--- released-r9/invocation_issuance.py
++++ candidate-r10/invocation_issuance.py
+@@ -16,6 +16,9 @@
+ 
+ def issue_inactive(auth, audit, dispatch_ref):
+     audit = Path(audit)
++    if json.loads(auth.operational_binding)['governance'].get('schema')==6:
++        from .attempt_transition import require_issued as require_terminal_authorization
++        require_terminal_authorization(auth)
+     if json.loads(auth.operational_binding)['governance'].get('schema')==5:
+         from .attempt_context import require_issued as require_specific_authorization
+         require_specific_authorization(auth)
+--- released-r9/operator_projection.py
++++ candidate-r10/operator_projection.py
+@@ -0,0 +1,70 @@
++"""Read-only reconciled operator status. Lifecycle/ledger dominate telemetry.
++
++No saved PASS is trusted. Terminal history is freshly reconstructed even when
++its last live heartbeat is old. Unreadable/changing evidence yields UNKNOWN.
++"""
++import os,time
++from pathlib import Path
++from .controller_authority_store import current,AuthorityDenied
++from .authority_bootstrap import reconstruct_authorization
++from .authorization_lifecycle import reconstruct
++from .recovery_ledger import reconstruct as recover_actions
++from .activation_transaction import invocation,_read
++from .invocation_ownership import InvocationOwnership
++from .run_control import status
++from .context_projection import sha
++
++def project(store,authorization_id,max_seconds=30,snapshot_attempts=3):
++    start=time.monotonic()
++    def unknown(reason):
++        return {'schema':'E1-RECONCILED-OPERATOR-STATUS-1','authorization_id':authorization_id,
++          'projection_generated':time.time(),'freshness':'UNKNOWN','lifecycle_state':'UNKNOWN',
++          'ownership':'UNKNOWN','uncertainty':reason,'handoff_eligible':False,
++          'projection_seconds':time.monotonic()-start}
++    if current() is not None:raise AuthorityDenied('operator projection owns one authority session')
++    try:
++        with store.session():
++            auth=reconstruct_authorization(store,authorization_id)
++            audit=store.state_path(authorization_id+':audit');ledger=store.state_path(authorization_id+':ownership')
++            for _ in range(snapshot_attempts):
++                if time.monotonic()-start>=max_seconds:return unknown('PROJECTION_DEADLINE')
++                before=audit.read_bytes();fd=os.open(ledger,os.O_RDONLY|os.O_NOFOLLOW)
++                try:
++                    ledger_before=_read(fd);identity=os.fstat(fd);path_identity=os.stat(ledger,follow_symlinks=False)
++                    if (identity.st_dev,identity.st_ino)!=(path_identity.st_dev,path_identity.st_ino):return unknown('LEDGER_REPLACED')
++                    lifecycle=reconstruct(before,auth,audit)
++                    actions=recover_actions(audit,auth)
++                    owner=invocation(fd);scope=InvocationOwnership.__new__(InvocationOwnership)._history(fd)
++                    live=status(audit)
++                    if before!=audit.read_bytes() or ledger_before!=_read(fd):continue
++                finally:os.close(fd)
++                if time.monotonic()-start>=max_seconds:return unknown('PROJECTION_DEADLINE')
++                result=dict(live,schema='E1-RECONCILED-OPERATOR-STATUS-1',projection_generated=time.time(),
++                  projection_seconds=time.monotonic()-start,handoff_eligible=False,
++                  authority_basis={'audit_sha256':sha(before),'ledger_sha256':sha(ledger_before),
++                      'lifecycle_event':lifecycle['last_event_id']},
++                  live_telemetry_freshness=live.get('freshness'),freshness='FRESH')
++                result['lifecycle_state']=result['authorization_state']=lifecycle['state']
++                result['ownership']='OWNERSHIP_HELD' if owner else 'NONE'
++                result['uncertainty']='LIFECYCLE_RECONCILIATION_REQUIRED' if lifecycle['uncertain'] else None
++                if lifecycle['state'] in ('CANCELLED','COMPLETED','REVOKED'):
++                    if owner or scope or actions['incomplete'] or (actions['scope'] and actions['scope']['state']!='QUIESCENT'):
++                        return unknown('TERMINAL_RECONCILIATION_INCOMPLETE')
++                    result.update(ownership='RELEASED',architectural_state='QUIESCENT',current_subphase=None,
++                       outstanding_operation=None,uncertainty=None,terminal_disposition={
++                       'disposition':lifecycle['state'],'ownership':'RELEASED','uncertainty':None,
++                       'source':'AUTHORITATIVE_LIFECYCLE_AND_RECOVERY'})
++                elif lifecycle['state']=='ACTIVE':
++                    if owner!=lifecycle['activation_event']['ownership_reservation']:
++                        return unknown('ACTIVE_OWNERSHIP_CONFLICT')
++                    if live.get('terminal_disposition'):
++                        result['terminal_disposition']=None
++                        result['uncertainty']='PROVISIONAL_TERMINAL_NOT_RECONCILED'
++                elif owner or scope:return unknown('INACTIVE_OWNERSHIP_CONFLICT')
++                if lifecycle['state'] not in ('CANCELLED','COMPLETED','REVOKED') and live.get('freshness')!='FRESH':
++                    result.update(freshness='UNKNOWN',current_subphase=None,outstanding_operation=None,
++                        uncertainty='STALE_LIVE_ACTIVITY_SOURCE')
++                return result
++        return unknown('UNSTABLE_SNAPSHOT')
++    except (OSError,ValueError,RuntimeError,KeyError) as exc:
++        return unknown('EVIDENCE_UNAVAILABLE_OR_INVALID:'+type(exc).__name__)
+--- released-r9/orchestration_boundary.py
++++ candidate-r10/orchestration_boundary.py
+@@ -0,0 +1,41 @@
++"""One session owner per phase; restart uses durable identity, never a PASS flag."""
++import json
++from .controller_authority_store import current,AuthorityDenied
++from .authority_bootstrap import reconstruct_authorization
++from .authorization_lifecycle import reconstruct
++from .activation_transaction import ActivationTransaction
++from .invocation_issuance import start_control
++from .validation_spans import recording
++from .controlled_dispatch import dispatch
++
++def recover_boundary(store,authorization_id):
++    if current() is not None:
++        raise AuthorityDenied('orchestration boundary requires no ambient authority session')
++    tx=None
++    with store.session():
++        auth=reconstruct_authorization(store,authorization_id)
++        audit=store.state_path(authorization_id+':audit')
++        state=reconstruct(audit.read_bytes(),auth,audit)
++        ref=state['dispatch_record']['authority_id']
++        control=start_control(auth,audit,json.loads(auth.model_transmission)['run_control'])
++        try:
++            # The process owning the audit transaction also owns its timing sink.
++            with recording(control),control.span('activation_recovery'):
++                tx=ActivationTransaction.recover(auth,audit,ref)
++            result=dict(tx.recovery)
++            if result['handoff_eligible']:
++                control.emit('governance_observation',{'authorization':'ACTIVE',
++                    'ownership':'OWNERSHIP_HELD','supervisor':'READY'})
++            return result
++        finally:
++            if tx:tx.close()
++
++def recover_then_dispatch(store,authorization_id):
++    recovered=recover_boundary(store,authorization_id)
++    if not recovered['handoff_eligible']:
++        raise AuthorityDenied('recovered activation not eligible for dispatcher entry')
++    if current() is not None:
++        raise AuthorityDenied('authority session leaked across dispatcher boundary')
++    # Dispatcher reconstructs and validates the current bindings/owner again.
++    # No caller assertion or recovered object is supplied as effect authority.
++    return dispatch(store,authorization_id)
+--- released-r9/run_control.py
++++ candidate-r10/run_control.py
+@@ -87,25 +87,45 @@
+             self.emit('invocation_start',{})
+ 
+     def emit(self,name,details):
++        created_clock=self.clock();created_wall=self.wall();created_perf=time.monotonic()
+         with self.lock:
+             mask=signal.pthread_sigmask(signal.SIG_BLOCK,{signal.SIGALRM})
+             fd=None;owned=False
+             try:
+                 from .audit_composition import descriptor
+                 fd=descriptor(self.path)
++                lock_start=time.monotonic()
+                 if fd is None:
+                     fd=os.open(self.path,os.O_RDWR|os.O_CREAT|os.O_APPEND|os.O_NOFOLLOW,0o600)
+                     owned=True
+                     fcntl.flock(fd,fcntl.LOCK_EX)
+-                rows=[r for r in events(self.path) if r.get('schema')==SCHEMA]
+-                row={'schema':SCHEMA,'event':name,'identity':self.identity,'cycle':self.cycle,
+-                     'monotonic':self.clock(),'wall_time':self.wall(),'boot_id':self.boot,
+-                     'sequence':len(rows)+1,'previous':rows[-1]['record_sha256'] if rows else None,
+-                     'audit_prefix_sha256':hashlib.sha256(self.path.read_bytes()).hexdigest(),
+-                     'policy_sha256':digest(self.policy),'details':details}
+-                row['record_sha256']=digest(row)
++                lock_wait=time.monotonic()-lock_start
+                 from .authorization_lifecycle import _append
+-                _append(fd,row)
++                def append(event,body):
++                    rows=[r for r in events(self.path) if r.get('schema')==SCHEMA]
++                    row={'schema':SCHEMA,'event':event,'identity':self.identity,'cycle':self.cycle,
++                         'monotonic':self.clock(),'wall_time':self.wall(),'boot_id':self.boot,
++                         'sequence':len(rows)+1,'previous':rows[-1]['record_sha256'] if rows else None,
++                         'audit_prefix_sha256':hashlib.sha256(self.path.read_bytes()).hexdigest(),
++                         'policy_sha256':digest(self.policy),'details':body}
++                    row['record_sha256']=digest(row)
++                    _append(fd,row)
++                    return row
++                append_start=time.monotonic()
++                if name=='budget_warning':
++                    details=dict(details,warning_created_monotonic=created_clock,
++                                 warning_created_wall=created_wall,lock_wait_seconds=lock_wait)
++                row=append(name,details)
++                if name=='budget_warning':
++                    persisted_clock=self.clock();persisted_wall=self.wall()
++                    append_seconds=time.monotonic()-append_start
++                    # Explicit event composition on the same descriptor; no recursion.
++                    append('warning_persisted',{'warning_record_sha256':row['record_sha256'],
++                        'warning_sequence':row['sequence'],'created_monotonic':created_clock,
++                        'created_wall':created_wall,'durable_monotonic':persisted_clock,
++                        'durable_wall':persisted_wall,'lock_wait_seconds':lock_wait,
++                        'append_and_fsync_seconds':append_seconds,
++                        'creation_to_persistence_seconds':time.monotonic()-created_perf})
+                 return row
+             finally:
+                 if owned and fd is not None:os.close(fd)
+--- released-r9/supervisor_amendment.py
++++ candidate-r10/supervisor_amendment.py
+@@ -156,6 +156,9 @@
+ 
+ def readiness(auth,store,historical,check_scopes,legacy_check):
+     op=json.loads(auth.operational_binding);g=auth.context_binding.governance
++    if op['governance']['schema']==6:
++        from .attempt_transition import readiness as terminal_readiness
++        return terminal_readiness(auth,store,historical,check_scopes,legacy_check)
+     if op['governance']['schema']==5:
+         from .attempt_context import readiness as attempt_readiness
+         return attempt_readiness(auth,store,historical,check_scopes,legacy_check)
+--- released-r9/terminal_attempt.py
++++ candidate-r10/terminal_attempt.py
+@@ -0,0 +1,45 @@
++"""Strict evidence predicate for terminal, pre-model replacement eligibility.
++
++Called only with independently reconstructed lifecycle/actions and checked audit
++history. A positive result is eligibility, never issuance or retry authority.
++Unknown event types fail closed; no inference about unobserved provider activity.
++"""
++from .run_control import events
++from .context_projection import sha
++SAFE_CONTROL={'invocation_start','span_start','span_end','activity','budget_warning','warning_persisted',
++ 'governance_observation','admission_closed','final_disposition'}
++SAFE_FACTS={'authorization_issued','production_dispatch_validated',
++ 'authorization_lifecycle_dispatch_authorized','authorization_lifecycle_activation_intent',
++ 'authorization_lifecycle_activated','authorization_lifecycle_terminal',
++ 'controller_reconstructed','interruption_requested','architectural_state'}
++def classify(rows,lifecycle,actions,ownership,scope,authorization_id):
++ if ownership is not None or scope is not None:raise ValueError('owned or non-quiescent predecessor')
++ if actions.get('scope') is not None or actions.get('incomplete') or actions.get('results'):
++  raise ValueError('effecting or unreconciled predecessor actions')
++ if lifecycle.get('uncertain') or lifecycle.get('state')!='CANCELLED':
++  raise ValueError('terminal CANCELLED predecessor required')
++ if not rows or rows[0].get('event')!='authorization_issued' or rows[0]['authorization'].get('state')!='INACTIVE':
++  raise ValueError('valid initial INACTIVE issuance required')
++ if rows[0]['authorization'].get('authorization_id')!=authorization_id:raise ValueError('predecessor identity substituted')
++ closed=False;active=False
++ for row in rows:
++  e=row.get('event')
++  if row.get('schema')=='E1-RUN-CONTROL-1':
++   if e not in SAFE_CONTROL or row['identity']['authorization_id']!=authorization_id or row['cycle']!=0:
++    raise ValueError('model/provider/action activity or unknown telemetry')
++   if e=='activity' and row.get('details',{}).get('operation') not in {
++    'context_reconstruction','validation','activation_recovery','private_bootstrap','host_construction','reasoning_construction'}:
++    raise ValueError('unqualified predecessor activity')
++   if e in ('span_start','span_end') and row.get('details',{}).get('name') not in {
++    'context_reconstruction','validation','model_projection','activation_recovery','private_bootstrap','host_construction','reasoning_construction'}:
++    raise ValueError('unqualified predecessor span')
++   closed|=e=='admission_closed'
++  elif e not in SAFE_FACTS:raise ValueError('unknown or effecting predecessor fact')
++  if e=='authorization_lifecycle_activated':active=True
++  if e in ('controller_reconstructed','architectural_state','interruption_requested'):
++   if row.get('scope') not in (None,'NONE') or row.get('scope_id') is not None:raise ValueError('surviving or historical execution scope')
++   if e=='architectural_state' and row.get('state')!='QUIESCENT':raise ValueError('non-quiescent predecessor')
++ if not closed:raise ValueError('predecessor admission not durably closed')
++ if rows[-1].get('event')!='authorization_lifecycle_terminal' or rows[-1].get('resulting_state')!='CANCELLED':
++  raise ValueError('authoritative terminal fact must close predecessor')
++ return 'ACTIVE_CANCELLED_PRE_MODEL_NO_EFFECTS' if active else 'ISSUED_INACTIVE_CANCELLED_NO_EFFECTS'

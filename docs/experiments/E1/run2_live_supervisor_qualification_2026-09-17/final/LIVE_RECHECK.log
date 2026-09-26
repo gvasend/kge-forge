@@ -1,0 +1,110 @@
+{
+  "observed_at_unix_ns": 1789691824817014542,
+  "checks": {
+    "credentials": {
+      "pass": true
+    },
+    "executable": {
+      "path": "/usr/bin/python3.11",
+      "sha256": "415cab36dc0bc818be4f6915fd7997103ab10753c878f01d28484a9fcf218b04",
+      "pass": true
+    },
+    "argv": {
+      "observed": [
+        "/usr/bin/python",
+        "-m",
+        "adapter.supervisor_server",
+        "/tmp/a21m.sock"
+      ],
+      "pass": true
+    },
+    "workspace": {
+      "observed": {
+        "path": "/home/gvasend/app/kge-forge",
+        "device": 64768,
+        "inode": 2626167
+      },
+      "pass": true
+    },
+    "cgroup": {
+      "identity": {
+        "path": "/sys/fs/cgroup/unified/kge-forge/executor",
+        "device": 30,
+        "inode": 5911
+      },
+      "memberships": "12:cpuset:/\n11:hugetlb:/\n10:freezer:/\n9:devices:/system.slice/kge-forge-supervisor-run2.service\n8:pids:/system.slice/kge-forge-supervisor-run2.service\n7:perf_event:/\n6:memory:/system.slice/kge-forge-supervisor-run2.service\n5:cpu,cpuacct:/system.slice/kge-forge-supervisor-run2.service\n4:rdma:/\n3:net_cls,net_prio:/\n2:blkio:/system.slice/kge-forge-supervisor-run2.service\n1:name=systemd:/system.slice/kge-forge-supervisor-run2.service\n0::/kge-forge/executor\n",
+      "pass": true
+    },
+    "environment": {
+      "pass": true
+    },
+    "implementation": {
+      "files": 39,
+      "mismatches": []
+    },
+    "launch_spec": {
+      "sha256": "f9b79b3ac85eb5cbb73d0209cf034c041236dd6519275b6529f139e5b322d309",
+      "pass": true
+    },
+    "frozen_launcher": {
+      "sha256": "cfa2c0d945092105556775c75b7fd28b3082463d43c1cda3d38c5ef51553468a",
+      "pass": true
+    },
+    "socket": {
+      "path": "/tmp/a21m.sock",
+      "device": 64768,
+      "inode": 4203637,
+      "uid": 1000,
+      "gid": 1000,
+      "mode": 384,
+      "listener_pid": 1465900,
+      "listener_start_ticks": 21471461,
+      "listener_inode": 8486701
+    },
+    "parent_cmdline": [
+      "/usr/bin/python3.11",
+      "/var/lib/kge-forge-supervisor-run2/host_launch.py",
+      "/var/lib/kge-forge-supervisor-run2/LAUNCH_SPEC.json",
+      "/var/lib/kge-forge-supervisor-run2/HOST_LAUNCH_AUTHORIZATION.json"
+    ],
+    "S2_absent": true,
+    "S1_absent": true,
+    "supervisor_process_inventory": {
+      "pids": [
+        1465900
+      ],
+      "unreadable_pids": []
+    },
+    "supervisor_audit_before": "0e61d05208459051bda9772783ebded01067caa131e7253371805c42c3d040b7",
+    "live_status": {
+      "peer_pid_uid_gid": [
+        1465900,
+        1000,
+        1000
+      ],
+      "response": {
+        "status": "READY"
+      },
+      "pass": true,
+      "requests": 1,
+      "operation": "status"
+    },
+    "supervisor_audit_after": "0e61d05208459051bda9772783ebded01067caa131e7253371805c42c3d040b7",
+    "service": "Restart=no\nMainPID=1465890\nExecMainStartTimestampMonotonic=214714360360\nStandardInput=null\nStandardOutput=journal\nStandardError=journal\nUser=root\nGroup=root\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/kge-forge-supervisor-run2.service\nDropInPaths=\nInvocationID=b65e1b1f8b52431193996141068af719\n",
+    "stable_process_birth": true,
+    "stable_socket": true
+  },
+  "errors": {},
+  "process": {
+    "pid": 1465900,
+    "ppid": 1465890,
+    "start_ticks": 21471461,
+    "boot_id": "7c592fd0-8c66-476f-ab0d-548882a9f53e",
+    "pid_namespace_inode": 4026531836,
+    "parent_start_ticks": 21471436,
+    "uid": 1000,
+    "gid": 1000,
+    "groups": []
+  },
+  "qualification_limit": "Fresh live observations; complete receipt provenance separately verified against Jerry-attributed HOST_EXPORT SHA-256."
+}

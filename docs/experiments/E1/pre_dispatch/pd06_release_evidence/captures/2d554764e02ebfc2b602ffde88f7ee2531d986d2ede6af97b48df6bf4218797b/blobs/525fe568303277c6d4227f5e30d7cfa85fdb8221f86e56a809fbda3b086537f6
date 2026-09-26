@@ -1,0 +1,121 @@
+"""Controller-owned exact runnable profile and committed acceptance projection."""
+from dataclasses import replace
+from pathlib import Path
+import hashlib, json, os
+from .authority_profile import programmer_authorization
+from .context_binding import CommittedContext
+from .committed_objects import read_blob
+
+POLICY='.gei-runtime.json'
+CONTEXT='.gei-context'
+ARGV=('/usr/bin/python3','-B','-m','unittest','discover','-s','tests/context',
+      '-p','test_*.py','-v')
+INPUTS=('src/kge_forge/__init__.py','src/kge_forge/context','tests/context')
+ENV={'PATH':'/usr/bin:/bin','LANG':'C.UTF-8','PYTHONPATH':'/scope/src',
+     'TMPDIR':'/scope/.scratch'}
+
+def sha(data): return hashlib.sha256(data).hexdigest()
+def canonical(value): return json.dumps(value,sort_keys=True,separators=(',',':'))
+
+def specification(binding, acceptance):
+    return {'schema':1,'argv':list(ARGV),'cwd':str(binding.repos['forge']),
+        'inputs':list(INPUTS),'environment':dict(ENV),'network':False,'shell':False,
+        'executables':[{'path':p,'resolved':str(Path(p).resolve()),
+                        'sha256':sha(Path(p).read_bytes())}
+                       for p in ('/usr/bin/python3','/usr/bin/bwrap','/usr/bin/git')],
+        'acceptance':{'manifest_path':str(acceptance.path),
+                      'capture_commit':acceptance.capture_commit,
+                      'context_sha256':acceptance.digest}}
+
+def authorization(binding, acceptance, aid, revision, session, turn, diagnostic=False):
+    auth=programmer_authorization(binding,aid,revision,session,turn,
+        exec_argv_allowlist=(ARGV,),diagnostic=diagnostic)
+    from .model_transport import configuration
+    from .model_transmission import production_policy
+    return replace(auth,execution_profile=canonical(specification(binding,acceptance)),
+                   model_transport=canonical(configuration()),
+                   model_transmission=canonical(production_policy(binding)))
+
+def validate(spec,argv,cwd,inputs):
+    if spec.get('schema')!=1 or spec.get('argv')!=list(ARGV) or \
+            list(argv)!=spec['argv'] or str(cwd)!=spec['cwd'] or \
+            inputs!=spec['inputs'] or inputs!=list(INPUTS) or \
+            spec.get('environment')!=ENV or spec.get('network') is not False or \
+            spec.get('shell') is not False:
+        raise ValueError('exact runnable profile mismatch')
+    if [v.get('path') for v in spec.get('executables',[])]!=[
+            '/usr/bin/python3','/usr/bin/bwrap','/usr/bin/git']:
+        raise ValueError('executable identities missing')
+    for entry in spec['executables']:
+        p=Path(entry['path'])
+        if str(p.resolve())!=entry['resolved'] or sha(p.read_bytes())!=entry['sha256']:
+            raise ValueError('executable identity changed')
+
+def build_acceptance(spec,workspace):
+    accepted=spec['acceptance']
+    binding=CommittedContext(accepted['manifest_path'],accepted['capture_commit'])
+    if binding.digest!=accepted['context_sha256']:
+        raise ValueError('acceptance context identity changed')
+    base=Path(workspace)/CONTEXT
+    if base.exists(): raise ValueError('reserved acceptance input collision')
+    base.mkdir(); objects={alias:{} for alias in binding.repos}; records=[]
+    sources=list(binding.sources.values())+[{'id':'captured_manifest','repository':'forge',
+        'path':binding.path.relative_to(binding.repos['forge']).as_posix(),
+        'revision':binding.capture_commit,'sha256':binding.digest}]
+    for source in sources:
+        alias=source['repository']; rel=source['path']
+        revision=source.get('revision') or binding.capture_commit
+        data=read_blob(binding.repos[alias],revision,rel,objects[alias])
+        if sha(data)!=source['sha256']: raise ValueError('acceptance blob digest mismatch')
+        target=base/'repos'/alias/rel; target.parent.mkdir(parents=True,exist_ok=True)
+        target.write_bytes(data)
+        records.append({'id':source['id'],'repository':alias,'path':rel,
+            'revision':revision,'sha256':sha(data),'snapshot_path':str(target.relative_to(workspace))})
+    mounts=[]
+    for alias,root in binding.repos.items():
+        repo=base/'repos'/alias; git=repo/'.git'; (git/'objects').mkdir(parents=True)
+        (git/'refs').mkdir()
+        rev=binding.capture_commit if alias=='forge' else binding.manifest['repositories'][alias]['working_revision']
+        (git/'HEAD').write_text(rev+'\n')
+        (git/'config').write_text('[core]\nrepositoryformatversion = 0\nbare = false\n')
+        for oid,compressed in objects[alias].items():
+            target=git/'objects'/oid[:2]/oid[2:]; target.parent.mkdir(exist_ok=True)
+            target.write_bytes(compressed)
+        # No source config, hooks, refs, alternates, filters or index are copied.
+        mounts.append({'source':str(repo),'destination':str(root)})
+    record={'schema':1,'capture_commit':binding.capture_commit,'context_sha256':binding.digest,
+            'sources':records,'repository_mounts':mounts,
+            'limitations':'Only declared source closure and required commit/tree/blob objects; not a full live worktree/status view.'}
+    (base/'INDEX.json').write_text(canonical(record))
+    return record
+
+def seal(spec,workspace,manifest,manifest_path):
+    workspace=Path(workspace)
+    if (workspace/POLICY).exists() or (workspace/'.scratch').exists():
+        raise ValueError('reserved runtime input collision')
+    acceptance=build_acceptance(spec,workspace)
+    (workspace/'.scratch').mkdir(mode=0o700)
+    derived={str(p.relative_to(workspace)):sha(p.read_bytes())
+             for p in sorted((workspace/CONTEXT).rglob('*')) if p.is_file()}
+    policy={'specification':spec,'acceptance':acceptance,'derived_sha256':derived}
+    encoded=canonical(policy).encode(); (workspace/POLICY).write_bytes(encoded)
+    manifest['runtime_policy_sha256']=sha(encoded)
+    manifest['controller_derived_inputs']=derived
+    manifest['acceptance']=acceptance
+    manifest.pop('manifest_sha256',None)
+    manifest['manifest_sha256']=sha(canonical(manifest).encode())
+    with Path(manifest_path).open('w') as stream:
+        json.dump(manifest,stream,sort_keys=True,indent=2); stream.flush(); os.fsync(stream.fileno())
+
+def launcher_policy(root,argv):
+    """Read only controller-sealed policy before any payload instruction runs."""
+    root=Path(root); path=root/POLICY
+    if path.is_symlink() or path.stat().st_size>1024*1024: raise ValueError('invalid runtime policy')
+    policy=json.loads(path.read_bytes()); spec=policy['specification']
+    validate(spec,argv,spec['cwd'],spec['inputs'])
+    for rel,expected in policy['derived_sha256'].items():
+        p=root/rel
+        if not p.is_file() or p.is_symlink() or root not in p.resolve().parents or \
+                sha(p.read_bytes())!=expected:
+            raise ValueError('derived input changed before launch')
+    return policy

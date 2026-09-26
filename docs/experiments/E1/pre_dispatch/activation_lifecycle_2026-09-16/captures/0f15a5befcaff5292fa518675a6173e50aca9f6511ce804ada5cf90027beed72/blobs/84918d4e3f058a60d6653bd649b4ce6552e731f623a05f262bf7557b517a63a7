@@ -1,0 +1,156 @@
+"""Synthetic-only activation lifecycle qualification; no model or payload runs."""
+from dataclasses import replace
+from pathlib import Path
+import json, tempfile, unittest
+from unittest.mock import patch
+from adapter.tests.test_governance_continuation import continued, write
+from adapter.context_projection import canonical, digest, sha
+from adapter.governance_continuation import reference
+from adapter.governed_host import GovernedHost, Denied
+from adapter.recovery_ledger import reconstruct as recover, RecoveryDenied
+from adapter.authorization_lifecycle import (activate, reconstruct, serialized,
+    original, event, LifecycleDenied, VALIDATION_KEYS)
+
+
+class AuthorizationLifecycleTests(unittest.TestCase):
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory(prefix='lifecycle-synthetic-')
+        self.out = Path(self.temp.name)
+        self.root, self.binding, self.auth, _, _, _ = continued(self.out, inactive=True)
+        self.audit = self.out / 'activation-controller.jsonl'
+        self.host = GovernedHost(self.auth, self.audit)
+        self.assertIsNone(self.host.ownership.active())
+        self.before = self.audit.read_bytes()
+        op = json.loads(self.auth.operational_binding)
+        launch = json.loads(Path(op['released_launch']['path']).read_bytes())
+        self.decision = {'decision': 'DISPATCH_AUTHORIZED', 'authority': 'Architect',
+            'work_package_id': self.auth.work_package_id, **self.binding.governance.identities,
+            'FullContextDigest': op['context_identities']['FullContextDigest'],
+            'ModelProjectionDigest': op['context_identities']['ModelProjectionDigest'],
+            'released_profile_sha256': launch['profile_sha256'],
+            'invocation_identity': {k: getattr(self.auth, k) for k in ('authorization_id', 'revision', 'session_id', 'turn_id')},
+            'authority_source': reference(self.out / 'AUTHORITY.md'),
+            'all_authorized_bindings': {'audit': str(self.audit), 'ownership_ledger': self.auth.ownership_ledger,
+                'work_id': self.auth.work_package_id, 'operational_binding_sha256': digest(op),
+                'production_task_sha256': sha((self.root / 'task.txt').read_bytes())}}
+        self.ref = write(self.out / 'SYNTHETIC_DISPATCH.json', self.decision)
+        op['dispatch_authorization'] = self.ref
+        self.active = replace(self.auth, state='ACTIVE', operational_binding=canonical(op))
+        self.checks = {k: 'PASS' for k in VALIDATION_KEYS}
+
+    def tearDown(self): self.temp.cleanup()
+    def activate(self): return activate(self.auth, self.audit, self.ref, lambda: self.checks)
+    def rows(self): return [json.loads(x) for x in self.audit.read_text().splitlines()]
+    def save(self, rows): self.audit.write_text(''.join(canonical(x)+'\n' for x in rows))
+
+    def test_01_valid_transition_preserves_original(self):
+        result = self.activate()
+        self.assertTrue(self.audit.read_bytes().startswith(self.before))
+        self.assertEqual(result['state'], 'ACTIVE')
+        row = result['activation_event']
+        self.assertEqual((row['predecessor_state'], row['resulting_state']), ('INACTIVE', 'ACTIVE'))
+        self.assertEqual(result['effective_authorization'], serialized(self.active))
+
+    def test_02_restart_before_activation_is_inactive(self):
+        self.assertEqual(recover(self.audit, self.auth)['authorization_lifecycle']['state'], 'INACTIVE')
+        GovernedHost(self.auth, self.audit)
+
+    def test_03_restart_after_commit_is_active(self):
+        self.activate()
+        restored = GovernedHost(self.active, self.audit)
+        self.assertEqual(restored.reconstruction['authorization_lifecycle']['state'], 'ACTIVE')
+        restored.verify_lifecycle()
+        self.assertFalse(restored.invocations)
+        self.assertIsNone(restored.scope)
+
+    def test_04_active_without_event_denied(self):
+        with self.assertRaises(RecoveryDenied): recover(self.audit, self.active)
+        with self.assertRaises(Denied): GovernedHost(self.active, self.out / 'missing-audit.jsonl')
+
+    def test_05_wrong_dispatch_reference(self):
+        wrong = dict(self.ref, sha256='0'*64)
+        with self.assertRaises(ValueError): activate(self.auth, self.audit, wrong, lambda: self.checks)
+        self.assertEqual(self.audit.read_bytes(), self.before)
+
+    def test_06_wrong_authorization_identity(self):
+        with self.assertRaises(LifecycleDenied):
+            activate(replace(self.auth, authorization_id='synthetic-other'), self.audit, self.ref, lambda: self.checks)
+
+    def test_07_wrong_context_profile_task_bindings(self):
+        for key in ('OperationalContextId', 'FullContextDigest', 'ModelProjectionDigest', 'released_profile_sha256', 'work_package_id'):
+            bad = dict(self.decision); bad[key] = 'WRONG'
+            ref = write(self.out / ('wrong-'+key+'.json'), bad)
+            with self.assertRaises(LifecycleDenied): activate(self.auth, self.audit, ref, lambda: self.checks)
+        bad = json.loads(canonical(self.decision)); bad['all_authorized_bindings']['production_task_sha256'] = '0'*64
+        with self.assertRaises(LifecycleDenied):
+            activate(self.auth, self.audit, write(self.out / 'wrong-task.json', bad), lambda: self.checks)
+
+    def test_08_exact_replay_has_no_effect(self):
+        first = self.activate(); data = self.audit.read_bytes()
+        second = activate(self.auth, self.audit, self.ref, lambda: self.fail('replay reran validation/effects'))
+        self.assertEqual(first['activation_event'], second['activation_event'])
+        self.assertEqual(self.audit.read_bytes(), data)
+        self.audit.write_bytes(data + (canonical(first['activation_event'])+'\n').encode())
+        self.assertEqual(reconstruct(self.audit.read_bytes(), self.active, self.audit)['state'], 'ACTIVE')
+
+    def test_09_competing_duplicate_transition_rejected(self):
+        self.activate(); rows = self.rows(); old = rows[-2]
+        body = {k:v for k,v in old.items() if k not in ('event_id','event_sha256')}
+        body['predecessor_event'] = rows[-1]['event_id']; body['audit_prefix_sha256'] = sha(self.audit.read_bytes())
+        with self.audit.open('ab') as stream: stream.write((canonical(event(body))+'\n').encode())
+        with self.assertRaises(LifecycleDenied): reconstruct(self.audit.read_bytes(), self.active, self.audit)
+
+    def test_10_terminal_and_revoked_cannot_reactivate(self):
+        self.activate(); active_bytes = self.audit.read_bytes(); commit = self.rows()[-1]
+        for state in ('COMPLETED', 'REVOKED', 'CANCELLED'):
+            terminal = event({'event':'authorization_lifecycle_terminal','version':1,
+                'binding':commit['binding'],'authorization_sha256':digest(original(serialized(self.auth))),
+                'audit_prefix_sha256':sha(active_bytes),'predecessor_event':commit['event_id'],
+                'predecessor_state':'ACTIVE','resulting_state':state})
+            self.audit.write_bytes(active_bytes+(canonical(terminal)+'\n').encode())
+            self.assertEqual(reconstruct(self.audit.read_bytes(),self.auth,self.audit)['phase'],state)
+            with self.assertRaises(LifecycleDenied): self.activate()
+
+    def test_11_truncated_and_incomplete_history(self):
+        self.activate(); self.audit.write_bytes(b''.join(self.audit.read_bytes().splitlines(keepends=True)[:-1]))
+        value = reconstruct(self.audit.read_bytes(), self.auth, self.audit)
+        self.assertEqual(value['phase'], 'ACTIVATION_INDETERMINATE')
+        self.assertTrue(value['non_active'])
+        with self.assertRaises(LifecycleDenied): self.activate()
+        with self.assertRaises(RecoveryDenied): recover(self.audit, self.active)
+        self.audit.write_bytes(self.audit.read_bytes()[:-2])
+        with self.assertRaises(LifecycleDenied): reconstruct(self.audit.read_bytes(), self.auth, self.audit)
+
+    def test_12_original_record_mutation_detected(self):
+        self.activate(); rows = self.rows(); rows[0]['authorization']['shell'] = True; self.save(rows)
+        with self.assertRaises(LifecycleDenied): reconstruct(self.audit.read_bytes(), self.active, self.audit)
+
+    def test_13_failed_validation_never_appends(self):
+        self.checks['provisioning']='FAIL'
+        with self.assertRaises(LifecycleDenied): self.activate()
+        self.assertEqual(self.audit.read_bytes(),self.before)
+
+    def test_14_interrupted_write_never_retries(self):
+        from adapter import authorization_lifecycle as mod
+        original_append = mod._append
+        def stop(fd,row):
+            if row['event']=='authorization_lifecycle_activated': raise OSError('synthetic interrupted commit')
+            original_append(fd,row)
+        with patch.object(mod,'_append',stop):
+            with self.assertRaises(OSError): self.activate()
+        self.assertTrue(reconstruct(self.audit.read_bytes(),self.auth,self.audit)['uncertain'])
+        with self.assertRaises(LifecycleDenied): self.activate()
+
+    def test_15_dispatch_authorized_without_activation_is_nonactive(self):
+        self.activate(); self.audit.write_bytes(b''.join(self.audit.read_bytes().splitlines(keepends=True)[:-2]))
+        value=reconstruct(self.audit.read_bytes(),self.auth,self.audit)
+        self.assertEqual(value['phase'],'DISPATCH_AUTHORIZED');self.assertTrue(value['non_active'])
+
+    def test_16_live_host_rechecks_removed_activation_before_effects(self):
+        self.activate();host=GovernedHost(self.active,self.audit)
+        self.audit.write_bytes(self.before)
+        with self.assertRaises(Denied):host.verify_lifecycle()
+        self.assertEqual(host.invocations,[])
+
+
+if __name__=='__main__':unittest.main()

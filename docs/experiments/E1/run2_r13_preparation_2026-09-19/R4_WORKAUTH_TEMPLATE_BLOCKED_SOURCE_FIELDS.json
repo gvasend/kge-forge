@@ -1,0 +1,27 @@
+{
+  "schema":"E1-R4-WORKAUTH-TEMPLATE-QUALIFICATION-1",
+  "verdict":"BLOCKED_WORKAUTH_TEMPLATE_SOURCE_FIELDS_MISSING",
+  "runtime":"sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+  "authority_store_generation":"AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+  "consumer":"adapter/workauth_lifecycle.py::consume_and_issue",
+  "consumer_requirements":{
+    "template_schema":"WORK-AUTHORIZATION-TEMPLATE-1",
+    "state":"INACTIVE",
+    "ownership":"NONE",
+    "binding_digest":"digest(authenticated_inputs)",
+    "fields_values":"exact set of WorkAuthorization.__dataclass_fields__"
+  },
+  "required_lifecycle_fields":["authorization_id","revision","work_package_id","session_id","turn_id","read_roots","write_roots","deny_roots","exec_bins","shell","network","context_binding","exec_argv_allowlist","read_deny_roots","write_deny_roots","ownership_ledger","write_directory_roots","execution_profile","model_transport","model_transmission","context_projection","operational_binding"],
+  "available_concrete_workauthorization":"WorkAuthorization-sha256:bc53d20ea0383febbd7ce1c10e2e00b2461a722942b853f43ea5001b42976c61",
+  "available_artifact":"docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_REPLACEMENT_WORKAUTH.json",
+  "available_artifact_sha256":"fe78a48e26d2c78cdc0b765db1aeb48993624c845bba95cacd60e2761a306bf8",
+  "missing_authoritative_sources":["fields_values for the lifecycle WorkAuthorization dataclass","authenticated WORK-AUTHORIZATION-TEMPLATE-1 record","applicable issuance authority/single-use grant"],
+  "prohibited_substitutions":["derive template from concrete WorkAuthorization","implementation defaults","caller assertions","invent lifecycle paths/credentials/policy fields"],
+  "workauthorization_impact":"UNCHANGED; no mutation or replacement",
+  "publication":"NOT_PERFORMED",
+  "g4":"CURRENT_UNCHANGED",
+  "r13":"UNISSUED_UNOWNED",
+  "model_requests":0,
+  "effects":0,
+  "required_next_authority":"Architect-authorized canonical template source and bounded issuance authority, or authenticated source records for every required lifecycle field"
+}

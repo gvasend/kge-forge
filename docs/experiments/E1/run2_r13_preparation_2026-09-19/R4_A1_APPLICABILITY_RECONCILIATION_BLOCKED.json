@@ -1,0 +1,48 @@
+{
+  "R3": "HISTORICAL",
+  "R4": "CURRENT_UNIQUE",
+  "R5": "NOT_REQUIRED_FOR_THIS_BLOCKED_STEP",
+  "S3": "READY",
+  "effects": 0,
+  "enrollment": {
+    "identity": "CONTINUATION-ENROLLMENT-sha256:9f5fd0babefbea21d15f17d9f09e29d9c042fb270325566e92af3208911b448f",
+    "status": "ALREADY_ENROLLED_BEFORE_THIS_STEP"
+  },
+  "evidence_paths": [
+    "/tmp/kge-forge-r3-current-r13-authority/r4-adoption.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/run2_r13_preparation_2026-09-19/LIVE_R4_FINAL_ADOPTION_BLOCKED_DOWNSTREAM.json"
+  ],
+  "live_authority_store": "/tmp/kge-forge-r3-current-r13-authority",
+  "live_catalog_sha256": "e5c48443efa9a8f4680e3d1d9d4c9327933e123eca34a6cbe18972b33377f4d2",
+  "model_requests": 0,
+  "negative_tests": {
+    "lineage_implies_r4_applicability": "REJECTED",
+    "r3_dispatch_against_r4": "REJECTED",
+    "readoption_replay": "BLOCKED",
+    "reenrollment_replay": "BLOCKED"
+  },
+  "overall_disposition": "BLOCKED_A1_PRECONDITIONS_ALREADY_CONSUMED",
+  "preservation": {
+    "R3_adoption_history": "PRESERVED",
+    "bootstrap": "UNCHANGED",
+    "historical_evidence": "UNCHANGED"
+  },
+  "r13": {
+    "attempt_chain": "NOT_PREDECESSOR",
+    "current_disposition": "SUPERSEDED_BEFORE_ISSUANCE_BY_R3_TO_R4_AUTHORITY_TRANSITION",
+    "current_r4_applicability": "UNRESOLVED_NOT_GRANTED_BY_LINEAGE",
+    "historical_r3_applicability": "VALID",
+    "lifecycle": "UNISSUED_UNOWNED"
+  },
+  "r4_adoption_event": {
+    "from_catalog": "83f4138325775340093c15a07351cc1a147871d3ac089d44afb42e7759fb9cfa",
+    "grant": "MATERIAL-RUNTIME-ADOPTION-GRANT-sha256:8b63fda1ea48f1dc55b465f07f6047492689dce478d74e84eb5c4a0ae209f58b",
+    "id": "RUNTIME-ADOPTION-EVENT-sha256:edbad0f9b86314a6a847f9b26b6f08ea4a3cbff049e316efefccd1fc5c010fb2",
+    "sha256": "d0a6c29ee135de211db300dcf1c96ef5c3cd86b96821be27442cf2edf970f7c5",
+    "to_catalog": "e5c48443efa9a8f4680e3d1d9d4c9327933e123eca34a6cbe18972b33377f4d2"
+  },
+  "reason": "Requested sequence assumes R3 CURRENT and R4 not enrolled/adopted, but live authority already records R4 adoption. Re-enrollment/re-adoption would be replay and is prohibited.",
+  "reconciliation": "Not performed because the requested A1 state transition is already past adoption and no new applicability authority is present in this instruction.",
+  "runtime_head": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+  "schema": "KGE-FORGE-R4-A1-RECONCILIATION-1"
+}

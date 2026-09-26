@@ -1,0 +1,1922 @@
+{
+  "schema": "E1-GLOBAL-CONTROL-RECOMPUTATION-1",
+  "report": {
+    "BUDGET_BRANCH_STATE": "WAITING_FOR_EXTERNAL_EVIDENCE",
+    "RUNNABLE_INTERNAL_ACTIONS": [],
+    "DECISION_READY_ACTIONS": [],
+    "EXTERNAL_WAIT_BRANCHES": [
+      "root:budget"
+    ],
+    "FACT_BLOCKED_BRANCHES": [
+      "root:ancestry",
+      "root:approval",
+      "root:audit",
+      "root:runtime_head",
+      "root:supervisor",
+      "root:exec_bins",
+      "root:implementation"
+    ],
+    "IMPLEMENTATION_BLOCKED_BRANCHES": [
+      "IMPL-CONTEXT",
+      "IMPL-GOVERNANCE",
+      "IMPL-TRANSMISSION",
+      "IMPL-VALIDATOR"
+    ],
+    "PLANNER_DEFECT_BRANCHES": [],
+    "GLOBAL_BLOCKING_FRONTIER": [
+      "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+      "EXT-REENTRY-S-ANCESTRY",
+      "EXT-REENTRY-S-APPROVAL",
+      "EXT-REENTRY-PREP-AUDIT",
+      "EXT-REENTRY-PREP-RUNTIME_HEAD",
+      "EXT-REENTRY-PREP-SUPERVISOR",
+      "EXT-REENTRY-DEC-EXEC",
+      "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+    ],
+    "GLOBAL_CONTROL_STATE": "MIXED_WAIT",
+    "NEXT_ACTION": "NONE",
+    "TEMPLATE1_CONSTRUCTION_READY": "NO",
+    "CANDIDATE3_RESUMPTION_READY": "NO",
+    "PRODUCTION_EFFECT": "NO"
+  },
+  "unresolved_root_conditions": [
+    "root:binding",
+    "root:dispatch",
+    "root:ancestry",
+    "root:approval",
+    "root:release",
+    "root:context_id",
+    "root:runtime",
+    "root:implementation",
+    "root:runtime_head",
+    "root:supervisor",
+    "root:audit",
+    "root:payload",
+    "root:retention",
+    "root:budget",
+    "root:lifecycle",
+    "root:ignored",
+    "root:paths",
+    "root:exec_bins",
+    "root:argv",
+    "root:shell_network",
+    "root:context_hydration",
+    "root:context_projection",
+    "root:execution_profile",
+    "root:transport",
+    "root:transmission",
+    "root:governance",
+    "gate:schema"
+  ],
+  "root_conditions_remaining": 27,
+  "slots_remaining": 41,
+  "action_counts": {
+    "total": 63,
+    "completed": 13,
+    "blocked": 50,
+    "actionable": 0
+  },
+  "per_action_checks": [
+    {
+      "action": "BUILD-BINDING",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "S-ANCESTRY",
+        "MAP-DISPATCH",
+        "MAP-RELEASE",
+        "MAP-CONTEXT_ID"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_CONSTRUCTION"
+    },
+    {
+      "action": "BUILD-EXECUTION_PROFILE",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "IMPL-CONTEXT",
+        "BUILD-BINDING"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_CONSTRUCTION"
+    },
+    {
+      "action": "CHECK-READINESS",
+      "completed": false,
+      "missing_predecessors": [
+        "MAP-DISPATCH",
+        "MAP-ANCESTRY",
+        "MAP-APPROVAL",
+        "MAP-RELEASE",
+        "MAP-CONTEXT_ID",
+        "MAP-RUNTIME",
+        "MAP-IMPLEMENTATION",
+        "MAP-PAYLOAD",
+        "MAP-RETENTION",
+        "MAP-BUDGET",
+        "MAP-LIFECYCLE",
+        "MAP-IGNORED",
+        "MAP-PATHS",
+        "MAP-EXEC_BINS",
+        "MAP-ARGV",
+        "MAP-SHELL_NETWORK",
+        "MAP-CONTEXT_PROJECTION",
+        "MAP-TRANSPORT",
+        "MAP-RUNTIME_HEAD",
+        "MAP-SUPERVISOR",
+        "MAP-AUDIT",
+        "MAP-SUCCESSION",
+        "BUILD-BINDING",
+        "IMPL-CONTEXT",
+        "IMPL-GOVERNANCE",
+        "IMPL-TRANSMISSION",
+        "IMPL-VALIDATOR",
+        "BUILD-EXECUTION_PROFILE",
+        "MAP-ELIGIBILITY"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "CONTRACT-T1",
+      "completed": false,
+      "missing_predecessors": [
+        "REEVAL-IMPLEMENTATION",
+        "REEVAL-BUDGET",
+        "DEC-EXEC",
+        "DEC-INTERFACES"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "DEC-AUDIT",
+      "completed": false,
+      "missing_predecessors": [
+        "PREP-AUDIT"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_AUTHORITY"
+    },
+    {
+      "action": "DEC-BINDING",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_AUTHORITY"
+    },
+    {
+      "action": "DEC-BUDGET",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_CONTRACT_DECISION"
+    },
+    {
+      "action": "DEC-EXEC",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "MISSING_DECISION_INPUTS",
+          "id": "BATCH1-ACTIONABILITY-01",
+          "evidence": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.json",
+          "required_output": "Concrete independent executable-policy source/projector or exact permission proposal; no argv inference."
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_CONTRACT_DECISION"
+    },
+    {
+      "action": "DEC-IGNORED",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_CONTRACT_DECISION"
+    },
+    {
+      "action": "DEC-IMPLEMENTATION",
+      "completed": false,
+      "missing_predecessors": [
+        "INPUT-IMPLEMENTATION"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": false,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_CONTRACT_DECISION"
+    },
+    {
+      "action": "DEC-INTERFACES",
+      "completed": false,
+      "missing_predecessors": [
+        "REEVAL-IMPLEMENTATION",
+        "REEVAL-BUDGET"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_CONTRACT_DECISION"
+    },
+    {
+      "action": "DEC-RUNTIME_HEAD",
+      "completed": false,
+      "missing_predecessors": [
+        "PREP-RUNTIME_HEAD"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_AUTHORITY"
+    },
+    {
+      "action": "DEC-SUPERVISOR",
+      "completed": false,
+      "missing_predecessors": [
+        "PREP-SUPERVISOR"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_AUTHORITY"
+    },
+    {
+      "action": "DEC-VALIDATOR",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "ARCHITECT_AUTHORITY"
+    },
+    {
+      "action": "FACT-BUDGET-APPLICABILITY",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "EXTERNAL_EVIDENCE_REQUIREMENT",
+          "id": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+          "required_output": "Provide exact retrievable authoritative source locators/identities and current source/target proof records for the eight named rows, including governing phase applicability rule and current owning-source validity/usage evidence. One record may cover multiple rows only with explicit proof.",
+          "proof_obligations": [
+            "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+            "BUDGET-PROOF-SCOPE",
+            "BUDGET-PROOF-LINEAGE",
+            "BUDGET-PROOF-RUNTIME",
+            "BUDGET-PROOF-CONTROLLER_STORE_G4",
+            "BUDGET-PROOF-PROGRAMMER_PROFILE",
+            "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+            "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+          ],
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": true,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "IMPL-CONTEXT",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "IMPLEMENTATION_REPAIR"
+    },
+    {
+      "action": "IMPL-GOVERNANCE",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "IMPLEMENTATION_REPAIR"
+    },
+    {
+      "action": "IMPL-TRANSMISSION",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES",
+        "MAP-PAYLOAD",
+        "MAP-RETENTION",
+        "MAP-TRANSPORT"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "IMPLEMENTATION_REPAIR"
+    },
+    {
+      "action": "IMPL-VALIDATOR",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "VALIDATOR_IMPLEMENTATION"
+    },
+    {
+      "action": "INPUT-BUDGET",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DECISION_INPUT_ACQUISITION"
+    },
+    {
+      "action": "INPUT-IMPLEMENTATION",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "MISSING_DECISION_INPUTS",
+          "id": "IMPLEMENTATION-OWNING-SOURCE",
+          "required_output": "For a distinct domain, concrete owning source record/domain and its independently authenticated identity; no such member is established by accepted OperationalContext evidence.",
+          "status": "UNSATISFIED"
+        },
+        {
+          "kind": "MISSING_DECISION_INPUTS",
+          "id": "IMPLEMENTATION-SELECTOR",
+          "required_output": "Exact source field or canonical body and byte-to-identity selector for that distinct domain, with scoped applicability and verification rule supported by its source contract.",
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DECISION_INPUT_ACQUISITION"
+    },
+    {
+      "action": "MAP-ANCESTRY",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "S-ANCESTRY"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-APPROVAL",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "S-APPROVAL"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-ARGV",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-AUDIT",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-AUDIT",
+        "MAP-IGNORED"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-BUDGET",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "REEVAL-BUDGET"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-CONTEXT_ID",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-CONTEXT_PROJECTION",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-DISPATCH",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-ELIGIBILITY",
+      "completed": false,
+      "missing_predecessors": [
+        "S-ELIGIBILITY",
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-EXEC_BINS",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-EXEC"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-IGNORED",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-IMPLEMENTATION",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "REEVAL-IMPLEMENTATION"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-LIFECYCLE",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-PATHS",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-PAYLOAD",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-RELEASE",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-RETENTION",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-RUNTIME",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-RUNTIME_HEAD",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-RUNTIME_HEAD"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-SHELL_NETWORK",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-SUCCESSION",
+      "completed": false,
+      "missing_predecessors": [
+        "S-SUCCESSION",
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-SUPERVISOR",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1",
+        "DEC-SUPERVISOR"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "MAP-TRANSPORT",
+      "completed": false,
+      "missing_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "PREP-AUDIT",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "MISSING_SELECTION_FACTS",
+          "id": "PREP-AUDIT-CONCRETE-NAMESPACE",
+          "required_output": "Concrete proposed canonical namespace/store identity and evidence of placement external to agent roots for exact scoped release/context.",
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "PREP-BINDING-GRANT",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "PREP-RUNTIME_HEAD",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "MISSING_SELECTION_FACTS",
+          "id": "PREP-RUNTIME_HEAD-CURRENT-SELECTION",
+          "required_output": "Concrete proposed current R4/G4 head selector and exact applicable authority-domain publication target, supported by selection/lineage evidence.",
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "PREP-SUPERVISOR",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "MISSING_SELECTION_FACTS",
+          "id": "PREP-SUPERVISOR-CURRENT-SELECTION",
+          "required_output": "Concrete proposed supervisor selector and supporting authoritative applicability facts for the exact current R4/G4 release/context.",
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "PREP-VALIDATOR",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "REEVAL-BUDGET",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "EXTERNAL_EVIDENCE_REQUIREMENT",
+          "id": "REEVAL-BUDGET-CURRENT-APPLICABILITY",
+          "status": "UNSATISFIED",
+          "required_output": "Independently authenticated source-type/scope/lineage applicability and required currentness/freshness proof for the exact StatusBudgetAuthority and target current bounded R4/G4 invocation/construction envelope. Recorded EXECUTION scope is not proof of REQUEST applicability.",
+          "evidence": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+            "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+            "location": "/deferred_downstream_facts"
+          },
+          "no_recursive_acquisition": true
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": true,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "REEVAL-IMPLEMENTATION",
+      "completed": false,
+      "missing_predecessors": [
+        "DEC-IMPLEMENTATION"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "DETERMINISTIC_MAPPING"
+    },
+    {
+      "action": "S-ANCESTRY",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        "ACQUISITION_NOT_FOUND: no qualifying current allocation/predecessor/session-turn owning source in the bounded inspected evidence. Retry requires new authoritative source evidence."
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "S-APPROVAL",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        "ACQUISITION_NOT_FOUND: qualifying current owning approval record and applicability not established in bounded source inspection; new authoritative evidence required before retry."
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "S-BINDING",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "S-CONTEXT",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "S-ELIGIBILITY",
+      "completed": false,
+      "missing_predecessors": [
+        "BUILD-BINDING"
+      ],
+      "external_gates": [
+        "EXT-CURRENT-ELIGIBILITY-EVIDENCE"
+      ],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "S-EXEC",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "S-SUCCESSION",
+      "completed": false,
+      "missing_predecessors": [
+        "MAP-SUPERVISOR"
+      ],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SOURCE_ACQUISITION"
+    },
+    {
+      "action": "SEM-BUDGET",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "AUTHORITY_REQUIREMENT",
+          "id": "SEM-BUDGET-REPRESENTATION-DECISION",
+          "required_output": "Explicit governing decision fixing budget_policy value/reference type, canonical representation and source projection without changing bounds.",
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "SEM-ELIGIBILITY",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "SEM-IGNORED",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "SEM-IMPLEMENTATION",
+      "completed": false,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [
+        {
+          "kind": "AUTHORITY_REQUIREMENT",
+          "id": "SEM-IMPLEMENTATION-IDENTITY-DOMAIN-DECISION",
+          "required_output": "Bounded governing decision defining runtime-digest or distinct implementation identity domain, authenticated owning source, exact canonical selector and byte binding for this field.",
+          "status": "UNSATISFIED"
+        }
+      ],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    },
+    {
+      "action": "SEM-INTERFACES",
+      "completed": true,
+      "missing_predecessors": [],
+      "external_gates": [],
+      "persistent_holds": [],
+      "missing_knowledge": [],
+      "decision_readiness_gate_passes": true,
+      "explicit_budget_wait": false,
+      "eligible": false,
+      "class": "SEMANTIC_RESOLUTION"
+    }
+  ],
+  "top_level_branches": [
+    {
+      "branch": "root:binding",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "BUILD-BINDING",
+      "affected_slots": [
+        "slot:authenticated_inputs.binding_sha256",
+        "slot:authenticated_inputs.canonical_binding",
+        "slot:fields_values.session_id",
+        "slot:fields_values.turn_id"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "S-ANCESTRY",
+        "MAP-DISPATCH",
+        "MAP-RELEASE",
+        "MAP-CONTEXT_ID"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-S-ANCESTRY",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:dispatch",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-DISPATCH",
+      "affected_slots": [
+        "slot:authenticated_inputs.DispatchAuthorizationId",
+        "slot:fields_values.work_package_id"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:ancestry",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-ANCESTRY",
+      "affected_slots": [
+        "slot:authenticated_inputs.predecessor"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "S-ANCESTRY"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-S-ANCESTRY",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:approval",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-APPROVAL",
+      "affected_slots": [
+        "slot:authenticated_inputs.specific_approval_id"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "S-APPROVAL"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-S-APPROVAL",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:release",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-RELEASE",
+      "affected_slots": [
+        "slot:authenticated_inputs.release_authority"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:context_id",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-CONTEXT_ID",
+      "affected_slots": [
+        "slot:authenticated_inputs.OperationalContextId"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:runtime",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-RUNTIME",
+      "affected_slots": [
+        "slot:authenticated_inputs.runtime"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:implementation",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-IMPLEMENTATION",
+      "affected_slots": [
+        "slot:authenticated_inputs.implementation_identity"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "REEVAL-IMPLEMENTATION"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:runtime_head",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-RUNTIME_HEAD",
+      "affected_slots": [
+        "slot:authenticated_inputs.runtime_head"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-RUNTIME_HEAD"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-PREP-RUNTIME_HEAD",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:supervisor",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-SUPERVISOR",
+      "affected_slots": [
+        "slot:authenticated_inputs.supervisor"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-SUPERVISOR"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-PREP-SUPERVISOR",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:audit",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-AUDIT",
+      "affected_slots": [
+        "slot:authenticated_inputs.audit",
+        "slot:fields_values.ownership_ledger"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-AUDIT",
+        "MAP-IGNORED"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-PREP-AUDIT",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:payload",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-PAYLOAD",
+      "affected_slots": [
+        "slot:authenticated_inputs.ModelPayloadDigest"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:retention",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-RETENTION",
+      "affected_slots": [
+        "slot:authenticated_inputs.transmission_retention"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:budget",
+      "control_state": "WAITING_FOR_EXTERNAL_EVIDENCE",
+      "required_final_action": "MAP-BUDGET",
+      "affected_slots": [
+        "slot:authenticated_inputs.budget_policy"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "REEVAL-BUDGET"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:lifecycle",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-LIFECYCLE",
+      "affected_slots": [
+        "slot:authenticated_inputs.lifecycle_envelope"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:ignored",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-IGNORED",
+      "affected_slots": [
+        "slot:fields_values.authorization_id",
+        "slot:fields_values.ownership_ledger",
+        "slot:fields_values.revision",
+        "slot:fields_values.state"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:paths",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-PATHS",
+      "affected_slots": [
+        "slot:fields_values.deny_roots",
+        "slot:fields_values.read_deny_roots",
+        "slot:fields_values.read_roots",
+        "slot:fields_values.write_deny_roots",
+        "slot:fields_values.write_directory_roots",
+        "slot:fields_values.write_roots"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:exec_bins",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "required_final_action": "MAP-EXEC_BINS",
+      "affected_slots": [
+        "slot:fields_values.exec_bins"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-EXEC"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Direct missing-input branch"
+    },
+    {
+      "branch": "root:argv",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-ARGV",
+      "affected_slots": [
+        "slot:fields_values.exec_argv_allowlist"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:shell_network",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-SHELL_NETWORK",
+      "affected_slots": [
+        "slot:fields_values.network",
+        "slot:fields_values.shell"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:context_hydration",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "IMPL-CONTEXT",
+      "affected_slots": [
+        "slot:fields_values.context_binding"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:context_projection",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-CONTEXT_PROJECTION",
+      "affected_slots": [
+        "slot:fields_values.context_projection"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:execution_profile",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "BUILD-EXECUTION_PROFILE",
+      "affected_slots": [
+        "slot:fields_values.execution_profile"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "IMPL-CONTEXT",
+        "BUILD-BINDING"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-S-ANCESTRY",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:transport",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-TRANSPORT",
+      "affected_slots": [
+        "slot:fields_values.model_transport"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:transmission",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "IMPL-TRANSMISSION",
+      "affected_slots": [
+        "slot:fields_values.model_transmission"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES",
+        "MAP-PAYLOAD",
+        "MAP-RETENTION",
+        "MAP-TRANSPORT"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:governance",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "IMPL-GOVERNANCE",
+      "affected_slots": [
+        "slot:fields_values.operational_binding"
+      ],
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "gate:schema",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "CONTRACT-T1",
+      "affected_slots": [
+        "slot:authenticated_inputs.DispatchAuthorizationId",
+        "slot:authenticated_inputs.ModelPayloadDigest",
+        "slot:authenticated_inputs.OperationalContextId",
+        "slot:authenticated_inputs.audit",
+        "slot:authenticated_inputs.binding_sha256",
+        "slot:authenticated_inputs.budget_policy",
+        "slot:authenticated_inputs.canonical_binding",
+        "slot:authenticated_inputs.eligibility",
+        "slot:authenticated_inputs.implementation_identity",
+        "slot:authenticated_inputs.lifecycle_envelope",
+        "slot:authenticated_inputs.predecessor",
+        "slot:authenticated_inputs.release_authority",
+        "slot:authenticated_inputs.runtime",
+        "slot:authenticated_inputs.runtime_head",
+        "slot:authenticated_inputs.specific_approval_id",
+        "slot:authenticated_inputs.succession_head",
+        "slot:authenticated_inputs.supervisor",
+        "slot:authenticated_inputs.transmission_retention",
+        "slot:fields_values.authorization_id",
+        "slot:fields_values.context_binding",
+        "slot:fields_values.context_projection",
+        "slot:fields_values.deny_roots",
+        "slot:fields_values.exec_argv_allowlist",
+        "slot:fields_values.exec_bins",
+        "slot:fields_values.execution_profile",
+        "slot:fields_values.model_transmission",
+        "slot:fields_values.model_transport",
+        "slot:fields_values.network",
+        "slot:fields_values.operational_binding",
+        "slot:fields_values.ownership_ledger",
+        "slot:fields_values.read_deny_roots",
+        "slot:fields_values.read_roots",
+        "slot:fields_values.revision",
+        "slot:fields_values.session_id",
+        "slot:fields_values.shell",
+        "slot:fields_values.state",
+        "slot:fields_values.turn_id",
+        "slot:fields_values.work_package_id",
+        "slot:fields_values.write_deny_roots",
+        "slot:fields_values.write_directory_roots",
+        "slot:fields_values.write_roots"
+      ],
+      "uncompleted_direct_predecessors": [
+        "REEVAL-IMPLEMENTATION",
+        "REEVAL-BUDGET",
+        "DEC-EXEC",
+        "DEC-INTERFACES"
+      ],
+      "frontier_dependencies": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+        "EXT-REENTRY-DEC-EXEC",
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "basis": "Final acceptance action waits on unresolved contract/source/authority predecessors; no independent runnable operation."
+    },
+    {
+      "branch": "root:eligibility",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-ELIGIBILITY",
+      "basis": "Deferred required obligation retained outside 27-condition upstream count.",
+      "uncompleted_direct_predecessors": [
+        "S-ELIGIBILITY",
+        "CONTRACT-T1"
+      ]
+    },
+    {
+      "branch": "root:succession",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "MAP-SUCCESSION",
+      "basis": "Deferred required obligation retained outside 27-condition upstream count.",
+      "uncompleted_direct_predecessors": [
+        "S-SUCCESSION",
+        "CONTRACT-T1"
+      ]
+    },
+    {
+      "branch": "gate:identity_check",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "IMPL-VALIDATOR",
+      "basis": "Deferred required obligation retained outside 27-condition upstream count.",
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ]
+    },
+    {
+      "branch": "gate:validator",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "required_final_action": "IMPL-VALIDATOR",
+      "basis": "Deferred required obligation retained outside 27-condition upstream count.",
+      "uncompleted_direct_predecessors": [
+        "CONTRACT-T1"
+      ]
+    }
+  ],
+  "global_blocking_frontier": [
+    {
+      "branch": "root:budget",
+      "control_state": "WAITING_FOR_EXTERNAL_EVIDENCE",
+      "control_transfer_point": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+      "receiving_action": "FACT-BUDGET-APPLICABILITY",
+      "required_input": "Eight current applicability/freshness obligations; receipt -> FACT revalidation -> REEVAL only after accepted evidence.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_FACT_BUDGET_APPLICABILITY_1_RESULT.md",
+        "sha256": "6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:ancestry",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "EXT-REENTRY-S-ANCESTRY",
+      "receiving_action": "S-ANCESTRY",
+      "required_input": "Exact current allocation/predecessor/session-turn owning evidence.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_ANCESTRY_1_RESULT.md",
+        "sha256": "09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:approval",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "EXT-REENTRY-S-APPROVAL",
+      "receiving_action": "S-APPROVAL",
+      "required_input": "Current owning specific-approval record and exact scope/lineage applicability.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_APPROVAL_1_RESULT.md",
+        "sha256": "4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:audit",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "EXT-REENTRY-PREP-AUDIT",
+      "receiving_action": "PREP-AUDIT",
+      "required_input": "Concrete namespace/store identity, owning provenance and outside-agent-root placement.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_AUDIT_1_RESULT.md",
+        "sha256": "48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:runtime_head",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "EXT-REENTRY-PREP-RUNTIME_HEAD",
+      "receiving_action": "PREP-RUNTIME_HEAD",
+      "required_input": "Concrete current R4/G4 head selector/authority body and publication target with lineage/applicability.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_RUNTIME_HEAD_1_RESULT.md",
+        "sha256": "6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:supervisor",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "EXT-REENTRY-PREP-SUPERVISOR",
+      "receiving_action": "PREP-SUPERVISOR",
+      "required_input": "Concrete current-release/context supervisor selector and authoritative applicability/freshness inputs.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_SUPERVISOR_1_RESULT.md",
+        "sha256": "1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:exec_bins",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "EXT-REENTRY-DEC-EXEC",
+      "receiving_action": "DEC-EXEC",
+      "required_input": "Independent executable-policy source/projector or exact independently grounded permission proposal; no argv inference.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.json",
+        "sha256": "c00c4cf3553cd4f0b372e34cd1d79958b8a398dedf5aa804b589c9ee7570f1c9"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    },
+    {
+      "branch": "root:implementation",
+      "control_state": "FACT_ACQUISITION_REQUIRED",
+      "control_transfer_point": "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR",
+      "receiving_action": "INPUT-IMPLEMENTATION",
+      "required_input": "Distinct implementation-domain owning record/identity contract and exact canonical selector; complete dossier still required.",
+      "evidence": {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md",
+        "sha256": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205"
+      },
+      "internal_producer_executable": false,
+      "producer_limit": "No qualified currently actionable internal producer is established. Owning external evidence/input must be supplied or separately scoped; existence/endpoint is not inferred.",
+      "decision_ready": false
+    }
+  ],
+  "action_class_partitions": {
+    "ARCHITECT_AUTHORITY": [
+      "DEC-AUDIT",
+      "DEC-RUNTIME_HEAD",
+      "DEC-SUPERVISOR"
+    ],
+    "ARCHITECT_CONTRACT_DECISION": [
+      "DEC-EXEC",
+      "DEC-IMPLEMENTATION",
+      "DEC-INTERFACES"
+    ],
+    "DECISION_INPUT_ACQUISITION": [
+      "INPUT-IMPLEMENTATION"
+    ],
+    "DETERMINISTIC_CONSTRUCTION": [
+      "BUILD-BINDING",
+      "BUILD-EXECUTION_PROFILE"
+    ],
+    "DETERMINISTIC_MAPPING": [
+      "CHECK-READINESS",
+      "MAP-ANCESTRY",
+      "MAP-APPROVAL",
+      "MAP-ARGV",
+      "MAP-AUDIT",
+      "MAP-BUDGET",
+      "MAP-CONTEXT_ID",
+      "MAP-CONTEXT_PROJECTION",
+      "MAP-DISPATCH",
+      "MAP-ELIGIBILITY",
+      "MAP-EXEC_BINS",
+      "MAP-IGNORED",
+      "MAP-IMPLEMENTATION",
+      "MAP-LIFECYCLE",
+      "MAP-PATHS",
+      "MAP-PAYLOAD",
+      "MAP-RELEASE",
+      "MAP-RETENTION",
+      "MAP-RUNTIME",
+      "MAP-RUNTIME_HEAD",
+      "MAP-SHELL_NETWORK",
+      "MAP-SUCCESSION",
+      "MAP-SUPERVISOR",
+      "MAP-TRANSPORT",
+      "REEVAL-BUDGET",
+      "REEVAL-IMPLEMENTATION"
+    ],
+    "IMPLEMENTATION_REPAIR": [
+      "IMPL-CONTEXT",
+      "IMPL-GOVERNANCE",
+      "IMPL-TRANSMISSION"
+    ],
+    "SEMANTIC_RESOLUTION": [
+      "CONTRACT-T1",
+      "PREP-AUDIT",
+      "PREP-RUNTIME_HEAD",
+      "PREP-SUPERVISOR",
+      "SEM-BUDGET",
+      "SEM-IMPLEMENTATION"
+    ],
+    "SOURCE_ACQUISITION": [
+      "FACT-BUDGET-APPLICABILITY",
+      "S-ANCESTRY",
+      "S-APPROVAL",
+      "S-ELIGIBILITY",
+      "S-SUCCESSION"
+    ],
+    "VALIDATOR_IMPLEMENTATION": [
+      "IMPL-VALIDATOR"
+    ]
+  },
+  "implementation_branches": [
+    {
+      "action": "IMPL-CONTEXT",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "remaining_gates": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "authority": "DEC-INTERFACES repair scope unissued; contract/factual prerequisites also missing. No implementation-ready authority handoff."
+    },
+    {
+      "action": "IMPL-GOVERNANCE",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "remaining_gates": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "authority": "DEC-INTERFACES repair scope unissued; contract/factual prerequisites also missing. No implementation-ready authority handoff."
+    },
+    {
+      "action": "IMPL-TRANSMISSION",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "remaining_gates": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES",
+        "MAP-PAYLOAD",
+        "MAP-RETENTION",
+        "MAP-TRANSPORT"
+      ],
+      "authority": "DEC-INTERFACES repair scope unissued; contract/factual prerequisites also missing. No implementation-ready authority handoff."
+    },
+    {
+      "action": "IMPL-VALIDATOR",
+      "control_state": "DEPENDENCY_BLOCKED",
+      "remaining_gates": [
+        "CONTRACT-T1"
+      ],
+      "authority": "DEC-VALIDATOR granted bounded scope but CONTRACT-T1 missing"
+    }
+  ],
+  "external_gates": {
+    "active_budget_gate": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+    "other_fact_receivers": [
+      "EXT-REENTRY-DEC-EXEC",
+      "EXT-REENTRY-PREP-AUDIT",
+      "EXT-REENTRY-PREP-RUNTIME_HEAD",
+      "EXT-REENTRY-PREP-SUPERVISOR",
+      "EXT-REENTRY-S-ANCESTRY",
+      "EXT-REENTRY-S-APPROVAL"
+    ],
+    "implementation_receiver": "INPUT-IMPLEMENTATION new attempt only on accepted owning-source/selector inputs; no new acquisition action authorized",
+    "latent_gate": "EXT-CURRENT-ELIGIBILITY-EVIDENCE",
+    "latent_stages": [
+      "S-ELIGIBILITY",
+      "MAP-ELIGIBILITY",
+      "CHECK-READINESS"
+    ],
+    "latent_status": "Not at execution frontier: BUILD-BINDING and CONTRACT-T1 unresolved; do not count as an additional independent current transfer point."
+  },
+  "global_wait_basis": "Combination A+C: budget formal external-evidence wait plus seven independent missing-factual-input control points with no approved internal producer action. Not a ready-human or implementation-authority batch; not terminal. Concrete external producer existence remains unknown.",
+  "historical_exclusions": [
+    "SEM-BUDGET AUTHORITY_REQUIRED is historical; DEC-BUDGET already approved and current branch now waits on source proof.",
+    "SEM-IMPLEMENTATION historical authority requirement routes through INPUT-IMPLEMENTATION, now fact-blocked; do not count it as another ready decision.",
+    "CUT2 missing decision routes corrected in specification; DEC-EXEC premature readiness defect remains contained. Neither is a current proven scheduling defect."
+  ],
+  "consolidation": {
+    "evidence_requests": "No merge justified now: only budget has a fully prepared request, while concrete shared qualified producers are not established. Budget/runtime-head/supervisor may eventually share verified R4/G4 lineage/snapshot evidence; ancestry/approval may share target provenance. Share exact immutable evidence only after each producer competence and claim is verified; retain all separate obligations and authority meanings.",
+    "human_handoff": [],
+    "request_delivery_performed": false
+  },
+  "control_state_rule": "Classify direct waiting and fact-input frontier branches first; downstream contract/semantic/implementation/mapping gates are DEPENDENCY_BLOCKED. No branch is HUMAN_DECISION_REQUIRED absent verified ready gate. All 31 unresolved top-level obligations (27 counted plus four deferred) receive one control classification.",
+  "provenance": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json",
+      "sha256": "b3c4733bff12052978b39c1d08295137d0825b449adc08fba5ea08002be9b760",
+      "location": "pre-update plan actions/execution ledger/reentry semantics"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json",
+      "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399",
+      "location": "typed entities/assertions and root/slot state"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "location": "request/control lifecycle"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md",
+      "sha256": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205",
+      "location": "FACT_BLOCKED inputs"
+    }
+  ]
+}

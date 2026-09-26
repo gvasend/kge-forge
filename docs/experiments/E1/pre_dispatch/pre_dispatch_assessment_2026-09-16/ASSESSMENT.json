@@ -1,0 +1,2501 @@
+{
+  "schema": "E1-PREDISPATCH-ASSESSMENT-1",
+  "observed_utc": "2026-09-16T19:06:24.167119+00:00",
+  "verdict": "BLOCKED",
+  "PD06": "RELEASED",
+  "E1_B01": "PASS",
+  "E1": "INACTIVE",
+  "ACTIVATION_READY": false,
+  "ELIGIBLE": false,
+  "DISPATCH_AUTHORIZED": false,
+  "DISPATCHED": false,
+  "blocker": {
+    "id": "E1-PREDISPATCH-CONTEXT-REBIND",
+    "description": "Authorized release decision is not representable as current governance by the exact released committed-context/profile/projection binding. Rebinding changes profile-pinned context identities; the released profile cannot simultaneously remain byte-identical and contain that new binding.",
+    "runtime_denial": "ContextDenied: source stale or contradictory: preparation_decisions",
+    "projection_source_denial": "context artifact content changed",
+    "authorized_decision_change": {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/DECISIONS.md",
+      "released_sha256": "026c689de2012f914ea2d572a31f17a703cef37d3ae096256606a183a58a6e3e",
+      "current_sha256": "97e05b8b1c8a7ab00f9c5b12e4ae8a72666ce9e63209adfb122dd0d20d56d527",
+      "matches": false
+    },
+    "append_only": true,
+    "appended_range": [
+      4198,
+      6748
+    ],
+    "append_sha256": "af0329b5551bbb660ce89ac5b14413084e502ca48791c1746900a0fd8ec2c98a",
+    "appended_content_classification": "LOCAL_ONLY; no transmission clearance granted",
+    "remediation_required": "A versioned committed governance binding and corresponding explicitly reconciled release/profile/clearance provenance are required before readiness. Preserve substantive grants, exact task and cleared ranges; do not silently replace released fingerprints or disable stale-source checks."
+  },
+  "released_reference": {
+    "identifier": "E1-PD06-R6-CANDIDATE-20260916-bc176574817f6b7f",
+    "manifest": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/captures/bc176574817f6b7fe06fdcf87a71c57b2a8bfe74e55ed20f2aa55ad5d4fa5181/MANIFEST.json",
+    "sha256": "bc176574817f6b7fe06fdcf87a71c57b2a8bfe74e55ed20f2aa55ad5d4fa5181",
+    "production_profile_sha256": "b9e7f72d97525f39fbddfe92f276ab6aedd057ef6c5b7284dc163f1db9c9c328",
+    "context_identities": {
+      "AuthoritativeContextId": "E1-AUTHORITATIVE-CONTEXT-sha256:cb8782e9337fc2891653e285799f34824accf869e501fdfdec93911eeb53fddd",
+      "FullContextDigest": "cb8782e9337fc2891653e285799f34824accf869e501fdfdec93911eeb53fddd",
+      "ModelProjectionDigest": "0a3d0d0e37decdf571b143924181d344ccf7cbe761341ceebc13901582fe1f47"
+    },
+    "QUALIFIED": true,
+    "RELEASED": false,
+    "ELIGIBLE": false,
+    "DISPATCHED": false
+  },
+  "current_runtime_context_id": null,
+  "current_FullContextDigest": null,
+  "current_ModelProjectionDigest": null,
+  "digest_note": "Released digests remain verifiable historical identities, not valid current runtime identities. No fabricated fresh dispatch binding is issued.",
+  "source_relationships": [
+    {
+      "id": "vision",
+      "repository": "forge",
+      "path": "docs/VISION.md",
+      "sha256": "b76ecfd3b48c0b8da50473d6f0e276f5ea285777bd7e6adf82b1510a87c59d4e",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": []
+    },
+    {
+      "id": "elicitation",
+      "repository": "forge",
+      "path": "docs/ARCHITECTURE_ELICITATION.md",
+      "sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "vision"
+      ]
+    },
+    {
+      "id": "requirements",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+      "sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "vision",
+        "elicitation"
+      ]
+    },
+    {
+      "id": "architecture",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "requirements"
+      ]
+    },
+    {
+      "id": "architecture_review",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+      "sha256": "c29c77350068884d889ccf6afbff86abef12f9488d8bc86503c41b6e1b85c7a6",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "readiness",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+      "sha256": "7f370437084c9fb4af1ead62c99ec7fce6dfabc04ac5871d83241be3f3c81b24",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "architecture",
+        "architecture_review",
+        "requirements"
+      ]
+    },
+    {
+      "id": "gap_disposition",
+      "repository": "forge",
+      "path": "docs/ARCHITECTURE_GAP_ANALYSIS.md",
+      "sha256": "bcf8f18807df2758dd876f81b476b6f396a1898e587dd87e8615438dddc04ca9",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "readiness"
+      ]
+    },
+    {
+      "id": "baseline_manifest",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_BASELINE_MANIFEST.json",
+      "sha256": "a35d085cbad46fcbb38d176d504a92a3a5f3d232f97759ce8c9f756a02c59967",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": [
+        "readiness"
+      ]
+    },
+    {
+      "id": "repository_instructions",
+      "repository": "forge",
+      "path": "AGENTS.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "dependencies": []
+    },
+    {
+      "id": "preparation_decisions",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/DECISIONS.md",
+      "sha256": "026c689de2012f914ea2d572a31f17a703cef37d3ae096256606a183a58a6e3e",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "architecture",
+        "readiness"
+      ]
+    },
+    {
+      "id": "adapter_schema",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json",
+      "sha256": "4b02ee777ce711cbf26316ad44066c01458cd15a7004ec55eff33e6159498c7d",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": []
+    },
+    {
+      "id": "adapter_review",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md",
+      "sha256": "6077d3102a06f32b331ae848ba96283f6f25d27b61e0be481638a886c730713e",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "architecture",
+        "adapter_schema"
+      ]
+    },
+    {
+      "id": "capture_verification",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/baseline_verification.json",
+      "sha256": "0c17576851451ec99c7197730c7dfc79434e31f645c3b653725ec737f3fc9412",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "baseline_manifest"
+      ]
+    },
+    {
+      "id": "publication_receipt",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/service_repository_receipt.json",
+      "sha256": "9c55181c720d7aa95415bbf7892b2fc6ecc032b68244d9345490f6043369cc25",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "architecture",
+        "capture_verification"
+      ]
+    },
+    {
+      "id": "preparation_state",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/STATE.json",
+      "sha256": "b87092febec63b4a90b1816f1562dd809ec22dc4985c5de915aa465171a85c17",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "preparation_decisions"
+      ]
+    },
+    {
+      "id": "context_protocol",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+      "sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "architecture",
+        "preparation_decisions"
+      ]
+    },
+    {
+      "id": "work_package",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+      "sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "requirements",
+        "architecture",
+        "preparation_decisions",
+        "context_protocol"
+      ]
+    },
+    {
+      "id": "dispatch_review",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md",
+      "sha256": "ee719c5498fc8b8f50576f5c1b4947615810d9bd175f9f517a1681bded43293a",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "work_package",
+        "adapter_review",
+        "publication_receipt",
+        "capture_verification"
+      ]
+    },
+    {
+      "id": "intervention_supplement",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/INTERVENTIONS.md",
+      "sha256": "3987af944d121f095289a8d89ba161217125445b55500f6915c4b4e65419c02f",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "elicitation"
+      ]
+    },
+    {
+      "id": "service_vision",
+      "repository": "service",
+      "path": "docs/VISION.md",
+      "sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "dependencies": [
+        "elicitation"
+      ]
+    },
+    {
+      "id": "service_requirements",
+      "repository": "service",
+      "path": "docs/REQUIREMENTS.md",
+      "sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "dependencies": [
+        "requirements"
+      ]
+    },
+    {
+      "id": "service_architecture",
+      "repository": "service",
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "dependencies": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "service_publication",
+      "repository": "service",
+      "path": "docs/PUBLICATION.json",
+      "sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "dependencies": [
+        "publication_receipt",
+        "architecture",
+        "requirements",
+        "elicitation"
+      ]
+    },
+    {
+      "id": "qualification_plan",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md",
+      "sha256": "658184c03476ae7ea1addf9257273c4b93b85f7a3e83de4fa0fba06f9db57539",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "dependencies": [
+        "adapter_review",
+        "preparation_decisions"
+      ]
+    }
+  ],
+  "capture_inputs": [
+    {
+      "path": "/etc/ssl/certs/ca-certificates.crt",
+      "released_sha256": "594085c513eb0676611992cf49e61024462fa0a7903786d3a0817eec794fb451",
+      "current_sha256": "594085c513eb0676611992cf49e61024462fa0a7903786d3a0817eec794fb451",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge-demo/docs/ARCHITECTURE.md",
+      "released_sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "current_sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge-demo/docs/PUBLICATION.json",
+      "released_sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "current_sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge-demo/docs/REQUIREMENTS.md",
+      "released_sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "current_sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge-demo/docs/VISION.md",
+      "released_sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "current_sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/AGENTS.md",
+      "released_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "current_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/__init__.py",
+      "released_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "current_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/authority_profile.py",
+      "released_sha256": "a6f371fe1b6a4204631195976fbb938238a45ae1445243945aee68ad32c7c0a7",
+      "current_sha256": "a6f371fe1b6a4204631195976fbb938238a45ae1445243945aee68ad32c7c0a7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/committed_objects.py",
+      "released_sha256": "19f03646100258950b84dc9f5da2117f50cc5d7860d612af7f877df213db7b62",
+      "current_sha256": "19f03646100258950b84dc9f5da2117f50cc5d7860d612af7f877df213db7b62",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/context_binding.py",
+      "released_sha256": "2f975b0b3c4c8fff7110584ccb74ed38814b63a43f9e43806830e7a9bb1ea543",
+      "current_sha256": "2f975b0b3c4c8fff7110584ccb74ed38814b63a43f9e43806830e7a9bb1ea543",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/context_projection.py",
+      "released_sha256": "6aa401535b4c55a17b4fc6c928c999e803f9e21c2b318509e553c9f7f5961197",
+      "current_sha256": "6aa401535b4c55a17b4fc6c928c999e803f9e21c2b318509e553c9f7f5961197",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/control_process.py",
+      "released_sha256": "c8ecd6d451fb788095418fd186b2bec80805b058beb067f0671d0d879f8b6d72",
+      "current_sha256": "c8ecd6d451fb788095418fd186b2bec80805b058beb067f0671d0d879f8b6d72",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/directory_provisioning.py",
+      "released_sha256": "c6bcea243d0a6e61209d373ffebe020c2e750218f5d96227759903b820ceaf20",
+      "current_sha256": "c6bcea243d0a6e61209d373ffebe020c2e750218f5d96227759903b820ceaf20",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/exec_barrier.py",
+      "released_sha256": "0f3cc78de0c6c66a214da222099f852cb9cbfd402628123c8a814e901059686f",
+      "current_sha256": "0f3cc78de0c6c66a214da222099f852cb9cbfd402628123c8a814e901059686f",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/execution_snapshot.py",
+      "released_sha256": "6ac7620cb00f725bc414610978e0624e6eb93007f8a7911e439e4b98944ffac7",
+      "current_sha256": "6ac7620cb00f725bc414610978e0624e6eb93007f8a7911e439e4b98944ffac7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/forward_bridge.py",
+      "released_sha256": "9401cc9b84169e984ab4464de1afab637f98a3935aecaf8bbe5d3825469fc8ba",
+      "current_sha256": "9401cc9b84169e984ab4464de1afab637f98a3935aecaf8bbe5d3825469fc8ba",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/governed_host.py",
+      "released_sha256": "f05a78bef477c17aa077afcd58f6ebd8e2181eadaffb4a5169df8cf1fc7d8e35",
+      "current_sha256": "f05a78bef477c17aa077afcd58f6ebd8e2181eadaffb4a5169df8cf1fc7d8e35",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/host_supervisor.py",
+      "released_sha256": "fab608977ebb3b96f7ed4c22e08b8bc05301f3fdc84ce938ff06798748a57a82",
+      "current_sha256": "fab608977ebb3b96f7ed4c22e08b8bc05301f3fdc84ce938ff06798748a57a82",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/invocation_ownership.py",
+      "released_sha256": "1d93336e4c5fcdcab6168f5696817337b321fd8681d778ba1b57ed5ad54966e2",
+      "current_sha256": "1d93336e4c5fcdcab6168f5696817337b321fd8681d778ba1b57ed5ad54966e2",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/launch_broker.py",
+      "released_sha256": "355cfd5b9ba53b5c04a59123b10604f5375d6fc5374967decfc5cb15668700c4",
+      "current_sha256": "355cfd5b9ba53b5c04a59123b10604f5375d6fc5374967decfc5cb15668700c4",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/launch_profile.py",
+      "released_sha256": "33205a4b6f7246d648c8a838bac22a9d1f032b1f661cc6314cffc723e00d783e",
+      "current_sha256": "33205a4b6f7246d648c8a838bac22a9d1f032b1f661cc6314cffc723e00d783e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/model_transmission.py",
+      "released_sha256": "5df5bade5e4bd530e766b354f398e2f03d66278d0c2ca30292875fd41db51f32",
+      "current_sha256": "5df5bade5e4bd530e766b354f398e2f03d66278d0c2ca30292875fd41db51f32",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/model_transport.py",
+      "released_sha256": "1f041eefa6e799701d1c5d986332055d4b56f9b39f588fe1e93e7a6e4c6af113",
+      "current_sha256": "1f041eefa6e799701d1c5d986332055d4b56f9b39f588fe1e93e7a6e4c6af113",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/orchestrator.py",
+      "released_sha256": "6ca75fa81f76e358b4f7e54f4021ed4bbbbb521c3a97299cb33f8169839b1d55",
+      "current_sha256": "6ca75fa81f76e358b4f7e54f4021ed4bbbbb521c3a97299cb33f8169839b1d55",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/qual_client.py",
+      "released_sha256": "7d69dcf16e5943310c6df89d5fe75392522e91b516d0c7ccf711132781a1f3f7",
+      "current_sha256": "7d69dcf16e5943310c6df89d5fe75392522e91b516d0c7ccf711132781a1f3f7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/qual_launcher.py",
+      "released_sha256": "dba32679524369186f3aee54b8c1494bc35da14c065f97eca0c326ae338ba2a7",
+      "current_sha256": "dba32679524369186f3aee54b8c1494bc35da14c065f97eca0c326ae338ba2a7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/recovery_ledger.py",
+      "released_sha256": "9a645b4d8f28e5e37895481a081480faec77b8f9f35f8ff38e926b7658c7843e",
+      "current_sha256": "9a645b4d8f28e5e37895481a081480faec77b8f9f35f8ff38e926b7658c7843e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/responses_orchestrator.py",
+      "released_sha256": "62fe79f4575037a1a10fb7cd2ccf545d26bbfa1531be8e417f72ee6aa37b08ad",
+      "current_sha256": "62fe79f4575037a1a10fb7cd2ccf545d26bbfa1531be8e417f72ee6aa37b08ad",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/runnable_profile.py",
+      "released_sha256": "525fe568303277c6d4227f5e30d7cfa85fdb8221f86e56a809fbda3b086537f6",
+      "current_sha256": "525fe568303277c6d4227f5e30d7cfa85fdb8221f86e56a809fbda3b086537f6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/supervisor_server.py",
+      "released_sha256": "fb8b60f89c0dc040b062b71a65d80efae0c2efc5e586322e02a58ed979d3401d",
+      "current_sha256": "fb8b60f89c0dc040b062b71a65d80efae0c2efc5e586322e02a58ed979d3401d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/termination.py",
+      "released_sha256": "a591f42d50556b6f842ab52f90643efbbd4c9cdb08c0a5aae49c36e5f889ad9a",
+      "current_sha256": "a591f42d50556b6f842ab52f90643efbbd4c9cdb08c0a5aae49c36e5f889ad9a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_context_binding.py",
+      "released_sha256": "45cf0b45d391780b00c35ef41daa21f362a6dd12d2587de7cf0b02d242193789",
+      "current_sha256": "45cf0b45d391780b00c35ef41daa21f362a6dd12d2587de7cf0b02d242193789",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_context_projection.py",
+      "released_sha256": "410d60f3eb28ba70776e2e5f185e367a90f2e3ef3f6883a13d15a384385ba1e7",
+      "current_sha256": "410d60f3eb28ba70776e2e5f185e367a90f2e3ef3f6883a13d15a384385ba1e7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_governed_host.py",
+      "released_sha256": "78ec2bb8625e0ab88e8f754a766f9234a7b4cd5c16122d960570b7937cae5bd6",
+      "current_sha256": "78ec2bb8625e0ab88e8f754a766f9234a7b4cd5c16122d960570b7937cae5bd6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_invocation_ownership.py",
+      "released_sha256": "6077da4c36c5082a0f5eb99ec7ba162c8a4425fd898913749546f8ae07da38bb",
+      "current_sha256": "6077da4c36c5082a0f5eb99ec7ba162c8a4425fd898913749546f8ae07da38bb",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_orchestrator.py",
+      "released_sha256": "28845316475ac52062fcd6c7eaf2e82b5eb5dd9f9ea25ab00748cc62b884780f",
+      "current_sha256": "28845316475ac52062fcd6c7eaf2e82b5eb5dd9f9ea25ab00748cc62b884780f",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_pd05_file_authority.py",
+      "released_sha256": "d1417dff538483b27e0f77fcbd1556760c569aa87860d2e67087703ab96e11a8",
+      "current_sha256": "d1417dff538483b27e0f77fcbd1556760c569aa87860d2e67087703ab96e11a8",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_pd06_release_boundaries.py",
+      "released_sha256": "8ab0979c1f086d078d40b210eb34233b4523669c63230cf8123c87be8b883e46",
+      "current_sha256": "8ab0979c1f086d078d40b210eb34233b4523669c63230cf8123c87be8b883e46",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_production_exec.py",
+      "released_sha256": "af5cfd5e877d4215768acfa6db870b7904f70da759df7137902c15a46b78dea0",
+      "current_sha256": "af5cfd5e877d4215768acfa6db870b7904f70da759df7137902c15a46b78dea0",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_programmer_substrate.py",
+      "released_sha256": "93a953ba7f0cd9545f30a303620467643ec35bd7e6c4761c9b617813a9ee8e37",
+      "current_sha256": "93a953ba7f0cd9545f30a303620467643ec35bd7e6c4761c9b617813a9ee8e37",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_recovery_ledger.py",
+      "released_sha256": "ba9302ca655ab999e9616f90719765567060f4cfb72d5b3a1dc381ed7d794021",
+      "current_sha256": "ba9302ca655ab999e9616f90719765567060f4cfb72d5b3a1dc381ed7d794021",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_responses_contract.py",
+      "released_sha256": "fb4e9a96e60787ef193ba162e5f10f8deac3e6cfc67aa315a39c27a55f994387",
+      "current_sha256": "fb4e9a96e60787ef193ba162e5f10f8deac3e6cfc67aa315a39c27a55f994387",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_runnable_profile.py",
+      "released_sha256": "d14284f00034245cbefb6556bbac698dc100fa076c324e8ce63a78d518477cef",
+      "current_sha256": "d14284f00034245cbefb6556bbac698dc100fa076c324e8ce63a78d518477cef",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/adapter/tests/test_supervisor_termination.py",
+      "released_sha256": "3690ab2a3e0fae3639d0cae39b620c89407d440899709897c8639761d2dfbed9",
+      "current_sha256": "3690ab2a3e0fae3639d0cae39b620c89407d440899709897c8639761d2dfbed9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_ELICITATION.md",
+      "released_sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da",
+      "current_sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_GAP_ANALYSIS.md",
+      "released_sha256": "bcf8f18807df2758dd876f81b476b6f396a1898e587dd87e8615438dddc04ca9",
+      "current_sha256": "bcf8f18807df2758dd876f81b476b6f396a1898e587dd87e8615438dddc04ca9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+      "released_sha256": "c29c77350068884d889ccf6afbff86abef12f9488d8bc86503c41b6e1b85c7a6",
+      "current_sha256": "c29c77350068884d889ccf6afbff86abef12f9488d8bc86503c41b6e1b85c7a6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "released_sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8",
+      "current_sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+      "released_sha256": "7f370437084c9fb4af1ead62c99ec7fce6dfabc04ac5871d83241be3f3c81b24",
+      "current_sha256": "7f370437084c9fb4af1ead62c99ec7fce6dfabc04ac5871d83241be3f3c81b24",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_BASELINE_MANIFEST.json",
+      "released_sha256": "a35d085cbad46fcbb38d176d504a92a3a5f3d232f97759ce8c9f756a02c59967",
+      "current_sha256": "a35d085cbad46fcbb38d176d504a92a3a5f3d232f97759ce8c9f756a02c59967",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+      "released_sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2",
+      "current_sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/VISION.md",
+      "released_sha256": "b76ecfd3b48c0b8da50473d6f0e276f5ea285777bd7e6adf82b1510a87c59d4e",
+      "current_sha256": "b76ecfd3b48c0b8da50473d6f0e276f5ea285777bd7e6adf82b1510a87c59d4e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1C_EXTERNAL_SUPERVISOR_ADMISSION_2026-09-15.md",
+      "released_sha256": "dcf172e637c725f51303bf76c7cf23dd836f28dbbc585d2687f39630dad538c1",
+      "current_sha256": "dcf172e637c725f51303bf76c7cf23dd836f28dbbc585d2687f39630dad538c1",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1C_FINAL_LIFECYCLE_QUALIFICATION_2026-09-15.md",
+      "released_sha256": "8a55750103d995e65db5a39ea93481339743ff0d382e7c860ecad129d9ee4040",
+      "current_sha256": "8a55750103d995e65db5a39ea93481339743ff0d382e7c860ecad129d9ee4040",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1C_LIFECYCLE_QUALIFICATION_2026-09-15.md",
+      "released_sha256": "47774c2a6948b766db501ac33d31b54be125f7234539e90be912d3386f1327b0",
+      "current_sha256": "47774c2a6948b766db501ac33d31b54be125f7234539e90be912d3386f1327b0",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1N_PRODUCTION_GOVERNED_EXECUTION_INTEGRATION_2026-09-15.md",
+      "released_sha256": "839359ced3c9344fb30fcc6d4e807d9fd48a46ad1d359b39d3bfe55e94ac52c4",
+      "current_sha256": "839359ced3c9344fb30fcc6d4e807d9fd48a46ad1d359b39d3bfe55e94ac52c4",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1O_ACTUAL_TOOL_INVENTORY.json",
+      "released_sha256": "9707a5dea6b0558054e93d795e6ae29651e9a056a62b698a432852367e44fe5b",
+      "current_sha256": "9707a5dea6b0558054e93d795e6ae29651e9a056a62b698a432852367e44fe5b",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1O_CODEX_EXECUTION_TOOL_REGISTRY_CONFINEMENT_2026-09-15.md",
+      "released_sha256": "8bbbc1d3a14c0a43097785d92f73d3200f8a7c6e515ec2f4696ca0e75b8954e6",
+      "current_sha256": "8bbbc1d3a14c0a43097785d92f73d3200f8a7c6e515ec2f4696ca0e75b8954e6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1P_FORGE_OWNED_PROGRAMMER_SUBSTRATE_2026-09-15.md",
+      "released_sha256": "d5a02dd754aebde2f4b5b9798517f6f6214753ae9822e173191d90151e0de86a",
+      "current_sha256": "d5a02dd754aebde2f4b5b9798517f6f6214753ae9822e173191d90151e0de86a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1_EXECUTION_SCOPE_QUALIFICATION.md",
+      "released_sha256": "b795f48c12a95919cc52592991553db61d6e32b5addfb678f5a57b05b43e8654",
+      "current_sha256": "b795f48c12a95919cc52592991553db61d6e32b5addfb678f5a57b05b43e8654",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_1_FINAL_GOVERNED_EXECUTION_INTEGRATION_2026-09-15.md",
+      "released_sha256": "2f50b26a29fd8f1489f347d82beb1afe1a7fe194a97f0b80a9ffb2d6c599a4b5",
+      "current_sha256": "2f50b26a29fd8f1489f347d82beb1afe1a7fe194a97f0b80a9ffb2d6c599a4b5",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_2_CONTROLLED_TOOL_HOST.md",
+      "released_sha256": "0e4ea8e9a6ff98f258305afaff33d48f4fee4423fd0880d3b476b62ea2339d9d",
+      "current_sha256": "0e4ea8e9a6ff98f258305afaff33d48f4fee4423fd0880d3b476b62ea2339d9d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_3_REASONING_ONLY_ORCHESTRATOR.md",
+      "released_sha256": "cdeb82527603152e48da7f5eb29a248a4ca588694b423b722a921e5ef78ca433",
+      "current_sha256": "cdeb82527603152e48da7f5eb29a248a4ca588694b423b722a921e5ef78ca433",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_4_RESPONSES_API_GOVERNED_REASONING.md",
+      "released_sha256": "bf8112c32cfd9bab1617a414e111a18a3f9effde1dce7af87abea95bbd5b1d20",
+      "current_sha256": "bf8112c32cfd9bab1617a414e111a18a3f9effde1dce7af87abea95bbd5b1d20",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_CONTROLLER_EXECUTION_WORKSPACE_2026-09-15.md",
+      "released_sha256": "0eac96ceaeaf4ff8806a1fb84c48f5ad5413a80489f374bdba1f17e3d0f0b906",
+      "current_sha256": "0eac96ceaeaf4ff8806a1fb84c48f5ad5413a80489f374bdba1f17e3d0f0b906",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_EFFECTIVE_PROFILE_AND_EVIDENCE_GATE_2026-09-15.md",
+      "released_sha256": "e83bc456234297e2a751c4cfd1f09e01fb0003d484faccbba0669f23a71ca1ea",
+      "current_sha256": "e83bc456234297e2a751c4cfd1f09e01fb0003d484faccbba0669f23a71ca1ea",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_LIVE_RECOVERY_AND_READINESS_2026-09-15.md",
+      "released_sha256": "616bc62375890daab5b6d3b6512f0a587ed2e3b8536c139d7633737f4b68cd02",
+      "current_sha256": "616bc62375890daab5b6d3b6512f0a587ed2e3b8536c139d7633737f4b68cd02",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_REMAINING_GATES_2026-09-15.md",
+      "released_sha256": "767e285fabb067a99b0bc7dce75141d60ca55bf6dfc3ac028d0ccebf077562ae",
+      "current_sha256": "767e285fabb067a99b0bc7dce75141d60ca55bf6dfc3ac028d0ccebf077562ae",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/A2_SUPERVISOR_TERMINATE_RECONCILE_IMPLEMENTATION_2026-09-15.md",
+      "released_sha256": "6c5596ee7db379f998ea7ac6ee0d50df069d93bd849afb4764af5680a74248da",
+      "current_sha256": "6c5596ee7db379f998ea7ac6ee0d50df069d93bd849afb4764af5680a74248da",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md",
+      "released_sha256": "6077d3102a06f32b331ae848ba96283f6f25d27b61e0be481638a886c730713e",
+      "current_sha256": "6077d3102a06f32b331ae848ba96283f6f25d27b61e0be481638a886c730713e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md",
+      "released_sha256": "658184c03476ae7ea1addf9257273c4b93b85f7a3e83de4fa0fba06f9db57539",
+      "current_sha256": "658184c03476ae7ea1addf9257273c4b93b85f7a3e83de4fa0fba06f9db57539",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_MANIFEST.json",
+      "released_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21",
+      "current_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+      "released_sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37",
+      "current_sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/DECISIONS.md",
+      "released_sha256": "026c689de2012f914ea2d572a31f17a703cef37d3ae096256606a183a58a6e3e",
+      "current_sha256": "97e05b8b1c8a7ab00f9c5b12e4ae8a72666ce9e63209adfb122dd0d20d56d527",
+      "matches": false
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+      "released_sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c",
+      "current_sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/FINAL_PD05_RUNNABLE_QUALIFICATION_2026-09-16.md",
+      "released_sha256": "9c4133657515ca289f09ae6ba5f35237552f15a418cbf0bb637441fe57bd4fb5",
+      "current_sha256": "9c4133657515ca289f09ae6ba5f35237552f15a418cbf0bb637441fe57bd4fb5",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/GOVERNED_AGENT_EXECUTION_INTERFACE.md",
+      "released_sha256": "3d8e47840b930daf0c35efa3c29fb1551e483c5f07af78ab808722674bc0aba6",
+      "current_sha256": "3d8e47840b930daf0c35efa3c29fb1551e483c5f07af78ab808722674bc0aba6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/GOVERNED_AGENT_HOST_IMPLEMENTATION.md",
+      "released_sha256": "aa4dbb9a77410a314b0941a88ea81302b70936152cf68116fba0a34ea5e25bfe",
+      "current_sha256": "aa4dbb9a77410a314b0941a88ea81302b70936152cf68116fba0a34ea5e25bfe",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/INTERVENTIONS.md",
+      "released_sha256": "3987af944d121f095289a8d89ba161217125445b55500f6915c4b4e65419c02f",
+      "current_sha256": "3987af944d121f095289a8d89ba161217125445b55500f6915c4b4e65419c02f",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PD05_AUTHORITY_APPLICABILITY_2026-09-16.md",
+      "released_sha256": "c3f3916ea576b73c7d80dde3f98075101dce96794cdb7d6e66a74c2e3e5022d1",
+      "current_sha256": "c3f3916ea576b73c7d80dde3f98075101dce96794cdb7d6e66a74c2e3e5022d1",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PD05_CLOSURE_AUTHORITY_2026-09-16.md",
+      "released_sha256": "2e98966f3627583457619a304e3b59df406554945a1c83ec97653a7b768c5ba5",
+      "current_sha256": "2e98966f3627583457619a304e3b59df406554945a1c83ec97653a7b768c5ba5",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PD05_GAP_DISPOSITION_RECORDS_2026-09-16.md",
+      "released_sha256": "763c072ef5dae70006c53b255c460aa942ddf9f8099fc0816b9064588222de4a",
+      "current_sha256": "763c072ef5dae70006c53b255c460aa942ddf9f8099fc0816b9064588222de4a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PD05_REVISED_COVERAGE_2026-09-16.md",
+      "released_sha256": "fafc809f210f632d98e2129da39f037896601297629268acea41c370de60b886",
+      "current_sha256": "fafc809f210f632d98e2129da39f037896601297629268acea41c370de60b886",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PD06_RELEASE_BLOCKER_CLOSURE_2026-09-16.md",
+      "released_sha256": "3a562566849657278ed0b672887b63095a9d2e782b5ea038563b4af136fd2d9c",
+      "current_sha256": "3a562566849657278ed0b672887b63095a9d2e782b5ea038563b4af136fd2d9c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md",
+      "released_sha256": "ee719c5498fc8b8f50576f5c1b4947615810d9bd175f9f517a1681bded43293a",
+      "current_sha256": "ee719c5498fc8b8f50576f5c1b4947615810d9bd175f9f517a1681bded43293a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/STATE.json",
+      "released_sha256": "b87092febec63b4a90b1816f1562dd809ec22dc4985c5de915aa465171a85c17",
+      "current_sha256": "b87092febec63b4a90b1816f1562dd809ec22dc4985c5de915aa465171a85c17",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json",
+      "released_sha256": "4b02ee777ce711cbf26316ad44066c01458cd15a7004ec55eff33e6159498c7d",
+      "current_sha256": "4b02ee777ce711cbf26316ad44066c01458cd15a7004ec55eff33e6159498c7d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/baseline_verification.json",
+      "released_sha256": "0c17576851451ec99c7197730c7dfc79434e31f645c3b653725ec737f3fc9412",
+      "current_sha256": "0c17576851451ec99c7197730c7dfc79434e31f645c3b653725ec737f3fc9412",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/bound.jsonl",
+      "released_sha256": "5c598d7b3d578ce5cb7002cbd38dbb48f8a5c2163b306010e15da0fc6f3809e8",
+      "current_sha256": "5c598d7b3d578ce5cb7002cbd38dbb48f8a5c2163b306010e15da0fc6f3809e8",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/inactive_audit.jsonl",
+      "released_sha256": "681e4f68eedd1501ffde4acce27b8db0613068075ed39eecf720651703f91af4",
+      "current_sha256": "681e4f68eedd1501ffde4acce27b8db0613068075ed39eecf720651703f91af4",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/ownership.jsonl",
+      "released_sha256": "388996b5458d7f87146cfbb87847232eb0218d0ed1f0d726b7c0875aeaa19514",
+      "current_sha256": "388996b5458d7f87146cfbb87847232eb0218d0ed1f0d726b7c0875aeaa19514",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/probe.py",
+      "released_sha256": "502ca365311834e61673f3637c4675fa3c09c403ebd1c5c1d2ebd70a1bda85ab",
+      "current_sha256": "502ca365311834e61673f3637c4675fa3c09c403ebd1c5c1d2ebd70a1bda85ab",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/recovery.jsonl",
+      "released_sha256": "04da6d142738048da10a8f0ff897c31e72c46ac736b6802946addcbedefc941e",
+      "current_sha256": "04da6d142738048da10a8f0ff897c31e72c46ac736b6802946addcbedefc941e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/recovery_second.jsonl",
+      "released_sha256": "a6e12cfdef154fdf3d01fc3a0de3c99b4e6aaef71c401456f0bd0bf3d4c3b6d9",
+      "current_sha256": "a6e12cfdef154fdf3d01fc3a0de3c99b4e6aaef71c401456f0bd0bf3d4c3b6d9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/restart.jsonl",
+      "released_sha256": "e47e91c2c9f8617f527eccff6f38f8780afebbfc9ae31adbeaf09a8c1f855c79",
+      "current_sha256": "e47e91c2c9f8617f527eccff6f38f8780afebbfc9ae31adbeaf09a8c1f855c79",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/sha256.json",
+      "released_sha256": "9086794227f266ac67ea72c070764a0cd15f168e12ad7620dd3d0e4ff2c6ba8d",
+      "current_sha256": "9086794227f266ac67ea72c070764a0cd15f168e12ad7620dd3d0e4ff2c6ba8d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/tests.txt",
+      "released_sha256": "ee22b5983f2a7c5d0c15f5ab4a12f37658bf2d823f343bbcbabe59a4d8355658",
+      "current_sha256": "ee22b5983f2a7c5d0c15f5ab4a12f37658bf2d823f343bbcbabe59a4d8355658",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/verification.json",
+      "released_sha256": "1643ef092c6970153484f8f4961f40a562d9b69af3541f2ac8fb5a509012c8cb",
+      "current_sha256": "1643ef092c6970153484f8f4961f40a562d9b69af3541f2ac8fb5a509012c8cb",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/INACTIVE_VERIFICATION.json",
+      "released_sha256": "c0698f7f96443d91aaef8cdb46fa6c1b86a12975380c291104df7e1437c3ab67",
+      "current_sha256": "c0698f7f96443d91aaef8cdb46fa6c1b86a12975380c291104df7e1437c3ab67",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/MODEL_COMMUNICATION.json",
+      "released_sha256": "af5bb41bd2644d954733fd1eaf552d073e4cd2025123007073880ee6d29af6eb",
+      "current_sha256": "af5bb41bd2644d954733fd1eaf552d073e4cd2025123007073880ee6d29af6eb",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/PROPOSED_E1_PROFILE.json",
+      "released_sha256": "a9ec7f738ab3bba12f8a8da9111bcac55dcad54feff7684ab3263b9d3b254098",
+      "current_sha256": "a9ec7f738ab3bba12f8a8da9111bcac55dcad54feff7684ab3263b9d3b254098",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/REPORT.json",
+      "released_sha256": "3d2c03c8c7871392108ac0be59c8bbd41a7f2154a00f57e49ff56d0d8459310f",
+      "current_sha256": "3d2c03c8c7871392108ac0be59c8bbd41a7f2154a00f57e49ff56d0d8459310f",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/configuration_observations.json",
+      "released_sha256": "f747bbba2f40fda888797bb3f73a3fb66bdfb3fed20b07e27c5de909dec3584d",
+      "current_sha256": "f747bbba2f40fda888797bb3f73a3fb66bdfb3fed20b07e27c5de909dec3584d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/directory_root_is_file.jsonl",
+      "released_sha256": "eb42488ad0706ee186c5755455210a118902c6d7ee9028d5635d08b74b85e147",
+      "current_sha256": "eb42488ad0706ee186c5755455210a118902c6d7ee9028d5635d08b74b85e147",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/inactive_r2_audit.jsonl",
+      "released_sha256": "3b8db99a7540c7f8c91b9a13b2f3428a750b52e524895cbf7a322b987b4c1a37",
+      "current_sha256": "3b8db99a7540c7f8c91b9a13b2f3428a750b52e524895cbf7a322b987b4c1a37",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/leaf_is_directory.jsonl",
+      "released_sha256": "948b903b559cd5fbc8c96125b3ca73a182071dc33719285efe4fcaf7277a2ac6",
+      "current_sha256": "948b903b559cd5fbc8c96125b3ca73a182071dc33719285efe4fcaf7277a2ac6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/missing_directory_root.jsonl",
+      "released_sha256": "92211bcbf85c23d795d9ecb403bce14b717ab1384246b742615253dcba9fd100",
+      "current_sha256": "92211bcbf85c23d795d9ecb403bce14b717ab1384246b742615253dcba9fd100",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/normal.jsonl",
+      "released_sha256": "35cc1b8311a2e793d192e118fd53836ffb117327950da0e934a021d3af729c05",
+      "current_sha256": "35cc1b8311a2e793d192e118fd53836ffb117327950da0e934a021d3af729c05",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/parent_is_file.jsonl",
+      "released_sha256": "b7d448ba45afed67454b1e440b9a44b619704249481b525a0f5791ac23c12c38",
+      "current_sha256": "b7d448ba45afed67454b1e440b9a44b619704249481b525a0f5791ac23c12c38",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/prepare_profile_record.py",
+      "released_sha256": "0f28e1aa4ac7b503d729e04b2fac039614437ccb7351e61845ba08d03b15100b",
+      "current_sha256": "0f28e1aa4ac7b503d729e04b2fac039614437ccb7351e61845ba08d03b15100b",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/sha256.json",
+      "released_sha256": "f627dfad4269b26ceacec785cde95d65885cedec6aa480a36f790bc67a571016",
+      "current_sha256": "f627dfad4269b26ceacec785cde95d65885cedec6aa480a36f790bc67a571016",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/source.patch",
+      "released_sha256": "ddc30fc010c5b5a99b36661f90b280b70112692918d07bbbbf291f0b2a27f738",
+      "current_sha256": "ddc30fc010c5b5a99b36661f90b280b70112692918d07bbbbf291f0b2a27f738",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/tests.txt",
+      "released_sha256": "7a42ac65c4b290792151aadfc3a02f80e9b413e26322b33938e41e51a1180d5b",
+      "current_sha256": "7a42ac65c4b290792151aadfc3a02f80e9b413e26322b33938e41e51a1180d5b",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_closure_evidence/verify_inactive.py",
+      "released_sha256": "74464a5c75d25b1610e1a0869e5267de542864236527d9f10ea7f9132f437067",
+      "current_sha256": "74464a5c75d25b1610e1a0869e5267de542864236527d9f10ea7f9132f437067",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/ACCEPTANCE_INPUTS.json",
+      "released_sha256": "78e060f72a78714bde0319564c7ee288d91dd3cbcf9ba3d7cbe273014ab5d724",
+      "current_sha256": "78e060f72a78714bde0319564c7ee288d91dd3cbcf9ba3d7cbe273014ab5d724",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/HOST_RECEIPT.json",
+      "released_sha256": "87b83b45033e830f9d14fd398eb614b76c59d113757a589a19a075e470b0210b",
+      "current_sha256": "87b83b45033e830f9d14fd398eb614b76c59d113757a589a19a075e470b0210b",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/INACTIVE_VERIFICATION.json",
+      "released_sha256": "8993784d67228e01a8adb54a19c9d6db4e91bf5cfd770f90e76f7db31be01c1d",
+      "current_sha256": "8993784d67228e01a8adb54a19c9d6db4e91bf5cfd770f90e76f7db31be01c1d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/LIVE_REPORT.json",
+      "released_sha256": "4fcad58ce85243fa51eddaa7e5c30886ab90deb38d3b6c9cad6fc70c61218376",
+      "current_sha256": "4fcad58ce85243fa51eddaa7e5c30886ab90deb38d3b6c9cad6fc70c61218376",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/PROFILE_SHA256.txt",
+      "released_sha256": "ad1651c66e3a44a4b85c45e315096300dae0d82167fb5fa7c0d021950b694f2c",
+      "current_sha256": "ad1651c66e3a44a4b85c45e315096300dae0d82167fb5fa7c0d021950b694f2c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/PROPOSED_PRODUCTION_PROFILE.json",
+      "released_sha256": "509a73d7b46db1cfa63b8a23ccfe9d9b2a8e871499508dbb6d8177936688ab4e",
+      "current_sha256": "509a73d7b46db1cfa63b8a23ccfe9d9b2a8e871499508dbb6d8177936688ab4e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/SHA256.json",
+      "released_sha256": "4f4b377380e519383ba7b1a2e12feee1f816f6b13caf8cceb8e1564a0f2df073",
+      "current_sha256": "4f4b377380e519383ba7b1a2e12feee1f816f6b13caf8cceb8e1564a0f2df073",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/SOURCE_SHA256.json",
+      "released_sha256": "f27fdf6165d24ff52be02fec716607ca7fe056130bdc800d4f0bcf88731cfeaa",
+      "current_sha256": "f27fdf6165d24ff52be02fec716607ca7fe056130bdc800d4f0bcf88731cfeaa",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/controller.jsonl",
+      "released_sha256": "8ec7d8ca225148b62185cd6fe163924a20a8e5ed0299e55936a9e05fdafd97e8",
+      "current_sha256": "8ec7d8ca225148b62185cd6fe163924a20a8e5ed0299e55936a9e05fdafd97e8",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/inactive_controller.jsonl",
+      "released_sha256": "a101112913304c5271bb046ff052888a288be88e4738de861e5e2f745392a4a1",
+      "current_sha256": "a101112913304c5271bb046ff052888a288be88e4738de861e5e2f745392a4a1",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/live_runner.py",
+      "released_sha256": "fd93913d874ec65318c45ef2be53d899934de53e633f6e25e554bbc98806b295",
+      "current_sha256": "fd93913d874ec65318c45ef2be53d899934de53e633f6e25e554bbc98806b295",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/ownership.jsonl",
+      "released_sha256": "b51f2938075bc71c1c2878283d38e08c59a0c9fa1ce41b87ee2ab8d52a91c384",
+      "current_sha256": "b51f2938075bc71c1c2878283d38e08c59a0c9fa1ce41b87ee2ab8d52a91c384",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/prepare_evidence.py",
+      "released_sha256": "4906b30544902c41e22811551cb3d5d2751a16f87d4160129d383e40b2eb02e4",
+      "current_sha256": "4906b30544902c41e22811551cb3d5d2751a16f87d4160129d383e40b2eb02e4",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/snapshots/scope-98bc40bd98114c3e9d29324879bfc0ab.json",
+      "released_sha256": "abefe2ee4ca84626b3a6c731a316a274fed6994e6939c5c4b66caacdd60b49cf",
+      "current_sha256": "abefe2ee4ca84626b3a6c731a316a274fed6994e6939c5c4b66caacdd60b49cf",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/snapshots/scope-b4bcb8c7cddb459ebe400eb49a07b71f.json",
+      "released_sha256": "216cb4d5f90df5dfc3225649dea1cc28338d4f197b5814aaceb88ff652c8b322",
+      "current_sha256": "216cb4d5f90df5dfc3225649dea1cc28338d4f197b5814aaceb88ff652c8b322",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd05_final_evidence/tests.txt",
+      "released_sha256": "51aa629496813594754784dc8efadba7e4d6419131b25374073ad008b6da540d",
+      "current_sha256": "51aa629496813594754784dc8efadba7e4d6419131b25374073ad008b6da540d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/ARCHITECT_AUTHORITY.md",
+      "released_sha256": "ee8f10a1a4be921145a662bc7bdfaee62dff0ce23a28d083f67971d428c9fcf9",
+      "current_sha256": "ee8f10a1a4be921145a662bc7bdfaee62dff0ce23a28d083f67971d428c9fcf9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/AUTHORITATIVE_CONTROLLER_CONTEXT.json",
+      "released_sha256": "3263d891a4d8136e0a9ddd4752e2f8da6e2213314802b17532d8da006eb1e75c",
+      "current_sha256": "3263d891a4d8136e0a9ddd4752e2f8da6e2213314802b17532d8da006eb1e75c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/CONTEXT_BINDING.json",
+      "released_sha256": "578048ca3ee7db29aea1c90d4c32cb96f987570d07351315d2e39a1467b938bc",
+      "current_sha256": "578048ca3ee7db29aea1c90d4c32cb96f987570d07351315d2e39a1467b938bc",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/CONTEXT_IDENTITIES.json",
+      "released_sha256": "725ac606b90be21092fad306e62035e8adb5435d3023ef8b6f7322e7c08495f2",
+      "current_sha256": "725ac606b90be21092fad306e62035e8adb5435d3023ef8b6f7322e7c08495f2",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/FINAL_REPORT.md",
+      "released_sha256": "6ed7699a8ab590a0d5ad3d1561ff90332eb6b30c4578ba9b9a9ff16de87e5a80",
+      "current_sha256": "6ed7699a8ab590a0d5ad3d1561ff90332eb6b30c4578ba9b9a9ff16de87e5a80",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/IMPLEMENTATION_SUPPLEMENT.json",
+      "released_sha256": "c844ce72eef308ea40c93dd882fa195ff201f1077cfae9dd16a463d6677b55d1",
+      "current_sha256": "c844ce72eef308ea40c93dd882fa195ff201f1077cfae9dd16a463d6677b55d1",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/INACTIVE_VERIFICATION.json",
+      "released_sha256": "313e637e00eccdf2af31791ec67663623f41f9dca01c2f440872e9a741a5ad9e",
+      "current_sha256": "313e637e00eccdf2af31791ec67663623f41f9dca01c2f440872e9a741a5ad9e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/MODEL_CONTEXT_PROJECTION.json",
+      "released_sha256": "2f3a6ebf07dc409a4e03ba8109f8099c8478f981478c0b94a992e93a459523e2",
+      "current_sha256": "2f3a6ebf07dc409a4e03ba8109f8099c8478f981478c0b94a992e93a459523e2",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/OWNERSHIP_AND_PROVISIONING.json",
+      "released_sha256": "ce275ca0d83539ec81cce2432fb4f9555483e48877ca0ba22531698bbbe53314",
+      "current_sha256": "ce275ca0d83539ec81cce2432fb4f9555483e48877ca0ba22531698bbbe53314",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/PD06_VERIFICATION.json",
+      "released_sha256": "a0ac8d55a55a9ca2b06d4e21a6db229a7e5bf168b1b22a80b8a418db900b5c82",
+      "current_sha256": "a0ac8d55a55a9ca2b06d4e21a6db229a7e5bf168b1b22a80b8a418db900b5c82",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/PRODUCTION_LAUNCH_RECORD.json",
+      "released_sha256": "d8693a5c075217fbf01adfd2007a777879399d689d983e0a07e5cc4b92db10b6",
+      "current_sha256": "d8693a5c075217fbf01adfd2007a777879399d689d983e0a07e5cc4b92db10b6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/PRODUCTION_PROFILE.json",
+      "released_sha256": "a0547c7c33b95628d9419a62972f15062bd6fa8ab9236496ceb7d6ab21fbab75",
+      "current_sha256": "a0547c7c33b95628d9419a62972f15062bd6fa8ab9236496ceb7d6ab21fbab75",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/PROFILE_FINGERPRINT.json",
+      "released_sha256": "c48e670bec62a46cb91e8944f90128f56582b05674b20b041c2eab9136645b13",
+      "current_sha256": "c48e670bec62a46cb91e8944f90128f56582b05674b20b041c2eab9136645b13",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/SOURCE_SHA256.json",
+      "released_sha256": "b8d37e04028bd2297376f138e45cb93e67540c18253d958f6b5a3aea4a0194ea",
+      "current_sha256": "b8d37e04028bd2297376f138e45cb93e67540c18253d958f6b5a3aea4a0194ea",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/TRANSMISSION_VERIFICATION.json",
+      "released_sha256": "03209b59c92a8b62505e7b3762518dda2af67afc0ecd2c2518f6712ac0c0ba7f",
+      "current_sha256": "03209b59c92a8b62505e7b3762518dda2af67afc0ecd2c2518f6712ac0c0ba7f",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/build_evidence.py",
+      "released_sha256": "e72012e6c16aa7053bf14c1c540d7140e23c20cdd60ba77ac7dec922eb364a2a",
+      "current_sha256": "e72012e6c16aa7053bf14c1c540d7140e23c20cdd60ba77ac7dec922eb364a2a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/focused_tests.txt",
+      "released_sha256": "a095f47cce4d5a00230d9d4cb62de1a9055d01e76679564e2cf666c55279ba6d",
+      "current_sha256": "a095f47cce4d5a00230d9d4cb62de1a9055d01e76679564e2cf666c55279ba6d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/CLEARANCE.json",
+      "released_sha256": "b906a7ab23d0466d65f480ca411db0fc566163845250230cf316909379181e45",
+      "current_sha256": "b906a7ab23d0466d65f480ca411db0fc566163845250230cf316909379181e45",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/COMMITTED_FIXTURE.json",
+      "released_sha256": "c25fc4dc73bc830031777047e7e7aee2c4ec2eb96aa776ac71fbb48e7fcd5a0f",
+      "current_sha256": "c25fc4dc73bc830031777047e7e7aee2c4ec2eb96aa776ac71fbb48e7fcd5a0f",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/LIVE_REPORT.json",
+      "released_sha256": "8d2374dced62c92b941e7fe4ef85b130920d4bfaca696bf8ab0b51fa09b10d6a",
+      "current_sha256": "8d2374dced62c92b941e7fe4ef85b130920d4bfaca696bf8ab0b51fa09b10d6a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/MANIFEST.json",
+      "released_sha256": "68176e8892b767d1947f87ac18d93b9842c3b31e4840f116ee4914ac555aa135",
+      "current_sha256": "68176e8892b767d1947f87ac18d93b9842c3b31e4840f116ee4914ac555aa135",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/blobs/0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7",
+      "released_sha256": "0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7",
+      "current_sha256": "0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/blobs/68fa1499283694e66a6f4015e77dd83b625efa091b756ac974305911bc45bcae",
+      "released_sha256": "68fa1499283694e66a6f4015e77dd83b625efa091b756ac974305911bc45bcae",
+      "current_sha256": "68fa1499283694e66a6f4015e77dd83b625efa091b756ac974305911bc45bcae",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/blobs/9117e6413009af57cb51239b509d23c750391411d462bbb4b154fc7a01ff3b18",
+      "released_sha256": "9117e6413009af57cb51239b509d23c750391411d462bbb4b154fc7a01ff3b18",
+      "current_sha256": "9117e6413009af57cb51239b509d23c750391411d462bbb4b154fc7a01ff3b18",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/blobs/cf8226dee394454e1ae6e8df1fdffad455569eb599ba0b71fb318bbfcffe1839",
+      "released_sha256": "cf8226dee394454e1ae6e8df1fdffad455569eb599ba0b71fb318bbfcffe1839",
+      "current_sha256": "cf8226dee394454e1ae6e8df1fdffad455569eb599ba0b71fb318bbfcffe1839",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/blobs/e54102e0d90cd112d22b5f935cd430c929f43fb89a9314a9b6c19ada3cee2001",
+      "released_sha256": "e54102e0d90cd112d22b5f935cd430c929f43fb89a9314a9b6c19ada3cee2001",
+      "current_sha256": "e54102e0d90cd112d22b5f935cd430c929f43fb89a9314a9b6c19ada3cee2001",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/authority/blobs/f26c2969e86917939f16b336c61ce4c35467acb54643512f5075c8f6c3dcbcb6",
+      "released_sha256": "f26c2969e86917939f16b336c61ce4c35467acb54643512f5075c8f6c3dcbcb6",
+      "current_sha256": "f26c2969e86917939f16b336c61ce4c35467acb54643512f5075c8f6c3dcbcb6",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/controller.jsonl",
+      "released_sha256": "34827893970300b179b2f9923e94134791c87c820429586247eaa2fc08ea98ec",
+      "current_sha256": "34827893970300b179b2f9923e94134791c87c820429586247eaa2fc08ea98ec",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/ownership.jsonl",
+      "released_sha256": "46a1dd508a9677efb8e05fc00858380d982204e04ce087a429d6e8339f8db27e",
+      "current_sha256": "46a1dd508a9677efb8e05fc00858380d982204e04ce087a429d6e8339f8db27e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/snapshots/scope-255c04140213449b852b17086207d3ea.json",
+      "released_sha256": "ab6ce15866bbab4c9b51dc929f222661707e15ea66875d4e52ee701532c7724d",
+      "current_sha256": "ab6ce15866bbab4c9b51dc929f222661707e15ea66875d4e52ee701532c7724d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/live/snapshots/scope-272768d9e31d41209b1e9f976b7c8514.json",
+      "released_sha256": "52f0e37f2dc00cbe5e86c5cddb7f8e37dae676ab290c9952c1768d1a2ef5d51a",
+      "current_sha256": "52f0e37f2dc00cbe5e86c5cddb7f8e37dae676ab290c9952c1768d1a2ef5d51a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/CLEARANCE.json",
+      "released_sha256": "2e30e925faae94070587daae801da958bad20d7173b4df5420a45226cb125249",
+      "current_sha256": "2e30e925faae94070587daae801da958bad20d7173b4df5420a45226cb125249",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/COMMITTED_FIXTURE.json",
+      "released_sha256": "18003afec07a61621529e0d7a63ec42a59c424ef4865d4bea3eb9d240d0819a8",
+      "current_sha256": "18003afec07a61621529e0d7a63ec42a59c424ef4865d4bea3eb9d240d0819a8",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/REPORT.json",
+      "released_sha256": "e0fe11160f59b0566c21aef4b6ca57767b10be4fc6dff5b97534804d5e7bf953",
+      "current_sha256": "e0fe11160f59b0566c21aef4b6ca57767b10be4fc6dff5b97534804d5e7bf953",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/MANIFEST.json",
+      "released_sha256": "898594dc6807a09724bf6399e60ce45dae667f6a2395abd72745a5003568b693",
+      "current_sha256": "898594dc6807a09724bf6399e60ce45dae667f6a2395abd72745a5003568b693",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/blobs/0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7",
+      "released_sha256": "0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7",
+      "current_sha256": "0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/blobs/68fa1499283694e66a6f4015e77dd83b625efa091b756ac974305911bc45bcae",
+      "released_sha256": "68fa1499283694e66a6f4015e77dd83b625efa091b756ac974305911bc45bcae",
+      "current_sha256": "68fa1499283694e66a6f4015e77dd83b625efa091b756ac974305911bc45bcae",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/blobs/884a0f32e702063ec35cf40c1185987c04fe3c2ec7db5a6086be259832ee427d",
+      "released_sha256": "884a0f32e702063ec35cf40c1185987c04fe3c2ec7db5a6086be259832ee427d",
+      "current_sha256": "884a0f32e702063ec35cf40c1185987c04fe3c2ec7db5a6086be259832ee427d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/blobs/9117e6413009af57cb51239b509d23c750391411d462bbb4b154fc7a01ff3b18",
+      "released_sha256": "9117e6413009af57cb51239b509d23c750391411d462bbb4b154fc7a01ff3b18",
+      "current_sha256": "9117e6413009af57cb51239b509d23c750391411d462bbb4b154fc7a01ff3b18",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/blobs/cf8226dee394454e1ae6e8df1fdffad455569eb599ba0b71fb318bbfcffe1839",
+      "released_sha256": "cf8226dee394454e1ae6e8df1fdffad455569eb599ba0b71fb318bbfcffe1839",
+      "current_sha256": "cf8226dee394454e1ae6e8df1fdffad455569eb599ba0b71fb318bbfcffe1839",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/authority/blobs/e54102e0d90cd112d22b5f935cd430c929f43fb89a9314a9b6c19ada3cee2001",
+      "released_sha256": "e54102e0d90cd112d22b5f935cd430c929f43fb89a9314a9b6c19ada3cee2001",
+      "current_sha256": "e54102e0d90cd112d22b5f935cd430c929f43fb89a9314a9b6c19ada3cee2001",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/between-local.txt.jsonl",
+      "released_sha256": "824e61d5e7ea297d385962042f97041d1583943286612a052a52a2d631ad093d",
+      "current_sha256": "824e61d5e7ea297d385962042f97041d1583943286612a052a52a2d631ad093d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/between-public.txt.jsonl",
+      "released_sha256": "7e8e9919581233c0e07a91c07b7419a2aa9e556544ef66143947127bd9fdc3e7",
+      "current_sha256": "7e8e9919581233c0e07a91c07b7419a2aa9e556544ef66143947127bd9fdc3e7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/contradictory-policy.jsonl",
+      "released_sha256": "b727ff98113280e8b92ea4593ea2ecda2501e222f6a82d192d69347351acac2e",
+      "current_sha256": "b727ff98113280e8b92ea4593ea2ecda2501e222f6a82d192d69347351acac2e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/synthetic/controller.jsonl",
+      "released_sha256": "c52c3d99a04d491db17187f68b3bc9665dcefde523b90f5b91cca3bca5948128",
+      "current_sha256": "c52c3d99a04d491db17187f68b3bc9665dcefde523b90f5b91cca3bca5948128",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_context_separation/verify_capture.py",
+      "released_sha256": "ba2cfed535f453375cb8068da69d3cf4985bf709eeab51c8f5331a8c75306af7",
+      "current_sha256": "ba2cfed535f453375cb8068da69d3cf4985bf709eeab51c8f5331a8c75306af7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_final_clearance/ARCHITECT_SELECTIONS.md",
+      "released_sha256": "e39a22ab7faa1b7dd8f24042b9914917d37f3eeb947aed2512e71d068d3cc1a7",
+      "current_sha256": "e39a22ab7faa1b7dd8f24042b9914917d37f3eeb947aed2512e71d068d3cc1a7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_final_clearance/CAPTURE_REFERENCE.json",
+      "released_sha256": "46bc69a00de0821dcbb403dd3b3959c4ef2d19aa4bcd4f5cc260789273adcfe3",
+      "current_sha256": "46bc69a00de0821dcbb403dd3b3959c4ef2d19aa4bcd4f5cc260789273adcfe3",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_final_clearance/CONTENT_CLEARANCE_MANIFEST.json",
+      "released_sha256": "a0400fdc2f27c0ed58a97128aa3ce010e3c14fdeae08cdc84f6eaf801bf4954d",
+      "current_sha256": "a0400fdc2f27c0ed58a97128aa3ce010e3c14fdeae08cdc84f6eaf801bf4954d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/ARCHITECT_AUTHORITY.md",
+      "released_sha256": "0fa50c9a18ba3996f6ad97e87c94a9ee38fa4866d9ea7a846d02555d9a31bd94",
+      "current_sha256": "0fa50c9a18ba3996f6ad97e87c94a9ee38fa4866d9ea7a846d02555d9a31bd94",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/FINAL_SCOPE_VERIFICATION.json",
+      "released_sha256": "b8a5462a54622fc4bd4600a18d3c2a929cfe38b810949f34983cc5575a5bc92c",
+      "current_sha256": "b8a5462a54622fc4bd4600a18d3c2a929cfe38b810949f34983cc5575a5bc92c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/INACTIVE_VERIFICATION.json",
+      "released_sha256": "c3e97ce446d03075c08715688acbabfa3193a9c81fbcea6e192ee49d2f47b2f7",
+      "current_sha256": "c3e97ce446d03075c08715688acbabfa3193a9c81fbcea6e192ee49d2f47b2f7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/OWNERSHIP_VERIFICATION.json",
+      "released_sha256": "9ca154cd6327aaa6561805d746a9b8d0a92640d01786e8da9ad2fe742ed61016",
+      "current_sha256": "9ca154cd6327aaa6561805d746a9b8d0a92640d01786e8da9ad2fe742ed61016",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/PD06_VERIFICATION.json",
+      "released_sha256": "4f309bc22726a5bc78d4a05b34ccaa3d7451d46ad793a7296548611ff1d8faf8",
+      "current_sha256": "4f309bc22726a5bc78d4a05b34ccaa3d7451d46ad793a7296548611ff1d8faf8",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/PRODUCTION_LAUNCH_RECORD.json",
+      "released_sha256": "bce00f605aadda2a3b48a51f24de2fb9bac2f3c265442c7e1fbb3a5e68e2a57b",
+      "current_sha256": "bce00f605aadda2a3b48a51f24de2fb9bac2f3c265442c7e1fbb3a5e68e2a57b",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/PROFILE_SHA256.txt",
+      "released_sha256": "88c0b0bf645cb79d52f23f4e8d2f341cf8ab712c63fb5e011702ee4ab42a5849",
+      "current_sha256": "88c0b0bf645cb79d52f23f4e8d2f341cf8ab712c63fb5e011702ee4ab42a5849",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/PROPOSED_PRODUCTION_PROFILE.json",
+      "released_sha256": "158fc81437ef2e36d9f5a03fe7f322e4fb8905d6bd7acf29e837172e0729a5b1",
+      "current_sha256": "158fc81437ef2e36d9f5a03fe7f322e4fb8905d6bd7acf29e837172e0729a5b1",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/PROVISIONING_DOCS_BASELINE.json",
+      "released_sha256": "24e06b6eb1bd31809b9fb89d386a810b1ac2f43026dd7efd13d8595ef425f20c",
+      "current_sha256": "24e06b6eb1bd31809b9fb89d386a810b1ac2f43026dd7efd13d8595ef425f20c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/SOURCE_SHA256.json",
+      "released_sha256": "a440ebbb50f552d2ec0edb95985c3e482e6f0046788e6132292f60ce91c4441c",
+      "current_sha256": "a440ebbb50f552d2ec0edb95985c3e482e6f0046788e6132292f60ce91c4441c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/BOUNDARY_REPORT.json",
+      "released_sha256": "f714b11bcd6373bffaa3f5b45194a26689816a167a22f131d626ca4247ba9c4e",
+      "current_sha256": "f714b11bcd6373bffaa3f5b45194a26689816a167a22f131d626ca4247ba9c4e",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/clear-explicitly-cleared-governing.jsonl",
+      "released_sha256": "000bc99d61c365a00dd7adc4d75b5e09e0d2f457b516a5061e3a59d44724e1cf",
+      "current_sha256": "000bc99d61c365a00dd7adc4d75b5e09e0d2f457b516a5061e3a59d44724e1cf",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/clear-ordinary.jsonl",
+      "released_sha256": "2d8e627cb0e70105d02c80fed14d3e022df19824d379eac544b92b6d9f4b332c",
+      "current_sha256": "2d8e627cb0e70105d02c80fed14d3e022df19824d379eac544b92b6d9f4b332c",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/provision-active.jsonl",
+      "released_sha256": "0b8b4ab52e796349b2bf13cab02be4b238428fe7a15c795167b574a45b6514f2",
+      "current_sha256": "0b8b4ab52e796349b2bf13cab02be4b238428fe7a15c795167b574a45b6514f2",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/provision-pass.jsonl",
+      "released_sha256": "cc8890482d23b51516a862b4ac96cb35cd448778dcfa12074af839532c020615",
+      "current_sha256": "cc8890482d23b51516a862b4ac96cb35cd448778dcfa12074af839532c020615",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/provision-symlink.jsonl",
+      "released_sha256": "d91667c2c187cfadfdb1c94cecbe5f003d0bc773b39d095b790881233e20149d",
+      "current_sha256": "d91667c2c187cfadfdb1c94cecbe5f003d0bc773b39d095b790881233e20149d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/provision-unexpected-existing.jsonl",
+      "released_sha256": "39e87e1be8d0b620702823515ca421d4c3d344a7044c2080ae6cde656420c155",
+      "current_sha256": "39e87e1be8d0b620702823515ca421d4c3d344a7044c2080ae6cde656420c155",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/provision-unlisted.jsonl",
+      "released_sha256": "87eb4ea5efc63b7132c7eb86311c685625e4dac2e767568d35772f7c86b5e8a5",
+      "current_sha256": "87eb4ea5efc63b7132c7eb86311c685625e4dac2e767568d35772f7c86b5e8a5",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/provision-wrong-type.jsonl",
+      "released_sha256": "c9110fa224ebb6df866ac91e2678678f62dcb7398e0f49da5101efab49e506cb",
+      "current_sha256": "c9110fa224ebb6df866ac91e2678678f62dcb7398e0f49da5101efab49e506cb",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/boundary/transmission-audit.jsonl",
+      "released_sha256": "6df3a0fe00ee79825cf3a1715cbe3fabeecf56f7ff9880c87595b7d151bce6a1",
+      "current_sha256": "6df3a0fe00ee79825cf3a1715cbe3fabeecf56f7ff9880c87595b7d151bce6a1",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/captures/2d554764e02ebfc2b602ffde88f7ee2531d986d2ede6af97b48df6bf4218797b/MANIFEST.json",
+      "released_sha256": "2d554764e02ebfc2b602ffde88f7ee2531d986d2ede6af97b48df6bf4218797b",
+      "current_sha256": "2d554764e02ebfc2b602ffde88f7ee2531d986d2ede6af97b48df6bf4218797b",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/HOST_RECEIPT.json",
+      "released_sha256": "26a1c404f24888b1d7012c22b35269f2e1d171f5a441992474d817df1ec0e258",
+      "current_sha256": "26a1c404f24888b1d7012c22b35269f2e1d171f5a441992474d817df1ec0e258",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/LIVE_REPORT.json",
+      "released_sha256": "b102518be692fa8e066e28cccccc4cb2ff83810e168ca547387438646d9e9256",
+      "current_sha256": "b102518be692fa8e066e28cccccc4cb2ff83810e168ca547387438646d9e9256",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/controller.jsonl",
+      "released_sha256": "bc6eec251312a452cedc5ee408a32b9961b71ba4a824e973263aa4e1b8c9d0a3",
+      "current_sha256": "bc6eec251312a452cedc5ee408a32b9961b71ba4a824e973263aa4e1b8c9d0a3",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/ownership.jsonl",
+      "released_sha256": "8cca1f6fac435f8287b25192684d9f082487462eccc08bdc692ca325e11fd9de",
+      "current_sha256": "8cca1f6fac435f8287b25192684d9f082487462eccc08bdc692ca325e11fd9de",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/snapshots/scope-3efb78c40ade4e66841d95d6164c9664.json",
+      "released_sha256": "8fa18118c75ce5eb33e1d8b5e2ea043faa03c5fd509d89471d6c26b6457696da",
+      "current_sha256": "8fa18118c75ce5eb33e1d8b5e2ea043faa03c5fd509d89471d6c26b6457696da",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/snapshots/scope-c045340d09ae460d82c80f851c844b06.json",
+      "released_sha256": "507e83a4b26395bc0b48548db4fbcf354a56c6c9bf34e8adaae79f915effe849",
+      "current_sha256": "507e83a4b26395bc0b48548db4fbcf354a56c6c9bf34e8adaae79f915effe849",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/snapshots/scope-cbe96f805ff14edfb7ebf8c7b3b45ce2.json",
+      "released_sha256": "fb758d86e578dbd108b63041a8fe2c1eb59c30d0804def5135a5cdfcaa3496b7",
+      "current_sha256": "fb758d86e578dbd108b63041a8fe2c1eb59c30d0804def5135a5cdfcaa3496b7",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/execution/snapshots/scope-e5297959d73645c2a22dc9e143e98d7f.json",
+      "released_sha256": "e789066d96f090ed2408c827c6c337cdbbe31b56b66a5b7f6d2009c6544b0064",
+      "current_sha256": "e789066d96f090ed2408c827c6c337cdbbe31b56b66a5b7f6d2009c6544b0064",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/failed_attempt/LIVE_REPORT.json",
+      "released_sha256": "d8ba3d8f0c9579daccee68db7a9357dc116e37c1a4ee601f8b635e757e74b523",
+      "current_sha256": "d8ba3d8f0c9579daccee68db7a9357dc116e37c1a4ee601f8b635e757e74b523",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/failed_attempt/RECONCILIATION.json",
+      "released_sha256": "9c163e37468476d5ba7a03c3d5f00ff9fbe4711d72a493b63f405227c3505f83",
+      "current_sha256": "9c163e37468476d5ba7a03c3d5f00ff9fbe4711d72a493b63f405227c3505f83",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/failed_attempt/controller.jsonl",
+      "released_sha256": "e45b30f884dd4392f182233f47aa385d920ec585f599e64033e90597d3f3b948",
+      "current_sha256": "e45b30f884dd4392f182233f47aa385d920ec585f599e64033e90597d3f3b948",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/failed_attempt/ownership.jsonl",
+      "released_sha256": "c4f890bec80ff1e1d03540331ab2bbe6f559fc8ae1b2929241e46f210238dda3",
+      "current_sha256": "c4f890bec80ff1e1d03540331ab2bbe6f559fc8ae1b2929241e46f210238dda3",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/failed_attempt/snapshots/scope-36f722e093db4e8c8bbdbfbab685bcc4.json",
+      "released_sha256": "7c8841454406c1037612e0c3935a884ae83f2cad1b5cd45d48b6f69b02a6630d",
+      "current_sha256": "7c8841454406c1037612e0c3935a884ae83f2cad1b5cd45d48b6f69b02a6630d",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/inactive-controller.jsonl",
+      "released_sha256": "70e0be83f9a08e9b066e1bca538c2cecb85c4aa8d2ec58601e2570ab65b54f74",
+      "current_sha256": "70e0be83f9a08e9b066e1bca538c2cecb85c4aa8d2ec58601e2570ab65b54f74",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/live_runner.py",
+      "released_sha256": "6ef5e747b57a3b06304102a524604b614c66f7e3efac8b749169707010fdedee",
+      "current_sha256": "6ef5e747b57a3b06304102a524604b614c66f7e3efac8b749169707010fdedee",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/provision_real.py",
+      "released_sha256": "bc50b8c7ebd378dcb0f2b7cbe69ee9552f9115a4106e18491f837a609158e246",
+      "current_sha256": "bc50b8c7ebd378dcb0f2b7cbe69ee9552f9115a4106e18491f837a609158e246",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/provisioning/BASELINE_DERIVATION.json",
+      "released_sha256": "0a0b3889af872ee00f58cfe0feaa924ef7570cda6bb497951352f253fc683196",
+      "current_sha256": "0a0b3889af872ee00f58cfe0feaa924ef7570cda6bb497951352f253fc683196",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/provisioning/PLAN.json",
+      "released_sha256": "309d570162bf4cb466a4dc57d145e21e125efb9d35bc692428d2c948b95b2ca5",
+      "current_sha256": "309d570162bf4cb466a4dc57d145e21e125efb9d35bc692428d2c948b95b2ca5",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/provisioning/RECEIPT.json",
+      "released_sha256": "2583ed2b52165591050256f4e51c0f99af94289f0f8c1aff0c43b2aa67f0d3e9",
+      "current_sha256": "2583ed2b52165591050256f4e51c0f99af94289f0f8c1aff0c43b2aa67f0d3e9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/provisioning/provisioning.jsonl",
+      "released_sha256": "de80323ed1961cd26fee573c1965e648f127f89f28a78122b61c6aceae18f841",
+      "current_sha256": "de80323ed1961cd26fee573c1965e648f127f89f28a78122b61c6aceae18f841",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/reconcile_attempt.py",
+      "released_sha256": "a922f33b511acf1f14b6c4008f9f03f738da580e2e7c4790dcc32a2d1a926963",
+      "current_sha256": "a922f33b511acf1f14b6c4008f9f03f738da580e2e7c4790dcc32a2d1a926963",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/regression.txt",
+      "released_sha256": "4e1b3722b9494db2f5a848829a553d5f23a70eee3b0ed694e0dce90aa3ab2186",
+      "current_sha256": "4e1b3722b9494db2f5a848829a553d5f23a70eee3b0ed694e0dce90aa3ab2186",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/seal_candidate.py",
+      "released_sha256": "f3eddc00f98ab7a327d2843c59ab8ba762af1bd9908784982275de043091266a",
+      "current_sha256": "f3eddc00f98ab7a327d2843c59ab8ba762af1bd9908784982275de043091266a",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/preparation_verification.json",
+      "released_sha256": "d345fbe977a7295674d79bad652eb9779902a9ba7fa0a805b370a1bcab8bc467",
+      "current_sha256": "d345fbe977a7295674d79bad652eb9779902a9ba7fa0a805b370a1bcab8bc467",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_publication/AGENTS.md",
+      "released_sha256": "4c93cba19d265362a01ca803d28060e870fc27a7a8de4293ce34d50549fa1712",
+      "current_sha256": "4c93cba19d265362a01ca803d28060e870fc27a7a8de4293ce34d50549fa1712",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_publication/README.md",
+      "released_sha256": "6964ef6c65a9de8fb27c276ae8716777c2d5a1019e81bce52a8830f07459ffb3",
+      "current_sha256": "6964ef6c65a9de8fb27c276ae8716777c2d5a1019e81bce52a8830f07459ffb3",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_publication/docs/ARCHITECTURE.md",
+      "released_sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "current_sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_publication/docs/PUBLICATION.json",
+      "released_sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "current_sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_publication/docs/REQUIREMENTS.md",
+      "released_sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "current_sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_publication/docs/VISION.md",
+      "released_sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "current_sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "matches": true
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_repository_receipt.json",
+      "released_sha256": "9c55181c720d7aa95415bbf7892b2fc6ecc032b68244d9345490f6043369cc25",
+      "current_sha256": "9c55181c720d7aa95415bbf7892b2fc6ecc032b68244d9345490f6043369cc25",
+      "matches": true
+    },
+    {
+      "path": "/tmp/a21m.sock.supervisor-audit.jsonl",
+      "released_sha256": "dd67aa41123e4d4949b498d8af4cee3fadaae0138dd2020e593b989548c1221f",
+      "current_sha256": "dd67aa41123e4d4949b498d8af4cee3fadaae0138dd2020e593b989548c1221f",
+      "matches": true
+    },
+    {
+      "path": "/tmp/kge-forge-e1-evidence/auth-e1-wp-001-r4-627f1cc70c3947b78e851a51ce1e628e/session-e1-c84554d294414338a1e62f4211e2f74d/turn-e1-bd63a12c81844a0084359e6fcabf0f1b/controller.jsonl",
+      "released_sha256": "70e0be83f9a08e9b066e1bca538c2cecb85c4aa8d2ec58601e2570ab65b54f74",
+      "current_sha256": "70e0be83f9a08e9b066e1bca538c2cecb85c4aa8d2ec58601e2570ab65b54f74",
+      "matches": true
+    },
+    {
+      "path": "/tmp/kge-forge-e1-evidence/auth-e1-wp-001-r6-45263b89790143deaafd0a2b5bbeba55/session-e1-3db8bdf21c5c4f05a347148e5f6c63b2/turn-e1-d0cea68ed29244b2b1070c312dec84be/controller.jsonl",
+      "released_sha256": "d780801254c2f7ead8ec66a9789cda4de625ef5d5d24059f5e5b5fc10bf00182",
+      "current_sha256": "d780801254c2f7ead8ec66a9789cda4de625ef5d5d24059f5e5b5fc10bf00182",
+      "matches": true
+    },
+    {
+      "path": "/tmp/kge-forge-e1-invocations.jsonl",
+      "released_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "current_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches": true
+    },
+    {
+      "path": "/tmp/pd06-r6-independent-auth-e1-wp-001-r6-45263b89790143deaafd0a2b5bbeba55.jsonl",
+      "released_sha256": "579a9edc3d72f1309bacdaa270badeadf94334ac7bcbf306313062395416ddb0",
+      "current_sha256": "579a9edc3d72f1309bacdaa270badeadf94334ac7bcbf306313062395416ddb0",
+      "matches": true
+    },
+    {
+      "path": "/usr/bin/bwrap",
+      "released_sha256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987",
+      "current_sha256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987",
+      "matches": true
+    },
+    {
+      "path": "/usr/bin/git",
+      "released_sha256": "c3edb15c9715b79fcfb1fa978256cdfc14a9ad72a4a8d5680a9fc5ebc6a57e0e",
+      "current_sha256": "c3edb15c9715b79fcfb1fa978256cdfc14a9ad72a4a8d5680a9fc5ebc6a57e0e",
+      "matches": true
+    },
+    {
+      "path": "/usr/bin/python3",
+      "released_sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+      "current_sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+      "matches": true
+    },
+    {
+      "path": "/usr/bin/python3.11",
+      "released_sha256": "415cab36dc0bc818be4f6915fd7997103ab10753c878f01d28484a9fcf218b04",
+      "current_sha256": "415cab36dc0bc818be4f6915fd7997103ab10753c878f01d28484a9fcf218b04",
+      "matches": true
+    }
+  ],
+  "release_source_change_count": 1,
+  "classification_counts": {
+    "NEVER_TRANSMIT": 60,
+    "LOCAL_ONLY": 120,
+    "TRANSMIT": 6
+  },
+  "transmit_range_comparison": [
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "full_source_matches": true,
+      "ranges_match": true,
+      "ranges": [
+        {
+          "start_byte": 3002,
+          "end_byte_exclusive": 3232,
+          "sha256": "e6267526f8c609e1566e654c4a06766231f1179c6d23e9c6f505336444f9f294",
+          "start_line": 71,
+          "end_line": 71,
+          "label": "D-01"
+        },
+        {
+          "start_byte": 3232,
+          "end_byte_exclusive": 3443,
+          "sha256": "479b3a9e088f27d7024b71605d4607e4e1f89d2720642893f0179ad8fe1ad624",
+          "start_line": 72,
+          "end_line": 72,
+          "label": "D-02"
+        },
+        {
+          "start_byte": 3443,
+          "end_byte_exclusive": 3634,
+          "sha256": "96ce92051e383ab8454611b8f72f3f4f57579cc77ee80fea74829e2dae04fdcf",
+          "start_line": 73,
+          "end_line": 73,
+          "label": "D-03"
+        },
+        {
+          "start_byte": 6594,
+          "end_byte_exclusive": 14340,
+          "sha256": "6651f7848b115e29db8cc0c2185702284d395240d986d6f6fe24d8251a16cfab",
+          "start_line": 89,
+          "end_line": 209,
+          "label": "Sections 3-5"
+        }
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+      "full_source_matches": true,
+      "ranges_match": true,
+      "ranges": [
+        {
+          "start_byte": 820,
+          "end_byte_exclusive": 989,
+          "sha256": "8b2534f8804a5d135c77c8f813a86234ab51bbe54b7ebec8fb3cb8e5804f18b5",
+          "start_line": 19,
+          "end_line": 19,
+          "label": "F-01"
+        },
+        {
+          "start_byte": 989,
+          "end_byte_exclusive": 1190,
+          "sha256": "ea7d49780af767c266381308e9bec6457e006d95e136f3876a8e44372430b7ab",
+          "start_line": 20,
+          "end_line": 20,
+          "label": "F-02"
+        },
+        {
+          "start_byte": 1190,
+          "end_byte_exclusive": 1419,
+          "sha256": "ba8d125433dbce51726ff4a08e583939966256089aa232a8c5fee8a4a704f045",
+          "start_line": 21,
+          "end_line": 21,
+          "label": "F-03"
+        },
+        {
+          "start_byte": 1419,
+          "end_byte_exclusive": 1637,
+          "sha256": "14812787befccf4e731c6b4afaaf31a650fab0e3056794cf40de313ff603aa52",
+          "start_line": 22,
+          "end_line": 22,
+          "label": "F-04"
+        },
+        {
+          "start_byte": 1637,
+          "end_byte_exclusive": 1865,
+          "sha256": "fb5efe5fd17a6227a437e89a9073abb5f33a8d689365ac50ac16c8c6f31dee57",
+          "start_line": 23,
+          "end_line": 23,
+          "label": "F-05"
+        },
+        {
+          "start_byte": 1865,
+          "end_byte_exclusive": 2096,
+          "sha256": "4d1075411c5af88320ecbec4e94126f0e8dab9f4f72bd5cb7a2dc55dc9486357",
+          "start_line": 24,
+          "end_line": 24,
+          "label": "F-06"
+        },
+        {
+          "start_byte": 2096,
+          "end_byte_exclusive": 2297,
+          "sha256": "25e9a597f082af1cbf244076cbdc99cd5fc81819bce84fdc6b9199c3d52e52e1",
+          "start_line": 25,
+          "end_line": 25,
+          "label": "F-07"
+        },
+        {
+          "start_byte": 2297,
+          "end_byte_exclusive": 2496,
+          "sha256": "7c2e84407697a91af880132f8162afa54d4f8db14c4e1ba8d8e389e7840eb643",
+          "start_line": 26,
+          "end_line": 26,
+          "label": "F-08"
+        },
+        {
+          "start_byte": 2496,
+          "end_byte_exclusive": 2683,
+          "sha256": "6fb001ad8f5e878eafd1533d6f2ac2d41271f540691ae44e34355cc30abcad97",
+          "start_line": 27,
+          "end_line": 27,
+          "label": "F-09"
+        },
+        {
+          "start_byte": 2683,
+          "end_byte_exclusive": 2891,
+          "sha256": "6338592ff865dc61aa1a2ae9a84b77044db1bd7846ec08c94506532c63d2dab1",
+          "start_line": 28,
+          "end_line": 28,
+          "label": "F-10"
+        },
+        {
+          "start_byte": 2891,
+          "end_byte_exclusive": 3088,
+          "sha256": "ab214d6b9b61c9c38f17ad7fce83a312ed3060f5fe853f6ffbcd256b1c902ffe",
+          "start_line": 29,
+          "end_line": 29,
+          "label": "F-11"
+        },
+        {
+          "start_byte": 9927,
+          "end_byte_exclusive": 10128,
+          "sha256": "57e96c7b4655528e854ef6d16bc5bffcebaaaa6971bf09d48baf32151c67778b",
+          "start_line": 74,
+          "end_line": 74,
+          "label": "A-13"
+        },
+        {
+          "start_byte": 10128,
+          "end_byte_exclusive": 10337,
+          "sha256": "ff3e300063743ac7ef47f4634900781d582c0f31566b8224005e97ff68d54073",
+          "start_line": 75,
+          "end_line": 75,
+          "label": "A-14"
+        },
+        {
+          "start_byte": 10337,
+          "end_byte_exclusive": 10553,
+          "sha256": "f118c498bd1897e1281931270dafd55c13077bd38e3be00f199144b7da7d3413",
+          "start_line": 76,
+          "end_line": 76,
+          "label": "A-15"
+        }
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+      "full_source_matches": true,
+      "ranges_match": true,
+      "ranges": [
+        {
+          "start_byte": 0,
+          "end_byte_exclusive": 3665,
+          "sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37",
+          "start_line": 1,
+          "end_line": 53,
+          "label": "complete captured file"
+        }
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/DECISIONS.md",
+      "full_source_matches": false,
+      "ranges_match": true,
+      "ranges": [
+        {
+          "start_byte": 2077,
+          "end_byte_exclusive": 2537,
+          "sha256": "a444d6874d535edd74d7d2e9079ea18867e69282bf7cc1222a456cdcb319b498",
+          "start_line": 39,
+          "end_line": 47,
+          "label": "PD-04 tooling only"
+        }
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+      "full_source_matches": true,
+      "ranges_match": true,
+      "ranges": [
+        {
+          "start_byte": 0,
+          "end_byte_exclusive": 9278,
+          "sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c",
+          "start_line": 1,
+          "end_line": 147,
+          "label": "complete captured file"
+        }
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/pd06_release_evidence/PROPOSED_PRODUCTION_PROFILE.json",
+      "full_source_matches": true,
+      "ranges_match": true,
+      "ranges": [
+        {
+          "start_byte": 288,
+          "end_byte_exclusive": 819,
+          "sha256": "5fa4b87d102effcdefb5fb2df4ebbff9750b08a2c9f5beb12973a88bb3667a2c",
+          "start_line": 10,
+          "end_line": 35,
+          "label": "runtime argv/cwd/inputs/environment/network/shell"
+        },
+        {
+          "start_byte": 1370,
+          "end_byte_exclusive": 1663,
+          "sha256": "721b765336f79be03dcae44bc0d66e78fa0b16b2b3fa2806d60144f0aaf5ce48",
+          "start_line": 53,
+          "end_line": 56,
+          "label": "exact committed acceptance input identity"
+        }
+      ]
+    }
+  ],
+  "model_payload_ranges_unchanged": true,
+  "production_profile_fingerprint": "b9e7f72d97525f39fbddfe92f276ab6aedd057ef6c5b7284dc163f1db9c9c328",
+  "production_launch_file_sha256": "d8693a5c075217fbf01adfd2007a777879399d689d983e0a07e5cc4b92db10b6",
+  "profile_and_launch_match_released_bytes": true,
+  "forge_HEAD": "5a3895d76212615b86a9e0764bf7dd702ed9451b",
+  "working_tree_clean": false,
+  "working_tree_porcelain_before_assessment": " M adapter/authority_profile.py\n M adapter/context_binding.py\n M adapter/exec_barrier.py\n M adapter/governed_host.py\n M adapter/responses_orchestrator.py\n M adapter/tests/test_orchestrator.py\n M adapter/tests/test_production_exec.py\n M adapter/tests/test_programmer_substrate.py\n M adapter/tests/test_recovery_ledger.py\n M docs/experiments/E1/pre_dispatch/DECISIONS.md\n?? adapter/committed_objects.py\n?? adapter/context_projection.py\n?? adapter/directory_provisioning.py\n?? adapter/launch_profile.py\n?? adapter/model_transmission.py\n?? adapter/model_transport.py\n?? adapter/runnable_profile.py\n?? adapter/tests/test_context_projection.py\n?? adapter/tests/test_pd05_file_authority.py\n?? adapter/tests/test_pd06_release_boundaries.py\n?? adapter/tests/test_runnable_profile.py\n?? docs/experiments/E1/pre_dispatch/FINAL_PD05_RUNNABLE_QUALIFICATION_2026-09-16.md\n?? docs/experiments/E1/pre_dispatch/PD05_AUTHORITY_APPLICABILITY_2026-09-16.md\n?? docs/experiments/E1/pre_dispatch/PD05_CLOSURE_AUTHORITY_2026-09-16.md\n?? docs/experiments/E1/pre_dispatch/PD05_GAP_DISPOSITION_RECORDS_2026-09-16.md\n?? docs/experiments/E1/pre_dispatch/PD05_REVISED_COVERAGE_2026-09-16.md\n?? docs/experiments/E1/pre_dispatch/PD06_RELEASE_BLOCKER_CLOSURE_2026-09-16.md\n?? docs/experiments/E1/pre_dispatch/pd05_applicability_evidence/\n?? docs/experiments/E1/pre_dispatch/pd05_closure_evidence/\n?? docs/experiments/E1/pre_dispatch/pd05_final_evidence/\n?? docs/experiments/E1/pre_dispatch/pd06_context_separation/\n?? docs/experiments/E1/pre_dispatch/pd06_final_clearance/\n?? docs/experiments/E1/pre_dispatch/pd06_release_evidence/\n",
+  "working_tree_note": "Qualified implementation was released as HEAD plus uncommitted source fingerprints; dirty state alone is not new drift. Captured input comparison is exhaustive over the release inventory, not an attestation of all unrelated/untracked files.",
+  "runtime_executable_argv_environment_network_validation": "PASS (non-executing validator)",
+  "transport_validation": "PASS (configuration and CA identity only; no request or credential read)",
+  "provisioning_receipt_sha256": "2583ed2b52165591050256f4e51c0f99af94289f0f8c1aff0c43b2aa67f0d3e9",
+  "directories": [
+    {
+      "path": "/home/gvasend/app/kge-forge/src",
+      "device": 64768,
+      "inode": 2627220,
+      "mode": "0o755",
+      "entries": [
+        "kge_forge"
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/src/kge_forge",
+      "device": 64768,
+      "inode": 2627226,
+      "mode": "0o755",
+      "entries": [
+        "context"
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/src/kge_forge/context",
+      "device": 64768,
+      "inode": 2627227,
+      "mode": "0o755",
+      "entries": []
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/tests",
+      "device": 64768,
+      "inode": 2627228,
+      "mode": "0o755",
+      "entries": [
+        "context"
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/tests/context",
+      "device": 64768,
+      "inode": 2627229,
+      "mode": "0o755",
+      "entries": []
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs",
+      "device": 64768,
+      "inode": 2626607,
+      "mode": "0o775",
+      "entries": [
+        "ARCHITECTURE_ELICITATION.md",
+        "ARCHITECTURE_GAP_ANALYSIS.md",
+        "EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+        "EXPERIMENT_1_ARCHITECTURE.md",
+        "EXPERIMENT_1_ARCHITECTURE_CANDIDATE.md",
+        "EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+        "EXPERIMENT_1_BASELINE_MANIFEST.json",
+        "EXPERIMENT_1_HUMAN_INTERVENTIONS.md",
+        "EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+        "VISION.md",
+        "experiments",
+        "implementation",
+        "release_notes.txt"
+      ]
+    },
+    {
+      "path": "/home/gvasend/app/kge-forge/docs/implementation",
+      "device": 64768,
+      "inode": 2627230,
+      "mode": "0o755",
+      "entries": []
+    }
+  ],
+  "snapshot_acceptance_readiness": "BLOCKED by same CommittedContext verification; no execution snapshot built",
+  "ownership": {
+    "ledger": "/tmp/kge-forge-e1-invocations.jsonl",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "active_reservation": null,
+    "unclosed_supervisor_scopes": [],
+    "scope_observations": {
+      "scope-d1d50faa7f4a438ea3eee0a3090b7d56": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-c045340d09ae460d82c80f851c844b06": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-5a0e69dd6d894c58842a58828c065fe2": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-0d53b68764e341eeafa9e52cd9bc7547": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-cbe96f805ff14edfb7ebf8c7b3b45ce2": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e4cdb3986c30493697ed8baca5a0e0ed": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-dddfeb50d4b241449cd664ebcb960d18": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-07e21e6c33644e708e6fb627a323a62e": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-418e1cf403894b779b822be3b841cc2d": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-43721bf6cdec4c93bb965f559ff08429": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-fc4f09a808204396be342a5b2ca42338": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-66b55cddc1ef4d498e8bc7c3b4d90d2c": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-1f10ea2ebbde47178ae56a6289ca26d9": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-dfdec5837274420193075c999a2f350d": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-5aec7432f58d403fb063c69239f20d0c": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-83cbb1c5130d4cf4b8ef06b251217c1f": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-b4bcb8c7cddb459ebe400eb49a07b71f": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-91e2adf0c76e423aba7d2db628774e52": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-b580da94bd7749dd93fcaa6466184397": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-ca47e28a8701415394f1f7ee7d313470": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-70d392dc2c784b1585b4890e4e665619": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-acd042cc60e14810972485784573f22a": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-dbd910167cb54d9a93cc64f26d7790f1": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-98bc40bd98114c3e9d29324879bfc0ab": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-23afcc57cecf44d88e4001821f17b356": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e131ba4efaae43d9918f52ead2dcccc0": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-5e6d7d806d6540838484287b7a9b24b2": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e3d6ec5ad18b453288421be2af81be3e": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-b7e57a3592c740c99049ab76e78fe787": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-b45f6a1823c84082a79b0d222dfd4299": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-36f722e093db4e8c8bbdbfbab685bcc4": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-0e0f0c104eae41e7b57f7943c2cc3e64": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-536d45535ef046ffb03cbe2ee9a42e57": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-86300f9074044a39aa3831e99f13749a": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e82dc52c9248475db7c105d172a39c55": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-ebc56275fdf24da4aae2784de2904ed8": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e26ed21dd3cb408eaf49cc3d97d1295c": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-07217bff63ab4940a92c2a8034f9e256": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-0c113e0bcd664c08b8a8c1ad2a05b90a": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-3efb78c40ade4e66841d95d6164c9664": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-6455050287044b0fa0fb6e8758785c07": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-2ec54e2f98bf4c4fa89ffd9081a174a9": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-ac7a4485cf30437b859a1e7b4980755f": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e5297959d73645c2a22dc9e143e98d7f": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-a2c9a95457b747e6878b9d728fdf6b53": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-f29f39bf374944ad9d997bd1de74b838": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-3e6cc62c507b422dbc8f9d70857109c5": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-760af64260974bf3a18da4610f68e98e": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-ace7e9987ed547c3b8740899226bceb7": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-b8f50e5d18ff4a3f9d0b39dd1475e716": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e7b27dadb61a4a3a9799049096282c2e": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-ef161cae51b4411fb575e5553763d97b": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-d8c0315cb7cf406488d480a606c51520": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-6875771f812c4480a1fcefa6631f1bec": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-5189618b10734dd9a605da558513ba40": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-c52ce481982c4cbfb6209d0def89a8de": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-d71898f3b2a942bfb5e0eb9f39e6c597": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-fef6d38530d842059a29c8015253e7c6": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-57d0dfc01abd47db83f98a56aa8a07a2": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-865b8f44ffed477591f9faa2b447faa3": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-b3d553dea04e485e95f4f6b07a691e6a": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-9bc33d28771847b382e7e753601df0fa": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-e66b2ea592474754b3027f0894f0e2f0": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-837ca1c1c2764616b7c4ffb3c25a4f7d": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-255c04140213449b852b17086207d3ea": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-4cebd4708c5544c8aa558c8ad1ed0345": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-6848bb837b454dc6afcf5359cd81677f": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-735f220df58f4c6eb0092d8ed3347a74": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-914e1536a2a74f53ab911dacfd3bbaa5": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-af5251bf707047d991d7a3e890e3208d": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-5e746a9deab34043adb1a2103f26badb": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-7210e304d22840aea2bd23cdab972f60": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-fdc3b1f3afd44c228b637939b5c7926d": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-15d61c1e92b14e0b97082845a0cea50e": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-ea922c1b427a4c049e43f18b63c77c44": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-9a73bcceb42c44cd9041ba2551e7c543": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-595f1cb8183844ecac9a0698bd7c81e9": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-7f325b09f5c6435b9d6864c409791464": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-6e013de77c54430d992f58b0fda3155c": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      },
+      "scope-272768d9e31d41209b1e9f976b7c8514": {
+        "members": [],
+        "populated": 0,
+        "directories": 1
+      }
+    },
+    "pending_E1_ActionResults": [],
+    "production_audit_sha256": "d780801254c2f7ead8ec66a9789cda4de625ef5d5d24059f5e5b5fc10bf00182",
+    "production_audit_event_names": [
+      "authorization_issued",
+      "context_projection_verified",
+      "context_projection_verified",
+      "model_transmission"
+    ],
+    "concurrency": "Unchanged qualified common-ledger flock/reserve mechanism; no reservation acquired by this assessment. Observation is not a future dispatch-time lease.",
+    "recovery": "No E1 execution request/scope recorded. Full controller restart binding cannot validate until context blocker closes."
+  },
+  "supervisor": {
+    "host_ps_observation": "57950 57949 1000 /usr/bin/python -m adapter.supervisor_server /tmp/a21m.sock",
+    "method": "approved read-only host ps; sandbox PID namespace hides host process",
+    "historical_receipt": "pd05_final_evidence/HOST_RECEIPT.json",
+    "host_authority_limit": "No new host authority test or payload launched; current capabilities/delegation must be revalidated at final readiness after context reconciliation."
+  },
+  "anomalies": "Known release limitations retained. Authorized decisions append is the only mismatch among 240 captured current inputs. No new qualified mechanism or authority is claimed.",
+  "proposed_dispatch_binding": {
+    "usable": false,
+    "dispatch_record_created": false,
+    "reserved_launch_identity": {
+      "authorization_id": "auth-e1-wp-001-r6-45263b89790143deaafd0a2b5bbeba55",
+      "revision": 6,
+      "work_package_id": "E1-WP-001",
+      "session_id": "session-e1-3db8bdf21c5c4f05a347148e5f6c63b2",
+      "turn_id": "turn-e1-d0cea68ed29244b2b1070c312dec84be"
+    },
+    "reason": "Existing allocated identity is historical proposal only; no valid current context binding or dispatch authority."
+  },
+  "assessment_scope": "Stopped at failed binding prerequisite. Not a completed activation readiness attestation. No code, released artifacts, operational ledgers, demo or Fabrik modified."
+}

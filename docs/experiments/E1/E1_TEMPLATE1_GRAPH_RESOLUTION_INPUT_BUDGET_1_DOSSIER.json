@@ -1,0 +1,296 @@
+{
+  "schema": "E1-DECISION-INPUT-DOSSIER-1",
+  "action": "INPUT-BUDGET",
+  "decision_id": "DEC-BUDGET",
+  "status": "UNADOPTED_REVIEW_DOSSIER",
+  "question": "Which exact canonical type/representation shall authenticated_inputs.budget_policy use: A authority reference, B entire policy value, or C explicitly typed projection? Choose one or defer/reject; no inferred default.",
+  "scope": "Representation and exact projection contract for the recorded StatusBudgetAuthority snapshot only; no budget change, applicability assertion, grant expansion or downstream execution.",
+  "owning_source_identity": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+  "source_body_byte_length": 1189,
+  "source_body_sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+  "recorded_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+  "recorded_lineage": "R4-final CURRENT UNIQUE",
+  "unchanged_policy": {
+    "schema": "E1-RUN-CONTROL-1",
+    "seconds": {
+      "cycle": [
+        120,
+        300
+      ],
+      "no_progress": [
+        180,
+        300
+      ],
+      "invocation": [
+        1200,
+        1800
+      ],
+      "phase": [
+        30,
+        120
+      ]
+    },
+    "requests": [
+      8,
+      12
+    ],
+    "tokens": [
+      100000,
+      150000
+    ],
+    "automatic_retry": false,
+    "usage_unknown": "TIME_AND_REQUEST_LIMITS_ONLY"
+  },
+  "unchanged_source_controls": {
+    "single_use": true,
+    "authority_expansion": "NONE",
+    "hard_exhaustion": "close admission; cancellation/recovery; QUIESCENT; no future execution",
+    "cancellation": "authoritative cancellation; release ownership; no unconfirmed transmission claim",
+    "recovery": "durable counters/policy/identity; no reset; ambiguity blocks",
+    "escalation": "FAIL_CLOSED"
+  },
+  "options": [
+    {
+      "id": "A",
+      "name": "Authority reference",
+      "json_type": "string",
+      "source_selector": "/authority_id",
+      "proposed_value": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+      "rule": "Copy the complete authority ID including StatusBudgetAuthority-sha256 prefix, exactly; field denotes AUTHORITY_IDENTITY, not content identity.",
+      "linkage": "Reference resolves to the hash-verified full source body; policy is exactly /policy of that body. All source controls remain authoritative.",
+      "compatibility": "Constructor currently stores/hashes the supplied string but does not authenticate or dereference it. A later approved CONTRACT-T1/validator must require exact reference type plus independently supplied verified source; no new resolver availability is claimed.",
+      "consequence": "Small field; mandatory source resolution remains external to value. Field canonical bytes differ from B and C; identity-covered bodies therefore differ.",
+      "canonical_bytes_rule": "UTF-8 encoding of json.dumps(value, sort_keys=True, separators=(\",\",\":\"), ensure_ascii=True); no whitespace/newline, after strict JSON/type validation. Escape strings by JSON rules; no normalization/coercion.",
+      "illustrative_field_bytes_sha256": "42de4041f9408b344d002017ef982d698ae59beb557d1578e563bb2a5d7f8f67",
+      "illustrative_field_byte_length": 95,
+      "validation": [
+        "Parse strict JSON: reject duplicate keys, NaN/infinities, wrong types or extra/missing members; no implicit coercion.",
+        "Authenticate owning authority by SHA-256 of its exact sorted-key compact JSON body excluding authority_id; reject wrong identity/prefix/type.",
+        "Preserve source scope, lineage, runtime, controller store, programmer profile, single-use, no expansion, hard exhaustion, cancellation, recovery/no-reset and FAIL_CLOSED independently of field representation.",
+        "Before actual mapping/use, separately establish current applicability and source availability; a dossier snapshot is not publication/freshness proof.",
+        "Array order and endpoints are exact; integers are not booleans/floats; false remains JSON false. Never broaden bounds or treat policy bytes as new authority.",
+        "Reject cross-alternative types/shapes after any future choice. No permissive union, auto-dereference fallback, omission or silent normalization."
+      ],
+      "status": "PROPOSED_ONLY_NOT_ADOPTED",
+      "assumptions": "Only the already accepted source snapshot is used. Current live applicability/publication and actual construction inputs remain outside this representation decision."
+    },
+    {
+      "id": "B",
+      "name": "Complete policy body",
+      "json_type": "object",
+      "source_selector": "/policy (entire object, no omitted members)",
+      "proposed_value": {
+        "schema": "E1-RUN-CONTROL-1",
+        "seconds": {
+          "cycle": [
+            120,
+            300
+          ],
+          "no_progress": [
+            180,
+            300
+          ],
+          "invocation": [
+            1200,
+            1800
+          ],
+          "phase": [
+            30,
+            120
+          ]
+        },
+        "requests": [
+          8,
+          12
+        ],
+        "tokens": [
+          100000,
+          150000
+        ],
+        "automatic_retry": false,
+        "usage_unknown": "TIME_AND_REQUEST_LIMITS_ONLY"
+      },
+      "rule": "Copy the exact complete /policy JSON subtree including schema, seconds, requests, tokens, automatic_retry and usage_unknown. This is a policy value, not an authority ID or full authority record.",
+      "linkage": "A separate mandatory provenance/validation input pins the full source authority_id and exact /policy selector. Body equality alone does not confer authority; the full authority controls remain enforced from authenticated source. This dossier supplies the source link, but does not authorize adding another Template-1 key.",
+      "compatibility": "Constructor hashes the supplied object but lacks field-specific source/type validation. Later contract/validator must compare it against the entire authenticated /policy; full-record controls cannot be discarded because absent from this subtree.",
+      "consequence": "Self-contained numerical policy in this field; ownership/applicability linkage still requires independent source proof. No changes to the 22-input key set.",
+      "canonical_bytes_rule": "UTF-8 encoding of json.dumps(value, sort_keys=True, separators=(\",\",\":\"), ensure_ascii=True); no whitespace/newline, after strict JSON/type validation. Escape strings by JSON rules; no normalization/coercion.",
+      "illustrative_field_bytes_sha256": "b25973ad894b287ca758552a9fdfd4e22ddbef671485b280a199c2c9b03dc177",
+      "illustrative_field_byte_length": 239,
+      "validation": [
+        "Parse strict JSON: reject duplicate keys, NaN/infinities, wrong types or extra/missing members; no implicit coercion.",
+        "Authenticate owning authority by SHA-256 of its exact sorted-key compact JSON body excluding authority_id; reject wrong identity/prefix/type.",
+        "Preserve source scope, lineage, runtime, controller store, programmer profile, single-use, no expansion, hard exhaustion, cancellation, recovery/no-reset and FAIL_CLOSED independently of field representation.",
+        "Before actual mapping/use, separately establish current applicability and source availability; a dossier snapshot is not publication/freshness proof.",
+        "Array order and endpoints are exact; integers are not booleans/floats; false remains JSON false. Never broaden bounds or treat policy bytes as new authority.",
+        "Reject cross-alternative types/shapes after any future choice. No permissive union, auto-dereference fallback, omission or silent normalization."
+      ],
+      "status": "PROPOSED_ONLY_NOT_ADOPTED",
+      "assumptions": "Only the already accepted source snapshot is used. Current live applicability/publication and actual construction inputs remain outside this representation decision."
+    },
+    {
+      "id": "C",
+      "name": "Explicit typed projection with authority link",
+      "json_type": "object with exact fixed keys",
+      "source_selector": {
+        "schema": "literal E1-TEMPLATE1-BUDGET-PROJECTION-1 (PROPOSED, unadopted)",
+        "authority_id": "/authority_id",
+        "scope": "/scope",
+        "lineage": "/lineage",
+        "runtime": "/runtime",
+        "controller_store": "/controller_store",
+        "programmer_profile": "/programmer_profile",
+        "policy": "/policy",
+        "controls": {
+          "single_use": "/single_use",
+          "authority_expansion": "/authority_expansion",
+          "hard_exhaustion": "/hard_exhaustion",
+          "cancellation": "/cancellation",
+          "recovery": "/recovery",
+          "escalation": "/escalation"
+        }
+      },
+      "proposed_value": {
+        "schema": "E1-TEMPLATE1-BUDGET-PROJECTION-1",
+        "authority_id": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+        "scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+        "lineage": "R4-final CURRENT UNIQUE",
+        "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+        "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+        "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+        "policy": {
+          "schema": "E1-RUN-CONTROL-1",
+          "seconds": {
+            "cycle": [
+              120,
+              300
+            ],
+            "no_progress": [
+              180,
+              300
+            ],
+            "invocation": [
+              1200,
+              1800
+            ],
+            "phase": [
+              30,
+              120
+            ]
+          },
+          "requests": [
+            8,
+            12
+          ],
+          "tokens": [
+            100000,
+            150000
+          ],
+          "automatic_retry": false,
+          "usage_unknown": "TIME_AND_REQUEST_LIMITS_ONLY"
+        },
+        "controls": {
+          "single_use": true,
+          "authority_expansion": "NONE",
+          "hard_exhaustion": "close admission; cancellation/recovery; QUIESCENT; no future execution",
+          "cancellation": "authoritative cancellation; release ownership; no unconfirmed transmission claim",
+          "recovery": "durable counters/policy/identity; no reset; ambiguity blocks",
+          "escalation": "FAIL_CLOSED"
+        }
+      },
+      "rule": "Construct exactly the displayed object; preserve every selected value and complete policy/control subtrees. The literal schema is a proposed discriminator, not an existing adopted contract. No additional or omitted keys.",
+      "linkage": "authority_id authenticates the full owning record; all included identity/scope/policy/control members must equal their named source paths. The envelope is a canonical value with authority provenance, never new authority.",
+      "compatibility": "Current generic constructor can include JSON objects in hashing; it does not validate this proposed schema. Adopting it would require explicit CONTRACT-T1 treatment and separately authorized validation; no implementation grant or working consumer support is claimed.",
+      "consequence": "More redundant data; exact equality checks prevent drift between embedded policy/scope/controls and owning source. No extra top-level Template-1 input key or migration is implied.",
+      "canonical_bytes_rule": "UTF-8 encoding of json.dumps(value, sort_keys=True, separators=(\",\",\":\"), ensure_ascii=True); no whitespace/newline, after strict JSON/type validation. Escape strings by JSON rules; no normalization/coercion.",
+      "illustrative_field_bytes_sha256": "4e226f1e89617fba3243c01575505f459dc5a3a9d01542098cacbb19fa38da81",
+      "illustrative_field_byte_length": 1166,
+      "validation": [
+        "Parse strict JSON: reject duplicate keys, NaN/infinities, wrong types or extra/missing members; no implicit coercion.",
+        "Authenticate owning authority by SHA-256 of its exact sorted-key compact JSON body excluding authority_id; reject wrong identity/prefix/type.",
+        "Preserve source scope, lineage, runtime, controller store, programmer profile, single-use, no expansion, hard exhaustion, cancellation, recovery/no-reset and FAIL_CLOSED independently of field representation.",
+        "Before actual mapping/use, separately establish current applicability and source availability; a dossier snapshot is not publication/freshness proof.",
+        "Array order and endpoints are exact; integers are not booleans/floats; false remains JSON false. Never broaden bounds or treat policy bytes as new authority.",
+        "Reject cross-alternative types/shapes after any future choice. No permissive union, auto-dereference fallback, omission or silent normalization."
+      ],
+      "status": "PROPOSED_ONLY_NOT_ADOPTED",
+      "assumptions": "Only the already accepted source snapshot is used. Current live applicability/publication and actual construction inputs remain outside this representation decision."
+    }
+  ],
+  "recommended_minimum": "NONE: existing evidence establishes alternatives, not a preferred adopted representation.",
+  "decision_input_completeness": "All facts needed to compare these bounded representation alternatives exist in the hash-bound source. This is not a request to establish current source applicability or authorize use.",
+  "deferred_downstream_facts": [
+    "Current applicability of EXECUTION-scoped authority to the exact target construction envelope must be established; no equality with REQUEST scope is inferred.",
+    "Current source publication/freshness and independent owning-source qualification are not proved by snapshot verification.",
+    "CONTRACT-T1, REEVAL-BUDGET, MAP-BUDGET and full validator/source proof remain outstanding."
+  ],
+  "if_approved": "Only the explicit selected representation rule becomes governing after a separate accepted Architect decision. Reevaluate original semantic criteria; do not infer mapping/root satisfaction.",
+  "authority_not_granted": [
+    "budget expansion or counter reset",
+    "new authority/source creation",
+    "implementation or validator changes",
+    "map or candidate construction",
+    "WorkAuthorization acceptance/issuance/use",
+    "Template-1 or Candidate-3 construction",
+    "runtime/lifecycle/ownership/repository/transmission effects"
+  ],
+  "downstream": "DEC-BUDGET -> REEVAL-BUDGET -> DEC-INTERFACES/CONTRACT-T1/MAP-BUDGET with every other gate retained.",
+  "required_future_qualification": [
+    "Reject changed numeric endpoints, missing/extra keys, type substitutions, alternate identity prefix and stale/wrong source lineage.",
+    "Reject A/B/C cross-type/shape substitution after choice.",
+    "Check canonical bytes and exact authenticated source projection including preserved source restrictions.",
+    "No generic constructor hash acceptance is treated as complete field validation."
+  ],
+  "provenance": [
+    {
+      "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_BUDGET_1_RESULT.md",
+      "source_artifact_identity": "sha256:b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320",
+      "source_location": "Accepted K1-K3; policy; exact governing decision requirement",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    },
+    {
+      "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+      "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+      "source_location": "Second JSON block: StatusBudgetAuthority, /authority_id, /policy, /scope, /lineage and control members",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    },
+    {
+      "source_artifact_path": "adapter/invocation_constructor.py",
+      "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+      "source_location": "_body; artifact; construct_work_authorization",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    },
+    {
+      "source_artifact_path": "adapter/context_projection.py",
+      "source_artifact_identity": "sha256:54ed15c7764ed1a4c3b4b44c78fadb2a698de0f7e71ec951b2fb618fabf49998",
+      "source_location": "canonical; digest",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    },
+    {
+      "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+      "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+      "source_location": "budget_policy row",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    },
+    {
+      "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+      "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+      "source_location": "budget_policy expected type/mapping",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    },
+    {
+      "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+      "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+      "source_location": "Budget route and dossier/readiness predicates",
+      "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+      "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+    }
+  ],
+  "production_effect": "NO"
+}

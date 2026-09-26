@@ -1,0 +1,45 @@
+{
+  "S3": "READY",
+  "actual_context": {
+    "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:1ab699d479fb2086981b30074384cb2e2144241c7f009fd5edec146d53606d39",
+    "release_authority": "E1-RELEASE-AUTHORITY-sha256:bb1808a5ffbd720cd8447db29dc7946dbc7e50f336d4ca6c809ea82b321b3e30",
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761"
+  },
+  "adoption": {
+    "R3": "HISTORICAL",
+    "R4_final": "CURRENT_UNIQUE",
+    "catalog_sha256": "e5c48443efa9a8f4680e3d1d9d4c9327933e123eca34a6cbe18972b33377f4d2",
+    "event": {
+      "R3": "HISTORICAL",
+      "from_catalog": "83f4138325775340093c15a07351cc1a147871d3ac089d44afb42e7759fb9cfa",
+      "grant": "MATERIAL-RUNTIME-ADOPTION-GRANT-sha256:8b63fda1ea48f1dc55b465f07f6047492689dce478d74e84eb5c4a0ae209f58b",
+      "id": "RUNTIME-ADOPTION-EVENT-sha256:edbad0f9b86314a6a847f9b26b6f08ea4a3cbff049e316efefccd1fc5c010fb2",
+      "predecessor": "sha256:eebb05f30a4a64befeca7802990129ac79dff701dd192789fbdf59be2ec118ff",
+      "result": "R4_FINAL_ADOPTED_UNIQUE_CURRENT_RUNTIME",
+      "schema": "RUNTIME-ADOPTION-EVENT-1",
+      "successor": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "to_catalog": "e5c48443efa9a8f4680e3d1d9d4c9327933e123eca34a6cbe18972b33377f4d2"
+    },
+    "grant_consumed": "MATERIAL-RUNTIME-ADOPTION-GRANT-sha256:8b63fda1ea48f1dc55b465f07f6047492689dce478d74e84eb5c4a0ae209f58b",
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761"
+  },
+  "blockers": [
+    "no canonical current R4-final dispatch exists/published",
+    "current dispatch embeds R3 runtime identity",
+    "no production WorkAuthorization for a replacement invocation",
+    "full R4 lifecycle cannot be qualified against current R4 dispatch"
+  ],
+  "current_dispatch": {
+    "embedded_runtime": "sha256:eebb05f30a4a64befeca7802990129ac79dff701dd192789fbdf59be2ec118ff",
+    "identity": "E1-ARCHITECT-DISPATCH-sha256:757d239c3b31689ea651be8f9a0fd293567df09a0c497ef72f8d4a05a41147a8",
+    "status": "STALE_R3_BOUND_DISPATCH"
+  },
+  "domain": "LIVE_R3_CONTROLLER",
+  "effects": 0,
+  "live_store": "/tmp/kge-forge-r3-current-r13-authority",
+  "model_requests": 0,
+  "next_action": "construct and separately authorize/publish current R4-final dispatch before WorkAuthorization lifecycle qualification",
+  "r13": "SUPERSEDED_BEFORE_ISSUANCE_BY_R3_TO_R4_AUTHORITY_TRANSITION_UNISSUED_UNOWNED",
+  "schema": "E1-LIVE-R4-FINAL-ADOPTION-RESULT-1",
+  "verdict": "BLOCKED_R4_CURRENT_DISPATCH_AND_WORKAUTH_NOT_READY"
+}

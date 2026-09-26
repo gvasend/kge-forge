@@ -1,0 +1,46 @@
+{
+  "verdict": "BLOCKED / FAILED_CLOSED_BEFORE_ACTIVATION",
+  "dispatch_record_id": "E1-ARCHITECT-DISPATCH-sha256:08f721ab75f001d5b2a4a91c259cf52174b78d4060e0d0ecacdcc2b7ae1abaf7",
+  "dispatch_record_sha256": "08f721ab75f001d5b2a4a91c259cf52174b78d4060e0d0ecacdcc2b7ae1abaf7",
+  "checks_performed": {
+    "common_ledger_no_reservation": "PASS",
+    "qualified_implementation_fingerprints": "PASS",
+    "all_166_assessment_capture_inputs_current": "PASS",
+    "release_governance_projection_identities": "PASS",
+    "released_profile_fingerprint": "PASS",
+    "exact_work_package_bytes": "PASS",
+    "existing_inactive_audit_reconstruction": "PASS",
+    "Architect_dispatch_permission_binding": "PASS",
+    "authorized_activation_audit_transition": "FAIL: effective authorization changed across restart"
+  },
+  "blocker": {
+    "id": "E1-DISPATCH-AUDIT-TRANSITION",
+    "description": "The exact authorized audit already contains issued INACTIVE authorization for this invocation. Adding the required dispatch reference and ACTIVE state is accepted by verify_authorization, but the qualified recovery mechanism rejects the resulting authorization against the existing audit.",
+    "error": "effective authorization changed across restart",
+    "mismatched_authorization_fields": [
+      "state",
+      "operational_binding"
+    ],
+    "existing_issued_authorizations": 2,
+    "audit": "/tmp/kge-forge-e1-evidence/auth-e1-wp-001-r7-94f511dfcdcc43ac837191f8732ced39/session-e1-50b26bdb12b44ec7a92e0c517c7de7c8/turn-e1-58d4a30dbf79478f8afc7b46a84caa47/controller.jsonl",
+    "audit_sha256_unchanged": "e4d8a91d0692bb48ad323005b45603cbbd2834a6babdb08b8f846b742ae1e883",
+    "required_next_assessment": "An explicitly authorized and qualified INACTIVE-to-ACTIVE audit transition is needed. No audit reset, replacement path, identity substitution, recovery bypass or controller repair was performed."
+  },
+  "atomic_dispatch_validation": "NOT PASSED. Common-ledger lock held during read-only binding/audit preflight, then released without reservation. Remaining supervisor/provisioning/live-scope checks not represented as completed atomic dispatch validation.",
+  "states": {
+    "PD06": "RELEASED",
+    "E1_B01": "PASS",
+    "Architect_decision": "DISPATCH_AUTHORIZED (immutable conditional decision recorded)",
+    "execution_authorization": "UNUSABLE: dispatch validation failed",
+    "E1": "INACTIVE",
+    "E1_WP_001": "INELIGIBLE / UNDISPATCHED",
+    "Programmer_completion": "NOT STARTED"
+  },
+  "model_requests": 0,
+  "E1_execution_requests": 0,
+  "ownership_reservation_acquired": false,
+  "implementation_changes": [],
+  "persistent_effect_retries": 0,
+  "audit_modified": false,
+  "observation_utc": "2026-09-16T20:06:25.338450+00:00"
+}

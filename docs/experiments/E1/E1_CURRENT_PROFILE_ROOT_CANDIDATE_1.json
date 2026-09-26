@@ -1,0 +1,66 @@
+{
+  "schema": "CURRENT-R4-PROFILE-ROOT-CANDIDATE-1",
+  "status": "CANDIDATE_ONLY",
+  "scope": {
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+    "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "lineage": "R4-final CURRENT UNIQUE",
+    "task": "E1-WP-001",
+    "purpose": "first Programmer request only"
+  },
+  "authorities": {
+    "provider": "CurrentProviderModelAuthority-sha256:95b3d340ec85add69b1a472acffa4eb4372f3e528a8dc29278a8fe0fd58b0939",
+    "payload": "CurrentModelPayloadAuthority-sha256:cc20ba70d59acab0b322db7231cb4b77f183994dfb2db5c0b8405d5ed6629ada",
+    "retention": "CurrentRetentionAuthority-sha256:c17023b118aeb4ecd7a57a72b0d8f5826415ecb8dd87e83c49a55afde9d60462",
+    "transmission": "CurrentTransmissionAuthority-sha256:2adc46e1422ad0934597e398540f2e9f54eb57c601f8b29f8a805b06a611f79c",
+    "content_clearance": "CurrentContentClearanceAuthority-sha256:3243f4e84d3434655d8455355bd9ea742c0659cbf49827b9eeb80160b39646b3",
+    "template": "WorkAuthorizationTemplate-sha256:d49797c4d2072c310f30f038be6fd597d3a74b2ce6a0a8a06d6dd831989ffee8"
+  },
+  "least_authority": {
+    "tools": [],
+    "generic_tools": false,
+    "mcp": false,
+    "connectors": false,
+    "additional_agents": false,
+    "repository_read_roots": [
+      "/home/gvasend/app/kge-forge",
+      "/home/gvasend/app/kge-forge-demo"
+    ],
+    "repository_write_roots": [
+      "/home/gvasend/app/kge-forge/src/kge_forge/__init__.py",
+      "/home/gvasend/app/kge-forge/src/kge_forge/context",
+      "/home/gvasend/app/kge-forge/tests/context",
+      "/home/gvasend/app/kge-forge/docs/implementation/E1-WP-001.md"
+    ],
+    "promotion": "none",
+    "exec_argv_allowlist": [
+      [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/context",
+        "-p",
+        "test_*.py",
+        "-v"
+      ]
+    ],
+    "shell": false,
+    "task_network": false,
+    "model_endpoint_only": "https://api.openai.com/v1/responses",
+    "credentials": "host-side reference only",
+    "model_visible_credentials": false,
+    "secrets": false,
+    "audit": "append-only; same identity on restart; no reset",
+    "ownership": "shared ledger; override prohibited; active/uncertain reservation blocks",
+    "budgets": "existing E1 bounded budgets",
+    "escalation": "fail-closed",
+    "authority_expansion": "none"
+  },
+  "canonicalization": "JSON UTF-8; lexicographic object keys; listed array order; compact separators; identity is SHA-256 of this body",
+  "baseline_profile": "E1-PRODUCTION-PROFILE-6 sha256:fb842649d30e5876fb3f299e890e2c555a88be759c29b2c6577552d4885b0226 historical technical baseline only",
+  "identity": "CurrentProfileRootCandidate-sha256:83b8cbc0549c64d21eaccaffc1fa45b49be368a878ccecdf9572d476477dfcd6",
+  "canonical_byte_length": 2390
+}

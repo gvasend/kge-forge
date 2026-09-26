@@ -1,0 +1,85 @@
+{
+  "schema": "OPERATIONAL-CONTEXT-AND-BINDING-MODEL-QUALIFICATION-1",
+  "verdict": "BLOCKED_OPERATIONAL_CONTEXT_AUTHORITY_MISSING_AND_OPERATIONAL_BINDING_AUTHORITY_MISSING",
+  "qualification_domain": "SUCCESSOR_RUNTIME_QUALIFICATION",
+  "production_mutation": false,
+  "production_state": {
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+    "authority_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "r13": "UNISSUED_UNOWNED",
+    "model_requests": 0,
+    "e1_effects": 0
+  },
+  "context_model": {
+    "proposed_schema": "OPERATIONAL-CONTEXT-1",
+    "identity_rule": "sha256(canonical(identity_body)); identity excluded from body",
+    "required_inputs": [
+      "runtime/runtime-head authority",
+      "release basis and release decision",
+      "continuation ancestry",
+      "released profile",
+      "model payload/projection authority",
+      "transmission/retention authority",
+      "budget policy",
+      "supervisor/succession authority",
+      "current applicability"
+    ],
+    "derivation_status": "NOT_QUALIFIED",
+    "blockers": [
+      "exact current OperationalContextId has no canonical owning record",
+      "no authorized derivation rule reproduces the historical 1ab699d identity",
+      "current release-authority object is referenced but not independently resolvable"
+    ],
+    "historical_1ab699d_classification": "REFERENCE_ONLY_OR_IMPROPERLY_PROMOTED",
+    "comparison": "NOT_APPLICABLE_UNTIL_CANONICAL_DERIVATION_EXISTS"
+  },
+  "binding_model": {
+    "proposed_schema": "OPERATIONAL-BINDING-1",
+    "identity_rule": "sha256(canonical(binding_body)); identity excluded from body",
+    "required_inputs": [
+      "canonical invocation",
+      "canonical dispatch",
+      "canonical OperationalContext",
+      "released profile",
+      "runtime/runtime-head",
+      "release authority",
+      "implementation identity",
+      "model projection/payload",
+      "policy and budget identities",
+      "audit binding"
+    ],
+    "circularity_rule": "WorkAuthorization is downstream and cannot be an input to its own operational binding",
+    "derivation_status": "NOT_QUALIFIED",
+    "historical_reference": "replacement_operational_binding_sha256:5729a87d49768825a78ee5e4946c9154d7273385aad92320a435d38448086b4d",
+    "historical_reference_classification": "DIGEST_OR_COPY_WITHOUT_OWNING_RECORD",
+    "comparison": "INSUFFICIENTLY_DEFINED"
+  },
+  "authority_dag": {
+    "nodes": ["Runtime", "Release", "OperationalContext", "Dispatch", "Invocation", "Profile", "OperationalBinding", "WorkAuthorizationTemplate", "WorkAuthorization", "IssuanceAuthority", "Lifecycle", "Ownership", "Audit"],
+    "edges": [
+      ["Runtime", "OperationalContext"], ["Release", "OperationalContext"], ["Profile", "OperationalContext"], ["Dispatch", "OperationalBinding"], ["Invocation", "OperationalBinding"], ["OperationalContext", "OperationalBinding"], ["Profile", "OperationalBinding"], ["Runtime", "OperationalBinding"], ["Release", "OperationalBinding"], ["OperationalBinding", "WorkAuthorization"], ["WorkAuthorizationTemplate", "WorkAuthorization"], ["IssuanceAuthority", "Lifecycle"], ["WorkAuthorization", "Lifecycle"], ["Lifecycle", "Ownership"], ["Invocation", "Audit"]
+    ],
+    "acyclicity": "PASS_AS_PROPOSED",
+    "qualification": "BLOCKED_BY_MISSING_SOURCE_NODES"
+  },
+  "artifact_impact": {
+    "R4_dispatch": "REQUIRES_RECONSTRUCTION_AFTER_CANONICAL_CONTEXT/BINDING",
+    "r13_invocation": "REQUIRES_RECONSTRUCTION_AFTER_CANONICAL_CONTEXT/BINDING",
+    "applicability_reconciliation": "REQUIRES_RECONSTRUCTION",
+    "WorkAuthorization": "REQUIRES_RECONSTRUCTION_IF_BINDING_DEPENDENCY_CHANGES",
+    "template": "REQUIRES_RECONSTRUCTION_IF_RUNTIME/CONTEXT_SCOPE_CHANGES",
+    "issuance_authority": "REQUIRES_RECONSTRUCTION_IF_WORKAUTH_ID_CHANGES"
+  },
+  "required_external_authority": [
+    "canonical current OperationalContext record or an already-authorized deterministic derivation rule and all source authorities",
+    "canonical OperationalBinding record or an already-authorized deterministic derivation rule"
+  ],
+  "preservation": {
+    "R4_final_current": true,
+    "G4_current": true,
+    "production_changed": false,
+    "r13_issued": false,
+    "provider_requests": 0,
+    "e1_effects": 0
+  }
+}

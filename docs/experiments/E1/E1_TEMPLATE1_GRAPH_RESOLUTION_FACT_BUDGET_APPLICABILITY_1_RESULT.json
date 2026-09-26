@@ -1,0 +1,1338 @@
+{
+  "schema": "E1-FACT-BUDGET-APPLICABILITY-RESULT-1",
+  "report": {
+    "ACTION": "FACT-BUDGET-APPLICABILITY",
+    "OPERATION_CLASS": "FACT_ACQUISITION",
+    "ACTION_RESULT": "EXTERNAL_GATE_REQUIRED",
+    "ACTION_KNOWLEDGE_PRODUCED": [
+      "FACT-BUDGET-K1",
+      "FACT-BUDGET-K2",
+      "FACT-BUDGET-K3",
+      "FACT-BUDGET-K4"
+    ],
+    "PROOF_OBLIGATIONS_PROVED": [],
+    "PROOF_OBLIGATIONS_DISPROVED": [],
+    "PROOF_OBLIGATIONS_REMAINING": [
+      "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+      "BUDGET-PROOF-SCOPE",
+      "BUDGET-PROOF-LINEAGE",
+      "BUDGET-PROOF-RUNTIME",
+      "BUDGET-PROOF-CONTROLLER_STORE_G4",
+      "BUDGET-PROOF-PROGRAMMER_PROFILE",
+      "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+      "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+    ],
+    "EXTERNAL_EVIDENCE_REQUIRED": [
+      "EXT-BUDGET-APPLICABILITY-EVIDENCE"
+    ],
+    "ARCHITECT_DECISION_REQUIRED": "NO",
+    "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+    "SLOT_TRANSITION": "UNCHANGED",
+    "ROOT_CONDITIONS_RESOLVED": [],
+    "ROOT_CONDITIONS_REMAINING": 27,
+    "SLOTS_RESOLVED": [],
+    "SLOTS_REMAINING": 41,
+    "ACTIONABLE": [],
+    "NEXT_ACTION": "NONE",
+    "DECIDING_CRITERION": "EMPTY_ACTIONABLE (initial selection: singleton at entry)",
+    "TEMPLATE1_CONSTRUCTION_READY": "NO",
+    "CANDIDATE3_RESUMPTION_READY": "NO",
+    "PRODUCTION_EFFECT": "NO"
+  },
+  "plan_operation_class": "SOURCE_ACQUISITION",
+  "stage_role": "FACT_ACQUISITION",
+  "reentry_route": "C: REQUIRED EVIDENCE NOT AVAILABLE INTERNALLY (within the permitted manifest)",
+  "route_explanation": "No one of the eight current-proof obligations is established; snapshot identity and reference consistency are auxiliary facts, not current proof. Therefore choose C, not mixed-current-proof E.",
+  "partial_pass_permitted": false,
+  "partial_pass_basis": "Acquire/validate only evidence in budget_applicability_reentry_semantics.acquisition_boundary. PASS only with complete exact proof matrix of authenticity, identity/type, availability/publication rule, scope/phase, lineage, runtime, G4/store, required profile and temporal validity/single-use facts. Missing facts -> BLOCKED/EXTERNAL_GATE_REQUIRED; proven incompatible/stale -> FAIL; complete technical facts but missing normative applicability -> AUTHORITY_REQUIRED. No authority, mutation, mapping or recursive source search.",
+  "source_manifest": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+      "sha256": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+      "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+      "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+      "sha256": "5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+      "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+      "sha256": "475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+      "sha256": "66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+      "sha256": "3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+      "sha256": "e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+      "sha256": "b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+      "sha256": "52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    },
+    {
+      "path": "adapter/authority_resolution.py",
+      "sha256": "62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+      "location": "ResolvedAuthorityValue.from_bytes default freshness and compose_activation_inputs; interface semantics only, no call executed",
+      "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+      "validation": "RAW_SHA256_MATCH"
+    }
+  ],
+  "knowledge": [
+    {
+      "id": "FACT-BUDGET-K1",
+      "claim": "The named issued source is locally readable, has expected record_type, and its 1189-byte canonical body reproduces the exact StatusBudgetAuthority identity. This proves recorded identity/type and integrity, not current publication or authorization.",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "second JSON block /record_type /authority_id; canonical body excluding authority_id",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ]
+    },
+    {
+      "id": "FACT-BUDGET-K2",
+      "claim": "All five named target snapshots contain equal runtime, controller_store and programmer_profile references and the exact source authority reference. Release snapshot repeats the source lineage string. These are reference comparisons only.",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "second JSON block /runtime /controller_store /programmer_profile /lineage",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ]
+    },
+    {
+      "id": "FACT-BUDGET-K3",
+      "claim": "Source scope is EXECUTION and all five target scopes are REQUEST. The bounded source/contract set contains no accepted current scope/phase applicability proof; neither equivalence nor incompatibility is inferred.",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "second JSON block /scope",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "/scope",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "/scope",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "/scope",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "/scope",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "/scope",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "field provenance and currentness requirements",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "/scope; /validation_requirements",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ]
+    },
+    {
+      "id": "FACT-BUDGET-K4",
+      "claim": "No independent current publication/owning-store resolution, lifecycle/usage validity or phase bridge evidence is established in the allowed corpus. The resolver default FRESH label and snapshot status/identity labels are not such proof. This is bounded absence, not global nonexistence.",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ]
+    }
+  ],
+  "recorded_reference_comparisons": [
+    {
+      "target": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+      "pointer": "/runtime",
+      "source_pointer": "JSON block 2 /runtime",
+      "equal": true,
+      "value": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+      "pointer": "/controller_store",
+      "source_pointer": "JSON block 2 /controller_store",
+      "equal": true,
+      "value": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+      "pointer": "/programmer_profile",
+      "source_pointer": "JSON block 2 /programmer_profile",
+      "equal": true,
+      "value": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+      "pointer": "/runtime",
+      "source_pointer": "JSON block 2 /runtime",
+      "equal": true,
+      "value": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+      "pointer": "/controller_store",
+      "source_pointer": "JSON block 2 /controller_store",
+      "equal": true,
+      "value": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+      "pointer": "/programmer_profile",
+      "source_pointer": "JSON block 2 /programmer_profile",
+      "equal": true,
+      "value": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+      "pointer": "/runtime",
+      "source_pointer": "JSON block 2 /runtime",
+      "equal": true,
+      "value": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+      "pointer": "/controller_store",
+      "source_pointer": "JSON block 2 /controller_store",
+      "equal": true,
+      "value": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+      "pointer": "/programmer_profile",
+      "source_pointer": "JSON block 2 /programmer_profile",
+      "equal": true,
+      "value": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+      "pointer": "/runtime",
+      "source_pointer": "JSON block 2 /runtime",
+      "equal": true,
+      "value": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+      "pointer": "/controller_store",
+      "source_pointer": "JSON block 2 /controller_store",
+      "equal": true,
+      "value": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+      "pointer": "/programmer_profile",
+      "source_pointer": "JSON block 2 /programmer_profile",
+      "equal": true,
+      "value": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+      "pointer": "/runtime",
+      "source_pointer": "JSON block 2 /runtime",
+      "equal": true,
+      "value": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+      "pointer": "/controller_store",
+      "source_pointer": "JSON block 2 /controller_store",
+      "equal": true,
+      "value": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    },
+    {
+      "target": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+      "pointer": "/programmer_profile",
+      "source_pointer": "JSON block 2 /programmer_profile",
+      "equal": true,
+      "value": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+      "meaning": "Exact equality of recorded references only; no current applicability deduction."
+    }
+  ],
+  "proof_matrix": [
+    {
+      "id": "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "Issuance document is readable, but no current owning-store publication/resolution evidence or governing no-publication-required rule is supplied.",
+      "required_external_evidence": "Current owning-store resolution/provenance or independently authoritative publication/availability record. If publication is not required, cite governing rule explicitly.",
+      "expected_producer": "Authority publisher/store owner; exact current locator not established",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-SCOPE",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "No governing evidence establishes source EXECUTION scope applicability to exact target REQUEST; labels alone do not settle it.",
+      "required_external_evidence": "Exact target invocation/dispatch/context plus governing applicability rule connecting the two phases, or an explicitly bounded later applicability decision.",
+      "expected_producer": "Governing scope/phase contract owner; accepted target inventory",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-LINEAGE",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "Matching recorded R4-final CURRENT UNIQUE strings do not establish a current owning lineage selection or non-supersession.",
+      "required_external_evidence": "Authenticated current lineage/adoption/selection evidence relating source and exact target; no stale successor substitution.",
+      "expected_producer": "Release/lineage owning authority",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-RUNTIME",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "Matching R4 references do not provide independent currently applicable runtime authority/content linkage.",
+      "required_external_evidence": "Independently authenticated applicable runtime selection/content linkage under the governing source contract; verify exact digest and target linkage, without constructing/replacing runtime.",
+      "expected_producer": "Runtime/release owning source and target invocation/context",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-CONTROLLER_STORE_G4",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "Matching G4 generation references do not establish current authority membership/resolution in that generation.",
+      "required_external_evidence": "Authenticated store-generation and applicable authority-resolution evidence for exact source and target; no guessed catalog path.",
+      "expected_producer": "Controller-store generation/authority domain owner",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-PROGRAMMER_PROFILE",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "Matching ProgrammerProfile references are present; owning profile source and current target applicability proof are absent from manifest.",
+      "required_external_evidence": "Authenticated owning profile and governing target/profile binding; exact identity domain must match. Applicability-not-required needs explicit governing evidence, not omission.",
+      "expected_producer": "ProgrammerProfile owner and target authority bindings",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "No independently current revocation/supersession/single-use evidence or freshness-rule evaluation is supplied; old NOT_ACTIVATED or FRESH labels cannot substitute.",
+      "required_external_evidence": "Authoritative current snapshot/event/selection evidence with target identity and applicable revocation/supersession/single-use rules. Pin evidence identity and freshness evaluation rule; reject uncertainty.",
+      "expected_producer": "Owning authority/store/lifecycle or usage producer under existing governing policy; exact qualified producer not established",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    },
+    {
+      "id": "BUDGET-PROOF-EXECUTION_REQUEST_PHASE",
+      "result": "EVIDENCE_NOT_FOUND",
+      "reason": "No qualified phase-specific rule establishes permission to use the execution authority at REQUEST preconstruction. Technical facts are incomplete, so no Architect decision is declared ready or necessary yet.",
+      "required_external_evidence": "Existing phase-specific rule stating whether this execution authority may supply the preconstruction request input, with exclusions and source-use gates; otherwise decision inputs after facts complete.",
+      "expected_producer": "Governing contract owner",
+      "availability_outside_allowed_corpus": "UNKNOWN",
+      "provenance": [
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+          "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+          "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+          "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+          "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+          "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+          "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+          "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+          "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+          "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        },
+        {
+          "source_artifact_path": "adapter/authority_resolution.py",
+          "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+          "source_location": "whole allowed corpus",
+          "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+          "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+        }
+      ],
+      "reevaluation_proved": false
+    }
+  ],
+  "already_established_snapshot_checks": {
+    "BUDGET-PROOF-AUTHENTICITY": "Accepted issuance provenance and exact recorded bytes retained; current owning-domain trust/publication not newly proved.",
+    "BUDGET-PROOF-IDENTITY": "PROVED again for the recorded source only; not a newly closed current-proof obligation."
+  },
+  "external_gate": {
+    "id": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+    "state": "UNSATISFIED",
+    "required_obligations": [
+      "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+      "BUDGET-PROOF-SCOPE",
+      "BUDGET-PROOF-LINEAGE",
+      "BUDGET-PROOF-RUNTIME",
+      "BUDGET-PROOF-CONTROLLER_STORE_G4",
+      "BUDGET-PROOF-PROGRAMMER_PROFILE",
+      "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+      "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+    ],
+    "required_input": "Provide exact retrievable authoritative source locators/identities and current source/target proof records for the eight named rows, including governing phase applicability rule and current owning-source validity/usage evidence. One record may cover multiple rows only with explicit proof.",
+    "producer": "Owning authority publisher/store and relevant lineage/runtime/profile/current-state owners; exact qualified external source not established.",
+    "authorization_boundary": "A separately accepted bounded source manifest is required before acquisition outside existing files. No external search/creation/publication or authority issuance performed.",
+    "authority_decision": "Not established as necessary now; if complete technical facts later require a new applicability grant, use the separate dossier/readiness/Architect route."
+  },
+  "source_identity_check": {
+    "canonical_body_length": 1189,
+    "body_sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+    "source_identity": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+  },
+  "inference_limits": [
+    "No publication from file existence",
+    "No freshness from identity stability or FRESH label",
+    "No currentness from matching references or copied status",
+    "No REQUEST applicability from EXECUTION label",
+    "No incompatibility/staleness from absent proof"
+  ],
+  "graph_update": "None; exact accepted knowledge/provenance lives in result and execution ledger, not inferred applicability edges."
+}

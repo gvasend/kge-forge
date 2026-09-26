@@ -1,0 +1,58 @@
+test_ACTIVE_needs_live_ownership_for_host (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_active_restart (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_active_without_event (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_context_task_profile_mismatch (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_corrupt_binding_and_validation_event (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_direct_effect_without_owner_is_denied (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_duplicate_evidence_is_non_effecting (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_inactive_restart (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_missing_ownership_rejected (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_no_PASS_checklist_entrypoint (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_original_record_mutation (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_replay_competing_controller_denied (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_terminal_and_revoked_predecessors_denied (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_truncated_audit (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_valid_preserves_original_and_owns_before_ACTIVE (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_wrong_reference_and_identity (adapter.tests.test_authorization_lifecycle.AuthorizationLifecycleTests) ... ok
+test_synthetic_ancestry_and_negatives (adapter.tests.test_versioned_ancestry.VersionedAncestryTests) ... ok
+test_qualified_continuation (adapter.tests.test_governance_continuation.GovernanceContinuationTests) ... ok
+test_release_does_not_authorize_activation (adapter.tests.test_governance_continuation.GovernanceContinuationTests) ... ERROR
+test_two_authorized_records_cannot_be_reordered_or_truncated (adapter.tests.test_governance_continuation.GovernanceContinuationTests) ... ok
+test_synthetic_committed_projection (adapter.tests.test_context_projection.ContextProjectionTests) ... ok
+test_derived_snapshot_tampering_and_provisioning_fail_closed (adapter.tests.test_runnable_profile.RunnableProfileTests) ... ok
+test_exact_profile_and_changed_identity (adapter.tests.test_runnable_profile.RunnableProfileTests) ... ok
+test_object_reader_has_no_repository_process_path (adapter.tests.test_runnable_profile.RunnableProfileTests) ... ok
+test_transport_rejects_redirect_endpoint_storage_and_ambient_proxy (adapter.tests.test_runnable_profile.RunnableProfileTests) ... ok
+test_identity_supervisor_path_replay_and_terminal_result (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_interruption_status_waits_for_terminal_action_audit (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_mismatched_scope_and_direct_legacy_are_denied (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_model_facing_schema_and_mapping (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_result_before_quiescence_blocks_second_action (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_start_barrier_prevents_payload_before_release (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_supervisor_loss_is_indeterminate_and_fail_closed (adapter.tests.test_production_exec.ProductionExecTests) ... ok
+test_active_and_uncertain_scope_require_live_evidence (adapter.tests.test_recovery_ledger.RecoveryLedgerTests) ... ok
+test_contradictory_result_digest_fails_closed (adapter.tests.test_recovery_ledger.RecoveryLedgerTests) ... ok
+test_rejected_unknown_action_remains_rejected_after_restart (adapter.tests.test_recovery_ledger.RecoveryLedgerTests) ... ok
+test_restart_replays_exact_result_and_rejects_changed_request_or_grant (adapter.tests.test_recovery_ledger.RecoveryLedgerTests) ... ok
+test_effective_profile_protects_evidence_and_denies_self_expansion (adapter.tests.test_programmer_substrate.ProgrammerSubstrateTests) ... ok
+test_execution_snapshot_omits_protected_source_and_has_no_promotion (adapter.tests.test_programmer_substrate.ProgrammerSubstrateTests) ... ok
+test_explicit_snapshot_inputs_reject_protected_and_symlink_paths (adapter.tests.test_programmer_substrate.ProgrammerSubstrateTests) ... ok
+test_list_search_are_bounded_by_read_grant (adapter.tests.test_programmer_substrate.ProgrammerSubstrateTests) ... ok
+test_registry_rejects_unregistered_execution_and_scope_injection (adapter.tests.test_programmer_substrate.ProgrammerSubstrateTests) ... ok
+test_stateless_continuation_requires_authorized_finish (adapter.tests.test_programmer_substrate.ProgrammerSubstrateTests) ... ok
+test_denials_and_malformed (adapter.tests.test_orchestrator.ProtocolTests) ... ok
+test_prose_and_unknown (adapter.tests.test_orchestrator.ProtocolTests) ... ok
+test_typed_read_write_exec_and_replay (adapter.tests.test_orchestrator.ProtocolTests) ... ok
+
+======================================================================
+ERROR: test_release_does_not_authorize_activation (adapter.tests.test_governance_continuation.GovernanceContinuationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_governance_continuation.py", line 181, in test_release_does_not_authorize_activation
+    with self.assertRaises((ValueError, Denied)):
+UnboundLocalError: local variable 'Denied' referenced before assignment
+
+----------------------------------------------------------------------
+Ran 45 tests in 91.426s
+
+FAILED (errors=1)

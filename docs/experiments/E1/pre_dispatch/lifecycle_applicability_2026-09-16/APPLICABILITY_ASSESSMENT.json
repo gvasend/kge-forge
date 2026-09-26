@@ -1,0 +1,277 @@
+{
+  "classification": "INDETERMINATE",
+  "reason": "No expanded Programmer grant/schema/destination was found, but evidence does not establish the complete atomic-validation/ownership-to-model sequence for the newly effecting lifecycle path. Necessary implementation and passing lifecycle tests are not substitutes for that proof.",
+  "production_delta": [
+    {
+      "path": "adapter/governed_host.py",
+      "previous_sha256": "5fca5ed2053806df914365dc0f9bbdd81ef470e27c9b74486863be2d29b7e352",
+      "current_sha256": "5dba29c66ff78d434878a7bd2b1a75b22d0cb6acea6843264adcdfd3c7e03922",
+      "previous_identity": "E1-OPERATIONAL-CONTINUATION-20260916-4f4e0ceec6e2d334",
+      "previous_capture_sha256": "4f4e0ceec6e2d3349a58a71f59c47d11ca42b905ad42b268a01c122870b3dec5",
+      "current_identity": "working-tree SHA-256; no new commit claimed",
+      "responsibility": "Constructor checks reconstructed lifecycle state; verify_lifecycle() replays durable history and rejects uncertain/mismatched state.",
+      "invariants": [
+        9,
+        13,
+        18
+      ],
+      "before": "Exact serialized authorization replay; historical INACTIVE versus requested ACTIVE rejected. No lifecycle recheck method.",
+      "after": "Valid append-only transition can support ACTIVE; missing/incomplete/contradictory lifecycle denies host/action/model admission. Existing grants, effect functions and scope mechanics unchanged.",
+      "programmer_tool_schema_changed": false,
+      "programmer_result_semantics": "Success envelopes unchanged; additional controller-local lifecycle denials/startup failures. Model filtering continues to redact outcomes/diagnostics.",
+      "authority": "Grant set identical; admission narrowed to valid lifecycle. Reachability of intended ACTIVE-after-INACTIVE path added, subject to dispatch integration evidence gaps.",
+      "new_effecting_path": "No new Programmer effect type. Newly admitted valid lifecycle can reach existing effects; unproved reservation-before-model integration noted.",
+      "enforcement_replaced": "Original effect/path/exec functions unchanged (AST verified); host constructor now relies on lifecycle-aware recovery and adds checks."
+    },
+    {
+      "path": "adapter/orchestrator.py",
+      "previous_sha256": "6ca75fa81f76e358b4f7e54f4021ed4bbbbb521c3a97299cb33f8169839b1d55",
+      "current_sha256": "0c877f506111e1e0aca744a8b66b6c8254751cb56868dfe93bcc893fdedfba1d",
+      "previous_identity": "E1-OPERATIONAL-CONTINUATION-20260916-4f4e0ceec6e2d334",
+      "previous_capture_sha256": "4f4e0ceec6e2d3349a58a71f59c47d11ca42b905ad42b268a01c122870b3dec5",
+      "current_identity": "working-tree SHA-256; no new commit claimed",
+      "responsibility": "One verify_lifecycle() call added before context verification for context-bound requests.",
+      "invariants": [
+        3,
+        4,
+        5,
+        12,
+        13,
+        14,
+        15,
+        18
+      ],
+      "before": "Request identity, ACTIVE/interruption, ownership, context and scope-quiescence gates.",
+      "after": "Same gates plus lifecycle validity. A lifecycle denial produces existing DENIED ActionResult type.",
+      "programmer_tool_schema_changed": false,
+      "programmer_result_semantics": "ActionResult schema unchanged; lifecycle-invalid requests can now return DENIED with a new local diagnostic. Existing allowed results and model redaction unchanged.",
+      "authority": "Identical resources/actions; stricter admission.",
+      "new_effecting_path": "None; dispatch targets unchanged.",
+      "enforcement_replaced": "None; lifecycle check inserted before existing context gate. Existing ownership check is retained, not replaced."
+    },
+    {
+      "path": "adapter/recovery_ledger.py",
+      "previous_sha256": "c9a9ad0e85ec9a0bc87a4cb16ab23e6f17cfe4e1dd38ea09389c95fa9553d609",
+      "current_sha256": "2c87f3f25725b40b4cf68c1327b9f9fd25497333b6872c5eb543a6c9c607c957",
+      "previous_identity": "E1-OPERATIONAL-CONTINUATION-20260916-4f4e0ceec6e2d334",
+      "previous_capture_sha256": "4f4e0ceec6e2d3349a58a71f59c47d11ca42b905ad42b268a01c122870b3dec5",
+      "current_identity": "working-tree SHA-256; no new commit claimed",
+      "responsibility": "For profiles released INACTIVE, replay lifecycle; reject ACTIVE without original/activation history; return controller-local lifecycle reconstruction.",
+      "invariants": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        18
+      ],
+      "before": "Every authorization_issued record must equal requested effective authorization exactly; authorized state transition in same audit rejected.",
+      "after": "For lifecycle-required profiles, validated original plus ordered activation history explains ACTIVE. Legacy issued-equality remains for other profiles. Existing action digest, scope ownership, kernel population, interruption and QUIESCENT recovery code retained.",
+      "programmer_tool_schema_changed": false,
+      "programmer_result_semantics": "Controller reconstruction gains authorization_lifecycle field and lifecycle-specific recovery failures. No model tool schema or cleared content change.",
+      "authority": "Grant comparison still exact after narrowly removing state/dispatch-reference lifecycle delta. Historical-to-effective acceptance changes intentionally; no new work/resource grant.",
+      "new_effecting_path": "Recovery can now permit subsequent use of valid ACTIVE lifecycle instead of rejecting authorized transition; function itself reads evidence only.",
+      "enforcement_replaced": "YES: unconditional issued-record equality is replaced by ordered exact lifecycle validation for profiles released INACTIVE; kernel/scope/action recovery checks not replaced."
+    },
+    {
+      "path": "adapter/responses_orchestrator.py",
+      "previous_sha256": "62fe79f4575037a1a10fb7cd2ccf545d26bbfa1531be8e417f72ee6aa37b08ad",
+      "current_sha256": "eb6edbf4fd61f0ef6ea3608050e5cf79cd1510c4fcca53b8615b35e206296a98",
+      "previous_identity": "E1-OPERATIONAL-CONTINUATION-20260916-4f4e0ceec6e2d334",
+      "previous_capture_sha256": "4f4e0ceec6e2d3349a58a71f59c47d11ca42b905ad42b268a01c122870b3dec5",
+      "current_identity": "working-tree SHA-256; no new commit claimed",
+      "responsibility": "Calls host.verify_lifecycle() first in _verify_context().",
+      "invariants": [
+        2,
+        6,
+        13,
+        15,
+        18
+      ],
+      "before": "Context/projection, effective authorization and transmission policy checked before requests/actions.",
+      "after": "Those checks plus durable lifecycle validation. Missing ACTIVE history stops before request construction/continuation. _call, run, _dispatch and tool_definitions unchanged (AST verified).",
+      "programmer_tool_schema_changed": false,
+      "programmer_result_semantics": "No new model-visible result schema/content; additional local failure may terminate/prevent reasoning. Original redaction remains.",
+      "authority": "Same model-visible tools/destination/context; lifecycle gate reduces admissible invalid starts.",
+      "new_effecting_path": "No new model request function/destination. Newly valid lifecycle may reach existing request path; reservation-to-request sequencing not proven.",
+      "enforcement_replaced": "None; prior checks retained after new guard."
+    },
+    {
+      "path": "adapter/authorization_lifecycle.py",
+      "previous_sha256": null,
+      "current_sha256": "b4259a331a4f85e80b2358a995d3cb9a4df7df19a8e10769cbb4495585956c76",
+      "previous_identity": "ABSENT from predecessor captured production inventory",
+      "previous_capture_sha256": "4f4e0ceec6e2d3349a58a71f59c47d11ca42b905ad42b268a01c122870b3dec5",
+      "current_identity": "working-tree SHA-256; no new commit claimed",
+      "responsibility": "New controller-only canonical lifecycle events, identity/dispatch validation, ordered reconstruction and locked/fsynced activation writer.",
+      "invariants": [
+        9,
+        12,
+        13,
+        15,
+        18
+      ],
+      "before": "No append-only lifecycle writer; no accepted INACTIVE-to-ACTIVE history in the exact existing audit.",
+      "after": "Dispatch-authorized, intent, committed ACTIVE and terminal phases recognized. Exact replay non-effecting; competing/invalid predecessors and incomplete history denied. activate() writes administrative lifecycle records after a caller-provided validation callback returns a complete PASS map.",
+      "programmer_tool_schema_changed": false,
+      "programmer_result_semantics": "No registered tool or model-facing output. New controller event schema and recovery states only.",
+      "authority": "No new Programmer grants or authority identity; new controller capability to append authoritative ACTIVE lifecycle is effecting and must meet existing Architect prerequisites. Applicability of complete production sequencing remains unproved.",
+      "new_effecting_path": "YES: os.write/fsync lifecycle events to exact existing audit. Checks existing ledger but does not reserve it; releases locks before caller ownership/profile/model stages.",
+      "enforcement_replaced": "Provides lifecycle validator replacing historical equality in recovery. No registered payload enforcement bypass established. Real atomic validator and ownership handoff not implemented here; delegated to caller."
+    }
+  ],
+  "invariants": [
+    {
+      "number": 1,
+      "invariant": "Exact E1-WP-001 identity",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Task file/hash and released task selection unchanged. Lifecycle dispatch binding checks work identity and exact task hash."
+    },
+    {
+      "number": 2,
+      "invariant": "Released Programmer tool registry",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Same nine tools; tool_definitions, _dispatch and registry-bearing source unchanged except lifecycle guard."
+    },
+    {
+      "number": 3,
+      "invariant": "Read authority",
+      "assessment": "PRESERVED; ADMISSION IMPLEMENTATION CHANGED",
+      "evidence_and_limit": "Read roots/exclusions and _path/read/list/search unchanged. Added lifecycle gate before dispatch."
+    },
+    {
+      "number": 4,
+      "invariant": "Write/patch authority",
+      "assessment": "PRESERVED; ADMISSION IMPLEMENTATION CHANGED",
+      "evidence_and_limit": "Exact file/directory grants, ancestor rules, protected-path denial and atomic promotion methods unchanged; targeted dispatcher tests pass."
+    },
+    {
+      "number": 5,
+      "invariant": "Execution authority",
+      "assessment": "PRESERVED; ADMISSION IMPLEMENTATION CHANGED",
+      "evidence_and_limit": "Executable/argv/cwd/inputs/environment and permit/snapshot/exec functions unchanged. New lifecycle gate precedes them; combined activation-to-real-scope evidence gap remains."
+    },
+    {
+      "number": 6,
+      "invariant": "Model-transmission authority",
+      "assessment": "PRESERVED; PRE-REQUEST GATE ADDED",
+      "evidence_and_limit": "Manifest/policy and filtering code unchanged; current direct allowed/denied/alternate probes pass. No released context bytes added."
+    },
+    {
+      "number": 7,
+      "invariant": "Network prohibition",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Runtime profile, execution barrier and transport code unchanged; no new networking in lifecycle module."
+    },
+    {
+      "number": 8,
+      "invariant": "Filesystem/snapshot isolation",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Path checks, snapshot/acceptance builder and promotion paths unchanged; no automatic snapshot promotion introduced."
+    },
+    {
+      "number": 9,
+      "invariant": "Audit/evidence isolation",
+      "assessment": "ISOLATION PRESERVED; WRITER/RECOVERY CHANGED",
+      "evidence_and_limit": "New local authoritative audit appends are an effect. Existing destination/grant exclusions retained; model receives no lifecycle metadata. Prefix/identity checks qualified."
+    },
+    {
+      "number": 10,
+      "invariant": "ExecutionScope admission",
+      "assessment": "COMPONENT PRESERVED; COMPOSED PATH UNPROVED",
+      "evidence_and_limit": "Permit, supervisor and bridge functions unchanged; targeted scope binding/admission tests plus prior live evidence reused. No lifecycle-aware production dispatch run established."
+    },
+    {
+      "number": 11,
+      "invariant": "QUIESCENT-before-success",
+      "assessment": "COMPONENT PRESERVED",
+      "evidence_and_limit": "governed_exec/action_terminal unchanged; current result-before-QUIESCENT and interruption tests pass. Earlier live synthetic cgroup proof reused within unchanged execution implementation scope."
+    },
+    {
+      "number": 12,
+      "invariant": "Sequential ownership",
+      "assessment": "EXECUTION GATE PRESERVED; INVOCATION HANDOFF UNPROVED",
+      "evidence_and_limit": "Common-ledger rule/implementation unchanged and overlap tests pass. Activation releases lock with no invocation reservation; no production handoff before model/effects is shown."
+    },
+    {
+      "number": 13,
+      "invariant": "Recovery semantics",
+      "assessment": "ENFORCEMENT REPLACED IN PART",
+      "evidence_and_limit": "Ordered lifecycle substitutes for equality only for INACTIVE-origin profiles. Original grant identity, replay, mismatch and interrupted-activation tests pass. Scope/action recovery retained. Complete integrated dispatch/restart trace absent."
+    },
+    {
+      "number": 14,
+      "invariant": "Authority-expansion semantics",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Same request tool; expansion() unchanged and decision remains PENDING. No self-authorization added."
+    },
+    {
+      "number": 15,
+      "invariant": "Context/projection binding",
+      "assessment": "CHECKS PRESERVED; IMPLEMENTATION PINS REQUIRE DISPOSITION",
+      "evidence_and_limit": "Context/projection modules and stored release artifacts unchanged. Current runtime correctly rejects changed pinned code. No new operational/full/projection identity is proposed or installed."
+    },
+    {
+      "number": 16,
+      "invariant": "Released production profile",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Canonical fingerprint remains b9e7f72d97525f39fbddfe92f276ab6aedd057ef6c5b7284dc163f1db9c9c328; no field edited."
+    },
+    {
+      "number": 17,
+      "invariant": "External destination policy",
+      "assessment": "PRESERVED",
+      "evidence_and_limit": "Same endpoint/model/store/credential reference/proxy/CA settings; no added external destination or model-visible lifecycle information."
+    },
+    {
+      "number": 18,
+      "invariant": "Human/Architect authority boundaries",
+      "assessment": "LOCAL CHECKS PRESERVED; END-TO-END ENFORCEMENT UNPROVED",
+      "evidence_and_limit": "Exact existing dispatch required; no model registry activation capability. Correct full atomic validation and ownership-before-model depend on an unprovided caller/validator path, not established by PASS-dictionary fixtures."
+    }
+  ],
+  "findings": [
+    {
+      "id": "LIA-01",
+      "title": "Production atomic validator is not established",
+      "facts": [
+        "activate() accepts validate() returning named PASS strings. It checks audit immutability around that callback, not observations for all named release/host/provisioning predicates.",
+        "The lifecycle tests supply lambda: self.checks. The production adapter has no caller of activate(); no pinned full production validation implementation/receipt is connected to this API."
+      ],
+      "implication": "Cannot prove successful actual atomic dispatch validation is a non-bypass predecessor to lifecycle commit. This is a missing integration proof, not evidence the Programmer can call a forged validator.",
+      "smallest_required_evidence": "Identify the exact trusted production validator/caller and its bound observations; exercise each relevant false/stale predicate and interleaving, proving no commit or request on failure. Do not infer sufficiency from a supplied PASS map."
+    },
+    {
+      "id": "LIA-02",
+      "title": "Invocation ownership handoff is not established",
+      "facts": [
+        "activate() returns durable ACTIVE and closes ledger/audit locks without an ownership reservation.",
+        "The archived accepted positive fixture has an empty ownership ledger; read-only replay shows verify_lifecycle() accepts that ACTIVE history.",
+        "ResponsesReasoning.run/_verify_context do not require a matching invocation reservation before the first _call. Existing request ownership gate rejects any outstanding per-execution reservation; no distinct invocation-lease/handoff protocol is provided."
+      ],
+      "implication": "Existing per-ExecutionScope sequential gating is preserved, but it does not establish the Architect-required invocation reservation before profile/model use. No model request or bypass attempt was executed.",
+      "smallest_required_evidence": "Specify and qualify the normal activation\u2192matching invocation reservation\u2192profile\u2192pre-model handoff, including races/crash/restart and compatibility with existing per-execution ownership. Prove the first request/effect cannot pass without that reservation."
+    },
+    {
+      "id": "LIA-03",
+      "title": "No combined lifecycle and production execution qualification",
+      "facts": [
+        "Prior live governance-continuation fixture uses a profile released ACTIVE and therefore skips the new lifecycle-required branch.",
+        "Current targeted execution regressions use a mock supervisor and legacy synthetic authorization. Current lifecycle proof stops before invocation ownership and execution."
+      ],
+      "implication": "These valid component results cannot alone establish unchanged behavior of the full INACTIVE-origin lifecycle-required execution/recovery path.",
+      "smallest_required_evidence": "After resolving the normal handoff, one bounded synthetic trace combining durable activation, restart, ownership, governed effect/exec, result-before-QUIESCENT and terminal audit suffices; broad PD-05/A2 reopening is unnecessary."
+    }
+  ],
+  "proposal": null,
+  "proposal_reason": "A NON_MATERIAL classification is not established; no implementation-continuation record or proposed replacement context digests are produced.",
+  "authorities_preserved": {
+    "PD06": "RELEASED",
+    "E1_B01": "PASS",
+    "E1": "INACTIVE",
+    "E1_WP_001": "INELIGIBLE / UNDISPATCHED",
+    "existing_dispatch_record": "PRESERVED",
+    "existing_authorization_id": "auth-e1-wp-001-r7-94f511dfcdcc43ac837191f8732ced39"
+  },
+  "assessment_limits": "No production code changes, rebind, lifecycle/activation event creation, model request, E1 ownership acquisition or E1 work. Synthetic scratch read/write tests and mocked-supervisor tests only; archived lifecycle events replayed in memory."
+}

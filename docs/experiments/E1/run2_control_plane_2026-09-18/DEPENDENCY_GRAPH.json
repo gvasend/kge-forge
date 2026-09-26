@@ -1,0 +1,139 @@
+{
+  "current_context": {
+    "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:a59e21566098fee1756bbe991f74e0d2c8c5b756a76d90877911c35d57044a8a",
+    "ReleaseBasisId": "E1-RELEASE-BASIS-sha256:bc176574817f6b7fe06fdcf87a71c57b2a8bfe74e55ed20f2aa55ad5d4fa5181",
+    "ReleaseDecisionId": "E1-RELEASE-DECISION-sha256:43ab22254604a29f3cf2164152803ee5f689f7540e2006c43d27ded87d83d8c0",
+    "continuation_chain_digest": "ddf509e2283fe93aa9bb9b857a45dc449ff5ca309c66f9bdfd18c45dcf2dedfd"
+  },
+  "edges": [
+    [
+      "release_decision",
+      "historical_capture"
+    ],
+    [
+      "historical_capture",
+      "attempt_ancestry"
+    ],
+    [
+      "catalog",
+      "release_decision"
+    ],
+    [
+      "catalog",
+      "historical_capture"
+    ],
+    [
+      "attempt_ancestry",
+      "projection"
+    ],
+    [
+      "projection",
+      "lifecycle"
+    ],
+    [
+      "ownership",
+      "lifecycle"
+    ],
+    [
+      "supervisor",
+      "lifecycle"
+    ],
+    [
+      "lifecycle",
+      "telemetry"
+    ]
+  ],
+  "nodes": [
+    {
+      "classification": "IMMUTABLE_AND_ALREADY_VERIFIED",
+      "duplicate_sites": "Each decision/projection/authorization verifier",
+      "duration_source": "attempt_history_decision",
+      "freshness": "Before use and on dependency change",
+      "id": "release_decision",
+      "input_identities": "Original release, all applied material decisions, dispatch, exact runtime inventories",
+      "previous_verified_result": "Raw byte hashes and private catalog pin"
+    },
+    {
+      "classification": "IMMUTABLE_AND_ALREADY_VERIFIED",
+      "duplicate_sites": "Every governance verify; repeated in projection/lifecycle/host",
+      "duration_source": "attempt_history_historical_capture",
+      "freshness": "Fresh existence/content/placement; pure parsing may be reused",
+      "id": "historical_capture",
+      "input_identities": "r8/r9/r10/r11 closed audits, original runtime inventories, captures, source pins",
+      "previous_verified_result": "Original independently reconstructed captures"
+    },
+    {
+      "classification": "MUTABLE_REQUIRES_FRESH_CHECK",
+      "duplicate_sites": "Every governance verify",
+      "duration_source": "attempt_history_ancestry",
+      "freshness": "Current facts on every authority gate",
+      "id": "attempt_ancestry",
+      "input_identities": "Ordered pinned predecessors plus CURRENT owner, scope and candidate head",
+      "previous_verified_result": "No owner/scope verdict may be cached"
+    },
+    {
+      "classification": "REDUNDANT_DUPLICATE",
+      "duplicate_sites": "Every resolve, state_path, require, witness",
+      "duration_source": "CURRENT_PROFILE.txt",
+      "freshness": "Fresh bytes/placement every access; redundant hash may be replaced by exact byte equality",
+      "id": "catalog",
+      "input_identities": "Externally pinned catalog bytes and current root/private-state placement",
+      "previous_verified_result": "Previously hash-verified exact bytes, not caller PASS"
+    },
+    {
+      "classification": "MUTABLE_REQUIRES_FRESH_CHECK",
+      "duplicate_sites": "dispatch binding, context verification, host, reasoning preparation",
+      "duration_source": "model_projection",
+      "freshness": "Fresh mutable inputs; immutable derivation may be reused by identity",
+      "id": "projection",
+      "input_identities": "Clearance, committed content, tool contract, current binding and repository inputs",
+      "previous_verified_result": "Released payload and projection fingerprints"
+    },
+    {
+      "classification": "TRANSACTION_SPECIFIC",
+      "duplicate_sites": "activation, recovery, host and handoff",
+      "duration_source": "activation_recovery",
+      "freshness": "At each transition under transaction fence",
+      "id": "lifecycle",
+      "input_identities": "Ordered authorization audit and exact transaction prefix",
+      "previous_verified_result": "INACTIVE/intent/ACTIVE/terminal evidence"
+    },
+    {
+      "classification": "MUTABLE_REQUIRES_FRESH_CHECK",
+      "duplicate_sites": "All lifecycle gates",
+      "duration_source": "activation_recovery",
+      "freshness": "Every reserve/recovery/handoff/cancel",
+      "id": "ownership",
+      "input_identities": "Current ledger inode/content; exact attempt reservation; scope",
+      "previous_verified_result": "Historical release is not current absence proof"
+    },
+    {
+      "classification": "MUTABLE_REQUIRES_FRESH_CHECK",
+      "duplicate_sites": "Production validator calls frozen peer with full bootstrap",
+      "duration_source": "fresh_supervisor",
+      "freshness": "Fresh at required readiness gates",
+      "id": "supervisor",
+      "input_identities": "Exact S3 birth/socket/cgroup/workspace/credentials plus authenticated succession",
+      "previous_verified_result": "Immutable launch/decision verification can be separated from live observations"
+    },
+    {
+      "classification": "REDUNDANT_DUPLICATE",
+      "duplicate_sites": "Every span entry/exit/warning/status",
+      "duration_source": "events",
+      "freshness": "Fresh byte prefix and suffix; no authority from telemetry",
+      "id": "telemetry",
+      "input_identities": "Audit prefix plus telemetry chain and durable ordering",
+      "previous_verified_result": "Verified prefix could support parsing reuse, not yet implemented"
+    },
+    {
+      "classification": "UNKNOWN",
+      "duplicate_sites": "Gaps between nested historical timing records",
+      "duration_source": "UNKNOWN",
+      "freshness": "Requires full staged end-to-end spans",
+      "id": "remaining",
+      "input_identities": "Uninstrumented parent work, I/O contention and observer cost",
+      "previous_verified_result": "No estimate is authorization or performance PASS"
+    }
+  ],
+  "qualification_note": "Graph records dependencies, not a new source of authority."
+}

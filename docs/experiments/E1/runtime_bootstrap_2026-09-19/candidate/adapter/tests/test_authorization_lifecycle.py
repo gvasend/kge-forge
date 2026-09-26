@@ -1,0 +1,103 @@
+"""Lifecycle unit negatives. Host observation is mocked ONLY in this unit suite.
+Real production host validation is exercised by qualify_activation_transaction.
+"""
+from pathlib import Path
+from dataclasses import replace
+from unittest.mock import patch
+import json,tempfile,unittest
+from adapter.tests.qualify_activation_transaction import fixture
+from adapter.activation_transaction import ActivationTransaction
+from adapter.authorization_lifecycle import activate,reconstruct,LifecycleDenied,event
+from adapter.context_projection import canonical,digest,sha
+from adapter.governed_host import GovernedHost,Denied
+
+class AuthorizationLifecycleTests(unittest.TestCase):
+    def setUp(self):
+        self.temp=tempfile.TemporaryDirectory(prefix='lifecycle-unit-');self.out=Path(self.temp.name)
+        self.root,self.auth,self.audit,self.ref,_=fixture(self.out,supervisor_identity={'unit_host':'not live qualification'})
+        from adapter.tests.test_controller_authority_store import private_fixture
+        self.store=private_fixture(self.auth,self.audit,self.ref,self.out/'private-authority')
+        self.store_session=self.store.session();self.store_session.__enter__()
+        self.ref='E1-ARCHITECT-DISPATCH-sha256:'+self.ref['sha256']
+        self.before=self.audit.read_bytes();self.tx=None
+        self.mock=patch('adapter.activation_transaction._host',return_value={'unit_host':'mocked'})
+        self.mock.start()
+    def tearDown(self):
+        if self.tx:self.tx.close()
+        self.store_session.__exit__(None,None,None);self.store.close()
+        self.mock.stop();self.temp.cleanup()
+    def activate(self):
+        self.tx=activate(self.auth,self.audit,self.ref);return self.tx
+    def test_valid_preserves_original_and_owns_before_ACTIVE(self):
+        tx=self.activate();value=reconstruct(self.audit.read_bytes(),tx.auth,self.audit)
+        self.assertTrue(self.audit.read_bytes().startswith(self.before))
+        self.assertEqual(value['activation_event']['ownership_reservation'],tx.reservation)
+        self.assertTrue(tx.verify_handoff())
+    def test_inactive_restart(self):
+        self.tx=ActivationTransaction.recover(self.auth,self.audit,self.ref)
+        self.assertFalse(self.tx.recovery['handoff_eligible'])
+    def test_active_restart(self):
+        self.activate().close();self.tx=ActivationTransaction.recover(self.auth,self.audit,self.ref)
+        self.assertTrue(self.tx.recovery['handoff_eligible'])
+    def test_active_without_event(self):
+        op=json.loads(self.auth.operational_binding);op['dispatch_authorization']={'authority_id':self.ref,'sha256':self.ref.split(':')[-1]}
+        with self.assertRaises(Denied):GovernedHost(replace(self.auth,state='ACTIVE',operational_binding=canonical(op)),self.audit)
+    def test_wrong_reference_and_identity(self):
+        with self.assertRaises(ValueError):activate(self.auth,self.audit,'E1-ARCHITECT-DISPATCH-sha256:'+'0'*64)
+        with self.assertRaises((LifecycleDenied,ValueError)):activate(replace(self.auth,authorization_id='wrong'),self.audit,self.ref)
+    def test_context_task_profile_mismatch(self):
+        (self.root/'task.txt').write_bytes(b'changed')
+        with self.assertRaises((ValueError,LifecycleDenied)):self.activate()
+        self.assertEqual(self.before,self.audit.read_bytes())
+    def test_replay_competing_controller_denied(self):
+        self.activate();before=self.audit.read_bytes()
+        with self.assertRaises(LifecycleDenied):activate(self.auth,self.audit,self.ref)
+        self.assertEqual(self.audit.read_bytes(),before)
+    def test_ACTIVE_needs_live_ownership_for_host(self):
+        tx=self.activate();host=GovernedHost(tx.auth,self.audit)
+        with self.assertRaises(Denied):host.verify_lifecycle()
+        tx.attach(host);host.verify_lifecycle();tx.close()
+        with self.assertRaises(Denied):host.verify_lifecycle()
+    def test_direct_effect_without_owner_is_denied(self):
+        tx=self.activate();host=GovernedHost(tx.auth,self.audit)
+        with self.assertRaises(Denied):host.governed_write(str(self.root),'src/kge_forge/context/must-not-exist.py','denied')
+        self.assertFalse((self.root/'src/kge_forge/context/must-not-exist.py').exists())
+    def test_terminal_and_revoked_predecessors_denied(self):
+        tx=self.activate();data=self.audit.read_bytes()
+        previous=reconstruct(data,tx.auth,self.audit)
+        from adapter.authorization_lifecycle import original,serialized
+        for target in ('COMPLETED','REVOKED','CANCELLED'):
+            body={'event':'authorization_lifecycle_terminal','version':1,
+                'binding':previous['activation_event']['binding'],
+                'authorization_sha256':digest(original(serialized(self.auth))),
+                'audit_prefix_sha256':sha(data),'predecessor_event':previous['last_event_id'],
+                'predecessor_state':'ACTIVE','resulting_state':target}
+            self.audit.write_bytes(data+(canonical(event(body))+'\n').encode())
+            self.assertEqual(reconstruct(self.audit.read_bytes(),self.auth,self.audit)['state'],target)
+            with self.assertRaises(LifecycleDenied):activate(self.auth,self.audit,self.ref)
+        self.audit.write_bytes(data)
+    def test_corrupt_binding_and_validation_event(self):
+        tx=self.activate();data=self.audit.read_bytes();rows=[json.loads(x) for x in data.splitlines()]
+        rows[-1]['binding']['ModelProjectionDigest']='substituted'
+        self.audit.write_text(''.join(canonical(x)+'\n' for x in rows))
+        with self.assertRaises(LifecycleDenied):reconstruct(self.audit.read_bytes(),tx.auth,self.audit)
+    def test_duplicate_evidence_is_non_effecting(self):
+        tx=self.activate();value=reconstruct(self.audit.read_bytes(),tx.auth,self.audit)
+        self.audit.write_bytes(self.audit.read_bytes()+(canonical(value['activation_event'])+'\n').encode())
+        self.assertEqual(reconstruct(self.audit.read_bytes(),tx.auth,self.audit)['activation_event'],value['activation_event'])
+    def test_missing_ownership_rejected(self):
+        self.activate().close();Path(self.auth.ownership_ledger).write_bytes(b'')
+        with self.assertRaises(LifecycleDenied):ActivationTransaction.recover(self.auth,self.audit,self.ref)
+    def test_truncated_audit(self):
+        self.activate().close();self.audit.write_bytes(self.audit.read_bytes()[:-1])
+        with self.assertRaises(LifecycleDenied):ActivationTransaction.recover(self.auth,self.audit,self.ref)
+    def test_original_record_mutation(self):
+        self.activate().close();rows=[json.loads(x) for x in self.audit.read_text().splitlines()]
+        rows[0]['authorization']['shell']=True
+        self.audit.write_text(''.join(canonical(x)+'\n' for x in rows))
+        with self.assertRaises(LifecycleDenied):ActivationTransaction.recover(self.auth,self.audit,self.ref)
+    def test_no_PASS_checklist_entrypoint(self):
+        with self.assertRaises(TypeError):activate(self.auth,self.audit,self.ref,lambda:{'PASS':True})
+        self.assertEqual(self.before,self.audit.read_bytes())
+
+if __name__=='__main__':unittest.main()

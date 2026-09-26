@@ -1,0 +1,68 @@
+{
+  "schema": "E1-ARCHITECT-DECISION-AUTHORITY-1",
+  "record_type": "DEC-IGNORED",
+  "status": "ISSUED",
+  "decision": "APPROVED_OPTION_A_NULL_SENTINELS",
+  "issuer": "Architect (explicit user instruction in this conversation)",
+  "issuance_basis": "E1 ARCHITECT DECISION \u2014 TEMPLATE-1 DECISION BATCH 1; three independent explicit approvals",
+  "scope": "Only the four overwritten canonical fields_values inputs and associated validation/schema/identity coverage. Actual InvocationAttemptId/audit sources and runtime assignments remain independently required.",
+  "source_artifacts": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md",
+      "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IGNORED_1_RESULT.md",
+      "sha256": "8e071f5f6f7f305bc35e07b2bcb7f77175f54ce03528048522d6db2e0ef7f816"
+    }
+  ],
+  "authority_not_granted": "No Template-1/Candidate-3 construction or release, WorkAuthorization acceptance/issuance/use, authority consumption, lifecycle/ownership/audit/host/provider/model effects, unrelated repairs, or expansion of existing policy. Preparation grants nothing. No guessed authority/source values, bypass of source authentication, hidden defaults or mixed-schema permissiveness.",
+  "production_effect": "CONTROL_PLANE_AUTHORITY_OR_CONTRACT_ISSUANCE_ONLY",
+  "runtime_effects_authorized": false,
+  "candidate3_authority_consumed": false,
+  "canonical_identity_rule": "SHA-256 of sorted-key compact UTF-8 JSON excluding authority_id only; full body otherwise included.",
+  "canonical_input_contract": {
+    "container": "fields_values",
+    "mandatory_null_keys": [
+      "authorization_id",
+      "revision",
+      "state",
+      "ownership_ledger"
+    ],
+    "values": {
+      "authorization_id": null,
+      "revision": null,
+      "state": null,
+      "ownership_ledger": null
+    },
+    "validation": [
+      "All four keys must be present.",
+      "Each value must be exactly JSON null.",
+      "Missing keys reject.",
+      "Non-null caller-supplied values reject.",
+      "Mixed schema behavior rejects."
+    ],
+    "after_successful_validation": {
+      "authorization_id": {
+        "from": "result[InvocationAttemptId]"
+      },
+      "revision": {
+        "type": "integer",
+        "value": 1
+      },
+      "state": {
+        "type": "string",
+        "value": "INACTIVE"
+      },
+      "ownership_ledger": {
+        "from": "result[audit]"
+      }
+    },
+    "meaning": "Canonical input sentinels only; not assigned runtime outputs and not authority.",
+    "actual_InvocationAttemptId_and_audit_evidence": "Still independently required.",
+    "nineteen_key_alternative_authorized": false,
+    "schema_migration_authorized": false
+  },
+  "implementation_performed": false,
+  "authority_id": "E1-ArchitectDecisionAuthority-sha256:ddb9fdad668cc94419c973d725373eddae65defcf62aecea360a79a626a96079"
+}

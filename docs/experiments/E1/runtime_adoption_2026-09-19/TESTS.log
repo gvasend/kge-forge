@@ -1,0 +1,351 @@
+test_adoption_independent_restart (__main__.Tests) ... ERROR
+test_byte_substitution (__main__.Tests) ... ERROR
+test_changed_commit (__main__.Tests) ... ERROR
+test_changed_reference (__main__.Tests) ... ERROR
+test_competing_threads_processes (__main__.Tests) ... Process Process-2:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 44, in child
+    try:out.put(('PASS',r.adopt(s,c,g)['current_runtime']))
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+Process Process-1:
+Traceback (most recent call last):
+  File "/usr/lib/python3.8/multiprocessing/process.py", line 315, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.8/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 44, in child
+    try:out.put(('PASS',r.adopt(s,c,g)['current_runtime']))
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+ERROR
+test_genesis_and_unadopted (__main__.Tests) ... ERROR
+test_historical_invocation_not_rebound (__main__.Tests) ... ERROR
+test_interruption_boundaries (__main__.Tests) ... ERROR
+test_missing_history (__main__.Tests) ... ERROR
+test_ordered_two_hops (__main__.Tests) ... ERROR
+test_qualification_not_production (__main__.Tests) ... ERROR
+test_release_context (__main__.Tests) ... ERROR
+test_reordered_journal (__main__.Tests) ... ERROR
+test_replay (__main__.Tests) ... ERROR
+test_runtime_source_still_guarded (__main__.Tests) ... ERROR
+test_skipped_predecessor (__main__.Tests) ... ERROR
+test_stale_grant (__main__.Tests) ... ok
+test_torn_journal (__main__.Tests) ... ERROR
+test_unknown_event (__main__.Tests) ... ERROR
+test_unpinned_PASS (__main__.Tests) ... ERROR
+
+======================================================================
+ERROR: test_adoption_independent_restart (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 55, in test_adoption_independent_restart
+    f=self.f;s=f.adopt();q=multiprocessing.Queue()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_byte_substitution (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 75, in test_byte_substitution
+    with self.assertRaisesRegex(ValueError,'unaccounted runtime'):f.adopt()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_changed_commit (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 110, in test_changed_commit
+    f=self.f;f.adopt();rows=f.ledger.read_bytes().splitlines();v=json.loads(rows[1]);v['successor']='arbitrary';rows[1]=encoded(v);f.ledger.write_bytes(b'\n'.join(rows)+b'\n')
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_changed_reference (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 78, in test_changed_reference
+    with self.assertRaises(ValueError):self.f.adopt(dict(self.f.c1,sha256='0'*64))
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_competing_threads_processes (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 72, in test_competing_threads_processes
+    self.assertEqual(sorted(q.get(timeout=1)[0] for _ in ps),['PASS','REJECT']);self.assertEqual(len(r.reconstruct(f.s)['continuations']),1)
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 72, in <genexpr>
+    self.assertEqual(sorted(q.get(timeout=1)[0] for _ in ps),['PASS','REJECT']);self.assertEqual(len(r.reconstruct(f.s)['continuations']),1)
+  File "/usr/lib/python3.8/multiprocessing/queues.py", line 108, in get
+    raise Empty
+_queue.Empty
+
+======================================================================
+ERROR: test_genesis_and_unadopted (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 51, in test_genesis_and_unadopted
+    f=self.f;s=r.reconstruct(f.s);self.assertEqual(s['current_runtime'],f.obj(f.r0)['identity'])
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 192, in reconstruct
+    with locked(store,p) as fd:return reconstruct_locked(store,p,fd)
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_historical_invocation_not_rebound (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 113, in test_historical_invocation_not_rebound
+    f=self.f;old=f.binding(r.reconstruct(f.s));f.adopt();self.assertEqual(old['runtime'],f.obj(f.r0)['identity'])
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 192, in reconstruct
+    with locked(store,p) as fd:return reconstruct_locked(store,p,fd)
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_interruption_boundaries (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 95, in test_interruption_boundaries
+    try:f.adopt()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_missing_history (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 107, in test_missing_history
+    f=self.f;f.adopt();f.ledger.write_bytes(b'\n'.join(f.ledger.read_bytes().splitlines()[1:])+b'\n')
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_ordered_two_hops (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 67, in test_ordered_two_hops
+    f=self.f;f.adopt();s=f.adopt(f.c3,f.g3);self.assertEqual(s['current_runtime'],f.obj(f.r2)['identity']);self.assertEqual(len(s['continuations']),2)
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_qualification_not_production (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 86, in test_qualification_not_production
+    s=f.adopt()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_release_context (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 116, in test_release_context
+    f=self.f;s=f.adopt();ids=dict(f.ancestry);release=ids.pop('release_authority');r.production_identities(f.s,release,ids,f.binding(s))
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_reordered_journal (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 104, in test_reordered_journal
+    f=self.f;f.adopt();rows=f.ledger.read_bytes().splitlines(True);f.ledger.write_bytes(rows[1]+rows[0]+rows[2])
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_replay (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 61, in test_replay
+    f=self.f;f.adopt();before=f.ledger.read_bytes()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_runtime_source_still_guarded (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 119, in test_runtime_source_still_guarded
+    f=self.f;s=f.adopt()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_skipped_predecessor (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 65, in test_skipped_predecessor
+    with self.assertRaises(ValueError):self.f.adopt(self.f.c3,self.f.g3)
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.stat(follow_symlinks=False)
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_torn_journal (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 100, in test_torn_journal
+    f=self.f;f.adopt();f.ledger.write_bytes(f.ledger.read_bytes()[:-1]);before=f.ledger.read_bytes()
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.lstat()
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_unknown_event (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 122, in test_unknown_event
+    f=self.f;f.adopt();rows=f.ledger.read_bytes().splitlines();v=json.loads(rows[0]);v.pop('id');v['event']='PASS';rows[0]=encoded(r.seal('RUNTIME-ADOPTION-EVENT',v));f.ledger.write_bytes(b'\n'.join(rows)+b'\n')
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.lstat()
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+======================================================================
+ERROR: test_unpinned_PASS (__main__.Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 80, in test_unpinned_PASS
+    with self.assertRaises(ValueError):self.f.adopt(self.f.c1,self.f.add({'result':'PASS','authority':'Architect'}))
+  File "docs/experiments/E1/runtime_adoption_2026-09-19/test_runtime_adoption.py", line 39, in adopt
+    def adopt(self,c=None,g=None):return r.adopt(self.s,c or self.c1,g or self.g1,binding_kind=self.kind)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 197, in adopt
+    with locked(store,p,True) as fd:
+  File "/usr/lib/python3.8/contextlib.py", line 113, in __enter__
+    return next(self.gen)
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_adoption_2026-09-19/candidate/adapter/runtime_adoption.py", line 136, in locked
+    st = os.fstat(fd); now = path.lstat()
+TypeError: stat() got an unexpected keyword argument 'follow_symlinks'
+
+----------------------------------------------------------------------
+Ran 20 tests in 23.832s
+
+FAILED (errors=19)

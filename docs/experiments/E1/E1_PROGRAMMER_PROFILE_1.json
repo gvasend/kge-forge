@@ -1,0 +1,84 @@
+{
+  "schema": "E1-PROGRAMMER-PROFILE-1",
+  "scope": {
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+    "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "lineage": "R4-final CURRENT UNIQUE",
+    "task": "E1-WP-001",
+    "purpose": "first Programmer request only"
+  },
+  "released_profile_authority": "ReleasedProfileAuthority-sha256:ec39636dc469f50ab460844d68fef31129035ea1a556e98e7a4b2951f1faa407",
+  "authorities": {
+    "provider": "CurrentProviderModelAuthority-sha256:95b3d340ec85add69b1a472acffa4eb4372f3e528a8dc29278a8fe0fd58b0939",
+    "payload": "CurrentModelPayloadAuthority-sha256:cc20ba70d59acab0b322db7231cb4b77f183994dfb2db5c0b8405d5ed6629ada",
+    "retention": "CurrentRetentionAuthority-sha256:c17023b118aeb4ecd7a57a72b0d8f5826415ecb8dd87e83c49a55afde9d60462",
+    "transmission": "CurrentTransmissionAuthority-sha256:2adc46e1422ad0934597e398540f2e9f54eb57c601f8b29f8a805b06a611f79c",
+    "content_clearance": "CurrentContentClearanceAuthority-sha256:3243f4e84d3434655d8455355bd9ea742c0659cbf49827b9eeb80160b39646b3"
+  },
+  "constraints": {
+    "tool_action_registry": {
+      "tools": [],
+      "generic_tools": false,
+      "mcp": false,
+      "connectors": false,
+      "additional_agents": false
+    },
+    "repository": {
+      "read_roots": [
+        "/home/gvasend/app/kge-forge",
+        "/home/gvasend/app/kge-forge-demo"
+      ],
+      "write_roots": [
+        "/home/gvasend/app/kge-forge/src/kge_forge/__init__.py",
+        "/home/gvasend/app/kge-forge/src/kge_forge/context",
+        "/home/gvasend/app/kge-forge/tests/context",
+        "/home/gvasend/app/kge-forge/docs/implementation/E1-WP-001.md"
+      ],
+      "promotion": "none"
+    },
+    "execution": {
+      "exec_argv_allowlist": [
+        [
+          "/usr/bin/python3",
+          "-B",
+          "-m",
+          "unittest",
+          "discover",
+          "-s",
+          "tests/context",
+          "-p",
+          "test_*.py",
+          "-v"
+        ]
+      ],
+      "shell": false,
+      "task_network": false
+    },
+    "credentials": {
+      "host_side_reference_only": true,
+      "model_visible": false,
+      "secrets": false
+    },
+    "transport": {
+      "endpoint": "https://api.openai.com/v1/responses",
+      "model": "gpt-5",
+      "endpoint_only": true
+    },
+    "audit": {
+      "append_only": true,
+      "same_identity_on_restart": true,
+      "reset": false
+    },
+    "ownership": {
+      "shared_ledger": true,
+      "override": false,
+      "active_or_uncertain_blocks": true
+    },
+    "budgets": "existing E1 bounded budgets",
+    "escalation": "fail_closed",
+    "authority_expansion": "none"
+  },
+  "canonicalization": "JSON UTF-8 sorted object keys, listed array order, compact separators; identity hashes body excluding derived identity",
+  "identity": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+  "canonical_byte_length": 2304
+}

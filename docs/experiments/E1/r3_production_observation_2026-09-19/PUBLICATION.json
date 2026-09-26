@@ -1,0 +1,76 @@
+{
+  "schema": "R3-PRODUCTION-OBSERVATION-QUALIFICATION-1",
+  "verdict": "RUN2_R3_PRODUCTION_READY_FOR_NEXT_ATTEMPT",
+  "qualification_harness_correction": {
+    "identity": "R3-PRODUCTION-OBSERVATION-HARNESS-sha256:2b8dadf5a3f39cb923d3b9178143c51058f2596cdb484b985337fd05900452f0",
+    "applicability": "NON_MATERIAL_IMPLEMENTATION_CONTINUATION",
+    "scope": "OBSERVE_AND_QUALIFY_EXISTING_PRODUCTION_RUNTIME",
+    "production_authority_granted": false,
+    "production_runtime_changed": false,
+    "files": {
+      "observation_binding": "2b8dadf5a3f39cb923d3b9178143c51058f2596cdb484b985337fd05900452f0",
+      "observation_monitor": "e7cacd730340f4287b3879d8496a9dbd5f770eca243877736c48e13dca8aeef1",
+      "observation_builder": "ba30e0f293763f97e78b56ac5e024d5ba43f19979701464f47a95bbc4d49bed6",
+      "observation_qualifier": "f68307b6d79258885253f13eb01a7a358031d11eae2f2900c190d0ebf40215ad",
+      "observation_recovery": "b67678290b652c2472599ad49ad89074adc7275a46ef310c3207cffc82d5ef93"
+    }
+  },
+  "runtime": {
+    "current": "sha256:eebb05f30a4a64befeca7802990129ac79dff701dd192789fbdf59be2ec118ff",
+    "adoption": "ENROLLED-RUNTIME-ADOPTION-sha256:bd90f1a6ef588c62502e1b0e315e6f49aae7e71ad5b947df6a560f5a6c49b01d",
+    "adoption_file_sha256": "7991d94180f8df2f3aa345f2938d4cb19eb750b8d4d891dcaf6a54773fcae9ef",
+    "head_authority": "RUNTIME-HEAD-AUTHORITY-sha256:75e6b7f2b5867c6d04bf0eeefc66f0c148d3f3e15e776c0d9e2b20b6352a1a5d",
+    "enrollment": "CONTINUATION-ENROLLMENT-sha256:9864f482d436c2d4727d9f030d2560fccabd45308014c3fe5202f986c68f440d",
+    "binding_kind": "PRODUCTION_ENROLLMENT"
+  },
+  "authority_context": {
+    "release_authority": "E1-RELEASE-AUTHORITY-sha256:bb1808a5ffbd720cd8447db29dc7946dbc7e50f336d4ca6c809ea82b321b3e30",
+    "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:1ab699d479fb2086981b30074384cb2e2144241c7f009fd5edec146d53606d39",
+    "continuation_digest": "2933203c93cc4cf19170cfe51400b20a1e302ba92735767861f0251cad5a38d6",
+    "ModelPayloadDigest": "d675d581c80f43e691a31da73ccf17fd4bcc6b00d3a5331f26b9294e294e1538"
+  },
+  "scope_guard": {
+    "correct_production_observation": "PASS",
+    "production_as_qualification": "REJECTED_WRONG_PRODUCTION_ENROLLMENT_SCOPE",
+    "qualification_as_production": "REJECTED_WRONG_SYNTHETIC_RUNTIME_SCOPE",
+    "missing_or_arbitrary_scope": "REJECTED",
+    "substituted_or_stale_runtime": "REJECTED",
+    "authority_effect": "NONE"
+  },
+  "timing_seconds": {
+    "cold_preparation_to_model_request_ready": 158.2354433890432,
+    "warm_1_preparation_to_model_request_ready": 158.28384958498646,
+    "warm_2_preparation_to_model_request_ready": 152.81233434798196,
+    "normal_maximum_individual_phase": 24.83331225096481,
+    "individual_phase_soft_threshold": 30.0,
+    "no_progress_hard_threshold": 300.0
+  },
+  "status": {
+    "sample": "warm_2_monitored",
+    "samples": 30,
+    "fresh": 30,
+    "stale": 0,
+    "unknown": 0,
+    "terminal": "CANCELLED + OWNERSHIP_RELEASED + QUIESCENT",
+    "status_authority": "authoritative lifecycle/recovery projection"
+  },
+  "safety": {
+    "provider_requests": 0,
+    "model_requests": 0,
+    "real_invocations": 0,
+    "real_effects": 0,
+    "r13_created": false,
+    "ownership_left_after_qualification": false
+  },
+  "supervisor": {
+    "instance": "SupervisorInstance-sha256:83f22718a56ab733257208c6e1dfe9767a95e0d10b82f8583f222f88ee9669a2",
+    "succession": "SupervisorSuccession-sha256:b86bbb15d9d9d468b2de87926ad6b1cb4063218fd71eb5426089f689c0aecce8",
+    "readiness": "PASS"
+  },
+  "predecessor": {
+    "r12": "ACTIVE_CANCELLED_PRE_MODEL_NO_EFFECTS",
+    "verdict": "PASS"
+  },
+  "historical_preservation": "PASS",
+  "model_payload_digest": "d675d581c80f43e691a31da73ccf17fd4bcc6b00d3a5331f26b9294e294e1538"
+}

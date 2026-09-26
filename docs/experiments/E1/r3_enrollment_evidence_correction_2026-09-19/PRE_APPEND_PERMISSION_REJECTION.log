@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/r3_enrollment_evidence_correction_2026-09-19/enroll.py", line 81, in <module>
+    with en.current_head(base,d) as head,en.lock(s,d,False) as fd:
+  File "/usr/lib/python3.11/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/tmp/kge-forge-prospective-enrollment/r1-r3-e57b9e8f1fb07c594e1bf666876575abf43863d608fe864d77dbda619db0bba6/evidence-correction-1/continuation_enrollment.py", line 72, in lock
+    path = store.state_path(d['journal'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/forge-r3-ordinary-4pm01a8l/historical-consumer/adapter/controller_authority_store.py", line 319, in state_path
+    raise AuthorityDenied('private state ownership/type/mode invalid')
+adapter.controller_authority_store.AuthorityDenied: private state ownership/type/mode invalid

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_r3_self_hosting_2026-09-19/build_path.py", line 71, in <module>
+    context=CommittedContext(raw['context_binding']['path'],raw['context_binding']['capture_commit'],spec)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/forge-r3-ordinary-br74qomk/r3/adapter/context_binding.py", line 24, in __init__
+    self.governance = GovernanceContinuation(governance)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/forge-r3-ordinary-br74qomk/r3/adapter/governance_continuation.py", line 39, in __init__
+    self.verify()
+  File "/tmp/forge-r3-ordinary-br74qomk/r3/adapter/controller_authority_store.py", line 377, in wrapped
+    result=fn(*args,**kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/tmp/forge-r3-ordinary-br74qomk/r3/adapter/governance_continuation.py", line 48, in verify
+    return verify(self)
+           ^^^^^^^^^^^^
+  File "/tmp/forge-r3-ordinary-br74qomk/r3/adapter/control_plane_binding.py", line 29, in verify
+    selection=selected();require(selection['binding']==spec['binding'],'unselected qualification binding')
+              ^^^^^^^^
+UnboundLocalError: cannot access local variable 'selected' where it is not associated with a value

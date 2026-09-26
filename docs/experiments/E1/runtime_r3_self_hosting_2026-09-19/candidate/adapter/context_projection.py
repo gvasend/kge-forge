@@ -1,0 +1,236 @@
+"""Immutable controller authority and deterministic, separately cleared model view."""
+from .controller_authority_store import authority_bytes, read_authority_ref
+from .validation_spans import measured
+import hashlib
+import json
+from pathlib import Path
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'))
+
+
+def sha(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def digest(value):
+    return sha(canonical(value).encode())
+
+
+def read_exact(path, expected):
+    p = Path(path)
+    if not p.is_absolute() or p.is_symlink() or p.resolve() != p:
+        raise ValueError('context artifact path changed')
+    data = p.read_bytes()
+    if sha(data) != expected:
+        raise ValueError('context artifact content changed')
+    return data
+
+
+def model_input(payload):
+    """Exact deterministic initial input content sent by ResponsesReasoning."""
+    return [{'role':'user','content':[{'type':'input_text',
+        'text':payload['task']+'\nContext:\n'+canonical(payload['context'])}]}]
+
+
+def model_payload_digest(payload):
+    # Content of the initial model request: exact framed input plus tool schemas.
+    # Subsequent filtered tool results have a separate per-request audit digest.
+    from .responses_orchestrator import tool_definitions
+    return digest({'input':model_input(payload),'tools':tool_definitions()})
+
+
+def projection_binding(payload_digest,clearance,identities,profile,task,full_digest):
+    return digest({'schema':'MODEL-PROJECTION-BINDING-1','ModelPayloadDigest':payload_digest,
+        'clearance':clearance,'operational_context':identities,
+        'released_profile_sha256':profile,'task':task,'FullContextDigest':full_digest})
+
+
+from .controller_authority_store import pure_resolution
+
+@measured('model_projection')
+@pure_resolution
+def derive(spec, binding, authorize=None):
+    """Verify authoritative bytes independently; emit only accepted cleared ranges."""
+    binding.verify()
+    capture = json.loads(authority_bytes('sha256:' + spec['capture_sha256'], evidence_path=spec['capture_path']))
+    clearance = json.loads(authority_bytes('sha256:' + spec['clearance_sha256'], evidence_path=spec['clearance_path']))
+    if clearance['candidate']['capture_sha256'] != spec['capture_sha256']:
+        raise ValueError('clearance/capture attribution changed')
+    entries = clearance['inputs']
+    if (len(entries) != len(capture['inputs']) or
+            {r['canonical_path'] for r in entries} != set(capture['inputs'])):
+        raise ValueError('incomplete or duplicate classification')
+    blobs = Path(spec['capture_path']).parent / 'blobs'
+    authoritative = {}
+    for path, row in capture['inputs'].items():
+        authoritative[path] = authority_bytes('sha256:' + row['sha256'], evidence_path=str(blobs / row['sha256']))
+    # Pinned committed governing sources are checked by binding.verify(). These
+    # additional current inputs bind the qualified implementation and launch inputs;
+    # historical audit snapshots stay immutable evidence, not live-file watches.
+    for path, expected in spec['current_inputs'].items():
+        current = binding.governance.implementation_hash(path, expected) if binding.governance else expected
+        if Path(path).suffix == '.py':
+            read_exact(path, current)  # live implementation, never an archived substitute
+        else:
+            authority_bytes('sha256:'+current, evidence_path=path)
+    full = {'capture_sha256': spec['capture_sha256'],
+            'clearance_sha256': spec['clearance_sha256'],
+            'committed_context_sha256': binding.digest,
+            'committed_capture': binding.capture_commit,
+            'controller_context': binding.model_context(),
+            'current_inputs': spec['current_inputs']}
+    if binding.governance:
+        full['operational_governance'] = binding.governance.identities
+        full['operational_specification_sha256'] = digest(binding.governance.spec)
+        full['implementation_supplement'] = binding.governance.supplement
+    authority_id = 'E1-AUTHORITATIVE-CONTEXT-sha256:' + digest(full)
+    context = {'schema': 'E1-CLEARED-CONTEXT-1', 'sources': []}
+    task = None
+    proofs = []
+    for index, row in enumerate(entries):
+        path = row['canonical_path']
+        if row['classification'] not in ('TRANSMIT', 'LOCAL_ONLY', 'NEVER_TRANSMIT'):
+            raise ValueError('unresolved classification')
+        if row['captured_sha256'] != capture['inputs'][path]['sha256']:
+            raise ValueError('clearance source identity mismatch')
+        if row['classification'] != 'TRANSMIT':
+            continue
+        if any(part in ('.git', '.codex', '.agents') for part in Path(path).parts):
+            raise ValueError('hidden content cannot be projected')
+        if authorize is not None:
+            authorize(path)
+        # Selected current content must still match the exact cleared source.
+        data = (binding.governance.projected_source(path, row['captured_sha256'])
+                if binding.governance else read_exact(path, row['captured_sha256']))
+        if data != authoritative[path]:
+            raise ValueError('cleared source disagrees with capture')
+        selections = []
+        for span in row['spans']:
+            start, end = span['start_byte'], span['end_byte_exclusive']
+            if type(start) is not int or type(end) is not int or not 0 <= start < end <= len(data):
+                raise ValueError('invalid cleared range')
+            part = data[start:end]
+            if sha(part) != span['sha256']:
+                raise ValueError('cleared range changed')
+            selections.append({'label': span['label'], 'content': part.decode('utf-8')})
+        if not selections:
+            raise ValueError('empty cleared source')
+        proofs.append({'authoritative_source_identity': row['source_identity'],
+            'path': path, 'captured_source_sha256': row['captured_sha256'],
+            'clearance_entry': index, 'clearance_entry_sha256': digest(row),
+            'ranges': row['spans'], 'projection_content_sha256': digest(selections)})
+        if binding.governance:
+            proofs[-1]['current_source_sha256'] = binding.governance.current_hash(path, row['captured_sha256'])
+            proofs[-1]['continuation_chain_digest'] = binding.governance.identities['continuation_chain_digest']
+        if path == spec['task_path']:
+            if (row['designation'] != 'COMPLETE_FILE' or len(row['spans']) != 1 or
+                    row['spans'][0]['start_byte'] != 0 or
+                    row['spans'][0]['end_byte_exclusive'] != len(data)):
+                raise ValueError('production task must be complete exact captured file')
+            task = data.decode('utf-8')
+        else:
+            context['sources'].append({'source': path, 'selections': selections})
+    if task is None:
+        raise ValueError('cleared task missing')
+    # Ordering follows the accepted manifest, independent of callers or model text.
+    payload = {'task': task, 'context': context}
+    projection = {'authoritative_context_id': authority_id,
+                  'capture_sha256': spec['capture_sha256'],
+                  'clearance_sha256': spec['clearance_sha256'],
+                  'payload': payload, 'items': proofs}
+    if binding.governance:
+        projection['operational_governance'] = binding.governance.identities
+    payload_id=model_payload_digest(payload)
+    historical_projection=digest(projection)
+    if binding.governance:
+        g=binding.governance
+        profile=json.loads(read_authority_ref(g.spec['released_profile']))
+        authority=g.identities
+        if g.spec.get('schema') in (2,3,4,5,6,7,8):
+            if payload_id!=g.authority_invariants['ModelPayloadDigest']:
+                raise ValueError('released model payload changed')
+            if g.spec.get('schema') not in (4,5,6,7,8):historical_projection=digest(g.anchor_projection)
+    else:
+        profile={};authority={'AuthoritativeContextId':authority_id}
+    binding_id=projection_binding(payload_id,{'path':spec['clearance_path'],'sha256':spec['clearance_sha256']},
+        authority,digest(profile),{'path':spec['task_path'],'sha256':sha(task.encode())},digest(full))
+    return {'AuthoritativeContextId': authority_id, 'FullContextDigest': digest(full),
+            'ModelProjectionDigest': historical_projection, 'ModelPayloadDigest':payload_id,
+            'ModelProjectionBindingDigest':binding_id, 'projection': projection,
+            'controller_context': full}
+
+
+
+def specification(binding, capture_path, clearance_path, task_path, current_inputs):
+    spec = {'schema': 1, 'capture_path': str(Path(capture_path).resolve()),
+            'capture_sha256': sha(Path(capture_path).read_bytes()),
+            'clearance_path': str(Path(clearance_path).resolve()),
+            'clearance_sha256': sha(Path(clearance_path).read_bytes()),
+            'task_path': str(Path(task_path).resolve()), 'current_inputs': current_inputs}
+    result = derive(spec, binding)
+    spec.update({k: result[k] for k in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest')})
+    return spec
+
+
+class ContextProjection:
+    def __init__(self, host):
+        self.host = host
+        self.binding = host.auth.context_binding
+        self.spec = json.loads(host.auth.context_projection)
+        if self.spec.get('schema') != 1 or self.binding is None:
+            raise ValueError('invalid context projection binding')
+        self.authorization_digest = self._authorization_digest()
+        self.verify()
+
+    def _authorization_digest(self):
+        auth = dict(self.host.auth.__dict__)
+        binding = auth.pop('context_binding')
+        auth['context_binding'] = {'capture': binding.capture_commit, 'digest': binding.digest}
+        return digest(auth)
+
+    def verify(self):
+        try:
+            if (self.spec != json.loads(self.host.auth.context_projection) or
+                    self.host.auth.context_binding is not self.binding or
+                    self._authorization_digest() != self.authorization_digest):
+                raise ValueError('session/turn/authorization binding changed')
+            def readable(raw):
+                path = Path(raw)
+                root = next((r for r in self.binding.repos.values() if r in path.parents), None)
+                if root is None or self.host._path(str(root), str(path.relative_to(root))) != path:
+                    raise ValueError('projection source outside read authority')
+            result = derive(self.spec, self.binding, readable)
+            expected = self.spec
+            if self.host.auth.operational_binding:
+                from .governance_continuation import verify_authorization
+                expected = verify_authorization(self.host.auth)['context_identities']
+            elif self.binding.governance:
+                raise ValueError('operational authorization supplement required')
+            names=('AuthoritativeContextId','FullContextDigest','ModelProjectionDigest')
+            if self.binding.governance and self.binding.governance.spec.get('schema') in (2,3,4,5,6,7,8):
+                names+=('ModelPayloadDigest','ModelProjectionBindingDigest')
+            for name in names:
+                if result[name] != expected[name]:
+                    raise ValueError('context/projection identity changed')
+            clearance = json.loads(authority_bytes('sha256:' + self.spec['clearance_sha256'], evidence_path=self.spec['clearance_path']))
+            permitted_files = {(row['canonical_path'], row['captured_sha256'])
+                               for row in clearance['inputs']
+                               if row['classification'] == 'TRANSMIT' and row['designation'] == 'COMPLETE_FILE'}
+            policy = json.loads(self.host.auth.model_transmission)
+            if (not policy.get('initial_clearances') or
+                    any(row.get('sha256') != digest(result['projection']['payload'])
+                        for row in policy['initial_clearances']) or
+                    any((row.get('path'), row.get('sha256')) not in permitted_files
+                        for row in policy.get('file_clearances', []))):
+                raise ValueError('transmission policy exceeds accepted clearance')
+            self.host._write({'event': 'context_projection_verified',
+                'authorization_id': self.host.auth.authorization_id,
+                'session_id': self.host.auth.session_id, 'turn_id': self.host.auth.turn_id,
+                **{k: result[k] for k in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest', 'ModelPayloadDigest', 'ModelProjectionBindingDigest')}})
+            return result
+        except Exception:
+            self.host._write({'event': 'context_projection_denied',
+                              'authorization_id': self.host.auth.authorization_id})
+            raise ValueError('controller/model context validation failed') from None

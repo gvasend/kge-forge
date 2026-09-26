@@ -1,0 +1,1092 @@
+{
+  "timestamp_utc": "2026-09-16T05:54:41.410038+00:00",
+  "head": "5a3895d76212615b86a9e0764bf7dd702ed9451b",
+  "capture": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+  "context_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21",
+  "source_count": 24,
+  "mandatory_closure": [
+    "adapter_review",
+    "adapter_schema",
+    "architecture",
+    "architecture_review",
+    "baseline_manifest",
+    "capture_verification",
+    "context_protocol",
+    "dispatch_review",
+    "elicitation",
+    "intervention_supplement",
+    "preparation_decisions",
+    "preparation_state",
+    "publication_receipt",
+    "qualification_plan",
+    "readiness",
+    "repository_instructions",
+    "requirements",
+    "service_architecture",
+    "service_publication",
+    "service_requirements",
+    "vision",
+    "work_package"
+  ],
+  "profile": {
+    "authorization_id": "auth-pd05-inactive-evidence",
+    "revision": 1,
+    "work_package_id": "E1-WP-001",
+    "session_id": "session-pd05-inactive-evidence",
+    "turn_id": "turn-pd05-inactive-evidence",
+    "read_roots": [
+      "/home/gvasend/app/kge-forge",
+      "/home/gvasend/app/kge-forge-demo"
+    ],
+    "write_roots": [
+      "/home/gvasend/app/kge-forge/src/kge_forge/__init__.py",
+      "/home/gvasend/app/kge-forge/src/kge_forge/context",
+      "/home/gvasend/app/kge-forge/tests/context",
+      "/home/gvasend/app/kge-forge/docs/implementation/E1-WP-001.md"
+    ],
+    "deny_roots": [],
+    "exec_bins": [],
+    "shell": false,
+    "network": false,
+    "state": "INACTIVE",
+    "context_binding": {
+      "context_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21",
+      "capture_commit": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "baseline_id": "E1-ARCH-1",
+      "work_id": "E1-WP-001"
+    },
+    "exec_argv_allowlist": [],
+    "read_deny_roots": [
+      "/home/gvasend/app/kge-forge/.git",
+      "/home/gvasend/app/kge-forge/.codex",
+      "/home/gvasend/app/kge-forge/.agents"
+    ],
+    "write_deny_roots": [
+      "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch",
+      "/home/gvasend/app/kge-forge/docs/VISION.md",
+      "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "/home/gvasend/app/kge-forge/.git",
+      "/home/gvasend/app/kge-forge/.codex",
+      "/home/gvasend/app/kge-forge/.agents",
+      "/home/gvasend/app/kge-forge/AGENTS.md"
+    ],
+    "ownership_ledger": "/tmp/kge-forge-e1-invocations.jsonl"
+  },
+  "same_as_historical_prepared_profile_except_probe_ids": true,
+  "tool_definitions": [
+    {
+      "type": "function",
+      "name": "governed_read",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_list",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_search",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "query",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_write",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "content"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_patch",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "op": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "op",
+                "path",
+                "content"
+              ]
+            }
+          }
+        },
+        "required": [
+          "repository",
+          "changes"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_exec",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "executable": {
+            "type": "string"
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "executable",
+          "argv",
+          "cwd",
+          "inputs"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_status",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "authority_expansion_request",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capability": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "capability",
+          "action",
+          "resources",
+          "reason"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "finish_task",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "summary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary"
+        ]
+      },
+      "strict": true
+    }
+  ],
+  "action_types": [
+    "authority_expansion",
+    "exec",
+    "finish",
+    "list",
+    "patch",
+    "read",
+    "search",
+    "status",
+    "write"
+  ],
+  "sources": [
+    {
+      "id": "vision",
+      "repository": "forge",
+      "path": "docs/VISION.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "b76ecfd3b48c0b8da50473d6f0e276f5ea285777bd7e6adf82b1510a87c59d4e",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "elicitation",
+      "repository": "forge",
+      "path": "docs/ARCHITECTURE_ELICITATION.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "requirements",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "architecture",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "architecture_review",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "c29c77350068884d889ccf6afbff86abef12f9488d8bc86503c41b6e1b85c7a6",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "readiness",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "7f370437084c9fb4af1ead62c99ec7fce6dfabc04ac5871d83241be3f3c81b24",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "gap_disposition",
+      "repository": "forge",
+      "path": "docs/ARCHITECTURE_GAP_ANALYSIS.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "bcf8f18807df2758dd876f81b476b6f396a1898e587dd87e8615438dddc04ca9",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "baseline_manifest",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_BASELINE_MANIFEST.json",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "a35d085cbad46fcbb38d176d504a92a3a5f3d232f97759ce8c9f756a02c59967",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "repository_instructions",
+      "repository": "forge",
+      "path": "AGENTS.md",
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "preparation_decisions",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/DECISIONS.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "026c689de2012f914ea2d572a31f17a703cef37d3ae096256606a183a58a6e3e",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "adapter_schema",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "4b02ee777ce711cbf26316ad44066c01458cd15a7004ec55eff33e6159498c7d",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "adapter_review",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "6077d3102a06f32b331ae848ba96283f6f25d27b61e0be481638a886c730713e",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "capture_verification",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/baseline_verification.json",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "0c17576851451ec99c7197730c7dfc79434e31f645c3b653725ec737f3fc9412",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "publication_receipt",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/service_repository_receipt.json",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "9c55181c720d7aa95415bbf7892b2fc6ecc032b68244d9345490f6043369cc25",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "preparation_state",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/STATE.json",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "b87092febec63b4a90b1816f1562dd809ec22dc4985c5de915aa465171a85c17",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "context_protocol",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "work_package",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "dispatch_review",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "ee719c5498fc8b8f50576f5c1b4947615810d9bd175f9f517a1681bded43293a",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "intervention_supplement",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/INTERVENTIONS.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "3987af944d121f095289a8d89ba161217125445b55500f6915c4b4e65419c02f",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "service_vision",
+      "repository": "service",
+      "path": "docs/VISION.md",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "service_requirements",
+      "repository": "service",
+      "path": "docs/REQUIREMENTS.md",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "service_architecture",
+      "repository": "service",
+      "path": "docs/ARCHITECTURE.md",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "service_publication",
+      "repository": "service",
+      "path": "docs/PUBLICATION.json",
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "working_matches": true,
+      "committed_matches": true
+    },
+    {
+      "id": "qualification_plan",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md",
+      "revision": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "sha256": "658184c03476ae7ea1addf9257273c4b93b85f7a3e83de4fa0fba06f9db57539",
+      "working_matches": true,
+      "committed_matches": true
+    }
+  ],
+  "inactive_results": {
+    "read": {
+      "action_request_id": "pd05-read",
+      "result": "DENIED",
+      "type": "read",
+      "error": "authorization not released"
+    },
+    "list": {
+      "action_request_id": "pd05-list",
+      "result": "DENIED",
+      "type": "list",
+      "error": "authorization not released"
+    },
+    "search": {
+      "action_request_id": "pd05-search",
+      "result": "DENIED",
+      "type": "search",
+      "error": "authorization not released"
+    },
+    "write": {
+      "action_request_id": "pd05-write",
+      "result": "DENIED",
+      "type": "write",
+      "error": "authorization not released"
+    },
+    "patch": {
+      "action_request_id": "pd05-patch",
+      "result": "DENIED",
+      "type": "patch",
+      "error": "authorization not released"
+    },
+    "exec": {
+      "action_request_id": "pd05-exec",
+      "result": "DENIED",
+      "type": "exec",
+      "error": "authorization not released"
+    },
+    "status": {
+      "action_request_id": "pd05-status",
+      "result": "SUCCEEDED",
+      "type": "status",
+      "data": {
+        "authorization_id": "auth-pd05-inactive-evidence",
+        "turn_id": "turn-pd05-inactive-evidence",
+        "scope_id": null,
+        "scope_state": "NONE",
+        "architectural_state": "AUTHORIZED",
+        "interruption_requested": false,
+        "reconstruction_class": "NEW",
+        "active_invocations": 0,
+        "pending_action_requests": 1
+      }
+    },
+    "authority_expansion": {
+      "action_request_id": "pd05-authority_expansion",
+      "result": "DENIED",
+      "type": "authority_expansion",
+      "error": "authorization not released"
+    },
+    "finish": {
+      "action_request_id": "pd05-finish",
+      "result": "DENIED",
+      "type": "finish",
+      "error": "authorization not released"
+    }
+  },
+  "model_loop_denial": "Programmer authorization not released",
+  "host_invocations": 0,
+  "scope": null,
+  "watched_before": {
+    "/home/gvasend/app/kge-forge/src/kge_forge/__init__.py": {
+      "exists": false
+    },
+    "/home/gvasend/app/kge-forge/src/kge_forge/context": {
+      "exists": false
+    },
+    "/home/gvasend/app/kge-forge/tests/context": {
+      "exists": false
+    },
+    "/home/gvasend/app/kge-forge/docs/implementation/E1-WP-001.md": {
+      "exists": false
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/E1-WP-001.md": {
+      "exists": true,
+      "sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_MANIFEST.json": {
+      "exists": true,
+      "sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21"
+    },
+    "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_GAP_ANALYSIS.md": {
+      "exists": true,
+      "sha256": "bcf8f18807df2758dd876f81b476b6f396a1898e587dd87e8615438dddc04ca9"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/STATE.json": {
+      "exists": true,
+      "sha256": "b87092febec63b4a90b1816f1562dd809ec22dc4985c5de915aa465171a85c17"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md": {
+      "exists": true,
+      "sha256": "658184c03476ae7ea1addf9257273c4b93b85f7a3e83de4fa0fba06f9db57539"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md": {
+      "exists": true,
+      "sha256": "ee719c5498fc8b8f50576f5c1b4947615810d9bd175f9f517a1681bded43293a"
+    },
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md": {
+      "exists": true,
+      "sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8"
+    },
+    "/home/gvasend/app/kge-forge-demo/docs/REQUIREMENTS.md": {
+      "exists": true,
+      "sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9"
+    },
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md": {
+      "exists": true,
+      "sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md": {
+      "exists": true,
+      "sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/DECISIONS.md": {
+      "exists": true,
+      "sha256": "026c689de2012f914ea2d572a31f17a703cef37d3ae096256606a183a58a6e3e"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_repository_receipt.json": {
+      "exists": true,
+      "sha256": "9c55181c720d7aa95415bbf7892b2fc6ecc032b68244d9345490f6043369cc25"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json": {
+      "exists": true,
+      "sha256": "4b02ee777ce711cbf26316ad44066c01458cd15a7004ec55eff33e6159498c7d"
+    },
+    "/home/gvasend/app/kge-forge-demo/docs/VISION.md": {
+      "exists": true,
+      "sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880"
+    },
+    "/home/gvasend/app/kge-forge-demo/docs/PUBLICATION.json": {
+      "exists": true,
+      "sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/baseline_verification.json": {
+      "exists": true,
+      "sha256": "0c17576851451ec99c7197730c7dfc79434e31f645c3b653725ec737f3fc9412"
+    },
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md": {
+      "exists": true,
+      "sha256": "c29c77350068884d889ccf6afbff86abef12f9488d8bc86503c41b6e1b85c7a6"
+    },
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md": {
+      "exists": true,
+      "sha256": "7f370437084c9fb4af1ead62c99ec7fce6dfabc04ac5871d83241be3f3c81b24"
+    },
+    "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_ELICITATION.md": {
+      "exists": true,
+      "sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da"
+    },
+    "/home/gvasend/app/kge-forge/AGENTS.md": {
+      "exists": true,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/INTERVENTIONS.md": {
+      "exists": true,
+      "sha256": "3987af944d121f095289a8d89ba161217125445b55500f6915c4b4e65419c02f"
+    },
+    "/home/gvasend/app/kge-forge/docs/VISION.md": {
+      "exists": true,
+      "sha256": "b76ecfd3b48c0b8da50473d6f0e276f5ea285777bd7e6adf82b1510a87c59d4e"
+    },
+    "/home/gvasend/app/kge-forge-demo/docs/ARCHITECTURE.md": {
+      "exists": true,
+      "sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34"
+    },
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md": {
+      "exists": true,
+      "sha256": "6077d3102a06f32b331ae848ba96283f6f25d27b61e0be481638a886c730713e"
+    },
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_BASELINE_MANIFEST.json": {
+      "exists": true,
+      "sha256": "a35d085cbad46fcbb38d176d504a92a3a5f3d232f97759ce8c9f756a02c59967"
+    },
+    "/tmp/kge-forge-e1-invocations.jsonl": {
+      "exists": false
+    }
+  },
+  "watched_after_equal": true,
+  "path_policy_resolution_without_read": {
+    "forge/.git": "Denied: denied path",
+    "forge/.codex": "Denied: denied path",
+    "forge/.agents": "Denied: denied path",
+    "service/.git": "RESOLVES_INSIDE_READ_GRANT",
+    "service/.codex": "RESOLVES_INSIDE_READ_GRANT",
+    "service/.agents": "RESOLVES_INSIDE_READ_GRANT"
+  },
+  "qualification_artifacts": [
+    {
+      "name": "bound",
+      "path": "/tmp/a2-bound-evidence-57ac5751b64f4233bf18609e308e53a7/audit.jsonl",
+      "available": true,
+      "sha256": "5c598d7b3d578ce5cb7002cbd38dbb48f8a5c2163b306010e15da0fc6f3809e8",
+      "events": 35,
+      "authorizations": [
+        {
+          "authorization_id": "auth-bound",
+          "revision": 1,
+          "work_package_id": "scratch-bound-programmer",
+          "session_id": "session-bound",
+          "turn_id": "turn-bound",
+          "read_roots": [
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b"
+          ],
+          "write_roots": [
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b/calc.py"
+          ],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": {
+            "context_sha256": "3d77a1b0a5dec96ef71412ce3c02c47c25de35ca75ae595fabdcd59dc9d66a65",
+            "capture_commit": "d432551b38e0b9626986a33802637eee44e30f6f",
+            "baseline_id": "scratch-baseline",
+            "work_id": "scratch-bound-programmer"
+          },
+          "exec_argv_allowlist": [
+            [
+              "python3",
+              "test_calc.py"
+            ]
+          ],
+          "read_deny_roots": [
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b/.git",
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b/.codex",
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b/.agents"
+          ],
+          "write_deny_roots": [
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b/package.txt",
+            "/tmp/a2-bound-programmer-4a94c20b34684d04934de6e17699306b/protected.txt"
+          ]
+        }
+      ],
+      "action_results": [
+        {
+          "id": "call_TnGd6yZQHVzo3t8eLW4uFbWk",
+          "type": "read",
+          "result": "SUCCEEDED"
+        },
+        {
+          "id": "call_bf0owh7PF89npPwhgipumMKv",
+          "type": "read",
+          "result": "SUCCEEDED"
+        },
+        {
+          "id": "call_llomTK9Lw1PmoOD5HEUQDXl2",
+          "type": "read",
+          "result": "SUCCEEDED"
+        },
+        {
+          "id": "call_9G7TxgE6GQUGl4ks90IYCnbQ",
+          "type": "exec",
+          "result": "SUCCEEDED"
+        },
+        {
+          "id": "call_HAm0gx6KNre1ZzNaxcDW246N",
+          "type": "write",
+          "result": "SUCCEEDED"
+        },
+        {
+          "id": "call_U9lr9FZTvTEeaebTsM1bTijV",
+          "type": "exec",
+          "result": "SUCCEEDED"
+        },
+        {
+          "id": "call_HIjkFVtDDxFpqT6QKB7IJbVx",
+          "type": "finish",
+          "result": "SUCCEEDED"
+        }
+      ]
+    },
+    {
+      "name": "recovery",
+      "path": "/tmp/a2-live-recovery-evidence-4ec219720ec445b196aef14770bbf09d/controller.jsonl",
+      "available": true,
+      "sha256": "04da6d142738048da10a8f0ff897c31e72c46ac736b6802946addcbedefc941e",
+      "events": 19,
+      "authorizations": [
+        {
+          "authorization_id": "auth-4ec219720ec445b196aef14770bbf09d",
+          "revision": 1,
+          "work_package_id": "scratch-recovery",
+          "session_id": "session-4ec219720ec445b196aef14770bbf09d",
+          "turn_id": "turn-4ec219720ec445b196aef14770bbf09d",
+          "read_roots": [
+            "/tmp/a2-live-recovery-4ec219720ec445b196aef14770bbf09d"
+          ],
+          "write_roots": [],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": null,
+          "exec_argv_allowlist": [],
+          "read_deny_roots": [],
+          "write_deny_roots": [],
+          "ownership_ledger": "/tmp/a2-live-recovery-evidence-4ec219720ec445b196aef14770bbf09d/ownership.jsonl"
+        }
+      ],
+      "action_results": [
+        {
+          "id": "req-29940cefd7534770b7c1cda3c4272df4",
+          "type": "exec",
+          "result": "DENIED"
+        },
+        {
+          "id": "req-ccb1282706fe4913895fb077a23885fd",
+          "type": "exec",
+          "result": "INDETERMINATE"
+        }
+      ]
+    },
+    {
+      "name": "recovery_second",
+      "path": "/tmp/a2-live-recovery-evidence-4ec219720ec445b196aef14770bbf09d/controller-second.jsonl",
+      "available": true,
+      "sha256": "a6e12cfdef154fdf3d01fc3a0de3c99b4e6aaef71c401456f0bd0bf3d4c3b6d9",
+      "events": 19,
+      "authorizations": [
+        {
+          "authorization_id": "auth-second-4ec219720ec445b196aef14770bbf09d",
+          "revision": 1,
+          "work_package_id": "scratch-recovery",
+          "session_id": "session-second-4ec219720ec445b196aef14770bbf09d",
+          "turn_id": "turn-second-4ec219720ec445b196aef14770bbf09d",
+          "read_roots": [
+            "/tmp/a2-live-recovery-4ec219720ec445b196aef14770bbf09d"
+          ],
+          "write_roots": [],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": null,
+          "exec_argv_allowlist": [],
+          "read_deny_roots": [],
+          "write_deny_roots": [],
+          "ownership_ledger": "/tmp/a2-live-recovery-evidence-4ec219720ec445b196aef14770bbf09d/ownership.jsonl"
+        },
+        {
+          "authorization_id": "auth-second-4ec219720ec445b196aef14770bbf09d",
+          "revision": 1,
+          "work_package_id": "scratch-recovery",
+          "session_id": "session-second-4ec219720ec445b196aef14770bbf09d",
+          "turn_id": "turn-second-4ec219720ec445b196aef14770bbf09d",
+          "read_roots": [
+            "/tmp/a2-live-recovery-4ec219720ec445b196aef14770bbf09d"
+          ],
+          "write_roots": [],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": null,
+          "exec_argv_allowlist": [],
+          "read_deny_roots": [],
+          "write_deny_roots": [],
+          "ownership_ledger": "/tmp/a2-live-recovery-evidence-4ec219720ec445b196aef14770bbf09d/ownership.jsonl"
+        }
+      ],
+      "action_results": [
+        {
+          "id": "req-264b84d3d3774b2b8b6a32626e429856",
+          "type": "exec",
+          "result": "DENIED"
+        },
+        {
+          "id": "req-08d1ecf31f2f4d4abbe9a3d42efd2410",
+          "type": "exec",
+          "result": "DENIED"
+        },
+        {
+          "id": "req-f9ad4d6279824b37941bdc3056513601",
+          "type": "exec",
+          "result": "SUCCEEDED"
+        }
+      ]
+    },
+    {
+      "name": "ownership",
+      "path": "/tmp/a2-live-recovery-evidence-4ec219720ec445b196aef14770bbf09d/ownership.jsonl",
+      "available": true,
+      "sha256": "388996b5458d7f87146cfbb87847232eb0218d0ed1f0d726b7c0875aeaa19514",
+      "events": 4,
+      "authorizations": [],
+      "action_results": []
+    },
+    {
+      "name": "restart",
+      "path": "/tmp/a2-controller-restart-evidence-ab206fa10725415a87ee0fe7945a125c/controller.jsonl",
+      "available": true,
+      "sha256": "e47e91c2c9f8617f527eccff6f38f8780afebbfc9ae31adbeaf09a8c1f855c79",
+      "events": 26,
+      "authorizations": [
+        {
+          "authorization_id": "auth-ab206fa10725415a87ee0fe7945a125c",
+          "revision": 1,
+          "work_package_id": "scratch-controller-restart",
+          "session_id": "session-ab206fa10725415a87ee0fe7945a125c",
+          "turn_id": "turn-ab206fa10725415a87ee0fe7945a125c",
+          "read_roots": [
+            "/tmp/a2-controller-restart-ab206fa10725415a87ee0fe7945a125c"
+          ],
+          "write_roots": [],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": null,
+          "exec_argv_allowlist": [],
+          "read_deny_roots": [],
+          "write_deny_roots": [],
+          "ownership_ledger": "/tmp/a2-controller-restart-evidence-ab206fa10725415a87ee0fe7945a125c/ownership.jsonl"
+        },
+        {
+          "authorization_id": "auth-ab206fa10725415a87ee0fe7945a125c",
+          "revision": 1,
+          "work_package_id": "scratch-controller-restart",
+          "session_id": "session-ab206fa10725415a87ee0fe7945a125c",
+          "turn_id": "turn-ab206fa10725415a87ee0fe7945a125c",
+          "read_roots": [
+            "/tmp/a2-controller-restart-ab206fa10725415a87ee0fe7945a125c"
+          ],
+          "write_roots": [],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": null,
+          "exec_argv_allowlist": [],
+          "read_deny_roots": [],
+          "write_deny_roots": [],
+          "ownership_ledger": "/tmp/a2-controller-restart-evidence-ab206fa10725415a87ee0fe7945a125c/ownership.jsonl"
+        },
+        {
+          "authorization_id": "auth-ab206fa10725415a87ee0fe7945a125c",
+          "revision": 1,
+          "work_package_id": "scratch-controller-restart",
+          "session_id": "session-ab206fa10725415a87ee0fe7945a125c",
+          "turn_id": "turn-ab206fa10725415a87ee0fe7945a125c",
+          "read_roots": [
+            "/tmp/a2-controller-restart-ab206fa10725415a87ee0fe7945a125c"
+          ],
+          "write_roots": [],
+          "deny_roots": [],
+          "exec_bins": [
+            "python3"
+          ],
+          "shell": false,
+          "network": false,
+          "state": "ACTIVE",
+          "context_binding": null,
+          "exec_argv_allowlist": [],
+          "read_deny_roots": [],
+          "write_deny_roots": [],
+          "ownership_ledger": "/tmp/a2-controller-restart-evidence-ab206fa10725415a87ee0fe7945a125c/ownership.jsonl"
+        }
+      ],
+      "action_results": [
+        {
+          "id": "req-dd185bc3fd9747bcab98d7c01fc9e8c3",
+          "type": "exec",
+          "result": "INDETERMINATE"
+        },
+        {
+          "id": "req-0ac93805a2934ad9ad200fe94d45c47c",
+          "type": "exec",
+          "result": "DENIED"
+        },
+        {
+          "id": "req-25633cc929714af5aade43c1d07ca8ce",
+          "type": "exec",
+          "result": "DENIED"
+        },
+        {
+          "id": "req-ddbd559549fc45c3bfee267820ec8abc",
+          "type": "exec",
+          "result": "DENIED"
+        }
+      ]
+    }
+  ],
+  "state": {
+    "experiment": "E1",
+    "architecture_baseline": "E1-ARCH-1",
+    "process_state": "WAITING_FOR_HUMAN",
+    "work_package": "E1-WP-001",
+    "work_package_status": "PREPARED_NOT_DISPATCHABLE",
+    "dispatch_status": "NOT_ISSUED",
+    "implementation_invocation_id": null,
+    "implementation_started": false,
+    "blockers": [
+      {
+        "id": "E1-B01",
+        "kind": "invocation_facility_qualification",
+        "requires": "designated qualified facility or authorized confined non-implementation qualification",
+        "status": "OPEN"
+      }
+    ],
+    "baseline_capture_commit": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+    "baseline_source_changes": false,
+    "preparation_complete": true,
+    "service_publication": {
+      "receipt": "service_repository_receipt.json",
+      "commit": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "status": "PASS"
+    },
+    "next_human_decision": "Designate an existing qualified implementation facility or authorize the confined no-implementation E1-AQ-001 qualification session."
+  }
+}

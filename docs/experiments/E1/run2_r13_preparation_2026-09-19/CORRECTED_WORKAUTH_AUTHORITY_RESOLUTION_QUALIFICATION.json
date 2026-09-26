@@ -1,0 +1,53 @@
+{
+  "schema": "SUCCESSOR_RUNTIME_AUTHORITY_RESOLUTION_QUALIFICATION-1",
+  "verdict": "BLOCKED_AUTHORITY_SOURCE_MISSING_OPERATIONAL_CONTEXT",
+  "qualification_domain": "SUCCESSOR_RUNTIME_QUALIFICATION",
+  "production_mutation": false,
+  "provider_requests": 0,
+  "e1_effects": 0,
+  "production_state": {
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+    "authority_store_generation": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "r4": "CURRENT_UNIQUE",
+    "r13": "UNISSUED_UNOWNED"
+  },
+  "successor_runtime_candidate": "sha256:3e5a508fb3751ae685e85b9ebc2b77a19515a202233b5ce6dd93e4330bd81d24",
+  "implementation": {
+    "adapter/authority_resolution.py": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc"
+  },
+  "source_store": "/tmp/kge-forge-r3-current-r13-authority",
+  "source_catalog": "ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+  "resolver_results": {
+    "invocation": "PASS",
+    "dispatch": "PASS",
+    "released_profile": "PASS",
+    "operational_binding": "BLOCKED_MISSING_CANONICAL_BINDING_RECORD",
+    "operational_context": "BLOCKED_MISSING_CANONICAL_CONTEXT_RECORD",
+    "ownership": "NOT_ATTEMPTED_AFTER_REQUIRED_SOURCE_GAP",
+    "audit": "NOT_ATTEMPTED_AFTER_REQUIRED_SOURCE_GAP",
+    "lifecycle": "NOT_ATTEMPTED_AFTER_REQUIRED_SOURCE_GAP"
+  },
+  "exact_gap": {
+    "field": "OperationalContextId",
+    "required_identity": "E1-OPERATIONAL-CONTEXT-sha256:1ab699d479fb2086981b30074384cb2e2144241c7f009fd5edec146d53606d39",
+    "owning_domain": "OPERATIONAL_CONTEXT_AUTHORITY",
+    "live_catalog": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "finding": "No canonical operational-context record in the live G4 catalog authenticates the exact context identity referenced by the current dispatch/invocation. Historical E1-OPERATIONAL-CONTEXT records are different identities and cannot substitute.",
+    "prohibited_fallbacks": ["dispatch copy", "WorkAuthorization copy", "implementation default", "caller assertion", "historical context substitution"]
+  },
+  "resolution_contract": {
+    "reference_authentication": "implemented",
+    "authority_resolution": "fail_closed_on_missing_owner_record",
+    "composition": "not_reached",
+    "provenance_wrapper": "ResolvedAuthorityValue"
+  },
+  "production_preservation": [
+    "R4-final remains CURRENT and immutable",
+    "LIVE_R4_FINAL_CONTROLLER_STORE G4 remains CURRENT",
+    "r13 remains UNISSUED and UNOWNED",
+    "no template/issuance publication",
+    "no lifecycle state",
+    "no provider/model request",
+    "no E1 effect"
+  ]
+}

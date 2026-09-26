@@ -1,0 +1,1320 @@
+{
+  "errors": [],
+  "results": [
+    {
+      "status": "COMPLETE",
+      "response_id": null,
+      "cycles": 4,
+      "records": [
+        {
+          "response_id": null,
+          "output_types": [
+            "function_call"
+          ]
+        },
+        {
+          "response_id": null,
+          "output_types": [
+            "function_call"
+          ]
+        },
+        {
+          "response_id": null,
+          "output_types": [
+            "function_call"
+          ]
+        },
+        {
+          "response_id": null,
+          "output_types": []
+        }
+      ]
+    }
+  ],
+  "population_while_active": {
+    "members": [
+      521636,
+      521648,
+      521649
+    ],
+    "populated": 1,
+    "directories": 1
+  },
+  "before_terminal": {
+    "model_requests": 1,
+    "terminal_result_present": false
+  },
+  "sequential_gating": {
+    "action_request_id": "while-active",
+    "result": "DENIED",
+    "type": "exec",
+    "error": "prior execution ownership unresolved"
+  },
+  "model_payloads": [
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "SYNTHETIC_TASK_ONLY\n\nContext:\n{\"schema\":\"E1-CLEARED-CONTEXT-1\",\"sources\":[{\"selections\":[{\"content\":\"CLEARED_PUBLIC_ONLY\\n\",\"label\":\"public.txt\"}],\"source\":\"/tmp/g5-nonimplementation-thqdid7u/forge/public.txt\"}]}"
+            }
+          ]
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "SYNTHETIC_TASK_ONLY\n\nContext:\n{\"schema\":\"E1-CLEARED-CONTEXT-1\",\"sources\":[{\"selections\":[{\"content\":\"CLEARED_PUBLIC_ONLY\\n\",\"label\":\"public.txt\"}],\"source\":\"/tmp/g5-nonimplementation-thqdid7u/forge/public.txt\"}]}"
+            }
+          ]
+        },
+        {
+          "type": "function_call",
+          "name": "governed_exec",
+          "call_id": "execution-1",
+          "arguments": "{\"executable\": \"/usr/bin/python3\", \"argv\": [\"-B\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/context\", \"-p\", \"test_*.py\", \"-v\"], \"cwd\": \"/tmp/g5-nonimplementation-thqdid7u/forge\", \"inputs\": [\"src/kge_forge/__init__.py\", \"src/kge_forge/context\", \"tests/context\"]}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "execution-1",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "SYNTHETIC_TASK_ONLY\n\nContext:\n{\"schema\":\"E1-CLEARED-CONTEXT-1\",\"sources\":[{\"selections\":[{\"content\":\"CLEARED_PUBLIC_ONLY\\n\",\"label\":\"public.txt\"}],\"source\":\"/tmp/g5-nonimplementation-thqdid7u/forge/public.txt\"}]}"
+            }
+          ]
+        },
+        {
+          "type": "function_call",
+          "name": "governed_exec",
+          "call_id": "execution-1",
+          "arguments": "{\"executable\": \"/usr/bin/python3\", \"argv\": [\"-B\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/context\", \"-p\", \"test_*.py\", \"-v\"], \"cwd\": \"/tmp/g5-nonimplementation-thqdid7u/forge\", \"inputs\": [\"src/kge_forge/__init__.py\", \"src/kge_forge/context\", \"tests/context\"]}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "execution-1",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        },
+        {
+          "type": "function_call",
+          "name": "governed_exec",
+          "call_id": "execution-2",
+          "arguments": "{\"executable\": \"/usr/bin/python3\", \"argv\": [\"-B\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/context\", \"-p\", \"test_*.py\", \"-v\"], \"cwd\": \"/tmp/g5-nonimplementation-thqdid7u/forge\", \"inputs\": [\"src/kge_forge/__init__.py\", \"src/kge_forge/context\", \"tests/context\"]}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "execution-2",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "SYNTHETIC_TASK_ONLY\n\nContext:\n{\"schema\":\"E1-CLEARED-CONTEXT-1\",\"sources\":[{\"selections\":[{\"content\":\"CLEARED_PUBLIC_ONLY\\n\",\"label\":\"public.txt\"}],\"source\":\"/tmp/g5-nonimplementation-thqdid7u/forge/public.txt\"}]}"
+            }
+          ]
+        },
+        {
+          "type": "function_call",
+          "name": "governed_exec",
+          "call_id": "execution-1",
+          "arguments": "{\"executable\": \"/usr/bin/python3\", \"argv\": [\"-B\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/context\", \"-p\", \"test_*.py\", \"-v\"], \"cwd\": \"/tmp/g5-nonimplementation-thqdid7u/forge\", \"inputs\": [\"src/kge_forge/__init__.py\", \"src/kge_forge/context\", \"tests/context\"]}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "execution-1",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        },
+        {
+          "type": "function_call",
+          "name": "governed_exec",
+          "call_id": "execution-2",
+          "arguments": "{\"executable\": \"/usr/bin/python3\", \"argv\": [\"-B\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/context\", \"-p\", \"test_*.py\", \"-v\"], \"cwd\": \"/tmp/g5-nonimplementation-thqdid7u/forge\", \"inputs\": [\"src/kge_forge/__init__.py\", \"src/kge_forge/context\", \"tests/context\"]}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "execution-2",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        },
+        {
+          "type": "function_call",
+          "name": "finish_task",
+          "call_id": "finish",
+          "arguments": "{\"summary\":\"synthetic execution complete\"}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "finish",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    }
+  ],
+  "synthetic_commit": "d45e4e9bf31baf638c7217f8f09db2d96d138326",
+  "api_calls": 0,
+  "real_E1_inputs_used": false,
+  "result": "PASS",
+  "scope_ids": [
+    "scope-8e3dcabd129e4417be999064e212cfd6",
+    "scope-2fe94b5c383b4c1b9ab1dabf26a478c2"
+  ],
+  "kernel_after": {
+    "scope-8e3dcabd129e4417be999064e212cfd6": {
+      "members": [],
+      "populated": 0,
+      "directories": 1
+    },
+    "scope-2fe94b5c383b4c1b9ab1dabf26a478c2": {
+      "members": [],
+      "populated": 0,
+      "directories": 1
+    }
+  },
+  "supervisor_events": [
+    {
+      "event": "scope_created",
+      "owner": [
+        "projection-session",
+        "projection-fixture",
+        "execution-1"
+      ],
+      "scope_id": "scope-8e3dcabd129e4417be999064e212cfd6",
+      "time_ns": 113123978176556
+    },
+    {
+      "event": "scope_closed",
+      "owner": [
+        "projection-session",
+        "projection-fixture",
+        "execution-1"
+      ],
+      "scope_id": "scope-8e3dcabd129e4417be999064e212cfd6",
+      "time_ns": 113124299839341
+    },
+    {
+      "event": "scope_created",
+      "owner": [
+        "projection-session",
+        "projection-fixture",
+        "execution-2"
+      ],
+      "scope_id": "scope-2fe94b5c383b4c1b9ab1dabf26a478c2",
+      "time_ns": 113127782489142
+    },
+    {
+      "event": "scope_closed",
+      "owner": [
+        "projection-session",
+        "projection-fixture",
+        "execution-2"
+      ],
+      "scope_id": "scope-2fe94b5c383b4c1b9ab1dabf26a478c2",
+      "time_ns": 113128104603347
+    }
+  ],
+  "active_ownership": null,
+  "exact_runnable_profile": {
+    "acceptance": {
+      "capture_commit": "d45e4e9bf31baf638c7217f8f09db2d96d138326",
+      "context_sha256": "0eb060a06844a4163557948228a6c1a4fc3c9cbb973783046226b828644cea0c",
+      "manifest_path": "/tmp/g5-nonimplementation-thqdid7u/forge/CONTEXT_MANIFEST.json"
+    },
+    "argv": [
+      "/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/context",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "cwd": "/tmp/g5-nonimplementation-thqdid7u/forge",
+    "environment": {
+      "LANG": "C.UTF-8",
+      "PATH": "/usr/bin:/bin",
+      "PYTHONPATH": "/scope/src",
+      "TMPDIR": "/scope/.scratch"
+    },
+    "executables": [
+      {
+        "path": "/usr/bin/python3",
+        "resolved": "/usr/bin/python3.8",
+        "sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06"
+      },
+      {
+        "path": "/usr/bin/bwrap",
+        "resolved": "/usr/bin/bwrap",
+        "sha256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987"
+      },
+      {
+        "path": "/usr/bin/git",
+        "resolved": "/usr/bin/git",
+        "sha256": "c3edb15c9715b79fcfb1fa978256cdfc14a9ad72a4a8d5680a9fc5ebc6a57e0e"
+      }
+    ],
+    "inputs": [
+      "src/kge_forge/__init__.py",
+      "src/kge_forge/context",
+      "tests/context"
+    ],
+    "network": false,
+    "schema": 1,
+    "shell": false
+  },
+  "context_identities": {
+    "AuthoritativeContextId": "E1-AUTHORITATIVE-CONTEXT-sha256:45c5de5850f66ff952e4f04bcb30c515e9c049d07933a3f84dcb15d0aec34f42",
+    "FullContextDigest": "45c5de5850f66ff952e4f04bcb30c515e9c049d07933a3f84dcb15d0aec34f42",
+    "ModelProjectionDigest": "1c3283a217e0ad6c37a374066e7b83ba7d091a0fcc634779826498826f85f6ef"
+  }
+}

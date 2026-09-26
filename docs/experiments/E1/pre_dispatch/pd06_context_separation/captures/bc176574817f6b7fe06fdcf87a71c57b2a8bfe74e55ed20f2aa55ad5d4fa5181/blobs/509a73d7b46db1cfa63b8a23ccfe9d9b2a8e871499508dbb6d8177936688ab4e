@@ -1,0 +1,680 @@
+{
+  "schema": "E1-PROPOSED-LAUNCH-3",
+  "state": "INACTIVE",
+  "work_id": "E1-WP-001",
+  "revision": 3,
+  "capture_commit": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+  "context_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21",
+  "runtime": {
+    "schema": 1,
+    "argv": [
+      "/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/context",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "cwd": "/home/gvasend/app/kge-forge",
+    "inputs": [
+      "src/kge_forge/__init__.py",
+      "src/kge_forge/context",
+      "tests/context"
+    ],
+    "environment": {
+      "PATH": "/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "PYTHONPATH": "/scope/src",
+      "TMPDIR": "/scope/.scratch"
+    },
+    "network": false,
+    "shell": false,
+    "executables": [
+      {
+        "path": "/usr/bin/python3",
+        "resolved": "/usr/bin/python3.8",
+        "sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06"
+      },
+      {
+        "path": "/usr/bin/bwrap",
+        "resolved": "/usr/bin/bwrap",
+        "sha256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987"
+      },
+      {
+        "path": "/usr/bin/git",
+        "resolved": "/usr/bin/git",
+        "sha256": "c3edb15c9715b79fcfb1fa978256cdfc14a9ad72a4a8d5680a9fc5ebc6a57e0e"
+      }
+    ],
+    "acceptance": {
+      "manifest_path": "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_MANIFEST.json",
+      "capture_commit": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "context_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21"
+    }
+  },
+  "model_transport": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "model": "gpt-5",
+    "store": false,
+    "credential_environment_reference": "OPENAI_API_KEY",
+    "proxy": "NONE",
+    "redirects": "DENY",
+    "timeout_seconds": 60,
+    "tls_minimum": "TLSv1.2",
+    "ca_file": "/etc/ssl/certs/ca-certificates.crt",
+    "ca_sha256": "594085c513eb0676611992cf49e61024462fa0a7903786d3a0817eec794fb451"
+  },
+  "ownership": {
+    "ledger": "/tmp/kge-forge-e1-invocations.jsonl",
+    "override_permitted": false,
+    "rule": "All E1 sessions/turns/controllers/revisions share the same canonical ledger; no truncate/reset; active or uncertain reservation blocks."
+  },
+  "audit": {
+    "path_rule": "/tmp/kge-forge-e1-evidence/{authorization_id}/{session_id}/{turn_id}/controller.jsonl",
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "restart": "same identity and exact existing append-only audit; no reset"
+  },
+  "identity": {
+    "authorization": "auth-e1-wp-001-r3-<controller UUID4>",
+    "session": "session-e1-<controller UUID4>",
+    "turn": "turn-e1-<controller UUID4>",
+    "scope": "scope-<controller UUID4>, per admitted execution",
+    "binding": "immutable profile digest + context capture/digest + work + revision; same identities on restart",
+    "production_ids_allocated": false
+  },
+  "snapshot": {
+    "host_workspace": "/tmp/a2-exec-<controller random>, 0700",
+    "payload_workspace": "/scope",
+    "scratch": "/scope/.scratch",
+    "controller_policy": "/scope/.gei-runtime.json, readonly",
+    "acceptance": "/scope/.gei-context, readonly; repository projections readonly at their exact original absolute roots",
+    "manifest": "<audit parent>/snapshots/<scope_id>.json, 0600",
+    "promotion": "none; separate governed write/patch required"
+  },
+  "external_policy": {
+    "model_endpoint_only": "https://api.openai.com/v1/responses",
+    "model_redirects": false,
+    "task_network": false,
+    "MCP": false,
+    "plugins": false,
+    "connectors": false,
+    "additional_agents": false,
+    "generic_Git_tool": false,
+    "shell": false
+  },
+  "provisioning": {
+    "ready": false,
+    "observed": {
+      "/home/gvasend/app/kge-forge/src/kge_forge": {
+        "directory": false,
+        "symlink": false
+      },
+      "/home/gvasend/app/kge-forge/src/kge_forge/context": {
+        "directory": false,
+        "symlink": false
+      },
+      "/home/gvasend/app/kge-forge/tests/context": {
+        "directory": false,
+        "symlink": false
+      },
+      "/home/gvasend/app/kge-forge/docs/implementation": {
+        "directory": false,
+        "symlink": false
+      }
+    },
+    "blockers": [
+      "required pre-existing E1 directory absent or invalid",
+      "exact E1 directory provisioning authorization/receipt absent"
+    ],
+    "creation_performed": false
+  },
+  "release_authorized": false,
+  "eligible": false,
+  "dispatch_issued": false,
+  "effective_scope": {
+    "read_roots": [
+      "/home/gvasend/app/kge-forge",
+      "/home/gvasend/app/kge-forge-demo"
+    ],
+    "write_roots": [
+      "/home/gvasend/app/kge-forge/src/kge_forge/__init__.py",
+      "/home/gvasend/app/kge-forge/src/kge_forge/context",
+      "/home/gvasend/app/kge-forge/tests/context",
+      "/home/gvasend/app/kge-forge/docs/implementation/E1-WP-001.md"
+    ],
+    "write_directory_roots": [
+      "/home/gvasend/app/kge-forge/src/kge_forge/context",
+      "/home/gvasend/app/kge-forge/tests/context"
+    ],
+    "deny_roots": [],
+    "read_deny_roots": [
+      "/home/gvasend/app/kge-forge/.git",
+      "/home/gvasend/app/kge-forge/.codex",
+      "/home/gvasend/app/kge-forge/.agents",
+      "/home/gvasend/app/kge-forge-demo/.git",
+      "/home/gvasend/app/kge-forge-demo/.codex",
+      "/home/gvasend/app/kge-forge-demo/.agents"
+    ],
+    "write_deny_roots": [
+      "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch",
+      "/home/gvasend/app/kge-forge/docs/VISION.md",
+      "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "/home/gvasend/app/kge-forge/.git",
+      "/home/gvasend/app/kge-forge/.codex",
+      "/home/gvasend/app/kge-forge/.agents",
+      "/home/gvasend/app/kge-forge/AGENTS.md"
+    ],
+    "exec_bins": [
+      "python3"
+    ],
+    "exec_argv_allowlist": [
+      [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/context",
+        "-p",
+        "test_*.py",
+        "-v"
+      ]
+    ],
+    "shell": false,
+    "network": false
+  },
+  "captured_write_protections": [
+    "/home/gvasend/app/kge-forge-demo/docs/ARCHITECTURE.md",
+    "/home/gvasend/app/kge-forge-demo/docs/PUBLICATION.json",
+    "/home/gvasend/app/kge-forge-demo/docs/REQUIREMENTS.md",
+    "/home/gvasend/app/kge-forge-demo/docs/VISION.md",
+    "/home/gvasend/app/kge-forge/AGENTS.md",
+    "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_ELICITATION.md",
+    "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_GAP_ANALYSIS.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_BASELINE_MANIFEST.json",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+    "/home/gvasend/app/kge-forge/docs/VISION.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_MANIFEST.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/DECISIONS.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/INTERVENTIONS.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/STATE.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/baseline_verification.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_repository_receipt.json"
+  ],
+  "tool_registry": [
+    {
+      "type": "function",
+      "name": "governed_read",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_list",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_search",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "query",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_write",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "content"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_patch",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "op": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "op",
+                "path",
+                "content"
+              ]
+            }
+          }
+        },
+        "required": [
+          "repository",
+          "changes"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_exec",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "executable": {
+            "type": "string"
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "executable",
+          "argv",
+          "cwd",
+          "inputs"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_status",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "authority_expansion_request",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capability": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "capability",
+          "action",
+          "resources",
+          "reason"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "finish_task",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "summary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary"
+        ]
+      },
+      "strict": true
+    }
+  ],
+  "model_information_categories": {
+    "authorized": [
+      "Committed E1 governing/context/task sources and identified metadata",
+      "Ordinary files, names and bounded search matches returned by granted read/list/search after both repository hidden-path exclusions",
+      "Governed in-scope implementation/test artifacts and bounded operation results, status, hashes, diagnostics and finish/expansion requests",
+      "Caller-held prior model outputs and required encrypted reasoning continuation items"
+    ],
+    "not_authorized": [
+      "credential/secret values",
+      "unrelated host information",
+      "private controller/supervisor audit contents",
+      "excluded real hidden directories"
+    ],
+    "remaining_selection": "Real ordinary-content suitability/clearance is not proved by path grants. No secret scanning or model disclosure was performed; Architect must resolve any intended transmission outside the listed non-secret scope before release."
+  },
+  "model_execution_settings": {
+    "max_cycles": 12,
+    "parallel_tool_calls": false,
+    "previous_response_id": false,
+    "reasoning_continuation": "encrypted_content",
+    "TLS_runtime_selection": "ssl.PROTOCOL_TLS_CLIENT with default platform cipher suite, minimum TLSv1.2; explicit pinned CA file; no inherited proxy, CA environment or custom opener; redirects denied",
+    "controller_python": {
+      "path": "/usr/bin/python3.8",
+      "sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+      "version": "3.8.10",
+      "openssl": "OpenSSL 1.1.1f  31 Mar 2020"
+    }
+  },
+  "supervisor_binding": [
+    {
+      "pid": 57950,
+      "ppid": 57949,
+      "uid": 1000,
+      "argv": "/usr/bin/python -m adapter.supervisor_server /tmp/a21m.sock",
+      "exe": "/usr/bin/python3.11",
+      "exe_sha256": "415cab36dc0bc818be4f6915fd7997103ab10753c878f01d28484a9fcf218b04",
+      "cwd": "/home/gvasend/app/kge-forge",
+      "cgroup": "12:cpuset:/\n11:hugetlb:/\n10:freezer:/\n9:devices:/user.slice\n8:pids:/user.slice/user-1000.slice/session-8.scope\n7:perf_event:/\n6:memory:/user.slice/user-1000.slice/session-8.scope\n5:cpu,cpuacct:/user.slice\n4:rdma:/\n3:net_cls,net_prio:/\n2:blkio:/user.slice\n1:name=systemd:/user.slice/user-1000.slice/session-8.scope\n0::/kge-forge/executor"
+    }
+  ],
+  "operational_limits": {
+    "host_quiescence_wait_seconds": 15,
+    "bridge_socket_timeout_seconds": 12,
+    "supervisor_first_receipt_wait_seconds": 10,
+    "supervisor_first_receipt_max_bytes": 65536,
+    "snapshot_max_inputs": 100,
+    "snapshot_max_files": 2000,
+    "snapshot_max_bytes": 67108864,
+    "snapshot_max_file_bytes": 8388608,
+    "read_bytes": 65536,
+    "write_patch_bytes": 1000000,
+    "argv_count": 64,
+    "argv_total_bytes": 8192,
+    "stdout_stderr_limitation": "ActionResult carries the bound launcher start receipt and terminal exit/quiescence evidence, not a general captured stdout/stderr transcript. Fixture detailed results are recovered from hashed scratch artifacts. Payload excessive pipe output remains subject to timeout/indeterminate behavior; no successful output-capture claim."
+  },
+  "release_preconditions": [
+    {
+      "id": "PROVISION",
+      "status": "ARCHITECT-SELECTION-PENDING",
+      "detail": "Exact required paths need recognized Architect provisioning authority and a receipt; none selected, none created; absent/unauthorized fails closed."
+    },
+    {
+      "id": "CONTENT",
+      "status": "ARCHITECT-SELECTION-PENDING",
+      "detail": "No secret-bearing ordinary file transmission is authorized by a read grant; resolve real-content suitability where needed."
+    },
+    {
+      "id": "CAPTURE",
+      "status": "ARCHITECT-SELECTION-PENDING",
+      "detail": "Final source/profile capture/release reference is not selected; working source hashes identify the qualified artifact, not a release."
+    },
+    {
+      "id": "FRESH_OWNERSHIP",
+      "status": "QUALIFIED",
+      "detail": "Common ledger and fail-closed mechanism qualified; fresh E1 global no-active/unaccounted check remains mandatory before release."
+    },
+    {
+      "id": "RUNTIME_RECHECK",
+      "status": "QUALIFIED",
+      "detail": "Exact binary paths/content, argv, cwd, inputs, environment and sealed derived inputs are rechecked; changed runtime or unsupported packed source denies."
+    }
+  ],
+  "architect_status": {
+    "PD-05": "PENDING",
+    "PD-06": "NOT AUTHORIZED",
+    "E1": "INACTIVE",
+    "E1-WP-001": "INELIGIBLE AND UNDISPATCHED",
+    "G1": "CLOSED/PASS",
+    "G2": "WRITE SEMANTICS CLOSED",
+    "G4": "CLOSED/PASS"
+  },
+  "authority_sources": {
+    "baseline": {
+      "forge": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "preparation": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+      "service": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a"
+    },
+    "current_supplement": "Architect final runnable-profile qualification instruction in this conversation; recorded in FINAL_PD05_RUNNABLE_QUALIFICATION_2026-09-16.md",
+    "classification_rule": "Nested fields inherit the named field attribution unless an explicit pending condition overrides it. Newly selected concrete configuration is a proposal under delegated Architect preparation authority, not a release decision."
+  },
+  "field_attribution": {
+    "schema": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "state": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "work_id": {
+      "classification": "baseline-derived",
+      "source": "Captured CONTEXT_MANIFEST and E1-WP-001, narrowed by accepted G1/G2"
+    },
+    "revision": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "capture_commit": {
+      "classification": "baseline-derived",
+      "source": "Captured CONTEXT_MANIFEST and E1-WP-001, narrowed by accepted G1/G2"
+    },
+    "context_sha256": {
+      "classification": "baseline-derived",
+      "source": "Captured CONTEXT_MANIFEST and E1-WP-001, narrowed by accepted G1/G2"
+    },
+    "runtime": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "model_transport": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "ownership": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "audit": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "identity": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "snapshot": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "external_policy": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "provisioning": {
+      "classification": "unresolved",
+      "source": "Explicit pre-activation obligations; no approval inferred"
+    },
+    "release_authorized": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "eligible": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "dispatch_issued": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "effective_scope": {
+      "classification": "baseline-derived",
+      "source": "Captured CONTEXT_MANIFEST and E1-WP-001, narrowed by accepted G1/G2"
+    },
+    "captured_write_protections": {
+      "classification": "baseline-derived",
+      "source": "Captured CONTEXT_MANIFEST and E1-WP-001, narrowed by accepted G1/G2"
+    },
+    "tool_registry": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "model_information_categories": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "model_execution_settings": {
+      "classification": "newly Architect-selected",
+      "source": "Current G5/G3/G6 mandate and conditional acceptance; concrete values prepared under delegated controller selection, with pending conditions listed separately"
+    },
+    "supervisor_binding": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "operational_limits": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "release_preconditions": {
+      "classification": "unresolved",
+      "source": "Explicit pre-activation obligations; no approval inferred"
+    },
+    "architect_status": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    },
+    "authority_sources": {
+      "classification": "previously human/Architect-approved",
+      "source": "Qualified A2 mechanism/current preservation instruction or non-effecting evidence metadata; final release still reserved"
+    }
+  }
+}

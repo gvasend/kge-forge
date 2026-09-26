@@ -1,0 +1,373 @@
+test_changed_record_blocks (__main__.Tests.test_changed_record_blocks) ... ERROR
+test_concurrent_same_enrollment_only_one_event (__main__.Tests.test_concurrent_same_enrollment_only_one_event) ... ERROR
+test_enrollment_replay_non_effecting (__main__.Tests.test_enrollment_replay_non_effecting) ... ERROR
+test_exact_real_candidate_eligibility_not_adoption (__main__.Tests.test_exact_real_candidate_eligibility_not_adoption) ... ERROR
+test_missing_delegation (__main__.Tests.test_missing_delegation) ... ERROR
+test_object_presence_is_not_enrollment_authority (__main__.Tests.test_object_presence_is_not_enrollment_authority) ... ERROR
+test_other_candidate_after_enrollment (__main__.Tests.test_other_candidate_after_enrollment) ... ERROR
+test_qualification_cannot_be_used_in_production (__main__.Tests.test_qualification_cannot_be_used_in_production) ... ERROR
+test_qualification_without_trusted_attestation (__main__.Tests.test_qualification_without_trusted_attestation) ... ERROR
+test_qualified_unenrolled_rejected (__main__.Tests.test_qualified_unenrolled_rejected) ... ERROR
+test_restart (__main__.Tests.test_restart) ... ERROR
+test_stale_head_decision (__main__.Tests.test_stale_head_decision) ... ERROR
+test_torn_record_blocks (__main__.Tests.test_torn_record_blocks) ... ERROR
+test_unauthorized_actor (__main__.Tests.test_unauthorized_actor) ... ERROR
+test_wrong_delegation (__main__.Tests.test_wrong_delegation) ... ERROR
+test_wrong_qualification_binding (__main__.Tests.test_wrong_qualification_binding) ... ERROR
+
+======================================================================
+ERROR: test_changed_record_blocks (__main__.Tests.test_changed_record_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 119, in test_changed_record_blocks
+    f=self.fixture();row=f.enroll();x=dict(row,head_event='substituted');f.journal.write_bytes(encoded(x)+b'\n')
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_concurrent_same_enrollment_only_one_event (__main__.Tests.test_concurrent_same_enrollment_only_one_event)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 122, in test_concurrent_same_enrollment_only_one_event
+    f=self.fixture();out=multiprocessing.Queue();ps=[multiprocessing.Process(target=worker,args=(f.pin,PIN['selected_store'],f.c,f.q,f.g,out)) for _ in range(2)]
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_enrollment_replay_non_effecting (__main__.Tests.test_enrollment_replay_non_effecting)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 81, in test_enrollment_replay_non_effecting
+    f=self.fixture();f.enroll();prior=f.journal.read_bytes()
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_exact_real_candidate_eligibility_not_adoption (__main__.Tests.test_exact_real_candidate_eligibility_not_adoption)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 72, in test_exact_real_candidate_eligibility_not_adoption
+    f=self.fixture();row=f.enroll();self.assertEqual(f.eligible(row),row)
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_missing_delegation (__main__.Tests.test_missing_delegation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 104, in test_missing_delegation
+    f=self.fixture();ref=f.s.catalog['entries'] if False else None
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_object_presence_is_not_enrollment_authority (__main__.Tests.test_object_presence_is_not_enrollment_authority)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 92, in test_object_presence_is_not_enrollment_authority
+    f=self.fixture(lambda f:f.aliases.pop('enrollment-decision:'+f.g['sha256']))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_other_candidate_after_enrollment (__main__.Tests.test_other_candidate_after_enrollment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 85, in test_other_candidate_after_enrollment
+    f=self.fixture();row=f.enroll();f.c=dict(f.c,sha256='0'*64)
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_qualification_cannot_be_used_in_production (__main__.Tests.test_qualification_cannot_be_used_in_production)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 112, in test_qualification_cannot_be_used_in_production
+    f=self.fixture()
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_qualification_without_trusted_attestation (__main__.Tests.test_qualification_without_trusted_attestation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 95, in test_qualification_without_trusted_attestation
+    f=self.fixture(lambda f:f.aliases.pop('qualification-attestation:'+f.q['sha256']))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_qualified_unenrolled_rejected (__main__.Tests.test_qualified_unenrolled_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 78, in test_qualified_unenrolled_rejected
+    f=self.fixture()
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_restart (__main__.Tests.test_restart)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 128, in test_restart
+    f=self.fixture();row=f.enroll();s=ControllerAuthorityStore(**f.pin)
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_stale_head_decision (__main__.Tests.test_stale_head_decision)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 98, in test_stale_head_decision
+    f=self.fixture(lambda f:f.grant(head_event='stale-head'))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_torn_record_blocks (__main__.Tests.test_torn_record_blocks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 116, in test_torn_record_blocks
+    f=self.fixture();row=f.enroll();f.journal.write_bytes(f.journal.read_bytes()[:-1])
+      ^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_unauthorized_actor (__main__.Tests.test_unauthorized_actor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 88, in test_unauthorized_actor
+    f=self.fixture(lambda f:f.grant(authority='candidate-producer'))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_wrong_delegation (__main__.Tests.test_wrong_delegation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 109, in test_wrong_delegation
+    f=self.fixture(lambda f:f.grant(delegation='unrelated-lineage'))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+======================================================================
+ERROR: test_wrong_qualification_binding (__main__.Tests.test_wrong_qualification_binding)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 101, in test_wrong_qualification_binding
+    f=self.fixture(lambda f:f.grant(qualification=f.c))
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 70, in fixture
+    f=Fixture(mutation);self.addCleanup(f.close);return f
+      ^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/test_enrollment.py", line 47, in __init__
+    self.s=ControllerAuthorityStore.materialize(self.root/'store',self.records,self.aliases,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 233, in materialize
+    return cls(root, sha(data), applicability)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 189, in __init__
+    self._verify_catalog()
+  File "/home/gvasend/app/kge-forge/docs/experiments/E1/runtime_bootstrap_2026-09-19/candidate/adapter/controller_authority_store.py", line 263, in _verify_catalog
+    raise AuthorityDenied('incomplete authority provenance')
+adapter.controller_authority_store.AuthorityDenied: incomplete authority provenance
+
+----------------------------------------------------------------------
+Ran 16 tests in 47.853s
+
+FAILED (errors=16)

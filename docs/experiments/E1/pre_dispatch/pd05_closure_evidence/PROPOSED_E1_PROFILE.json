@@ -1,0 +1,699 @@
+{
+  "schema": "E1-PROPOSED-PROFILE-2",
+  "proposal_id": "E1-WP-001-PROPOSED-R2",
+  "state": "INACTIVE",
+  "architect_status": {
+    "PD-05": "PENDING",
+    "PD-06": "RELEASE_NOT_AUTHORIZED",
+    "A2": "PARTIAL",
+    "E1-B01": "BLOCKED",
+    "E1-WP-001": "INELIGIBLE_UNDISPATCHED"
+  },
+  "source_refs": {
+    "baseline": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+    "preparation": "5871bdce4f5b6539c84f69f4f2b2f94ee31be5cd",
+    "service": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+    "adapter_base": "5a3895d76212615b86a9e0764bf7dd702ed9451b",
+    "architect_supplement": "../PD05_CLOSURE_AUTHORITY_2026-09-16.md",
+    "work_package": "../E1-WP-001.md",
+    "manifest": "../CONTEXT_MANIFEST.json"
+  },
+  "work_id": "E1-WP-001",
+  "baseline_id": "E1-ARCH-1",
+  "context_sha256": "4407eb45c55375d6fdd39634ace78420d21f773f39f8cfdade380ca0949f6a21",
+  "identity": {
+    "authorization_revision": 2,
+    "authorization_id_rule": "controller allocates auth-e1-wp-001-r2-<uuid4>; immutable binding to this exact profile digest and context capture",
+    "session_id_rule": "controller allocates session-e1-<uuid4> only at separately authorized launch; reuse exact identity solely for audited restart",
+    "turn_id_rule": "controller allocates turn-e1-<uuid4>; every ActionRequest bound to session/turn/authorization/revision; model cannot supply replacement identity",
+    "action_id_rule": "unique model call id checked against durable request digest; changed replay denied",
+    "scope_id_rule": "controller allocates scope-<uuid4> per exec; caller scope ids denied",
+    "allocated_production_ids": null
+  },
+  "read_roots": [
+    "/home/gvasend/app/kge-forge",
+    "/home/gvasend/app/kge-forge-demo"
+  ],
+  "read_deny_roots": [
+    "/home/gvasend/app/kge-forge/.git",
+    "/home/gvasend/app/kge-forge/.codex",
+    "/home/gvasend/app/kge-forge/.agents",
+    "/home/gvasend/app/kge-forge-demo/.git",
+    "/home/gvasend/app/kge-forge-demo/.codex",
+    "/home/gvasend/app/kge-forge-demo/.agents"
+  ],
+  "write_file_roots": [
+    "/home/gvasend/app/kge-forge/src/kge_forge/__init__.py",
+    "/home/gvasend/app/kge-forge/docs/implementation/E1-WP-001.md"
+  ],
+  "write_directory_roots": [
+    "/home/gvasend/app/kge-forge/src/kge_forge/context",
+    "/home/gvasend/app/kge-forge/tests/context"
+  ],
+  "write_deny_roots": [
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch",
+    "/home/gvasend/app/kge-forge/docs/VISION.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+    "/home/gvasend/app/kge-forge/.git",
+    "/home/gvasend/app/kge-forge/.codex",
+    "/home/gvasend/app/kge-forge/.agents",
+    "/home/gvasend/app/kge-forge/AGENTS.md"
+  ],
+  "captured_source_write_denies": [
+    "/home/gvasend/app/kge-forge-demo/docs/ARCHITECTURE.md",
+    "/home/gvasend/app/kge-forge-demo/docs/PUBLICATION.json",
+    "/home/gvasend/app/kge-forge-demo/docs/REQUIREMENTS.md",
+    "/home/gvasend/app/kge-forge-demo/docs/VISION.md",
+    "/home/gvasend/app/kge-forge/AGENTS.md",
+    "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_ELICITATION.md",
+    "/home/gvasend/app/kge-forge/docs/ARCHITECTURE_GAP_ANALYSIS.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_BASELINE_MANIFEST.json",
+    "/home/gvasend/app/kge-forge/docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+    "/home/gvasend/app/kge-forge/docs/VISION.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_MANIFEST.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/DECISIONS.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/INTERVENTIONS.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/STATE.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/baseline_verification.json",
+    "/home/gvasend/app/kge-forge/docs/experiments/E1/pre_dispatch/service_repository_receipt.json"
+  ],
+  "write_semantics": "exact file targets; directory descendants only; preflight all missing parents; creation strictly below an existing explicit directory grant; grant-root or leaf-ancestor provisioning not delegated",
+  "host_setup_preconditions": {
+    "/home/gvasend/app/kge-forge/src/kge_forge": {
+      "exists": false,
+      "is_directory": false
+    },
+    "/home/gvasend/app/kge-forge/src/kge_forge/context": {
+      "exists": false,
+      "is_directory": false
+    },
+    "/home/gvasend/app/kge-forge/tests/context": {
+      "exists": false,
+      "is_directory": false
+    },
+    "/home/gvasend/app/kge-forge/docs/implementation": {
+      "exists": false,
+      "is_directory": false
+    }
+  },
+  "ownership": {
+    "ledger": "/tmp/kge-forge-e1-invocations.jsonl",
+    "rule": "Every E1 controller/turn/revision uses this same canonical ledger and qualified locking/reservation/release mechanism. No per-session alternate, empty ledger, deletion, truncation or reset on restart. Active or uncertain reservation blocks replacement. Release only after durable terminal ActionResult and supervisor-owner/closed/zero-member evidence.",
+    "restart_rule": "same immutable authorization/schema and audit; old-schema audits deny reconstruction; no migration or optimistic adoption",
+    "remaining_check": "fresh release-time common-ledger identity, ownership and no-active/unaccounted checks; no E1 execution performed here"
+  },
+  "audit": {
+    "path_rule": "/tmp/kge-forge-e1-evidence/<authorization_id>/<session_id>/<turn_id>/controller.jsonl",
+    "directory_mode": "0700 controller-owned",
+    "file_mode": "0600",
+    "outside_all_agent_grants": true,
+    "restart": "reuse exact audit for identity; append/fsync; no truncate",
+    "status": "proposed placement; no production audit created"
+  },
+  "snapshot": {
+    "workspace_rule": "controller tempfile.mkdtemp(prefix=a2-exec-,dir=/tmp), private 0700; payload bind /scope",
+    "manifest_rule": "<controller audit parent>/snapshots/<scope_id>.json; controller-only 0600",
+    "source_promotion": "none; observe changed/new/deleted workspace files; only explicit governed write/patch changes authoritative source",
+    "scratch": "payload fixtures confined to /scope; no extra host temp mount"
+  },
+  "model_communication": {
+    "endpoint": "https://api.openai.com/v1/responses",
+    "model": "gpt-5",
+    "store": false,
+    "parallel_tool_calls": false,
+    "continuation": "caller-owned; no previous_response_id; include reasoning.encrypted_content",
+    "credential_reference": "controller environment variable OPENAI_API_KEY; value never in profile, audit or payload environment",
+    "transport": {
+      "implementation": "unchanged urllib.request.Request/urlopen with default HTTPS certificate verification",
+      "proxy_policy": "DIRECT_ONLY; controller launch must reject presence of http_proxy, https_proxy, all_proxy or no_proxy (case-insensitive); no proxy secrets or values recorded",
+      "custom_opener": "prohibited; require urllib.request._opener is None at launch",
+      "redirect_policy": "No alternate information destination is authorized. Current urllib default redirect handling is not a destination-confinement proof; controller configuration is trusted, and runtime redirect confinement is unresolved.",
+      "endpoint_selection": "controller only; exact endpoint above; no model override or alternate endpoint grant"
+    },
+    "authorized_information_categories": [
+      "E1-WP-001 task text and committed mandatory governing sources/context metadata, including repository identities and declared unresolved blockers",
+      "Ordinary files, directory names and bounded literal search results under the two designated repository roots after .git/.codex/.agents exclusions; scope of G1/C, not arbitrary host directories",
+      "In-scope implementation source, test fixtures and implementation evidence produced through governed writes/patches",
+      "Bounded governed action results, execution stdout/stderr, status, hashes, provenance, denied-request explanations, expansion requests and finish summaries",
+      "Prior model outputs and encrypted reasoning continuation items needed for the qualified stateless loop"
+    ],
+    "excluded_information_categories": [
+      "credentials and secret values",
+      "all excluded hidden-directory contents",
+      "controller/supervisor private audit and ownership contents",
+      "unrelated host files or connector data"
+    ],
+    "unresolved_content_condition": "Read policy is path-based, not a secret detector. Controller must obtain scoped content-suitability assurance for allowed ordinary files/results; no new redaction mechanism or whole-repository secret scan is claimed.",
+    "authority": "Architect G3 authorizes approved Responses destination, controller model selection, store=false and reference-only credential; ordinary repository categories derive from C/W as narrowed by G1.",
+    "enforcement_status": "PROPOSED_CONTROLLER_CONFIGURATION; no API call, transport change, launcher integration or active E1 run performed"
+  },
+  "execution": {
+    "status": "PROPOSED_INACTIVE_NOT_RUNNABLE_UNTIL_REMAINING_GAPS_RESOLVED",
+    "exact_top_level_argv_allowlist": [
+      [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/context",
+        "-p",
+        "test_*.py",
+        "-v"
+      ]
+    ],
+    "executable_identities": [
+      {
+        "path": "/usr/bin/python3",
+        "resolved": "/usr/bin/python3.8",
+        "sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06"
+      },
+      {
+        "path": "/usr/bin/git",
+        "resolved": "/usr/bin/git",
+        "sha256": "c3edb15c9715b79fcfb1fa978256cdfc14a9ad72a4a8d5680a9fc5ebc6a57e0e"
+      },
+      {
+        "path": "/usr/bin/bwrap",
+        "resolved": "/usr/bin/bwrap",
+        "sha256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987"
+      }
+    ],
+    "top_level_executables": [
+      "/usr/bin/python3"
+    ],
+    "runtime_support_executables": {
+      "/usr/bin/git": "read-only committed fixture inspection via argument arrays inside payload; no direct model Git function or real-repository mount",
+      "/usr/bin/bwrap": "trusted supervisor-only launcher, not a model executable"
+    },
+    "source_cwd": "/home/gvasend/app/kge-forge",
+    "payload_cwd": "/scope",
+    "authorized_source_inputs": [
+      "src/kge_forge/__init__.py",
+      "src/kge_forge/context",
+      "tests/context"
+    ],
+    "input_rules": "Only exact listed file/directory selections; every copied file must pass read policy and match designated captured blob or successful governed write/patch digest. No whole-root selection, links, hidden dirs, controller audit, credentials or unrelated files.",
+    "payload_environment": {
+      "PATH": "/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "PYTHONPATH": "/scope/src"
+    },
+    "inherited_environment": "none; no controller credentials/proxy/HOME/SUDO variables; PWD may be set by runtime to /scope",
+    "network": false,
+    "shell": false,
+    "scratch_rule": "Test-created temporary fixtures only inside private /scope workspace; no source promotion except a separate authorized write/patch. No real-repository Git mutation, installs or network.",
+    "command_derivation": "W standard-library tests and Python 3.8 compatibility; unittest discovery is a proposed minimum single test command; literal test_*.py is data, not shell expansion. PYTHONPATH implements W src layout. Tests must exercise module entry point and acceptance criteria; no product test is written here.",
+    "current_effective_execution_grant": {
+      "exec_bins": [],
+      "exec_argv_allowlist": []
+    },
+    "qualification_mapping": [
+      {
+        "authority": "Python argv via admitted snapshot, shell=false/network=false",
+        "evidence": "prior bound.jsonl + recovery/production qualifications",
+        "result": "MECHANISM_COVERED; this exact test command not executed"
+      },
+      {
+        "authority": "Exact source cwd and exact input selection constraint",
+        "evidence": "current issue_exec_permit accepts any read-root cwd and model-selected inputs",
+        "result": "GAP: proposed narrowing not represented/enforced by current WorkAuthorization"
+      },
+      {
+        "authority": "PYTHONPATH=/scope/src fixed environment",
+        "evidence": "exec_barrier supplies only PATH/LANG",
+        "result": "GAP: requires separately authorized launcher environment change and qualification; not implemented"
+      },
+      {
+        "authority": "Read-only synthetic committed Git fixtures for AC01-07",
+        "evidence": "scratch capture uses controller Git; Python payload can spawn runtime tools but no payload Git inspection fixture qualified here",
+        "result": "GAP: controller-provisioned committed fixture input/provenance contract absent; no real .git access granted"
+      },
+      {
+        "authority": "Real-context AC08 source/revision inspection",
+        "evidence": "snapshot handles a single source root; hides .git; real context contains two roots and committed blob identities",
+        "result": "GAP: exact real-context presentation/mapping and committed-object retrieval route unresolved; no cross-root or hidden read exception granted"
+      },
+      {
+        "authority": "Runtime executable content identity",
+        "evidence": "configuration_observations.json hashes current binaries; existing allowlist checks argv, not binary digest",
+        "result": "OBSERVED_ONLY; pre-release runtime identity binding remains required"
+      }
+    ],
+    "no_direct_cli_command": "No additional top-level kge_forge.context argv granted: final option spelling is not yet implemented. Acceptance can be tested by the exact test runner; any later standalone command needs a separately specified revision."
+  },
+  "environment_policy": {
+    "payload": "execution.payload_environment (PYTHONPATH is proposed, not implemented)",
+    "controller": "trusted controller; credential by reference only; direct transport preconditions; fixed context Git env PATH/GIT_CONFIG_NOSYSTEM/GIT_CONFIG_GLOBAL/GIT_OPTIONAL_LOCKS as implemented",
+    "source": "W src entry-point; G3/G5/G6; existing context_binding.py/exec_barrier.py"
+  },
+  "external_destination_policy": {
+    "allowed": "exact model_communication.endpoint for controller reasoning only",
+    "task_network": false,
+    "MCP_plugins_connectors": false,
+    "additional_agents": false,
+    "alternate_endpoints": false
+  },
+  "tool_definitions": [
+    {
+      "type": "function",
+      "name": "governed_read",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_list",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_search",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "limit": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "query",
+          "limit"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_write",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "repository",
+          "path",
+          "content"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_patch",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "repository": {
+            "type": "string"
+          },
+          "changes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "op": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "content": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "op",
+                "path",
+                "content"
+              ]
+            }
+          }
+        },
+        "required": [
+          "repository",
+          "changes"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_exec",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "executable": {
+            "type": "string"
+          },
+          "argv": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cwd": {
+            "type": "string"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "executable",
+          "argv",
+          "cwd",
+          "inputs"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "governed_status",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {},
+        "required": []
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "authority_expansion_request",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "capability": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "resources": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "capability",
+          "action",
+          "resources",
+          "reason"
+        ]
+      },
+      "strict": true
+    },
+    {
+      "type": "function",
+      "name": "finish_task",
+      "description": "Governed KGE Forge operation; host authorization applies.",
+      "parameters": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "summary": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "summary"
+        ]
+      },
+      "strict": true
+    }
+  ],
+  "unresolved_selections": [
+    "Controller-owned creation of absent E1 parent/grant directories is not assigned/authorized as E1 source-write authority; readiness precondition unmet.",
+    "Exact two-repository real-context presentation/committed-source access for AC08; no hidden-file or authoritative Git mount exception selected.",
+    "Controller-provided synthetic committed Git fixture identities and provenance/input selection for acceptance tests.",
+    "Production runtime IDs and artifact release commit allocated only after separate authorization; profile digest is bound when allocated.",
+    "Content-suitability assurance for allowed ordinary files and operational binding of destination/proxy policy; current client does not police redirects to other destinations."
+  ],
+  "all_proposed_runnable_authorities_covered": false,
+  "field_attribution": {
+    "schema": {
+      "classification": "newly Architect-selected",
+      "authority_source": "G6 permits preparation of this proposed record; schema/id are documentary; registry is existing adapter source",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "proposal_id": {
+      "classification": "newly Architect-selected",
+      "authority_source": "G6 permits preparation of this proposed record; schema/id are documentary; registry is existing adapter source",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "state": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current Architect G1/G2/G3 and explicit no-release instruction; concrete model choice retains qualified gpt-5 under delegated controller selection",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "architect_status": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current Architect G1/G2/G3 and explicit no-release instruction; concrete model choice retains qualified gpt-5 under delegated controller selection",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "source_refs": {
+      "classification": "newly Architect-selected",
+      "authority_source": "G6 permits preparation of this proposed record; schema/id are documentary; registry is existing adapter source",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "work_id": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "baseline_id": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "context_sha256": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "identity": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current G5/G6 mandate to prepare a proposed launch profile preserving qualified identity/ownership mechanism; concrete naming/paths are proposed controller selections, not final release decisions",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "read_roots": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "read_deny_roots": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current Architect G1/G2/G3 and explicit no-release instruction; concrete model choice retains qualified gpt-5 under delegated controller selection",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "write_file_roots": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "write_directory_roots": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "write_deny_roots": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "captured_source_write_denies": {
+      "classification": "baseline-derived",
+      "authority_source": "captured C.scope/C.sources and W allowed paths; directory/file distinction clarified by current Architect G2",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "write_semantics": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current Architect G1/G2/G3 and explicit no-release instruction; concrete model choice retains qualified gpt-5 under delegated controller selection",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "host_setup_preconditions": {
+      "classification": "unresolved",
+      "authority_source": "observed preconditions or missing evidence/selection; no implied grant",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "ownership": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current G5/G6 mandate to prepare a proposed launch profile preserving qualified identity/ownership mechanism; concrete naming/paths are proposed controller selections, not final release decisions",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "audit": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current G5/G6 mandate to prepare a proposed launch profile preserving qualified identity/ownership mechanism; concrete naming/paths are proposed controller selections, not final release decisions",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "snapshot": {
+      "classification": "previously human/Architect-approved",
+      "authority_source": "A2_CONTROLLER_EXECUTION_WORKSPACE and A2_LIVE_RECOVERY qualification; existing mechanism retained",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "model_communication": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current Architect G1/G2/G3 and explicit no-release instruction; concrete model choice retains qualified gpt-5 under delegated controller selection",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "execution": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current G5/G6 mandate to prepare a proposed launch profile preserving qualified identity/ownership mechanism; concrete naming/paths are proposed controller selections, not final release decisions",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "environment_policy": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current G5/G6 mandate to prepare a proposed launch profile preserving qualified identity/ownership mechanism; concrete naming/paths are proposed controller selections, not final release decisions",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "external_destination_policy": {
+      "classification": "newly Architect-selected",
+      "authority_source": "current Architect G1/G2/G3 and explicit no-release instruction; concrete model choice retains qualified gpt-5 under delegated controller selection",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "tool_definitions": {
+      "classification": "newly Architect-selected",
+      "authority_source": "G6 permits preparation of this proposed record; schema/id are documentary; registry is existing adapter source",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "unresolved_selections": {
+      "classification": "unresolved",
+      "authority_source": "observed preconditions or missing evidence/selection; no implied grant",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "all_proposed_runnable_authorities_covered": {
+      "classification": "unresolved",
+      "authority_source": "observed preconditions or missing evidence/selection; no implied grant",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "limits": {
+      "classification": "previously human/Architect-approved",
+      "authority_source": "Existing qualified governed_host.py/execution_snapshot.py limits and empty generic denies; typed denies and captured-source protections apply",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    },
+    "deny_roots": {
+      "classification": "previously human/Architect-approved",
+      "authority_source": "Existing qualified governed_host.py/execution_snapshot.py limits and empty generic denies; typed denies and captured-source protections apply",
+      "adoption_status": "PROPOSED_NOT_RELEASED"
+    }
+  },
+  "limits": {
+    "read_bytes": [
+      1,
+      65536
+    ],
+    "list_entries": [
+      1,
+      1000
+    ],
+    "search_matches": [
+      1,
+      100
+    ],
+    "search_eligible_files": 2000,
+    "search_file_bytes": 1000000,
+    "search_line_output_chars": 500,
+    "write_or_patch_content_bytes": 1000000,
+    "patch_change_count": 1,
+    "exec_argv_count": 64,
+    "exec_argv_total_bytes": 8192,
+    "snapshot_requested_inputs": 100,
+    "snapshot_files": 2000,
+    "snapshot_total_bytes": 67108864,
+    "snapshot_single_file_bytes": 8388608
+  },
+  "deny_roots": []
+}

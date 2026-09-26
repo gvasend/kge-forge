@@ -1,0 +1,14 @@
+from pathlib import Path
+r=Path(__file__).parent/'adapter'
+def change(n,a,b):
+ p=r/n;s=p.read_text();assert a in s,(n,a);p.write_text(s.replace(a,b))
+change('governance_continuation.py',"        if s.get('schema') == 5:","        if s.get('schema') == 6:\n            from .attempt_transition import verify\n            return verify(self)\n        if s.get('schema') == 5:")
+change('governance_continuation.py',"    if op['governance'].get('schema') == 5:","    if op['governance'].get('schema') == 6:\n        from .attempt_transition import verify_authorization as terminal_verify\n        return terminal_verify(auth)\n    if op['governance'].get('schema') == 5:")
+change('authorization_lifecycle.py',"    if op['governance'].get('schema') == 5:","    if op['governance'].get('schema') == 6:\n        from .attempt_transition import verify_dispatch\n        run2_mode=verify_dispatch(auth,decision)\n    if op['governance'].get('schema') == 5:")
+change('supervisor_amendment.py',"    if op['governance']['schema']==5:","    if op['governance']['schema']==6:\n        from .attempt_transition import readiness as terminal_readiness\n        return terminal_readiness(auth,store,historical,check_scopes,legacy_check)\n    if op['governance']['schema']==5:")
+for n in ('context_projection.py','activation_transaction.py'):
+ p=r/n;s=p.read_text().replace('(2,3,4,5)','(2,3,4,5,6)').replace('(4,5)','(4,5,6)');p.write_text(s)
+change('activation_transaction.py',"    if json.loads(auth.operational_binding)['governance'].get('schema')==5:","    if json.loads(auth.operational_binding)['governance'].get('schema')==6:\n        from .attempt_transition import require_issued\n        require_issued(auth)\n    if json.loads(auth.operational_binding)['governance'].get('schema')==5:")
+change('activation_transaction.py',"        from .attempt_context import selected\n", "        if json.loads(auth.operational_binding)['governance'].get('schema')==6:\n            from .attempt_transition import selected\n        else:\n            from .attempt_context import selected\n")
+change('invocation_issuance.py',"    if json.loads(auth.operational_binding)['governance'].get('schema')==5:","    if json.loads(auth.operational_binding)['governance'].get('schema')==6:\n        from .attempt_transition import require_issued as require_terminal_authorization\n        require_terminal_authorization(auth)\n    if json.loads(auth.operational_binding)['governance'].get('schema')==5:")
+change('controlled_dispatch.py',"        if json.loads(raw['operational_binding'])['governance'].get('schema')==5:","        if json.loads(raw['operational_binding'])['governance'].get('schema')==6:\n            from .attempt_transition import selected\n            if selected()['mode']!='ISSUED':raise ValueError('specific Architect r10 issuance authorization absent')\n        if json.loads(raw['operational_binding'])['governance'].get('schema')==5:")

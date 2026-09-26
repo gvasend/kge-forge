@@ -1,0 +1,46 @@
+test_restart_boundary_to_model_and_terminal_projection (qualify_restart.Restart) ... ok
+test_cancellation_at_major_pre_model_phases (qualify_restart.Restart) ... 
+======================================================================
+ERROR: test_cancellation_at_major_pre_model_phases (qualify_restart.Restart) (phase='private_bootstrap')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/forge-r10-session-482j76gq/qualify_restart.py", line 47, in test_cancellation_at_major_pre_model_phases
+    h=GovernedHost(case.a,case.audit);h.revoke();t.cancel(h,'synthetic operator reconciliation')
+  File "/tmp/forge-r10-session-482j76gq/adapter/governed_host.py", line 100, in __init__
+    raise Denied('authorization lifecycle incomplete or effective state mismatch')
+adapter.governed_host.Denied: authorization lifecycle incomplete or effective state mismatch
+
+======================================================================
+ERROR: test_cancellation_at_major_pre_model_phases (qualify_restart.Restart) (phase='activation_recovery')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/forge-r10-session-482j76gq/qualify_restart.py", line 47, in test_cancellation_at_major_pre_model_phases
+    h=GovernedHost(case.a,case.audit);h.revoke();t.cancel(h,'synthetic operator reconciliation')
+  File "/tmp/forge-r10-session-482j76gq/adapter/governed_host.py", line 100, in __init__
+    raise Denied('authorization lifecycle incomplete or effective state mismatch')
+adapter.governed_host.Denied: authorization lifecycle incomplete or effective state mismatch
+
+======================================================================
+ERROR: test_cancellation_at_major_pre_model_phases (qualify_restart.Restart) (phase='host_construction')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/forge-r10-session-482j76gq/qualify_restart.py", line 47, in test_cancellation_at_major_pre_model_phases
+    h=GovernedHost(case.a,case.audit);h.revoke();t.cancel(h,'synthetic operator reconciliation')
+  File "/tmp/forge-r10-session-482j76gq/adapter/governed_host.py", line 100, in __init__
+    raise Denied('authorization lifecycle incomplete or effective state mismatch')
+adapter.governed_host.Denied: authorization lifecycle incomplete or effective state mismatch
+
+======================================================================
+ERROR: test_cancellation_at_major_pre_model_phases (qualify_restart.Restart) (phase='reasoning_construction')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/forge-r10-session-482j76gq/qualify_restart.py", line 47, in test_cancellation_at_major_pre_model_phases
+    h=GovernedHost(case.a,case.audit);h.revoke();t.cancel(h,'synthetic operator reconciliation')
+  File "/tmp/forge-r10-session-482j76gq/adapter/governed_host.py", line 100, in __init__
+    raise Denied('authorization lifecycle incomplete or effective state mismatch')
+adapter.governed_host.Denied: authorization lifecycle incomplete or effective state mismatch
+
+----------------------------------------------------------------------
+Ran 2 tests in 49.299s
+
+FAILED (errors=4)

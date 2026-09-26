@@ -1,0 +1,490 @@
+--- /home/gvasend/app/kge-forge/adapter/activation_transaction.py@integrated-activation
++++ /home/gvasend/app/kge-forge/adapter/activation_transaction.py@versioned-binding
+@@ -10,7 +10,7 @@
+ import fcntl, json, os, stat
+ from .context_projection import canonical, digest, sha, read_exact, derive
+ from .authorization_lifecycle import (LifecycleDenied, serialized, original,
+-    dispatch_binding, reconstruct, event, _read, _append)
++    dispatch_binding, reconstruct, event, _read, _append, historical_original)
+ from .invocation_ownership import InvocationOwnership, OwnershipDenied
+ 
+ 
+@@ -112,7 +112,9 @@
+     if release['decision']!={'PD06':'RELEASED','E1_B01':'PASS'}: raise LifecycleDenied('release not accepted')
+     spec=json.loads(auth.context_projection)
+     projection=derive(spec,auth.context_binding)
+-    if any(projection[k]!=op['context_identities'][k] for k in ('AuthoritativeContextId','FullContextDigest','ModelProjectionDigest')):
++    identity_keys=('AuthoritativeContextId','FullContextDigest','ModelProjectionDigest')
++    if op['governance'].get('schema')==2:identity_keys+=('ModelPayloadDigest','ModelProjectionBindingDigest')
++    if any(projection[k]!=op['context_identities'][k] for k in identity_keys):
+         raise LifecycleDenied('projection binding stale')
+     # Use the actual transmission/read validator without emitting audit during
+     # atomic observation; its host writes are buffered as controller-local facts.
+@@ -195,7 +197,7 @@
+     def _event(self,fd,previous,name,result,**extra):
+         row=event({'event':'authorization_lifecycle_'+name,'version':1,
+             'binding':dispatch_binding(self.inactive,self.audit,self.ref),
+-            'authorization_sha256':digest(original(serialized(self.inactive))),
++            'authorization_sha256':digest(historical_original(self.inactive)),
+             'audit_prefix_sha256':sha(_read(fd)),'predecessor_event':previous['last_event_id'],
+             'predecessor_state':previous['state'],'resulting_state':result,**extra})
+         _append(fd,row);return row
+--- /home/gvasend/app/kge-forge/adapter/authorization_lifecycle.py@integrated-activation
++++ /home/gvasend/app/kge-forge/adapter/authorization_lifecycle.py@versioned-binding
+@@ -37,6 +37,14 @@
+     return value
+ 
+ 
++def historical_original(auth):
++    value=original(serialized(auth));op=json.loads(value['operational_binding'])
++    if op['governance'].get('schema')==2:
++        auth.context_binding.governance.verify()
++        value['operational_binding']=canonical(auth.context_binding.governance.anchor_op)
++    return value
++
++
+ def requires_lifecycle(auth):
+     if not auth.operational_binding: return False
+     op = json.loads(auth.operational_binding)
+@@ -51,14 +59,19 @@
+     identities = op['governance']['identities']
+     profile = json.loads(read_exact(op['governance']['released_profile']['path'],
+                                    op['governance']['released_profile']['sha256']))
++    historical=None
++    if op['governance'].get('schema')==2:
++        from .continuation_envelope import dispatch_ancestor
++        historical=dispatch_ancestor(auth,decision)
++    dispatch_context=historical or op
+     expected = {'authorization_id': auth.authorization_id, 'revision': auth.revision,
+         'session_id': auth.session_id, 'turn_id': auth.turn_id}
+     if (decision.get('decision') != 'DISPATCH_AUTHORIZED' or decision.get('authority') != 'Architect'
+             or decision.get('invocation_identity') != expected
+             or decision.get('work_package_id') != auth.work_package_id
+             or decision.get('released_profile_sha256') != digest(profile)
+-            or any(decision.get(k) != v for k, v in identities.items())
+-            or any(decision.get(k) != op['context_identities'][k]
++            or any(decision.get(k) != v for k, v in dispatch_context['governance']['identities'].items())
++            or any(decision.get(k) != dispatch_context['context_identities'][k]
+                    for k in ('FullContextDigest', 'ModelProjectionDigest'))):
+         raise LifecycleDenied('dispatch identity/context/profile mismatch')
+     source = decision['authority_source']; read_exact(source['path'], source['sha256'])
+@@ -66,7 +79,7 @@
+     task_path = json.loads(auth.context_projection)['task_path']
+     if (bound['audit'] != str(Path(audit).resolve()) or bound['ownership_ledger'] != auth.ownership_ledger
+             or bound['work_id'] != auth.work_package_id
+-            or bound['operational_binding_sha256'] != digest(json.loads(original(serialized(auth))['operational_binding']))
++            or bound['operational_binding_sha256'] != digest(historical or json.loads(original(serialized(auth))['operational_binding']))
+             or bound['production_task_sha256'] != sha(Path(task_path).read_bytes())):
+         raise LifecycleDenied('dispatch audit/ledger/task/original binding mismatch')
+     return {**expected, **identities,
+@@ -75,6 +88,7 @@
+         'released_profile_sha256': digest(profile), 'work_package_id': auth.work_package_id,
+         'production_task_sha256': bound['production_task_sha256'],
+         'audit': str(Path(audit).resolve()), 'ownership_ledger': auth.ownership_ledger,
++        **({k:op['context_identities'][k] for k in ('ModelPayloadDigest','ModelProjectionBindingDigest')} if historical else {}),
+         'dispatch_record': ref, 'dispatch_record_id': 'E1-ARCHITECT-DISPATCH-sha256:' + ref['sha256']}
+ 
+ 
+@@ -95,9 +109,13 @@
+ 
+ 
+ def reconstruct(data, auth, audit):
+-    rows = decode(data); expected = serialized(auth); initial = original(expected)
++    rows = decode(data); expected = serialized(auth); current_initial=original(expected);initial=dict(current_initial)
++    op=json.loads(current_initial['operational_binding'])
++    if op['governance'].get('schema')==2:
++        auth.context_binding.governance.verify()
++        initial['operational_binding']=canonical(auth.context_binding.governance.anchor_op)
+     state = None; phase = 'INACTIVE'; intent = None; commit = None; last = None
+-    seen = set(); effective = initial; dispatch_ref = None
++    seen = set(); effective = current_initial; dispatch_ref = None
+     for row, prefix_hash in rows:
+         name = row.get('event')
+         if name == 'authorization_issued':
+@@ -105,7 +123,7 @@
+             if state is None:
+                 if issued != initial: raise LifecycleDenied('original INACTIVE authorization changed or missing')
+                 state = 'INACTIVE'
+-            elif issued != effective:
++            elif issued != effective and not (state=='INACTIVE' and issued==initial):
+                 raise LifecycleDenied('authorization record contradicts lifecycle state')
+             continue
+         if not str(name).startswith('authorization_lifecycle_'): continue
+@@ -144,7 +162,7 @@
+                     or body['intent_event_id'] != intent['event_id']
+                     or body['validation'] != intent['validation']):
+                 raise LifecycleDenied('activation commit contradicts intent')
+-            effective = dict(initial); effective['state'] = 'ACTIVE'
++            effective = dict(current_initial); effective['state'] = 'ACTIVE'
+             op = json.loads(effective['operational_binding']); op['dispatch_authorization'] = ref
+             effective['operational_binding'] = canonical(op)
+             if body['effective_authorization_sha256'] != digest(effective):
+@@ -161,7 +179,7 @@
+     if state is None: raise LifecycleDenied('original INACTIVE authorization missing')
+     if expected['state'] == 'ACTIVE' and (state != 'ACTIVE' or expected != effective):
+         raise LifecycleDenied('ACTIVE lacks exact durable activation event')
+-    if expected['state'] == 'INACTIVE' and expected != initial:
++    if expected['state'] == 'INACTIVE' and expected != current_initial:
+         raise LifecycleDenied('inactive authorization altered')
+     return {'state': state, 'phase': phase, 'effective_authorization': effective,
+         'activation_event': commit, 'last_event_id': last, 'dispatch_record': dispatch_ref,
+--- /home/gvasend/app/kge-forge/adapter/context_projection.py@integrated-activation
++++ /home/gvasend/app/kge-forge/adapter/context_projection.py@versioned-binding
+@@ -24,6 +24,25 @@
+     if sha(data) != expected:
+         raise ValueError('context artifact content changed')
+     return data
++
++
++def model_input(payload):
++    """Exact deterministic initial input content sent by ResponsesReasoning."""
++    return [{'role':'user','content':[{'type':'input_text',
++        'text':payload['task']+'\nContext:\n'+canonical(payload['context'])}]}]
++
++
++def model_payload_digest(payload):
++    # Content of the initial model request: exact framed input plus tool schemas.
++    # Subsequent filtered tool results have a separate per-request audit digest.
++    from .responses_orchestrator import tool_definitions
++    return digest({'input':model_input(payload),'tools':tool_definitions()})
++
++
++def projection_binding(payload_digest,clearance,identities,profile,task,full_digest):
++    return digest({'schema':'MODEL-PROJECTION-BINDING-1','ModelPayloadDigest':payload_digest,
++        'clearance':clearance,'operational_context':identities,
++        'released_profile_sha256':profile,'task':task,'FullContextDigest':full_digest})
+ 
+ 
+ def derive(spec, binding, authorize=None):
+@@ -114,9 +133,25 @@
+                   'payload': payload, 'items': proofs}
+     if binding.governance:
+         projection['operational_governance'] = binding.governance.identities
++    payload_id=model_payload_digest(payload)
++    historical_projection=digest(projection)
++    if binding.governance:
++        g=binding.governance
++        profile=json.loads(read_exact(g.spec['released_profile']['path'],g.spec['released_profile']['sha256']))
++        authority=g.identities
++        if g.spec.get('schema')==2:
++            if payload_id!=g.authority_invariants['ModelPayloadDigest']:
++                raise ValueError('released model payload changed')
++            historical_projection=digest(g.anchor_projection)
++    else:
++        profile={};authority={'AuthoritativeContextId':authority_id}
++    binding_id=projection_binding(payload_id,{'path':spec['clearance_path'],'sha256':spec['clearance_sha256']},
++        authority,digest(profile),{'path':spec['task_path'],'sha256':sha(task.encode())},digest(full))
+     return {'AuthoritativeContextId': authority_id, 'FullContextDigest': digest(full),
+-            'ModelProjectionDigest': digest(projection), 'projection': projection,
++            'ModelProjectionDigest': historical_projection, 'ModelPayloadDigest':payload_id,
++            'ModelProjectionBindingDigest':binding_id, 'projection': projection,
+             'controller_context': full}
++
+ 
+ 
+ def specification(binding, capture_path, clearance_path, task_path, current_inputs):
+@@ -164,7 +199,10 @@
+                 expected = verify_authorization(self.host.auth)['context_identities']
+             elif self.binding.governance:
+                 raise ValueError('operational authorization supplement required')
+-            for name in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest'):
++            names=('AuthoritativeContextId','FullContextDigest','ModelProjectionDigest')
++            if self.binding.governance and self.binding.governance.spec.get('schema')==2:
++                names+=('ModelPayloadDigest','ModelProjectionBindingDigest')
++            for name in names:
+                 if result[name] != expected[name]:
+                     raise ValueError('context/projection identity changed')
+             clearance = json.loads(read_exact(self.spec['clearance_path'], self.spec['clearance_sha256']))
+@@ -181,7 +219,7 @@
+             self.host._write({'event': 'context_projection_verified',
+                 'authorization_id': self.host.auth.authorization_id,
+                 'session_id': self.host.auth.session_id, 'turn_id': self.host.auth.turn_id,
+-                **{k: result[k] for k in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest')}})
++                **{k: result[k] for k in ('AuthoritativeContextId', 'FullContextDigest', 'ModelProjectionDigest', 'ModelPayloadDigest', 'ModelProjectionBindingDigest')}})
+             return result
+         except Exception:
+             self.host._write({'event': 'context_projection_denied',
+--- /home/gvasend/app/kge-forge/adapter/continuation_envelope.py@integrated-activation
++++ /home/gvasend/app/kge-forge/adapter/continuation_envelope.py@versioned-binding
+@@ -0,0 +1,188 @@
++"""One content-bound envelope and verifier for operational continuation ancestry.
++
++The issued specification pins both ordered envelopes and independent Architect
++approvals. An authority label in an envelope is never an approval by itself.
++Legacy contexts are immutable anchors, not rewritten as new decisions.
++"""
++import json
++from pathlib import Path
++from .context_projection import canonical,digest,sha,read_exact,model_payload_digest
++
++SCHEMA='OPERATIONAL-CONTINUATION-1'
++TYPES={'GOVERNANCE_CONTINUATION':'NON_MATERIAL_TO_RELEASE_AUTHORITY',
++       'NON_MATERIAL_IMPLEMENTATION_CONTINUATION':'NON_MATERIAL_IMPLEMENTATION_CONTINUATION'}
++BODY_KEYS={'schema','type','sequence','predecessor_OperationalContextId','predecessor_chain_digest',
++ 'artifacts','authority','classification','evidence','authority_invariants','reason'}
++RESULT_KEYS={'approval','OperationalContextId','continuation_chain_digest','continuation_id'}
++
++
++def read(ref):return json.loads(read_exact(ref['path'],ref['sha256']))
++
++
++def seal(body,approval):
++    """Pure encoding; does not approve, install, append or effect a continuation."""
++    if set(body)!=BODY_KEYS:raise ValueError('malformed continuation body')
++    bound={**body,'approval':approval};h=digest(bound)
++    return {**bound,'continuation_id':'CONTINUATION-sha256:'+h,
++        'OperationalContextId':'E1-OPERATIONAL-CONTEXT-sha256:'+digest({
++            'predecessor':body['predecessor_OperationalContextId'],'continuation':h}),
++        'continuation_chain_digest':digest({'predecessor':body['predecessor_chain_digest'],'continuation':h})}
++
++
++def archive(ref):
++    capture=read(ref);inputs=capture.get('current_inputs',capture.get('inputs'));
++    if not isinstance(inputs,dict):raise ValueError('qualification capture inventory missing')
++    blobs=Path(ref['path']).parent/'blobs'
++    for row in inputs.values():read_exact(str(blobs/row['sha256']),row['sha256'])
++    return inputs
++
++
++def invariants(op,projection):
++    g=op['governance'];profile=read(g['released_profile']);launch=read(op['released_launch'])
++    task=profile['context_projection']['task_path']
++    item=next(i for i in projection['items'] if i['path']==task)
++    return {'ReleaseBasisId':g['identities']['ReleaseBasisId'],'ReleaseDecisionId':g['identities']['ReleaseDecisionId'],
++        'released_profile_sha256':digest(profile),'released_launch':op['released_launch'],
++        'task_path':task,'task_sha256':item['captured_source_sha256'],
++        'ModelPayloadDigest':model_payload_digest(projection['payload']),
++        'clearance':g['clearance'],'transmission':digest(launch['authorization']['model_transmission']),
++        'execution':digest(launch['authorization']['execution_profile']),
++        'destination':digest(launch['authorization']['model_transport'])}
++
++
++def verify(owner):
++    from .governance_continuation import GovernanceContinuation
++    s=owner.spec
++    if digest(s)!=owner._issued_digest or s['schema']!=2:raise ValueError('issued canonical specification changed')
++    anchor=s['anchor'];op=read(anchor['operational_binding']);full=read(anchor['full_context']);projection=read(anchor['projection'])
++    captured=archive(anchor['evidence_capture'])
++    for ref in (anchor['operational_binding'],anchor['full_context'],anchor['projection']):
++        if captured.get(ref['path'],{}).get('sha256')!=ref['sha256']:raise ValueError('anchor not in authoritative capture')
++    if op['governance']['schema']!=1:raise ValueError('anchor must be complete historical context; nesting forbidden')
++    old=GovernanceContinuation(op['governance'],historical=True)
++    if (digest(full)!=op['context_identities']['FullContextDigest'] or
++        digest(projection)!=op['context_identities']['ModelProjectionDigest'] or
++        projection['authoritative_context_id']!=op['context_identities']['AuthoritativeContextId'] or
++        full['operational_governance']!=old.identities or projection['operational_governance']!=old.identities):
++        raise ValueError('historical full/projection identity mismatch')
++    for key in ('release_basis','release_decision','released_profile','clearance'):
++        if s[key]!=op['governance'][key]:raise ValueError('immutable release selection changed')
++    protected=invariants(op,projection)
++    if s['authority_invariants']!=protected:raise ValueError('released authority changed')
++    for path,row in old.supplement['inputs'].items():
++        if captured.get(path,{}).get('sha256')!=row['sha256']:raise ValueError('historical implementation identity unproved')
++    basis=read(s['release_basis']);sources=basis.get('current_inputs',basis.get('inputs'))
++    current={p:r['sha256'] for p,r in sources.items()}
++    current.update({p:r['new_sha256'] for p,r in old.changes.items()})
++    current.update({p:r['sha256'] for p,r in old.supplement['inputs'].items()})
++    changes=dict(old.changes);supplement=json.loads(canonical(old.supplement))
++    predecessor=old.identities['OperationalContextId'];chain=old.identities['continuation_chain_digest']
++    nodes=[{'OperationalContextId':predecessor,'continuation_chain_digest':chain}]
++    ancestor_ops=[op]
++    if len(s['records'])!=len(s['approvals']) or len({r['sha256'] for r in s['records']})!=len(s['records']):
++        raise ValueError('missing approval or replay')
++    profile=read(s['released_profile']);clearance=read(s['clearance']);runtime_root=Path(profile['runtime']['cwd'])
++    for sequence,(ref,approval_ref) in enumerate(zip(s['records'],s['approvals']),1):
++        row=read(ref)
++        if set(row)!=BODY_KEYS|RESULT_KEYS or row['schema']!=SCHEMA or row['type'] not in TYPES:
++            raise ValueError('unknown or malformed continuation')
++        body={k:row[k] for k in BODY_KEYS}
++        if (row!=seal(body,approval_ref) or row['sequence']!=sequence or
++            row['predecessor_OperationalContextId']!=predecessor or row['predecessor_chain_digest']!=chain or
++            row['classification']!=TYPES[row['type']] or row['authority_invariants']!=protected):
++            raise ValueError('material, substituted or reordered continuation')
++        approval=read(approval_ref)
++        if (approval.get('authority')!='Architect' or approval.get('decision')!='AUTHORIZE_NON_MATERIAL_CONTINUATION'
++            or approval.get('body_sha256')!=digest(body) or approval.get('evidence')!=row['evidence']
++            or row['authority']!=approval.get('authority_source')):
++            raise ValueError('continuation not independently approved')
++        read_exact(row['authority']['path'],row['authority']['sha256'])
++        evidence=read(row['evidence'])
++        if (evidence.get('result')!='PASS' or evidence.get('classification')!=row['classification'] or
++            evidence.get('artifacts_sha256')!=digest(row['artifacts']) or
++            evidence.get('authority_invariants')!=protected):
++            raise ValueError('missing qualification or materiality substitution')
++        qualified_inputs=archive(evidence['capture'])
++        qualified_hashes={r['sha256'] for r in qualified_inputs.values()}
++        seen=set()
++        if not row['artifacts']:raise ValueError('empty continuation')
++        for artifact in row['artifacts']:
++            if set(artifact)!={'path','old_sha256','new_sha256','old_blob','new_blob'}:raise ValueError('malformed artifact')
++            path=artifact['path'];p=Path(path)
++            if path in seen or not p.is_absolute() or p.resolve()!=p or any(x in p.parts for x in ('.git','.codex','.agents')):
++                raise ValueError('ambiguous artifact')
++            seen.add(path)
++            if current.get(path)!=artifact['old_sha256']:raise ValueError('artifact predecessor mismatch')
++            if artifact['new_sha256'] not in qualified_hashes or (artifact['old_sha256'] is not None and artifact['old_sha256'] not in qualified_hashes):
++                raise ValueError('artifact absent from qualification capture')
++            before=b'' if artifact['old_sha256'] is None else read_exact(artifact['old_blob'],artifact['old_sha256'])
++            if artifact['old_sha256'] is None and artifact['old_blob'] is not None:raise ValueError('absent artifact has old blob')
++            after=read_exact(artifact['new_blob'],artifact['new_sha256'])
++            if row['type']=='GOVERNANCE_CONTINUATION':
++                if path not in sources or not after.startswith(before) or len(after)<=len(before):raise ValueError('governance continuation must append')
++                for cleared in clearance['inputs']:
++                    if cleared['canonical_path']==path and cleared['classification']=='TRANSMIT':
++                        if cleared['designation']=='COMPLETE_FILE':raise ValueError('complete cleared source changed')
++                        for span in cleared['spans']:
++                            a,b=span['start_byte'],span['end_byte_exclusive']
++                            if b>len(before) or sha(after[a:b])!=span['sha256']:raise ValueError('cleared content changed')
++                changes[path]={'new_sha256':artifact['new_sha256']}
++            else:
++                if runtime_root/'adapter' not in p.parents or p.suffix!='.py' or path==protected['task_path']:
++                    raise ValueError('implementation artifact outside controller implementation')
++                if any(c['canonical_path']==path and c['classification']=='TRANSMIT' for c in clearance['inputs']):
++                    raise ValueError('implementation cannot change transmitted source')
++                supplement['inputs'][path]={'previous_sha256':sources.get(path,{}).get('sha256'),'sha256':artifact['new_sha256']}
++            current[path]=artifact['new_sha256']
++        predecessor=row['OperationalContextId'];chain=row['continuation_chain_digest']
++        nodes.append({'OperationalContextId':predecessor,'continuation_chain_digest':chain})
++        prefix=json.loads(canonical(s));prefix['records']=s['records'][:sequence];prefix['approvals']=s['approvals'][:sequence]
++        prefix['identities']={**old.identities,'OperationalContextId':predecessor,'continuation_chain_digest':chain}
++        ancestor_ops.append(historical_operation(op,full,projection,prefix,supplement))
++    identities={**old.identities,'OperationalContextId':predecessor,'continuation_chain_digest':chain}
++    if identities!=s['identities']:raise ValueError('selected chain head missing, deleted or branched')
++    for p,r in changes.items():read_exact(p,r['new_sha256'])
++    for p,r in supplement['inputs'].items():read_exact(p,r['sha256'])
++    owner.changes=changes;owner.supplement=supplement;owner.identities=identities
++    owner.anchor_op=op;owner.anchor_projection=projection;owner.authority_invariants=protected;owner.ancestry=nodes;owner.ancestor_ops=ancestor_ops
++    return identities
++
++
++def historical_operation(anchor_op,anchor_full,projection,spec,supplement):
++    """Reproduce a prefix's context from authenticated bytes, never caller IDs."""
++    from .context_projection import projection_binding
++    full=json.loads(canonical(anchor_full));full['operational_governance']=spec['identities']
++    full['controller_context']['governance_continuation']=spec['identities']
++    full['operational_specification_sha256']=digest(spec);full['implementation_supplement']=supplement
++    inv=spec['authority_invariants'];fd=digest(full)
++    ids={'AuthoritativeContextId':'E1-AUTHORITATIVE-CONTEXT-sha256:'+fd,'FullContextDigest':fd,
++        'ModelProjectionDigest':digest(projection),'ModelPayloadDigest':inv['ModelPayloadDigest'],
++        'ModelProjectionBindingDigest':projection_binding(inv['ModelPayloadDigest'],inv['clearance'],spec['identities'],
++            inv['released_profile_sha256'],{'path':inv['task_path'],'sha256':inv['task_sha256']},fd)}
++    return {**anchor_op,'governance':spec,'context_identities':ids}
++
++
++def dispatch_ancestor(auth,decision):
++    """Authenticate immutable dispatch C0, then every approved link to current Cn."""
++    g=auth.context_binding.governance;g.verify()
++    if g.spec['schema']!=2:raise ValueError('canonical ancestry required')
++    matches=[candidate for candidate in g.ancestor_ops if
++        all(decision.get(k)==v for k,v in candidate['governance']['identities'].items()) and
++        all(decision.get(k)==candidate['context_identities'][k] for k in ('FullContextDigest','ModelProjectionDigest')) and
++        decision['all_authorized_bindings']['operational_binding_sha256']==digest(candidate)]
++    if len(matches)!=1:raise ValueError('dispatch ancestor not authenticated')
++    ancestor=matches[0]
++    op=json.loads(auth.operational_binding)
++    if set(op)-{'dispatch_authorization'}!=set(ancestor)-{'dispatch_authorization'}:
++        raise ValueError('unexplained operational fields')
++    for key in ('released_launch','invocation_identity'):
++        if op.get(key)!=ancestor.get(key):raise ValueError('invocation authority changed across ancestry')
++    from .context_projection import derive
++    current=derive(json.loads(auth.context_projection),auth.context_binding)
++    for key in ('FullContextDigest','ModelPayloadDigest','ModelProjectionBindingDigest','ModelProjectionDigest','AuthoritativeContextId'):
++        if op['context_identities'].get(key)!=current[key]:raise ValueError('descendant context identity mismatch')
++    if current['ModelPayloadDigest']!=g.authority_invariants['ModelPayloadDigest']:
++        raise ValueError('model payload changed across ancestry')
++    if decision.get('ModelPayloadDigest',g.authority_invariants['ModelPayloadDigest'])!=current['ModelPayloadDigest']:
++        raise ValueError('dispatch payload identity mismatch')
++    return ancestor
+--- /home/gvasend/app/kge-forge/adapter/governance_continuation.py@integrated-activation
++++ /home/gvasend/app/kge-forge/adapter/governance_continuation.py@versioned-binding
+@@ -31,13 +31,18 @@
+ 
+ 
+ class GovernanceContinuation:
+-    def __init__(self, spec):
++    def __init__(self, spec, historical=False):
++        self.historical = historical
+         self.spec = json.loads(canonical(spec))
+         self._issued_digest = digest(self.spec)
+         self.verify()
+ 
+     def verify(self):
+         s = self.spec
++        if s.get('schema') == 2:
++            if self.historical: raise ValueError('canonical history cannot bypass current checks')
++            from .continuation_envelope import verify
++            return verify(self)
+         if digest(s) != self._issued_digest or s.get('schema') != 1:
+             raise ValueError('governance specification changed')
+         basis = read_ref(s['release_basis'])
+@@ -114,7 +119,7 @@
+             changes[path] = row
+             predecessor = expected
+         for path, row in changes.items():
+-            read_exact(path, row['new_sha256'])
++            if not self.historical: read_exact(path, row['new_sha256'])
+         identities = {'ReleaseBasisId': basis_id, 'ReleaseDecisionId': decision_id,
+                       'OperationalContextId': predecessor,
+                       'continuation_chain_digest': digest(s['approved_records'])}
+@@ -133,7 +138,7 @@
+                 raise ValueError('supplement cannot replace governing release selections')
+             if row['previous_sha256'] != source_rows.get(path, {}).get('sha256'):
+                 raise ValueError('implementation predecessor mismatch')
+-            read_exact(path, row['sha256'])
++            if not self.historical: read_exact(path, row['sha256'])
+         if set(supplement['inputs']) != set(s['implementation_paths']):
+             raise ValueError('incomplete implementation supplement')
+         self.changes = changes
+@@ -195,12 +200,16 @@
+     # from PD-06 or from a non-material continuation.
+     if expected['state'] == 'INACTIVE' and auth.state == 'ACTIVE':
+         dispatch = read_ref(op['dispatch_authorization']) if op.get('dispatch_authorization') else None
++        historical = None
++        if g.spec.get('schema') == 2 and dispatch is not None:
++            from .continuation_envelope import dispatch_ancestor
++            historical = dispatch_ancestor(auth, dispatch)
+         required_dispatch = {
+             'decision': 'DISPATCH_AUTHORIZED', 'authority': 'Architect',
+             'work_package_id': expected['work_package_id'],
+             'released_profile_sha256': launch['profile_sha256'],
+-            **g.identities,
+-            'ModelProjectionDigest': op['context_identities']['ModelProjectionDigest'],
++            **(historical['governance']['identities'] if historical else g.identities),
++            'ModelProjectionDigest': (historical or op)['context_identities']['ModelProjectionDigest'],
+             'invocation_identity': {k: expected[k] for k in
+                 ('authorization_id', 'revision', 'session_id', 'turn_id')}}
+         if dispatch is None or any(dispatch.get(k) != v for k, v in required_dispatch.items()):
+--- /home/gvasend/app/kge-forge/adapter/responses_orchestrator.py@integrated-activation
++++ /home/gvasend/app/kge-forge/adapter/responses_orchestrator.py@versioned-binding
+@@ -136,8 +136,8 @@
+         elif binding is not None and context!=binding.model_context():
+             raise ValueError('Programmer context must be controller-constructed')
+         self.transmission.initial(task,context)
+-        input_items=[{'role':'user','content':[{'type':'input_text',
+-            'text':task+'\nContext:\n'+json.dumps(context,sort_keys=True,separators=(',',':'))}]}]
++        from .context_projection import model_input
++        input_items=model_input({'task':task,'context':context})
+         history=[]
+         for _ in range(max_cycles):
+             selected=self._verify_context()
+@@ -145,8 +145,7 @@
+                 raise ValueError('model projection changed during continuation')
+             self.transmission.initial(task,context)
+             # Re-evaluate all prior governed results under current verified policy.
+-            input_items=[{'role':'user','content':[{'type':'input_text',
+-                'text':task+'\nContext:\n'+json.dumps(context,sort_keys=True,separators=(',',':'))}]}]
++            input_items=model_input({'task':task,'context':context})
+             for old_output, old_results in history:
+                 input_items.extend(old_output)
+                 for old_call, old_result in old_results:
+@@ -157,6 +156,10 @@
+             payload={'model':self.model,'input':input_items,'tools':tool_definitions(),
+                      'parallel_tool_calls':False,'store':False,
+                      'include':['reasoning.encrypted_content']}
++            from .context_projection import digest as content_digest, model_payload_digest
++            self.orchestrator.host._write({'event':'model_request_content_bound',
++                'ModelPayloadDigest':model_payload_digest({'task':task,'context':context}),
++                'ModelRequestDigest':content_digest(payload)})
+             response=self._call(payload)
+             self._verify_context()
+             self.response_id=response.get('id')

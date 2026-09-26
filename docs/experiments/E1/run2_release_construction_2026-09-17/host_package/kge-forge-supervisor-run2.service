@@ -1,0 +1,19 @@
+[Unit]
+Description=One authorized E1 successor candidate; no automatic retry
+After=local-fs.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/bin/python3.11 /var/lib/kge-forge-supervisor-run2/host_launch.py /var/lib/kge-forge-supervisor-run2/LAUNCH_SPEC.json /var/lib/kge-forge-supervisor-run2/HOST_LAUNCH_AUTHORIZATION.json
+Restart=no
+RemainAfterExit=no
+StandardInput=null
+StandardOutput=journal
+StandardError=journal
+UMask=0077
+# The launcher moves only the child into the existing delegated executor before
+# credential drop. The root parent remains managed here and retains its lock.
+KillMode=control-group
+TimeoutStopSec=15s

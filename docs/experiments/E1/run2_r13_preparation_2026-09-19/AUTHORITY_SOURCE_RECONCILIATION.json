@@ -1,0 +1,51 @@
+{
+  "schema": "AUTHORITY-SOURCE-RECONCILIATION-1",
+  "verdict": "BLOCKED_OPERATIONAL_CONTEXT_AUTHORITY_MISSING_AND_OPERATIONAL_BINDING_AUTHORITY_MISSING",
+  "qualification_domain": "SUCCESSOR_RUNTIME_QUALIFICATION",
+  "production_mutation": false,
+  "production": {
+    "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+    "store": "LIVE_R4_FINAL_CONTROLLER_STORE",
+    "generation": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+    "r13": "UNISSUED_UNOWNED",
+    "model_requests": 0,
+    "e1_effects": 0
+  },
+  "references": {
+    "invocation": "InvocationAttempt-sha256:bce363cb3dfd25deaff6f6ef4ed67c9d70af859fe998c09ff133deb11f346ba8",
+    "dispatch": "E1-ARCHITECT-DISPATCH-R4-FINAL-sha256:43654010c1048e6899a561878475e1fcd3bdecc0de98fea24f2e64c36e2f91ad",
+    "operational_context": "E1-OPERATIONAL-CONTEXT-sha256:1ab699d479fb2086981b30074384cb2e2144241c7f009fd5edec146d53606d39",
+    "operational_binding_reference": "replacement_operational_binding_sha256:5729a87d49768825a78ee5e4946c9154d7273385aad92320a435d38448086b4d"
+  },
+  "authority_matrix": [
+    {"value":"Invocation","owner":"invocation authority","canonical":"live G4 invocation record","mutable":"current applicability","resolver":"PASS"},
+    {"value":"Dispatch","owner":"controller authority store","canonical":"live G4 dispatch record","mutable":"current selection","resolver":"PASS"},
+    {"value":"Profile","owner":"released-profile authority","canonical":"sha256:fb842649d30e5876fb3f299e890e2c555a88be759c29b2c6577552d4885b0226","mutable":"scoped","resolver":"PASS"},
+    {"value":"Operational context","owner":"operational-context authority","canonical":null,"mutable":"current","resolver":"BLOCKED"},
+    {"value":"Operational binding","owner":"operational-binding authority","canonical":null,"mutable":"invocation-scoped","resolver":"BLOCKED"},
+    {"value":"Ownership","owner":"ownership ledger","canonical":"live ledger state","mutable":"yes","resolver":"NOT_ATTEMPTED_AFTER_SOURCE_GAP"},
+    {"value":"Lifecycle","owner":"lifecycle journal","canonical":"WorkAuthorization lifecycle evidence","mutable":"yes","resolver":"NOT_ATTEMPTED_AFTER_SOURCE_GAP"},
+    {"value":"Audit","owner":"invocation/audit authority","canonical":"canonical audit binding plus durable audit state","mutable":"scoped","resolver":"NOT_ATTEMPTED_AFTER_SOURCE_GAP"}
+  ],
+  "context": {
+    "classification": "CONTEXT_AUTHORITY_NEVER_ESTABLISHED",
+    "searched_domains":["live G4 controller store","runtime-authority store","G3/G4 qualification stores","dispatch ancestry","R3/R4 context publication evidence","release and temporal records"],
+    "finding":"Only references and historical E1-OPERATIONAL-CONTEXT records were found. No canonical object independently recomputes to the exact current identity.",
+    "qualification_only_evidence":"/tmp/r3-readonly-production-context-xnvbx1q_/store and /tmp/r3-readonly-production-context-rjezngj_/store",
+    "prohibited_substitutions":["historical context","dispatch copy","invocation copy","WorkAuthorization copy","implementation default"]
+  },
+  "operational_binding": {
+    "classification":"OPERATIONAL_BINDING_AUTHORITY_MISSING",
+    "finding":"The current binding appears only as a digest/reference or copied field; no independently authoritative canonical operational-binding record or authorized derivation rule was found.",
+    "prohibited_action":"Do not turn the digest into authority by constructing a matching object."
+  },
+  "resolver_qualification": {
+    "implementation":"adapter/authority_resolution.py",
+    "implementation_sha256":"62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+    "identity_only_reference_rejected":true,
+    "unauthoritative_copy_rejected":true,
+    "historical_substitution_rejected":true,
+    "production_store_unchanged":true
+  },
+  "successor_candidate":"sha256:3e5a508fb3751ae685e85b9ebc2b77a19515a202233b5ce6dd93e4330bd81d24"
+}

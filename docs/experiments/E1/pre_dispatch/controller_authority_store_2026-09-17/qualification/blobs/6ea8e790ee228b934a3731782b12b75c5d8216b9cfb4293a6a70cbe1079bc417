@@ -1,0 +1,27 @@
+test_qualified_continuation (adapter.tests.test_governance_continuation.GovernanceContinuationTests) ... ok
+test_release_does_not_authorize_activation (adapter.tests.test_governance_continuation.GovernanceContinuationTests) ... ERROR
+test_two_authorized_records_cannot_be_reordered_or_truncated (adapter.tests.test_governance_continuation.GovernanceContinuationTests) ... ok
+
+======================================================================
+ERROR: test_release_does_not_authorize_activation (adapter.tests.test_governance_continuation.GovernanceContinuationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/governed_host.py", line 61, in __init__
+    try: require_store(authorization, self.audit)
+  File "/home/gvasend/app/kge-forge/adapter/controller_authority_store.py", line 287, in require_store
+    raise AuthorityDenied('production requires a pinned private authority store')
+adapter.controller_authority_store.AuthorityDenied: production requires a pinned private authority store
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_governance_continuation.py", line 200, in test_release_does_not_authorize_activation
+    GovernedHost(replace(active, operational_binding=canonical(op)), Path(out) / 'wrong.jsonl')
+  File "/home/gvasend/app/kge-forge/adapter/governed_host.py", line 62, in __init__
+    except AuthorityDenied as exc: raise Denied(str(exc)) from exc
+adapter.governed_host.Denied: production requires a pinned private authority store
+
+----------------------------------------------------------------------
+Ran 3 tests in 2.986s
+
+FAILED (errors=1)

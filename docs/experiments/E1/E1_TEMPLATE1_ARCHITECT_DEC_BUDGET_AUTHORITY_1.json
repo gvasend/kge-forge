@@ -1,0 +1,81 @@
+{
+  "schema": "E1-ARCHITECT-DECISION-AUTHORITY-1",
+  "record_type": "DEC-BUDGET",
+  "status": "ISSUED",
+  "decision": "APPROVED_OPTION_A_AUTHORITY_REFERENCE",
+  "issuer": "Architect (explicit user instruction in this conversation)",
+  "issuance_basis": "E1 ARCHITECT DECISION \u2014 DEC-BUDGET; explicit approval of Option A and only REEVAL-BUDGET transition",
+  "scope": "Only authenticated_inputs.budget_policy representation and source-projection policy within recorded LIVE_R4/G4/E1-WP-001 bounded Template-1 contract closure. Governing source has FIRST_PROGRAMMER_EXECUTION scope; applicability to target FIRST_PROGRAMMER_REQUEST is not asserted by this decision.",
+  "source_artifacts": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_REVIEW_1.md",
+      "sha256": "85896142cffdaba9ed9e5763a2ca8ef2989ce2748a885b34c657f2cb328e587d",
+      "location": "whole artifact"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_REVIEW_1.json",
+      "sha256": "87d1ede1a3834636245ace4c5da75fd85f5d2ab5eb7cb96e8713ee25a889afb9",
+      "location": "whole artifact"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+      "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+      "location": "whole artifact"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.md",
+      "sha256": "5ebf7b266d3dc6129257114a184c31396b1322306eb1ce705e3507870cb05e0b",
+      "location": "whole artifact"
+    },
+    {
+      "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+      "sha256": "5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+      "location": "second JSON block StatusBudgetAuthority"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_RESULT.md",
+      "sha256": "d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84",
+      "location": "whole artifact"
+    }
+  ],
+  "selected_option": "A",
+  "canonical_input_contract": {
+    "field": "authenticated_inputs.budget_policy",
+    "identity_type": "AUTHORITY_IDENTITY",
+    "json_type": "string",
+    "exact_value": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+    "authoritative_selector": "/authority_id",
+    "owning_source_type": "CURRENT_STATUS_BUDGET_AUTHORITY-1",
+    "policy_selector": "/policy",
+    "meaning": "Reference identifies the owning StatusBudgetAuthority; policy remains /policy of independently authenticated owner. Do not copy or reinterpret policy into the field.",
+    "canonicalization": "UTF-8 canonical JSON string; sorted-key compact JSON enclosing body, ensure_ascii=True, no coercion or alternate field shape."
+  },
+  "validation_requirements": [
+    "Authenticate referenced StatusBudgetAuthority.",
+    "Verify exact authority identity.",
+    "Verify applicable source type, scope, lineage and required currentness/freshness before mapping or use.",
+    "Obtain authoritative policy from /policy.",
+    "Preserve all governing controls from authenticated owner.",
+    "Reject unresolved, stale, incorrectly typed or mismatched authority references."
+  ],
+  "reference_alone_proves_applicability_or_freshness": false,
+  "authority_not_granted": [
+    "budget changes",
+    "counter reset",
+    "authority expansion",
+    "source creation",
+    "implementation changes",
+    "validator changes",
+    "mapping execution",
+    "Template-1 construction",
+    "Candidate-3 construction",
+    "WorkAuthorization issuance/use",
+    "runtime effects"
+  ],
+  "authorized_followup": "Only deterministic REEVAL-BUDGET transition; no MAP-BUDGET or subsequent action.",
+  "production_effect": "CONTROL_PLANE_AUTHORITY_OR_CONTRACT_ISSUANCE_ONLY",
+  "runtime_effects_authorized": false,
+  "candidate3_authority_consumed": false,
+  "canonical_identity_rule": "SHA-256 of sorted-key compact UTF-8 JSON (ensure_ascii=False) excluding authority_id only; full body otherwise included.",
+  "authority_id": "E1-ArchitectDecisionAuthority-sha256:ee89f5678d536856c160ae249b4343001b4051f5a1b3631b721dc80d2059b550"
+}

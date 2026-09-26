@@ -1,0 +1,71 @@
+{
+  "corrected_history": {
+    "conflict_reason": "qualification/derived artifacts were reported using applied/selected language, but no durable live selection path or journal was mutated",
+    "live_current": "G0 remains uniquely selected",
+    "prior_reports": "retain unchanged as qualification claims/evidence",
+    "production_interpretation": "neither G1 nor G2 was selected in the live R3 controller authority store"
+  },
+  "evidence_hashes": {
+    "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_G1_SELECTION.json": "d8b5b9e0c345e468ddbeb1577c578a6323505982243aa2ed58c6e7670ff2bcef",
+    "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_G2_SELECTION.json": "33c90af79b7fd8fa5601caad3fc47fcfb83e3c631001fa4411bccb689b2bcb33",
+    "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_GENERATION_QUALIFICATION.json": "43a87cd453a617084ed4fa28ffcae512777ea6742d196718714b2d393df59773",
+    "docs/experiments/E1/run2_r13_preparation_2026-09-19/G1_SELECTION_MATERIAL_POLICY_READY.json": "65e9bb8526cd0c8202d6f788cbcd30ab5860c5c26d7884694d24bc138ba0ae0f",
+    "docs/experiments/E1/run2_r13_preparation_2026-09-19/G2_MATERIAL_POLICY_READY.json": "4ea0eff4e4182e7d9eabd72dbbbe19a8ff29868c77ca0c36c35bec316a38f938",
+    "docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_ADOPTION_EXECUTION_BLOCKED.json": "e62f8639422227fcd722d9943e8353bf9305c42680fe7d1ee34c793cb61f1a23"
+  },
+  "g1_operation": {
+    "classification": "QUALIFICATION/DERIVED_ARTIFACT_ONLY",
+    "durable_store_root": null,
+    "generation_artifact": "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_G1_GENERATION.json",
+    "live_before_after_evidence": null,
+    "reason": "generation qualification explicitly records production_active_generation=G0 and production_mutated=false; no G1 object or selection record exists in live store",
+    "reported_selection": "AUTHORITY-STORE-GENERATION-SELECTION-sha256:5aa40ed494b32ad5dc04502e8198d2324dea2680704a6634065a6b5ae9f15f20",
+    "selection_artifact": "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_G1_SELECTION.json",
+    "selection_journal": null,
+    "target": "AUTHORITY-STORE-GENERATION-sha256:ff3f00e0cec83ce1a9f5e8d7efed73a73b1df5e025bbf0d49f16258129d38ab9"
+  },
+  "g2_operation": {
+    "classification": "QUALIFICATION/DERIVED_ARTIFACT_ONLY",
+    "durable_store_root": null,
+    "generation_artifact": "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_G2_GENERATION.json",
+    "live_before_after_evidence": null,
+    "reason": "G2 artifact is marked CONSTRUCTED_NOT_SELECTED; material-policy report is qualification output and live catalog has no material records",
+    "reported_selection": "AUTHORITY-STORE-GENERATION-SELECTION-sha256:3bc9cc8b78b7abe5618f3fe22d268dd7f57be5f0c9d02d37359feacac91ef11c",
+    "selection_artifact": "docs/experiments/E1/run2_r13_preparation_2026-09-19/AUTHORITY_STORE_G2_SELECTION.json",
+    "selection_journal": null,
+    "target": "AUTHORITY-STORE-GENERATION-sha256:8fbcb42044c79b092731526a8c709e6061f05d2b144f88f9dd28672908ddd91e"
+  },
+  "live_resolution": {
+    "authority_store_root": "/tmp/kge-forge-r3-current-r13-authority",
+    "catalog_path": "/tmp/kge-forge-r3-current-r13-authority/catalog.json",
+    "catalog_sha256": "9f2005f2aca6eaf69ed40cda1e94da57fa26871862d8e012699026c43b42d9d5",
+    "controller_lineage": "R3",
+    "generation_selection_journal": null,
+    "generation_selection_source": null,
+    "material_policy_records_present": false,
+    "runtime": "sha256:eebb05f30a4a64befeca7802990129ac79dff701dd192789fbdf59be2ec118ff",
+    "runtime_head_selection": null,
+    "selected_generation": "AUTHORITY-STORE-GENERATION-sha256:9f2005f2aca6eaf69ed40cda1e94da57fa26871862d8e012699026c43b42d9d5",
+    "selection_basis": "catalog.json applicability/runtime and immutable catalog identity; no generation selector present"
+  },
+  "next_authority_action": "A separately authorized live generation-selection mechanism/record is required before G1 or G2 can be selected; do not infer selection from workspace artifacts.",
+  "production_mutated": false,
+  "runtime_authority_store": {
+    "catalog_sha256": "03880030015eb95ba196bc62fbf0dd84164b69e53c701ad7fb412185d2950ca2",
+    "live_selection_for_r3": false,
+    "purpose": "separate runtime-authority store; not the live R3 controller authority store",
+    "root": "/tmp/kge-forge-runtime-authority/baa3d248f109d4e37a293c4c92cbcb2ebf1037ce1f0d56bda326ebc168a50315/authority-complete",
+    "runtime_head_authority": "RUNTIME-HEAD-AUTHORITY-sha256:75e6b7f2b5867c6d04bf0eeefc66f0c148d3f3e15e776c0d9e2b20b6352a1a5d"
+  },
+  "schema": "E1-LIVE-AUTHORITY-STORE-RECONCILIATION-1",
+  "scope": "read_only_reconciliation",
+  "state": {
+    "R3": "CURRENT",
+    "R4_final": "ENROLLED_ELIGIBLE_UNADOPTED",
+    "S3": "READY",
+    "effects": 0,
+    "model_requests": 0,
+    "r13": "VALID_AUTHORIZED_UNISSUED_UNOWNED"
+  },
+  "verdict": "LIVE_AUTHORITY_STORE_RECONCILED_G0_CURRENT"
+}

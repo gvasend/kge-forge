@@ -1,0 +1,452 @@
+{
+  "schema_version": "E1-CONTEXT-1",
+  "baseline_id": "E1-ARCH-1",
+  "work_id": "E1-WP-001",
+  "intended_role": "Implementation Agent",
+  "status": "PREPARED_NOT_DISPATCHABLE",
+  "repositories": {
+    "forge": {
+      "root": "/home/gvasend/app/kge-forge",
+      "baseline_revision": "411cb5a9fabc71e482a414ed58387de0ff557e93",
+      "working_revision_binding": "package_capture_commit"
+    },
+    "service": {
+      "root": "/home/gvasend/app/kge-forge-demo",
+      "working_revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a"
+    }
+  },
+  "sources": [
+    {
+      "id": "vision",
+      "repository": "forge",
+      "path": "docs/VISION.md",
+      "sha256": "b76ecfd3b48c0b8da50473d6f0e276f5ea285777bd7e6adf82b1510a87c59d4e",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "elicitation",
+      "repository": "forge",
+      "path": "docs/ARCHITECTURE_ELICITATION.md",
+      "sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "vision"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "requirements",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_REQUIREMENTS_SYNTHESIS.md",
+      "sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "vision",
+        "elicitation"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "architecture",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ARCHITECTURE.md",
+      "sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "requirements"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "architecture_review",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ADVERSARIAL_ARCHITECTURE_REVIEW.md",
+      "sha256": "c29c77350068884d889ccf6afbff86abef12f9488d8bc86503c41b6e1b85c7a6",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "readiness",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_ARCHITECTURE_READINESS_REVIEW.md",
+      "sha256": "7f370437084c9fb4af1ead62c99ec7fce6dfabc04ac5871d83241be3f3c81b24",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture",
+        "architecture_review",
+        "requirements"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "gap_disposition",
+      "repository": "forge",
+      "path": "docs/ARCHITECTURE_GAP_ANALYSIS.md",
+      "sha256": "bcf8f18807df2758dd876f81b476b6f396a1898e587dd87e8615438dddc04ca9",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "readiness"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "baseline_manifest",
+      "repository": "forge",
+      "path": "docs/EXPERIMENT_1_BASELINE_MANIFEST.json",
+      "sha256": "a35d085cbad46fcbb38d176d504a92a3a5f3d232f97759ce8c9f756a02c59967",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "readiness"
+      ],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "repository_instructions",
+      "repository": "forge",
+      "path": "AGENTS.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [],
+      "revision": "411cb5a9fabc71e482a414ed58387de0ff557e93"
+    },
+    {
+      "id": "preparation_decisions",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/DECISIONS.md",
+      "sha256": "026c689de2012f914ea2d572a31f17a703cef37d3ae096256606a183a58a6e3e",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture",
+        "readiness"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "adapter_schema",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/adapter_schema_evidence.json",
+      "sha256": "4b02ee777ce711cbf26316ad44066c01458cd15a7004ec55eff33e6159498c7d",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "adapter_review",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/ADAPTER_CAPABILITY_REVIEW.md",
+      "sha256": "6077d3102a06f32b331ae848ba96283f6f25d27b61e0be481638a886c730713e",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture",
+        "adapter_schema"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "capture_verification",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/baseline_verification.json",
+      "sha256": "0c17576851451ec99c7197730c7dfc79434e31f645c3b653725ec737f3fc9412",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "baseline_manifest"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "publication_receipt",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/service_repository_receipt.json",
+      "sha256": "9c55181c720d7aa95415bbf7892b2fc6ecc032b68244d9345490f6043369cc25",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture",
+        "capture_verification"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "preparation_state",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/STATE.json",
+      "sha256": "b87092febec63b4a90b1816f1562dd809ec22dc4985c5de915aa465171a85c17",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "preparation_decisions"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "context_protocol",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/CONTEXT_PROTOCOL.md",
+      "sha256": "435577085269686749de022f1ddf2d28f6380c8ff6c5478e1dfd8e7d856ddb37",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture",
+        "preparation_decisions"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "work_package",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/E1-WP-001.md",
+      "sha256": "1d0c276f2e0e818b89c128bfd6185cfa21968374d9868db833500e1e283c774c",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "requirements",
+        "architecture",
+        "preparation_decisions",
+        "context_protocol"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "dispatch_review",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/PRE_DISPATCH_REVIEW.md",
+      "sha256": "ee719c5498fc8b8f50576f5c1b4947615810d9bd175f9f517a1681bded43293a",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "work_package",
+        "adapter_review",
+        "publication_receipt",
+        "capture_verification"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "intervention_supplement",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/INTERVENTIONS.md",
+      "sha256": "3987af944d121f095289a8d89ba161217125445b55500f6915c4b4e65419c02f",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "elicitation"
+      ],
+      "revision_binding": "package_capture_commit"
+    },
+    {
+      "id": "service_vision",
+      "repository": "service",
+      "path": "docs/VISION.md",
+      "sha256": "b797841ad7303255c31bcf682e1616c0dd9a2e872c2f055bb5c0eba17abb7880",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "elicitation"
+      ],
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "derived_from": [
+        {
+          "source_id": "elicitation",
+          "sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da"
+        }
+      ]
+    },
+    {
+      "id": "service_requirements",
+      "repository": "service",
+      "path": "docs/REQUIREMENTS.md",
+      "sha256": "0a699df8fff2bc4e7d68ae769e55581a98df009fedeaa3faa6c99d0662e3edf9",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "requirements"
+      ],
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "derived_from": [
+        {
+          "source_id": "requirements",
+          "sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2"
+        }
+      ]
+    },
+    {
+      "id": "service_architecture",
+      "repository": "service",
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "38b2f582d60c602cb93db2e503f678de031bdf2e72f46344b46f418841f2ce34",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "architecture"
+      ],
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "derived_from": [
+        {
+          "source_id": "architecture",
+          "sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8"
+        }
+      ]
+    },
+    {
+      "id": "service_publication",
+      "repository": "service",
+      "path": "docs/PUBLICATION.json",
+      "sha256": "6018e3dc020f390fe2450766183ae6b3db30dab3cfd273e0c808d0ab6fe40be4",
+      "knowledge_status": "DECIDED",
+      "usage": "governing_or_reviewed_evidence",
+      "dependencies": [
+        "publication_receipt",
+        "architecture",
+        "requirements",
+        "elicitation"
+      ],
+      "revision": "c9458a8698c90bd43137025fa7e1dc3c34c4e37a",
+      "derived_from": [
+        {
+          "source_id": "architecture",
+          "sha256": "951fb5736a7a16093ed5d995293496f8a2e18b1cca45f52e9f3c5be38f699ca8"
+        },
+        {
+          "source_id": "requirements",
+          "sha256": "6fe78c3a27507dfe0d36012d5a878ed107780e6bc1fcef53b70c62f60084a8b2"
+        },
+        {
+          "source_id": "elicitation",
+          "sha256": "67b097ead11aef581e91c8a67d0d843b8939048406dc92c5fcaeddcdbf0ce5da"
+        }
+      ]
+    },
+    {
+      "id": "qualification_plan",
+      "repository": "forge",
+      "path": "docs/experiments/E1/pre_dispatch/ADAPTER_QUALIFICATION_PLAN.md",
+      "sha256": "658184c03476ae7ea1addf9257273c4b93b85f7a3e83de4fa0fba06f9db57539",
+      "revision_binding": "package_capture_commit",
+      "knowledge_status": "UNRESOLVED",
+      "usage": "pending_authorization_not_execution_instruction",
+      "dependencies": [
+        "adapter_review",
+        "preparation_decisions"
+      ]
+    }
+  ],
+  "mandatory_roots": [
+    "vision",
+    "elicitation",
+    "architecture",
+    "requirements",
+    "readiness",
+    "repository_instructions",
+    "work_package",
+    "dispatch_review",
+    "preparation_state",
+    "service_architecture",
+    "service_requirements",
+    "service_publication",
+    "intervention_supplement",
+    "qualification_plan"
+  ],
+  "scope": {
+    "writable_paths": [
+      "src/kge_forge/__init__.py",
+      "src/kge_forge/context/",
+      "tests/context/",
+      "docs/implementation/E1-WP-001.md"
+    ],
+    "read_roots": [
+      "/home/gvasend/app/kge-forge",
+      "/home/gvasend/app/kge-forge-demo"
+    ],
+    "protected_paths": [
+      "docs/experiments/E1/pre_dispatch/",
+      "docs/VISION.md",
+      "docs/EXPERIMENT_1_ARCHITECTURE.md",
+      ".git/",
+      ".codex/",
+      ".agents/",
+      "AGENTS.md"
+    ],
+    "scratch_binding": "qualified_invocation_scratch_root",
+    "task_tool_network": "DENIED",
+    "unrelated_connectors": "DENIED",
+    "model_communication": "existing approved AI service only; qualification required",
+    "additional_agents": "DENIED"
+  },
+  "prerequisites": [
+    {
+      "id": "architecture_ready",
+      "status": "PASS",
+      "evidence": [
+        "readiness"
+      ]
+    },
+    {
+      "id": "baseline_version_control",
+      "status": "PASS",
+      "evidence": [
+        "capture_verification"
+      ]
+    },
+    {
+      "id": "service_publication",
+      "status": "PASS",
+      "evidence": [
+        "publication_receipt"
+      ]
+    },
+    {
+      "id": "work_context_capture",
+      "status": "UNKNOWN",
+      "evidence": [],
+      "required_binding": "package_capture_commit"
+    },
+    {
+      "id": "qualified_scoped_adapter",
+      "status": "BLOCKED",
+      "evidence": [
+        "adapter_review"
+      ]
+    },
+    {
+      "id": "no_active_or_unaccounted_invocation",
+      "status": "UNKNOWN",
+      "evidence": []
+    },
+    {
+      "id": "implementation_dispatch_authority",
+      "status": "UNKNOWN",
+      "evidence": [],
+      "reason": "prepared package has not been issued"
+    }
+  ],
+  "unresolved_issues": [
+    {
+      "id": "E1-B01",
+      "material_to_dispatch": true,
+      "reason": "Bootstrap implementation facility not qualified; separate no-implementation diagnostic or existing facility designation required."
+    }
+  ],
+  "context_sufficiency": {
+    "preparation": "SUFFICIENT_FOR_BOUNDED_OFFLINE_VALIDATOR",
+    "invocation_fit": "NOT_MEASURED",
+    "reason": "Exact mandatory sources and dependency closure are available locally. Runtime adapter capability and dispatch state are separate outstanding evidence."
+  }
+}

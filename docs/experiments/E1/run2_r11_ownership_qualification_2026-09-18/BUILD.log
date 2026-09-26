@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "docs/experiments/E1/run2_r11_ownership_qualification_2026-09-18/build.py", line 79, in <module>
+    context=CommittedContext(raw['context_binding']['path'],raw['context_binding']['capture_commit'],spec)
+  File "/tmp/forge-attempt-chain-5__21_3u/adapter/context_binding.py", line 24, in __init__
+    self.governance = GovernanceContinuation(governance)
+  File "/tmp/forge-attempt-chain-5__21_3u/adapter/governance_continuation.py", line 39, in __init__
+    self.verify()
+  File "/tmp/forge-attempt-chain-5__21_3u/adapter/governance_continuation.py", line 45, in verify
+    return verify(self)
+  File "/tmp/forge-attempt-chain-5__21_3u/adapter/attempt_chain.py", line 120, in verify
+    ancestry(proof,p)
+  File "/tmp/forge-attempt-chain-5__21_3u/adapter/attempt_chain.py", line 77, in ancestry
+    require(classify(rows,t['lifecycle'],t['actions'],None,None,identity)=='ACTIVE_CANCELLED_PRE_MODEL_NO_EFFECTS','predecessor outside selected safe class')
+  File "/tmp/forge-attempt-chain-5__21_3u/adapter/terminal_attempt.py", line 44, in classify
+    raise ValueError('authoritative terminal fact must close predecessor')
+ValueError: authoritative terminal fact must close predecessor

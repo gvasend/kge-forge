@@ -1,0 +1,63 @@
+{
+  "schema":"E1-WORKAUTH-TEMPLATE-MODEL-CORRECTION-1",
+  "verdict":"WORKAUTH_TEMPLATE_MODEL_CORRECTION_READY_FOR_ARCHITECT_DECISION",
+  "runtime":"sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+  "authority_store":"AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+  "consumer":"workauth_lifecycle.consume_and_issue",
+  "historical_source":"WORK-AUTHORIZATION-TEMPLATE-1 was introduced by adapter/invocation_constructor.py and consumed by workauth_lifecycle.py; no independent production template artifact or field-values authority was ever recorded. R4 qualification evidence explicitly reports production template absent.",
+  "circularity":"FAIL_CURRENT_MODEL",
+  "dependency_graph":{
+    "current":"Concrete WorkAuthorization -> authenticated_inputs -> digest(authenticated_inputs) -> template.binding_digest; template.fields_values -> lifecycle WorkAuthorization; concrete WorkAuthorization is then required to match the same invocation. This duplicates invocation authority and permits circular authority if template values are derived from the concrete object.",
+    "forbidden_edges":["WorkAuthorization -> template authority -> WorkAuthorization","implementation default -> authority-bearing template value"],
+    "corrected":"External dispatch/release/profile/policy authority + exact invocation binding -> concrete WorkAuthorization; external lifecycle policy authority -> template constraints; external Architect issuance authority + exact template + exact WorkAuthorization -> INACTIVE. No object authenticates itself."
+  },
+  "field_authority_matrix":[
+    {"field":"authorization_id","category":"DERIVED_IDENTITY","source":"WorkAuthorization identity derivation from authenticated invocation body","template_value":false,"concrete_value":true,"consumer":"set from concrete InvocationAttemptId"},
+    {"field":"revision","category":"LIFECYCLE_STATE","source":"issuance protocol","template_value":false,"concrete_value":true,"consumer":"initial revision assigned at issuance"},
+    {"field":"work_package_id","category":"INVOCATION_SPECIFIC_BINDING","source":"canonical dispatch/E1-WP-001","template_value":false,"concrete_value":true,"consumer":"must match authenticated dispatch"},
+    {"field":"session_id","category":"INVOCATION_SPECIFIC_BINDING","source":"invocation identity","template_value":false,"concrete_value":true,"consumer":"concrete lifecycle attribution"},
+    {"field":"turn_id","category":"INVOCATION_SPECIFIC_BINDING","source":"invocation identity","template_value":false,"concrete_value":true,"consumer":"concrete lifecycle attribution"},
+    {"field":"read_roots","category":"EXTERNAL_AUTHORITY_BINDING","source":"released profile/dispatch policy","template_value":false,"concrete_value":true,"consumer":"governed host path authority"},
+    {"field":"write_roots","category":"EXTERNAL_AUTHORITY_BINDING","source":"released profile/dispatch policy","template_value":false,"concrete_value":true,"consumer":"governed host path authority"},
+    {"field":"deny_roots","category":"POLICY_CONSTRAINT","source":"released profile policy","template_value":"constraint_only","concrete_value":true,"consumer":"must satisfy deny policy"},
+    {"field":"exec_bins","category":"EXTERNAL_AUTHORITY_BINDING","source":"released profile","template_value":"constraint_only","concrete_value":true,"consumer":"governed execution allowlist"},
+    {"field":"shell","category":"POLICY_CONSTRAINT","source":"released profile","template_value":"constraint_only","concrete_value":true,"consumer":"shell policy"},
+    {"field":"network","category":"POLICY_CONSTRAINT","source":"transmission policy","template_value":"constraint_only","concrete_value":true,"consumer":"network policy"},
+    {"field":"state","category":"LIFECYCLE_STATE","source":"issuance protocol","template_value":"initial constraint INACTIVE","concrete_value":true,"consumer":"must begin INACTIVE"},
+    {"field":"context_binding","category":"DERIVED_IDENTITY","source":"current release/context authority","template_value":false,"concrete_value":true,"consumer":"runtime context verification"},
+    {"field":"exec_argv_allowlist","category":"POLICY_CONSTRAINT","source":"released profile","template_value":"constraint_only","concrete_value":true,"consumer":"execution validation"},
+    {"field":"read_deny_roots","category":"POLICY_CONSTRAINT","source":"released profile","template_value":"constraint_only","concrete_value":true,"consumer":"read policy"},
+    {"field":"write_deny_roots","category":"POLICY_CONSTRAINT","source":"released profile","template_value":"constraint_only","concrete_value":true,"consumer":"write policy"},
+    {"field":"ownership_ledger","category":"EXTERNAL_AUTHORITY_BINDING","source":"authorized audit/ownership policy","template_value":"constraint_only","concrete_value":true,"consumer":"ownership/replay fence"},
+    {"field":"write_directory_roots","category":"POLICY_CONSTRAINT","source":"released profile","template_value":"constraint_only","concrete_value":true,"consumer":"directory write validation"},
+    {"field":"execution_profile","category":"EXTERNAL_AUTHORITY_BINDING","source":"released profile identity","template_value":false,"concrete_value":true,"consumer":"host execution context"},
+    {"field":"model_transport","category":"EXTERNAL_AUTHORITY_BINDING","source":"transmission authority","template_value":"constraint_only","concrete_value":true,"consumer":"model transport"},
+    {"field":"model_transmission","category":"EXTERNAL_AUTHORITY_BINDING","source":"transmission/retention authority","template_value":"constraint_only","concrete_value":true,"consumer":"model transmission"},
+    {"field":"context_projection","category":"DERIVED_IDENTITY","source":"current context projection","template_value":false,"concrete_value":true,"consumer":"context validation"},
+    {"field":"operational_binding","category":"EXTERNAL_AUTHORITY_BINDING","source":"canonical dispatch/invocation/runtime authority","template_value":false,"concrete_value":true,"consumer":"governance continuation validation"}
+  ],
+  "recommended_template_semantics":{
+    "schema":"WORK-AUTHORIZATION-TEMPLATE-2",
+    "scope":"BOUNDED_R4_LIFECYCLE_POLICY_ENVELOPE",
+    "fields":["schema","template_identity","lifecycle_schema","initial_state_constraint","initial_ownership_constraint","required_binding_classes","policy_constraint_identities","lifecycle_envelope","replay_policy","supported_runtime","supported_release","supported_dispatch_envelope"],
+    "excludes":"invocation-specific fields_values and concrete WorkAuthorization values",
+    "validation":"Validate concrete values against external source bindings and template constraints; do not compare against template-copied values."
+  },
+  "issuance_authority":{
+    "required_schema":"WORKAUTH-ISSUANCE-AUTHORITY-1",
+    "existing_architect_decision":"The existing exact r13 decision is substantive human authority for this invocation, but lacks a canonical machine issuance record consumed by the current consumer.",
+    "required_bindings":["exact template identity","exact WorkAuthorizationId","InvocationAttemptId","current dispatch","R4-final/runtime/release/context","Architect decision","single-use/replay fence"],
+    "status":"CANONICAL_RECORD_REQUIRED"
+  },
+  "qualification":{
+    "current_model":"BLOCKED_BY_MISSING_EXTERNAL_TEMPLATE_FIELDS_AND_CIRCULARITY",
+    "corrected_model":"ANALYSIS_PASS; requires implementation and isolated consumer qualification before adoption",
+    "missing_template_blocks":true,
+    "caller_defaults_block":true,
+    "concrete_self_template_block":true,
+    "activation_separate":true,
+    "runtime_change":"REQUIRED_FOR_CONSUMER_SEMANTIC_CORRECTION; R4 immutable; qualify ordinary successor before production use"
+  },
+  "artifacts":{"workauthorization":"WorkAuthorization-sha256:bc53d20ea0383febbd7ce1c10e2e00b2461a722942b853f43ea5001b42976c61","g4":"CURRENT"},
+  "production":{"template_published":false,"issuance_published":false,"workauthorization_consumed":false,"r13":"UNISSUED_UNOWNED","model_requests":0,"effects":0}
+}

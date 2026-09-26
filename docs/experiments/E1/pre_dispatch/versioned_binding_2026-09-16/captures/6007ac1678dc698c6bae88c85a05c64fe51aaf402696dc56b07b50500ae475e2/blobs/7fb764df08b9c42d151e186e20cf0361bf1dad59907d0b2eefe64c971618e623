@@ -1,0 +1,45 @@
+{
+  "approval": "separate controller-pinned immutable Architect record binds body_sha256, evidence and authority_source",
+  "artifact_fields": [
+    "path",
+    "old_sha256",
+    "new_sha256",
+    "old_blob",
+    "new_blob"
+  ],
+  "continuation_types": {
+    "GOVERNANCE_CONTINUATION": "NON_MATERIAL_TO_RELEASE_AUTHORITY",
+    "NON_MATERIAL_IMPLEMENTATION_CONTINUATION": "NON_MATERIAL_IMPLEMENTATION_CONTINUATION"
+  },
+  "encoding": "UTF-8 canonical JSON, sorted keys, compact separators; SHA-256",
+  "identity": "OPERATIONAL-CONTINUATION-1",
+  "identity_rules": {
+    "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:SHA256(canonical({predecessor: predecessor_OperationalContextId, continuation: envelope_body_hash}))",
+    "continuation_chain_digest": "SHA256(canonical({predecessor: predecessor_chain_digest, continuation: envelope_body_hash}))",
+    "continuation_id": "CONTINUATION-sha256:SHA256(canonical(body + approval reference))"
+  },
+  "legacy_rule": "legacy context remains an authenticated immutable anchor, verified using its historical rules and captured bytes; all new links use this single envelope",
+  "qualification": "PASS, exact classification, exact artifacts digest and immutable captured before/after bytes",
+  "required_body_fields": [
+    "artifacts",
+    "authority",
+    "authority_invariants",
+    "classification",
+    "evidence",
+    "predecessor_OperationalContextId",
+    "predecessor_chain_digest",
+    "reason",
+    "schema",
+    "sequence",
+    "type"
+  ],
+  "required_result_fields": [
+    "OperationalContextId",
+    "approval",
+    "continuation_chain_digest",
+    "continuation_id"
+  ],
+  "selection_rule": "controller-issued immutable schema-2 specification pins ordered envelope refs, ordered independent approval refs and exact head; an envelope label alone grants nothing",
+  "unknown_fields": "DENY",
+  "version": 1
+}

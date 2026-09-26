@@ -1,0 +1,375 @@
+{
+  "id": "BUDGET_APPLICABILITY_REENTRY_1",
+  "missing_rule_proof": "REEVAL-BUDGET persists REEVAL-BUDGET-CURRENT-APPLICABILITY, but no resolution_action receives/validates its evidence. Existing six fact-receipt routes cover different cut members and omit budget; MAP-BUDGET cannot substitute for proof acquisition.",
+  "generic_rule": "Every authority-reference mapping must have a bounded owning-source applicability/freshness proof route. A reference or canonical hash is not current applicability. If an accepted reevaluation records a missing-proof hold, a separately specified evidence action may consume that knowledge without requiring reevaluation PASS. No automatic invented sources or new actions.",
+  "proof_obligations": [
+    {
+      "id": "BUDGET-PROOF-AUTHENTICITY",
+      "state": "ESTABLISHED_FOR_RECORDED_SOURCE_ONLY",
+      "recorded_basis": "Recorded issued source provenance and canonical body were authenticated by accepted results; current owning-domain trust/publication remains unqualified.",
+      "required_evidence": "Issued record plus current trusted owning-domain resolution/validation evidence.",
+      "expected_producer": "StatusBudgetAuthority issuer / owning authority domain",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION"
+      ],
+      "source_exists": "Recorded source artifact exists and is accepted.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-IDENTITY",
+      "state": "ESTABLISHED_FOR_RECORDED_SOURCE_ONLY",
+      "recorded_basis": "Exact authority identity and body hash match accepted record. Any newly retrieved bytes must independently reproduce the same identity and source type.",
+      "required_evidence": "Canonical body excluding authority_id; exact identity prefix/type and complete required members.",
+      "expected_producer": "Recorded StatusBudgetAuthority; any current owning source",
+      "resolution_stages": [
+        "DETERMINISTIC_VALIDATION"
+      ],
+      "source_exists": "Recorded source artifact exists and is accepted.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+      "state": "UNRESOLVED",
+      "recorded_basis": "Local issuance bytes exist; current authoritative accessibility/publication and its required publication rule are not established.",
+      "required_evidence": "Current owning-store resolution/provenance or independently authoritative publication/availability record. If publication is not required, cite governing rule explicitly.",
+      "expected_producer": "Authority publisher/store owner; exact current locator not established",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "EXTERNAL_EVIDENCE"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-SCOPE",
+      "state": "UNRESOLVED",
+      "recorded_basis": "Source is FIRST_PROGRAMMER_EXECUTION; target inventory is FIRST_PROGRAMMER_REQUEST. Similar E1 prefixes do not prove applicability.",
+      "required_evidence": "Exact target invocation/dispatch/context plus governing applicability rule connecting the two phases, or an explicitly bounded later applicability decision.",
+      "expected_producer": "Governing scope/phase contract owner; accepted target inventory",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "ARCHITECT_APPLICABILITY_DECISION if no existing rule"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-LINEAGE",
+      "state": "UNRESOLVED",
+      "recorded_basis": "R4-final CURRENT UNIQUE is a recorded source claim, not proof of current applicable lineage at the target.",
+      "required_evidence": "Authenticated current lineage/adoption/selection evidence relating source and exact target; no stale successor substitution.",
+      "expected_producer": "Release/lineage owning authority",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "EXTERNAL_EVIDENCE"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-RUNTIME",
+      "state": "UNRESOLVED",
+      "recorded_basis": "Source and target inventories name R4 runtime; matching references alone do not qualify applicability.",
+      "required_evidence": "Independently authenticated applicable runtime selection/content linkage under the governing source contract; verify exact digest and target linkage, without constructing/replacing runtime.",
+      "expected_producer": "Runtime/release owning source and target invocation/context",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "EXTERNAL_EVIDENCE"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-CONTROLLER_STORE_G4",
+      "state": "UNRESOLVED",
+      "recorded_basis": "Recorded G4 identity is available; actual current generation membership/accessibility and source applicability are unproved.",
+      "required_evidence": "Authenticated store-generation and applicable authority-resolution evidence for exact source and target; no guessed catalog path.",
+      "expected_producer": "Controller-store generation/authority domain owner",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "EXTERNAL_EVIDENCE"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-PROGRAMMER_PROFILE",
+      "state": "UNRESOLVED",
+      "recorded_basis": "Source pins a ProgrammerProfile identity; target applicability must be checked independently wherever required by its contract.",
+      "required_evidence": "Authenticated owning profile and governing target/profile binding; exact identity domain must match. Applicability-not-required needs explicit governing evidence, not omission.",
+      "expected_producer": "ProgrammerProfile owner and target authority bindings",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "EXTERNAL_EVIDENCE"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+      "state": "UNRESOLVED",
+      "recorded_basis": "No accepted proof of current validity, non-supersession or remaining single-use status for exact target is present. A recorded FRESH flag or date is insufficient.",
+      "required_evidence": "Authoritative current snapshot/event/selection evidence with target identity and applicable revocation/supersession/single-use rules. Pin evidence identity and freshness evaluation rule; reject uncertainty.",
+      "expected_producer": "Owning authority/store/lifecycle or usage producer under existing governing policy; exact qualified producer not established",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "EXTERNAL_EVIDENCE"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    },
+    {
+      "id": "BUDGET-PROOF-EXECUTION_REQUEST_PHASE",
+      "state": "UNRESOLVED",
+      "recorded_basis": "Constructing a reference for a request and exercising execution authority are distinct operations; neither implication is inferred.",
+      "required_evidence": "Existing phase-specific rule stating whether this execution authority may supply the preconstruction request input, with exclusions and source-use gates; otherwise decision inputs after facts complete.",
+      "expected_producer": "Governing contract owner",
+      "resolution_stages": [
+        "FACT_ACQUISITION",
+        "DETERMINISTIC_VALIDATION",
+        "ARCHITECT_APPLICABILITY_DECISION if required"
+      ],
+      "source_exists": "Named static source/target records exist; qualified current producer/source availability UNKNOWN.",
+      "evidence_exists_but_unrepresented": "UNKNOWN for unresolved current proof; no acquisition performed.",
+      "acquisition_effect": "NON_EFFECTING if existing evidence can be read without publication/mutation; stop rather than perform an effect.",
+      "external_action": "Conditional: supply concrete existing source/evidence when absent from bounded corpus. Creation/publication/renewal is a different operation requiring separate authority, not fact acquisition."
+    }
+  ],
+  "acquisition_boundary": {
+    "allowed_files": [
+      {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+        "sha256": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+        "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+        "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+        "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+        "sha256": "5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+        "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+        "sha256": "475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+        "sha256": "66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+        "sha256": "3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+        "sha256": "e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+        "sha256": "b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+        "sha256": "52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+        "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+      },
+      {
+        "path": "adapter/authority_resolution.py",
+        "sha256": "62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+        "location": "ResolvedAuthorityValue.from_bytes default freshness and compose_activation_inputs; interface semantics only, no call executed"
+      }
+    ],
+    "allow_external_reads": false,
+    "expand_source_set": "Only separately provided exact source locators/identities explicitly accepted under the same bounded scope may extend this manifest in a future authorized attempt. No recursive repository/store discovery, guessed paths or live service calls.",
+    "first_attempt": "Read the named source/target/contract evidence and test whether it can establish each current proposition; source availability is a prerequisite to attempting acquisition, not proof that the acquisition will pass.",
+    "already_known_gaps": "Known missing proofs are not reset or resolved. This is a new targeted receiving/validation action, not a rerun of historical semantic inventory."
+  },
+  "outcomes": {
+    "PASS": "Every required proposition independently verified (or inapplicability of a check proved by governing rule) for exact subject/source. Emit hash-bound evidence matrix and proof receipt. Enable one new REEVAL-BUDGET attempt overlay; do not mark prior attempt PASS or execute mapping.",
+    "FAIL": "Evidence proves a named incompatibility/staleness/invalid identity; record exact failed proposition and evidence. No reentry PASS.",
+    "BLOCKED": "Required concrete facts/rule inputs absent: retain named external gate and stop. No missing input invented.",
+    "EXTERNAL_GATE_REQUIRED": "Existing evidence is outside permitted/retrievable corpus: record exact required producer/locator/evidence and stop, with no acquisition effect.",
+    "AUTHORITY_REQUIRED": "Technical facts complete but existing scope/phase rule does not authorize applicability. Record separate bounded decision-input requirement; no implied grant or ready decision."
+  },
+  "technical_vs_authority": "Technical compatibility does not grant normative applicability. Existing governing rule may establish it deterministically only with exact evidence. Otherwise complete facts -> bounded dossier -> independent readiness -> explicit Architect applicability decision -> accepted record -> REEVAL-BUDGET. No ready decision or grant is created now.",
+  "new_authority": "NEW_AUTHORITY is a separate conditional branch only if a qualified existing authority cannot govern and an external owner determines replacement/renewal is required. Never silently renew, widen, republish or change this authority; stop for separately scoped work. Not currently proven necessary.",
+  "external_gate": {
+    "id": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+    "state": "UNSATISFIED",
+    "required": "Missing rows of the exact proof matrix with authenticated producer, source bytes/identity, target applicability and current snapshot/rule evidence.",
+    "receiving_action": "FACT-BUDGET-APPLICABILITY",
+    "prevents_bounded_first_attempt": false,
+    "prevents_success_without_evidence": true
+  },
+  "reentry": {
+    "from": "FACT-BUDGET-APPLICABILITY",
+    "to": "REEVAL-BUDGET",
+    "condition": "Accepted full PASS proof, source identities still valid and exact target unchanged; remove only REEVAL-BUDGET-CURRENT-APPLICABILITY in current attempt overlay.",
+    "history": "Append new attempt evidence; original REEVAL-BUDGET BLOCKED result is immutable.",
+    "partial_or_negative": "No reentry enablement; retain exact hold.",
+    "root_slot_rule": "Acquisition PASS and reevaluation PASS do not themselves resolve root:budget or budget_policy slot; original final mapping criteria remain."
+  },
+  "generalization": {
+    "rule": "AUTHORITY_REFERENCE does not imply CURRENT_APPLICABILITY / FRESHNESS",
+    "supported_examples": [
+      "runtime_head (WP-03 current authority/publication)",
+      "supervisor (WP-04 stale release/context)",
+      "specific_approval_id (owning applicable approval missing)",
+      "audit (WP-06 namespace authority)"
+    ],
+    "scope": "Only record common planning requirement. No new actions, repairs, proofs or applicability decisions for other fields."
+  },
+  "provenance": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+      "sha256": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+      "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+      "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+      "sha256": "5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+      "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+      "sha256": "475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+      "sha256": "66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+      "sha256": "3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+      "sha256": "e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+      "sha256": "b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+      "sha256": "52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+      "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable"
+    },
+    {
+      "path": "adapter/authority_resolution.py",
+      "sha256": "62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+      "location": "ResolvedAuthorityValue.from_bytes default freshness and compose_activation_inputs; interface semantics only, no call executed"
+    }
+  ],
+  "report": {
+    "BUDGET_REPRESENTATION": "APPROVED_OPTION_A_AUTHORITY_REFERENCE",
+    "REEVAL_BUDGET": "BLOCKED",
+    "UNRESOLVED_PROOF_OBLIGATIONS": [
+      "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+      "BUDGET-PROOF-SCOPE",
+      "BUDGET-PROOF-LINEAGE",
+      "BUDGET-PROOF-RUNTIME",
+      "BUDGET-PROOF-CONTROLLER_STORE_G4",
+      "BUDGET-PROOF-PROGRAMMER_PROFILE",
+      "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+      "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+    ],
+    "REENTRY_ROUTE": [
+      "FACT-BUDGET-APPLICABILITY",
+      "accepted complete proof or explicit external/authority gate",
+      "REEVAL-BUDGET new attempt only after proof acceptance"
+    ],
+    "NEW_PLANNER_RULE_REQUIRED": "YES",
+    "ACTIONABLE": [
+      "FACT-BUDGET-APPLICABILITY"
+    ],
+    "NEXT_ACTION": "FACT-BUDGET-APPLICABILITY",
+    "DECIDING_CRITERION": "SINGLETON_AT_ENTRY (0)",
+    "ROOT_CONDITIONS_RESOLVED": 0,
+    "ROOT_CONDITIONS_REMAINING": 27,
+    "SLOTS_RESOLVED": 0,
+    "SLOTS_REMAINING": 41,
+    "TEMPLATE1_CONSTRUCTION_READY": "NO",
+    "CANDIDATE3_RESUMPTION_READY": "NO",
+    "PRODUCTION_EFFECT": "NO"
+  },
+  "validation": {
+    "identical_replays": 100,
+    "reversed_order": "PASS",
+    "no_action_executed": true
+  }
+}

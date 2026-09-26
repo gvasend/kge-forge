@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "evidence": "test_original_release_keeps_S1",
+      "number": 1,
+      "requirement": "Original release without amendment still requires S1"
+    },
+    {
+      "evidence": "test_valid_release_and_dispatch",
+      "number": 2,
+      "requirement": "Valid material amendment enables authenticated succession semantics"
+    },
+    {
+      "evidence": "test_missing_material_amendment; test_invalid_material_amendment",
+      "number": 3,
+      "requirement": "Missing or invalid amendment fails closed"
+    },
+    {
+      "evidence": "test_wrong_release_authority",
+      "number": 4,
+      "requirement": "Wrong release-authority identity rejected"
+    },
+    {
+      "evidence": "test_original_dispatch_cannot_cross_alone",
+      "number": 5,
+      "requirement": "Original dispatch alone cannot inherit"
+    },
+    {
+      "evidence": "test_valid_release_and_dispatch; INDEPENDENT_RECONSTRUCTION.json",
+      "number": 6,
+      "requirement": "Valid explicit dispatch amendment permits inheritance"
+    },
+    {
+      "evidence": "test_missing_dispatch_amendment; test_wrong_dispatch_scope; test_wrong_original_dispatch_does_not_inherit",
+      "number": 7,
+      "requirement": "Missing or wrong dispatch amendment rejected"
+    },
+    {
+      "evidence": "test_no_amendment_self_authorizes_S2",
+      "number": 8,
+      "requirement": "Neither amendment identifies or authorizes S2"
+    },
+    {
+      "evidence": "test_valid_amendment_without_specific_succession_blocks",
+      "number": 9,
+      "requirement": "Separate specific succession authorization still required"
+    },
+    {
+      "evidence": "test_separate_attributable_host_authorization; test_host_receipt_requires_separate_host_grant; test_host_receipt_exact_spec_and_launcher",
+      "number": 10,
+      "requirement": "Separate attributable host authorization required"
+    },
+    {
+      "evidence": "test_substitution_replay_and_reordering; test_append_only_consumption_correction_ancestry",
+      "number": 11,
+      "requirement": "Replay, substitution and reordered ancestry fail closed"
+    },
+    {
+      "evidence": "test_independent_restart_reconstructs_decisions; INDEPENDENT_RECONSTRUCTION.json; POST_PUBLICATION_RECONSTRUCTION.json",
+      "number": 12,
+      "requirement": "Independent restart reconstructs amended authorities"
+    }
+  ],
+  "schema": "AMENDMENT-CONSUMPTION-COVERAGE-1",
+  "scope": "Synthetic decisions and actual private read-only reconstruction; no E1 activation or host launch"
+}

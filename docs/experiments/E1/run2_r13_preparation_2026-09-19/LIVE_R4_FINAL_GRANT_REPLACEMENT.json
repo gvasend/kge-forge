@@ -1,0 +1,79 @@
+{
+  "adoption_decision_applicability": "PASS_TRANSITION_BOUND_NOT_STALE_GRANT_BOUND",
+  "current_context": {
+    "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:1ab699d479fb2086981b30074384cb2e2144241c7f009fd5edec146d53606d39",
+    "release_authority": "E1-RELEASE-AUTHORITY-sha256:bb1808a5ffbd720cd8447db29dc7946dbc7e50f336d4ca6c809ea82b321b3e30"
+  },
+  "downstream_impact": {
+    "dispatch": "R3-bound dispatch becomes stale only after adoption; derive/publish R4 dispatch separately",
+    "invocation": "current r13 remains valid under R3 until adoption, then supersede and allocate replacement per canonical rules",
+    "lifecycle": "qualify only after R4 current authority exists",
+    "r4_context": "MUST_BE_DERIVED_AFTER_ACTUAL_ADOPTION",
+    "r4_release": "MUST_BE_DERIVED_AFTER_ACTUAL_ADOPTION",
+    "stale_prospective_artifacts_not_reused": true,
+    "workauthorization": "construct only after R4 current authority exists"
+  },
+  "grant": {
+    "adoption_decision": "PROPOSED-R4-FINAL-ADOPTION-sha256:a8250b157d4c9a82af83be848b224a026983aea34808bf4e40816f8f77ede685",
+    "authority": "Architect",
+    "classification": "MATERIAL_LIFECYCLE_AUTHORITY_IMPLEMENTATION_CHANGE",
+    "continuation": "CONTINUATION-sha256:07762485c64b0e9aaf1cc60c8c2405177a46e0c4e68885b3a50f268cf44b76bf",
+    "enrollment": "CONTINUATION-ENROLLMENT-sha256:9f5fd0babefbea21d15f17d9f09e29d9c042fb270325566e92af3208911b448f",
+    "id": "MATERIAL-RUNTIME-ADOPTION-GRANT-sha256:8b63fda1ea48f1dc55b465f07f6047492689dce478d74e84eb5c4a0ae209f58b",
+    "predecessor_runtime": "sha256:eebb05f30a4a64befeca7802990129ac79dff701dd192789fbdf59be2ec118ff",
+    "qualification": "R4_FINAL_WORKAUTH_LIFECYCLE",
+    "release_context": {
+      "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:1ab699d479fb2086981b30074384cb2e2144241c7f009fd5edec146d53606d39",
+      "release_authority": "E1-RELEASE-AUTHORITY-sha256:bb1808a5ffbd720cd8447db29dc7946dbc7e50f336d4ca6c809ea82b321b3e30"
+    },
+    "replay": "REJECT_SECOND_TRANSITION",
+    "runtime_head_authority": "RUNTIME-HEAD-AUTHORITY-sha256:75e6b7f2b5867c6d04bf0eeefc66f0c148d3f3e15e776c0d9e2b20b6352a1a5d",
+    "schema": "MATERIAL-RUNTIME-ADOPTION-GRANT-1",
+    "scope": "EXACT_SINGLE_MATERIAL_TRANSITION",
+    "successor_runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761"
+  },
+  "live_generation": "AUTHORITY-STORE-GENERATION-sha256:83f4138325775340093c15a07351cc1a147871d3ac089d44afb42e7759fb9cfa",
+  "live_policy_application": "MATERIAL-RUNTIME-HEAD-POLICY-APPLICATION-sha256:1d4cf761c1d48870bfe2d8d384fd3a51b7753bf3ee2597fa2024adafe04dd7af",
+  "live_policy_state": "RUNTIME-HEAD-POLICY-STATE-sha256:234b384190958deae4e21b03366f6cd77fafe0a8445092e8f19b8697436958eb",
+  "prior_adoption_decision": "PROPOSED-R4-FINAL-ADOPTION-sha256:a8250b157d4c9a82af83be848b224a026983aea34808bf4e40816f8f77ede685",
+  "production_state": {
+    "R3": "CURRENT",
+    "R4_final": "ENROLLED_ELIGIBLE_UNADOPTED",
+    "S3": "READY",
+    "effects": 0,
+    "live_generation": "G2 CURRENT",
+    "model_requests": 0,
+    "policy": "MATERIAL_RUNTIME_GRANT_CONSUMPTION_ENABLED",
+    "r13": "VALID_AUTHORIZED_UNISSUED_UNOWNED"
+  },
+  "qualification": {
+    "competing_grant_rejected": true,
+    "independent_reconstruction": true,
+    "negative_cases": {
+      "missing_decision": true,
+      "wrong_classification": true,
+      "wrong_cont": true,
+      "wrong_context": true,
+      "wrong_enrollment": true,
+      "wrong_head": true,
+      "wrong_r3": true,
+      "wrong_r4": true,
+      "wrong_release": true
+    },
+    "replacement_validates": true,
+    "replay_rejected": true,
+    "synthetic_transition": {
+      "current_runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "event": "MATERIAL_HEAD_COMMITTED",
+      "pending": null,
+      "used": [
+        "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761"
+      ]
+    }
+  },
+  "runtime_head_authority": "RUNTIME-HEAD-AUTHORITY-sha256:75e6b7f2b5867c6d04bf0eeefc66f0c148d3f3e15e776c0d9e2b20b6352a1a5d",
+  "schema": "E1-LIVE-R4-FINAL-MATERIAL-GRANT-REPLACEMENT-1",
+  "stale_disposition": "STALE_BEFORE_CONSUMPTION_BY_LIVE_AUTHORITY_CONTEXT_CHANGE",
+  "stale_grant": "MATERIAL-RUNTIME-ADOPTION-GRANT-sha256:ce35ad36973b7a71fa04f1eef1e3c21d0edacfc7e31c8877ddebe91e892ea85b",
+  "verdict": "LIVE_R4_FINAL_GRANT_READY_FOR_ARCHITECT_DECISION"
+}

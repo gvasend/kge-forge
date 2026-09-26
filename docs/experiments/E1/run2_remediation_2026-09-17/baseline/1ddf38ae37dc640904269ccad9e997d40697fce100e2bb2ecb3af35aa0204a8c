@@ -1,0 +1,209 @@
+"""Authenticated material supervisor authority, separate from continuations.
+
+The external controller-store pin is the trust root. Decisions and user-channel
+attribution must be imported by the controller; caller booleans, repository paths
+and configuration equivalence cannot select authority. No launch or issuance API.
+"""
+import json
+from pathlib import Path
+from types import SimpleNamespace
+from .context_projection import canonical, digest, sha, read_exact
+from .controller_authority_store import current, read_authority_ref, authority_bytes
+
+
+def require(condition, message):
+    if not condition: raise ValueError(message)
+
+
+def seal(kind, body):
+    return {**body, 'id':kind+'-sha256:'+digest(body)}
+
+
+def unseal(row, kind):
+    body={k:v for k,v in row.items() if k!='id'}
+    require(row==seal(kind,body),'decision identity mismatch')
+    return body
+
+
+def read(ref):
+    require(set(ref)=={'authority_id','sha256'},'private logical decision reference required')
+    return json.loads(read_authority_ref(ref))
+
+
+def material_identities(parent, selection):
+    parent=selection.get('application_predecessor',parent)
+    h=digest(selection)
+    return {**parent,
+        'OperationalContextId':'E1-OPERATIONAL-CONTEXT-sha256:'+digest({'predecessor':parent['OperationalContextId'],'material_release_application':h}),
+        'continuation_chain_digest':digest({'predecessor':parent['continuation_chain_digest'],'material_release_application':h})}
+
+
+def decisions(spec):
+    """Authenticate both independent amendments before exposing successor semantics."""
+    store=current();require(store is not None,'private decision store required')
+    selected=spec['material_release']
+    role=store.applicability['authorization_id']+':supervisor-authority-amendment'
+    require(json.loads(store.resolve(role))==selected,'unselected or stale material release')
+    core={'release_decision','dispatch_amendment','implementation_qualification'}
+    require(set(selected) in (core,core|{'prior_publication','application_predecessor'}),'unexpected material selection')
+    release=read(selected['release_decision']);r=unseal(release,'PD06-SUPERVISOR-AMENDMENT-DECISION')
+    require(r['schema']=='PD06-SUPERVISOR-AMENDMENT-DECISION-1' and
+            r['authority']=='Architect' and r['decision']=='AUTHORIZE_MATERIAL_SUPERVISOR_AMENDMENT', 'missing Architect material decision')
+    candidate=read(r['candidate']);body=candidate['body']
+    cid='PD06-SUPERVISOR-AUTHORITY-AMENDMENT-sha256:'+digest(body)
+    require(candidate['amendment_candidate_identity']==cid==r['amendment_identity'],'amendment substitution')
+    parent=spec['predecessor']['identities']
+    original={k:parent[k] for k in ('ReleaseBasisId','ReleaseDecisionId')}
+    result='E1-RELEASE-AUTHORITY-sha256:'+digest({**original,'SupervisorAuthorityAmendmentId':cid})
+    require(result==r['resulting_release_authority']==candidate['proposed_release_authority_identity'],'wrong resulting release authority')
+    require(r['original_release']==original and body['current_operational_ancestor']==parent,'material predecessor mismatch')
+    require(body['classification']=='MATERIAL_RELEASE_CHANGE','materiality substitution')
+    source=read(r['authority_source'])
+    require(source['authority']=='Architect' and source['channel']=='user' and
+        source['decision']=='AUTHORIZE_MATERIAL_RELEASE_AND_DISPATCH_AMENDMENT' and
+        source['accepted']=={'amendment_identity':cid,'candidate_file_sha256':r['candidate']['sha256'],
+           'resulting_release_authority':result,'succession_implementation':body['required_implementation_identity']} and
+        source['authorize_dispatch_amendment_for']==store.applicability['authorization_id'], 'Architect attribution mismatch')
+    require(r['successor_instance_id'] is None and r['succession_authorization'] is None and
+            r['host_authorization'] is None,'material amendment cannot authorize a successor or host launch')
+    dispatch=read(selected['dispatch_amendment']);d=unseal(dispatch,'ARCHITECT-DISPATCH-AMENDMENT')
+    require(d['schema']=='ARCHITECT-DISPATCH-AMENDMENT-1' and d['authority']=='Architect' and
+            d['decision']=='AMEND_SUPERVISOR_READINESS_ONLY','invalid dispatch amendment')
+    require(d['authority_source']==r['authority_source'] and d['release_amendment_decision']==release['id'] and
+        d['original_release']==original and d['resulting_release_authority']==result and
+        d['amendment_identity']==cid and d['historical_S1']==body['historical_S1_evidence_identity'] and
+        d['succession_implementation']==body['required_implementation_identity'] and
+        d['predecessor_operational_ancestry']==parent and
+        d['authorization_id']==store.applicability['authorization_id'] and
+        d['unchanged_authorities']==spec['authority_invariants'] and
+        d['changed_condition']=='supervisor_readiness_only' and
+        d['successor_instance_id'] is None and d['succession_authorization'] is None and
+        d['all_other_original_conditions_unchanged'] is True,'dispatch amendment scope/ancestry mismatch')
+    original_dispatch=read(d['original_dispatch'])
+    require(d['original_dispatch_identity']=='E1-ARCHITECT-DISPATCH-sha256:'+d['original_dispatch']['sha256'] and
+        original_dispatch['authority']=='Architect' and original_dispatch['decision']=='DISPATCH_AUTHORIZED' and
+        original_dispatch['invocation_identity']['authorization_id']==d['authorization_id'], 'original dispatch mismatch')
+    read_authority_ref(original_dispatch['authority_source'])
+    if 'prior_publication' in selected:
+        prior=read(selected['prior_publication'])
+        require(prior['event']=='material_supervisor_authority_amendment_published' and
+            prior['amendment_identity']==cid and prior['resulting_release_authority']==result and
+            prior['dispatch_amendment']==dispatch['id'] and
+            prior['material_application']['predecessor']==parent and
+            prior['material_application']['identities']==selected['application_predecessor'] and
+            prior['architect_authority']==source,'implementation correction publication ancestry mismatch')
+    return release,dispatch,candidate
+
+
+def verify_governance(owner):
+    from .continuation_envelope import verify, archive
+    s=owner.spec
+    require(digest(s)==owner._issued_digest and s['schema']==3,'issued material specification changed')
+    require(s['predecessor']['schema']==2,'material application requires exact adopted canonical ancestry')
+    for key in ('release_basis','release_decision','released_profile','clearance','authority_invariants'):
+        require(s[key]==s['predecessor'][key],'material amendment changed protected authority')
+    release,dispatch,candidate=decisions(s)
+    q=read(s['material_release']['implementation_qualification'])
+    require(q['schema']=='SUPERVISOR-AMENDMENT-CONSUMPTION-QUALIFICATION-1' and q['result']=='PASS' and
+        q['classification']=='MATERIAL_RELEASE_IMPLEMENTATION' and
+        q['authority_source']==release['authority_source'] and
+        q['accepted_succession_implementation']==candidate['body']['required_implementation_identity'] and
+        q['authority_invariants']==s['authority_invariants'],'unqualified material implementation')
+    inventory=read(q['accepted_inventory'])
+    require(inventory['identity']==q['accepted_succession_implementation'] and
+        'sha256:'+digest(inventory['inventory'])==inventory['identity'],'frozen succession implementation mismatch')
+    captured=archive(q['capture'])
+    allowed={str(Path(__file__).resolve().parent/name) for name in (
+        'activation_transaction.py','authorization_lifecycle.py','context_projection.py',
+        'continuation_envelope.py','governance_continuation.py','supervisor_amendment.py','supervisor_succession.py')}
+    frozen=inventory['inventory']['controller'];final=q['implementation']['current']
+    require(set(final)==set(frozen)|{str(Path(__file__).resolve())},'unaccounted production module')
+    require({p for p in final if final[p]!=frozen.get(p)}<=allowed,'amendment changes unrelated implementation')
+    for p,h in final.items():
+        require(captured.get(p,{}).get('sha256')==h,'implementation absent from qualification')
+        read_exact(p,h)
+    require({str(p) for p in Path(__file__).resolve().parent.glob('*.py')}==set(final),'unaccounted live production module')
+    require(q['implementation_identity']=='sha256:'+digest(final),'implementation identity mismatch')
+    for ref in q['probes']: read_authority_ref(ref)
+    parent=SimpleNamespace(spec=s['predecessor'],_issued_digest=digest(s['predecessor']))
+    verify(parent,material_implementation=q['implementation'])
+    require(parent.identities==candidate['body']['current_operational_ancestor'],'wrong adopted ancestor')
+    ids=material_identities(parent.identities,s['material_release'])
+    require(ids==s['identities'],'material chain head mismatch')
+    owner.changes=parent.changes;owner.supplement=json.loads(canonical(parent.supplement))
+    basis=json.loads(read_authority_ref(s['release_basis']));sources=basis.get('current_inputs',basis.get('inputs'))
+    for p,h in final.items():owner.supplement['inputs'][p]={'sha256':h,'previous_sha256':sources.get(p,{}).get('sha256')}
+    owner.identities=ids;owner.anchor_op=parent.anchor_op;owner.anchor_projection=parent.anchor_projection
+    owner.authority_invariants=parent.authority_invariants;owner.ancestor_ops=parent.ancestor_ops
+    prior_nodes=[{**s['material_release']['application_predecessor'],'material_application_publication':s['material_release']['prior_publication']}] if 'prior_publication' in s['material_release'] else []
+    owner.ancestry=parent.ancestry+prior_nodes+[{'OperationalContextId':ids['OperationalContextId'],
+        'continuation_chain_digest':ids['continuation_chain_digest'],'material_release_amendment':release['amendment_identity'],
+        'release_authority':release['resulting_release_authority'],'dispatch_amendment':dispatch['id']}]
+    owner.material_decisions=(release,dispatch,candidate)
+    return ids
+
+
+def verify_dispatch(governance, original):
+    release,amendment,candidate=decisions(governance.spec)
+    require(read(amendment['original_dispatch'])==original,'dispatch amendment does not cover this original decision')
+    return amendment
+
+
+def readiness(auth,store,historical,check_scopes,legacy_check):
+    op=json.loads(auth.operational_binding);g=auth.context_binding.governance
+    if op['governance']['schema']!=3:
+        # A policy cannot silently change an unamended release.
+        require(auth.authorization_id+':supervisor-succession' not in store.catalog['objects'],
+                'succession policy supplied without material amendment')
+        return legacy_check(historical,check_scopes=check_scopes)
+    policy=authenticated_policy(auth,store)
+    from .supervisor_succession import readiness as successor_readiness
+    return successor_readiness(auth,store,historical,check_scopes,legacy_check)
+
+
+def authenticated_policy(auth,store):
+    g=auth.context_binding.governance
+    require(g.spec['schema']==3,'material amendment required for succession')
+    g.verify();release,dispatch,candidate=decisions(g.spec)
+    policy=json.loads(store.resolve(auth.authorization_id+':supervisor-succession'))
+    require(policy['anchor_id']==candidate['body']['historical_S1_evidence_identity'] and
+        policy['release_authority']==release['resulting_release_authority'] and
+        policy['dispatch_amendment']==dispatch['id'],'succession not bound to authenticated amended authority')
+    q=read(g.spec['material_release']['implementation_qualification'])
+    require(policy['requirements']['implementation']==q['implementation']['current'],'successor implementation not release qualified')
+    # Receipt text alone cannot fabricate host consent. Each allowed succession
+    # approval must additionally pin the independently attributable host grant.
+    for identity in policy['authorized_succession_ids']:
+        approval=json.loads(store.resolve(identity))
+        grant=json.loads(store.resolve(approval['host_authorization']))
+        source=json.loads(store.resolve(grant['authority_source']))
+        require(grant['authority']=='HOST_OPERATOR' and grant['decision']=='AUTHORIZE_HOST_SUPERVISOR_LAUNCH' and
+            grant['operator']=='Jerry' and grant['authorization_id'] and
+            source['operator']=='Jerry' and source['channel']=='user' and
+            source['authorization_id']==grant['authorization_id'] and
+            grant['runtime_binding']==policy['runtime_binding'] and
+            grant['predecessor_id']==approval['predecessor_instance'] and
+            grant['launch_spec_sha256']==approval['launch_spec_sha256'] and
+            grant['launcher_sha256']==approval['launcher_sha256'],'separate attributable human/host authorization required')
+    from .supervisor_succession import events
+    for row in events(store.state_path(policy['ledger_id']).read_bytes()):
+        host_event(store, row)
+    return policy
+
+
+def host_event(store,row):
+    require(row['predecessor_status']=='UNAVAILABLE','live-predecessor fencing is not qualified by this amendment')
+    approval=json.loads(store.resolve(row['architect_authorization']))
+    grant=json.loads(store.resolve(approval['host_authorization']))
+    receipt=json.loads(store.resolve(row['host_launch']))
+    require(receipt['operator_authorization_id']==grant['authorization_id'] and
+        receipt['launch_spec_sha256']==grant['launch_spec_sha256']==approval['launch_spec_sha256'] and
+        receipt['launcher_sha256']==grant['launcher_sha256']==approval['launcher_sha256'] and
+        approval['predecessor_instance']==row['predecessor_instance'],'host launch consent binding mismatch')
+
+
+def authorize_append(store,policy,row):
+    from .authority_bootstrap import reconstruct_authorization
+    auth=reconstruct_authorization(store,store.applicability['authorization_id'])
+    require(policy==authenticated_policy(auth,store),'unselected succession policy')
+    host_event(store,row)

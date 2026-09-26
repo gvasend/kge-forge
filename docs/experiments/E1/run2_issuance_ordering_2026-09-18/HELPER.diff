@@ -1,0 +1,32 @@
+--- /home/gvasend/app/kge-forge/docs/experiments/E1/run2_dispatch_2026-09-18/run.py
++++ PROPOSED_run.py
+@@ -8,7 +8,7 @@
+ from adapter.authorization_lifecycle import dispatch_binding
+ from adapter.activation_transaction import ActivationTransaction
+ from adapter.governed_host import GovernedHost
+-O=Path(__file__).resolve().parent
++O=Path(__file__).resolve().parent.parent/'run2_dispatch_2026-09-18'
+ P=O.parent/'run2_release_s3_publication_2026-09-17'
+ F=O.parent/'run2_nonhost_closure_2026-09-17'
+ A='auth-e1-wp-001-r8-3251a47bce19fcec0dab883d9e5e6c56'
+@@ -98,13 +98,15 @@
+   else:
+    from adapter.run_control import RunControl
+    from adapter.validation_spans import recording
++   from issuance import issue_inactive, start_control
++   # Bootstrap and dispatch checks occur before authorization-bound telemetry.
++   with recording(None):auth=reconstruct_authorization(st,A)
+    raw=json.loads(st.resolve(A))
+-   if mode=='activate':assert not audit.exists() or audit.read_bytes()==b''
+-   control=RunControl(audit,{'authorization_id':A,'session_id':raw['session_id'],'invocation_id':raw['turn_id'],'work_package_id':raw['work_package_id']},json.loads(raw['model_transmission'])['run_control'])
+-   with recording(control),control.span('private_bootstrap'):
+-    auth=reconstruct_authorization(st,A)
+    if mode=='activate':
+-    with recording(control),control.span('authorization_issuance'):GovernedHost(auth,audit)
++    dispatch_ref={'authority_id':pub['dispatch_ref'],'sha256':pub['dispatch_ref'].split(':')[-1]}
++    issue_inactive(auth,audit,dispatch_ref)
++   control=start_control(auth,audit,json.loads(raw['model_transmission'])['run_control'])
++   if mode=='activate':
+     with recording(control),control.span('activation'):tx=ActivationTransaction.activate(auth,audit,pub['dispatch_ref'])
+     try:report('ACTIVATION.json',{'state':tx.auth.state,'reservation':tx.reservation,'seconds':time.monotonic()-begin})
+     finally:tx.close()

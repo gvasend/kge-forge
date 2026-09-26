@@ -1,0 +1,2486 @@
+{
+  "result": "PASS",
+  "fixture_commit": "8f916262923a1cf31528bda5b870b4b28942572d",
+  "context_sha256": "0f1ae5ce199f77b799ffd29db9f8cbba8629df92b9932ac60b7e602919676639",
+  "transmission_policy": {
+    "schema": 1,
+    "authority_source": "Synthetic qualification clearance; not E1 clearance",
+    "default": "DENY",
+    "initial_clearances": [
+      {
+        "sha256": "db409ead071a90006600caac28138a0416ef8acad0bfc1d66d66a05c2486d51c",
+        "category": "cleared-reasoning-context",
+        "authority_source": "Synthetic qualification clearance; not E1 clearance"
+      }
+    ],
+    "file_clearances": [
+      {
+        "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/public.txt",
+        "sha256": "be21836f5d78d3d3197ae411565a9fa33198cf220d7c514a7585defcb5fa204c",
+        "category": "ordinary",
+        "authority_source": "Synthetic qualification clearance; not E1 clearance"
+      },
+      {
+        "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/credentials.txt",
+        "sha256": "a5aa9c78a7e13ee640ad1ab0bfbad2f54413a639c8e9b8353c93ec4f66efb7fd",
+        "category": "ordinary",
+        "authority_source": "Synthetic qualification clearance; not E1 clearance"
+      },
+      {
+        "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/private/state.txt",
+        "sha256": "48b6270382689ac6ae2b974ef484a8ad75c9f061c8a9f0a146d915695425d5af",
+        "category": "ordinary",
+        "authority_source": "Synthetic qualification clearance; not E1 clearance"
+      },
+      {
+        "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/evidence/record.txt",
+        "sha256": "04441f3d8f7c621d7a8dd3ae18c25eb96d0ff17de6d8d225c186bed39b44c31c",
+        "category": "ordinary",
+        "authority_source": "Synthetic qualification clearance; not E1 clearance"
+      }
+    ],
+    "private_paths": [
+      "/tmp/g5-nonimplementation-uyvc3jrf/forge/private"
+    ],
+    "credential_paths": [
+      "/tmp/g5-nonimplementation-uyvc3jrf/forge/credentials.txt"
+    ],
+    "evidence_paths": [
+      "/tmp/g5-nonimplementation-uyvc3jrf/forge/evidence"
+    ],
+    "hard_denied_components": [
+      ".git",
+      ".codex",
+      ".agents"
+    ],
+    "permitted_result_category": "cleared file bytes or constant redaction indication only",
+    "excluded_categories": [
+      "credentials",
+      "secrets",
+      "controller-private state"
+    ],
+    "protected_material": "separate exact-content clearance required",
+    "evidence_material": "separate exact-content clearance required",
+    "context_sha256": "0f1ae5ce199f77b799ffd29db9f8cbba8629df92b9932ac60b7e602919676639"
+  },
+  "probes": [
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "public.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-1",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/public.txt",
+          "content": "PUBLIC_SYNTHETIC_CONTENT"
+        }
+      },
+      "external": {
+        "result": "SUCCEEDED",
+        "transmission": "CLEARED",
+        "content": "PUBLIC_SYNTHETIC_CONTENT"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "uncleared.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-2",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/uncleared.txt",
+          "content": "UNCLEARED_SYNTHETIC_CONTENT"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "package.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-3",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/package.txt",
+          "content": "DECIDED G5 qualification only\n"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "evidence/record.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-4",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/evidence/record.txt",
+          "content": "EVIDENCE_SYNTHETIC_CONTENT"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "private/state.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-5",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/private/state.txt",
+          "content": "PRIVATE_SYNTHETIC_CONTENT"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "credentials.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-6",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/credentials.txt",
+          "content": "SECRET_SYNTHETIC_CONTENT"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_list",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-7",
+        "result": "SUCCEEDED",
+        "type": "list",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+          "entries": [
+            {
+              "name": "CONTEXT_MANIFEST.json",
+              "directory": false
+            },
+            {
+              "name": "credentials.txt",
+              "directory": false
+            },
+            {
+              "name": "evidence",
+              "directory": true
+            },
+            {
+              "name": "package.txt",
+              "directory": false
+            },
+            {
+              "name": "private",
+              "directory": true
+            },
+            {
+              "name": "public.txt",
+              "directory": false
+            },
+            {
+              "name": "src",
+              "directory": true
+            },
+            {
+              "name": "tests",
+              "directory": true
+            },
+            {
+              "name": "uncleared.txt",
+              "directory": false
+            }
+          ]
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_search",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".",
+        "limit": 100,
+        "query": "SYNTHETIC"
+      },
+      "local": {
+        "action_request_id": "probe-8",
+        "result": "SUCCEEDED",
+        "type": "search",
+        "data": {
+          "matches": [
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/CONTEXT_MANIFEST.json",
+              "line": 1,
+              "text": "{\"schema_version\": \"E1-CONTEXT-1\", \"baseline_id\": \"G5-SYNTHETIC\", \"work_id\": \"G5-NON-IMPLEMENTATION\", \"status\": \"DIAGNOSTIC_AUTHORIZED\", \"repositories\": {\"forge\": {\"root\": \"/tmp/g5-nonimplementation-uyvc3jrf/forge\"}, \"service\": {\"root\": \"/tmp/g5-nonimplementation-uyvc3jrf/service\", \"working_revision\": \"62ee503e14b4df2e2ee577069c42b3918a89537d\"}}, \"sources\": [{\"id\": \"package\", \"repository\": \"forge\", \"path\": \"package.txt\", \"sha256\": \"0bec31f1125e6399a5471b2a2cb17ea70c6ab493440316bd1ce5ec0fc5f5f8f7"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/credentials.txt",
+              "line": 1,
+              "text": "SECRET_SYNTHETIC_CONTENT"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/public.txt",
+              "line": 1,
+              "text": "PUBLIC_SYNTHETIC_CONTENT"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/uncleared.txt",
+              "line": 1,
+              "text": "UNCLEARED_SYNTHETIC_CONTENT"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/evidence/record.txt",
+              "line": 1,
+              "text": "EVIDENCE_SYNTHETIC_CONTENT"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/private/state.txt",
+              "line": 1,
+              "text": "PRIVATE_SYNTHETIC_CONTENT"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/src/kge_forge/context/probe.py",
+              "line": 1,
+              "text": "SYNTHETIC_ONLY = True"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/tests/context/test_fixture.py",
+              "line": 3,
+              "text": "from kge_forge.context.probe import SYNTHETIC_ONLY"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/tests/context/test_fixture.py",
+              "line": 7,
+              "text": "        self.assertTrue(SYNTHETIC_ONLY)"
+            },
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/tests/context/test_fixture.py",
+              "line": 37,
+              "text": "        pathlib.Path('/scope/.scratch/probe.txt').write_text('SYNTHETIC_SNAPSHOT_ONLY')"
+            }
+          ],
+          "truncated": false
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_list",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "evidence",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-9",
+        "result": "SUCCEEDED",
+        "type": "list",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/evidence",
+          "entries": [
+            {
+              "name": "record.txt",
+              "directory": false
+            }
+          ]
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_search",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "evidence",
+        "limit": 100,
+        "query": "SYNTHETIC"
+      },
+      "local": {
+        "action_request_id": "probe-10",
+        "result": "SUCCEEDED",
+        "type": "search",
+        "data": {
+          "matches": [
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/evidence/record.txt",
+              "line": 1,
+              "text": "EVIDENCE_SYNTHETIC_CONTENT"
+            }
+          ],
+          "truncated": false
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_list",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "private",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-11",
+        "result": "SUCCEEDED",
+        "type": "list",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/private",
+          "entries": [
+            {
+              "name": "state.txt",
+              "directory": false
+            }
+          ]
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_search",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "private",
+        "limit": 100,
+        "query": "SYNTHETIC"
+      },
+      "local": {
+        "action_request_id": "probe-12",
+        "result": "SUCCEEDED",
+        "type": "search",
+        "data": {
+          "matches": [
+            {
+              "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/private/state.txt",
+              "line": 1,
+              "text": "PRIVATE_SYNTHETIC_CONTENT"
+            }
+          ],
+          "truncated": false
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".git",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-13",
+        "result": "DENIED",
+        "type": "read",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_list",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".git",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-14",
+        "result": "DENIED",
+        "type": "list",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_search",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".git",
+        "limit": 100,
+        "query": "SYNTHETIC"
+      },
+      "local": {
+        "action_request_id": "probe-15",
+        "result": "DENIED",
+        "type": "search",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".codex",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-16",
+        "result": "DENIED",
+        "type": "read",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_list",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".codex",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-17",
+        "result": "DENIED",
+        "type": "list",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_search",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".codex",
+        "limit": 100,
+        "query": "SYNTHETIC"
+      },
+      "local": {
+        "action_request_id": "probe-18",
+        "result": "DENIED",
+        "type": "search",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".agents",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-19",
+        "result": "DENIED",
+        "type": "read",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_list",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".agents",
+        "limit": 100
+      },
+      "local": {
+        "action_request_id": "probe-20",
+        "result": "DENIED",
+        "type": "list",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_search",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": ".agents",
+        "limit": 100,
+        "query": "SYNTHETIC"
+      },
+      "local": {
+        "action_request_id": "probe-21",
+        "result": "DENIED",
+        "type": "search",
+        "error": "denied path"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "public.txt",
+        "limit": 3
+      },
+      "local": {
+        "action_request_id": "probe-22",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/public.txt",
+          "content": "PUB"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "public-link.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-23",
+        "result": "DENIED",
+        "type": "read",
+        "error": "symlink path denied"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "copied-private.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-24",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/copied-private.txt",
+          "content": "PRIVATE_SYNTHETIC_CONTENT"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "public.txt",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-25",
+        "result": "SUCCEEDED",
+        "type": "read",
+        "data": {
+          "path": "/tmp/g5-nonimplementation-uyvc3jrf/forge/public.txt",
+          "content": "CHANGED_UNCLEARED_CONTENT"
+        }
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    },
+    {
+      "name": "governed_read",
+      "args": {
+        "repository": "/tmp/g5-nonimplementation-uyvc3jrf/forge",
+        "path": "../outside",
+        "limit": 65536
+      },
+      "local": {
+        "action_request_id": "probe-26",
+        "result": "DENIED",
+        "type": "read",
+        "error": "absolute or traversing path denied"
+      },
+      "external": {
+        "transmission": "REDACTED",
+        "notice": "Content unavailable under model transmission authority"
+      }
+    }
+  ],
+  "model_payloads": [
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Synthetic fixture only\nContext:\n{\"baseline_id\":\"G5-SYNTHETIC\",\"capture_commit\":\"8f916262923a1cf31528bda5b870b4b28942572d\",\"context_sha256\":\"0f1ae5ce199f77b799ffd29db9f8cbba8629df92b9932ac60b7e602919676639\",\"knowledge_status\":{\"package\":\"DECIDED\"},\"mandatory_sources\":[\"package\"],\"prerequisites\":[],\"repositories\":{\"forge\":\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"service\":\"/tmp/g5-nonimplementation-uyvc3jrf/service\"},\"schema_version\":\"E1-CONTEXT-1\",\"scope\":{\"protected_paths\":[\"package.txt\"],\"read_roots\":[\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"/tmp/g5-nonimplementation-uyvc3jrf/service\"],\"task_tool_network\":\"DENIED\",\"unrelated_connectors\":\"DENIED\",\"writable_paths\":[\"src/kge_forge/__init__.py\",\"src/kge_forge/context/\",\"tests/context/\",\"docs/implementation/E1-WP-001.md\"]},\"unresolved_issues\":[],\"work_id\":\"G5-NON-IMPLEMENTATION\"}"
+            }
+          ]
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Synthetic fixture only\nContext:\n{\"baseline_id\":\"G5-SYNTHETIC\",\"capture_commit\":\"8f916262923a1cf31528bda5b870b4b28942572d\",\"context_sha256\":\"0f1ae5ce199f77b799ffd29db9f8cbba8629df92b9932ac60b7e602919676639\",\"knowledge_status\":{\"package\":\"DECIDED\"},\"mandatory_sources\":[\"package\"],\"prerequisites\":[],\"repositories\":{\"forge\":\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"service\":\"/tmp/g5-nonimplementation-uyvc3jrf/service\"},\"schema_version\":\"E1-CONTEXT-1\",\"scope\":{\"protected_paths\":[\"package.txt\"],\"read_roots\":[\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"/tmp/g5-nonimplementation-uyvc3jrf/service\"],\"task_tool_network\":\"DENIED\",\"unrelated_connectors\":\"DENIED\",\"writable_paths\":[\"src/kge_forge/__init__.py\",\"src/kge_forge/context/\",\"tests/context/\",\"docs/implementation/E1-WP-001.md\"]},\"unresolved_issues\":[],\"work_id\":\"G5-NON-IMPLEMENTATION\"}"
+            }
+          ]
+        },
+        {
+          "type": "function_call",
+          "name": "governed_read",
+          "call_id": "loop-1",
+          "arguments": "{\"repository\": \"/tmp/g5-nonimplementation-uyvc3jrf/forge\", \"path\": \"public.txt\", \"limit\": 65536}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "loop-1",
+          "output": "{\"result\": \"SUCCEEDED\", \"transmission\": \"CLEARED\", \"content\": \"PUBLIC_SYNTHETIC_CONTENT\"}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Synthetic fixture only\nContext:\n{\"baseline_id\":\"G5-SYNTHETIC\",\"capture_commit\":\"8f916262923a1cf31528bda5b870b4b28942572d\",\"context_sha256\":\"0f1ae5ce199f77b799ffd29db9f8cbba8629df92b9932ac60b7e602919676639\",\"knowledge_status\":{\"package\":\"DECIDED\"},\"mandatory_sources\":[\"package\"],\"prerequisites\":[],\"repositories\":{\"forge\":\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"service\":\"/tmp/g5-nonimplementation-uyvc3jrf/service\"},\"schema_version\":\"E1-CONTEXT-1\",\"scope\":{\"protected_paths\":[\"package.txt\"],\"read_roots\":[\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"/tmp/g5-nonimplementation-uyvc3jrf/service\"],\"task_tool_network\":\"DENIED\",\"unrelated_connectors\":\"DENIED\",\"writable_paths\":[\"src/kge_forge/__init__.py\",\"src/kge_forge/context/\",\"tests/context/\",\"docs/implementation/E1-WP-001.md\"]},\"unresolved_issues\":[],\"work_id\":\"G5-NON-IMPLEMENTATION\"}"
+            }
+          ]
+        },
+        {
+          "type": "function_call",
+          "name": "governed_read",
+          "call_id": "loop-1",
+          "arguments": "{\"repository\": \"/tmp/g5-nonimplementation-uyvc3jrf/forge\", \"path\": \"public.txt\", \"limit\": 65536}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "loop-1",
+          "output": "{\"result\": \"SUCCEEDED\", \"transmission\": \"CLEARED\", \"content\": \"PUBLIC_SYNTHETIC_CONTENT\"}"
+        },
+        {
+          "type": "function_call",
+          "name": "governed_read",
+          "call_id": "loop-2",
+          "arguments": "{\"repository\": \"/tmp/g5-nonimplementation-uyvc3jrf/forge\", \"path\": \"package.txt\", \"limit\": 65536}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "loop-2",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    },
+    {
+      "model": "gpt-5",
+      "input": [
+        {
+          "role": "user",
+          "content": [
+            {
+              "type": "input_text",
+              "text": "Synthetic fixture only\nContext:\n{\"baseline_id\":\"G5-SYNTHETIC\",\"capture_commit\":\"8f916262923a1cf31528bda5b870b4b28942572d\",\"context_sha256\":\"0f1ae5ce199f77b799ffd29db9f8cbba8629df92b9932ac60b7e602919676639\",\"knowledge_status\":{\"package\":\"DECIDED\"},\"mandatory_sources\":[\"package\"],\"prerequisites\":[],\"repositories\":{\"forge\":\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"service\":\"/tmp/g5-nonimplementation-uyvc3jrf/service\"},\"schema_version\":\"E1-CONTEXT-1\",\"scope\":{\"protected_paths\":[\"package.txt\"],\"read_roots\":[\"/tmp/g5-nonimplementation-uyvc3jrf/forge\",\"/tmp/g5-nonimplementation-uyvc3jrf/service\"],\"task_tool_network\":\"DENIED\",\"unrelated_connectors\":\"DENIED\",\"writable_paths\":[\"src/kge_forge/__init__.py\",\"src/kge_forge/context/\",\"tests/context/\",\"docs/implementation/E1-WP-001.md\"]},\"unresolved_issues\":[],\"work_id\":\"G5-NON-IMPLEMENTATION\"}"
+            }
+          ]
+        },
+        {
+          "type": "function_call",
+          "name": "governed_read",
+          "call_id": "loop-1",
+          "arguments": "{\"repository\": \"/tmp/g5-nonimplementation-uyvc3jrf/forge\", \"path\": \"public.txt\", \"limit\": 65536}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "loop-1",
+          "output": "{\"result\": \"SUCCEEDED\", \"transmission\": \"CLEARED\", \"content\": \"PUBLIC_SYNTHETIC_CONTENT\"}"
+        },
+        {
+          "type": "function_call",
+          "name": "governed_read",
+          "call_id": "loop-2",
+          "arguments": "{\"repository\": \"/tmp/g5-nonimplementation-uyvc3jrf/forge\", \"path\": \"package.txt\", \"limit\": 65536}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "loop-2",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        },
+        {
+          "type": "function_call",
+          "name": "finish_task",
+          "call_id": "loop-finish",
+          "arguments": "{\"summary\":\"synthetic complete\"}"
+        },
+        {
+          "type": "function_call_output",
+          "call_id": "loop-finish",
+          "output": "{\"transmission\": \"REDACTED\", \"notice\": \"Content unavailable under model transmission authority\"}"
+        }
+      ],
+      "tools": [
+        {
+          "type": "function",
+          "name": "governed_read",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_list",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_search",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "limit": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "query",
+              "limit"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_write",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "repository",
+              "path",
+              "content"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_patch",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "repository": {
+                "type": "string"
+              },
+              "changes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "op": {
+                      "type": "string"
+                    },
+                    "path": {
+                      "type": "string"
+                    },
+                    "content": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "op",
+                    "path",
+                    "content"
+                  ]
+                }
+              }
+            },
+            "required": [
+              "repository",
+              "changes"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_exec",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "executable": {
+                "type": "string"
+              },
+              "argv": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "cwd": {
+                "type": "string"
+              },
+              "inputs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "executable",
+              "argv",
+              "cwd",
+              "inputs"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "governed_status",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {},
+            "required": []
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "authority_expansion_request",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "capability": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "resources": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "reason": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "capability",
+              "action",
+              "resources",
+              "reason"
+            ]
+          },
+          "strict": true
+        },
+        {
+          "type": "function",
+          "name": "finish_task",
+          "description": "Governed KGE Forge operation; host authorization applies.",
+          "parameters": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "summary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "summary"
+            ]
+          },
+          "strict": true
+        }
+      ],
+      "parallel_tool_calls": false,
+      "store": false,
+      "include": [
+        "reasoning.encrypted_content"
+      ]
+    }
+  ],
+  "provisioning": [
+    {
+      "variant": "pass",
+      "commit": "0c474c8754e9602a84408f44404865e51a75fd90",
+      "plan": {
+        "schema": 1,
+        "root": "/tmp/pd06-provision-bgejao8n/forge",
+        "context_sha256": "0c474c8754e9602a84408f44404865e51a75fd90",
+        "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16",
+        "state_required": "INACTIVE",
+        "directories": [
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/src",
+            "reason": "package ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/src/kge_forge",
+            "reason": "package initializer parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge/src",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/src/kge_forge/context",
+            "reason": "utility directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge/src/kge_forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/tests",
+            "reason": "acceptance-test ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/tests/context",
+            "reason": "test directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge/tests",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/docs",
+            "reason": "existing documentation ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge",
+            "expected": "existing",
+            "controller_provisioning_required": false
+          },
+          {
+            "path": "/tmp/pd06-provision-bgejao8n/forge/docs/implementation",
+            "reason": "implementation report parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context 0c474c8754e9602a84408f44404865e51a75fd90",
+            "authorized_parent": "/tmp/pd06-provision-bgejao8n/forge/docs",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          }
+        ]
+      },
+      "receipt": {
+        "result": "PASS",
+        "plan_sha256": "cdaa9a457ede73629d7f8139a450d79a806f7de4e731c43289a33ddf900c6c37",
+        "created": [
+          "/tmp/pd06-provision-bgejao8n/forge/src",
+          "/tmp/pd06-provision-bgejao8n/forge/src/kge_forge",
+          "/tmp/pd06-provision-bgejao8n/forge/src/kge_forge/context",
+          "/tmp/pd06-provision-bgejao8n/forge/tests",
+          "/tmp/pd06-provision-bgejao8n/forge/tests/context",
+          "/tmp/pd06-provision-bgejao8n/forge/docs/implementation"
+        ],
+        "state": "INACTIVE",
+        "profile_activated": false
+      },
+      "before": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        }
+      },
+      "after": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "docs/implementation": {
+          "type": "directory"
+        },
+        "src": {
+          "type": "directory"
+        },
+        "src/kge_forge": {
+          "type": "directory"
+        },
+        "src/kge_forge/context": {
+          "type": "directory"
+        },
+        "tests": {
+          "type": "directory"
+        },
+        "tests/context": {
+          "type": "directory"
+        }
+      }
+    },
+    {
+      "variant": "symlink",
+      "commit": "c2678bbc948c497593608884309747c4c001b30a",
+      "plan": {
+        "schema": 1,
+        "root": "/tmp/pd06-provision-zxa89fof/forge",
+        "context_sha256": "c2678bbc948c497593608884309747c4c001b30a",
+        "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16",
+        "state_required": "INACTIVE",
+        "directories": [
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/src",
+            "reason": "package ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/src/kge_forge",
+            "reason": "package initializer parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge/src",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/src/kge_forge/context",
+            "reason": "utility directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge/src/kge_forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/tests",
+            "reason": "acceptance-test ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/tests/context",
+            "reason": "test directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge/tests",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/docs",
+            "reason": "existing documentation ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge",
+            "expected": "existing",
+            "controller_provisioning_required": false
+          },
+          {
+            "path": "/tmp/pd06-provision-zxa89fof/forge/docs/implementation",
+            "reason": "implementation report parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context c2678bbc948c497593608884309747c4c001b30a",
+            "authorized_parent": "/tmp/pd06-provision-zxa89fof/forge/docs",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          }
+        ]
+      },
+      "receipt": {
+        "result": "DENIED",
+        "no_effects": true
+      },
+      "before": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "src": {
+          "type": "symlink"
+        }
+      },
+      "after": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "src": {
+          "type": "symlink"
+        }
+      }
+    },
+    {
+      "variant": "wrong-type",
+      "commit": "e8dfb0707452a157d2de70c2327206555f6efc19",
+      "plan": {
+        "schema": 1,
+        "root": "/tmp/pd06-provision-vc32n6gs/forge",
+        "context_sha256": "e8dfb0707452a157d2de70c2327206555f6efc19",
+        "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16",
+        "state_required": "INACTIVE",
+        "directories": [
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/src",
+            "reason": "package ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/src/kge_forge",
+            "reason": "package initializer parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge/src",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/src/kge_forge/context",
+            "reason": "utility directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge/src/kge_forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/tests",
+            "reason": "acceptance-test ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/tests/context",
+            "reason": "test directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge/tests",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/docs",
+            "reason": "existing documentation ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge",
+            "expected": "existing",
+            "controller_provisioning_required": false
+          },
+          {
+            "path": "/tmp/pd06-provision-vc32n6gs/forge/docs/implementation",
+            "reason": "implementation report parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-vc32n6gs/forge/docs",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          }
+        ]
+      },
+      "receipt": {
+        "result": "DENIED",
+        "no_effects": true
+      },
+      "before": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "src": {
+          "type": "file",
+          "sha256": "381ac727a866d050a537d21ac479c2146691f06ad50978f889af2c17c55ab9b2",
+          "bytes_hex": "77726f6e672074797065"
+        }
+      },
+      "after": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "src": {
+          "type": "file",
+          "sha256": "381ac727a866d050a537d21ac479c2146691f06ad50978f889af2c17c55ab9b2",
+          "bytes_hex": "77726f6e672074797065"
+        }
+      }
+    },
+    {
+      "variant": "unexpected-existing",
+      "commit": "e8dfb0707452a157d2de70c2327206555f6efc19",
+      "plan": {
+        "schema": 1,
+        "root": "/tmp/pd06-provision-_hxd1new/forge",
+        "context_sha256": "e8dfb0707452a157d2de70c2327206555f6efc19",
+        "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16",
+        "state_required": "INACTIVE",
+        "directories": [
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/src",
+            "reason": "package ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/src/kge_forge",
+            "reason": "package initializer parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge/src",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/src/kge_forge/context",
+            "reason": "utility directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge/src/kge_forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/tests",
+            "reason": "acceptance-test ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/tests/context",
+            "reason": "test directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge/tests",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/docs",
+            "reason": "existing documentation ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge",
+            "expected": "existing",
+            "controller_provisioning_required": false
+          },
+          {
+            "path": "/tmp/pd06-provision-_hxd1new/forge/docs/implementation",
+            "reason": "implementation report parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-_hxd1new/forge/docs",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          }
+        ]
+      },
+      "receipt": {
+        "result": "DENIED",
+        "no_effects": true
+      },
+      "before": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "src": {
+          "type": "directory"
+        }
+      },
+      "after": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        },
+        "src": {
+          "type": "directory"
+        }
+      }
+    },
+    {
+      "variant": "unlisted",
+      "commit": "e8dfb0707452a157d2de70c2327206555f6efc19",
+      "plan": {
+        "schema": 1,
+        "root": "/tmp/pd06-provision-cavkmabr/forge",
+        "context_sha256": "e8dfb0707452a157d2de70c2327206555f6efc19",
+        "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16",
+        "state_required": "INACTIVE",
+        "directories": [
+          {
+            "path": "/tmp/pd06-provision-cavkmabr/forge/src/kge_forge",
+            "reason": "package initializer parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-cavkmabr/forge/src",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-cavkmabr/forge/src/kge_forge/context",
+            "reason": "utility directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-cavkmabr/forge/src/kge_forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-cavkmabr/forge/tests",
+            "reason": "acceptance-test ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-cavkmabr/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-cavkmabr/forge/tests/context",
+            "reason": "test directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-cavkmabr/forge/tests",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-cavkmabr/forge/docs",
+            "reason": "existing documentation ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-cavkmabr/forge",
+            "expected": "existing",
+            "controller_provisioning_required": false
+          },
+          {
+            "path": "/tmp/pd06-provision-cavkmabr/forge/docs/implementation",
+            "reason": "implementation report parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-cavkmabr/forge/docs",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          }
+        ]
+      },
+      "receipt": {
+        "result": "DENIED",
+        "no_effects": true
+      },
+      "before": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        }
+      },
+      "after": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        }
+      }
+    },
+    {
+      "variant": "active",
+      "commit": "e8dfb0707452a157d2de70c2327206555f6efc19",
+      "plan": {
+        "schema": 1,
+        "root": "/tmp/pd06-provision-1dz11oxz/forge",
+        "context_sha256": "e8dfb0707452a157d2de70c2327206555f6efc19",
+        "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16",
+        "state_required": "INACTIVE",
+        "directories": [
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/src",
+            "reason": "package ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/src/kge_forge",
+            "reason": "package initializer parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge/src",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/src/kge_forge/context",
+            "reason": "utility directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge/src/kge_forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/tests",
+            "reason": "acceptance-test ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/tests/context",
+            "reason": "test directory write grant",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge/tests",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          },
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/docs",
+            "reason": "existing documentation ancestor",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge",
+            "expected": "existing",
+            "controller_provisioning_required": false
+          },
+          {
+            "path": "/tmp/pd06-provision-1dz11oxz/forge/docs/implementation",
+            "reason": "implementation report parent",
+            "authority_source": "Architect PD-06 explicit-directory blocker-closure instruction, 2026-09-16; E1-WP-001 writable paths; committed context e8dfb0707452a157d2de70c2327206555f6efc19",
+            "authorized_parent": "/tmp/pd06-provision-1dz11oxz/forge/docs",
+            "expected": "absent",
+            "controller_provisioning_required": true
+          }
+        ]
+      },
+      "receipt": {
+        "result": "DENIED",
+        "no_effects": true
+      },
+      "before": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        }
+      },
+      "after": {
+        ".git": {
+          "type": "git_directory_not_inspected"
+        },
+        "docs": {
+          "type": "directory"
+        },
+        "docs/baseline.txt": {
+          "type": "file",
+          "sha256": "f9a18b3f7d812e14cd05991e227f025e9b9858b25b474ad307cefaca0c728ebb",
+          "bytes_hex": "53796e74686574696320636f6d6d697474656420626173656c696e65"
+        }
+      }
+    }
+  ],
+  "real_model_calls": 0,
+  "E1_executed": false
+}

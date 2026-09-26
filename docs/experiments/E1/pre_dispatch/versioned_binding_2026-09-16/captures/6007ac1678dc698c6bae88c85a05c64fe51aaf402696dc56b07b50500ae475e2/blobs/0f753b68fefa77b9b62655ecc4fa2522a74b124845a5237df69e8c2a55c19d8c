@@ -1,0 +1,188 @@
+"""One content-bound envelope and verifier for operational continuation ancestry.
+
+The issued specification pins both ordered envelopes and independent Architect
+approvals. An authority label in an envelope is never an approval by itself.
+Legacy contexts are immutable anchors, not rewritten as new decisions.
+"""
+import json
+from pathlib import Path
+from .context_projection import canonical,digest,sha,read_exact,model_payload_digest
+
+SCHEMA='OPERATIONAL-CONTINUATION-1'
+TYPES={'GOVERNANCE_CONTINUATION':'NON_MATERIAL_TO_RELEASE_AUTHORITY',
+       'NON_MATERIAL_IMPLEMENTATION_CONTINUATION':'NON_MATERIAL_IMPLEMENTATION_CONTINUATION'}
+BODY_KEYS={'schema','type','sequence','predecessor_OperationalContextId','predecessor_chain_digest',
+ 'artifacts','authority','classification','evidence','authority_invariants','reason'}
+RESULT_KEYS={'approval','OperationalContextId','continuation_chain_digest','continuation_id'}
+
+
+def read(ref):return json.loads(read_exact(ref['path'],ref['sha256']))
+
+
+def seal(body,approval):
+    """Pure encoding; does not approve, install, append or effect a continuation."""
+    if set(body)!=BODY_KEYS:raise ValueError('malformed continuation body')
+    bound={**body,'approval':approval};h=digest(bound)
+    return {**bound,'continuation_id':'CONTINUATION-sha256:'+h,
+        'OperationalContextId':'E1-OPERATIONAL-CONTEXT-sha256:'+digest({
+            'predecessor':body['predecessor_OperationalContextId'],'continuation':h}),
+        'continuation_chain_digest':digest({'predecessor':body['predecessor_chain_digest'],'continuation':h})}
+
+
+def archive(ref):
+    capture=read(ref);inputs=capture.get('current_inputs',capture.get('inputs'));
+    if not isinstance(inputs,dict):raise ValueError('qualification capture inventory missing')
+    blobs=Path(ref['path']).parent/'blobs'
+    for row in inputs.values():read_exact(str(blobs/row['sha256']),row['sha256'])
+    return inputs
+
+
+def invariants(op,projection):
+    g=op['governance'];profile=read(g['released_profile']);launch=read(op['released_launch'])
+    task=profile['context_projection']['task_path']
+    item=next(i for i in projection['items'] if i['path']==task)
+    return {'ReleaseBasisId':g['identities']['ReleaseBasisId'],'ReleaseDecisionId':g['identities']['ReleaseDecisionId'],
+        'released_profile_sha256':digest(profile),'released_launch':op['released_launch'],
+        'task_path':task,'task_sha256':item['captured_source_sha256'],
+        'ModelPayloadDigest':model_payload_digest(projection['payload']),
+        'clearance':g['clearance'],'transmission':digest(launch['authorization']['model_transmission']),
+        'execution':digest(launch['authorization']['execution_profile']),
+        'destination':digest(launch['authorization']['model_transport'])}
+
+
+def verify(owner):
+    from .governance_continuation import GovernanceContinuation
+    s=owner.spec
+    if digest(s)!=owner._issued_digest or s['schema']!=2:raise ValueError('issued canonical specification changed')
+    anchor=s['anchor'];op=read(anchor['operational_binding']);full=read(anchor['full_context']);projection=read(anchor['projection'])
+    captured=archive(anchor['evidence_capture'])
+    for ref in (anchor['operational_binding'],anchor['full_context'],anchor['projection']):
+        if captured.get(ref['path'],{}).get('sha256')!=ref['sha256']:raise ValueError('anchor not in authoritative capture')
+    if op['governance']['schema']!=1:raise ValueError('anchor must be complete historical context; nesting forbidden')
+    old=GovernanceContinuation(op['governance'],historical=True)
+    if (digest(full)!=op['context_identities']['FullContextDigest'] or
+        digest(projection)!=op['context_identities']['ModelProjectionDigest'] or
+        projection['authoritative_context_id']!=op['context_identities']['AuthoritativeContextId'] or
+        full['operational_governance']!=old.identities or projection['operational_governance']!=old.identities):
+        raise ValueError('historical full/projection identity mismatch')
+    for key in ('release_basis','release_decision','released_profile','clearance'):
+        if s[key]!=op['governance'][key]:raise ValueError('immutable release selection changed')
+    protected=invariants(op,projection)
+    if s['authority_invariants']!=protected:raise ValueError('released authority changed')
+    for path,row in old.supplement['inputs'].items():
+        if captured.get(path,{}).get('sha256')!=row['sha256']:raise ValueError('historical implementation identity unproved')
+    basis=read(s['release_basis']);sources=basis.get('current_inputs',basis.get('inputs'))
+    current={p:r['sha256'] for p,r in sources.items()}
+    current.update({p:r['new_sha256'] for p,r in old.changes.items()})
+    current.update({p:r['sha256'] for p,r in old.supplement['inputs'].items()})
+    changes=dict(old.changes);supplement=json.loads(canonical(old.supplement))
+    predecessor=old.identities['OperationalContextId'];chain=old.identities['continuation_chain_digest']
+    nodes=[{'OperationalContextId':predecessor,'continuation_chain_digest':chain}]
+    ancestor_ops=[op]
+    if len(s['records'])!=len(s['approvals']) or len({r['sha256'] for r in s['records']})!=len(s['records']):
+        raise ValueError('missing approval or replay')
+    profile=read(s['released_profile']);clearance=read(s['clearance']);runtime_root=Path(profile['runtime']['cwd'])
+    for sequence,(ref,approval_ref) in enumerate(zip(s['records'],s['approvals']),1):
+        row=read(ref)
+        if set(row)!=BODY_KEYS|RESULT_KEYS or row['schema']!=SCHEMA or row['type'] not in TYPES:
+            raise ValueError('unknown or malformed continuation')
+        body={k:row[k] for k in BODY_KEYS}
+        if (row!=seal(body,approval_ref) or row['sequence']!=sequence or
+            row['predecessor_OperationalContextId']!=predecessor or row['predecessor_chain_digest']!=chain or
+            row['classification']!=TYPES[row['type']] or row['authority_invariants']!=protected):
+            raise ValueError('material, substituted or reordered continuation')
+        approval=read(approval_ref)
+        if (approval.get('authority')!='Architect' or approval.get('decision')!='AUTHORIZE_NON_MATERIAL_CONTINUATION'
+            or approval.get('body_sha256')!=digest(body) or approval.get('evidence')!=row['evidence']
+            or row['authority']!=approval.get('authority_source')):
+            raise ValueError('continuation not independently approved')
+        read_exact(row['authority']['path'],row['authority']['sha256'])
+        evidence=read(row['evidence'])
+        if (evidence.get('result')!='PASS' or evidence.get('classification')!=row['classification'] or
+            evidence.get('artifacts_sha256')!=digest(row['artifacts']) or
+            evidence.get('authority_invariants')!=protected):
+            raise ValueError('missing qualification or materiality substitution')
+        qualified_inputs=archive(evidence['capture'])
+        qualified_hashes={r['sha256'] for r in qualified_inputs.values()}
+        seen=set()
+        if not row['artifacts']:raise ValueError('empty continuation')
+        for artifact in row['artifacts']:
+            if set(artifact)!={'path','old_sha256','new_sha256','old_blob','new_blob'}:raise ValueError('malformed artifact')
+            path=artifact['path'];p=Path(path)
+            if path in seen or not p.is_absolute() or p.resolve()!=p or any(x in p.parts for x in ('.git','.codex','.agents')):
+                raise ValueError('ambiguous artifact')
+            seen.add(path)
+            if current.get(path)!=artifact['old_sha256']:raise ValueError('artifact predecessor mismatch')
+            if artifact['new_sha256'] not in qualified_hashes or (artifact['old_sha256'] is not None and artifact['old_sha256'] not in qualified_hashes):
+                raise ValueError('artifact absent from qualification capture')
+            before=b'' if artifact['old_sha256'] is None else read_exact(artifact['old_blob'],artifact['old_sha256'])
+            if artifact['old_sha256'] is None and artifact['old_blob'] is not None:raise ValueError('absent artifact has old blob')
+            after=read_exact(artifact['new_blob'],artifact['new_sha256'])
+            if row['type']=='GOVERNANCE_CONTINUATION':
+                if path not in sources or not after.startswith(before) or len(after)<=len(before):raise ValueError('governance continuation must append')
+                for cleared in clearance['inputs']:
+                    if cleared['canonical_path']==path and cleared['classification']=='TRANSMIT':
+                        if cleared['designation']=='COMPLETE_FILE':raise ValueError('complete cleared source changed')
+                        for span in cleared['spans']:
+                            a,b=span['start_byte'],span['end_byte_exclusive']
+                            if b>len(before) or sha(after[a:b])!=span['sha256']:raise ValueError('cleared content changed')
+                changes[path]={'new_sha256':artifact['new_sha256']}
+            else:
+                if runtime_root/'adapter' not in p.parents or p.suffix!='.py' or path==protected['task_path']:
+                    raise ValueError('implementation artifact outside controller implementation')
+                if any(c['canonical_path']==path and c['classification']=='TRANSMIT' for c in clearance['inputs']):
+                    raise ValueError('implementation cannot change transmitted source')
+                supplement['inputs'][path]={'previous_sha256':sources.get(path,{}).get('sha256'),'sha256':artifact['new_sha256']}
+            current[path]=artifact['new_sha256']
+        predecessor=row['OperationalContextId'];chain=row['continuation_chain_digest']
+        nodes.append({'OperationalContextId':predecessor,'continuation_chain_digest':chain})
+        prefix=json.loads(canonical(s));prefix['records']=s['records'][:sequence];prefix['approvals']=s['approvals'][:sequence]
+        prefix['identities']={**old.identities,'OperationalContextId':predecessor,'continuation_chain_digest':chain}
+        ancestor_ops.append(historical_operation(op,full,projection,prefix,supplement))
+    identities={**old.identities,'OperationalContextId':predecessor,'continuation_chain_digest':chain}
+    if identities!=s['identities']:raise ValueError('selected chain head missing, deleted or branched')
+    for p,r in changes.items():read_exact(p,r['new_sha256'])
+    for p,r in supplement['inputs'].items():read_exact(p,r['sha256'])
+    owner.changes=changes;owner.supplement=supplement;owner.identities=identities
+    owner.anchor_op=op;owner.anchor_projection=projection;owner.authority_invariants=protected;owner.ancestry=nodes;owner.ancestor_ops=ancestor_ops
+    return identities
+
+
+def historical_operation(anchor_op,anchor_full,projection,spec,supplement):
+    """Reproduce a prefix's context from authenticated bytes, never caller IDs."""
+    from .context_projection import projection_binding
+    full=json.loads(canonical(anchor_full));full['operational_governance']=spec['identities']
+    full['controller_context']['governance_continuation']=spec['identities']
+    full['operational_specification_sha256']=digest(spec);full['implementation_supplement']=supplement
+    inv=spec['authority_invariants'];fd=digest(full)
+    ids={'AuthoritativeContextId':'E1-AUTHORITATIVE-CONTEXT-sha256:'+fd,'FullContextDigest':fd,
+        'ModelProjectionDigest':digest(projection),'ModelPayloadDigest':inv['ModelPayloadDigest'],
+        'ModelProjectionBindingDigest':projection_binding(inv['ModelPayloadDigest'],inv['clearance'],spec['identities'],
+            inv['released_profile_sha256'],{'path':inv['task_path'],'sha256':inv['task_sha256']},fd)}
+    return {**anchor_op,'governance':spec,'context_identities':ids}
+
+
+def dispatch_ancestor(auth,decision):
+    """Authenticate immutable dispatch C0, then every approved link to current Cn."""
+    g=auth.context_binding.governance;g.verify()
+    if g.spec['schema']!=2:raise ValueError('canonical ancestry required')
+    matches=[candidate for candidate in g.ancestor_ops if
+        all(decision.get(k)==v for k,v in candidate['governance']['identities'].items()) and
+        all(decision.get(k)==candidate['context_identities'][k] for k in ('FullContextDigest','ModelProjectionDigest')) and
+        decision['all_authorized_bindings']['operational_binding_sha256']==digest(candidate)]
+    if len(matches)!=1:raise ValueError('dispatch ancestor not authenticated')
+    ancestor=matches[0]
+    op=json.loads(auth.operational_binding)
+    if set(op)-{'dispatch_authorization'}!=set(ancestor)-{'dispatch_authorization'}:
+        raise ValueError('unexplained operational fields')
+    for key in ('released_launch','invocation_identity'):
+        if op.get(key)!=ancestor.get(key):raise ValueError('invocation authority changed across ancestry')
+    from .context_projection import derive
+    current=derive(json.loads(auth.context_projection),auth.context_binding)
+    for key in ('FullContextDigest','ModelPayloadDigest','ModelProjectionBindingDigest','ModelProjectionDigest','AuthoritativeContextId'):
+        if op['context_identities'].get(key)!=current[key]:raise ValueError('descendant context identity mismatch')
+    if current['ModelPayloadDigest']!=g.authority_invariants['ModelPayloadDigest']:
+        raise ValueError('model payload changed across ancestry')
+    if decision.get('ModelPayloadDigest',g.authority_invariants['ModelPayloadDigest'])!=current['ModelPayloadDigest']:
+        raise ValueError('dispatch payload identity mismatch')
+    return ancestor

@@ -1,0 +1,71 @@
+{
+  "verdict": "BLOCKED_BEFORE_ACTIVATION",
+  "observed_utc": "2026-09-16T20:17:44.455966+00:00",
+  "authorization_id": "auth-e1-wp-001-r7-94f511dfcdcc43ac837191f8732ced39",
+  "existing_dispatch_record_sha256": "08f721ab75f001d5b2a4a91c259cf52174b78d4060e0d0ecacdcc2b7ae1abaf7",
+  "synthetic_qualification": "PASS: 30 focused tests; 16 lifecycle cases plus 14 regressions",
+  "blocker": {
+    "id": "E1-ACTIVATION-IMPLEMENTATION-BINDING",
+    "description": "The authorized lifecycle correction changes enforcement code pinned by the existing operational specification. The existing normal CommittedContext/governance validation rejects those bytes before activation. This is an attributable implementation change, not unexplained drift; no authority exists to substitute the pinned implementation/context identities under the unchanged dispatch record.",
+    "error": "context artifact content changed",
+    "changed_pinned_inputs": [
+      {
+        "path": "/home/gvasend/app/kge-forge/adapter/governed_host.py",
+        "authorized_sha256": "5fca5ed2053806df914365dc0f9bbdd81ef470e27c9b74486863be2d29b7e352",
+        "current_sha256": "5dba29c66ff78d434878a7bd2b1a75b22d0cb6acea6843264adcdfd3c7e03922",
+        "classification": "AUTHORIZED_LIFECYCLE_IMPLEMENTATION_CHANGE_NOT_BOUND_BY_EXISTING_DISPATCH"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/adapter/orchestrator.py",
+        "authorized_sha256": "6ca75fa81f76e358b4f7e54f4021ed4bbbbb521c3a97299cb33f8169839b1d55",
+        "current_sha256": "0c877f506111e1e0aca744a8b66b6c8254751cb56868dfe93bcc893fdedfba1d",
+        "classification": "AUTHORIZED_LIFECYCLE_IMPLEMENTATION_CHANGE_NOT_BOUND_BY_EXISTING_DISPATCH"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/adapter/recovery_ledger.py",
+        "authorized_sha256": "c9a9ad0e85ec9a0bc87a4cb16ab23e6f17cfe4e1dd38ea09389c95fa9553d609",
+        "current_sha256": "2c87f3f25725b40b4cf68c1327b9f9fd25497333b6872c5eb543a6c9c607c957",
+        "classification": "AUTHORIZED_LIFECYCLE_IMPLEMENTATION_CHANGE_NOT_BOUND_BY_EXISTING_DISPATCH"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/adapter/responses_orchestrator.py",
+        "authorized_sha256": "62fe79f4575037a1a10fb7cd2ccf545d26bbfa1531be8e417f72ee6aa37b08ad",
+        "current_sha256": "eb6edbf4fd61f0ef6ea3608050e5cf79cd1510c4fcca53b8615b35e206296a98",
+        "classification": "AUTHORIZED_LIFECYCLE_IMPLEMENTATION_CHANGE_NOT_BOUND_BY_EXISTING_DISPATCH"
+      }
+    ],
+    "new_mechanism": "adapter/authorization_lifecycle.py (not included in the existing implementation supplement)",
+    "materiality": "Changes authorization-state/recovery enforcement; not treated as a non-material governance-document append."
+  },
+  "preserved": {
+    "ReleaseBasisId": "E1-RELEASE-BASIS-sha256:bc176574817f6b7fe06fdcf87a71c57b2a8bfe74e55ed20f2aa55ad5d4fa5181",
+    "ReleaseDecisionId": "E1-RELEASE-DECISION-sha256:43ab22254604a29f3cf2164152803ee5f689f7540e2006c43d27ded87d83d8c0",
+    "OperationalContextId": "E1-OPERATIONAL-CONTEXT-sha256:0cd0d5c59caee38ab381e22a3d9824ee5b79bb942ee4c4dfede3f2e554043c0c",
+    "continuation_chain_digest": "ae3a8a1b5996ebeb2cd1f7f7098e0e40eb5bab809b1d759ab68470e48df155e8",
+    "FullContextDigest": "37d75fd7b3837dedb41513436878b620609b4958a3e9dce7276a248e53288656",
+    "ModelProjectionDigest": "ea2ced0e8e128d3afbe2bfb0591f6be2311a8512576159d20d40baf6f0bec610",
+    "released_profile_sha256": "b9e7f72d97525f39fbddfe92f276ab6aedd057ef6c5b7284dc163f1db9c9c328",
+    "operational_binding_sha256": "8cfa01bc69f36465d766809bd5731ce97f18b019023b6192f8d4817457e9d792"
+  },
+  "actual_activation_event": null,
+  "actual_reconstruction": "Historical issued authorization remains INACTIVE; current-context validation fails before normal host reconstruction. No ACTIVE event established.",
+  "ownership_reservation": "NOT ACQUIRED; ledger empty and byte-unchanged",
+  "released_profile_activation": "NOT PERFORMED",
+  "atomic_validation": "FAILED at qualified implementation/current-context binding under common-ledger and audit locks. No activation intent appended. Remaining live supervisor/scope/provisioning checks were not claimed as passed.",
+  "audit": "/tmp/kge-forge-e1-evidence/auth-e1-wp-001-r7-94f511dfcdcc43ac837191f8732ced39/session-e1-50b26bdb12b44ec7a92e0c517c7de7c8/turn-e1-58d4a30dbf79478f8afc7b46a84caa47/controller.jsonl",
+  "audit_sha256_before": "e4d8a91d0692bb48ad323005b45603cbbd2834a6babdb08b8f846b742ae1e883",
+  "audit_sha256_after": "e4d8a91d0692bb48ad323005b45603cbbd2834a6babdb08b8f846b742ae1e883",
+  "ownership_ledger_sha256_unchanged": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "states": {
+    "PD06": "RELEASED",
+    "E1_B01": "PASS",
+    "E1": "INACTIVE",
+    "E1_WP_001": "INELIGIBLE / UNDISPATCHED"
+  },
+  "new_dispatch_authorization_created": false,
+  "binding_regenerated": false,
+  "model_requests": 0,
+  "E1_implementation_effects": 0,
+  "new_E1_ownership_reservation": false,
+  "next_required_Architect_action": "Assess applicability of the qualified lifecycle implementation to the existing authorized operational binding; explicitly resolve changed implementation/context pins before any E1 activation. No new identity or dispatch authorization was manufactured."
+}

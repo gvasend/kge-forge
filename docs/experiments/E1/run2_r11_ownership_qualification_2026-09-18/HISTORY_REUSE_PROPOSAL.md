@@ -1,0 +1,11 @@
+# History verification and performance proposal
+
+The candidate material amendment explicitly binds a controller-private, content-addressed historical verification capture. This is a separate proof-representation change; it is not smuggled into the ownership/status implementation continuation. It remains proposed, not adopted.
+
+The capture is produced with the unchanged frozen runtime while predecessor audits are terminal and the shared ledger is unowned. Its hash, original publication/catalog pins, original authorization/dispatch objects, context identities and exact immutable audits are bound. Consumption walks authenticated ancestry, rehashes all underlying immutable witnesses, implementation/verifier/interpreter files and currently mutable governing inputs. It separately parses fresh ownership/scope state and checks genuine current supervisor readiness. Captured global ownership is never used as current authority. Changed/absent artifacts or reordered ancestry fail closed.
+
+This eliminates recursive subprocess evaluation on cold restart. It does not make ancestry constant-time. The measured prefix cost grows from roughly 0.485s through r9 to 0.679s through r10; repeated calls multiply that cost. Warm final validation remains about 35 seconds, above the 30-second soft target.
+
+A further optimization, NOT IMPLEMENTED, would materialize a deduplicated cumulative dependency graph: every predecessor retains its own identity, audit hash, dispatch link and safe-class proof, while common immutable witnesses are represented once. Within one non-effecting verification operation, every distinct object is rehashed once and every catalog/reference still authenticates. Mutable current lifecycle, ownership, active scope, supervisor readiness, selected context head and changed repository inputs must be checked freshly; no persistent PASS flag may replace them. Qualification must compare the full evaluator with the graph evaluator across missing/substituted/reordered dependencies, growth prefixes, concurrent mutable changes and cold restarts before any adoption.
+
+Budgets must stay unchanged. If future history growth causes a hard limit, the controller stops; no automatic successor or threshold extension is authorized.
