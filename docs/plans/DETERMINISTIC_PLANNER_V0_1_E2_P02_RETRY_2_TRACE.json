@@ -1,0 +1,93 @@
+{
+  "schema": "E2-P02-retry-2-trace-v1",
+  "work_package": "E2-P02",
+  "attempt": "RETRY_2",
+  "result": "PARTIAL",
+  "pinned_initial_snapshot": "33c0bb5c4ed55496cde6ec0ce3eb5ee74307872697d8202a06db65c2c731e9b5",
+  "initial_oracle": {
+    "actionable": ["E2-CHECK", "E2-COLLECT"],
+    "selected": "E2-CHECK",
+    "control": "RUNNABLE",
+    "finish_actionable": false
+  },
+  "transitions": [
+    {
+      "sequence": 1,
+      "pre_state_id": "33c0bb5c4ed55496cde6ec0ce3eb5ee74307872697d8202a06db65c2c731e9b5",
+      "actionable": ["E2-CHECK", "E2-COLLECT"],
+      "selected": "E2-CHECK",
+      "selection_witness": "native selector criterion 3 class",
+      "action_executed": "E2-CHECK",
+      "result": "PASS",
+      "result_identity": "SuppliedResult:E2-CHECK",
+      "knowledge_produced": ["E2-K-CHECK"],
+      "post_state_id": "d220d3685ba2af01267be8fc158babd214c663169c0d298b989116ed155e5b35",
+      "control_state": "RUNNABLE",
+      "oracle": "PASS"
+    },
+    {
+      "sequence": 2,
+      "pre_state_id": "d220d3685ba2af01267be8fc158babd214c663169c0d298b989116ed155e5b35",
+      "actionable": ["E2-COLLECT"],
+      "selected": "E2-COLLECT",
+      "selection_witness": "native selector singleton",
+      "action_executed": "E2-COLLECT",
+      "result": "PASS",
+      "result_identity": "SuppliedResult:E2-COLLECT",
+      "knowledge_produced": ["E2-K-COLLECT"],
+      "post_state_id": "43a238851a34b2e58f4a49ec870fa258fdcb8d3a88fda50a305df2b570281e79",
+      "control_state": "RUNNABLE",
+      "oracle": "PASS"
+    },
+    {
+      "sequence": 3,
+      "pre_state_id": "43a238851a34b2e58f4a49ec870fa258fdcb8d3a88fda50a305df2b570281e79",
+      "actionable": ["E2-PREPARE"],
+      "selected": "E2-PREPARE",
+      "selection_witness": "native selector singleton",
+      "action_executed": "E2-PREPARE",
+      "result": "REJECTED",
+      "result_identity": "SuppliedResult:E2-PREPARE",
+      "knowledge_produced": [],
+      "error": "input PASS requires complete independently proved dossier",
+      "failure_class": "RESULT_MISMATCH",
+      "post_state_id": null,
+      "control_state": "RUNNABLE",
+      "oracle": "BLOCKED_BY_MISSING_DOSSIER"
+    }
+  ],
+  "prepare_route": {
+    "route_id": "DecisionRoute:E2-DECIDE:E2-PREPARE",
+    "route_type": "INTERNAL_DECISION_INPUT_ACQUISITION",
+    "status": "PASS",
+    "source_knowledge": ["E2-K-CHECK", "E2-K-COLLECT"],
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "provenance": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json#/declarations/2"
+  },
+  "target_state": {
+    "name": "EXTERNAL_WAIT",
+    "reached": false,
+    "exit_predicate": false
+  },
+  "replay": "NOT_RUN_AFTER_FAILED_PREPARE_ADMISSION",
+  "determinism": "PASS_FOR_REACHED_STATES",
+  "counterexamples": [
+    {
+      "id": "P02-PREPARE-001",
+      "class": "RESULT_MISMATCH",
+      "error": "input PASS requires complete independently proved dossier",
+      "runtime_defect": false
+    }
+  ],
+  "new_runtime_defects": [],
+  "p03_ready": false,
+  "d01_status": "READY_FOR_LATER_PHASE",
+  "end_status": "READY_FOR_LATER_PHASE",
+  "review_status": "READY_FOR_LATER_PHASE",
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

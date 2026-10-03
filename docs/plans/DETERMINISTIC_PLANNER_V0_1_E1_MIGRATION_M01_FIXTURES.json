@@ -1,0 +1,718 @@
+{
+  "cases": [
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/PLAN",
+      "input": {
+        "execution_history": [],
+        "execution_state": {},
+        "resolution_actions": [],
+        "schema": "E1-TEMPLATE1-GRAPH-RESOLUTION-PLAN-1"
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/PLAN",
+      "input": {
+        "execution_history": [],
+        "execution_state": {},
+        "schema": "E1-TEMPLATE1-GRAPH-RESOLUTION-PLAN-1"
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/GRAPH",
+      "input": {
+        "assertions": [],
+        "entities": [],
+        "relation_semantics": {},
+        "schema": "E1-TEMPLATE1-TYPED-KNOWLEDGE-GRAPH-1",
+        "synchronization": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/GRAPH",
+      "input": {
+        "assertions": [],
+        "relation_semantics": {},
+        "schema": "E1-TEMPLATE1-TYPED-KNOWLEDGE-GRAPH-1",
+        "synchronization": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/MANIFEST",
+      "input": {
+        "current_graph": {},
+        "current_plan": {},
+        "execution_ledger": {},
+        "schema": "E1-RESUME-MANIFEST-1",
+        "subject_pins": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/MANIFEST",
+      "input": {
+        "current_plan": {},
+        "execution_ledger": {},
+        "schema": "E1-RESUME-MANIFEST-1",
+        "subject_pins": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/HANDOFF",
+      "input": {
+        "control_transfer_items": [],
+        "external_request_bundles": [],
+        "schema": "E1-EXTERNAL-HANDOFF-PACKAGE-1",
+        "source_snapshots": []
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/HANDOFF",
+      "input": {
+        "external_request_bundles": [],
+        "schema": "E1-EXTERNAL-HANDOFF-PACKAGE-1",
+        "source_snapshots": []
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/CHECKPOINT",
+      "input": {
+        "bindings": {},
+        "checkpoint_identity": "QUALIFICATION_ONLY",
+        "schema": "E1-SUSPENSION-CHECKPOINT-1",
+        "state": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/CHECKPOINT",
+      "input": {
+        "checkpoint_identity": "QUALIFICATION_ONLY",
+        "schema": "E1-SUSPENSION-CHECKPOINT-1",
+        "state": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/DECISION_AUTHORITY",
+      "input": {
+        "authority_id": "QUALIFICATION_ONLY",
+        "decision": "QUALIFICATION_ONLY",
+        "record_type": "QUALIFICATION_ONLY",
+        "schema": "E1-ARCHITECT-DECISION-AUTHORITY-1",
+        "scope": "QUALIFICATION_ONLY",
+        "source_artifacts": []
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/DECISION_AUTHORITY",
+      "input": {
+        "authority_id": "QUALIFICATION_ONLY",
+        "decision": "QUALIFICATION_ONLY",
+        "schema": "E1-ARCHITECT-DECISION-AUTHORITY-1",
+        "scope": "QUALIFICATION_ONLY",
+        "source_artifacts": []
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/PROFILE_CANDIDATE",
+      "input": {
+        "authorities": {},
+        "canonicalization": "QUALIFICATION_ONLY",
+        "identity": "QUALIFICATION_ONLY",
+        "schema": "CURRENT-R4-PROFILE-ROOT-CANDIDATE-1",
+        "scope": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/PROFILE_CANDIDATE",
+      "input": {
+        "authorities": {},
+        "canonicalization": "QUALIFICATION_ONLY",
+        "schema": "CURRENT-R4-PROFILE-ROOT-CANDIDATE-1",
+        "scope": {}
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "RECOGNIZED_NOT_ADMITTED",
+      "id": "SOURCE/INVOCATION_CANDIDATE",
+      "input": {
+        "allocation": "QUALIFICATION_ONLY",
+        "controller_store": "QUALIFICATION_ONLY",
+        "identity": "QUALIFICATION_ONLY",
+        "record_type": "INVOCATION-CANDIDATE-1",
+        "release_authority": "QUALIFICATION_ONLY",
+        "runtime": "QUALIFICATION_ONLY",
+        "schema_version": "E1-JOINT-CONSTRUCTION-1",
+        "scope": "QUALIFICATION_ONLY"
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "MISSING_REQUIRED_FIELD",
+      "id": "MISSING/INVOCATION_CANDIDATE",
+      "input": {
+        "allocation": "QUALIFICATION_ONLY",
+        "controller_store": "QUALIFICATION_ONLY",
+        "record_type": "INVOCATION-CANDIDATE-1",
+        "release_authority": "QUALIFICATION_ONLY",
+        "runtime": "QUALIFICATION_ONLY",
+        "schema_version": "E1-JOINT-CONSTRUCTION-1",
+        "scope": "QUALIFICATION_ONLY"
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "ACCEPT_METADATA",
+      "id": "DISPOSITION/MIGRATED_OPERATIONAL",
+      "input": {
+        "disposition": "MIGRATED_OPERATIONAL",
+        "gate": null,
+        "present": true,
+        "reason": "Independent qualification disposition case",
+        "required_operational": true
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "ACCEPT_METADATA",
+      "id": "DISPOSITION/MIGRATED_PROVENANCE_ONLY",
+      "input": {
+        "disposition": "MIGRATED_PROVENANCE_ONLY",
+        "gate": null,
+        "present": true,
+        "reason": "Independent qualification disposition case",
+        "required_operational": false
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "ACCEPT_METADATA",
+      "id": "DISPOSITION/REPRESENTED_AS_EXPECTED_ABSENCE",
+      "input": {
+        "disposition": "REPRESENTED_AS_EXPECTED_ABSENCE",
+        "gate": "SYNTHETIC_GATE",
+        "present": false,
+        "reason": "Independent qualification disposition case",
+        "required_operational": false
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "ACCEPT_METADATA",
+      "id": "DISPOSITION/HISTORICAL_ONLY",
+      "input": {
+        "disposition": "HISTORICAL_ONLY",
+        "gate": null,
+        "present": true,
+        "reason": "Independent qualification disposition case",
+        "required_operational": false
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "ACCEPT_METADATA",
+      "id": "DISPOSITION/NOT_REQUIRED",
+      "input": {
+        "disposition": "NOT_REQUIRED",
+        "gate": null,
+        "present": true,
+        "reason": "Independent qualification disposition case",
+        "required_operational": false
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "UNKNOWN_OR_AMBIGUOUS_CLASS",
+      "id": "UNKNOWN_SOURCE",
+      "input": {
+        "schema": "UNKNOWN"
+      },
+      "oracle": "SOURCE_RECOGNITION"
+    },
+    {
+      "expected": "INVALID_DISPOSITION",
+      "id": "BAD_DISPOSITION",
+      "input": {
+        "disposition": "DROP"
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "HIDDEN_OPERATIONAL_SOURCE",
+      "id": "HIDDEN_REQUIRED",
+      "input": {
+        "disposition": "HISTORICAL_ONLY",
+        "required_operational": true
+      },
+      "oracle": "SOURCE_DISPOSITION"
+    },
+    {
+      "expected": "ACCEPT_METADATA",
+      "id": "IDENTITY",
+      "input": {
+        "digest": "0b4be7ebd22144d091932a855cc0f121df53c9de28db782d74d07bf4d82bcc90",
+        "domain": "MigrationManifestIdentity",
+        "payload": {
+          "qualification": "NOT_QUALIFIED"
+        },
+        "schema": "M01-SYNTHETIC-1"
+      },
+      "oracle": "IDENTITY_TRANSFORMATION"
+    },
+    {
+      "expected": "WRONG_IDENTITY_DOMAIN",
+      "id": "DOMAIN",
+      "input": {
+        "digest": "0b4be7ebd22144d091932a855cc0f121df53c9de28db782d74d07bf4d82bcc90",
+        "domain": "AuthorityIdentity",
+        "payload": {
+          "qualification": "NOT_QUALIFIED"
+        },
+        "schema": "M01-SYNTHETIC-1"
+      },
+      "oracle": "IDENTITY_TRANSFORMATION"
+    },
+    {
+      "expected": "IDENTITY_MISMATCH",
+      "id": "SUBSTITUTION",
+      "input": {
+        "digest": "0000000000000000000000000000000000000000000000000000000000000000",
+        "domain": "MigrationManifestIdentity",
+        "payload": {
+          "qualification": "NOT_QUALIFIED"
+        },
+        "schema": "M01-SYNTHETIC-1"
+      },
+      "oracle": "IDENTITY_TRANSFORMATION"
+    },
+    {
+      "expected": "STRUCTURALLY_COMPLETE_NOT_AUTHENTICATED",
+      "id": "PROVENANCE",
+      "input": {
+        "dependencies": [
+          "SYNTHETIC_PIN"
+        ],
+        "legacy_content_identity": "QUALIFICATION_ONLY",
+        "legacy_identity": "QUALIFICATION_ONLY",
+        "legacy_schema": "QUALIFICATION_ONLY",
+        "migration_contract": "QUALIFICATION_ONLY",
+        "selector": "/field",
+        "target_field": "QUALIFICATION_ONLY",
+        "target_identity": "QUALIFICATION_ONLY",
+        "transform": "DIRECT",
+        "validity": "HISTORICAL_ONLY"
+      },
+      "oracle": "PROVENANCE_COMPLETENESS"
+    },
+    {
+      "expected": "PROVENANCE_FIELDS",
+      "id": "LOST_PROVENANCE",
+      "input": {
+        "dependencies": [
+          "SYNTHETIC_PIN"
+        ],
+        "legacy_content_identity": "QUALIFICATION_ONLY",
+        "legacy_identity": "QUALIFICATION_ONLY",
+        "legacy_schema": "QUALIFICATION_ONLY",
+        "migration_contract": "QUALIFICATION_ONLY",
+        "target_field": "QUALIFICATION_ONLY",
+        "target_identity": "QUALIFICATION_ONLY",
+        "transform": "DIRECT",
+        "validity": "HISTORICAL_ONLY"
+      },
+      "oracle": "PROVENANCE_COMPLETENESS"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/0",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-0",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 0",
+        "receipt": "SYNTHETIC-RECEIVE-0",
+        "reentry": [
+          "SYNTHETIC-REENTRY-0"
+        ],
+        "request": "SYNTHETIC-REQUEST-0",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/0",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-0",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 0",
+        "receipt": "SYNTHETIC-RECEIVE-0",
+        "reentry": [
+          "SYNTHETIC-REENTRY-0"
+        ],
+        "request": "SYNTHETIC-REQUEST-0",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/1",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-1",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 1",
+        "receipt": "SYNTHETIC-RECEIVE-1",
+        "reentry": [
+          "SYNTHETIC-REENTRY-1"
+        ],
+        "request": "SYNTHETIC-REQUEST-1",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/1",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-1",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 1",
+        "receipt": "SYNTHETIC-RECEIVE-1",
+        "reentry": [
+          "SYNTHETIC-REENTRY-1"
+        ],
+        "request": "SYNTHETIC-REQUEST-1",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/2",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-2",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 2",
+        "receipt": "SYNTHETIC-RECEIVE-2",
+        "reentry": [
+          "SYNTHETIC-REENTRY-2"
+        ],
+        "request": "SYNTHETIC-REQUEST-2",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/2",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-2",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 2",
+        "receipt": "SYNTHETIC-RECEIVE-2",
+        "reentry": [
+          "SYNTHETIC-REENTRY-2"
+        ],
+        "request": "SYNTHETIC-REQUEST-2",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/3",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-3",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 3",
+        "receipt": "SYNTHETIC-RECEIVE-3",
+        "reentry": [
+          "SYNTHETIC-REENTRY-3"
+        ],
+        "request": "SYNTHETIC-REQUEST-3",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/3",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-3",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 3",
+        "receipt": "SYNTHETIC-RECEIVE-3",
+        "reentry": [
+          "SYNTHETIC-REENTRY-3"
+        ],
+        "request": "SYNTHETIC-REQUEST-3",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/4",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-4",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 4",
+        "receipt": "SYNTHETIC-RECEIVE-4",
+        "reentry": [
+          "SYNTHETIC-REENTRY-4"
+        ],
+        "request": "SYNTHETIC-REQUEST-4",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/4",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-4",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 4",
+        "receipt": "SYNTHETIC-RECEIVE-4",
+        "reentry": [
+          "SYNTHETIC-REENTRY-4"
+        ],
+        "request": "SYNTHETIC-REQUEST-4",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/5",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-5",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 5",
+        "receipt": "SYNTHETIC-RECEIVE-5",
+        "reentry": [
+          "SYNTHETIC-REENTRY-5"
+        ],
+        "request": "SYNTHETIC-REQUEST-5",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/5",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-5",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 5",
+        "receipt": "SYNTHETIC-RECEIVE-5",
+        "reentry": [
+          "SYNTHETIC-REENTRY-5"
+        ],
+        "request": "SYNTHETIC-REQUEST-5",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/6",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-6",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 6",
+        "receipt": "SYNTHETIC-RECEIVE-6",
+        "reentry": [
+          "SYNTHETIC-REENTRY-6"
+        ],
+        "request": "SYNTHETIC-REQUEST-6",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/6",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-6",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 6",
+        "receipt": "SYNTHETIC-RECEIVE-6",
+        "reentry": [
+          "SYNTHETIC-REENTRY-6"
+        ],
+        "request": "SYNTHETIC-REQUEST-6",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE",
+      "id": "ABSENCE/7",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-7",
+        "positive_evidence": [],
+        "proposition": "Missing proposition 7",
+        "receipt": "SYNTHETIC-RECEIVE-7",
+        "reentry": [
+          "SYNTHETIC-REENTRY-7"
+        ],
+        "request": "SYNTHETIC-REQUEST-7",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "FABRICATED_EVIDENCE",
+      "id": "FABRICATED/7",
+      "input": {
+        "evidence_received": false,
+        "gate": "SYNTHETIC-GATE-7",
+        "positive_evidence": [
+          "invented"
+        ],
+        "proposition": "Missing proposition 7",
+        "receipt": "SYNTHETIC-RECEIVE-7",
+        "reentry": [
+          "SYNTHETIC-REENTRY-7"
+        ],
+        "request": "SYNTHETIC-REQUEST-7",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "MISSING_ABSENCE_BINDING",
+      "id": "NO_GATE",
+      "input": {
+        "evidence_received": false,
+        "gate": null,
+        "positive_evidence": [],
+        "proposition": "Missing proposition 7",
+        "receipt": "SYNTHETIC-RECEIVE-7",
+        "reentry": [
+          "SYNTHETIC-REENTRY-7"
+        ],
+        "request": "SYNTHETIC-REQUEST-7",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      },
+      "oracle": "EXPECTED_ABSENCE"
+    },
+    {
+      "expected": "VALID_DIAGNOSTIC_MANIFEST_NOT_QUALIFICATION",
+      "id": "DIAGNOSTIC_MANIFEST",
+      "input": {
+        "SOURCE_FORMAT": "E1_LEGACY_V1",
+        "TARGET_FORMAT": "PLANNER_SNAPSHOT_V0_1",
+        "bundle": null,
+        "external_absences": [],
+        "migration_contract": null,
+        "native_schema": "PLANNER-SNAPSHOT-1",
+        "output_inventory": null,
+        "provenance_index": null,
+        "qualification": "NOT_QUALIFIED",
+        "qualification_record": null,
+        "snapshot": null,
+        "source_dispositions": [],
+        "source_inventory": null,
+        "source_pins": [],
+        "unresolved_prerequisites": [
+          "M01_INCOMPLETE"
+        ]
+      },
+      "oracle": "MIGRATION_MANIFEST"
+    },
+    {
+      "expected": "UNJUSTIFIED_QUALIFICATION",
+      "id": "FALSE_QUALIFICATION",
+      "input": {
+        "SOURCE_FORMAT": "E1_LEGACY_V1",
+        "TARGET_FORMAT": "PLANNER_SNAPSHOT_V0_1",
+        "bundle": null,
+        "external_absences": [],
+        "migration_contract": null,
+        "native_schema": "PLANNER-SNAPSHOT-1",
+        "output_inventory": null,
+        "provenance_index": null,
+        "qualification": "QUALIFIED_MIGRATION",
+        "qualification_record": null,
+        "snapshot": null,
+        "source_dispositions": [],
+        "source_inventory": null,
+        "source_pins": [],
+        "unresolved_prerequisites": [
+          "M01_INCOMPLETE"
+        ]
+      },
+      "oracle": "MIGRATION_MANIFEST"
+    }
+  ],
+  "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+  "reference_program": "import json,hashlib,re\ndef canon(v):return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()\ndef check(kind,v,contract):\n try:\n  if kind=='SOURCE_RECOGNITION':\n   found=[]\n   for c in contract['source_classes']:\n    d=c.get('discriminator',{})\n    if 'field' in d and v.get(d['field'])==d['value']:found.append(c)\n    elif 'record_type' in d and all(v.get(k)==x for k,x in d.items()):found.append(c)\n   if len(found)!=1:return 'UNKNOWN_OR_AMBIGUOUS_CLASS'\n   c=found[0];ts={'dict':dict,'list':list,'str':str}\n   if any(k not in v for k in c['required_fields']):return 'MISSING_REQUIRED_FIELD'\n   if any(type(v[k]) is not ts[t] for k,t in c['field_types'].items()):return 'MALFORMED_SOURCE'\n   return 'RECOGNIZED_NOT_ADMITTED'\n  if kind=='SOURCE_DISPOSITION':\n   if v['disposition'] not in contract['source_dispositions']:return 'INVALID_DISPOSITION'\n   if v['required_operational'] and v['disposition']!='MIGRATED_OPERATIONAL':return 'HIDDEN_OPERATIONAL_SOURCE'\n   if v['disposition']=='REPRESENTED_AS_EXPECTED_ABSENCE' and (v['present'] or not v['gate']):return 'INVALID_ABSENCE'\n   if not v['reason']:return 'MISSING_DISPOSITION_REASON'\n   return 'ACCEPT_METADATA'\n  if kind=='IDENTITY_TRANSFORMATION':\n   if v['domain'] not in ['MigrationContractIdentity','SourceInventoryIdentity','ProvenanceIndexIdentity','MigrationManifestIdentity']:return 'WRONG_IDENTITY_DOMAIN'\n   if hashlib.sha256(canon({'domain':v['domain'],'schema':v['schema'],'payload':v['payload']})).hexdigest()!=v['digest']:return 'IDENTITY_MISMATCH'\n   return 'ACCEPT_METADATA'\n  if kind=='PROVENANCE_COMPLETENESS':\n   if set(v)!=set(contract['FieldDerivation']['required']):return 'PROVENANCE_FIELDS'\n   if v['transform'] not in contract['FieldDerivation']['transform_values'] or v['validity'] not in contract['FieldDerivation']['validity_values']:return 'PROVENANCE_ENUM'\n   if not v['selector'] or not v['dependencies']:return 'PROVENANCE_SUPPORT'\n   return 'STRUCTURALLY_COMPLETE_NOT_AUTHENTICATED'\n  if kind=='EXPECTED_ABSENCE':\n   if not v['gate'] or not v['request'] or not v['proposition'] or not v['receipt'] or not v['reentry']:return 'MISSING_ABSENCE_BINDING'\n   if v['evidence_received'] is not False or v['positive_evidence']!=[]:return 'FABRICATED_EVIDENCE'\n   if v['state']!='WAITING_FOR_EXTERNAL_EVIDENCE':return 'INVALID_WAIT'\n   return 'ACCEPT_SYNTHETIC_ABSENCE_ENVELOPE'\n  if kind=='MIGRATION_MANIFEST':\n   if set(v)!=set(contract['MigrationManifest']['required_fields']):return 'MANIFEST_FIELDS'\n   if v['SOURCE_FORMAT']!='E1_LEGACY_V1' or v['TARGET_FORMAT']!='PLANNER_SNAPSHOT_V0_1' or v['native_schema']!='PLANNER-SNAPSHOT-1':return 'FORMAT'\n   if v['qualification'] not in ['NOT_QUALIFIED','QUALIFIED_MIGRATION']:return 'QUALIFICATION_ENUM'\n   if v['qualification']=='QUALIFIED_MIGRATION' and (v['unresolved_prerequisites'] or not v['qualification_record'] or not v['snapshot'] or not v['bundle']):return 'UNJUSTIFIED_QUALIFICATION'\n   return 'VALID_DIAGNOSTIC_MANIFEST_NOT_QUALIFICATION'\n  return 'UNKNOWN_ORACLE'\n except (KeyError,TypeError,ValueError):return 'MALFORMED_INPUT'\n",
+  "schema": "M01-FIXTURES-1",
+  "scope": "Structural/migration metadata predicates only; no complete source-to-native positive asserted",
+  "unexecuted_required_families": [
+    "Full canonical positive for each legacy class",
+    "ambiguous cross-class full schema",
+    "complete unsupported semantic value",
+    "unexplained target field",
+    "canonical admission failure path",
+    "native complete result/history interface",
+    "full snapshot completeness",
+    "source invalidation through migrated native state"
+  ]
+}

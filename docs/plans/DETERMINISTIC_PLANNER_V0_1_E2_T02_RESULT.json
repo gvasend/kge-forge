@@ -1,0 +1,178 @@
+{
+  "baseline_regressions": {
+    "focused_runtime_t02": "PASS",
+    "test_planner_core_codec_smoke": "PASS",
+    "test_planner_evidence_admission": "PASS",
+    "test_planner_external_unknown": "PASS",
+    "test_planner_invariants": "PASS"
+  },
+  "determinism": {
+    "action/source/object_key_ordering": "PASS",
+    "seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "validation_order_permutation_identity_equal": true
+  },
+  "dossier_admission": "ACCEPT",
+  "dossier_binding": "PASS",
+  "e1_artifacts_modified": 0,
+  "experiment_actions_executed": 0,
+  "fact_proofs": "2/2",
+  "idempotence": "PASS",
+  "initial_snapshot_identity": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+  "invalidation": {
+    "admission": "REJECT",
+    "changed_dossier_source": "STALE",
+    "dossier": "STALE",
+    "typed_instances": "STALE"
+  },
+  "n_real_satisfied": false,
+  "negative_controls": {
+    "missing_validation_instance": {
+      "reason": "validation instance set does not match dossier",
+      "result": "REJECT"
+    },
+    "prepare_pass_alone": {
+      "reason": "successful dossier materialization requires PASS and dossier",
+      "result": "REJECT"
+    },
+    "prepared_dossier_absent": {
+      "reason": "validation instance set does not match dossier",
+      "result": "REJECT"
+    },
+    "source_invalidation": {
+      "result": "PASS"
+    },
+    "validation_fail": {
+      "reason": "validation instance is not admitted PASS",
+      "result": "REJECT"
+    },
+    "wrong_dossier_identity": {
+      "reason": "validation instance dossier/scope/lineage mismatch",
+      "result": "REJECT"
+    },
+    "wrong_predicate_instance": {
+      "reason": "validation instance set does not match dossier",
+      "result": "REJECT"
+    }
+  },
+  "p02_retry_allowed": true,
+  "p03_ready": false,
+  "post_dossier_actionable": [
+    "E2-DECIDE"
+  ],
+  "post_dossier_control": "HUMAN_HANDOFF",
+  "post_dossier_decision_ready": [
+    "E2-DECIDE"
+  ],
+  "post_dossier_selected": "E2-DECIDE",
+  "post_snapshot_identity": "39114028d38b9571c46e211248644b09a3ac63ad9f47cd21a75fc922a2d152e3",
+  "prepared_dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+  "prepared_dossier_binding": {
+    "actual_result_required": true,
+    "binding": "PASS",
+    "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+    "producer_action": "E2-PREPARE"
+  },
+  "prepared_dossier_fix": "PASS",
+  "production_effect": false,
+  "replay": {
+    "encode_decode": "PASS",
+    "identity_equal": true,
+    "validation_instances": 6
+  },
+  "result": "PASS",
+  "runtime_transaction": {
+    "append_only_parallel_store": false,
+    "atomic": true,
+    "operation": "admit_dossier_materialization",
+    "replay_semantics": "historical validation instances are reconstructed, not re-evaluated as live submissions"
+  },
+  "schema": "E2-T02-result-v1",
+  "transitions": [
+    {
+      "action": "E2-CHECK",
+      "post": "e381424d14336d918fd3bafff16698361395c77ef03fef628d7d74d36af8a9da",
+      "pre": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+      "result": "PASS",
+      "selected": "E2-CHECK"
+    },
+    {
+      "action": "E2-COLLECT",
+      "post": "6c7efb221870974d76d12d7ceb372369ef68104bb1f522a16d47f7dc37236677",
+      "pre": "e381424d14336d918fd3bafff16698361395c77ef03fef628d7d74d36af8a9da",
+      "result": "PASS",
+      "selected": "E2-COLLECT"
+    },
+    {
+      "action": "E2-PREPARE",
+      "post": "39114028d38b9571c46e211248644b09a3ac63ad9f47cd21a75fc922a2d152e3",
+      "pre": "6c7efb221870974d76d12d7ceb372369ef68104bb1f522a16d47f7dc37236677",
+      "result": "PASS",
+      "selected": "E2-PREPARE"
+    }
+  ],
+  "typed_validation_instances_admitted": "6/6",
+  "validation_evaluations": "6/6",
+  "validation_instance_capability": "PASS",
+  "validation_instances": [
+    {
+      "currentness": "ACCEPTED",
+      "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "predicate_id": "E2-CHECK-AUTHORITY_BOUNDARY",
+      "result": "PASS",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "typed": true
+    },
+    {
+      "currentness": "ACCEPTED",
+      "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "predicate_id": "E2-CHECK-CONCRETE_ALTERNATIVES",
+      "result": "PASS",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "typed": true
+    },
+    {
+      "currentness": "ACCEPTED",
+      "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "predicate_id": "E2-CHECK-DECISION_FACTS_COMPLETE",
+      "result": "PASS",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "typed": true
+    },
+    {
+      "currentness": "ACCEPTED",
+      "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "predicate_id": "E2-CHECK-INDEPENDENT_VALIDATION",
+      "result": "PASS",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "typed": true
+    },
+    {
+      "currentness": "ACCEPTED",
+      "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "predicate_id": "E2-CHECK-QUESTION_SCOPE",
+      "result": "PASS",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "typed": true
+    },
+    {
+      "currentness": "ACCEPTED",
+      "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "predicate_id": "E2-CHECK-SOURCE_PROVENANCE",
+      "result": "PASS",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "typed": true
+    }
+  ],
+  "work_package": "E2-T02"
+}

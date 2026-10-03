@@ -1,0 +1,73 @@
+{
+  "schema": "E2-P02-retry-1-trace-v1",
+  "work_package": "E2-P02",
+  "attempt": "RETRY_1",
+  "initial_snapshot_id": "71fe19caaeb0f7c10da8db2bbb5d849156c59cc521e3e11e4fffb8d578080db9",
+  "initial_oracle": {"actionable": ["E2-CHECK", "E2-COLLECT"], "selected": "E2-CHECK", "control": "RUNNABLE", "finish_actionable": false},
+  "transitions": [
+    {
+      "sequence": 1,
+      "pre_state_id": "71fe19caaeb0f7c10da8db2bbb5d849156c59cc521e3e11e4fffb8d578080db9",
+      "actionable": ["E2-CHECK", "E2-COLLECT"],
+      "selected": "E2-CHECK",
+      "selection_witness": {"criterion": 3, "steps": ["CRITERION_1_TIED", "CRITERION_2_NOT_DECISIVE", "CRITERION_3_CLASS"]},
+      "action_executed": "E2-CHECK",
+      "result": "PASS",
+      "result_identity": "SuppliedResult:E2-CHECK",
+      "knowledge_produced": ["E2-K-CHECK"],
+      "root_transitions": [],
+      "slot_transitions": [],
+      "source_validity_changes": [],
+      "post_state_id": "973f3beb794f1161609604675e70a066d08d1365d3f25b9069feebb0cab6959c",
+      "post_actionable": ["E2-COLLECT"],
+      "control_state": "RUNNABLE",
+      "oracle": "PASS"
+    },
+    {
+      "sequence": 2,
+      "pre_state_id": "973f3beb794f1161609604675e70a066d08d1365d3f25b9069feebb0cab6959c",
+      "actionable": ["E2-COLLECT"],
+      "selected": "E2-COLLECT",
+      "selection_witness": {"criterion": 0, "steps": ["SINGLETON"]},
+      "action_executed": "E2-COLLECT",
+      "result": "PASS",
+      "result_identity": "SuppliedResult:E2-COLLECT",
+      "knowledge_produced": ["E2-K-COLLECT"],
+      "root_transitions": [],
+      "slot_transitions": [],
+      "source_validity_changes": [],
+      "post_state_id": "f2841f609a1f4636484132cbfa755cd8af071465d2af17866a3156aa1dfcd889",
+      "post_actionable": [],
+      "control_state": "PLAN_DEFECT",
+      "oracle": "PASS for transition; P02 path stops on control defect"
+    }
+  ],
+  "failure": {
+    "id": "P02-CONTROL-001",
+    "class": "CONTROL_STATE_MISMATCH",
+    "control": "PLAN_DEFECT",
+    "defects": ["MISSING_CONTROL_ROUTE:E2-PREPARE"],
+    "blocked": {
+      "E2-PREPARE": ["DECISION_INPUT_ROUTE_MISSING"],
+      "E2-DECIDE": ["ACTION_COMPLETED:E2-PREPARE", "DECISION_NOT_READY"],
+      "E2-REENTER": ["ACTION_COMPLETED:E2-DECIDE", "EXTERNAL_GATE:E2-GATE", "PREDICATE:E2-PROOF:UNKNOWN"],
+      "E2-FINISH": ["ACTION_COMPLETED:E2-REENTER"]
+    },
+    "new_runtime_defect": false
+  },
+  "transitions_executed": 2,
+  "actions_executed": ["E2-CHECK", "E2-COLLECT"],
+  "replay": "BLOCKED_BY_P02_CONTROL_ROUTE",
+  "E2_P02_RESULT": "PARTIAL",
+  "E2_P03_READY": false,
+  "NEXT_PACKAGE": "E2-P02-CONTROL-ROUTE-CLOSURE",
+  "D01_STATUS": "READY_FOR_LATER_PHASE",
+  "END_STATUS": "READY_FOR_LATER_PHASE",
+  "REVIEW_STATUS": "READY_FOR_LATER_PHASE",
+  "N_REAL_SATISFIED": false,
+  "CANONICAL_E2_QUALIFIED": false,
+  "PLANNER_V0_1_REQUALIFICATION_READY": false,
+  "IMPLEMENTATION_MODIFIED": false,
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "PRODUCTION_EFFECT": false
+}

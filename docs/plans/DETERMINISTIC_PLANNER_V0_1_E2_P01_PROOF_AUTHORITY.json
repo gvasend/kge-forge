@@ -1,0 +1,77 @@
+{
+  "complete": false,
+  "constraints": [
+    "No generic proof may satisfy arbitrary root/slot",
+    "No positive evidence exists at checkpoint",
+    "No authority applicability inferred from object presence",
+    "Positive mainline uses known rule; unknown variant remains unknown"
+  ],
+  "entries": [
+    {
+      "missing": [
+        "ConditionId",
+        "PredicateId and operands",
+        "exact source/claim",
+        "scope/lineage/currentness"
+      ],
+      "native_contract": "RootCondition.predicate + native gate evaluation",
+      "purpose": "root proof",
+      "status": "FIXTURE_INCOMPLETE"
+    },
+    {
+      "missing": [
+        "SlotId",
+        "exact typed value and source",
+        "slot-specific predicate",
+        "scope/lineage/currentness"
+      ],
+      "native_contract": "ValueSlot requirements/root_requirements/value/required_type",
+      "purpose": "slot proof",
+      "status": "FIXTURE_INCOMPLETE"
+    },
+    {
+      "missing": [
+        "grant entity/identity",
+        "issuer/predicate",
+        "permission/target",
+        "decision alternative/checklist",
+        "scope/lineage/generation"
+      ],
+      "native_contract": "AUTHORITY predicate + recorded_decision_valid",
+      "purpose": "synthetic bounded authority",
+      "status": "FIXTURE_INCOMPLETE"
+    },
+    {
+      "missing": [
+        "proposition and target",
+        "expected producer",
+        "request/receipt/reentry identities",
+        "matching pinned contract bytes"
+      ],
+      "native_contract": "ExternalGate / EvidenceRequirement / ExternalResolutionContract",
+      "purpose": "external absence/route",
+      "status": "FIXTURE_INCOMPLETE"
+    },
+    {
+      "missing": [
+        "payload schema/content identity",
+        "entity/source identity",
+        "producer/target/claims",
+        "authentication and exact receipt binding"
+      ],
+      "native_contract": "ReceiptAdmission / EvidenceClaim / authentication predicate",
+      "purpose": "future evidence",
+      "status": "FIXTURE_INCOMPLETE"
+    }
+  ],
+  "invalidation": [
+    "knowledge",
+    "root proof",
+    "slot proof",
+    "authority",
+    "route",
+    "received evidence after reload"
+  ],
+  "schema": "E2-P01-PROOF-AUTHORITY-INVENTORY-1",
+  "unresolved_transaction": "E2-G01"
+}

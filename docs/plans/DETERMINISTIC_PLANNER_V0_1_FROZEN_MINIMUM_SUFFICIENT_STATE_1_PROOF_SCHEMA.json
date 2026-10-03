@@ -1,0 +1,185 @@
+{
+  "$defs": {
+    "ref": {
+      "additionalProperties": false,
+      "properties": {
+        "domain": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "identity": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "selector": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain",
+        "identity",
+        "source_sha256",
+        "selector"
+      ],
+      "type": "object"
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "Reference certificate, not a new Planner state or trusted conclusion labels. JSON-schema validation alone never verifies proof. No actual full certificate is issued by this analysis.",
+  "properties": {
+    "action_universe_source": {
+      "$ref": "#/$defs/ref"
+    },
+    "action_witnesses": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "action_id": {
+            "type": "string"
+          },
+          "canonical_action": {
+            "$ref": "#/$defs/ref"
+          },
+          "canonical_status": {
+            "$ref": "#/$defs/ref"
+          },
+          "support": {
+            "items": {
+              "$ref": "#/$defs/ref"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "action_id",
+          "canonical_action",
+          "canonical_status",
+          "support"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "bundle_identity": {
+      "$ref": "#/$defs/ref"
+    },
+    "canonical_dependency_nodes": {
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "contract_identity": {
+      "$ref": "#/$defs/ref"
+    },
+    "decision_universe_source": {
+      "$ref": "#/$defs/ref"
+    },
+    "external_correspondences": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "absence_source": {
+            "$ref": "#/$defs/ref"
+          },
+          "frontier": {
+            "$ref": "#/$defs/ref"
+          },
+          "receipt_route": {
+            "$ref": "#/$defs/ref"
+          },
+          "request_id": {
+            "type": "string"
+          },
+          "requirement_sources": {
+            "items": {
+              "$ref": "#/$defs/ref"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "request_id",
+          "frontier",
+          "requirement_sources",
+          "receipt_route",
+          "absence_source"
+        ],
+        "type": "object"
+      },
+      "maxItems": 8,
+      "minItems": 8,
+      "type": "array"
+    },
+    "goal_and_route_references": {
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "native_event_inventory": {
+      "$ref": "#/$defs/ref"
+    },
+    "native_queries": {
+      "const": [
+        "recompute",
+        "resume_eligibility",
+        "eight_route_correspondence"
+      ]
+    },
+    "planner_code_identity": {
+      "$ref": "#/$defs/ref"
+    },
+    "schema": {
+      "const": "FrozenControlProof-1"
+    },
+    "source_inventory": {
+      "items": {
+        "$ref": "#/$defs/ref"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "status_source": {
+      "$ref": "#/$defs/ref"
+    }
+  },
+  "required": [
+    "schema",
+    "planner_code_identity",
+    "contract_identity",
+    "bundle_identity",
+    "action_universe_source",
+    "status_source",
+    "source_inventory",
+    "canonical_dependency_nodes",
+    "action_witnesses",
+    "goal_and_route_references",
+    "external_correspondences",
+    "decision_universe_source",
+    "native_event_inventory",
+    "native_queries"
+  ],
+  "title": "FrozenControlProof",
+  "type": "object",
+  "x-verification": [
+    "Verify pinned code/contract/source/bundle identities and field selectors independently.",
+    "Require complete equality of source and canonical ActionId/status universes, not subset coverage.",
+    "Native validate_model/project/_replay must succeed; errors are not proofs of no runnable work.",
+    "Resolve full canonical dependency/reference closure; reject dangling or substituted witnesses.",
+    "Derive C1-C3 with recompute; C3 means active actionable human decisions, not all historically ready dossiers.",
+    "Derive C4 with resume_eligibility using verified sources; no accepted native reentry event in frozen event inventory.",
+    "Verify bijection of exact eight request/frontier/receipt/reentry/absence routes; not merely count=8 or len(external_gates).",
+    "Compare derived outcomes to task acceptance C1-C5 only after computation; certificate has no trusted outcome fields."
+  ]
+}

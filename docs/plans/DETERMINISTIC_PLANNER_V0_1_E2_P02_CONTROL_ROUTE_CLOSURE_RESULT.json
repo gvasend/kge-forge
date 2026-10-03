@@ -1,0 +1,88 @@
+{
+  "schema": "E2-P02-control-route-closure-v1",
+  "work_package": "E2-P02-CONTROL-ROUTE-CLOSURE",
+  "result": "PASS",
+  "counterexample": "MISSING_CONTROL_ROUTE:E2-PREPARE",
+  "route": {
+    "route_id": "DecisionRoute:E2-DECIDE:E2-PREPARE",
+    "route_type": "INTERNAL_DECISION_INPUT_ACQUISITION",
+    "source_action": "E2-PREPARE",
+    "source_knowledge": ["E2-K-CHECK", "E2-K-COLLECT"],
+    "target_action": "E2-PREPARE",
+    "decision_action": "E2-DECIDE",
+    "semantic_action": "E2-DECIDE",
+    "input_action": "E2-PREPARE",
+    "stage": "DECISION_INPUTS_REQUIRED",
+    "downstream": ["E2-REENTER"],
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "provenance": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json#/declarations/2",
+    "admission": "native model.validate_model Decision route contract",
+    "fail_closed": true
+  },
+  "p01_qualification_gap": "whole-model materializer omitted the source-declared Decision input route",
+  "whole_model_requalification": {
+    "whole_model_admission": "ACCEPT",
+    "o01_actions": "6/6",
+    "source_role_admission": "PASS",
+    "selection_policy_binding": "PASS",
+    "composition_negatives": "PASS",
+    "native_serialization": "PASS",
+    "native_decode": "PASS",
+    "semantic_round_trip": "PASS",
+    "determinism": "PASS"
+  },
+  "prior_qualification_invalidated": [
+    "P02 post-COLLECT control result from snapshot 2e37f24a...",
+    "P02 input model/snapshot 71fe19caaeb0f7c10da8db2bbb5d849156c59cc521e3e11e4fffb8d578080db9"
+  ],
+  "prior_qualification_preserved": [
+    "six O01 Action definitions",
+    "generic E2-FINISH prerequisite repair",
+    "PC01-PC04 evidence outside route-dependent cone",
+    "E2-T01 capability",
+    "original E2-CHECK/E2-COLLECT counterexample trace"
+  ],
+  "corrected_snapshot": {
+    "format": "PLANNER-SNAPSHOT-1",
+    "identity": "33c0bb5c4ed55496cde6ec0ce3eb5ee74307872697d8202a06db65c2c731e9b5",
+    "content_identity": "33c0bb5c4ed55496cde6ec0ce3eb5ee74307872697d8202a06db65c2c731e9b5",
+    "native_encode": "PASS",
+    "native_decode": "PASS",
+    "semantic_round_trip": "PASS",
+    "initial_oracle": {
+      "actionable": ["E2-CHECK", "E2-COLLECT"],
+      "selected": "E2-CHECK",
+      "control": "RUNNABLE"
+    }
+  },
+  "replay": {
+    "check": {
+      "result": "PASS",
+      "knowledge": ["E2-K-CHECK"],
+      "post_state_identity": "d220d3685ba2af01267be8fc158babd214c663169c0d298b989116ed155e5b35"
+    },
+    "collect": {
+      "result": "PASS",
+      "knowledge": ["E2-K-COLLECT"],
+      "post_state_identity": "43a238851a34b2e58f4a49ec870fa258fdcb8d3a88fda50a305df2b570281e79"
+    },
+    "post_collect": {
+      "actionable": ["E2-PREPARE"],
+      "selected": "E2-PREPARE",
+      "control": "RUNNABLE",
+      "defects": []
+    }
+  },
+  "new_runtime_defects": [],
+  "missing_control_route_closed": true,
+  "p02_retry_allowed": true,
+  "other_p02_blockers": [],
+  "p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false,
+  "experiment_actions_executed": 0,
+  "implementation_modified": false
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "E2-P02-decision-dossier-closure-v1",
+  "work_package": "E2-P02-DECISION-DOSSIER-CLOSURE",
+  "result": "BLOCKED",
+  "counterexample": "PREPARE_PASS_WITHOUT_ADMISSIBLE_DECISION_DOSSIER",
+  "pre_state_id": "43a238851a34b2e58f4a49ec870fa258fdcb8d3a88fda50a305df2b570281e79",
+  "action": {
+    "id": "E2-PREPARE",
+    "operation": "DECISION_INPUT_ACQUISITION",
+    "prospective_output": "E2-K-PREPARE",
+    "route_id": "DecisionRoute:E2-DECIDE:E2-PREPARE"
+  },
+  "actual_result": "PASS",
+  "actual_knowledge": [],
+  "candidate_dossier": {
+    "decision": "E2-DECIDE",
+    "content_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+    "source": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_FIXTURES.json#/native_actions/E2-PREPARE/prepared_dossier",
+    "fields": [
+      "decision", "provenance", "question", "scope", "alternatives",
+      "checks", "required_facts", "deferred_downstream_facts",
+      "authority_granted_if_approved", "authority_excluded", "validation"
+    ],
+    "construction": "SOURCE_CANDIDATE_COMPLETE"
+  },
+  "admission": {
+    "result": "REJECTED",
+    "error": "input PASS requires complete independently proved dossier",
+    "post_state_id": null
+  },
+  "proof_obligations": {
+    "required_facts": ["E2-KP-CHECK", "E2-KP-COLLECT"],
+    "checks": [
+      "E2-CHECK-QUESTION_SCOPE",
+      "E2-CHECK-SOURCE_PROVENANCE",
+      "E2-CHECK-CONCRETE_ALTERNATIVES",
+      "E2-CHECK-ASSUMPTIONS_CONSEQUENCES",
+      "E2-CHECK-AUTHORITY_BOUNDARY",
+      "E2-CHECK-DOWNSTREAM_QUALIFICATION",
+      "E2-CHECK-NO_INVENTED_FACTS",
+      "E2-CHECK-DECISION_FACTS_COMPLETE",
+      "E2-CHECK-INDEPENDENT_VALIDATION"
+    ],
+    "missing_native_instances": 11,
+    "status": "BLOCKED"
+  },
+  "field_sources": {
+    "decision": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "provenance": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "question": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "scope": "AUTHORIZED_DEFINITION_JOIN",
+    "alternatives": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "checks": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "required_facts": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "deferred_downstream_facts": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "authority_granted_if_approved": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "authority_excluded": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "validation": "DIRECT_FROM_PREPARE_RESULT_SOURCE",
+    "identity": "DETERMINISTIC_CANONICAL_DERIVATION"
+  },
+  "replay": {
+    "check": "PASS",
+    "collect": "PASS",
+    "prepare_selection": "PASS",
+    "prepare_admission": "REJECTED",
+    "target_external_wait": "NOT_REACHED"
+  },
+  "classification": "COMBINED",
+  "missing_contracts": [
+    "canonical prepared_dossier binding on E2-PREPARE Action/result",
+    "native proof predicate/entity instances for two required facts and nine dossier checks"
+  ],
+  "negative_cases": [
+    "missing field",
+    "wrong producer",
+    "wrong decision input",
+    "wrong subject",
+    "wrong option set",
+    "wrong scope",
+    "wrong lineage",
+    "stale input",
+    "substituted source",
+    "missing provenance",
+    "content mismatch",
+    "producer PASS with incomplete dossier",
+    "complete dossier with invalid proof",
+    "historical dossier substituted for current"
+  ],
+  "static_control_closure_implication": "preflight must require producer, construction, proof, admission and consumer paths for governed outputs",
+  "p02_retry_allowed": false,
+  "other_p02_blockers": ["CANONICAL_DOSSIER_BINDING", "DOSSIER_PROOF_INSTANCES"],
+  "p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

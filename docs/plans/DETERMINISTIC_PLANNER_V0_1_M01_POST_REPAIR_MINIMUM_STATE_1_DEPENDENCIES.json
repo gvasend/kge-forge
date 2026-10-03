@@ -1,0 +1,1777 @@
+{
+  "action_universe": [
+    "BUILD-BINDING",
+    "BUILD-EXECUTION_PROFILE",
+    "CHECK-READINESS",
+    "CONTRACT-T1",
+    "DEC-AUDIT",
+    "DEC-BINDING",
+    "DEC-BUDGET",
+    "DEC-EXEC",
+    "DEC-IGNORED",
+    "DEC-IMPLEMENTATION",
+    "DEC-INTERFACES",
+    "DEC-RUNTIME_HEAD",
+    "DEC-SUPERVISOR",
+    "DEC-VALIDATOR",
+    "FACT-BUDGET-APPLICABILITY",
+    "IMPL-CONTEXT",
+    "IMPL-GOVERNANCE",
+    "IMPL-TRANSMISSION",
+    "IMPL-VALIDATOR",
+    "INPUT-BUDGET",
+    "INPUT-IMPLEMENTATION",
+    "MAP-ANCESTRY",
+    "MAP-APPROVAL",
+    "MAP-ARGV",
+    "MAP-AUDIT",
+    "MAP-BUDGET",
+    "MAP-CONTEXT_ID",
+    "MAP-CONTEXT_PROJECTION",
+    "MAP-DISPATCH",
+    "MAP-ELIGIBILITY",
+    "MAP-EXEC_BINS",
+    "MAP-IGNORED",
+    "MAP-IMPLEMENTATION",
+    "MAP-LIFECYCLE",
+    "MAP-PATHS",
+    "MAP-PAYLOAD",
+    "MAP-RELEASE",
+    "MAP-RETENTION",
+    "MAP-RUNTIME",
+    "MAP-RUNTIME_HEAD",
+    "MAP-SHELL_NETWORK",
+    "MAP-SUCCESSION",
+    "MAP-SUPERVISOR",
+    "MAP-TRANSPORT",
+    "PREP-AUDIT",
+    "PREP-BINDING-GRANT",
+    "PREP-RUNTIME_HEAD",
+    "PREP-SUPERVISOR",
+    "PREP-VALIDATOR",
+    "REEVAL-BUDGET",
+    "REEVAL-IMPLEMENTATION",
+    "S-ANCESTRY",
+    "S-APPROVAL",
+    "S-BINDING",
+    "S-CONTEXT",
+    "S-ELIGIBILITY",
+    "S-EXEC",
+    "S-SUCCESSION",
+    "SEM-BUDGET",
+    "SEM-ELIGIBILITY",
+    "SEM-IGNORED",
+    "SEM-IMPLEMENTATION",
+    "SEM-INTERFACES"
+  ],
+  "closed_semantic_subproblem": "CUT04_NATIVE_UNKNOWN_RULE_DEFECT",
+  "complete_result_projections_required": [],
+  "conclusion_inputs": {
+    "C1": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S09",
+      "S10"
+    ],
+    "C2": [
+      "S01",
+      "S02",
+      "S09",
+      "S10"
+    ],
+    "C3": [
+      "S01",
+      "S02",
+      "S07",
+      "S09",
+      "S10"
+    ],
+    "C4": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10"
+    ],
+    "C5": [
+      "S05",
+      "S06",
+      "S09",
+      "S10"
+    ]
+  },
+  "frozen_action_schema": [
+    {
+      "dependency": "Universe, validation and all references",
+      "field": "id",
+      "role": "REQUIRED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "ActionId"
+    },
+    {
+      "dependency": "Human/machine partition and decision type validation",
+      "field": "operation",
+      "role": "REQUIRED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "OperationClass"
+    },
+    {
+      "dependency": "Typed admission, retained decision input validation; future blockers",
+      "field": "effect",
+      "role": "REQUIRED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "EffectClass"
+    },
+    {
+      "dependency": "project ordering and _global_control traversal; do not erase dependencies",
+      "field": "prerequisites",
+      "role": "REQUIRED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Tuple[Gate]"
+    },
+    {
+      "dependency": "Native source validation, invalidation and authenticated action universe",
+      "field": "source",
+      "role": "REQUIRED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Provenance"
+    },
+    {
+      "dependency": "Required native constructor field; stale members affect current_completion even on held paths. Future output detail only outside this closure; no invented empty inventory",
+      "field": "accepted_inventory",
+      "role": "CONDITIONAL_SUPPORT_AND_STRUCTURAL",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Tuple[KnowledgeRecord]"
+    },
+    {
+      "dependency": "Currentness and native assertion closure",
+      "field": "evidence",
+      "role": "CONDITIONAL_SUPPORT",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Tuple[AssertionId]"
+    },
+    {
+      "dependency": "Unsupported rule check on reached actions; governed unknown must resolve exact EVIDENCE_OBLIGATION",
+      "field": "requirements",
+      "role": "REQUIRED_WHERE_DECLARED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Tuple[PredicateId]"
+    },
+    {
+      "dependency": "unavailable_support propagates stale authority into action completion; retained reference must validate",
+      "field": "authority",
+      "role": "CONDITIONAL_SUPPORT",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Optional[PredicateId]"
+    },
+    {
+      "dependency": "Human stage semantics and admission; historical narrative not required",
+      "field": "stage",
+      "role": "NATIVE_TYPED_FIELD",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "ActionStage"
+    },
+    {
+      "dependency": "No candidates => selector not called; supplied values still validate",
+      "field": "cost",
+      "role": "FUTURE_SELECTION",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Optional[int]"
+    },
+    {
+      "dependency": "Must accompany supplied cost; no invented ranking inputs",
+      "field": "cost_unit",
+      "role": "FUTURE_SELECTION",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "str"
+    },
+    {
+      "dependency": "Not used to create candidates on held paths; existing field still typed",
+      "field": "pass_model_complete",
+      "role": "FUTURE_SELECTION_EXECUTION",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "bool"
+    },
+    {
+      "dependency": "Not proof of historical execution; no apply_result in frozen query",
+      "field": "accepted_result",
+      "role": "FUTURE_EXECUTION",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "ActionResult"
+    },
+    {
+      "dependency": "Retained dossiers validate fully; future preparation narrative not required solely to prove no active human",
+      "field": "prepared_dossier",
+      "role": "CONDITIONAL_NATIVE_VALIDATION",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "Optional[DecisionDossier]"
+    },
+    {
+      "dependency": "unavailable_support/current_completion; never assume accepted from BLOCKED status",
+      "field": "qualification",
+      "role": "REQUIRED",
+      "source_contract": "Plan-backed constructor plus independently reviewed source bindings; no default-derived semantics",
+      "type": "ValidationState"
+    }
+  ],
+  "full_historical_graph_required": false,
+  "gate_representation_capability_count": 8,
+  "input_sha256": {
+    "adapter/planner/__init__.py": "25c834058e64b6606d1689177ed1a875ee421275d97d5d3a98d7378ac5a4ab64",
+    "adapter/planner/__main__.py": "94d927fa2c85688842472f4a51dd90f30ce2cf4b3f5ee97980c08d66e863ce00",
+    "adapter/planner/budget.py": "3655ac5bc1f292ba3d0ccd237c3bb56a18f21cbd623622046ab424124f0c41d3",
+    "adapter/planner/codec.py": "1cac29d96641ce109410abfdd696d0e0cb5bdd6329f023edbb8e519c3f9fc422",
+    "adapter/planner/core.py": "1e8a2c19d176493f8879ae54556519df5b48ffb340f270f1483a5ad658d7dd20",
+    "adapter/planner/gates.py": "dd2a60651694a69e52bee978aaab92407e76d8197af6dce48d1f2a20ee47da4a",
+    "adapter/planner/model.py": "3e3bc302c38743690423bd459c6bf151be8bff6406667f88261bf28174581a9f",
+    "adapter/planner/replay.py": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e",
+    "adapter/planner/selector.py": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f",
+    "docs/experiments/E1/E1_EXTERNAL_HANDOFF_PACKAGE_1.json": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332",
+    "docs/experiments/E1/E1_GLOBAL_CONTROL_RECOMPUTATION_1.json": "0120a8da7c114fa7b15d7ad642eff75587b179def6937a9a3e7658a3db58bd06",
+    "docs/experiments/E1/E1_RESUME_MANIFEST_1.json": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac",
+    "docs/experiments/E1/E1_SUSPENSION_CHECKPOINT_1.json": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4",
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1.md": "dc568a72ff7ceafe5eab592e4404c4e5c50d9bb022b90f35bb7742d658e8a30e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1_ACTION_IR_SCHEMA.json": "db012de1aa7484c834496532a346cf07117d46a7eab289cdb3f762edd5432ea3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1_FIXTURES.json": "dc8fc5b6ed83b859f191109cc2972f8991ec08b6c4642a6745d298067537f4c4",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1_NORMALIZATION_TABLE.json": "d0eeaca84edad9baa60bb99738b12b18e47aa48810d2f90d48c609a04b9d2833",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1_TYPED_RULE_REGISTRY.json": "52bb670be0efaf2e255577f71b51a5e46ccd7b2ba176bbf031f19a08c220d72e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1_VALIDATION.json": "5bf5129290fe544c6b1adfd4a48b763939a9dc71df54b21737680af3558b5b0e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1.md": "4f1987edb388b49acc89e8d3f334ef1f4147df376bf7dc37504cf16db4e18fd2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_ACTION_MATRIX.json": "4e9a972b7924b9b9ae70528c2ce061f3b436aef305e85cb513a2e909c2439760",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_AUTHORITY_BINDING.json": "31bbe28be041b648da5b4a7b7744912582a0d9f91f2a0dcce0844295405ca3f5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_EVIDENCE_BINDING.json": "b846c4c16c7cfb58e4e5a77a79acbdb6dfdf24f830923783135cfa4249053091",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_FIXTURES.json": "9e98b439e66470bd7ccad4665d40b79828b6a458b84134353de5aade359ad758",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_KNOWLEDGE_BINDING.json": "76b7955b134a61f84e6b9db322766e8128849f8516982c1464838d81db280f9c",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_LINEAGE_BINDING.json": "c47a0be82ed9f521a626e0bb3f7cdc2830600d56c58f0245fbaa970c25e9c6e4",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_NORMALIZATION_RULES.json": "6f0408f7093b072ec718af8ac97817b93ecd730295c2b3a6eceef393618acd7b",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_PREFLIGHT.json": "b662a38a366bed94d9bb8408b993a41791afbcee4fb6e5c4e7e871ff01d38850",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_RESULT_BINDING.json": "f70f265e87c7d7efc3f4b398a3864efb3609e0df72dde61305271befe5630958",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_RESULT_PROJECTIONS.json": "26841af4f74a07bd9738f2f1bc57433b09fcb7144648356e7499bdf0e42c5ccd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_SCOPE_BINDING.json": "2db0c575ab3e7929afc90c80c8994229e8f6b58dc84a991dd884a7c8446c63bb",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_VALIDATION.json": "9a8dd64713b579c728eb0ea0bc0b0770d1662a1c45b7db4e4f2af4a6cbeba755",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_ACCEPTANCE_MATRIX_1.md": "e3812752606074a606c301cc38e712092e068daa7cdd0d4c317eeec01e32bfa5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.json": "e6f4073d28e5118fb5160ca7dabf11b75ab9e55cc164f4bfe6f773cf22e79b8b",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.md": "78737d02f24fcf02fd0485cb43af2bea391e8df2d26893db1a7dcdd957410be8",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_ABSENCE_AND_CONTROL.json": "4832b2cd9b8b04c0b010aec1db6341537b09ec2240a306da6b56e70876fb3acd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1.md": "7205b900b4a8201032c630ef5702dce689f98d298a5db19c72f2469d38472d28",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1_CONTRACT.json": "0917db09d20e5042dc13b61633d71c1ad10b3baf5f5c42480f5b095d1e1a836c",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1_FIXTURES.json": "89e10500ed1976180bc6cf0f0830c20772d3cfcb1e36eda7d355e663bfba5ac0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1_PREFLIGHT.json": "59e01ba9774055df775ae5469889018950ab2a442c0959fd1d06ab5b093cba93",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1_VALIDATION.json": "e81247f8a9d3d9b0a29ded532582a9b00c283245ff4c552362895cbb4dc7279f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_RETRY_1.md": "8fc637185c1c296e53deeaf4c8f218a68b7b6461916f967c29816a5162a3c1a1",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_RETRY_1_CONTRACT.json": "329e9f56cc7e1b01a22f2bc0f984a9b92c819c721e60cec7050dd212a9dbf340",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_RETRY_1_PREFLIGHT.json": "d5a0993c5fd08926f5969b27b3788181fe5de447dcd4449c53ad1d27d48ce4fb",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_RETRY_1_TARGETS.json": "1e2eb9ba16f589f76e8f10189e1d024b5df637e538a4471956223d1ab640baa5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_RETRY_1_VALIDATION.json": "65e17a0f03185a1e36a20b9d133eff55b4e80234ddcaaaecc533698255eb48ae",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CONTRACT.json": "3594800bd08607c9cbe255f1ead11c6530afcf1516653e34831a2907d862edab",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_FIXTURES.json": "997ea76f4ab091cf84373c4e29a4fefbf6bf5af87ce612fc0d14f1b07add0262",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_ORACLES.json": "5737d84a12151b2b29dbf022922c4f6a2b425cc9821f7aa79fd6da199c5c9f92",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_PREFLIGHT.json": "c02f9de3e6376a7cec380074a4c78a4410e62811af82baee3ed33bf14e522c0e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_RESULT.md": "7a70d93a32eb5992a7375f37217b6f71ef6dd126dbd5dfcf1863fa8f43c1c7ee",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_VALIDATION.json": "846996c22966c76eabde750378a15f845fed80f09bc979935ae52b70890295b7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_EXTERNAL_UNKNOWN_RULE_RECONCILIATION_1.md": "ddce8953120bb1111d832b6d80148497d502c5e14338c38d53dcafb55d8e11f0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_EXTERNAL_UNKNOWN_RULE_RECONCILIATION_1_VALIDATION.json": "48a1e7e69e958e07ff1fbcf58790161cd8cc2cf0a7e966feb3eeb6015d2c63f0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_EXTERNAL_UNKNOWN_RULE_REPAIR_1_RESULT.md": "645ede21ac9adb630da0453b21167767050f78a93a015e4891ed6a26c17e0bc8",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_FROZEN_MINIMUM_SUFFICIENT_STATE_1.md": "a68236051177499b6053310e332b51bce3078c41b19613c1348c7e140bd38a40",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_FROZEN_MINIMUM_SUFFICIENT_STATE_1_BLOCKING_CUT.json": "fd3b9ce08b7ce23a396df287ba1c0e058f0b8178ebdfb9f42a8ab1c43206d253",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_FROZEN_MINIMUM_SUFFICIENT_STATE_1_DEPENDENCY_CONE.json": "c5cb01e7560abc1786cdea057cefddbc65c5777c2a198568af68e10a1861812b",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_FROZEN_MINIMUM_SUFFICIENT_STATE_1_OPERATIONAL_SUBGRAPH.json": "451c75c889be4817ef091033d98a11909663791b8fea25eca2386db5124ee947",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_FROZEN_MINIMUM_SUFFICIENT_STATE_1_PROOF_SCHEMA.json": "da0ef9a08864c63058c9b546856bb1b31b69843fa7ab29d5c18745314f6df3ec",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_FROZEN_MINIMUM_SUFFICIENT_STATE_1_TARGET_CLASSIFICATION.json": "6b051a88266824c0ce1789498248da48a3adc1f01d8ca1d16ff202830d274b51",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_CC01_BUDGET_REPRESENTATION_RECONCILIATION_1.md": "448fad5e9ee65f21c9e48de40a6422790e3a1b8435f528a6341d91a298f81ce1"
+  },
+  "minimum_graph_closure": [
+    "Start with complete ActionId/status universe; include prerequisite references and nodes required by native validation.",
+    "Seed _global_control goal entries, unsatisfied condition goals, boundary action links, all reached action requirements and current_completion support.",
+    "Seed evaluate_satisfaction proofs for retained roots/slots; close predicate operands, entity/knowledge/authority/producer/mapping/validator references and assertion dependencies.",
+    "Include every REQUIRES relation affecting retained nodes; if declaring ordering assertions preserve exact equality with prerequisite metadata.",
+    "Include decision dependency links and reentry routes reached by resume_eligibility; preserve typed reference closure even on short-circuited semantic paths.",
+    "Keep corresponding raw source pins/provenance; omit unrelated archived graph entities/assertions, descriptive reports and hypothetical future evidence."
+  ],
+  "mode": "STATIC_NATIVE_TRACE_AND_FOCUSED_REGRESSION_NOT_MIGRATION",
+  "new_native_binding": "ExternalGate.resolution_contracts",
+  "nodes": [
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "executable_evidence": "core.project; core._actionability; model.validate_model",
+      "id": "S01",
+      "name": "Complete action universe and admitted action/status structure",
+      "required_state": "63 exact plan ActionIds and current 13 COMPLETED/50 BLOCKED partition; Action objects still required by validate_model/project; future result schemas are not read by held-action actionability",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "executable_evidence": "gates.current_completion; gates.unavailable_support",
+      "id": "S02",
+      "name": "Current holds/completion support and transitive stale-support closure",
+      "required_state": "Current statuses plus necessary source/evidence/qualification support; do not replay all historical attempts to prove holds",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4"
+      ],
+      "executable_evidence": "core.evaluate_satisfaction; core._global_control.walk",
+      "id": "S03",
+      "name": "Goal/root/slot state and typed prerequisite routing",
+      "required_state": "Unsatisfied goal targets, entry/recovery/failure paths, required action/condition edges and satisfied cut points; no invented empty goal set",
+      "source_availability": "AVAILABLE_AS_UNRESOLVED_STATE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4"
+      ],
+      "executable_evidence": "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+      "id": "S04",
+      "name": "Reached proof/predicate/entity/knowledge and evaluation-context closure",
+      "required_state": "Only support reachable from satisfaction, current completion, action requirements inspected by control, decision reentry and native reference validation; native real-source joins unresolved",
+      "source_availability": "AMBIGUOUS"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "core._global_control; model.validate_p05; pinned manifest request_routes",
+      "id": "S05",
+      "name": "Eight exact request/frontier/receipt/reentry correspondences",
+      "required_state": "Pinned request/handoff absence inventory; one budget evidence frontier and seven factual frontiers; typed canonical mapping still required",
+      "source_availability": "AVAILABLE_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "gates.governed_external_unknown; gates._obligation_proof; core._global_control; model.validate_p05; codec.external_provenances/invalidate_sources",
+      "id": "S06",
+      "name": "Budget unresolved requirements, qualified wait contract and empty receipts",
+      "required_state": "Unresolved EvidenceRequirement plus exact current ExternalResolutionContract, matched consumer EVIDENCE_OBLIGATION predicate, gate and context; empty receipt observations/admissions. rule_known remains false where unknown.",
+      "source_availability": "AVAILABLE_AS_EXPECTED_ABSENCE; exact native identity/context/provenance projection remains incomplete"
+    },
+    {
+      "conclusions": [
+        "C3",
+        "C1",
+        "C4"
+      ],
+      "executable_evidence": "core._human; core._actionability; gates.decision_readiness; core.resume_eligibility",
+      "id": "S07",
+      "name": "Active human-action universe, holds/stages and necessary decision links",
+      "required_state": "All human actions held/completed; active ready set is not set of historically complete dossiers; retain stages/routes used by C4 and validation",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C4"
+      ],
+      "executable_evidence": "codec._replay; core.resume_eligibility",
+      "id": "S08",
+      "name": "Admitted canonical baseline/replay envelope and empty new event inventory",
+      "required_state": "Initial/current identical admitted baseline, zero new native events; no historical selection converted to execution; policy/version/scope valid",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "codec._replay provenance pins; codec.load_pinned; source-bound certificate verification",
+      "id": "S09",
+      "name": "Source pins and independently verifiable field/source bindings",
+      "required_state": "Authenticate control premises and universe completeness; exact required source closure contract still incomplete; no need full historical payload database; include canonical external-resolution contract content pin and legacy-to-contract derivation dependencies",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "model.validate_model/validate_p03/validate_p04/validate_p05; core.project",
+      "id": "S10",
+      "name": "Native structural/reference and projection integrity",
+      "required_state": "Least closure including all retained typed references, source provenance, cycles/order and output-reference compatibility; missing mappings cannot be replaced by placeholders",
+      "source_availability": "AMBIGUOUS"
+    }
+  ],
+  "requires_edges": [
+    {
+      "consumer": "S01",
+      "requires": "S02"
+    },
+    {
+      "consumer": "S01",
+      "requires": "S03"
+    },
+    {
+      "consumer": "S03",
+      "requires": "S04"
+    },
+    {
+      "consumer": "S02",
+      "requires": "S04"
+    },
+    {
+      "consumer": "S05",
+      "requires": "S06"
+    },
+    {
+      "consumer": "S07",
+      "requires": "S04"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S01"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S07"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S05"
+    },
+    {
+      "consumer": "S01",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S02",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S03",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S04",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S05",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S06",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S07",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S01",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S03",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S04",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S05",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S07",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S10"
+    }
+  ],
+  "routes": [
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-BUDGET-APPLICABILITY-EVIDENCE"
+      ],
+      "frozen_branch": "WAITING_FOR_EXTERNAL_EVIDENCE",
+      "native_kind": "EXTERNAL_EVIDENCE",
+      "receipt": "RECEIVE-BUDGET-APPLICABILITY-EVIDENCE",
+      "reentry": [
+        "FACT-BUDGET-APPLICABILITY",
+        "REEVAL-BUDGET"
+      ],
+      "remaining": "Exact GateId/EvidenceId/target/context/source projection, receipt/reentry/held-action and goal correspondence; independently pinned resolution contract for each reached unknown EXTERNAL_EVIDENCE requirement",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-BUDGET-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": null
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-REENTRY-S-ANCESTRY"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-ANCESTRY-EVIDENCE",
+      "reentry": [
+        "S-ANCESTRY"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-ANCESTRY-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": null
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-REENTRY-S-APPROVAL"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-APPROVAL-EVIDENCE",
+      "reentry": [
+        "S-APPROVAL"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-APPROVAL-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": null
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-REENTRY-PREP-AUDIT"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-AUDIT-SOURCE-EVIDENCE",
+      "reentry": [
+        "PREP-AUDIT"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-AUDIT-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": null
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-REENTRY-PREP-RUNTIME_HEAD"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-RUNTIME-HEAD-EVIDENCE",
+      "reentry": [
+        "PREP-RUNTIME_HEAD"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-RUNTIME-HEAD-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": null
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-REENTRY-PREP-SUPERVISOR"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-SUPERVISOR-EVIDENCE",
+      "reentry": [
+        "PREP-SUPERVISOR"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-SUPERVISOR-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": null
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "EXT-REENTRY-DEC-EXEC"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-EXEC-POLICY-EVIDENCE",
+      "reentry": [
+        "DEC-EXEC readiness reevaluation"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-EXEC-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": "Readiness reevaluation is not an arbitrary ActionId"
+    },
+    {
+      "evidence_received": false,
+      "frontiers": [
+        "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR"
+      ],
+      "frozen_branch": "FACT_BLOCKED",
+      "native_kind": "EXTERNAL_FACT",
+      "receipt": "RECEIVE-IMPLEMENTATION-SOURCE-EVIDENCE",
+      "reentry": [
+        "INPUT-IMPLEMENTATION"
+      ],
+      "remaining": "Exact native boundary and request/receipt/reentry/goal mapping; preserve factual kind; typed canonical requirement/receipt route and source closure",
+      "representation_capability": true,
+      "request": "E1-EXTERNAL-REQUEST-IMPLEMENTATION-1",
+      "source_sufficiency": "AVAILABLE_AS_EXPECTED_ABSENCE",
+      "source_to_native_qualified": false,
+      "special": "Composite frontier needs explicit canonical correspondence"
+    }
+  ],
+  "schema": "POST-REPAIR-FROZEN-DEPENDENCIES-1",
+  "source_action_edges": [
+    {
+      "dependent": "DEC-VALIDATOR",
+      "prerequisite": "PREP-VALIDATOR"
+    },
+    {
+      "dependent": "DEC-BINDING",
+      "prerequisite": "PREP-BINDING-GRANT"
+    },
+    {
+      "dependent": "DEC-RUNTIME_HEAD",
+      "prerequisite": "PREP-RUNTIME_HEAD"
+    },
+    {
+      "dependent": "DEC-SUPERVISOR",
+      "prerequisite": "PREP-SUPERVISOR"
+    },
+    {
+      "dependent": "DEC-AUDIT",
+      "prerequisite": "PREP-AUDIT"
+    },
+    {
+      "dependent": "DEC-IGNORED",
+      "prerequisite": "SEM-IGNORED"
+    },
+    {
+      "dependent": "DEC-EXEC",
+      "prerequisite": "S-EXEC"
+    },
+    {
+      "dependent": "DEC-INTERFACES",
+      "prerequisite": "SEM-INTERFACES"
+    },
+    {
+      "dependent": "DEC-INTERFACES",
+      "prerequisite": "REEVAL-IMPLEMENTATION"
+    },
+    {
+      "dependent": "DEC-INTERFACES",
+      "prerequisite": "REEVAL-BUDGET"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "SEM-INTERFACES"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "REEVAL-IMPLEMENTATION"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "REEVAL-BUDGET"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "SEM-ELIGIBILITY"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "DEC-IGNORED"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "DEC-EXEC"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "DEC-INTERFACES"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "S-BINDING"
+    },
+    {
+      "dependent": "CONTRACT-T1",
+      "prerequisite": "S-CONTEXT"
+    },
+    {
+      "dependent": "MAP-DISPATCH",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-ANCESTRY",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-ANCESTRY",
+      "prerequisite": "S-ANCESTRY"
+    },
+    {
+      "dependent": "MAP-APPROVAL",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-APPROVAL",
+      "prerequisite": "S-APPROVAL"
+    },
+    {
+      "dependent": "MAP-RELEASE",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-CONTEXT_ID",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-RUNTIME",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-IMPLEMENTATION",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-IMPLEMENTATION",
+      "prerequisite": "REEVAL-IMPLEMENTATION"
+    },
+    {
+      "dependent": "MAP-PAYLOAD",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-RETENTION",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-BUDGET",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-BUDGET",
+      "prerequisite": "REEVAL-BUDGET"
+    },
+    {
+      "dependent": "MAP-LIFECYCLE",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-IGNORED",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-IGNORED",
+      "prerequisite": "DEC-IGNORED"
+    },
+    {
+      "dependent": "MAP-PATHS",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-EXEC_BINS",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-EXEC_BINS",
+      "prerequisite": "S-EXEC"
+    },
+    {
+      "dependent": "MAP-EXEC_BINS",
+      "prerequisite": "DEC-EXEC"
+    },
+    {
+      "dependent": "MAP-ARGV",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-SHELL_NETWORK",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-CONTEXT_PROJECTION",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-CONTEXT_PROJECTION",
+      "prerequisite": "S-CONTEXT"
+    },
+    {
+      "dependent": "MAP-TRANSPORT",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-RUNTIME_HEAD",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-RUNTIME_HEAD",
+      "prerequisite": "DEC-RUNTIME_HEAD"
+    },
+    {
+      "dependent": "MAP-SUPERVISOR",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-SUPERVISOR",
+      "prerequisite": "DEC-SUPERVISOR"
+    },
+    {
+      "dependent": "MAP-AUDIT",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "MAP-AUDIT",
+      "prerequisite": "DEC-AUDIT"
+    },
+    {
+      "dependent": "MAP-AUDIT",
+      "prerequisite": "MAP-IGNORED"
+    },
+    {
+      "dependent": "S-SUCCESSION",
+      "prerequisite": "MAP-SUPERVISOR"
+    },
+    {
+      "dependent": "MAP-SUCCESSION",
+      "prerequisite": "S-SUCCESSION"
+    },
+    {
+      "dependent": "MAP-SUCCESSION",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "DEC-BINDING"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "S-BINDING"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "S-ANCESTRY"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "MAP-DISPATCH"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "MAP-RELEASE"
+    },
+    {
+      "dependent": "BUILD-BINDING",
+      "prerequisite": "MAP-CONTEXT_ID"
+    },
+    {
+      "dependent": "IMPL-CONTEXT",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "IMPL-CONTEXT",
+      "prerequisite": "DEC-INTERFACES"
+    },
+    {
+      "dependent": "IMPL-CONTEXT",
+      "prerequisite": "S-CONTEXT"
+    },
+    {
+      "dependent": "IMPL-GOVERNANCE",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "IMPL-GOVERNANCE",
+      "prerequisite": "DEC-INTERFACES"
+    },
+    {
+      "dependent": "IMPL-TRANSMISSION",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "IMPL-TRANSMISSION",
+      "prerequisite": "DEC-INTERFACES"
+    },
+    {
+      "dependent": "IMPL-TRANSMISSION",
+      "prerequisite": "MAP-PAYLOAD"
+    },
+    {
+      "dependent": "IMPL-TRANSMISSION",
+      "prerequisite": "MAP-RETENTION"
+    },
+    {
+      "dependent": "IMPL-TRANSMISSION",
+      "prerequisite": "MAP-TRANSPORT"
+    },
+    {
+      "dependent": "IMPL-VALIDATOR",
+      "prerequisite": "DEC-VALIDATOR"
+    },
+    {
+      "dependent": "IMPL-VALIDATOR",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "BUILD-EXECUTION_PROFILE",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "BUILD-EXECUTION_PROFILE",
+      "prerequisite": "S-CONTEXT"
+    },
+    {
+      "dependent": "BUILD-EXECUTION_PROFILE",
+      "prerequisite": "IMPL-CONTEXT"
+    },
+    {
+      "dependent": "BUILD-EXECUTION_PROFILE",
+      "prerequisite": "BUILD-BINDING"
+    },
+    {
+      "dependent": "S-ELIGIBILITY",
+      "prerequisite": "BUILD-BINDING"
+    },
+    {
+      "dependent": "S-ELIGIBILITY",
+      "prerequisite": "SEM-ELIGIBILITY"
+    },
+    {
+      "dependent": "MAP-ELIGIBILITY",
+      "prerequisite": "S-ELIGIBILITY"
+    },
+    {
+      "dependent": "MAP-ELIGIBILITY",
+      "prerequisite": "CONTRACT-T1"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-DISPATCH"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-ANCESTRY"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-APPROVAL"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-RELEASE"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-CONTEXT_ID"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-RUNTIME"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-IMPLEMENTATION"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-PAYLOAD"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-RETENTION"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-BUDGET"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-LIFECYCLE"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-IGNORED"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-PATHS"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-EXEC_BINS"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-ARGV"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-SHELL_NETWORK"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-CONTEXT_PROJECTION"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-TRANSPORT"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-RUNTIME_HEAD"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-SUPERVISOR"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-AUDIT"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-SUCCESSION"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "BUILD-BINDING"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "IMPL-CONTEXT"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "IMPL-GOVERNANCE"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "IMPL-TRANSMISSION"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "IMPL-VALIDATOR"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "BUILD-EXECUTION_PROFILE"
+    },
+    {
+      "dependent": "CHECK-READINESS",
+      "prerequisite": "MAP-ELIGIBILITY"
+    },
+    {
+      "dependent": "DEC-BUDGET",
+      "prerequisite": "INPUT-BUDGET"
+    },
+    {
+      "dependent": "REEVAL-BUDGET",
+      "prerequisite": "DEC-BUDGET"
+    },
+    {
+      "dependent": "DEC-IMPLEMENTATION",
+      "prerequisite": "INPUT-IMPLEMENTATION"
+    },
+    {
+      "dependent": "REEVAL-IMPLEMENTATION",
+      "prerequisite": "DEC-IMPLEMENTATION"
+    },
+    {
+      "dependent": "FACT-BUDGET-APPLICABILITY",
+      "prerequisite": "DEC-BUDGET"
+    }
+  ],
+  "source_goal_routes": [
+    {
+      "entry_action": "BUILD-BINDING",
+      "target": "root:binding"
+    },
+    {
+      "entry_action": "MAP-DISPATCH",
+      "target": "root:dispatch"
+    },
+    {
+      "entry_action": "MAP-ANCESTRY",
+      "target": "root:ancestry"
+    },
+    {
+      "entry_action": "MAP-APPROVAL",
+      "target": "root:approval"
+    },
+    {
+      "entry_action": "MAP-RELEASE",
+      "target": "root:release"
+    },
+    {
+      "entry_action": "MAP-CONTEXT_ID",
+      "target": "root:context_id"
+    },
+    {
+      "entry_action": "MAP-RUNTIME",
+      "target": "root:runtime"
+    },
+    {
+      "entry_action": "MAP-IMPLEMENTATION",
+      "target": "root:implementation"
+    },
+    {
+      "entry_action": "MAP-RUNTIME_HEAD",
+      "target": "root:runtime_head"
+    },
+    {
+      "entry_action": "MAP-SUPERVISOR",
+      "target": "root:supervisor"
+    },
+    {
+      "entry_action": "MAP-AUDIT",
+      "target": "root:audit"
+    },
+    {
+      "entry_action": "MAP-PAYLOAD",
+      "target": "root:payload"
+    },
+    {
+      "entry_action": "MAP-RETENTION",
+      "target": "root:retention"
+    },
+    {
+      "entry_action": "MAP-BUDGET",
+      "target": "root:budget"
+    },
+    {
+      "entry_action": "MAP-LIFECYCLE",
+      "target": "root:lifecycle"
+    },
+    {
+      "entry_action": "MAP-IGNORED",
+      "target": "root:ignored"
+    },
+    {
+      "entry_action": "MAP-PATHS",
+      "target": "root:paths"
+    },
+    {
+      "entry_action": "MAP-EXEC_BINS",
+      "target": "root:exec_bins"
+    },
+    {
+      "entry_action": "MAP-ARGV",
+      "target": "root:argv"
+    },
+    {
+      "entry_action": "MAP-SHELL_NETWORK",
+      "target": "root:shell_network"
+    },
+    {
+      "entry_action": "IMPL-CONTEXT",
+      "target": "root:context_hydration"
+    },
+    {
+      "entry_action": "MAP-CONTEXT_PROJECTION",
+      "target": "root:context_projection"
+    },
+    {
+      "entry_action": "BUILD-EXECUTION_PROFILE",
+      "target": "root:execution_profile"
+    },
+    {
+      "entry_action": "MAP-TRANSPORT",
+      "target": "root:transport"
+    },
+    {
+      "entry_action": "IMPL-TRANSMISSION",
+      "target": "root:transmission"
+    },
+    {
+      "entry_action": "IMPL-GOVERNANCE",
+      "target": "root:governance"
+    },
+    {
+      "entry_action": "CONTRACT-T1",
+      "target": "gate:schema"
+    },
+    {
+      "entry_action": "MAP-ELIGIBILITY",
+      "target": "root:eligibility"
+    },
+    {
+      "entry_action": "MAP-SUCCESSION",
+      "target": "root:succession"
+    },
+    {
+      "entry_action": "IMPL-VALIDATOR",
+      "target": "gate:identity_check"
+    },
+    {
+      "entry_action": "IMPL-VALIDATOR",
+      "target": "gate:validator"
+    }
+  ],
+  "source_to_native_qualified_gate_count": 0,
+  "status_partition": {
+    "blocked_actions": [
+      "BUILD-BINDING",
+      "BUILD-EXECUTION_PROFILE",
+      "CHECK-READINESS",
+      "CONTRACT-T1",
+      "DEC-AUDIT",
+      "DEC-EXEC",
+      "DEC-IMPLEMENTATION",
+      "DEC-INTERFACES",
+      "DEC-RUNTIME_HEAD",
+      "DEC-SUPERVISOR",
+      "FACT-BUDGET-APPLICABILITY",
+      "IMPL-CONTEXT",
+      "IMPL-GOVERNANCE",
+      "IMPL-TRANSMISSION",
+      "IMPL-VALIDATOR",
+      "INPUT-IMPLEMENTATION",
+      "MAP-ANCESTRY",
+      "MAP-APPROVAL",
+      "MAP-ARGV",
+      "MAP-AUDIT",
+      "MAP-BUDGET",
+      "MAP-CONTEXT_ID",
+      "MAP-CONTEXT_PROJECTION",
+      "MAP-DISPATCH",
+      "MAP-ELIGIBILITY",
+      "MAP-EXEC_BINS",
+      "MAP-IGNORED",
+      "MAP-IMPLEMENTATION",
+      "MAP-LIFECYCLE",
+      "MAP-PATHS",
+      "MAP-PAYLOAD",
+      "MAP-RELEASE",
+      "MAP-RETENTION",
+      "MAP-RUNTIME",
+      "MAP-RUNTIME_HEAD",
+      "MAP-SHELL_NETWORK",
+      "MAP-SUCCESSION",
+      "MAP-SUPERVISOR",
+      "MAP-TRANSPORT",
+      "PREP-AUDIT",
+      "PREP-RUNTIME_HEAD",
+      "PREP-SUPERVISOR",
+      "REEVAL-BUDGET",
+      "REEVAL-IMPLEMENTATION",
+      "S-ANCESTRY",
+      "S-APPROVAL",
+      "S-ELIGIBILITY",
+      "S-SUCCESSION",
+      "SEM-BUDGET",
+      "SEM-IMPLEMENTATION"
+    ],
+    "completed_actions": [
+      "DEC-BINDING",
+      "DEC-BUDGET",
+      "DEC-IGNORED",
+      "DEC-VALIDATOR",
+      "INPUT-BUDGET",
+      "PREP-BINDING-GRANT",
+      "PREP-VALIDATOR",
+      "S-BINDING",
+      "S-CONTEXT",
+      "S-EXEC",
+      "SEM-ELIGIBILITY",
+      "SEM-IGNORED",
+      "SEM-INTERFACES"
+    ]
+  },
+  "target_classification": {
+    "counts": {
+      "CONTROL_CRITICAL": 13,
+      "CONTROL_SUPPORTING": 11,
+      "NOT_REQUIRED": 4,
+      "OUTSIDE_FROZEN_CONTROL_CONE": 2,
+      "PROVENANCE_ONLY": 5
+    },
+    "schema": "FROZEN-CONTROL-TARGET-CLASSIFICATION-1",
+    "targets": [
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core.project; core._actionability; model.validate_model",
+          "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+        ],
+        "dependency_nodes": [
+          "S01",
+          "S10"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.actions"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core.project; core._actionability; model.validate_model",
+          "gates.current_completion; gates.unavailable_support"
+        ],
+        "dependency_nodes": [
+          "S01",
+          "S02"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.statuses"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core.evaluate_satisfaction; core._global_control.walk",
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+        ],
+        "dependency_nodes": [
+          "S03",
+          "S04"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.roots"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core.evaluate_satisfaction; core._global_control.walk",
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+        ],
+        "dependency_nodes": [
+          "S03",
+          "S04"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.slots"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+        ],
+        "dependency_nodes": [
+          "S04"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.knowledge"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "gates.current_completion; gates.unavailable_support",
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+          "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+        ],
+        "dependency_nodes": [
+          "S02",
+          "S04",
+          "S10"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.assertions"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+          "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+        ],
+        "dependency_nodes": [
+          "S04",
+          "S10"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.entities"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+          "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+        ],
+        "dependency_nodes": [
+          "S04",
+          "S10"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.predicates"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+        ],
+        "dependency_nodes": [
+          "S04"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.context"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core._human; core._actionability; gates.decision_readiness; core.resume_eligibility",
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S07",
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.decisions"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+        ],
+        "dependency_nodes": [
+          "S06"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.evidence_requirements"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core._global_control; model.validate_p05; pinned manifest request_routes",
+          "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+        ],
+        "dependency_nodes": [
+          "S05",
+          "S06"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.external_gates"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+        ],
+        "dependency_nodes": [
+          "S06"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "Snapshot.receipt_admissions"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+        ],
+        "dependency_nodes": [
+          "S06"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "Snapshot.receipt_observations"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core._global_control; model.validate_p05; pinned manifest request_routes"
+        ],
+        "dependency_nodes": [
+          "S05"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.boundaries"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "core.evaluate_satisfaction; core._global_control.walk"
+        ],
+        "dependency_nodes": [
+          "S03"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "Snapshot.goals"
+      },
+      {
+        "classification": "NOT_REQUIRED",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "Snapshot.budget_matrices"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "PersistenceBundle.initial"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "PersistenceBundle.events"
+      },
+      {
+        "classification": "CONTROL_CRITICAL",
+        "dependency_evidence": [
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "PersistenceBundle.current"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "codec._replay provenance pins; codec.load_pinned; source-bound certificate verification"
+        ],
+        "dependency_nodes": [
+          "S09"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "PersistenceBundle.sources"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "PersistenceBundle.policy"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "PersistenceBundle.policy_version"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "codec._replay; core.resume_eligibility"
+        ],
+        "dependency_nodes": [
+          "S08"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "PersistenceBundle.scope"
+      },
+      {
+        "classification": "PROVENANCE_ONLY",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": "E_PROVENANCE_ONLY",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "historical_attempts"
+      },
+      {
+        "classification": "CONTROL_SUPPORTING",
+        "dependency_evidence": [
+          "core._global_control; model.validate_p05; pinned manifest request_routes",
+          "codec._replay provenance pins; codec.load_pinned; source-bound certificate verification"
+        ],
+        "dependency_nodes": [
+          "S05",
+          "S09"
+        ],
+        "extent": "Reachable operational/reference subset only; not entire inventory",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "expected_external_absence_records"
+      },
+      {
+        "classification": "PROVENANCE_ONLY",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "MigrationManifest"
+      },
+      {
+        "classification": "PROVENANCE_ONLY",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": "E_PROVENANCE_ONLY",
+        "prior_status": "CONTRACT_INCOMPLETE",
+        "target": "DerivationIndex"
+      },
+      {
+        "classification": "OUTSIDE_FROZEN_CONTROL_CONE",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "Snapshot.information"
+      },
+      {
+        "classification": "OUTSIDE_FROZEN_CONTROL_CONE",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "Action.cost/cost_unit"
+      },
+      {
+        "classification": "PROVENANCE_ONLY",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "descriptive titles/report narrative/source annotation"
+      },
+      {
+        "classification": "PROVENANCE_ONLY",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "CONTRACT_COMPLETE",
+        "target": "global-control/actionable/resume summary labels"
+      },
+      {
+        "classification": "NOT_REQUIRED",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "NOT_REQUIRED",
+        "target": "positive external evidence absent at suspension"
+      },
+      {
+        "classification": "NOT_REQUIRED",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "NOT_REQUIRED",
+        "target": "unreferenced archived experiment payloads"
+      },
+      {
+        "classification": "NOT_REQUIRED",
+        "dependency_evidence": [],
+        "dependency_nodes": [],
+        "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+        "incomplete_classification": null,
+        "prior_status": "NOT_REQUIRED",
+        "target": "complete raw source bodies embedded inside snapshot"
+      }
+    ]
+  }
+}

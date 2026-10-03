@@ -1,0 +1,79 @@
+{
+  "schema": "PLANNER-E1-IMPORT-1",
+  "manifest": {
+    "$type": "ArtifactPin",
+    "path": "docs/experiments/E1/E1_RESUME_MANIFEST_1.json",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+    },
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    },
+    "pointer": ""
+  },
+  "normalization": {
+    "$type": "ArtifactPin",
+    "path": "adapter/tests/fixtures/planner_v0_1/M_P05.json",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "79252daf79857becea4637bb4f0495ce7133c95dd52e890d8e9e49f92afe35f6"
+    },
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    },
+    "pointer": ""
+  },
+  "checkpoint": {
+    "$type": "ArtifactPin",
+    "path": "docs/experiments/E1/E1_SUSPENSION_CHECKPOINT_1.json",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+    },
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    },
+    "pointer": ""
+  },
+  "policy": {
+    "$type": "ArtifactPin",
+    "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+    },
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    },
+    "pointer": ""
+  },
+  "given": "Frozen manifest, all pinned sources and reviewed full action/root/slot projection.",
+  "when": "Import in a fresh process; restore only into isolated replay storage.",
+  "then": "Preserve full graph records/provenance and ledger; recompute MIXED_WAIT and no next action.",
+  "must_not": "Do not resume E1, trust expected oracle fields or obtain external evidence."
+}

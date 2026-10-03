@@ -1,0 +1,48 @@
+{
+  "schema": "E2-FINISH-contract-reconciliation-v1",
+  "classification": "P01_ACTION_MODEL_DEFECT",
+  "contradiction": {
+    "action_id": "E2-FINISH",
+    "source_fixture_prerequisites": ["ACTION_COMPLETED(E2-REENTER)"],
+    "materialized_prerequisites": [],
+    "qualified_initial_status": "ACTION_ELIGIBLE",
+    "p01_expectation": "definition/whole-model acceptance",
+    "p02_expectation": "E2-FINISH blocked until reentry output exists"
+  },
+  "reentry_output": {
+    "type": "KnowledgeRecord",
+    "identity_domain": "KnowledgeId",
+    "identity": "E2-K-REENTER",
+    "producer": "E2-REENTER",
+    "consumer": "E2-FINISH",
+    "created": "after permitted E2-REENTER result transition",
+    "persistence": "accepted knowledge in canonical snapshot/ledger",
+    "provenance": "E2-REENTER source, scope, lineage, currentness and producer"
+  },
+  "as_is_pre_reentry_selection_trace": [
+    {"phase":"initial","actionable":["E2-CHECK","E2-COLLECT","E2-FINISH"],"selected":"E2-CHECK","control":"RUNNABLE"},
+    {"phase":"hypothetical E2-CHECK complete","actionable":["E2-COLLECT","E2-FINISH"],"selected":"E2-FINISH","control":"RUNNABLE"},
+    {"phase":"hypothetical E2-CHECK and E2-COLLECT complete","actionable":["E2-FINISH"],"selected":"E2-FINISH","control":"RUNNABLE"}
+  ],
+  "minimum_correction": {
+    "class": "ACTION_PREREQUISITE_CORRECTION",
+    "relation": "E2-FINISH REQUIRES ACTION_COMPLETED(E2-REENTER)",
+    "apply_now": false,
+    "runtime_repair": false
+  },
+  "affected_qualification_cases": [
+    "E2-A01","E2-A02","E2-A03","E2-A04","E2-A05","E2-A06","E2-A07","E2-A08","E2-A09","E2-A10","E2-A11","E2-A12","E2-A13","E2-A14","E2-A15","E2-A16",
+    "E2-N01..E2-N16","E2-D01","E2-END","E2-REVIEW"
+  ],
+  "prior_qualification_invalidated": ["whole-model admission claim for the materialized snapshot","actionability/selection claims","downstream phase/persistence aggregate claims"],
+  "prior_qualification_preserved": ["individual O01 schema/type admissions","source-role identity checks","native codec implementation qualification","E2-T01 capability"],
+  "snapshot_status": "INVALID_IF_CORRECTION_APPLIED",
+  "E2_P02_RETRY_ALLOWED": false,
+  "E2_P03_READY": false,
+  "N_REAL_SATISFIED": false,
+  "CANONICAL_E2_QUALIFIED": false,
+  "IMPLEMENTATION_MODIFIED": false,
+  "EXPERIMENT_ACTIONS_EXECUTED": 0,
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "PRODUCTION_EFFECT": false
+}

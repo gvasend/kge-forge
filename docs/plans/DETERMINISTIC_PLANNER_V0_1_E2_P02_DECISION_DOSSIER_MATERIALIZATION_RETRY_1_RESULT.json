@@ -1,0 +1,47 @@
+{
+  "schema": "E2-P02-decision-dossier-materialization-retry-v1",
+  "work_package": "E2-P02-DECISION-DOSSIER-MATERIALIZATION",
+  "attempt": "RETRY_1",
+  "result": "BLOCKED",
+  "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+  "reached_state": "43a238851a34b2e58f4a49ec870fa258fdcb8d3a88fda50a305df2b570281e79",
+  "replay": {"check":"PASS","collect":"PASS","prepare_selection":"PASS","prepare_result":"NOT_EXECUTED"},
+  "dossier_binding": {
+    "candidate": "COMPLETE",
+    "canonical_action_binding": "BLOCKED",
+    "producer": "E2-PREPARE",
+    "decision_subject": "E2-DECIDE",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "content_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb"
+  },
+  "fact_proofs": {
+    "required": 2,
+    "independent_oracle": "PASS",
+    "admitted": "2/2",
+    "proofs": ["E2-KP-CHECK", "E2-KP-COLLECT"]
+  },
+  "deterministic_validations": {
+    "required": 6,
+    "independent_oracle": "PASS",
+    "pass": "6/6",
+    "ids": ["QUESTION_SCOPE","SOURCE_PROVENANCE","CONCRETE_ALTERNATIVES","AUTHORITY_BOUNDARY","DECISION_FACTS_COMPLETE","INDEPENDENT_VALIDATION"]
+  },
+  "native_admission": {
+    "result": "NOT_REACHED",
+    "blocking_conditions": ["E2-PREPARE prepared_dossier binding absent","six typed validation predicate instances absent"]
+  },
+  "post_dossier": {"decision_ready": [],"actionable": [],"selected": null,"control": "NOT_REACHED"},
+  "negative_regressions": "NOT_RUN_NATIVE_ADMISSION_UNREACHABLE",
+  "rehomed_requirements_preserved": true,
+  "other_p02_blockers": ["NATIVE_VALIDATION_PREDICATE_INSTANCES","PREPARE_DOSSIER_BINDING"],
+  "dossier_materialization": "BLOCKED",
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

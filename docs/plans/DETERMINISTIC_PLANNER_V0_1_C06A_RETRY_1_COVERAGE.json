@@ -1,0 +1,88 @@
+{
+  "C07_RETRY_ALLOWED": false,
+  "broader_C06A_complete": false,
+  "coverage": [
+    {
+      "destination": "BudgetProofMatrix.parameters; pinned parameter assertion",
+      "source": "oracle /qualification_parameters",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "BudgetEnvelope and complete record equality",
+      "source": "oracle /positive_submission/envelope",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "eight BudgetProofRow typed obligation/content IDs plus validated source fact/rule payload",
+      "source": "oracle /positive_submission/rows",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "raw source pins, per-record assertions, retained matrix payload",
+      "source": "oracle /positive_submission/records",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "source type/authority/owning-policy checks and required assertion",
+      "source": "oracle /positive_submission/source_authentication_id",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "admission rejection plus native SourceInvalidation/STALE dependency propagation",
+      "source": "oracle /positive_submission/invalidated_ids",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "existing restore_accepted_knowledge predicate with BLOCKED source/outcome",
+      "source": "frozen plan FACT-BUDGET-APPLICABILITY knowledge_requirements",
+      "status": "ENFORCED"
+    },
+    {
+      "destination": "full E1 operational mapping, decision/authority/history/slot/frontier coverage",
+      "source": "broader reconciliation O01-O17",
+      "status": "NOT_COMPLETED_BY_THIS_BUDGET_PROFILE"
+    }
+  ],
+  "files": {
+    "adapter/planner/budget.py": "3655ac5bc1f292ba3d0ccd237c3bb56a18f21cbd623622046ab424124f0c41d3",
+    "adapter/planner/codec.py": "0acdaa2f629ff9253fd773fa5d666e5d0684ee4de08e2bd24ae2fa0663c205c4",
+    "adapter/planner/model.py": "5ba479c22f94cfb2a4d876b04c6b03005eb79f54bda8263b10d68dc020968174",
+    "adapter/planner/replay.py": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e",
+    "adapter/tests/test_planner_c06a.py": "40d9f13fb001ec0163aba9a63c482ce2a7929dc147f605910a41d34cc5352a65",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BUDGET_PROOF_MATRIX_ORACLE_1.json": "c14ab43ceb74c17ff7fa9a1a8664e7be6205cab9cb9eefe6fb9188c073a8e159",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BUDGET_PROOF_MATRIX_ORACLE_1.md": "485320519c5030098391ea6c9f9f6967bafcdb05d539c5de632100bcf08a2a10"
+  },
+  "production_effect": false,
+  "qualification": "NOT_PERFORMED",
+  "results": {
+    "C07_RETRY_ALLOWED": false,
+    "budget_profile": "PASS",
+    "integrated_tests": 156,
+    "qualification": "CORRECTION_REQUIRED",
+    "result": "PARTIAL"
+  },
+  "schema": "C06A-BUDGET-COVERAGE-1",
+  "scope": "PARTIAL_SYNTHETIC_BUDGET_QUALIFICATION",
+  "test_evidence": {
+    "c06a_budget_canonical": {
+      "path": "/tmp/c06a_budget_canonical.log",
+      "sha256": "490269df6a190a6fcbaf7fd450d85ffecba774fcd1de19a2018b74a646b12ab0"
+    },
+    "c06a_final_invariants": {
+      "path": "/tmp/c06a_final_invariants.log",
+      "sha256": "bd8c7a438c56b83b10ac1831301e30c07f24edb58ffaedaca4e6eea00a5781be"
+    },
+    "c06a_red": {
+      "path": "/tmp/c06a_red.log",
+      "sha256": "a652c1686c6d68a59af266ad2766322d190f392c1d5f15dc5840e5d9b1d04865"
+    },
+    "c06a_refined": {
+      "path": "/tmp/c06a_refined.log",
+      "sha256": "d66e0c4903255a81dc0c858cb7f8825d434c9a25654eb84d8b6f1604edb13e79"
+    },
+    "c06a_settled_full": {
+      "path": "/tmp/c06a_settled_full.log",
+      "sha256": "17c6b680982c7f16273830cdf9adb6c69ef4dba5dd7bb662956428c59d21e6a8"
+    }
+  }
+}

@@ -1,0 +1,434 @@
+{
+  "CANONICAL_E2_QUALIFIED": false,
+  "CLI": "admit-evidence",
+  "E2_P01_RETRY_ALLOWED": false,
+  "E2_P01_executed": false,
+  "E2_P02_READY": false,
+  "E2_actions_executed": 0,
+  "N_REAL_SATISFIED": false,
+  "PLANNER_V0_1_REQUALIFICATION_READY": false,
+  "case_test_mapping": {
+    "T01": [
+      "test_negative_fields_never_commit"
+    ],
+    "T02": [
+      "test_negative_fields_never_commit"
+    ],
+    "T03": [
+      "test_negative_fields_never_commit",
+      "test_payload_pin_and_deleted_source"
+    ],
+    "T04": [
+      "test_negative_fields_never_commit"
+    ],
+    "T05": [
+      "test_negative_fields_never_commit",
+      "test_replay_receipt_not_live_event_and_stale_attestor"
+    ],
+    "T06": [
+      "test_idempotence_conflict_and_parent",
+      "test_cold_live_receipt_cli_and_replay_once"
+    ],
+    "T07": [
+      "test_idempotence_conflict_and_parent"
+    ],
+    "T08": [
+      "test_replay_receipt_not_live_event_and_stale_attestor"
+    ],
+    "T09": [
+      "test_conflicting_claims_are_not_overwritten"
+    ],
+    "T10": [
+      "test_head_audit_and_claim_conflict"
+    ],
+    "T11": [
+      "test_payload_pin_and_deleted_source",
+      "test_negative_fields_never_commit"
+    ],
+    "T12": [
+      "test_route_stale_before_admission",
+      "test_ingress_invalidated_before_receipt"
+    ],
+    "T13": [
+      "test_negative_fields_never_commit",
+      "test_no_standalone_or_backdated_admission"
+    ],
+    "T14": [
+      "test_unknown_and_negative_claim_never_positive"
+    ],
+    "T15": [
+      "test_invalidation_preserves_history_withdraws_support"
+    ],
+    "T16": [
+      "test_negative_fields_never_commit"
+    ],
+    "T17": [
+      "test_unknown_and_negative_claim_never_positive"
+    ],
+    "T18": [
+      "test_process_crash_each_persistence_boundary",
+      "test_crash_before_head_leaves_parent"
+    ],
+    "T19": [
+      "test_two_process_writers_one_semantic_receipt",
+      "test_two_distinct_gates_serialize_against_new_parent"
+    ],
+    "T20": [
+      "test_payload_pin_and_deleted_source"
+    ]
+  },
+  "constructor_tests_passed": 5,
+  "contract_pins": {
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.json": "0fd6c943a786cfdfd230f73d5574788a0b6ff831b359d093c959d5e6c0ce58e2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.md": "e5e919ee5c435cfd7d0020d9f0a9f8e2eeba14c0b49ca8fe5ba8816855e56f39"
+  },
+  "distinct_tests_passed": 185,
+  "durable_api": "codec.admit_external_evidence / codec.commit_event",
+  "event_type": "EvidenceSourceAdmission",
+  "existing_planner_regressions_passed": 160,
+  "fixed_code_pins": {
+    "adapter/planner/__init__.py": "25c834058e64b6606d1689177ed1a875ee421275d97d5d3a98d7378ac5a4ab64",
+    "adapter/planner/__main__.py": "fa9d923348f5c27c54a8fb4dd14a16c0d18ca2cbd4409c1d07a30833bec3ed36",
+    "adapter/planner/budget.py": "3655ac5bc1f292ba3d0ccd237c3bb56a18f21cbd623622046ab424124f0c41d3",
+    "adapter/planner/codec.py": "a1bb8fdd48a9e31c41fe7ba5c94b283054d1ace8863a5ec79dec40f920de9e64",
+    "adapter/planner/core.py": "c3648c46145b3e89a90aa92add9f106b8d52a3513bca94964da795930fc0f054",
+    "adapter/planner/evidence.py": "bbb57e48fa74ff12b0cf9b65a80232686fe7d289bb857848b3eda3fad3876164",
+    "adapter/planner/gates.py": "dd2a60651694a69e52bee978aaab92407e76d8197af6dce48d1f2a20ee47da4a",
+    "adapter/planner/model.py": "64c2c04df1320ec0370810a6598b9dae7d7e087f40b0685fcbb2a4e0435a7f96",
+    "adapter/planner/replay.py": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e",
+    "adapter/planner/selector.py": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f",
+    "adapter/tests/test_planner_c06.py": "e4686620dffd7e87ba5f7f1f0fb4453f467e382fc9e309bec52156832f362737",
+    "adapter/tests/test_planner_c06a.py": "40d9f13fb001ec0163aba9a63c482ce2a7929dc147f605910a41d34cc5352a65",
+    "adapter/tests/test_planner_core.py": "5073c86f82b578eb3e610c06fa7e0887eb842124bc9bca622d28aa1f6b7f164f",
+    "adapter/tests/test_planner_e1_replay.py": "b8486f5bb91a75d2455f884e9055ebbcd3637a076bae4fe848d3d7fe0f9e7e33",
+    "adapter/tests/test_planner_evidence_admission.py": "025062fe185f2d09e3afc8c4d1fc91231645abebabb9522fe037f3b42e0d4511",
+    "adapter/tests/test_planner_external_unknown.py": "06a031ebc69b14088131bee0ac819f7da3aa6d6bd445b9c6cefe3c2b184eaede",
+    "adapter/tests/test_planner_invariants.py": "4951a9d2bf6671710072dc1b2dbc02883f3145c15252e585301742e17ce0457f",
+    "adapter/tests/test_planner_resume.py": "1cb8c21cbea075fd2bb6b74894a27b1f274d0f8c0aed4f34b4bc5d948da6bbf6"
+  },
+  "fixture_sha256": "e8c9ee26b5bb316e8d1f32a2e932a59515a065ec83388a3717964e8be03b5a3f",
+  "implementation_pins": {
+    "adapter/planner/__main__.py": "fa9d923348f5c27c54a8fb4dd14a16c0d18ca2cbd4409c1d07a30833bec3ed36",
+    "adapter/planner/codec.py": "a1bb8fdd48a9e31c41fe7ba5c94b283054d1ace8863a5ec79dec40f920de9e64",
+    "adapter/planner/core.py": "c3648c46145b3e89a90aa92add9f106b8d52a3513bca94964da795930fc0f054",
+    "adapter/planner/evidence.py": "bbb57e48fa74ff12b0cf9b65a80232686fe7d289bb857848b3eda3fad3876164",
+    "adapter/planner/model.py": "64c2c04df1320ec0370810a6598b9dae7d7e087f40b0685fcbb2a4e0435a7f96",
+    "adapter/tests/test_planner_evidence_admission.py": "025062fe185f2d09e3afc8c4d1fc91231645abebabb9522fe037f3b42e0d4511"
+  },
+  "new_transaction_tests_passed": 20,
+  "other_P01_blockers": [
+    "E2-G02",
+    "E2-G03",
+    "E2-G04",
+    "E2-G05",
+    "E2-G06",
+    "E2-G07",
+    "E2-G08"
+  ],
+  "planner_tests_passed": 180,
+  "post_restore_transaction_supported": true,
+  "pre_implementation": {
+    "admission_api_present": false,
+    "cold_restore": "PASS",
+    "control": "EXTERNAL_WAIT",
+    "event_registered": false,
+    "initial_bundle_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "719f680fe6f6c04093ac1acf91447453fe184d73c6bc74690a140326b7207628"
+    },
+    "method": "Fresh process restore then resolve native admission API/event; both unsupported. No fallback mutation or Action execution.",
+    "result": "REPRODUCED"
+  },
+  "preservation": {
+    "E1_file_set_unchanged": true,
+    "E1_files_checked": 10911,
+    "E1_files_modified": 0,
+    "E1_inventory_sha256": "1cf25145f69a2fb133c12f3b15cd1089351e4a9cac8624d4b6e970f2b4b3a044",
+    "all_other_baseline_files_unchanged": true,
+    "deferred_scope_violations": 0,
+    "fixed_version_tested_code_unchanged": true,
+    "git_diff_check": "PASS",
+    "preexisting_files_modified": [
+      "adapter/planner/codec.py",
+      "adapter/planner/__main__.py",
+      "adapter/planner/core.py",
+      "adapter/planner/model.py"
+    ],
+    "production_effect": false,
+    "real_E1_evidence_created": false
+  },
+  "result": "PASS",
+  "runs": {
+    "C06": {
+      "command_log": "final_c06.log",
+      "output": "F03_OBSERVATION {\"actionable\": [], \"control\": \"PLAN_DEFECT\", \"invalidated_source\": \"docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md\", \"same_snapshot_identity\": false, \"selected\": null, \"sha256\": \"8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59\"}\n----------------------------------------------------------------------\nRan 8 tests in 350.346s\n\nOK\n",
+      "seconds": 350.346,
+      "sha256": "19fe33e232f20c81d1279dbd8678a19a8cd6af2ca0f720e1d1f445b3be3c6691",
+      "status": "PASS",
+      "tests": 8
+    },
+    "C06A": {
+      "command_log": "final_c06a.log",
+      "output": "----------------------------------------------------------------------\nRan 6 tests in 26.034s\n\nOK\n",
+      "seconds": 26.034,
+      "sha256": "7a15679215b8f16f292bc40f1e0f86772fc135429f46ef8863d6e5434f3c7782",
+      "status": "PASS",
+      "tests": 6
+    },
+    "constructors": {
+      "command_log": "constructor.log",
+      "output": "----------------------------------------------------------------------\nRan 5 tests in 0.038s\n\nOK\n",
+      "seconds": 0.038,
+      "sha256": "c8cdcfd96f206f18fc5ca598299c7fa2a9e239d8cbcdf2c970b66cfb9b10f105",
+      "status": "PASS",
+      "tests": 5
+    },
+    "focused": {
+      "command_log": "focused_complete.log",
+      "output": "----------------------------------------------------------------------\nRan 20 tests in 80.086s\n\nOK\n",
+      "seconds": 80.086,
+      "sha256": "8674aff3263df1dc1948b5efc7e2b841c84518619e75210edc06b40caf0cab99",
+      "status": "PASS",
+      "tests": 20
+    },
+    "remaining_Planner": {
+      "command_log": "final_remaining.log",
+      "output": "----------------------------------------------------------------------\nRan 166 tests in 795.454s\n\nOK\n",
+      "seconds": 795.454,
+      "sha256": "d8cc3f0d744d83fc7a7f2d92aa2f2623bfc8c1a712e0f7e1b7dc3f4b6a219279",
+      "status": "PASS",
+      "tests": 166
+    }
+  },
+  "schema": "E2-T01-VALIDATION-1",
+  "source_support": "ReceiptAdmission.dependencies, additive default empty; old bytes omit it",
+  "superseded_mixed_version_run": {
+    "command_log": "regression_final.log",
+    "disposition": "Not acceptance evidence: four new subprocess checks saw a newer source-class guard than their in-memory fixture. Replaced by fixed-version grouped run.",
+    "output": "F03_OBSERVATION {\"actionable\": [], \"control\": \"PLAN_DEFECT\", \"invalidated_source\": \"docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md\", \"same_snapshot_identity\": false, \"selected\": null, \"sha256\": \"8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59\"}\n/usr/lib/python3.8/subprocess.py:946: ResourceWarning: subprocess 32 is still running\n  _warn(\"subprocess %s is still running\" % self.pid,\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n/usr/lib/python3.8/unittest/case.py:704: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='UTF-8'>\n  outcome.errors.clear()\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n/usr/lib/python3.8/unittest/case.py:704: ResourceWarning: unclosed file <_io.TextIOWrapper name=7 encoding='UTF-8'>\n  outcome.errors.clear()\nResourceWarning: Enable tracemalloc to get the object allocation traceback\n======================================================================\nFAIL: test_hash_order_process_determinism (test_planner_evidence_admission.AdditionalAdmissionTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 214, in test_hash_order_process_determinism\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 764, in admit_external_evidence\n    admitted = _extend_private(current,request)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 713, in _extend_private\n    after = apply_event(bundle.current,supplied).snapshot\n  File \"/home/gvasend/app/kge-forge/adapter/planner/core.py\", line 434, in apply_event\n    return apply(snapshot, supplied)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/evidence.py\", line 97, in apply\n    raise m.PlannerError('EXPECTED_SOURCE_CLASS')\nadapter.planner.model.PlannerError: EXPECTED_SOURCE_CLASS\n\n\n======================================================================\nFAIL: test_process_crash_each_persistence_boundary (test_planner_evidence_admission.AdditionalAdmissionTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 259, in test_process_crash_each_persistence_boundary\n    (self.root/'payload').write_bytes(self.raw)\nAssertionError: 1 != 0 : Traceback (most recent call last):\n  File \"<string>\", line 14, in <module>\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 764, in admit_external_evidence\n    admitted = _extend_private(current,request)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 713, in _extend_private\n    after = apply_event(bundle.current,supplied).snapshot\n  File \"/home/gvasend/app/kge-forge/adapter/planner/core.py\", line 434, in apply_event\n    return apply(snapshot, supplied)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/evidence.py\", line 97, in apply\n    raise m.PlannerError('EXPECTED_SOURCE_CLASS')\nadapter.planner.model.PlannerError: EXPECTED_SOURCE_CLASS\n\n\n======================================================================\nFAIL: test_two_process_writers_one_semantic_receipt (test_planner_evidence_admission.AdditionalAdmissionTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 232, in test_two_process_writers_one_semantic_receipt\n    r=subprocess.run([sys.executable,'-c',program,str(path),str(self.root),json.dumps(c._wire(pin)),str(self.root/('seed-'+seed))],\nAssertionError: 2 != 0 : EXPECTED_SOURCE_CLASS\n\n\n======================================================================\nFAIL: test_cold_live_receipt_cli_and_replay_once (test_planner_evidence_admission.AdmissionTests)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 70, in test_cold_live_receipt_cli_and_replay_once\nAssertionError: 2 != 0 : EXPECTED_SOURCE_CLASS\n\n\n----------------------------------------------------------------------\nRan 176 tests in 1113.342s\n\nFAILED (failures=4)\n",
+    "seconds": 1113.342,
+    "sha256": "48323cc7bae275bcd8cd954e608910f03631022790b05aa3e4c5974cedc21321",
+    "status": "PENDING_OR_FAILED",
+    "tests": 176
+  },
+  "test_inventory": {
+    "test_invocation_constructor": [
+      "adapter.tests.test_invocation_constructor.TemplateArgvTests.test_explicit_empty_array_preserves_existing_representation",
+      "adapter.tests.test_invocation_constructor.TemplateArgvTests.test_json_roundtrip_repairs_exact_mismatch_at_construction",
+      "adapter.tests.test_invocation_constructor.TemplateArgvTests.test_malformed_values_are_rejected_without_coercion",
+      "adapter.tests.test_invocation_constructor.TemplateArgvTests.test_non_equivalent_allowlists_fail_closed",
+      "adapter.tests.test_invocation_constructor.TemplateArgvTests.test_preserves_order_duplicates_strings_and_detaches_input"
+    ],
+    "test_planner_c06": [
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_blocked_producer_and_wrong_missing_binding_variants",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_contract_admission_and_alpha_renamed_supported_instance",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_hash_seed_and_reversed_key_cold_recomputation",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_represented_action_source_invalidation_still_blocks",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_required_nonpass_knowledge_source_invalidation_blocks_selection",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_stale_roundtrip_never_revalidates_from_bytes_or_phase",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_unrelated_invalidation_does_not_blanket_block",
+      "adapter.tests.test_planner_c06.C06AcceptedKnowledgeTests.test_valid_receipt_setup_and_empty_pass_guard"
+    ],
+    "test_planner_c06a": [
+      "adapter.tests.test_planner_c06a.BudgetRestorationTests.test_cli_profile_and_source_bytes_cannot_be_repaired",
+      "adapter.tests.test_planner_c06a.BudgetRestorationTests.test_each_source_invalidation_after_reload",
+      "adapter.tests.test_planner_c06a.BudgetRestorationTests.test_negative_oracle_semantics_and_import",
+      "adapter.tests.test_planner_c06a.BudgetRestorationTests.test_persisted_events_cold_process_and_permutations",
+      "adapter.tests.test_planner_c06a.BudgetRestorationTests.test_positive_full_restoration",
+      "adapter.tests.test_planner_c06a.BudgetRestorationTests.test_restored_contract_cannot_lose_members"
+    ],
+    "test_planner_core": [
+      "adapter.tests.test_planner_core.C04TypedControlTests.test_distinct_states_all_goal_orders_and_canonical_reload",
+      "adapter.tests.test_planner_core.C04TypedControlTests.test_process_hash_seeds_and_reversed_object_keys",
+      "adapter.tests.test_planner_core.C04TypedControlTests.test_set_valued_predicate_and_reference_orders",
+      "adapter.tests.test_planner_core.C04TypedControlTests.test_t05_equal_canonical_state_requires_equal_complete_computation",
+      "adapter.tests.test_planner_core.C04TypedControlTests.test_witnesses_preserve_domains_and_paths_under_all_orders",
+      "adapter.tests.test_planner_core.P01Tests.test_direct_root_or_slot_setters_rejected",
+      "adapter.tests.test_planner_core.P01Tests.test_duplicate_or_dangling_references_rejected",
+      "adapter.tests.test_planner_core.P01Tests.test_effect_priority_never_grants_actionability",
+      "adapter.tests.test_planner_core.P01Tests.test_held_action_not_retried",
+      "adapter.tests.test_planner_core.P01Tests.test_import_does_not_load_effecting_adapter",
+      "adapter.tests.test_planner_core.P01Tests.test_invalid_pass_missing_or_changed_knowledge",
+      "adapter.tests.test_planner_core.P01Tests.test_json_order_and_round_trip_are_not_planner_inputs",
+      "adapter.tests.test_planner_core.P01Tests.test_pinned_source_and_location_cannot_be_replaced",
+      "adapter.tests.test_planner_core.P01Tests.test_prerequisites_not_structural_membership",
+      "adapter.tests.test_planner_core.P01Tests.test_reversal_and_repeated_replay",
+      "adapter.tests.test_planner_core.P01Tests.test_selector_fallback_and_empty_boundary",
+      "adapter.tests.test_planner_core.P01Tests.test_types_and_immutability",
+      "adapter.tests.test_planner_core.P01Tests.test_unknown_schema_state_operation_and_fields",
+      "adapter.tests.test_planner_core.P01Tests.test_unselected_or_completed_action_cannot_be_applied",
+      "adapter.tests.test_planner_core.P01Tests.test_unsupported_result_states_fail_closed",
+      "adapter.tests.test_planner_core.P01Tests.test_vertical_slice_knowledge_not_condition_satisfaction",
+      "adapter.tests.test_planner_core.P03CoreTests.test_c_dispatcher_corrected_before_runtime_probe",
+      "adapter.tests.test_planner_core.P03CoreTests.test_d_49_orders_100_replays_and_json_keys",
+      "adapter.tests.test_planner_core.P03CoreTests.test_p03_fixture_source_pins_fail_closed",
+      "adapter.tests.test_planner_core.P03CoreTests.test_selector_complete_partial_metrics_and_static_mapping"
+    ],
+    "test_planner_e1_replay": [
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_accepted_input_reenters_only_its_held_decision",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_decision_dependency_cycle_fails_closed",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_e_inventory_pass_keeps_domains_unchanged",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_each_case_roundtrip_append_only_replay",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_f_authority_required_routes_without_ready_decision",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_fixture_projection_and_source_tampering_rejected",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_g_budget_ready_keeps_machine_priority",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_h_partial_knowledge_survives_blocked_result",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_human_review_is_not_effect_permission_and_input_cannot_effect",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_i_batch_retains_independent_semantics_no_automatic_decision",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_i_synthetic_interference_and_dependencies_not_merged",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_machine_priority_even_when_coverage_prefers_human",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_missing_semantic_input_blocks_acquisition",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_nested_dossier_permutation_accepts_same_semantic_event",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_out_of_order_reentry_and_lifecycle_shortcuts_rejected",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_permutation_key_reversal_and_repeated_replay",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_recorded_decision_import_and_explicit_reentry_are_separate_events",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_semantic_authority_requirement_needs_independent_readiness",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_unknown_enums_fields_duplicates_and_prestate_fail_closed",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x05_all_nine_checks_required_not_majority_vote",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x05_missing_facts_cannot_be_deferred_into_choices",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x07_pass_cannot_bypass_incomplete_input_contract",
+      "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x10_stale_dossier_and_indirect_checks_block_readiness",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_all_seven_global_controls_and_local_defect_precedence",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_append_only_wait_lifecycle_persistence",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_control_roundtrip_permutation_and_no_oracle_dependency",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_j_authority_reference_does_not_prove_applicability",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_k_request_wait_received_validated_are_separate",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_l_independent_work_runs_while_budget_waits",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_m_full_readiness_population_and_exact_frontier",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_negative_partial_unrelated_and_malformed_receipts",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_negative_receipt_canonical_reload_preserves_failed_proposition",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_receipt_and_reentry_ledger_roundtrip_with_pinned_synthetic_trust",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_receipt_trust_is_not_self_hash_or_shared_digest_type",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_stale_attestor_propagates_to_independent_root_predicates",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_stale_receipt_invalidates_obligations_and_reentry",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_x01_current_scope_lineage_generation_and_expiry_are_independent",
+      "adapter.tests.test_planner_e1_replay.P05ReplayTests.test_x04_every_proposition_required_and_complete_positive_control",
+      "adapter.tests.test_planner_e1_replay.P06IntegrationTests.test_a_actual_candidate_consumer_rejects_before_review",
+      "adapter.tests.test_planner_e1_replay.P06IntegrationTests.test_b_valid_construction_authority_does_not_supply_template",
+      "adapter.tests.test_planner_e1_replay.P06IntegrationTests.test_full_import_retains_all_records_and_never_uses_report_oracles",
+      "adapter.tests.test_planner_e1_replay.P06IntegrationTests.test_n_full_import_isolated_receipts_and_cold_reentry"
+    ],
+    "test_planner_evidence_admission": [
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_conflicting_claims_are_not_overwritten",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_hash_order_process_determinism",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_head_audit_and_claim_conflict",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_ingress_invalidated_before_receipt",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_pinned_source_shaped_fixture",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_process_crash_each_persistence_boundary",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_replay_receipt_not_live_event_and_stale_attestor",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_source_changed_during_commit_has_no_head",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_two_distinct_gates_serialize_against_new_parent",
+      "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_two_process_writers_one_semantic_receipt",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_cold_live_receipt_cli_and_replay_once",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_crash_before_head_leaves_parent",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_idempotence_conflict_and_parent",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_invalidation_preserves_history_withdraws_support",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_negative_fields_never_commit",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_no_standalone_or_backdated_admission",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_payload_pin_and_deleted_source",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_route_stale_before_admission",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_unknown_and_negative_claim_never_positive",
+      "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_validation_and_reentry_separate"
+    ],
+    "test_planner_external_unknown": [
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_branch_correspondence_and_invalidation",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_cold_reload_hash_seeds_orderings_and_repeated_control",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_control_matrix_independent_branch_cross_product",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_every_bound_dimension_rejects_substitution",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_governed_external_unknown",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_mixed_runnable_human_and_internal_acquisition",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_receipt_and_positive_reentry_unchanged",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_two_gate_branch_and_contract_ordering",
+      "adapter.tests.test_planner_external_unknown.ExternalUnknownTests.test_unbound_missing_and_incomplete_routes"
+    ],
+    "test_planner_invariants": [
+      "adapter.tests.test_planner_invariants.C01ReferenceContractTests.test_adversarial_dangling_entity_rejected_at_decode",
+      "adapter.tests.test_planner_invariants.C01ReferenceContractTests.test_c01_permutation_key_order_and_reload",
+      "adapter.tests.test_planner_invariants.C01ReferenceContractTests.test_declared_future_output_and_explicit_unavailable_never_prove",
+      "adapter.tests.test_planner_invariants.C01ReferenceContractTests.test_missing_targets_wrong_fields_domains_and_cycles",
+      "adapter.tests.test_planner_invariants.C01ReferenceContractTests.test_stale_invalid_targets_and_condition_cycles",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_completed_history_is_not_current_output_qualification",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_hash_seed_and_key_order_replay",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_legitimate_any_alternative_and_empty_output_completion",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_ordered_evidence_is_unusable_even_before_propagation",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_stale_goal_cannot_be_terminal_success_or_hide_independent_work",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_stale_ordering_blocks_decision_before_recompute",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_t01_ordering_invalidation_must_not_satisfy_child",
+      "adapter.tests.test_planner_invariants.C02StaleOrderingTests.test_transitive_diamond_slot_and_mixed_support_requalification",
+      "adapter.tests.test_planner_invariants.C03ResumeProofTests.test_t02_stale_attestor_cannot_authorize_resume",
+      "adapter.tests.test_planner_invariants.P02InvalidationTests.test_invalidation_is_permutation_invariant",
+      "adapter.tests.test_planner_invariants.P02InvalidationTests.test_silently_current_derived_state_cannot_be_loaded",
+      "adapter.tests.test_planner_invariants.P02InvalidationTests.test_stale_inventory_cannot_be_used_for_pass",
+      "adapter.tests.test_planner_invariants.P02InvalidationTests.test_unknown_assertion_references_fail_closed",
+      "adapter.tests.test_planner_invariants.P02InvalidationTests.test_wrong_identity_domain_cannot_trigger_invalidation",
+      "adapter.tests.test_planner_invariants.P02InvalidationTests.test_x10_transitive_invalidation_and_independent_positive_control",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_coverage_counts_direct_roots_transitive_slots_actual_unlocks",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_coverage_is_single_pass_not_descendant_count",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_new_proof_state_stales_and_roundtrips",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_p02_wire_contract_omits_p03_defaults",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_p03_state_all_metadata_roundtrip_and_permutation",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_positive_independent_root_and_slot_proof_not_pass_shortcut",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_scope_generation_and_effect_permissions_are_pinned_not_ambient",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_slots_require_all_value_bound_contracts_even_under_any",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_unknown_and_recursive_predicates_do_not_self_prove",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_unknown_operation_and_human_decision_are_not_auto_actionable",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x02_correspondence_not_ordering_and_true_cycles_fail_closed",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x03_exact_permission_scope_target_and_replay",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x05_missing_fact_cannot_be_replaced_by_authority_choice",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x06_missing_producer_is_not_inferred",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x08_future_produced_evidence_does_not_invent_ordering",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x08_placeholders_do_not_satisfy_evidence",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x09_effecting_validator_never_runs_or_grants_authority",
+      "adapter.tests.test_planner_invariants.P03InvariantTests.test_x11_hash_syntax_cannot_substitute_identity_types",
+      "adapter.tests.test_planner_invariants.P06ImporterInvariantTests.test_structured_import_fail_closed_and_oracles_are_not_facts"
+    ],
+    "test_planner_resume": [
+      "adapter.tests.test_planner_resume.C01ReferenceAdmissionTests.test_c01_hash_seed_invariance_in_fresh_process",
+      "adapter.tests.test_planner_resume.C01ReferenceAdmissionTests.test_matching_hash_native_restore_cannot_admit_dangling_predicate",
+      "adapter.tests.test_planner_resume.C01ReferenceAdmissionTests.test_structured_import_rejects_hostile_reference_before_use",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_missing_event_binding_contract_tampering_and_key_permutation",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_native_proof_positive_stale_attestor_and_cold_cli",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_phase_only_policy_changes_and_original_holds",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_receipt_negative_variants_and_conflicting_proof",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_shared_gate_blocks_but_independent_wait_does_not",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_shared_gate_needs_its_own_accepted_reentry_not_phase_text",
+      "adapter.tests.test_planner_resume.C03ResumeEligibilityTests.test_stale_ordering_after_accepted_reentry_remains_persisted_hold",
+      "adapter.tests.test_planner_resume.C04ControlPersistenceTests.test_cold_restore_and_cli_preserve_complete_typed_control",
+      "adapter.tests.test_planner_resume.C05PolicyBindingTests.test_construction_authority_cannot_be_selection_policy",
+      "adapter.tests.test_planner_resume.C05PolicyBindingTests.test_implementation_contract_drift_is_not_silently_admitted",
+      "adapter.tests.test_planner_resume.C05PolicyBindingTests.test_policy_contract_mutations_fail_before_selection_and_restore",
+      "adapter.tests.test_planner_resume.C05PolicyBindingTests.test_supported_versions_preserve_binding_and_extension_selection",
+      "adapter.tests.test_planner_resume.C05PolicyBindingTests.test_version_domain_projection_and_stale_policy",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_e1_manifest_raw_and_embedded_pins",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_hash_domains_and_ordered_arrays",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_ledger_blob_and_bundle_tampering",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_missing_provenance_and_policy_rejected",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_n_subset_bundle_roundtrip_ledger_and_p01_result",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_n_subset_snapshot_roundtrip_and_permutation",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_no_e1_writes_or_symlink_redirect",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_pointer_escaping_and_rejections",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_repeat_bundle_bytes_and_set_order",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_sequence_parent_and_outcome_mismatch",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_source_change_refuses_old_restore_token",
+      "adapter.tests.test_planner_resume.P02PersistenceTests.test_strict_json_and_unknown_typed_state",
+      "adapter.tests.test_planner_resume.P06ColdResumeTests.test_cli_validate_plan_replay_apply_and_exit_contract",
+      "adapter.tests.test_planner_resume.P06ColdResumeTests.test_n_cold_process_manifest_then_native_bundle_identical",
+      "adapter.tests.test_planner_resume.P06ColdResumeTests.test_n_import_permutation_canonical_identity_and_pins"
+    ]
+  },
+  "typed_ingress_contract": "EvidenceIngressContract",
+  "unchanged_runtime_full_request_counterexample": {
+    "control": "EXTERNAL_WAIT",
+    "fixture_sha256": "e8c9ee26b5bb316e8d1f32a2e932a59515a065ec83388a3717964e8be03b5a3f",
+    "method": "Complete qualification request against exact hash-verified pre-change runtime in a fresh process after canonical restore",
+    "reason": "unknown typed tag",
+    "restore": "PASS",
+    "result": "REPRODUCED"
+  },
+  "work_package": "E2-T01"
+}

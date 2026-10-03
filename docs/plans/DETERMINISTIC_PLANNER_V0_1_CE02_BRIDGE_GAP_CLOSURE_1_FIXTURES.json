@@ -1,0 +1,699 @@
+{
+  "context_note": "Historical source bytes are read-only fixtures. Currentness is an independent qualification premise, not live E1 evidence.",
+  "loader_contract": "Load bytes only from explicit source_locator; validate identity before projection. Locator does not determine semantic role. No repository discovery.",
+  "mode": "SYNTHETIC_QUALIFICATION_ONLY_WITH_PINNED_DOCUMENTARY_INPUTS",
+  "negative_cases": [
+    {
+      "expected_reason": "INCOMPLETE_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "O08-MISSING_SOURCE"
+    },
+    {
+      "expected_reason": "AMBIGUOUS_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "O08-AMBIGUOUS_JOIN"
+    },
+    {
+      "expected_reason": "SOURCE_DOMAIN",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "O08-WRONG_DOMAIN"
+    },
+    {
+      "expected_reason": "SOURCE_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "O08-SUBSTITUTED_BYTES"
+    },
+    {
+      "expected_reason": "SOURCE_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "O08-SUBSTITUTED_IDENTITY"
+    },
+    {
+      "expected_reason": "CURRENT_SUPPORT_REQUIRED",
+      "expected_stage": "CURRENTNESS",
+      "id": "O08-STALE_SOURCE"
+    },
+    {
+      "expected_reason": "INCOMPLETE_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "O08-WRONG_ROLE"
+    },
+    {
+      "expected_reason": "GRAPH_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "O08-WRONG_CONTEXT_SOURCE"
+    },
+    {
+      "expected_reason": "GRAPH_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "O08-WRONG_CURRENT_CONTEXT"
+    },
+    {
+      "expected_reason": "INCOMPLETE_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "InvocationAttemptId-MISSING_SOURCE"
+    },
+    {
+      "expected_reason": "AMBIGUOUS_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "InvocationAttemptId-AMBIGUOUS_JOIN"
+    },
+    {
+      "expected_reason": "SOURCE_DOMAIN",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "InvocationAttemptId-WRONG_DOMAIN"
+    },
+    {
+      "expected_reason": "SOURCE_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "InvocationAttemptId-SUBSTITUTED_BYTES"
+    },
+    {
+      "expected_reason": "SOURCE_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "InvocationAttemptId-SUBSTITUTED_IDENTITY"
+    },
+    {
+      "expected_reason": "CURRENT_SUPPORT_REQUIRED",
+      "expected_stage": "CURRENTNESS",
+      "id": "InvocationAttemptId-STALE_SOURCE"
+    },
+    {
+      "expected_reason": "INCOMPLETE_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "InvocationAttemptId-WRONG_ROLE"
+    },
+    {
+      "expected_reason": "GRAPH_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "InvocationAttemptId-WRONG_CONTEXT_SOURCE"
+    },
+    {
+      "expected_reason": "GRAPH_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "InvocationAttemptId-WRONG_CURRENT_CONTEXT"
+    },
+    {
+      "expected_reason": "INCOMPLETE_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "profile_sha256-MISSING_SOURCE"
+    },
+    {
+      "expected_reason": "AMBIGUOUS_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "profile_sha256-AMBIGUOUS_JOIN"
+    },
+    {
+      "expected_reason": "SOURCE_DOMAIN",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "profile_sha256-WRONG_DOMAIN"
+    },
+    {
+      "expected_reason": "SOURCE_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "profile_sha256-SUBSTITUTED_BYTES"
+    },
+    {
+      "expected_reason": "SOURCE_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "profile_sha256-SUBSTITUTED_IDENTITY"
+    },
+    {
+      "expected_reason": "CURRENT_SUPPORT_REQUIRED",
+      "expected_stage": "CURRENTNESS",
+      "id": "profile_sha256-STALE_SOURCE"
+    },
+    {
+      "expected_reason": "INCOMPLETE_JOIN",
+      "expected_stage": "RECOGNITION",
+      "id": "profile_sha256-WRONG_ROLE"
+    },
+    {
+      "expected_reason": "GRAPH_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "profile_sha256-WRONG_CONTEXT_SOURCE"
+    },
+    {
+      "expected_reason": "GRAPH_IDENTITY",
+      "expected_stage": "SOURCE_VALIDATION",
+      "id": "profile_sha256-WRONG_CURRENT_CONTEXT"
+    }
+  ],
+  "schema": "BRIDGE-GAP-PROOF-FIXTURES-1",
+  "source_bases": {
+    "InvocationAttemptId": {
+      "context_sources": {
+        "graph": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json"
+        },
+        "plan": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+        }
+      },
+      "profile": {
+        "candidate_prefix": "InvocationAttempt-sha256:",
+        "envelope": {
+          "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+          "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+          "scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "lineage": {
+          "allocation": "R13_NAMESPACE",
+          "predecessor": "R12_HISTORY"
+        },
+        "mapping": {
+          "governing_result": "acceptance",
+          "id": "O09-MAP-InvocationAttemptId-1",
+          "selector": "/identity",
+          "source": "candidate",
+          "target": "slot:authenticated_inputs.InvocationAttemptId",
+          "transform": "IDENTITY_STRING"
+        },
+        "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+        "predicate": "ADMIT_SLOT_PROOF_InvocationAttemptId_1",
+        "prerequisites": {
+          "accepted_mapping_record": "acceptance",
+          "resolution_scope": "Candidate identity only, no issuance/use",
+          "root_dependencies": [],
+          "source_identity_verified": "REQUIRED"
+        },
+        "proof_type": "ACCEPTED_BASELINE_SLOT_COMPLETION_1",
+        "provenance": {
+          "graph_identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "graph_slot_pointer": "/entities/174",
+          "method": "O09_PINNED_SOURCE_AND_ACCEPTED_MAPPING_1",
+          "sources": {
+            "acceptance": {
+              "identity": {
+                "domain": "CONTENT_IDENTITY",
+                "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+              },
+              "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+              "selector": "## 2. Bounded inspection and identity checks / ### Current invocation candidate; ## 3. Acceptance criteria"
+            },
+            "candidate": {
+              "identity": {
+                "domain": "CONTENT_IDENTITY",
+                "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+              },
+              "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+              "selector": "/identity + body excluding identity/canonical_byte_length"
+            }
+          }
+        },
+        "required_result_excerpts": [
+          "| Exact InvocationAttemptId | `PASS` | Current candidate identity and canonical body length independently recompute. |",
+          "WP-01 overall is `BLOCKED`, not PASS."
+        ],
+        "resolution_scope": "Candidate identity only, no issuance/use",
+        "schema": "O09-BASELINE-PROFILE-1",
+        "slot": "slot:authenticated_inputs.InvocationAttemptId",
+        "snapshot": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+        },
+        "supports": {
+          "acceptance": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+            "selector": "## 2. Bounded inspection and identity checks / ### Current invocation candidate; ## 3. Acceptance criteria"
+          },
+          "candidate": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+            },
+            "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+            "selector": "/identity + body excluding identity/canonical_byte_length"
+          }
+        },
+        "value": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+        "value_domain": "INSTANCE_IDENTITY"
+      },
+      "records": [
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+          },
+          "role": "acceptance",
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md"
+        },
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+          },
+          "role": "candidate",
+          "source_locator": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json"
+        }
+      ],
+      "route": "InvocationAttemptId",
+      "validity": {
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "snapshot": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+        },
+        "sources": {
+          "acceptance": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          },
+          "candidate": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          }
+        }
+      }
+    },
+    "O08": {
+      "context_sources": {
+        "graph": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json"
+        },
+        "plan": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+        }
+      },
+      "profile": {
+        "authority_identity": {
+          "domain": "AUTHORITY_IDENTITY",
+          "namespace": "E1-ArchitectDecisionAuthority-sha256",
+          "sha256": "ddd8e36587e2780f640b7babb0e44951b4f5510955822af1db8a00aa74fdd629"
+        },
+        "authority_record": {
+          "api": "validate_for_issuance(candidate, current_state)",
+          "authority_id": "E1-ArchitectDecisionAuthority-sha256:ddd8e36587e2780f640b7babb0e44951b4f5510955822af1db8a00aa74fdd629",
+          "authority_not_granted": "No Template-1/Candidate-3 construction or release, WorkAuthorization acceptance/issuance/use, authority consumption, lifecycle/ownership/audit/host/provider/model effects, unrelated repairs, or expansion of existing policy. Preparation grants nothing. A validator PASS does not authorize acceptance or issuance of WorkAuthorization. No context/governance/transmission repair, budget/identity decision or ignored-key policy is implicitly approved.",
+          "authorized_operation": "Bounded shared-validator implementation and qualification only, preserving all dossier tests and effect prohibitions.",
+          "candidate3_authority_consumed": false,
+          "canonical_identity_rule": "SHA-256 of sorted-key compact UTF-8 JSON excluding authority_id only; full body otherwise included.",
+          "decision": "APPROVED_OPTION_1",
+          "implementation_performed": false,
+          "issuance_basis": "E1 ARCHITECT DECISION \u2014 TEMPLATE-1 DECISION BATCH 1; three independent explicit approvals",
+          "issuer": "Architect (explicit user instruction in this conversation)",
+          "preconditions": [
+            "CONTRACT-T1"
+          ],
+          "production_effect": "CONTROL_PLANE_AUTHORITY_OR_CONTRACT_ISSUANCE_ONLY",
+          "record_type": "DEC-VALIDATOR",
+          "runtime_effects_authorized": false,
+          "schema": "E1-ARCHITECT-DECISION-AUTHORITY-1",
+          "scope": "adapter/workauth_lifecycle.py::consume_and_issue pre-effect stage; adapter/workauth_issuance.py::validate; adapter/invocation_constructor.py canonical checks; directly associated isolated adapter/tests qualification and only helpers necessary for this seam.",
+          "sharing_requirement": "Same authoritative private pre-effect validation logic used by consume_and_issue(); preserve exact scope, T1 identity checks, all \u00a74 qualification and atomic freshness obligations.",
+          "source_artifacts": [
+            {
+              "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md",
+              "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+            },
+            {
+              "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+              "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+            }
+          ],
+          "status": "ISSUED",
+          "validation_prohibited_effects": [
+            "accept",
+            "issue",
+            "consume",
+            "activate",
+            "own",
+            "transmit",
+            "execute",
+            "audit write",
+            "repository effects",
+            "host/provider/model effects"
+          ],
+          "validator_pass_grants_authority": false
+        },
+        "context": {
+          "evaluation": "PINNED_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "selection_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          }
+        },
+        "decision_type": "E1-ARCHITECT-DECISION-AUTHORITY-1/DEC-VALIDATOR",
+        "gate": "gate:validator_authority",
+        "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+        "predicate": "ADMIT_VALIDATOR_AUTHORITY_GATE_1",
+        "preparation_type": "ACCEPTED_PREP_VALIDATOR_DOSSIER_1",
+        "proof_type": "ISSUED_BOUNDED_VALIDATOR_GRANT_PROOF",
+        "required_dossier_excerpts": [
+          "**DECISION_ID**: DEC-VALIDATOR",
+          "with CONTRACT-T1 prerequisite retained.",
+          "No production publication permission or automatic runtime migration."
+        ],
+        "required_preparation_excerpts": [
+          "ACTION_RESULT = PASS for bounded implementation/test grant preparation only.",
+          "T1 content-body identity verification must precede issuance identity comparison",
+          "Differential, malformed-input, zero-effect, shared-helper invocation, mutable-state race and active-import qualification are mandatory",
+          "Preparation does not satisfy gate:validator_authority"
+        ],
+        "required_propagation_excerpt": "its preparation plus issued authenticated record now satisfy that gate.",
+        "schema": "O08-ADMISSION-PROFILE-1",
+        "scope": "adapter/workauth_lifecycle.py::consume_and_issue pre-effect stage; adapter/workauth_issuance.py::validate; adapter/invocation_constructor.py canonical checks; directly associated isolated adapter/tests qualification and only helpers necessary for this seam.",
+        "source_lineage": [
+          {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md",
+            "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+          },
+          {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+            "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+          }
+        ],
+        "supports": {
+          "authority": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json",
+            "selector": "/"
+          },
+          "dossier": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md",
+            "selector": "## DEC-VALIDATOR"
+          },
+          "preparation": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+            "selector": "## Proposed DEC-VALIDATOR dossier \u2014 no grant issued; ## Required future qualification (\u00a74); ## Accepted knowledge and provenance"
+          },
+          "propagation": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1_ISSUANCE_RESULT.md",
+            "selector": "Mechanical propagation paragraph"
+          }
+        }
+      },
+      "records": [
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87"
+          },
+          "role": "authority",
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json"
+        },
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+          },
+          "role": "dossier",
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md"
+        },
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+          },
+          "role": "preparation",
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md"
+        },
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5"
+          },
+          "role": "propagation",
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1_ISSUANCE_RESULT.md"
+        }
+      ],
+      "route": "O08",
+      "validity": {
+        "context": {
+          "evaluation": "PINNED_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "selection_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          }
+        },
+        "sources": {
+          "authority": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          },
+          "dossier": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          },
+          "preparation": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          },
+          "propagation": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          }
+        }
+      }
+    },
+    "profile_sha256": {
+      "context_sources": {
+        "graph": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json"
+        },
+        "plan": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+        }
+      },
+      "profile": {
+        "candidate_prefix": "CurrentProfileRootCandidate-sha256:",
+        "envelope": {
+          "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+          "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+          "scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "lineage": {
+          "lineage": "R4-final CURRENT UNIQUE"
+        },
+        "mapping": {
+          "governing_result": "acceptance",
+          "id": "O09-MAP-profile_sha256-1",
+          "selector": "/identity",
+          "source": "candidate",
+          "target": "slot:authenticated_inputs.profile_sha256",
+          "transform": "VERIFIED_CONTENT_IDENTITY_SHA256_COMPONENT"
+        },
+        "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+        "predicate": "ADMIT_SLOT_PROOF_profile_sha256_1",
+        "prerequisites": {
+          "accepted_mapping_record": "acceptance",
+          "resolution_scope": "Released profile content digest, not authority ID",
+          "root_dependencies": [],
+          "source_identity_verified": "REQUIRED"
+        },
+        "proof_type": "ACCEPTED_BASELINE_SLOT_COMPLETION_1",
+        "provenance": {
+          "graph_identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "graph_slot_pointer": "/entities/215",
+          "method": "O09_PINNED_SOURCE_AND_ACCEPTED_MAPPING_1",
+          "sources": {
+            "acceptance": {
+              "identity": {
+                "domain": "CONTENT_IDENTITY",
+                "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+              },
+              "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md",
+              "selector": "## Accepted mapping"
+            },
+            "candidate": {
+              "identity": {
+                "domain": "CONTENT_IDENTITY",
+                "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+              },
+              "path": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json",
+              "selector": "/identity + body excluding identity/canonical_byte_length"
+            },
+            "release": {
+              "identity": {
+                "domain": "CONTENT_IDENTITY",
+                "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+              },
+              "path": "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md",
+              "selector": "## Issued authority / sole JSON block /candidate_profile_identity and /authority_id"
+            }
+          }
+        },
+        "release_authority": "ReleasedProfileAuthority-sha256:ec39636dc469f50ab460844d68fef31129035ea1a556e98e7a4b2951f1faa407",
+        "required_result_excerpts": [
+          "For `authenticated_inputs.profile_sha256`, the consumer's profile reference denotes the exact released profile content, not an authority-record identity or a host projection identity.",
+          "Only `authenticated_inputs.profile_sha256` is directly resolved."
+        ],
+        "resolution_scope": "Released profile content digest, not authority ID",
+        "schema": "O09-BASELINE-PROFILE-1",
+        "slot": "slot:authenticated_inputs.profile_sha256",
+        "snapshot": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+        },
+        "supports": {
+          "acceptance": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md",
+            "selector": "## Accepted mapping"
+          },
+          "candidate": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+            },
+            "path": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json",
+            "selector": "/identity + body excluding identity/canonical_byte_length"
+          },
+          "release": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+            },
+            "path": "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md",
+            "selector": "## Issued authority / sole JSON block /candidate_profile_identity and /authority_id"
+          }
+        },
+        "value": "83b8cbc0549c64d21eaccaffc1fa45b49be368a878ccecdf9572d476477dfcd6",
+        "value_domain": "CONTENT_IDENTITY"
+      },
+      "records": [
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+          },
+          "role": "acceptance",
+          "source_locator": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md"
+        },
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+          },
+          "role": "candidate",
+          "source_locator": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json"
+        },
+        {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+          },
+          "role": "release",
+          "source_locator": "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md"
+        }
+      ],
+      "route": "profile_sha256",
+      "validity": {
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "snapshot": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+        },
+        "sources": {
+          "acceptance": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          },
+          "candidate": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          },
+          "release": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+            },
+            "state": "CURRENT_AT_PINNED_SNAPSHOT"
+          }
+        }
+      }
+    }
+  }
+}

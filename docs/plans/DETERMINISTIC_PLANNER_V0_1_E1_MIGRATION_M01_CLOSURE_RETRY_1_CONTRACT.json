@@ -1,0 +1,1353 @@
+{
+  "absence_contract": {
+    "carrier": "MigrationManifest/derivation metadata; not an added native Snapshot field",
+    "derivation": "Reuse exact BR-C1 absence record. Join manifest_selector and handoff_selectors under verified pins; require request/receipt/reentry/subject correspondence, unique request, evidence_received=false, checkpoint resume condition. Preserve exact unknown producer roles. Sort by request_id; do not reorder causal history. Reject stale pins, missing request, mismatched proposition or route. No positive evidence generated.",
+    "invalidation": "Change in manifest/handoff/checkpoint support invalidates current absence assertion; history retained. Reload rechecks pins and relationships.",
+    "native_handoff": "Metadata qualification is not ExternalGate admission; typed requirement/action/held-action mappings remain required.",
+    "required_fields": [
+      "dependencies",
+      "handoff_ids",
+      "provenance",
+      "receipt_action",
+      "reentry_actions",
+      "request_id",
+      "requirements",
+      "state",
+      "evidence_received",
+      "frozen_branch",
+      "source_route",
+      "source_handoffs"
+    ],
+    "sources": {
+      "docs/experiments/E1/E1_EXTERNAL_HANDOFF_PACKAGE_1.json": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332",
+      "docs/experiments/E1/E1_RESUME_MANIFEST_1.json": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac",
+      "docs/experiments/E1/E1_SUSPENSION_CHECKPOINT_1.json": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+    }
+  },
+  "absences": [
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "WAITING_FOR_EXTERNAL_EVIDENCE",
+      "handoff_ids": [
+        "HANDOFF-BUDGET"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/0"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/0"
+      },
+      "receipt_action": "RECEIVE-BUDGET-APPLICABILITY-EVIDENCE",
+      "reentry_actions": [
+        "FACT-BUDGET-APPLICABILITY",
+        "REEVAL-BUDGET"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-BUDGET-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+          "exact_missing_propositions": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+          "expected_owner": "Owning authority/catalog, lineage/runtime/profile/current-state and governing phase-rule owners; concrete qualified endpoints UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+          "id": "HANDOFF-BUDGET",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "BUILD-BINDING",
+            "BUILD-EXECUTION_PROFILE",
+            "CHECK-READINESS",
+            "CONTRACT-T1",
+            "DEC-INTERFACES",
+            "IMPL-CONTEXT",
+            "IMPL-GOVERNANCE",
+            "IMPL-TRANSMISSION",
+            "IMPL-VALIDATOR",
+            "MAP-ANCESTRY",
+            "MAP-APPROVAL",
+            "MAP-ARGV",
+            "MAP-AUDIT",
+            "MAP-BUDGET",
+            "MAP-CONTEXT_ID",
+            "MAP-CONTEXT_PROJECTION",
+            "MAP-DISPATCH",
+            "MAP-ELIGIBILITY",
+            "MAP-EXEC_BINS",
+            "MAP-IGNORED",
+            "MAP-IMPLEMENTATION",
+            "MAP-LIFECYCLE",
+            "MAP-PATHS",
+            "MAP-PAYLOAD",
+            "MAP-RELEASE",
+            "MAP-RETENTION",
+            "MAP-RUNTIME",
+            "MAP-RUNTIME_HEAD",
+            "MAP-SHELL_NETWORK",
+            "MAP-SUCCESSION",
+            "MAP-SUPERVISOR",
+            "MAP-TRANSPORT",
+            "REEVAL-BUDGET",
+            "S-ELIGIBILITY",
+            "S-SUCCESSION"
+          ],
+          "blocked_roots": [
+            "root:budget"
+          ],
+          "exact_missing_propositions": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+          "expected_owner": "Owning authority/catalog, lineage/runtime/profile/current-state and governing phase-rule owners; concrete qualified endpoints UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+          "handoff_type": "EXTERNAL_EVIDENCE_REQUEST",
+          "id": "HANDOFF-BUDGET",
+          "normative_evidence_contract": {
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "raw_sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+          },
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_FACT_BUDGET_APPLICABILITY_1_RESULT.md",
+            "sha256": "6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d"
+          },
+          "receipt_action": "RECEIVE-BUDGET-APPLICABILITY-EVIDENCE",
+          "reentry_actions": [
+            "FACT-BUDGET-APPLICABILITY",
+            "REEVAL-BUDGET"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-BUDGET"
+        ],
+        "receipt_action": "RECEIVE-BUDGET-APPLICABILITY-EVIDENCE",
+        "reentry_actions": [
+          "FACT-BUDGET-APPLICABILITY",
+          "REEVAL-BUDGET"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-BUDGET-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-ANCESTRY"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/1"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/1"
+      },
+      "receipt_action": "RECEIVE-ANCESTRY-EVIDENCE",
+      "reentry_actions": [
+        "S-ANCESTRY"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-ANCESTRY-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+          "exact_missing_propositions": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+          "expected_owner": "Authoritative invocation allocator/history/session-turn owner; concrete source not established.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-S-ANCESTRY",
+          "id": "HANDOFF-ANCESTRY",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "BUILD-BINDING",
+            "BUILD-EXECUTION_PROFILE",
+            "CHECK-READINESS",
+            "MAP-ANCESTRY",
+            "MAP-ELIGIBILITY",
+            "S-ELIGIBILITY"
+          ],
+          "blocked_roots": [
+            "root:ancestry"
+          ],
+          "exact_missing_propositions": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+          "expected_owner": "Authoritative invocation allocator/history/session-turn owner; concrete source not established.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-S-ANCESTRY",
+          "handoff_type": "EXTERNAL_EVIDENCE_REQUEST",
+          "id": "HANDOFF-ANCESTRY",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_ANCESTRY_1_RESULT.md",
+            "sha256": "09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f"
+          },
+          "receipt_action": "RECEIVE-ANCESTRY-EVIDENCE",
+          "reentry_actions": [
+            "S-ANCESTRY"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-ANCESTRY"
+        ],
+        "receipt_action": "RECEIVE-ANCESTRY-EVIDENCE",
+        "reentry_actions": [
+          "S-ANCESTRY"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-ANCESTRY-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-APPROVAL"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/2"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/2"
+      },
+      "receipt_action": "RECEIVE-APPROVAL-EVIDENCE",
+      "reentry_actions": [
+        "S-APPROVAL"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-APPROVAL-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+          "exact_missing_propositions": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+          "expected_owner": "Owning specific-approval issuer/domain; concrete applicable record not established.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-S-APPROVAL",
+          "id": "HANDOFF-APPROVAL",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "CHECK-READINESS",
+            "MAP-APPROVAL"
+          ],
+          "blocked_roots": [
+            "root:approval"
+          ],
+          "exact_missing_propositions": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+          "expected_owner": "Owning specific-approval issuer/domain; concrete applicable record not established.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-S-APPROVAL",
+          "handoff_type": "EXTERNAL_EVIDENCE_REQUEST",
+          "id": "HANDOFF-APPROVAL",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_APPROVAL_1_RESULT.md",
+            "sha256": "4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850"
+          },
+          "receipt_action": "RECEIVE-APPROVAL-EVIDENCE",
+          "reentry_actions": [
+            "S-APPROVAL"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-APPROVAL"
+        ],
+        "receipt_action": "RECEIVE-APPROVAL-EVIDENCE",
+        "reentry_actions": [
+          "S-APPROVAL"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-APPROVAL-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-AUDIT"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/3"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/3"
+      },
+      "receipt_action": "RECEIVE-AUDIT-SOURCE-EVIDENCE",
+      "reentry_actions": [
+        "PREP-AUDIT"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-AUDIT-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+          "exact_missing_propositions": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+          "expected_owner": "Audit namespace/store owner; exact competent producer and target UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-AUDIT",
+          "id": "HANDOFF-AUDIT",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "CHECK-READINESS",
+            "DEC-AUDIT",
+            "MAP-AUDIT"
+          ],
+          "blocked_roots": [
+            "root:audit"
+          ],
+          "exact_missing_propositions": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+          "expected_owner": "Audit namespace/store owner; exact competent producer and target UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-AUDIT",
+          "handoff_type": "EXTERNAL_SOURCE_IDENTIFICATION",
+          "id": "HANDOFF-AUDIT",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_AUDIT_1_RESULT.md",
+            "sha256": "48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1"
+          },
+          "receipt_action": "RECEIVE-AUDIT-SOURCE-EVIDENCE",
+          "reentry_actions": [
+            "PREP-AUDIT"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-AUDIT"
+        ],
+        "receipt_action": "RECEIVE-AUDIT-SOURCE-EVIDENCE",
+        "reentry_actions": [
+          "PREP-AUDIT"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-AUDIT-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-RUNTIME-HEAD"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/4"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/4"
+      },
+      "receipt_action": "RECEIVE-RUNTIME-HEAD-EVIDENCE",
+      "reentry_actions": [
+        "PREP-RUNTIME_HEAD"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-RUNTIME-HEAD-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+          "exact_missing_propositions": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+          "expected_owner": "Runtime-head selection/release authority and owning catalog publisher; concrete current selector UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-RUNTIME_HEAD",
+          "id": "HANDOFF-RUNTIME-HEAD",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "CHECK-READINESS",
+            "DEC-RUNTIME_HEAD",
+            "MAP-RUNTIME_HEAD"
+          ],
+          "blocked_roots": [
+            "root:runtime_head"
+          ],
+          "exact_missing_propositions": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+          "expected_owner": "Runtime-head selection/release authority and owning catalog publisher; concrete current selector UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-RUNTIME_HEAD",
+          "handoff_type": "EXTERNAL_SELECTOR",
+          "id": "HANDOFF-RUNTIME-HEAD",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_RUNTIME_HEAD_1_RESULT.md",
+            "sha256": "6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897"
+          },
+          "receipt_action": "RECEIVE-RUNTIME-HEAD-EVIDENCE",
+          "reentry_actions": [
+            "PREP-RUNTIME_HEAD"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-RUNTIME-HEAD"
+        ],
+        "receipt_action": "RECEIVE-RUNTIME-HEAD-EVIDENCE",
+        "reentry_actions": [
+          "PREP-RUNTIME_HEAD"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-RUNTIME-HEAD-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-SUPERVISOR"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/5"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/5"
+      },
+      "receipt_action": "RECEIVE-SUPERVISOR-EVIDENCE",
+      "reentry_actions": [
+        "PREP-SUPERVISOR"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-SUPERVISOR-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+          "exact_missing_propositions": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+          "expected_owner": "Supervisor selection/release owner; concrete current selection UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-SUPERVISOR",
+          "id": "HANDOFF-SUPERVISOR",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "CHECK-READINESS",
+            "DEC-SUPERVISOR",
+            "MAP-SUCCESSION",
+            "MAP-SUPERVISOR",
+            "S-SUCCESSION"
+          ],
+          "blocked_roots": [
+            "root:supervisor"
+          ],
+          "exact_missing_propositions": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+          "expected_owner": "Supervisor selection/release owner; concrete current selection UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-SUPERVISOR",
+          "handoff_type": "EXTERNAL_SELECTOR",
+          "id": "HANDOFF-SUPERVISOR",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_SUPERVISOR_1_RESULT.md",
+            "sha256": "1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e"
+          },
+          "receipt_action": "RECEIVE-SUPERVISOR-EVIDENCE",
+          "reentry_actions": [
+            "PREP-SUPERVISOR"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-SUPERVISOR"
+        ],
+        "receipt_action": "RECEIVE-SUPERVISOR-EVIDENCE",
+        "reentry_actions": [
+          "PREP-SUPERVISOR"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-SUPERVISOR-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-EXEC"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/6"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/6"
+      },
+      "receipt_action": "RECEIVE-EXEC-POLICY-EVIDENCE",
+      "reentry_actions": [
+        "DEC-EXEC readiness reevaluation"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-EXEC-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+          "exact_missing_propositions": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+          "expected_owner": "Independent executable-policy owner/proposal producer; not established by argv/profile inventory.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-DEC-EXEC",
+          "id": "HANDOFF-EXEC",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "BUILD-BINDING",
+            "BUILD-EXECUTION_PROFILE",
+            "CHECK-READINESS",
+            "CONTRACT-T1",
+            "IMPL-CONTEXT",
+            "IMPL-GOVERNANCE",
+            "IMPL-TRANSMISSION",
+            "IMPL-VALIDATOR",
+            "MAP-ANCESTRY",
+            "MAP-APPROVAL",
+            "MAP-ARGV",
+            "MAP-AUDIT",
+            "MAP-BUDGET",
+            "MAP-CONTEXT_ID",
+            "MAP-CONTEXT_PROJECTION",
+            "MAP-DISPATCH",
+            "MAP-ELIGIBILITY",
+            "MAP-EXEC_BINS",
+            "MAP-IGNORED",
+            "MAP-IMPLEMENTATION",
+            "MAP-LIFECYCLE",
+            "MAP-PATHS",
+            "MAP-PAYLOAD",
+            "MAP-RELEASE",
+            "MAP-RETENTION",
+            "MAP-RUNTIME",
+            "MAP-RUNTIME_HEAD",
+            "MAP-SHELL_NETWORK",
+            "MAP-SUCCESSION",
+            "MAP-SUPERVISOR",
+            "MAP-TRANSPORT",
+            "S-ELIGIBILITY",
+            "S-SUCCESSION"
+          ],
+          "blocked_roots": [
+            "root:exec_bins"
+          ],
+          "exact_missing_propositions": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+          "expected_owner": "Independent executable-policy owner/proposal producer; not established by argv/profile inventory.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-DEC-EXEC",
+          "handoff_type": "EXTERNAL_POLICY_SOURCE",
+          "id": "HANDOFF-EXEC",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.json",
+            "sha256": "c00c4cf3553cd4f0b372e34cd1d79958b8a398dedf5aa804b589c9ee7570f1c9"
+          },
+          "receipt_action": "RECEIVE-EXEC-POLICY-EVIDENCE",
+          "reentry_actions": [
+            "DEC-EXEC readiness reevaluation"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-EXEC"
+        ],
+        "receipt_action": "RECEIVE-EXEC-POLICY-EVIDENCE",
+        "reentry_actions": [
+          "DEC-EXEC readiness reevaluation"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-EXEC-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "evidence_received": false,
+      "frozen_branch": "FACT_BLOCKED",
+      "handoff_ids": [
+        "HANDOFF-IMPLEMENTATION"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/7"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/7"
+      },
+      "receipt_action": "RECEIVE-IMPLEMENTATION-SOURCE-EVIDENCE",
+      "reentry_actions": [
+        "INPUT-IMPLEMENTATION"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-IMPLEMENTATION-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+          "exact_missing_propositions": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+          "expected_owner": "Implementation identity-domain contract owner/source producer; concrete distinct-domain owner UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR",
+          "id": "HANDOFF-IMPLEMENTATION",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_handoffs": [
+        {
+          "acceptable_evidence_source": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+          "authentication_requirements": "Supply exact source bytes or explicitly admitted retrievable locator, raw hash, semantic identity/domain and canonicalization rule. Verify identity and producer competence via existing trusted owning-domain chain/rules. Self-hash, wrapper signature, prose or copied references alone are insufficient.",
+          "blocked_downstream_actions": [
+            "BUILD-BINDING",
+            "BUILD-EXECUTION_PROFILE",
+            "CHECK-READINESS",
+            "CONTRACT-T1",
+            "DEC-IMPLEMENTATION",
+            "DEC-INTERFACES",
+            "IMPL-CONTEXT",
+            "IMPL-GOVERNANCE",
+            "IMPL-TRANSMISSION",
+            "IMPL-VALIDATOR",
+            "MAP-ANCESTRY",
+            "MAP-APPROVAL",
+            "MAP-ARGV",
+            "MAP-AUDIT",
+            "MAP-BUDGET",
+            "MAP-CONTEXT_ID",
+            "MAP-CONTEXT_PROJECTION",
+            "MAP-DISPATCH",
+            "MAP-ELIGIBILITY",
+            "MAP-EXEC_BINS",
+            "MAP-IGNORED",
+            "MAP-IMPLEMENTATION",
+            "MAP-LIFECYCLE",
+            "MAP-PATHS",
+            "MAP-PAYLOAD",
+            "MAP-RELEASE",
+            "MAP-RETENTION",
+            "MAP-RUNTIME",
+            "MAP-RUNTIME_HEAD",
+            "MAP-SHELL_NETWORK",
+            "MAP-SUCCESSION",
+            "MAP-SUPERVISOR",
+            "MAP-TRANSPORT",
+            "REEVAL-IMPLEMENTATION",
+            "S-ELIGIBILITY",
+            "S-SUCCESSION"
+          ],
+          "blocked_roots": [
+            "root:implementation"
+          ],
+          "exact_missing_propositions": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+          "expected_owner": "Implementation identity-domain contract owner/source producer; concrete distinct-domain owner UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR",
+          "handoff_type": "EXTERNAL_SOURCE_IDENTIFICATION",
+          "id": "HANDOFF-IMPLEMENTATION",
+          "identity_boundary": "Do not select runtime-digest equivalence. Identify the distinct domain and owning source with qualified selector. Any claimed relationship to runtime must have explicit existing governing proof; otherwise mark UNKNOWN and retain it as a future decision input. Runtime reference/another adapter path is not a substitute.",
+          "owner_established": "Role only; no concrete producer availability or competence assumed.",
+          "provenance": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md",
+            "sha256": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205"
+          },
+          "receipt_action": "RECEIVE-IMPLEMENTATION-SOURCE-EVIDENCE",
+          "reentry_actions": [
+            "INPUT-IMPLEMENTATION"
+          ],
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ],
+      "source_route": {
+        "evidence_received": false,
+        "handoff_ids": [
+          "HANDOFF-IMPLEMENTATION"
+        ],
+        "receipt_action": "RECEIVE-IMPLEMENTATION-SOURCE-EVIDENCE",
+        "reentry_actions": [
+          "INPUT-IMPLEMENTATION"
+        ],
+        "request_id": "E1-EXTERNAL-REQUEST-IMPLEMENTATION-1",
+        "state": "WAITING_FOR_EXTERNAL_INPUT"
+      },
+      "state": "EXPECTED_EXTERNAL_ABSENCE"
+    }
+  ],
+  "evaluated_incomplete_targets": [
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.actions",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "ActionId/operation/effect/stage/source from plan; typed prerequisites from declared dependencies; governed result/authority/evidence/knowledge rules from reviewed bindings",
+      "future_positive": "Future execution requires the same complete definition, not a frozen BLOCKED default",
+      "gaps": [
+        "M01-G01"
+      ],
+      "missing_contract": "Complete prospective result, authority, evidence and knowledge rule bindings under O01/MC03 remain undefined for the full inventory",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete prospective result, authority, evidence and knowledge rule bindings under O01/MC03 remain undefined for the full inventory",
+      "source_selectors": "/resolution_actions; /compiled_action_dependencies",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.statuses",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "BLOCKED",
+      "frozen_representation": "ActionStatus(id,state): exact disjoint 13 COMPLETED/50 BLOCKED partition; validate every id exists and reconcile current holds with historical attempts",
+      "future_positive": "No eligibility from historical completion or removal of a hold alone",
+      "gaps": [
+        "M01-G03"
+      ],
+      "missing_contract": "O02/O06 source-to-current reconciliation and native current_completion support for 13 completed records remain incomplete",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. O02/O06 source-to-current reconciliation and native current_completion support for 13 completed records remain incomplete",
+      "source_selectors": "/execution_state/completed_actions; /execution_state/blocked_actions; /execution_history",
+      "source_sufficiency": "SUFFICIENT"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.roots",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "RootCondition: preserve every exact id and unresolved state; positive gate:validator_authority separately requires O08 chain, predicate and evidence",
+      "future_positive": "Positive root satisfaction requires admitted current target-specific proof",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Unresolved marker contract closed; complete frozen category still needs positive O08 source/native binding and all goal/predicate references",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Unresolved marker contract closed; complete frozen category still needs positive O08 source/native binding and all goal/predicate references",
+      "source_selectors": "/execution_state/root_condition_states; /normalized_root_conditions",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.slots",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "ValueSlot: unresolved -> no admitted value, exact required_type and root/predicate links; preserve two separately proved baseline resolved slots",
+      "future_positive": "Resolved needs exact slot proof, not existing knowledge or PASS",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Exact full slot type/reference crosswalk and real-source O09 baseline admissions remain required",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Exact full slot type/reference crosswalk and real-source O09 baseline admissions remain required",
+      "source_selectors": "manifest unresolved_slot_count; graph slot records; O09 baseline contracts",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.knowledge",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "KnowledgeRecord: exact id, statement/type interpretation, source/evidence, validation, producer and outcome; known missing-proof knowledge is not missing knowledge",
+      "future_positive": "New positive evidence adds separately admitted knowledge, never rewrites historical BLOCKED outcome",
+      "gaps": [
+        "M01-G01",
+        "M01-G02"
+      ],
+      "missing_contract": "Full knowledge typing/omission rules and three real-source result admissions remain open; C06 budget binding is reused",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Full knowledge typing/omission rules and three real-source result admissions remain open; C06 budget binding is reused",
+      "source_selectors": "/resolution_actions knowledge declarations and execution results; exact result report joins",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "Snapshot.assertions",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "GraphAssertion: source identity/selector, relation, subject/object, depends_on and current validation; retain only operational dependency closure",
+      "future_positive": "Positive assertion needs authoritative evidence; no claim synthesized from absence",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "O10 exact source projection and transitive reference crosswalk remain open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. O10 exact source projection and transitive reference crosswalk remain open",
+      "source_selectors": "pinned graph assertions and source selectors",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "Snapshot.entities",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "GraphEntity: retain typed identity/kind and authenticated source; historical subject existence does not establish applicability",
+      "future_positive": "Admitted evidence/authority requires owning provenance and exact scope",
+      "gaps": [
+        "M01-G04",
+        "M01-G05"
+      ],
+      "missing_contract": "Complete identity/subtype, source-role and currentness mapping remains open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete identity/subtype, source-role and currentness mapping remains open",
+      "source_selectors": "pinned graph entities; subject_pins; candidate/grant records",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.predicates",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "Typed predicates for exact relationships; unresolved obligations yield UNKNOWN; no opaque text callback or unconditional false shortcut",
+      "future_positive": "PROVED only through current admitted support, including all governing rules",
+      "gaps": [
+        "M01-G01",
+        "M01-G05"
+      ],
+      "missing_contract": "Full source-to-predicate graph, operand domains and consumer bindings remain open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Full source-to-predicate graph, operand domains and consumer bindings remain open",
+      "source_selectors": "plan dependencies, knowledge_requirements, external request propositions, O08/O09",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "Snapshot.context",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "EvaluationContext exact runtime/envelope identity correspondence and provenance; no substitution of raw content digest for declared identity",
+      "future_positive": "New subject/context requires independent rebinding; no mutable alias",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Complete native EvaluationContext field and envelope joins remain open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete native EvaluationContext field and envelope joins remain open",
+      "source_selectors": "manifest /subject_pins and graph/operational-context bindings",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.decisions",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "FACT_BLOCKED",
+      "frozen_representation": "Decision/dossier stage, checks, missing facts and source pins; preserve recorded decisions, no ready decision when facts absent",
+      "future_positive": "Authority required is not DECISION_READY; recorded approval does not satisfy roots",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "All existing decision/dossier/authority source joins and native readiness fields remain unmapped; positive issued records cannot all be emptied",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. All existing decision/dossier/authority source joins and native readiness fields remain unmapped; positive issued records cannot all be emptied",
+      "source_selectors": "plan architect_decision_packages, decision_propagation; issued decisions; global per_action_checks",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.evidence_requirements",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "EXPECTED_ABSENCE",
+      "frozen_representation": "EvidenceRequirement id, proposition, target, provenance; unestablished concrete producer stays empty and unknown rule remains false",
+      "future_positive": "Positive proof needs competent producer, target correspondence and admitted rule",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "All route-specific typed EvidenceId/target and rule-known mappings remain incomplete; absence inventory alone is not native receipt contract",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. All route-specific typed EvidenceId/target and rule-known mappings remain incomplete; absence inventory alone is not native receipt contract",
+      "source_selectors": "BR-C1 absences/requirements; exact budget request eight propositions",
+      "source_sufficiency": "SUFFICIENT_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.external_gates",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "WAITING_EXTERNAL",
+      "frozen_representation": "ExternalGate: exact route, requirement ids, receipt action, reentry, held actions, waiting stage, pending=None; preserve fact-frontier distinction",
+      "future_positive": "Receipt/validation/reentry separate stages; no direct eligibility on receipt",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Full native held-action/history/requirement mapping unresolved; implementation route composite frontier is not automatically a GateId; DEC-EXEC readiness route is not literal ActionId",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Full native held-action/history/requirement mapping unresolved; implementation route composite frontier is not automatically a GateId; DEC-EXEC readiness route is not literal ActionId",
+      "source_selectors": "manifest /request_routes joined to handoff control_transfer_items by id",
+      "source_sufficiency": "SUFFICIENT_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.boundaries",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "FACT_BLOCKED",
+      "frozen_representation": "ControlBoundary: budget EXTERNAL_EVIDENCE, factual frontiers retain external-fact meaning; downstream dependencies are not new frontiers",
+      "future_positive": "New evidence changes frontier only after governed admission/recomputation",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Exact canonical boundary ids/action ownership and all frontier joins remain to be specified",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Exact canonical boundary ids/action ownership and all frontier joins remain to be specified",
+      "source_selectors": "global /global_blocking_frontier and /control_state_rule; BR-C1 routes",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.goals",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "Goal: exact condition/slot target, entry actions and provenance; preserve 27 counted plus four deferred top-level obligations without double counting",
+      "future_positive": "Satisfied proof removes goal from frontier; copied summary does not",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Complete per-goal canonical routes including deferred/slot coverage remain unqualified",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete per-goal canonical routes including deferred/slot coverage remain unqualified",
+      "source_selectors": "plan /normalized_root_conditions, /deferred_conditions; global /top_level_branches",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "PersistenceBundle.initial",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "OTHER",
+      "frozen_representation": "Independently admitted migrated baseline assembled from complete fields, not replay of fabricated legacy events",
+      "future_positive": "Subsequent native events start from this exact canonical identity",
+      "gaps": [
+        "M01-G05",
+        "M01-G06"
+      ],
+      "missing_contract": "Depends on all required native categories and O16 composition; no complete source/native fixture",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Depends on all required native categories and O16 composition; no complete source/native fixture",
+      "source_selectors": "all required canonical categories",
+      "source_sufficiency": "SUFFICIENT"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "PersistenceBundle.current",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "OTHER",
+      "frozen_representation": "current equals initial when migration performs no transition; canonical identity equality, not object alias",
+      "future_positive": "Current updated only through replayable native transition",
+      "gaps": [
+        "M01-G05",
+        "M01-G06"
+      ],
+      "missing_contract": "Initial baseline remains incomplete; equality alone cannot make either valid",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Initial baseline remains incomplete; equality alone cannot make either valid",
+      "source_selectors": "initial migrated baseline; zero new native events",
+      "source_sufficiency": "SUFFICIENT"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "PersistenceBundle.sources",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "ArtifactPin(path,typed identity) for exact required closure; verify raw or declared identity by its own algorithm",
+      "future_positive": "Changed required source rejects/stales dependent admission",
+      "gaps": [
+        "M01-G04",
+        "M01-G05"
+      ],
+      "missing_contract": "Exhaustive required dependency disposition and exact nested whitelist incomplete; cannot call all archive files operational",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Exhaustive required dependency disposition and exact nested whitelist incomplete; cannot call all archive files operational",
+      "source_selectors": "manifest pins plus transitive required source dependencies",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "historical_attempts",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "HISTORICAL_ONLY",
+      "frozen_representation": "Selection-only row preserved as pinned planning provenance; 23 source-backed attempts retain outcome/producer/report; current proof separate",
+      "future_positive": "Only independent execution report can support result; no historical parent snapshots invented",
+      "gaps": [
+        "M01-G02",
+        "M01-G03"
+      ],
+      "missing_contract": "Passive imported-history carrier and source-to-native result/hold contract remain required by MC04/05; selection provenance alone needs no runtime type",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Passive imported-history carrier and source-to-native result/hold contract remain required by MC04/05; selection provenance alone needs no runtime type",
+      "source_selectors": "plan /execution_history, exact result_artifact source joins",
+      "source_sufficiency": "SUFFICIENT_AS_HISTORICAL"
+    },
+    {
+      "classification": "CONTRACT_COMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "expected_external_absence_records",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "EXPECTED_ABSENCE",
+      "frozen_representation": "Exact eight source-bound metadata records; deterministic extraction/joins and absence validation defined below; no native evidence object",
+      "future_positive": "Once evidence arrives preserve absence as historical checkpoint metadata; require separate receipt admission",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "NONE for absence metadata contract; native gates/receipt predicates remain separate incomplete categories",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. NONE for absence metadata contract; native gates/receipt predicates remain separate incomplete categories",
+      "source_selectors": "BR-C1 contract /absences plus pinned manifest/handoff/checkpoint",
+      "source_sufficiency": "SUFFICIENT_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "DerivationIndex",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "OTHER",
+      "frozen_representation": "Target identity/field -> source identity, content pin, selector, contract/rule/join version and dependency set; canonical ordered index",
+      "future_positive": "Invalidation traverses actual source dependencies, not currentness label alone",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Metadata schema is defined but complete actual field derivations and disposition coverage remain missing",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Metadata schema is defined but complete actual field derivations and disposition coverage remain missing",
+      "source_selectors": "M01 provenance contract plus every required target field mapping",
+      "source_sufficiency": "AMBIGUOUS"
+    }
+  ],
+  "principle": "FROZEN_STATE_REPRESENTATION != POSITIVE_REENTRY_REPRESENTATION",
+  "schema": "M01-CLOSURE-RETRY-1-CONTRACT",
+  "selection_invariant": [
+    "selected != executed",
+    "selected != completed",
+    "selected != result exists",
+    "selected != knowledge produced"
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "actions": [
+    {
+      "accepted_inventory": [
+        {
+          "id": "P01-BINDING-INVENTORY",
+          "source": "binding",
+          "state": "KNOWN_COMPLETE",
+          "statement": "Recorded S-BINDING inventory is complete with explicit gaps; not input completeness."
+        },
+        {
+          "id": "P01-BINDING-GAP",
+          "source": "gaps",
+          "state": "KNOWN_INCOMPLETE",
+          "statement": "Canonical binding object remains absent in the inspected source set."
+        }
+      ],
+      "effect": "NON_EFFECTING",
+      "id": "S-BINDING",
+      "operation": "SOURCE_ACQUISITION",
+      "prerequisites": [],
+      "source": "binding",
+      "state": "ACTION_ELIGIBLE"
+    },
+    {
+      "accepted_inventory": [],
+      "effect": "NON_EFFECTING",
+      "id": "S-CONTEXT",
+      "operation": "SOURCE_ACQUISITION",
+      "prerequisites": [],
+      "source": "binding",
+      "state": "ACTION_ELIGIBLE"
+    },
+    {
+      "accepted_inventory": [],
+      "effect": "NON_EFFECTING",
+      "id": "TEST-AFTER-INVENTORY",
+      "operation": "SOURCE_ACQUISITION",
+      "prerequisites": [
+        {
+          "kind": "ACTION_COMPLETED",
+          "target": "S-BINDING"
+        },
+        {
+          "kind": "CONDITION_SATISFIED",
+          "target": "root:binding"
+        }
+      ],
+      "source": "binding",
+      "state": "ACTION_ELIGIBLE"
+    }
+  ],
+  "result": {
+    "action": "S-BINDING",
+    "knowledge_ids": [
+      "P01-BINDING-INVENTORY",
+      "P01-BINDING-GAP"
+    ],
+    "result": "PASS"
+  },
+  "roots": [
+    {
+      "id": "root:binding",
+      "state": "UNRESOLVED"
+    }
+  ],
+  "schema": "P01-E-SLICE-1",
+  "scope": "PARTIAL_HISTORICAL_REPLAY",
+  "slots": [
+    {
+      "id": "canonical_binding",
+      "required_type": "CANONICAL_OBJECT_IDENTITY",
+      "state": "UNRESOLVED"
+    },
+    {
+      "id": "binding_sha256",
+      "required_type": "BINDING_DIGEST",
+      "state": "UNRESOLVED"
+    }
+  ],
+  "sources": {
+    "binding": {
+      "excerpt": "**PASS \u2014 inventory complete with explicit gaps.**",
+      "method": "reviewed-P01-E-slice-v1",
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+      "section": "Acceptance and scope",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+    },
+    "gaps": {
+      "excerpt": "None of the inspected objects contains this member; WP-01 already records the missing producer/object.",
+      "method": "reviewed-P01-E-slice-v1",
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+      "section": "Explicit missing inputs and producer requirements",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+    },
+    "separation": {
+      "excerpt": "No root or slot resolved: 28 cut conditions and 41 value slots remain unresolved; 2 slots were previously established.",
+      "method": "reviewed-P01-E-slice-v1",
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+      "section": "Persisted state and next selection",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+    }
+  }
+}

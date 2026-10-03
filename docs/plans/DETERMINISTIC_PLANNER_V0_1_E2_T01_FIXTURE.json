@@ -1,0 +1,1907 @@
+{
+  "independent_expectations": {
+    "E2_actions_executed": 0,
+    "accepted_observations_after_receipt": 0,
+    "events_added": 2,
+    "initial_control": "EXTERNAL_WAIT",
+    "initial_evidence_entities": 0,
+    "obligation_after_receipt": "UNKNOWN",
+    "received_stage": "EVIDENCE_RECEIVED",
+    "resume_after_receipt": false,
+    "validation_implies_resume": false
+  },
+  "initial_bundle": {
+    "$type": "PersistenceBundle",
+    "current": {
+      "$type": "Snapshot",
+      "actions": [
+        {
+          "$type": "Action",
+          "accepted_inventory": [],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "TEST-ACTION"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "SOURCE_ACQUISITION"
+          },
+          "prerequisites": [],
+          "requirements": [
+            {
+              "$type": "PredicateId",
+              "value": "TEST-PROOF"
+            }
+          ],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          }
+        }
+      ],
+      "assertions": [],
+      "boundaries": [
+        {
+          "$type": "ControlBoundary",
+          "actions": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "id": {
+            "$type": "GateId",
+            "value": "TEST-GATE"
+          },
+          "kind": {
+            "$enum": "BoundaryKind",
+            "value": "EXTERNAL_EVIDENCE"
+          },
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          }
+        }
+      ],
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "TEST/generation",
+        "lineage": "TEST/lineage",
+        "scope": "TEST/scope",
+        "tick": 0
+      },
+      "entities": [
+        {
+          "$type": "GraphEntity",
+          "consumed": false,
+          "generation": "TEST/generation",
+          "id": {
+            "$type": "EntityId",
+            "value": "T01-ATTESTOR"
+          },
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "TEST-rule-owner",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          },
+          "kind": {
+            "$enum": "EntityKind",
+            "value": "AUTHORITY"
+          },
+          "lineage": "TEST/lineage",
+          "permissions": [
+            {
+              "$enum": "AuthorityClass",
+              "value": "ATTEST"
+            }
+          ],
+          "produced": true,
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"qualification_only\":true,\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353\"}}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "4b5f5b0bf8f84217dfab27cc885b5386425b4c4c76c24f5c8bca5a64a8cbaeb4"
+            },
+            "method": "QUALIFICATION_ONLY",
+            "path": "trust.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "scope": "TEST/scope",
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "valid_until": 20,
+          "validated": true,
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          },
+          "validator": null
+        }
+      ],
+      "evidence_requirements": [
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "TEST-RULE"
+          },
+          "producers": [
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "AUTHORITY_IDENTITY"
+              },
+              "namespace": "TEST-rule-owner",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          ],
+          "proposition": "Authenticated governing rule for target operation; no rule currently received",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CANONICAL_OBJECT_IDENTITY"
+            },
+            "namespace": "TEST-target",
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        }
+      ],
+      "external_gates": [
+        {
+          "$type": "ExternalGate",
+          "contract_complete": true,
+          "held_actions": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "history": [],
+          "id": {
+            "$type": "GateId",
+            "value": "TEST-GATE"
+          },
+          "pending": null,
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "receipt_action": "TEST-RECEIVE",
+          "reentry": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "requirements": [
+            {
+              "$type": "EvidenceId",
+              "value": "TEST-RULE"
+            }
+          ],
+          "resolution_contracts": [
+            {
+              "$type": "ExternalResolutionContract",
+              "gate": {
+                "$type": "GateId",
+                "value": "TEST-GATE"
+              },
+              "gate_source": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+              },
+              "generation": "TEST/generation",
+              "held_actions": [
+                {
+                  "$type": "ActionId",
+                  "value": "TEST-ACTION"
+                }
+              ],
+              "lineage": "TEST/lineage",
+              "producers": [
+                {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "AUTHORITY_IDENTITY"
+                  },
+                  "namespace": "TEST-rule-owner",
+                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              ],
+              "proposition": "Authenticated governing rule for target operation; no rule currently received",
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+                },
+                "method": "QUALIFICATION_ONLY",
+                "path": "resolution.json",
+                "scope": "TEST/scope",
+                "section": "/"
+              },
+              "receipt_action": "TEST-RECEIVE",
+              "reentry": [
+                {
+                  "$type": "ActionId",
+                  "value": "TEST-ACTION"
+                }
+              ],
+              "request": "TEST-REQUEST",
+              "requirement": {
+                "$type": "EvidenceId",
+                "value": "TEST-RULE"
+              },
+              "requirement_source": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+              },
+              "scope": "TEST/scope",
+              "source_class": "TEST-rule-owner governing-rule source",
+              "target": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CANONICAL_OBJECT_IDENTITY"
+                },
+                "namespace": "TEST-target",
+                "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              }
+            }
+          ],
+          "stage": {
+            "$enum": "ExternalStage",
+            "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+          },
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        }
+      ],
+      "goals": [
+        {
+          "$type": "Goal",
+          "entry_actions": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "failure": null,
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "recovery": [],
+          "target": {
+            "$type": "ConditionId",
+            "value": "TEST-ROOT"
+          }
+        }
+      ],
+      "knowledge": [],
+      "predicates": [
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "TEST-PROOF"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "TEST-RULE"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": {
+            "$type": "EntityId",
+            "value": "T01-ATTESTOR"
+          },
+          "expected": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "id": {
+            "$type": "PredicateId",
+            "value": "T01-AUTH"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "AUTHORITY"
+          },
+          "knowledge": null,
+          "operands": [],
+          "other": null,
+          "permission": {
+            "$enum": "AuthorityClass",
+            "value": "ATTEST"
+          }
+        }
+      ],
+      "roots": [
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "TEST-ROOT"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "slots": [],
+      "statuses": [
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "TEST-ACTION"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        }
+      ]
+    },
+    "events": [],
+    "initial": {
+      "$type": "Snapshot",
+      "actions": [
+        {
+          "$type": "Action",
+          "accepted_inventory": [],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "TEST-ACTION"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "SOURCE_ACQUISITION"
+          },
+          "prerequisites": [],
+          "requirements": [
+            {
+              "$type": "PredicateId",
+              "value": "TEST-PROOF"
+            }
+          ],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          }
+        }
+      ],
+      "assertions": [],
+      "boundaries": [
+        {
+          "$type": "ControlBoundary",
+          "actions": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "id": {
+            "$type": "GateId",
+            "value": "TEST-GATE"
+          },
+          "kind": {
+            "$enum": "BoundaryKind",
+            "value": "EXTERNAL_EVIDENCE"
+          },
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          }
+        }
+      ],
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "TEST/generation",
+        "lineage": "TEST/lineage",
+        "scope": "TEST/scope",
+        "tick": 0
+      },
+      "entities": [
+        {
+          "$type": "GraphEntity",
+          "consumed": false,
+          "generation": "TEST/generation",
+          "id": {
+            "$type": "EntityId",
+            "value": "T01-ATTESTOR"
+          },
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "TEST-rule-owner",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          },
+          "kind": {
+            "$enum": "EntityKind",
+            "value": "AUTHORITY"
+          },
+          "lineage": "TEST/lineage",
+          "permissions": [
+            {
+              "$enum": "AuthorityClass",
+              "value": "ATTEST"
+            }
+          ],
+          "produced": true,
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"qualification_only\":true,\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353\"}}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "4b5f5b0bf8f84217dfab27cc885b5386425b4c4c76c24f5c8bca5a64a8cbaeb4"
+            },
+            "method": "QUALIFICATION_ONLY",
+            "path": "trust.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "scope": "TEST/scope",
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "valid_until": 20,
+          "validated": true,
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          },
+          "validator": null
+        }
+      ],
+      "evidence_requirements": [
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "TEST-RULE"
+          },
+          "producers": [
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "AUTHORITY_IDENTITY"
+              },
+              "namespace": "TEST-rule-owner",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          ],
+          "proposition": "Authenticated governing rule for target operation; no rule currently received",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CANONICAL_OBJECT_IDENTITY"
+            },
+            "namespace": "TEST-target",
+            "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+          }
+        }
+      ],
+      "external_gates": [
+        {
+          "$type": "ExternalGate",
+          "contract_complete": true,
+          "held_actions": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "history": [],
+          "id": {
+            "$type": "GateId",
+            "value": "TEST-GATE"
+          },
+          "pending": null,
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "receipt_action": "TEST-RECEIVE",
+          "reentry": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "requirements": [
+            {
+              "$type": "EvidenceId",
+              "value": "TEST-RULE"
+            }
+          ],
+          "resolution_contracts": [
+            {
+              "$type": "ExternalResolutionContract",
+              "gate": {
+                "$type": "GateId",
+                "value": "TEST-GATE"
+              },
+              "gate_source": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+              },
+              "generation": "TEST/generation",
+              "held_actions": [
+                {
+                  "$type": "ActionId",
+                  "value": "TEST-ACTION"
+                }
+              ],
+              "lineage": "TEST/lineage",
+              "producers": [
+                {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "AUTHORITY_IDENTITY"
+                  },
+                  "namespace": "TEST-rule-owner",
+                  "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+                }
+              ],
+              "proposition": "Authenticated governing rule for target operation; no rule currently received",
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+                },
+                "method": "QUALIFICATION_ONLY",
+                "path": "resolution.json",
+                "scope": "TEST/scope",
+                "section": "/"
+              },
+              "receipt_action": "TEST-RECEIVE",
+              "reentry": [
+                {
+                  "$type": "ActionId",
+                  "value": "TEST-ACTION"
+                }
+              ],
+              "request": "TEST-REQUEST",
+              "requirement": {
+                "$type": "EvidenceId",
+                "value": "TEST-RULE"
+              },
+              "requirement_source": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+              },
+              "scope": "TEST/scope",
+              "source_class": "TEST-rule-owner governing-rule source",
+              "target": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CANONICAL_OBJECT_IDENTITY"
+                },
+                "namespace": "TEST-target",
+                "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+              }
+            }
+          ],
+          "stage": {
+            "$enum": "ExternalStage",
+            "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+          },
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        }
+      ],
+      "goals": [
+        {
+          "$type": "Goal",
+          "entry_actions": [
+            {
+              "$type": "ActionId",
+              "value": "TEST-ACTION"
+            }
+          ],
+          "failure": null,
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+            },
+            "method": "SYNTHETIC_CONTRACT",
+            "path": "source.json",
+            "scope": "TEST/scope",
+            "section": "/"
+          },
+          "recovery": [],
+          "target": {
+            "$type": "ConditionId",
+            "value": "TEST-ROOT"
+          }
+        }
+      ],
+      "knowledge": [],
+      "predicates": [
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "TEST-PROOF"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "TEST-RULE"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": {
+            "$type": "EntityId",
+            "value": "T01-ATTESTOR"
+          },
+          "expected": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "id": {
+            "$type": "PredicateId",
+            "value": "T01-AUTH"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "AUTHORITY"
+          },
+          "knowledge": null,
+          "operands": [],
+          "other": null,
+          "permission": {
+            "$enum": "AuthorityClass",
+            "value": "ATTEST"
+          }
+        }
+      ],
+      "roots": [
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "TEST-ROOT"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "slots": [],
+      "statuses": [
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "TEST-ACTION"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        }
+      ]
+    },
+    "policy": {
+      "$type": "ArtifactPin",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+      },
+      "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+      "pointer": "",
+      "profile": {
+        "$enum": "HashProfile",
+        "value": "raw-file-sha256"
+      }
+    },
+    "policy_version": "E1-SELECTION-1-P05",
+    "scope": "PARTIAL_HISTORICAL_REPLAY",
+    "sources": [
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+        },
+        "path": "ingress.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "4b5f5b0bf8f84217dfab27cc885b5386425b4c4c76c24f5c8bca5a64a8cbaeb4"
+        },
+        "path": "trust.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+        },
+        "path": "resolution.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+        },
+        "path": "source.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      }
+    ]
+  },
+  "new_evidence_utf8": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+  "pinned_source_bytes_utf8": {
+    "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md": "# E1 graph resolution deterministic selection policy 1\n\nPolicy validation: **VALID**. Dry-run selection: **S-ANCESTRY**. **Criterion 5** first makes the result unique. No resolution action executed.\n\nThe normative machine-readable specification is `selection_policy` in [the resolution plan](E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json). This policy changes selection semantics only. The prior selection attempt remains historical evidence; its execution state, action definitions, completion states, graph, authorities and readiness values are unchanged.\n\n## Ordered selection semantics\n\nStart with the current eligible set after exact prerequisite, evidence, authority and effect checks. Ranking cannot confer eligibility or permission. Apply criteria only to the remaining tied set, in the user-specified order. Stop once unique; an initial singleton needs no tie-break.\n\n1. Maximize the complete triple (directly resolved unresolved root conditions, distinct unresolved slots transitively dependent on those conditions, currently blocked actions newly eligible after this action alone passes), lexicographically. Require explicit graph-backed transitions and all gate predicates for every tied candidate. Missing or inconsistent values skip the entire criterion: `CRITERION_1_NOT_DECISIVE`. Do not substitute affected slots, eventual descendants, or hypothetical completion of other actions.\n2. Maximize a comparable, formally represented information score derived from explicit outcome partitions or relationship eliminations. Without that model for every candidate, record `CRITERION_2_NOT_DECISIVE`. No expected usefulness or LLM inference is permitted.\n3. Minimize static operation-class rank: DETERMINISTIC_VALIDATION, DETERMINISTIC_CONSTRUCTION, SOURCE_ACQUISITION, DETERMINISTIC_MAPPING, IMPLEMENTATION_PREPARATION, SEMANTIC_EVALUATION, ARCHITECT_PREPARATION, RUNTIME_EXPERIMENT, GOVERNED_OPERATION. Preserve action semantics. SEMANTIC_RESOLUTION maps to SEMANTIC_EVALUATION, except explicit DECISION_PREPARATION stages map to ARCHITECT_PREPARATION. Actual authority/contract decisions and implementation/validator repairs map to GOVERNED_OPERATION, not preparation or validation. Exact listed classes retain their names. Unmapped future classes skip this criterion for the tied set pending a policy revision; the selector never asks an LLM to assign priority at runtime.\n4. Minimize effect rank: NON_EFFECTING, QUALIFICATION_EFFECT_ONLY, PRODUCTION_EFFECT. Then minimize cost only with complete comparable explicit deterministic cost metadata. Missing cost is not zero. Unknown effect labels skip this ranking, never bypass the upstream eligibility check.\n5. Return the smallest canonical ActionId using exact case-sensitive Unicode code-point lexicographic comparison, with no locale or normalization. All current IDs are ASCII.\n\nEvery finite non-empty actionable set has unique canonical ActionIds. Each applicable criterion retains a non-empty subset; unavailable criteria retain the tied set. Criterion 5 gives its unique minimum. This proves totality over that domain independently of input order, JSON key order, time or conversation order. Conflicting duplicate IDs are malformed records, not a valid action set.\n\n## Current graph evidence and replay\n\n`CRITERION_1_NOT_DECISIVE`: the graph's 339 entities contain no resolution-action entities, and its assertions define no action-PASS transition system. All 15 plan actions explicitly have empty `closes_conditions_only_on_accepted_output`: zero direct roots and therefore zero unresolved slots through directly closed roots. The newly eligible count cannot be derived completely from this graph. Plan dependency-only simulations would rank preparation steps differently, but omit formal graph outcome/authority predicates and are not substituted for the requested metric. No missing count is estimated.\n\n`CRITERION_2_NOT_DECISIVE`: there are no formal outcome partitions, alternative graph-state enumeration, or deterministic relationship-elimination scores. Different possible prose result labels do not establish information gain.\n\n| ActionId | Priority class | Direct roots | Slots through those roots | Graph-proven newly eligible |\n|---|---|---:|---:|---|\n| PREP-AUDIT | ARCHITECT_PREPARATION | 0 | 0 | Unknown |\n| PREP-BINDING-GRANT | ARCHITECT_PREPARATION | 0 | 0 | Unknown |\n| PREP-RUNTIME_HEAD | ARCHITECT_PREPARATION | 0 | 0 | Unknown |\n| PREP-SUPERVISOR | ARCHITECT_PREPARATION | 0 | 0 | Unknown |\n| PREP-VALIDATOR | ARCHITECT_PREPARATION | 0 | 0 | Unknown |\n| S-ANCESTRY | SOURCE_ACQUISITION | 0 | 0 | Unknown |\n| S-APPROVAL | SOURCE_ACQUISITION | 0 | 0 | Unknown |\n| S-BINDING | SOURCE_ACQUISITION | 0 | 0 | Unknown |\n| S-CONTEXT | SOURCE_ACQUISITION | 0 | 0 | Unknown |\n| S-EXEC | SOURCE_ACQUISITION | 0 | 0 | Unknown |\n| SEM-BUDGET | SEMANTIC_EVALUATION | 0 | 0 | Unknown |\n| SEM-ELIGIBILITY | SEMANTIC_EVALUATION | 0 | 0 | Unknown |\n| SEM-IGNORED | ARCHITECT_PREPARATION | 0 | 0 | Unknown |\n| SEM-IMPLEMENTATION | SEMANTIC_EVALUATION | 0 | 0 | Unknown |\n| SEM-INTERFACES | SEMANTIC_EVALUATION | 0 | 0 | Unknown |\n\nCriterion 3 retains S-ANCESTRY, S-APPROVAL, S-BINDING, S-CONTEXT and S-EXEC. Criterion 4 retains all five: NON_EFFECTING, no explicit comparable cost metadata. Criterion 5 uniquely selects S-ANCESTRY. The graph and plan identities and exact source fields are retained in the JSON policy provenance.\n\n## Validation\n\nThe reference selector below was run in an isolated temporary script, not installed in planner implementation. All checks passed:\n\n- 49 deterministic input orders: ascending, descending, all 15 rotations, and 32 SHA-256-keyed orders.\n- 100 identical-state replays and reversal of every action JSON object's key order.\n- All six permutations of a synthetic equal-priority three-action set select TEST-A.\n- Equal explicit coverage/information/cost scores still reach Criterion 5.\n- Partial coverage metadata skips Criterion 1; separately unequal complete coverage, information and cost scores select at their respective criteria.\n- No action definitions or historical execution-state fields changed; all other E1 artifact hashes remain unchanged.\n\n## Validated reference selector\n\nOptional metric maps below are accepted only after the completeness/provenance checks above; current graph replay passes none. `classes`, `effects`, and `mapped` use the fixed definitions above. The reference is a policy test, not a production implementation.\n\n```python\ndef select(actions, coverage=None, information=None, costs=None):\n byid={a['id']:a for a in actions}; ids=sorted(byid); trace=[]\n assert ids and len(byid)==len(actions)  # canonical unique ActionIds\n def narrow(number, scores, greatest=False):\n  nonlocal ids\n  if scores is None or any(i not in scores or scores[i] is None for i in ids):\n   trace.append((number,'NOT_DECISIVE',list(ids))); return False\n  best=(max if greatest else min)(scores[i] for i in ids)\n  ids=[i for i in ids if scores[i]==best]\n  trace.append((number,'APPLIED',list(ids))); return len(ids)==1\n if len(ids)==1: return ids[0],0,trace\n if narrow(1,coverage,True): return ids[0],1,trace\n if narrow(2,information,True): return ids[0],2,trace\n ranks={i:classes.index(mapped(byid[i])) if mapped(byid[i]) in classes else None for i in ids}\n if narrow(3,ranks): return ids[0],3,trace\n ranks={i:effects.index(byid[i]['effect_boundary']) if byid[i]['effect_boundary'] in effects else None for i in ids}\n if narrow(4,ranks): return ids[0],4,trace\n if narrow(4,costs): return ids[0],4,trace\n ids.sort(); trace.append((5,'APPLIED',[ids[0]])); return ids[0],5,trace\n```\n\n```text\nSELECTION_POLICY = VALID\nSELECTED_ACTION = S-ANCESTRY\nDECIDING_CRITERION = 5\nPERMUTATION_INVARIANT = YES\nREPLAY_INVARIANT = YES\nTOTAL_SELECTOR = YES\nLLM_PREFERENCE_REQUIRED = NO\nPLAN_STATE_CHANGED = SELECTION_POLICY_ONLY\nPRODUCTION_EFFECT = NO\n```\n\n## Decision-input reentry 1: static class extension\n\n`DECISION_INPUT_ACQUISITION` maps to `ARCHITECT_PREPARATION` because it prepares bounded unadopted dossiers. The criterion order and priority list are unchanged. The current two-action replay selects INPUT-BUDGET at Criterion 5; both actions tie at Criteria 3 and 4, while Criteria 1/2 lack formal metrics. Original validation above remains historical. See [reentry semantics](E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md). No action executed.\n",
+    "ingress.json": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+    "resolution.json": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+    "source.json": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+    "trust.json": "{\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"qualification_only\":true,\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353\"}}"
+  },
+  "qualification_only": true,
+  "request": {
+    "$type": "EvidenceSourceAdmission",
+    "admission": {
+      "$type": "ReceiptAdmission",
+      "artifact": {
+        "$type": "EntityId",
+        "value": "EVIDENCE:cafaa2405abba809bb4a076e0a1e09f624644b3361ad0285aa3075c0a8a660aa"
+      },
+      "authentication": {
+        "$type": "PredicateId",
+        "value": "T01-AUTH"
+      },
+      "claims": [
+        {
+          "$type": "EvidenceClaim",
+          "outcome": {
+            "$enum": "ProofState",
+            "value": "PROVED"
+          },
+          "requirement": {
+            "$type": "EvidenceId",
+            "value": "TEST-RULE"
+          }
+        }
+      ],
+      "dependencies": [
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "resolution.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"qualification_only\":true,\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "4b5f5b0bf8f84217dfab27cc885b5386425b4c4c76c24f5c8bca5a64a8cbaeb4"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "trust.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        }
+      ],
+      "producer": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "TEST-rule-owner",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+        },
+        "method": "PLANNER-EVIDENCE-ADMISSION-1",
+        "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+        "scope": "TEST/scope",
+        "section": "/"
+      },
+      "target": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CANONICAL_OBJECT_IDENTITY"
+        },
+        "namespace": "TEST-target",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "command_key": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-command-v1",
+      "sha256": "5d9dd719f74bb073b9202efffb8a2f77c3c6b5ef79229e382344a6b325901bcc"
+    },
+    "contract_pin": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+    },
+    "entity": {
+      "$type": "GraphEntity",
+      "consumed": false,
+      "generation": "TEST/generation",
+      "id": {
+        "$type": "EntityId",
+        "value": "EVIDENCE:cafaa2405abba809bb4a076e0a1e09f624644b3361ad0285aa3075c0a8a660aa"
+      },
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+      },
+      "kind": {
+        "$enum": "EntityKind",
+        "value": "EVIDENCE"
+      },
+      "lineage": "TEST/lineage",
+      "permissions": [],
+      "produced": true,
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+        },
+        "method": "PLANNER-EVIDENCE-ADMISSION-1",
+        "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+        "scope": "TEST/scope",
+        "section": "/"
+      },
+      "scope": "TEST/scope",
+      "target": null,
+      "valid_until": 20,
+      "validated": true,
+      "validation": {
+        "$enum": "ValidationState",
+        "value": "ACCEPTED"
+      },
+      "validator": null
+    },
+    "expected_bundle": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "dc6a304f677436565c9833b60b193a0d1dd688fd0970db532189841845fab8a8"
+    },
+    "expected_parent_event": null,
+    "expected_snapshot": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "69da5cf6a05ab8757050df535a7bfb98d9604242a497712405f59db3f275a38f"
+    },
+    "field_provenance": [
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "admission.dependencies.d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "admission.artifact"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "admission.provenance"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "entity.id"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "entity.identity"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "entity.provenance"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/claims",
+        "target": "admission.claims"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/producer",
+        "target": "admission.producer"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"claims\":[{\"$type\":\"EvidenceClaim\",\"outcome\":{\"$enum\":\"ProofState\",\"value\":\"PROVED\"},\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}}],\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+          },
+          "method": "PLANNER-EVIDENCE-ADMISSION-1",
+          "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/target",
+        "target": "admission.target"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "admission.dependencies.3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/authentication",
+        "target": "admission.authentication"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/generation",
+        "target": "entity.generation"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/lineage",
+        "target": "entity.lineage"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/scope",
+        "target": "entity.scope"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.choice"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.consumed"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.decision"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.kind"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.permissions"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.produced"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.target"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.validated"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.validation"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/source_class",
+        "target": "entity.validator"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"$type\":\"EvidenceIngressContract\",\"authentication\":{\"$type\":\"PredicateId\",\"value\":\"T01-AUTH\"},\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"generation\":\"TEST/generation\",\"lineage\":\"TEST/lineage\",\"receipt_action\":\"TEST-RECEIVE\",\"requirements\":[{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"}],\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\",\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"valid_until\":20},\"schema\":\"PLANNER-EVIDENCE-INGRESS-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3aed546d270e7765128658f554029e2766413f9afcaf1965be8f46ff2caa1e1a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "ingress.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/contract/valid_until",
+        "target": "entity.valid_until"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "resolution.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "admission.dependencies.d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+      },
+      {
+        "$type": "EvidenceFieldProvenance",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"producer\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"qualification_only\":true,\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "4b5f5b0bf8f84217dfab27cc885b5386425b4c4c76c24f5c8bca5a64a8cbaeb4"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "trust.json",
+          "scope": "TEST/scope",
+          "section": "/"
+        },
+        "selector": "/",
+        "target": "admission.dependencies.4b5f5b0bf8f84217dfab27cc885b5386425b4c4c76c24f5c8bca5a64a8cbaeb4"
+      }
+    ],
+    "gate": {
+      "$type": "GateId",
+      "value": "TEST-GATE"
+    },
+    "receipt_action": "TEST-RECEIVE",
+    "requirements": [
+      {
+        "$type": "EvidenceId",
+        "value": "TEST-RULE"
+      }
+    ],
+    "schema": "PLANNER-EVIDENCE-ADMISSION-1",
+    "source_additions": [
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353"
+        },
+        "path": "incoming/cbe6be78e086efd9fba1b352b86c71a30b01b12f126a2b929de742f0cea05353.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      }
+    ]
+  },
+  "schema": "E2-T01-QUALIFICATION-INPUT-1"
+}

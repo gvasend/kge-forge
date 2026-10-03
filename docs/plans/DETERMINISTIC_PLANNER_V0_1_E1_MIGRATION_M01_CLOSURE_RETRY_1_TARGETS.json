@@ -1,0 +1,632 @@
+{
+  "counts": {
+    "CONTRACT_COMPLETE": 13,
+    "CONTRACT_INCOMPLETE": 19,
+    "NOT_REQUIRED": 3
+  },
+  "schema": "M01-CLOSURE-RETRY-1-TARGETS",
+  "targets": [
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.actions",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "ActionId/operation/effect/stage/source from plan; typed prerequisites from declared dependencies; governed result/authority/evidence/knowledge rules from reviewed bindings",
+      "future_positive": "Future execution requires the same complete definition, not a frozen BLOCKED default",
+      "gaps": [
+        "M01-G01"
+      ],
+      "missing_contract": "Complete prospective result, authority, evidence and knowledge rule bindings under O01/MC03 remain undefined for the full inventory",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete prospective result, authority, evidence and knowledge rule bindings under O01/MC03 remain undefined for the full inventory",
+      "source_selectors": "/resolution_actions; /compiled_action_dependencies",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.statuses",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "BLOCKED",
+      "frozen_representation": "ActionStatus(id,state): exact disjoint 13 COMPLETED/50 BLOCKED partition; validate every id exists and reconcile current holds with historical attempts",
+      "future_positive": "No eligibility from historical completion or removal of a hold alone",
+      "gaps": [
+        "M01-G03"
+      ],
+      "missing_contract": "O02/O06 source-to-current reconciliation and native current_completion support for 13 completed records remain incomplete",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. O02/O06 source-to-current reconciliation and native current_completion support for 13 completed records remain incomplete",
+      "source_selectors": "/execution_state/completed_actions; /execution_state/blocked_actions; /execution_history",
+      "source_sufficiency": "SUFFICIENT"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.roots",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "RootCondition: preserve every exact id and unresolved state; positive gate:validator_authority separately requires O08 chain, predicate and evidence",
+      "future_positive": "Positive root satisfaction requires admitted current target-specific proof",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Unresolved marker contract closed; complete frozen category still needs positive O08 source/native binding and all goal/predicate references",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Unresolved marker contract closed; complete frozen category still needs positive O08 source/native binding and all goal/predicate references",
+      "source_selectors": "/execution_state/root_condition_states; /normalized_root_conditions",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.slots",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "ValueSlot: unresolved -> no admitted value, exact required_type and root/predicate links; preserve two separately proved baseline resolved slots",
+      "future_positive": "Resolved needs exact slot proof, not existing knowledge or PASS",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Exact full slot type/reference crosswalk and real-source O09 baseline admissions remain required",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Exact full slot type/reference crosswalk and real-source O09 baseline admissions remain required",
+      "source_selectors": "manifest unresolved_slot_count; graph slot records; O09 baseline contracts",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.knowledge",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "KnowledgeRecord: exact id, statement/type interpretation, source/evidence, validation, producer and outcome; known missing-proof knowledge is not missing knowledge",
+      "future_positive": "New positive evidence adds separately admitted knowledge, never rewrites historical BLOCKED outcome",
+      "gaps": [
+        "M01-G01",
+        "M01-G02"
+      ],
+      "missing_contract": "Full knowledge typing/omission rules and three real-source result admissions remain open; C06 budget binding is reused",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Full knowledge typing/omission rules and three real-source result admissions remain open; C06 budget binding is reused",
+      "source_selectors": "/resolution_actions knowledge declarations and execution results; exact result report joins",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "Snapshot.assertions",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "GraphAssertion: source identity/selector, relation, subject/object, depends_on and current validation; retain only operational dependency closure",
+      "future_positive": "Positive assertion needs authoritative evidence; no claim synthesized from absence",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "O10 exact source projection and transitive reference crosswalk remain open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. O10 exact source projection and transitive reference crosswalk remain open",
+      "source_selectors": "pinned graph assertions and source selectors",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "Snapshot.entities",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "GraphEntity: retain typed identity/kind and authenticated source; historical subject existence does not establish applicability",
+      "future_positive": "Admitted evidence/authority requires owning provenance and exact scope",
+      "gaps": [
+        "M01-G04",
+        "M01-G05"
+      ],
+      "missing_contract": "Complete identity/subtype, source-role and currentness mapping remains open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete identity/subtype, source-role and currentness mapping remains open",
+      "source_selectors": "pinned graph entities; subject_pins; candidate/grant records",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.predicates",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "Typed predicates for exact relationships; unresolved obligations yield UNKNOWN; no opaque text callback or unconditional false shortcut",
+      "future_positive": "PROVED only through current admitted support, including all governing rules",
+      "gaps": [
+        "M01-G01",
+        "M01-G05"
+      ],
+      "missing_contract": "Full source-to-predicate graph, operand domains and consumer bindings remain open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Full source-to-predicate graph, operand domains and consumer bindings remain open",
+      "source_selectors": "plan dependencies, knowledge_requirements, external request propositions, O08/O09",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "Snapshot.context",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "EvaluationContext exact runtime/envelope identity correspondence and provenance; no substitution of raw content digest for declared identity",
+      "future_positive": "New subject/context requires independent rebinding; no mutable alias",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Complete native EvaluationContext field and envelope joins remain open",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete native EvaluationContext field and envelope joins remain open",
+      "source_selectors": "manifest /subject_pins and graph/operational-context bindings",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.decisions",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "FACT_BLOCKED",
+      "frozen_representation": "Decision/dossier stage, checks, missing facts and source pins; preserve recorded decisions, no ready decision when facts absent",
+      "future_positive": "Authority required is not DECISION_READY; recorded approval does not satisfy roots",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "All existing decision/dossier/authority source joins and native readiness fields remain unmapped; positive issued records cannot all be emptied",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. All existing decision/dossier/authority source joins and native readiness fields remain unmapped; positive issued records cannot all be emptied",
+      "source_selectors": "plan architect_decision_packages, decision_propagation; issued decisions; global per_action_checks",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.evidence_requirements",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "EXPECTED_ABSENCE",
+      "frozen_representation": "EvidenceRequirement id, proposition, target, provenance; unestablished concrete producer stays empty and unknown rule remains false",
+      "future_positive": "Positive proof needs competent producer, target correspondence and admitted rule",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "All route-specific typed EvidenceId/target and rule-known mappings remain incomplete; absence inventory alone is not native receipt contract",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. All route-specific typed EvidenceId/target and rule-known mappings remain incomplete; absence inventory alone is not native receipt contract",
+      "source_selectors": "BR-C1 absences/requirements; exact budget request eight propositions",
+      "source_sufficiency": "SUFFICIENT_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.external_gates",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "WAITING_EXTERNAL",
+      "frozen_representation": "ExternalGate: exact route, requirement ids, receipt action, reentry, held actions, waiting stage, pending=None; preserve fact-frontier distinction",
+      "future_positive": "Receipt/validation/reentry separate stages; no direct eligibility on receipt",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Full native held-action/history/requirement mapping unresolved; implementation route composite frontier is not automatically a GateId; DEC-EXEC readiness route is not literal ActionId",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Full native held-action/history/requirement mapping unresolved; implementation route composite frontier is not automatically a GateId; DEC-EXEC readiness route is not literal ActionId",
+      "source_selectors": "manifest /request_routes joined to handoff control_transfer_items by id",
+      "source_sufficiency": "SUFFICIENT_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "Snapshot.receipt_admissions",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Explicit no-received-evidence state; collections empty. Receipt contracts remain in gates; no fabricated accepted receipt.",
+      "source_to_target_basis": "EXPECTED_ABSENCE"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "Snapshot.receipt_observations",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Explicit no-received-evidence state; collections empty. Receipt contracts remain in gates; no fabricated accepted receipt.",
+      "source_to_target_basis": "EXPECTED_ABSENCE"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.boundaries",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "FACT_BLOCKED",
+      "frozen_representation": "ControlBoundary: budget EXTERNAL_EVIDENCE, factual frontiers retain external-fact meaning; downstream dependencies are not new frontiers",
+      "future_positive": "New evidence changes frontier only after governed admission/recomputation",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Exact canonical boundary ids/action ownership and all frontier joins remain to be specified",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Exact canonical boundary ids/action ownership and all frontier joins remain to be specified",
+      "source_selectors": "global /global_blocking_frontier and /control_state_rule; BR-C1 routes",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "Snapshot.goals",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "UNRESOLVED",
+      "frozen_representation": "Goal: exact condition/slot target, entry actions and provenance; preserve 27 counted plus four deferred top-level obligations without double counting",
+      "future_positive": "Satisfied proof removes goal from frontier; copied summary does not",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Complete per-goal canonical routes including deferred/slot coverage remain unqualified",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Complete per-goal canonical routes including deferred/slot coverage remain unqualified",
+      "source_selectors": "plan /normalized_root_conditions, /deferred_conditions; global /top_level_branches",
+      "source_sufficiency": "SUFFICIENT_AS_UNRESOLVED"
+    },
+    {
+      "admission": "budget proof oracle",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "Snapshot.budget_matrices",
+      "missing": null,
+      "required_fields_explained": false,
+      "rule": "Empty positive collection at frozen checkpoint; retain obligations/gates under CC01",
+      "source_to_target_basis": "VERSIONED_LEGACY_NORMALIZATION"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "PersistenceBundle.initial",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "OTHER",
+      "frozen_representation": "Independently admitted migrated baseline assembled from complete fields, not replay of fabricated legacy events",
+      "future_positive": "Subsequent native events start from this exact canonical identity",
+      "gaps": [
+        "M01-G05",
+        "M01-G06"
+      ],
+      "missing_contract": "Depends on all required native categories and O16 composition; no complete source/native fixture",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Depends on all required native categories and O16 composition; no complete source/native fixture",
+      "source_selectors": "all required canonical categories",
+      "source_sufficiency": "SUFFICIENT"
+    },
+    {
+      "admission": "O02/O06 + native replay where applicable",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "PersistenceBundle.events",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "No native event is executed by migration. Empty native events from independently admitted migrated baseline; legacy history retained separately. Baseline contract itself remains incomplete.",
+      "source_to_target_basis": "VERSIONED_LEGACY_NORMALIZATION"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_CRITICAL",
+      "field": "PersistenceBundle.current",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "OTHER",
+      "frozen_representation": "current equals initial when migration performs no transition; canonical identity equality, not object alias",
+      "future_positive": "Current updated only through replayable native transition",
+      "gaps": [
+        "M01-G05",
+        "M01-G06"
+      ],
+      "missing_contract": "Initial baseline remains incomplete; equality alone cannot make either valid",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Initial baseline remains incomplete; equality alone cannot make either valid",
+      "source_selectors": "initial migrated baseline; zero new native events",
+      "source_sufficiency": "SUFFICIENT"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "PersistenceBundle.sources",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "POSITIVE_PRESENT",
+      "frozen_representation": "ArtifactPin(path,typed identity) for exact required closure; verify raw or declared identity by its own algorithm",
+      "future_positive": "Changed required source rejects/stales dependent admission",
+      "gaps": [
+        "M01-G04",
+        "M01-G05"
+      ],
+      "missing_contract": "Exhaustive required dependency disposition and exact nested whitelist incomplete; cannot call all archive files operational",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Exhaustive required dependency disposition and exact nested whitelist incomplete; cannot call all archive files operational",
+      "source_selectors": "manifest pins plus transitive required source dependencies",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "PersistenceBundle.policy",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Existing C05 supported policy registry binds exact source projection/artifact and E1-SELECTION-1-P06 semantics; reject substituted policy identity.",
+      "source_to_target_basis": "AUTHORIZED_CROSS_SOURCE_JOIN"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "PersistenceBundle.policy_version",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Existing C05 supported policy registry binds exact source projection/artifact and E1-SELECTION-1-P06 semantics; reject substituted policy identity.",
+      "source_to_target_basis": "AUTHORIZED_CROSS_SOURCE_JOIN"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "PersistenceBundle.scope",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "FULL_FROZEN_E1_REPLAY only for full required-goal coverage; this value does not excuse missing coverage or authorize resume.",
+      "source_to_target_basis": "VERSIONED_LEGACY_NORMALIZATION"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "historical_attempts",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "HISTORICAL_ONLY",
+      "frozen_representation": "Selection-only row preserved as pinned planning provenance; 23 source-backed attempts retain outcome/producer/report; current proof separate",
+      "future_positive": "Only independent execution report can support result; no historical parent snapshots invented",
+      "gaps": [
+        "M01-G02",
+        "M01-G03"
+      ],
+      "missing_contract": "Passive imported-history carrier and source-to-native result/hold contract remain required by MC04/05; selection provenance alone needs no runtime type",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Passive imported-history carrier and source-to-native result/hold contract remain required by MC04/05; selection provenance alone needs no runtime type",
+      "source_selectors": "plan /execution_history, exact result_artifact source joins",
+      "source_sufficiency": "SUFFICIENT_AS_HISTORICAL"
+    },
+    {
+      "classification": "CONTRACT_COMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "expected_external_absence_records",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "EXPECTED_ABSENCE",
+      "frozen_representation": "Exact eight source-bound metadata records; deterministic extraction/joins and absence validation defined below; no native evidence object",
+      "future_positive": "Once evidence arrives preserve absence as historical checkpoint metadata; require separate receipt admission",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "NONE for absence metadata contract; native gates/receipt predicates remain separate incomplete categories",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. NONE for absence metadata contract; native gates/receipt predicates remain separate incomplete categories",
+      "source_selectors": "BR-C1 contract /absences plus pinned manifest/handoff/checkpoint",
+      "source_sufficiency": "SUFFICIENT_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "MigrationManifest",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Reuse M01 exact metadata schema/hash-cycle rules; qualification status not admission proof.",
+      "source_to_target_basis": "VERSIONED_LEGACY_NORMALIZATION"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "control_role": "CONTROL_SUPPORTING",
+      "field": "DerivationIndex",
+      "field_origin_rules": {
+        "cross_record_correspondence": "AUTHORIZED_JOIN",
+        "identity_and_recorded_state": "DIRECT_SOURCE",
+        "missing_positive_proof": "UNRESOLVED_MARKER",
+        "native_enum_and_identity_domains": "VERSIONED_NORMALIZATION",
+        "positive_external_fields_at_suspension": "NOT_REQUIRED",
+        "selection_only_record": "HISTORY_ONLY",
+        "unreceived_external_evidence": "EXPECTED_ABSENCE"
+      },
+      "frozen_class": "OTHER",
+      "frozen_representation": "Target identity/field -> source identity, content pin, selector, contract/rule/join version and dependency set; canonical ordered index",
+      "future_positive": "Invalidation traverses actual source dependencies, not currentness label alone",
+      "gaps": [
+        "M01-G05"
+      ],
+      "missing_contract": "Metadata schema is defined but complete actual field derivations and disposition coverage remain missing",
+      "native_validation": "Typed structure, reference integrity and source bindings required; positive admission only for claimed positive state. Metadata schema is defined but complete actual field derivations and disposition coverage remain missing",
+      "source_selectors": "M01 provenance contract plus every required target field mapping",
+      "source_sufficiency": "AMBIGUOUS"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "Snapshot.information",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "No unsupported deterministic metric inferred; unavailable metric falls through existing selector. Optional does not mean guessed zero.",
+      "source_to_target_basis": "VERSIONED_LEGACY_NORMALIZATION"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "Action.cost/cost_unit",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "No unsupported deterministic metric inferred; unavailable metric falls through existing selector. Optional does not mean guessed zero.",
+      "source_to_target_basis": "VERSIONED_LEGACY_NORMALIZATION"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "descriptive titles/report narrative/source annotation",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Retain referenced provenance/oracle summaries; never use saved expected outcomes as algorithm inputs.",
+      "source_to_target_basis": "PROVENANCE_ONLY"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "CONTRACT_COMPLETE",
+      "field": "global-control/actionable/resume summary labels",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "Retain referenced provenance/oracle summaries; never use saved expected outcomes as algorithm inputs.",
+      "source_to_target_basis": "PROVENANCE_ONLY"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "NOT_REQUIRED",
+      "field": "positive external evidence absent at suspension",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "No complete independent nested target mapping; retain unresolved source mapping rather than default. See gap matrix.",
+      "source_to_target_basis": "NOT_REQUIRED"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "NOT_REQUIRED",
+      "field": "unreferenced archived experiment payloads",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "No complete independent nested target mapping; retain unresolved source mapping rather than default. See gap matrix.",
+      "source_to_target_basis": "NOT_REQUIRED"
+    },
+    {
+      "admission": "native model/codec + O16 full-instance admission",
+      "classification": "NOT_REQUIRED",
+      "field": "complete raw source bodies embedded inside snapshot",
+      "missing": null,
+      "required_fields_explained": true,
+      "rule": "No complete independent nested target mapping; retain unresolved source mapping rather than default. See gap matrix.",
+      "source_to_target_basis": "NOT_REQUIRED"
+    }
+  ]
+}

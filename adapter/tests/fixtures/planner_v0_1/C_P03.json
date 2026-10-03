@@ -1,0 +1,285 @@
+{
+  "case_id": "C",
+  "expected": {
+    "actionable": [],
+    "blocked_roots": [
+      "ACTIVE_RECOVERY",
+      "OPERATIONAL_CONTEXT_CURRENT",
+      "OPERATIONAL_BINDING_CURRENT"
+    ],
+    "selected": null
+  },
+  "given": "Three documented dispatcher prerequisites are unresolved.",
+  "must_not": "Do not execute eligibility, infer ownership or alter frozen topology.",
+  "schema": "PLANNER-P03-FIXTURE-1",
+  "snapshot": {
+    "schema": "PLANNER-SNAPSHOT-1",
+    "snapshot": {
+      "$type": "Snapshot",
+      "actions": [
+        {
+          "$type": "Action",
+          "accepted_inventory": [],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "DISPATCHER_ELIGIBILITY"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "RUNTIME_EXPERIMENT"
+          },
+          "prerequisites": [
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "CONDITION_SATISFIED"
+              },
+              "target": {
+                "$type": "ConditionId",
+                "value": "ACTIVE_RECOVERY"
+              }
+            },
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "CONDITION_SATISFIED"
+              },
+              "target": {
+                "$type": "ConditionId",
+                "value": "OPERATIONAL_BINDING_CURRENT"
+              }
+            },
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "CONDITION_SATISFIED"
+              },
+              "target": {
+                "$type": "ConditionId",
+                "value": "OPERATIONAL_CONTEXT_CURRENT"
+              }
+            }
+          ],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "Using the existing graph, `DISPATCHER_ELIGIBILITY` is not an actionable leaf.",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "ae15a9bdd1c18e8bd6be62f4d286b89c47f31c480be49fbffa96d5072aea1f62"
+            },
+            "method": "reviewed-P03-fixture-v1",
+            "path": "docs/experiments/E1/E1_DISPATCHER_PREREQUISITE_REPRESENTATION_REVIEW_1.md",
+            "scope": "HISTORICAL_REPLAY_ONLY",
+            "section": "Correct current frontier"
+          }
+        }
+      ],
+      "assertions": [
+        {
+          "$type": "GraphAssertion",
+          "depends_on": [],
+          "id": {
+            "$type": "AssertionId",
+            "value": "requires:ACTIVE_RECOVERY"
+          },
+          "object": {
+            "$type": "ConditionId",
+            "value": "ACTIVE_RECOVERY"
+          },
+          "ordering_justification": "Explicit prerequisite in recorded dispatcher review",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "Using the existing graph, `DISPATCHER_ELIGIBILITY` is not an actionable leaf.",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "ae15a9bdd1c18e8bd6be62f4d286b89c47f31c480be49fbffa96d5072aea1f62"
+            },
+            "method": "reviewed-P03-fixture-v1",
+            "path": "docs/experiments/E1/E1_DISPATCHER_PREREQUISITE_REPRESENTATION_REVIEW_1.md",
+            "scope": "HISTORICAL_REPLAY_ONLY",
+            "section": "Correct current frontier"
+          },
+          "relation": {
+            "$enum": "Relation",
+            "value": "REQUIRES"
+          },
+          "subject": {
+            "$type": "ActionId",
+            "value": "DISPATCHER_ELIGIBILITY"
+          },
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        },
+        {
+          "$type": "GraphAssertion",
+          "depends_on": [],
+          "id": {
+            "$type": "AssertionId",
+            "value": "requires:OPERATIONAL_BINDING_CURRENT"
+          },
+          "object": {
+            "$type": "ConditionId",
+            "value": "OPERATIONAL_BINDING_CURRENT"
+          },
+          "ordering_justification": "Explicit prerequisite in recorded dispatcher review",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "Using the existing graph, `DISPATCHER_ELIGIBILITY` is not an actionable leaf.",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "ae15a9bdd1c18e8bd6be62f4d286b89c47f31c480be49fbffa96d5072aea1f62"
+            },
+            "method": "reviewed-P03-fixture-v1",
+            "path": "docs/experiments/E1/E1_DISPATCHER_PREREQUISITE_REPRESENTATION_REVIEW_1.md",
+            "scope": "HISTORICAL_REPLAY_ONLY",
+            "section": "Correct current frontier"
+          },
+          "relation": {
+            "$enum": "Relation",
+            "value": "REQUIRES"
+          },
+          "subject": {
+            "$type": "ActionId",
+            "value": "DISPATCHER_ELIGIBILITY"
+          },
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        },
+        {
+          "$type": "GraphAssertion",
+          "depends_on": [],
+          "id": {
+            "$type": "AssertionId",
+            "value": "requires:OPERATIONAL_CONTEXT_CURRENT"
+          },
+          "object": {
+            "$type": "ConditionId",
+            "value": "OPERATIONAL_CONTEXT_CURRENT"
+          },
+          "ordering_justification": "Explicit prerequisite in recorded dispatcher review",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "Using the existing graph, `DISPATCHER_ELIGIBILITY` is not an actionable leaf.",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "ae15a9bdd1c18e8bd6be62f4d286b89c47f31c480be49fbffa96d5072aea1f62"
+            },
+            "method": "reviewed-P03-fixture-v1",
+            "path": "docs/experiments/E1/E1_DISPATCHER_PREREQUISITE_REPRESENTATION_REVIEW_1.md",
+            "scope": "HISTORICAL_REPLAY_ONLY",
+            "section": "Correct current frontier"
+          },
+          "relation": {
+            "$enum": "Relation",
+            "value": "REQUIRES"
+          },
+          "subject": {
+            "$type": "ActionId",
+            "value": "DISPATCHER_ELIGIBILITY"
+          },
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        }
+      ],
+      "knowledge": [],
+      "roots": [
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "ACTIVE_RECOVERY"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        },
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "OPERATIONAL_BINDING_CURRENT"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        },
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "OPERATIONAL_CONTEXT_CURRENT"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "slots": [],
+      "statuses": [
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "DISPATCHER_ELIGIBILITY"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "excerpt": "Using the existing graph, `DISPATCHER_ELIGIBILITY` is not an actionable leaf.",
+      "method": "reviewed-P03-fixture-v1",
+      "path": "docs/experiments/E1/E1_DISPATCHER_PREREQUISITE_REPRESENTATION_REVIEW_1.md",
+      "scope": "HISTORICAL_REPLAY_ONLY",
+      "section": "Correct current frontier",
+      "sha256": "ae15a9bdd1c18e8bd6be62f4d286b89c47f31c480be49fbffa96d5072aea1f62"
+    }
+  ],
+  "then": "No actionable dispatcher; exact three prerequisites reported.",
+  "when": "Project and calculate actionability."
+}

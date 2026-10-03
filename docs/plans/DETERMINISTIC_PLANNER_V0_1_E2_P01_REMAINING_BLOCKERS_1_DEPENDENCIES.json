@@ -1,0 +1,114 @@
+{
+  "edges": [
+    {
+      "from": "E2-G03",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G02"
+    },
+    {
+      "from": "E2-G02",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G04"
+    },
+    {
+      "from": "E2-G03",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G04"
+    },
+    {
+      "from": "E2-G02",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G05"
+    },
+    {
+      "from": "E2-G03",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G05"
+    },
+    {
+      "from": "E2-G02",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G06"
+    },
+    {
+      "from": "E2-G03",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G06"
+    },
+    {
+      "from": "E2-G04",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G06"
+    },
+    {
+      "from": "E2-G05",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G06"
+    },
+    {
+      "from": "E2-G02",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G07"
+    },
+    {
+      "from": "E2-G03",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G07"
+    },
+    {
+      "from": "E2-G04",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G07"
+    },
+    {
+      "from": "E2-G05",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G07"
+    },
+    {
+      "from": "E2-G06",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G08"
+    },
+    {
+      "from": "E2-G07",
+      "meaning": "definition or binding input before dependent fixture/oracle closure",
+      "to": "E2-G08"
+    }
+  ],
+  "future_run_dependencies": {
+    "E2-D01": "All authored supported state fixtures",
+    "E2-END": "A01-A13 progression plus D01",
+    "E2-REVIEW": "P05 END/D01/REG evidence when review executes"
+  },
+  "gate": {
+    "CANONICAL_E2_QUALIFIED": false,
+    "E2_P01_RETRY_ALLOWED": false,
+    "E2_P02_READY": false,
+    "N_REAL_SATISFIED": false,
+    "P01_retried": false,
+    "PLANNER_V0_1_REQUALIFICATION_READY": false,
+    "future_execution_rule": "Executable means complete callable specification and oracle with declared runtime dependencies, not prior PASS of P02-P06. REVIEW may require later evidence when run; its procedure/input schema must exist at preflight.",
+    "predicate": "len(cases)==36 AND all(case.preflight_executable AND fixture_complete AND independent_oracle_complete AND required_capabilities_qualified for case in cases) AND contract_conflicts==[]"
+  },
+  "nodes": [
+    "E2-G02",
+    "E2-G03",
+    "E2-G04",
+    "E2-G05",
+    "E2-G06",
+    "E2-G07",
+    "E2-G08"
+  ],
+  "parallel_after_definitions": [
+    [
+      "E2-G04",
+      "E2-G05"
+    ]
+  ],
+  "roots": [
+    "E2-G03"
+  ],
+  "schema": "E2-P01-DEPENDENCIES-1",
+  "shared_prerequisite": "One closed six-Action/source/identity/envelope/policy registry"
+}

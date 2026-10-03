@@ -1,0 +1,427 @@
+{
+  "E1_files_verified_unchanged": 10911,
+  "determinism": {
+    "hash_seeds": [
+      0,
+      17,
+      113
+    ],
+    "recursive_reversed_key_order": "PASS",
+    "reversed_case_order": "PASS",
+    "semantic_digest": "5fd4c543a02b00b3810c8a5c0f08debdc406db31c175f4f7829f61ef60c94fcd"
+  },
+  "implementation_modified": false,
+  "negative": 41,
+  "planner_implementation_tests_run": false,
+  "positive": 1,
+  "results": [
+    {
+      "id": "POS-VALIDATOR-AUTHORITY-GATE",
+      "result": {
+        "accepted": true,
+        "authority_issued_by_evaluation": false,
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "failed_clause": null,
+        "gate": "gate:validator_authority",
+        "gate_supported": true,
+        "implementation_action_eligible": false,
+        "slot_transition": "UNCHANGED",
+        "validator_complete": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-missing-proof",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C01_PROOF",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-gate",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C02_GATE",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-knowledge-only",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_PROOF_TYPE",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-missing-preparation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_PREPARATION",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-dossier",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C05_DOSSIER",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-missing-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C07_AUTHORITY_REQUIRED",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-lineage",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C10_SOURCE_LINEAGE",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-broader-scope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C11_SCOPE",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-missing-T1",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_PRECONDITIONS",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-missing-provenance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C15_BINDINGS",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-dangling-source",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C15_BINDINGS",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-unaccepted-preparation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_PREPARATION",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-decision",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C06_DECISION",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-option",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C06_DECISION",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-type",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C09_AUTHORITY_TYPE_STATUS",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-unissued",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C09_AUTHORITY_TYPE_STATUS",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-unbound-dossier",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C10_SOURCE_LINEAGE",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-grant-broader-scope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C11_SCOPE",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-grant-missing-T1",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_PRECONDITIONS",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-issuance-permission",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C13_PERMISSION_BOUNDARY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-PASS-grants-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C13_PERMISSION_BOUNDARY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-weakened-tests",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C13_PERMISSION_BOUNDARY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-missing-exclusions",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C13_PERMISSION_BOUNDARY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-wrong-identity-domain",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C08_AUTHORITY_IDENTITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-substituted-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C08_AUTHORITY_IDENTITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-other-envelope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C14_CONTEXT",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-gate-implies-implementation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C16_GATE_BOUNDARY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-proof-identity",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C22_PROOF_IDENTITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-source-substitution",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C18_SOURCE_BYTES",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-STALE-preparation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-REVOKED-preparation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-STALE-dossier",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-REVOKED-dossier",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-STALE-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-REVOKED-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-STALE-propagation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-REVOKED-propagation",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_VALIDITY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-implementation-exists-without-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C07_AUTHORITY_REQUIRED",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-tests-pass-without-authority",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C07_AUTHORITY_REQUIRED",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-bool-integer-substitution",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C16_GATE_BOUNDARY",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "id": "NEG-other-policy",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C14_CONTEXT",
+        "gate_supported": false
+      },
+      "roundtrip": "PASS"
+    }
+  ],
+  "schema": "O08-VALIDATION-1",
+  "source_invalidation_sequences": [
+    {
+      "accepted_reload_stale_reload_rejected": "PASS",
+      "proof_unchanged": true,
+      "role": "authority"
+    },
+    {
+      "accepted_reload_stale_reload_rejected": "PASS",
+      "proof_unchanged": true,
+      "role": "dossier"
+    },
+    {
+      "accepted_reload_stale_reload_rejected": "PASS",
+      "proof_unchanged": true,
+      "role": "preparation"
+    },
+    {
+      "accepted_reload_stale_reload_rejected": "PASS",
+      "proof_unchanged": true,
+      "role": "propagation"
+    }
+  ],
+  "source_pins": "PASS"
+}

@@ -1,0 +1,77 @@
+{
+  "ambiguous_actual_joins": [],
+  "joins": [
+    {
+      "ambiguity": "exactly one keyed record; zero/multiple => REJECT",
+      "correspondence": "no missing/extra role; byte hash and typed pin equal",
+      "currentness": "all required support roles CURRENT_AT_PINNED_SNAPSHOT in independent validity input; never live-freshness inference",
+      "id": "J-ROLE",
+      "key": "role plus CONTENT_IDENTITY exact raw digest",
+      "left": "profile.supports[role]",
+      "lineage": "exact equality to independently governed profile; no compatible-string substitution",
+      "provenance": "retain raw source identity, role, declared selector, governing profile pin, projection-program identity and complete source input manifest",
+      "right": "explicit records[role]",
+      "scope": "route named by governing profile",
+      "target": "proof.supports/documents"
+    },
+    {
+      "ambiguity": "exactly one keyed record; zero/multiple => REJECT",
+      "correspondence": "exact one each; semantic authority_id verified separately",
+      "currentness": "all required support roles CURRENT_AT_PINNED_SNAPSHOT in independent validity input; never live-freshness inference",
+      "id": "J-VALIDATOR",
+      "key": "CONTENT_IDENTITY sha256 plus declared locator",
+      "left": "authority.source_artifacts",
+      "lineage": "exact equality to independently governed profile; no compatible-string substitution",
+      "provenance": "retain raw source identity, role, declared selector, governing profile pin, projection-program identity and complete source input manifest",
+      "right": "preparation and dossier records",
+      "scope": "authority.scope equals O08 required scope",
+      "target": "preparation,dossier,decision,authority,source_lineage"
+    },
+    {
+      "ambiguity": "exactly one keyed record; zero/multiple => REJECT",
+      "correspondence": "unique actual slot and independently accepted closure document",
+      "currentness": "all required support roles CURRENT_AT_PINNED_SNAPSHOT in independent validity input; never live-freshness inference",
+      "id": "J-INV",
+      "key": "exact SlotId; verified candidate INSTANCE_IDENTITY",
+      "left": "Invocation candidate",
+      "lineage": "exact equality to independently governed profile; no compatible-string substitution",
+      "provenance": "retain raw source identity, role, declared selector, governing profile pin, projection-program identity and complete source input manifest",
+      "right": "graph.entities and governing O09 profile",
+      "scope": "candidate runtime/controller/scope equals governed envelope",
+      "target": "InvocationAttemptId value/provenance/envelope"
+    },
+    {
+      "ambiguity": "exactly one keyed record; zero/multiple => REJECT",
+      "correspondence": "unique release block; verified ReleasedProfileAuthority semantic body; content digest stays separate",
+      "currentness": "all required support roles CURRENT_AT_PINNED_SNAPSHOT in independent validity input; never live-freshness inference",
+      "id": "J-PROFILE",
+      "key": "candidate_profile_identity equals verified canonical candidate identity; exact SlotId",
+      "left": "release JSON block",
+      "lineage": "exact equality to independently governed profile; no compatible-string substitution",
+      "provenance": "retain raw source identity, role, declared selector, governing profile pin, projection-program identity and complete source input manifest",
+      "right": "profile candidate and graph slot",
+      "scope": "release runtime/controller/scope and candidate lineage agree with profile",
+      "target": "profile_sha256 value/envelope/lineage"
+    },
+    {
+      "ambiguity": "exactly one keyed record; zero/multiple => REJECT",
+      "correspondence": "exact graph/plan raw identities; policy retained as governed constant",
+      "currentness": "all required support roles CURRENT_AT_PINNED_SNAPSHOT in independent validity input; never live-freshness inference",
+      "id": "J-CONTEXT",
+      "key": "CONTENT_IDENTITY",
+      "left": "explicit graph/plan bytes",
+      "lineage": "exact equality to independently governed profile; no compatible-string substitution",
+      "provenance": "retain raw source identity, role, declared selector, governing profile pin, projection-program identity and complete source input manifest",
+      "right": "governing profile context/snapshot",
+      "scope": "PINNED_SNAPSHOT_ONLY",
+      "target": "proof context/provenance"
+    }
+  ],
+  "not_defined": [
+    "full-plan action/result contract join",
+    "selection-only/action-attempt history reconciliation",
+    "all graph assertion acceptance joins",
+    "manifest/ledger/full-source coverage join"
+  ],
+  "schema": "CE02-BRIDGE-JOINS-1"
+}

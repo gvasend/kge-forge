@@ -1,0 +1,40 @@
+{
+  "schema": "E2-PC01-WHOLE-MODEL-1",
+  "qualification_only": true,
+  "actions": [
+    "E2-COLLECT",
+    "E2-CHECK",
+    "E2-PREPARE",
+    "E2-DECIDE",
+    "E2-REENTER",
+    "E2-FINISH"
+  ],
+  "action_count": 6,
+  "o01_accepted": "6/6",
+  "members": {
+    "prerequisite_relations": "typed ActionId Gate references; no dangling targets",
+    "definition_sources": "one E2-PC01 definition source per Action",
+    "selection_policy": "E1-SELECTION-1-P06 supported binding, exact content pin",
+    "evaluation_context": {
+      "scope": "E2-QUALIFICATION-ONLY",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "generation": "E2-GENERATION-1"
+    },
+    "external_route": {
+      "gate": "E2-GATE",
+      "requirement": "E2-EXTERNAL-REQUIREMENT",
+      "stage": "WAITING_FOR_EXTERNAL_EVIDENCE",
+      "expected_source_role": "EXTERNAL_ROUTE",
+      "positive_evidence_present": false,
+      "receipt_action": "E2-RECEIVE-EVIDENCE",
+      "reentry_action": "E2-REENTER"
+    },
+    "roots": ["E2-ROOT"],
+    "slots": [],
+    "provenance": "all definition and route objects carry raw content identity and E2 scope"
+  },
+  "admission": "ACCEPT",
+  "snapshot_identity": "2e37f24a86b2a5e5f03d23a33a90973d2f19008a2eeb1d385085a385f68a2e2d",
+  "derived_control": "RUNNABLE",
+  "actions_executed": 0
+}

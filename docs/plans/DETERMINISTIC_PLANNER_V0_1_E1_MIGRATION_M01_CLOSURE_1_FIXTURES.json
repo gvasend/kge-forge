@@ -1,0 +1,3548 @@
+{
+  "cases": [
+    {
+      "expected": "ALLOW_SELECTION_ONLY",
+      "id": "LEGACY-0",
+      "proof": null,
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action_result": null,
+        "action_result_explanation": "No action selected or executed; RESULT=BLOCKED describes selection only, not an action acceptance result.",
+        "baseline_checks": {
+          "authority_completeness": "NO",
+          "basis": "Recorded unresolved cut, source/contract gaps and \u00a76/\u00a77 gates; no closure re-execution.",
+          "candidate3_resumption_ready": "NO",
+          "consumer_contract_completeness": "NO",
+          "cut_conditions_resolved": 0,
+          "cut_conditions_unresolved": 28,
+          "mapping_completeness": "NO",
+          "post_wave_results": null,
+          "post_wave_results_reason": "No resolution wave executed; do not manufacture predicted improvements.",
+          "producer_completeness": "NO",
+          "qualified_shared_validator": "NO",
+          "source_completeness": "NO",
+          "template1_construction_ready": "NO",
+          "tracked_slots_resolved": 2,
+          "tracked_slots_unresolved": 41
+        },
+        "blocked_actions": [
+          "DEC-VALIDATOR",
+          "DEC-BINDING",
+          "DEC-RUNTIME_HEAD",
+          "DEC-SUPERVISOR",
+          "DEC-AUDIT",
+          "DEC-IGNORED",
+          "DEC-EXEC",
+          "DEC-INTERFACES",
+          "CONTRACT-T1",
+          "MAP-DISPATCH",
+          "MAP-ANCESTRY",
+          "MAP-APPROVAL",
+          "MAP-RELEASE",
+          "MAP-CONTEXT_ID",
+          "MAP-RUNTIME",
+          "MAP-IMPLEMENTATION",
+          "MAP-PAYLOAD",
+          "MAP-RETENTION",
+          "MAP-BUDGET",
+          "MAP-LIFECYCLE",
+          "MAP-IGNORED",
+          "MAP-PATHS",
+          "MAP-EXEC_BINS",
+          "MAP-ARGV",
+          "MAP-SHELL_NETWORK",
+          "MAP-CONTEXT_PROJECTION",
+          "MAP-TRANSPORT",
+          "MAP-RUNTIME_HEAD",
+          "MAP-SUPERVISOR",
+          "MAP-AUDIT",
+          "S-SUCCESSION",
+          "MAP-SUCCESSION",
+          "BUILD-BINDING",
+          "IMPL-CONTEXT",
+          "IMPL-GOVERNANCE",
+          "IMPL-TRANSMISSION",
+          "IMPL-VALIDATOR",
+          "BUILD-EXECUTION_PROFILE",
+          "S-ELIGIBILITY",
+          "MAP-ELIGIBILITY",
+          "CHECK-READINESS"
+        ],
+        "completed_actions": [],
+        "eligible_actions": [
+          "S-ANCESTRY",
+          "S-APPROVAL",
+          "S-BINDING",
+          "S-EXEC",
+          "S-CONTEXT",
+          "SEM-IMPLEMENTATION",
+          "SEM-BUDGET",
+          "SEM-INTERFACES",
+          "SEM-IGNORED",
+          "SEM-ELIGIBILITY",
+          "PREP-RUNTIME_HEAD",
+          "PREP-SUPERVISOR",
+          "PREP-AUDIT",
+          "PREP-VALIDATOR",
+          "PREP-BINDING-GRANT"
+        ],
+        "planner_exception": "PLANNER_TIE_BREAK_UNDEFINED",
+        "report": {
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "NEWLY_ACTIONABLE": [],
+          "NEXT_ACTION": "UNDEFINED",
+          "OPERATION_CLASS": "NOT_APPLICABLE",
+          "PLANNER_EXCEPTION": "YES",
+          "PRODUCTION_EFFECT": "NO",
+          "RESULT": "BLOCKED",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "SELECTED_ACTION": "NONE",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "TEMPLATE1_CONSTRUCTION_READY": "NO",
+          "WAVE_1_COMPLETED": [],
+          "WAVE_1_REMAINING": [
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "S-ANCESTRY",
+            "S-APPROVAL",
+            "S-BINDING",
+            "S-CONTEXT",
+            "S-EXEC",
+            "SEM-BUDGET",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ]
+        },
+        "root_condition_states": {
+          "gate:schema": "UNRESOLVED",
+          "gate:validator_authority": "UNRESOLVED",
+          "root:ancestry": "UNRESOLVED",
+          "root:approval": "UNRESOLVED",
+          "root:argv": "UNRESOLVED",
+          "root:audit": "UNRESOLVED",
+          "root:binding": "UNRESOLVED",
+          "root:budget": "UNRESOLVED",
+          "root:context_hydration": "UNRESOLVED",
+          "root:context_id": "UNRESOLVED",
+          "root:context_projection": "UNRESOLVED",
+          "root:dispatch": "UNRESOLVED",
+          "root:exec_bins": "UNRESOLVED",
+          "root:execution_profile": "UNRESOLVED",
+          "root:governance": "UNRESOLVED",
+          "root:ignored": "UNRESOLVED",
+          "root:implementation": "UNRESOLVED",
+          "root:lifecycle": "UNRESOLVED",
+          "root:paths": "UNRESOLVED",
+          "root:payload": "UNRESOLVED",
+          "root:release": "UNRESOLVED",
+          "root:retention": "UNRESOLVED",
+          "root:runtime": "UNRESOLVED",
+          "root:runtime_head": "UNRESOLVED",
+          "root:shell_network": "UNRESOLVED",
+          "root:supervisor": "UNRESOLVED",
+          "root:transmission": "UNRESOLVED",
+          "root:transport": "UNRESOLVED"
+        },
+        "selection_attempt": 1,
+        "selection_evidence": {
+          "authority_scope": "Only bounded read-only acquisition/specification stages are eligible to begin under this request and existing contract-definition scope. No issuance or implementation authority inferred.",
+          "finding": "All 15 Wave-1 actions have empty action/external prerequisites and NON_EFFECTING classification. No total ordering or tie-break among these actions is defined. Serialized list order is not an execution selector.",
+          "locations": [
+            "/resolution_waves/0/execution_semantics",
+            "/resolution_waves/0/effect_order_preference",
+            "/resolution_actions/*/prerequisite_actions",
+            "/resolution_actions/*/external_prerequisites",
+            "Human-readable plan: Deterministic resolution waves"
+          ],
+          "plan_json_pre_update_sha256": "8a8da5c544f3aac69b0f8185daacf3faa56879d3d7526cb5c8b295f2d26c4abf",
+          "plan_md_pre_update_sha256": "fe259b5cf1711c67fed752c6049cb160f82500aa698d4e26985db25b89ebd859",
+          "recompilation_basis": "No new accepted action evidence. Existing root/slot states and prerequisite topology preserved; eligibility recomputed from zero completed actions and original external gates.",
+          "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SELECTION_1_RESULT.md",
+          "selected_action_verification": "Not reached: selection stopped before Step 2. Source availability verifies recorded evidence, not existence of missing objects sought by future actions."
+        },
+        "source_evidence_hash_checks": {
+          "all_match": true,
+          "checked": 14
+        },
+        "status": "SELECTION_BLOCKED"
+      },
+      "target": "SELECTION_HISTORY"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-1",
+      "proof": {
+        "producer": "S-ANCESTRY",
+        "source_hash": "09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "acquisition_outcome": "NOT_FOUND",
+        "action": "S-ANCESTRY",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 15,
+          "selected_action": "S-ANCESTRY",
+          "typed_graph_sha256": "019762515216eccf4b24329cfc1174d240980e55c3b50c3974eb3ce30d25f246"
+        },
+        "report": {
+          "ACTION": "S-ANCESTRY",
+          "ACTIONABLE": [
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "S-APPROVAL",
+            "S-BINDING",
+            "S-CONTEXT",
+            "S-EXEC",
+            "SEM-BUDGET",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "S-APPROVAL",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "RESULT": "BLOCKED",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_ANCESTRY_1_RESULT.md",
+        "result_artifact_sha256": "09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f",
+        "root_condition": "root:ancestry",
+        "root_condition_state": "UNRESOLVED",
+        "slot_state": "UNRESOLVED",
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71 predecessor and session/turn rows; \u00a72 WP-01/WP-07; \u00a76\u20137 readiness",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+            "source_location": "\u00a72 Current invocation candidate / Existing binding record / Attempt ancestry; \u00a73",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+            "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+            "source_location": "/identity; /allocation; /predecessor; /ownership; /runtime_state; absent /session_id and /turn_id",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+            "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+            "source_location": "/identity; /ownership; /runtime_state",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:19cc4d0311e62fad0b8c29acce5af9b7a2a59bf16e6364e87c17cb3804a7bfaf",
+            "source_artifact_path": "docs/experiments/E1/run2_r13_preparation_2026-09-19/CURRENT_CANONICAL_R13_BINDING.json",
+            "source_location": "/InvocationAttemptId; /invocation_identity; /predecessor",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:d5d0d3387488ea0d21f3fb746e4a832b919d953c1c9d53c06f9cc185e82de0e1",
+            "source_artifact_path": "docs/experiments/E1/run2_control_plane_2026-09-18/R12_PREDECESSOR.json",
+            "source_location": "/safe_predecessor; /lifecycle/state; /lifecycle/effective_authorization/authorization_id; /ownership; /new_attempt_created",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:63af55bd888dfb4ea2dac81b5e9c36b5c472415889777e928268e287462f68f4",
+            "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_BINDING_JOINT_CONSTRUCTION_1.md",
+            "source_location": "Result; final runtime/ownership paragraph",
+            "validation_status": "BYTES_HASHED; scope-limited evidence, not live-state requalification"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-2",
+      "proof": {
+        "producer": "S-APPROVAL",
+        "source_hash": "4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "acquisition_outcome": "NOT_FOUND",
+        "action": "S-APPROVAL",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 14,
+          "selected_action": "S-APPROVAL",
+          "typed_graph_sha256": "019762515216eccf4b24329cfc1174d240980e55c3b50c3974eb3ce30d25f246"
+        },
+        "report": {
+          "ACTION": "S-APPROVAL",
+          "ACTIONABLE": [
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "S-BINDING",
+            "S-CONTEXT",
+            "S-EXEC",
+            "SEM-BUDGET",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "S-BINDING",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "RESULT": "BLOCKED",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_APPROVAL_1_RESULT.md",
+        "result_artifact_sha256": "4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850",
+        "root_condition": "root:approval",
+        "root_condition_state": "UNRESOLVED",
+        "slot_state": "UNRESOLVED",
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "line 29 specific_approval_id; \u00a72 WP-07; \u00a76/\u00a77 readiness",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "line 34 specific_approval_id",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "source_location": "line 32 specific_approval_id",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:b17cd033f64aa37ac92d5a7b7e6008d7b3a495cc7cd613b28482b743ced3e03e",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_SOURCE_RESOLUTION_1.md",
+            "source_location": "authenticated input inventory",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:2ecc817901f9b7b7b3eb0ea635ff8fbc4ce817d472d3082a6a0f058eaca6e9ee",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_CONSUMER_CONTRACT_RECONCILIATION_1.md",
+            "source_location": "specific_approval_id consumer/source requirement",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+            "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+            "source_location": "/architect_decision; /authority_id; /scope; /status",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_EXTRACTION",
+            "source_artifact_identity": "sha256:fe78a48e26d2c78cdc0b765db1aeb48993624c845bba95cacd60e2761a306bf8",
+            "source_artifact_path": "docs/experiments/E1/run2_r13_preparation_2026-09-19/R4_FINAL_REPLACEMENT_WORKAUTH.json",
+            "source_location": "/specific_approval_id; /release_authority",
+            "validation_status": "SOURCE_LOCATED_AND_BYTES_HASHED; no live authority issuance or applicability inferred"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-3",
+      "proof": {
+        "producer": "S-BINDING",
+        "source_hash": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "acquisition_outcome": "INVENTORY_COMPLETE_WITH_EXPLICIT_GAPS",
+        "action": "S-BINDING",
+        "canonical_identity_checks": [
+          {
+            "canonical_bytes": 2300,
+            "identity": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+            "validation": "MATCH"
+          },
+          {
+            "canonical_bytes": 2167,
+            "identity": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+            "validation": "MATCH"
+          }
+        ],
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 13,
+          "selected_action": "S-BINDING"
+        },
+        "report": {
+          "ACTION": "S-BINDING",
+          "ACTIONABLE": [
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "S-CONTEXT",
+            "S-EXEC",
+            "SEM-BUDGET",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "S-CONTEXT",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "RESULT": "PASS",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+        "result_artifact_sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71 binding_sha256, canonical_binding, session_id/turn_id; \u00a72 WP-01; \u00a73 construction authority; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+            "source_location": "\u00a72 current candidates / existing binding / joint correspondence; \u00a73 acceptance",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:63af55bd888dfb4ea2dac81b5e9c36b5c472415889777e928268e287462f68f4",
+            "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_BINDING_JOINT_CONSTRUCTION_1.md",
+            "source_location": "Result: independent identities and noncanonical correspondence",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+            "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+            "source_location": "/scope; /runtime; /controller_store; declared object identity and applicable /dispatch, /release_authority, /operational_context; absence of canonical_binding/binding_sha256/session_id/turn_id",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+            "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+            "source_location": "/scope; /runtime; /controller_store; declared object identity and applicable /dispatch, /release_authority, /operational_context; absence of canonical_binding/binding_sha256/session_id/turn_id",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+            "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+            "source_location": "/scope; /runtime; /controller_store; declared object identity and applicable /dispatch, /release_authority, /operational_context; absence of canonical_binding/binding_sha256/session_id/turn_id",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+            "source_location": "/scope; /runtime; /controller_store; declared object identity and applicable /dispatch, /release_authority, /operational_context; absence of canonical_binding/binding_sha256/session_id/turn_id",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          },
+          {
+            "extraction_method": "EXACT_FIELD_INVENTORY_AND_EQUALITY_CHECK",
+            "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+            "source_location": "/scope; /runtime; /controller_store; declared object identity and applicable /dispatch, /release_authority, /operational_context; absence of canonical_binding/binding_sha256/session_id/turn_id",
+            "validation_status": "SOURCE_BYTES_HASHED; recorded cross-reference comparison only"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-4",
+      "proof": {
+        "producer": "S-CONTEXT",
+        "source_hash": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "S-CONTEXT",
+        "action_knowledge_produced": [
+          {
+            "claim": "Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.",
+            "id": "S-CONTEXT-K1",
+            "provenance_indices": [
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "claim": "context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.",
+            "id": "S-CONTEXT-K2",
+            "provenance_indices": [
+              0,
+              2,
+              3,
+              8
+            ]
+          },
+          {
+            "claim": "context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.",
+            "id": "S-CONTEXT-K3",
+            "provenance_indices": [
+              0,
+              3,
+              7
+            ]
+          },
+          {
+            "claim": "AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.",
+            "id": "S-CONTEXT-K4",
+            "provenance_indices": [
+              3,
+              5
+            ]
+          },
+          {
+            "claim": "execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.",
+            "id": "S-CONTEXT-K5",
+            "provenance_indices": [
+              1,
+              6
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "canonical_identity_checks": [
+          {
+            "canonical_bytes": 2185,
+            "identity": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+            "status": "MATCH"
+          },
+          {
+            "canonical_bytes": 3875,
+            "identity": "AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98",
+            "path": "docs/experiments/E1/E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json",
+            "status": "MATCH"
+          }
+        ],
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 12,
+          "selected_action": "S-CONTEXT"
+        },
+        "report": {
+          "ACTION": "S-CONTEXT",
+          "ACTIONABLE": [
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "S-EXEC",
+            "SEM-BUDGET",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "S-CONTEXT-K1",
+            "S-CONTEXT-K2",
+            "S-CONTEXT-K3",
+            "S-CONTEXT-K4",
+            "S-CONTEXT-K5"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 3,
+          "NEXT_ACTION": "S-EXEC",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+        "result_artifact_sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71 context_binding/context_projection; WP-08/WP-09 execution records; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md",
+            "source_location": "Accepted mapping: execution_profile producer and unresolved concrete inputs",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:78f545621bf4dec23f4937cc5329d2ec28a4afceccb7c57359c05ee7160a7d6f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP09_RESULT.md",
+            "source_location": "Blocking consumer-contract findings",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+            "source_location": "/identity; /scope; /runtime; /controller_store; /acceptance_manifest; /content_clearance; /payload_authority",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:83e132b57359e125b3291f5dbb23fdbae7b40778ba8af7c2d69dafbaa80da083",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_CONSTRUCTION_1.md",
+            "source_location": "Result and bound references",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:80fbff95364452a6f70616fc746cd5eb0050466c305abcb16edf07400a1f728c",
+            "source_artifact_path": "docs/experiments/E1/E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json",
+            "source_location": "/identity; /scope; /status; /obligations; /provenance_rules",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:77e94db5052be05865d6cc379983a6dd8abf95d015696c2bdafe7d5e11c9aab2",
+            "source_artifact_path": "adapter/runnable_profile.py",
+            "source_location": "specification(binding, acceptance); authorization; build_acceptance interface",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:54ed15c7764ed1a4c3b4b44c78fadb2a698de0f7e71ec951b2fb618fabf49998",
+            "source_artifact_path": "adapter/context_projection.py",
+            "source_location": "derive(spec, binding, authorize=None) input interface",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_FIELD_AND_INTERFACE_INVENTORY",
+            "source_artifact_identity": "sha256:30bb54964191d83664ba26f8a387b729145278c2a4427774d57d6e74cc7517e1",
+            "source_artifact_path": "adapter/context_binding.py",
+            "source_location": "CommittedContext initialization interface",
+            "validation_status": "SOURCE_BYTES_HASHED; no runtime qualification"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-5",
+      "proof": {
+        "producer": "S-EXEC",
+        "source_hash": "464f653148b2266151f71bdf6228a154541afe12d0310b1eca7a3cf8a275f9f1",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "acquisition_outcome": "BOUNDED_POLICY_DECISION_DOSSIER",
+        "action": "S-EXEC",
+        "action_knowledge_produced": [
+          {
+            "claim": "The named current profile, ProgrammerProfile and RepositoryAuthority have no independent exec_bins member; their canonical identities recompute. This is bounded to these sources, not a global absence claim.",
+            "id": "S-EXEC-K1",
+            "provenance_indices": [
+              1,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "claim": "The governing closure/production contract prohibits deriving executable permissions from argv; helper basename behavior cannot establish independent authority.",
+            "id": "S-EXEC-K2",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              6
+            ]
+          },
+          {
+            "claim": "The bounded DEC-EXEC decision branch is needed on this evidence: designate an independent authoritative source and exact projector, or retain the unresolved state. No source or permissions are chosen by this dossier.",
+            "id": "S-EXEC-K3",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "canonical_identity_checks": [
+          {
+            "canonical_bytes": 2390,
+            "check": "MATCH",
+            "identity": "CurrentProfileRootCandidate-sha256:83b8cbc0549c64d21eaccaffc1fa45b49be368a878ccecdf9572d476477dfcd6",
+            "path": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json"
+          },
+          {
+            "canonical_bytes": 2304,
+            "check": "MATCH",
+            "identity": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "path": "docs/experiments/E1/E1_PROGRAMMER_PROFILE_1.json"
+          },
+          {
+            "canonical_bytes": 1131,
+            "check": "MATCH",
+            "identity": "RepositoryAuthority-sha256:79b5d23d69e623306279d4966c31443a45ceea2adc03549b08cf1d2967e515fb",
+            "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md"
+          }
+        ],
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 3,
+          "eligible_count": 11,
+          "selected_action": "S-EXEC"
+        },
+        "report": {
+          "ACTION": "S-EXEC",
+          "ACTIONABLE": [
+            "DEC-EXEC",
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-BUDGET",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "S-EXEC-K1",
+            "S-EXEC-K2",
+            "S-EXEC-K3"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "SEM-BUDGET",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_EXEC_1_RESULT.md",
+        "result_artifact_sha256": "464f653148b2266151f71bdf6228a154541afe12d0310b1eca7a3cf8a275f9f1",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71B execution fields: independent projection requirement; \u00a72 WP-10; \u00a76/7",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:661ec207aafcfd4c1bd61d64fc53a1716969cd0386f9f23f3913b2015f7a3a62",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP10_RERUN_1_RESULT.md",
+            "source_location": "Bounded re-evaluation and exact remaining root condition",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "exec_bins row (line 69)",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342",
+            "source_artifact_path": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json",
+            "source_location": "/least_authority; /identity",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:27105027fee5ba4139cd78d6d974a61db3bc1f529f29bddbc30503fb6873ec60",
+            "source_artifact_path": "docs/experiments/E1/E1_PROGRAMMER_PROFILE_1.json",
+            "source_location": "/constraints/execution; /identity",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+            "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+            "source_location": "first JSON block: RepositoryAuthority",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_POLICY_SOURCE_AND_CONTRACT_INSPECTION",
+            "source_artifact_identity": "sha256:a6f371fe1b6a4204631195976fbb938238a45ae1445243945aee68ad32c7c0a7",
+            "source_artifact_path": "adapter/authority_profile.py",
+            "source_location": "programmer_authorization: basename extraction at line 36",
+            "validation_status": "BYTES_HASHED; canonical identities checked for three policy objects; no publication/currentness grant inferred"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-6",
+      "proof": {
+        "producer": "SEM-BUDGET",
+        "source_hash": "b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "SEM-BUDGET",
+        "action_knowledge_produced": [
+          {
+            "claim": "Existing StatusBudgetAuthority canonical body recomputes to its declared authority identity, length 1189 bytes; existing bounds remain unmodified.",
+            "id": "SEM-BUDGET-K1",
+            "provenance_indices": [
+              4
+            ]
+          },
+          {
+            "claim": "The governing contract leaves authority-identity versus policy-body versus typed-projection representation undefined. Constructor key inclusion/hash behavior does not choose that semantic type.",
+            "id": "SEM-BUDGET-K2",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ]
+          },
+          {
+            "claim": "An exact field representation and canonical source-to-field projection decision is required before SEM-BUDGET can complete; no candidate representation is approved by this result.",
+            "id": "SEM-BUDGET-K3",
+            "provenance_indices": [
+              0,
+              2,
+              3
+            ]
+          }
+        ],
+        "action_result": "AUTHORITY_REQUIRED",
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 11,
+          "selected_action": "SEM-BUDGET"
+        },
+        "knowledge_acceptance": "Source verification and unresolved-choice observations only; no accepted representation proof or action completion.",
+        "report": {
+          "ACTION": "SEM-BUDGET",
+          "ACTIONABLE": [
+            "DEC-EXEC",
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-ELIGIBILITY",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "SEM-BUDGET-K1",
+            "SEM-BUDGET-K2",
+            "SEM-BUDGET-K3"
+          ],
+          "ACTION_RESULT": "AUTHORITY_REQUIRED",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "SEM-ELIGIBILITY",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "AUTHORITY_REQUIRED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_BUDGET_1_RESULT.md",
+        "result_artifact_sha256": "b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71A budget_policy row; \u00a72 WP-12; \u00a73 contract-definition scope; \u00a76/7",
+            "validation_status": "BYTES_HASHED; no live applicability or consumer qualification inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:f5f2dfc5ddddb510cb469e19720667a3cb36e95beb6c3f2fd283696d3cea9d7f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP12_RESULT.md",
+            "source_location": "Bounded evidence and limits: budget representation not selected",
+            "validation_status": "BYTES_HASHED; no live applicability or consumer qualification inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "line 46 budget_policy rule gap",
+            "validation_status": "BYTES_HASHED; no live applicability or consumer qualification inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "source_location": "line 43 budget_policy expected type and canonical mapping; line 49 provenance requirements",
+            "validation_status": "BYTES_HASHED; no live applicability or consumer qualification inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+            "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+            "source_location": "second JSON block: StatusBudgetAuthority /policy, /scope, /lineage, /authority_id",
+            "validation_status": "BYTES_HASHED; no live applicability or consumer qualification inferred"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+            "source_artifact_path": "adapter/invocation_constructor.py",
+            "source_location": "_body required keys and return; artifact digest construction; construct_work_authorization",
+            "validation_status": "BYTES_HASHED; no live applicability or consumer qualification inferred"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-7",
+      "proof": {
+        "producer": "SEM-ELIGIBILITY",
+        "source_hash": "6f1a396ce4ef8619c9e6c518ffb41fab7c146fceb767df0d1c3c569c2699f9d2",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "SEM-ELIGIBILITY",
+        "action_knowledge_produced": [
+          {
+            "claim": "Current eligibility requires a separately evidenced proposition for the exact invocation/binding, scope and fresh lifecycle/recovery/ownership snapshot; reference presence is insufficient.",
+            "id": "SEM-ELIGIBILITY-K1",
+            "provenance_indices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "claim": "Dispatcher handoff eligibility requires reconstructed ACTIVE non-uncertain state, exact activation ownership and production/resource identity validation; this is an after-activation gate, not a preconstruction proof.",
+            "id": "SEM-ELIGIBILITY-K2",
+            "provenance_indices": [
+              3,
+              4
+            ]
+          },
+          {
+            "claim": "The temporal current-eligibility helper checks predecessor/runtime transition and binding presence only; its eligible flag is not a complete dispatcher eligibility proof.",
+            "id": "SEM-ELIGIBILITY-K3",
+            "provenance_indices": [
+              0,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "claim": "Using same-authorization activation/handoff as a prerequisite for its Template-1 eligibility proof would be circular; such a proposed evidence path must stop. No existing accepted field mapping establishes that path.",
+            "id": "SEM-ELIGIBILITY-K4",
+            "provenance_indices": [
+              0,
+              1,
+              3,
+              4
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 10,
+          "selected_action": "SEM-ELIGIBILITY"
+        },
+        "report": {
+          "ACTION": "SEM-ELIGIBILITY",
+          "ACTIONABLE": [
+            "DEC-EXEC",
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED",
+            "SEM-IMPLEMENTATION",
+            "SEM-INTERFACES"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "SEM-ELIGIBILITY-K1",
+            "SEM-ELIGIBILITY-K2",
+            "SEM-ELIGIBILITY-K3",
+            "SEM-ELIGIBILITY-K4"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "SEM-IMPLEMENTATION",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_ELIGIBILITY_1_RESULT.md",
+        "result_artifact_sha256": "6f1a396ce4ef8619c9e6c518ffb41fab7c146fceb767df0d1c3c569c2699f9d2",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_PREDICATE_INSPECTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71 eligibility; \u00a72 WP-02; dependency paragraph; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; no live predicate executed"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_PREDICATE_INSPECTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "eligibility row: independent current evidence and freshness",
+            "validation_status": "SOURCE_BYTES_HASHED; no live predicate executed"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_PREDICATE_INSPECTION",
+            "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "source_location": "eligibility row: proposition and producer before projection",
+            "validation_status": "SOURCE_BYTES_HASHED; no live predicate executed"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_PREDICATE_INSPECTION",
+            "source_artifact_identity": "sha256:5e1de98c4663e13fa8f08b59c4f9b9cec3edf10701cd9131ac10ddf75db30cff",
+            "source_artifact_path": "adapter/controlled_dispatch.py",
+            "source_location": "dispatch lines 15\u201343: issued authorization, audit, recovery handoff gate",
+            "validation_status": "SOURCE_BYTES_HASHED; no live predicate executed"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_PREDICATE_INSPECTION",
+            "source_artifact_identity": "sha256:9073f5359a24c6ff269c2b503c549276465ccd010bcf8702b0c0c5cb710d7bc5",
+            "source_artifact_path": "adapter/activation_transaction.py",
+            "source_location": "recover lines 292\u2013319: ACTIVE/non-uncertain, ownership and resource validation",
+            "validation_status": "SOURCE_BYTES_HASHED; no live predicate executed"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_PREDICATE_INSPECTION",
+            "source_artifact_identity": "sha256:28a3af975677a485e53a784f65b5ca6269b2ec2e1659f9cdf2a753d1b26dd225",
+            "source_artifact_path": "adapter/temporal_authority.py",
+            "source_location": "validate_current_eligibility lines 69\u201388: limited succession predicate",
+            "validation_status": "SOURCE_BYTES_HASHED; no live predicate executed"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-8",
+      "proof": {
+        "producer": "SEM-IMPLEMENTATION",
+        "source_hash": "7ed6761a1546dc659261691071c9e63b87a82a492a4a32513ff85fa730dfe999",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "SEM-IMPLEMENTATION",
+        "action_knowledge_produced": [
+          {
+            "claim": "Governing contract explicitly leaves runtime digest versus distinct implementation identity unresolved; available runtime identity is only a conditional candidate referent.",
+            "id": "SEM-IMPLEMENTATION-K1",
+            "provenance_indices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "claim": "Constructor requires implementation_identity and includes the supplied value in canonical artifact hashing; it does not define equivalence with runtime or a field-specific authenticated selector.",
+            "id": "SEM-IMPLEMENTATION-K2",
+            "provenance_indices": [
+              3
+            ]
+          },
+          {
+            "claim": "Inspected current OperationalContext records the R4 runtime reference but no implementation_identity member. Reference presence does not establish consumer-field equivalence.",
+            "id": "SEM-IMPLEMENTATION-K3",
+            "provenance_indices": [
+              8
+            ]
+          }
+        ],
+        "action_result": "AUTHORITY_REQUIRED",
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 9,
+          "selected_action": "SEM-IMPLEMENTATION"
+        },
+        "knowledge_acceptance": "Bounded observations only; no domain/selector proof or completion.",
+        "report": {
+          "ACTION": "SEM-IMPLEMENTATION",
+          "ACTIONABLE": [
+            "DEC-EXEC",
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED",
+            "SEM-INTERFACES"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "SEM-IMPLEMENTATION-K1",
+            "SEM-IMPLEMENTATION-K2",
+            "SEM-IMPLEMENTATION-K3"
+          ],
+          "ACTION_RESULT": "AUTHORITY_REQUIRED",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 3,
+          "NEXT_ACTION": "SEM-INTERFACES",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "AUTHORITY_REQUIRED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IMPLEMENTATION_1_RESULT.md",
+        "result_artifact_sha256": "7ed6761a1546dc659261691071c9e63b87a82a492a4a32513ff85fa730dfe999",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71A implementation_identity (line 42); WP-09; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "implementation_identity row (line 47): conditional equivalence",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "source_location": "implementation_identity row (line 44): unresolved semantic domain",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+            "source_artifact_path": "adapter/invocation_constructor.py",
+            "source_location": "_body required keys, return dict(inputs), artifact digest",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+            "source_artifact_path": "adapter/authority_resolution.py",
+            "source_location": "identity-domain resolver interfaces",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:a6f371fe1b6a4204631195976fbb938238a45ae1445243945aee68ad32c7c0a7",
+            "source_artifact_path": "adapter/authority_profile.py",
+            "source_location": "bounded field-name inspection",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:9073f5359a24c6ff269c2b503c549276465ccd010bcf8702b0c0c5cb710d7bc5",
+            "source_artifact_path": "adapter/activation_transaction.py",
+            "source_location": "bounded field-name inspection",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:e0bd37219abf452220606d7447f3e8bc6dd69734efa202a4598ab67f9989e99a",
+            "source_artifact_path": "adapter/governance_continuation.py",
+            "source_location": "bounded field-name inspection",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_FIELD_INSPECTION",
+            "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+            "source_location": "/runtime; /scope; /controller_store; absent implementation_identity",
+            "validation_status": "SOURCE_BYTES_HASHED; no frozen runtime/content identity requalification"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-9",
+      "proof": {
+        "producer": "SEM-INTERFACES",
+        "source_hash": "2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "SEM-INTERFACES",
+        "action_knowledge_produced": [
+          {
+            "claim": "Context hydration interface obligations separate canonical authenticated input representation from the host object protocol; no JSON object or identity reference alone meets that protocol.",
+            "id": "SEM-INTERFACES-K1",
+            "provenance_indices": [
+              0,
+              1,
+              4
+            ]
+          },
+          {
+            "claim": "Governance interface requires an authenticated governance member consistent with hydrated context governance; absent source/schema policy is an explicit decision dependency, not an inferred member.",
+            "id": "SEM-INTERFACES-K2",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          },
+          {
+            "claim": "Transmission interface must preserve separate full-payload and initial task/context digest domains and independently applicable clearance; deny-by-default and existing authority constraints remain intact.",
+            "id": "SEM-INTERFACES-K3",
+            "provenance_indices": [
+              0,
+              2
+            ]
+          },
+          {
+            "claim": "T1 content identity needs an explicit versioned canonical body and verification before the issuance identity comparison; binding_digest and WorkAuthorizationId do not cover that missing T1 proof.",
+            "id": "SEM-INTERFACES-K4",
+            "provenance_indices": [
+              0,
+              3
+            ]
+          },
+          {
+            "claim": "Repair scopes and review acceptance obligations are individually bounded; this specification supplies no field defaults, policy choices, implementation permission or qualified validator.",
+            "id": "SEM-INTERFACES-K5",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "conditions_resolved": [],
+        "exception": false,
+        "initial_selection": {
+          "criterion": 3,
+          "eligible_count": 8,
+          "selected_action": "SEM-INTERFACES"
+        },
+        "interface_contract_locations": [
+          "I-CTX",
+          "I-GOV",
+          "I-TX",
+          "I-T1"
+        ],
+        "report": {
+          "ACTION": "SEM-INTERFACES",
+          "ACTIONABLE": [
+            "DEC-EXEC",
+            "PREP-AUDIT",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "SEM-INTERFACES-K1",
+            "SEM-INTERFACES-K2",
+            "SEM-INTERFACES-K3",
+            "SEM-INTERFACES-K4",
+            "SEM-INTERFACES-K5"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "NEXT_ACTION": "PREP-AUDIT",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_INTERFACES_1_RESULT.md",
+        "result_artifact_sha256": "2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "SPECIFICATION_FROM_ACCEPTED_ARTIFACT_FINDINGS",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a72 WP-09/WP-11/WP-13; \u00a73 authority boundaries; \u00a74 pure validator; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; previously recorded findings consumed, not rerun"
+          },
+          {
+            "extraction_method": "SPECIFICATION_FROM_ACCEPTED_ARTIFACT_FINDINGS",
+            "source_artifact_identity": "sha256:78f545621bf4dec23f4937cc5329d2ec28a4afceccb7c57359c05ee7160a7d6f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP09_RESULT.md",
+            "source_location": "Blocking consumer-contract findings",
+            "validation_status": "SOURCE_BYTES_HASHED; previously recorded findings consumed, not rerun"
+          },
+          {
+            "extraction_method": "SPECIFICATION_FROM_ACCEPTED_ARTIFACT_FINDINGS",
+            "source_artifact_identity": "sha256:d867c496ebd24ed3fd5179376111397f2a093efce103257202a7bb27c9204043",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP11_RESULT.md",
+            "source_location": "WP11-EX01 producer/consumer gap and digest domains",
+            "validation_status": "SOURCE_BYTES_HASHED; previously recorded findings consumed, not rerun"
+          },
+          {
+            "extraction_method": "SPECIFICATION_FROM_ACCEPTED_ARTIFACT_FINDINGS",
+            "source_artifact_identity": "sha256:0b915e3948f8b63cf1cd9b3c61fc3c75bc9dd03f2a27f7efd71e5526183579c8",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP13_RESULT.md",
+            "source_location": "WP13-EX01 T1 identity verification; bounded field-contract observations",
+            "validation_status": "SOURCE_BYTES_HASHED; previously recorded findings consumed, not rerun"
+          },
+          {
+            "extraction_method": "SPECIFICATION_FROM_ACCEPTED_ARTIFACT_FINDINGS",
+            "source_artifact_identity": "sha256:d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+            "source_location": "Accepted per-field source inventory; unresolved representations",
+            "validation_status": "SOURCE_BYTES_HASHED; previously recorded findings consumed, not rerun"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-10",
+      "proof": {
+        "producer": "PREP-AUDIT",
+        "source_hash": "48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "PREP-AUDIT",
+        "action_knowledge_produced": [
+          {
+            "claim": "Exact proposed decision applicability envelope is the recorded OperationalBinding R4/G4/E1 scope with its release/context references.",
+            "id": "PREP-AUDIT-K1",
+            "provenance_indices": [
+              2
+            ]
+          },
+          {
+            "claim": "The binding explicitly remains CANONICAL_AUDIT_NAMESPACE_UNBOUND_UNUSED; no concrete namespace/store or external placement is selected by the cited evidence.",
+            "id": "PREP-AUDIT-K2",
+            "provenance_indices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "claim": "Decision-ready preparation requires concrete namespace/store identity and independently evidenced outside-agent-root placement; scope alone does not meet PREP-AUDIT acceptance.",
+            "id": "PREP-AUDIT-K3",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          }
+        ],
+        "action_result": "BLOCKED",
+        "conditions_resolved": [],
+        "downstream_package_prepared": "NONE (DEC-AUDIT dossier incomplete)",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 7,
+          "selected_action": "PREP-AUDIT"
+        },
+        "proposed_scope": {
+          "audit_binding": "CANONICAL_AUDIT_NAMESPACE_UNBOUND_UNUSED",
+          "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+          "identity": "OperationalBinding-sha256:0fc7fdb69881f4b9166fc3997920ade5f92434a19b2a936666cb212e51540cb7",
+          "operational_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+          "release_authority": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+          "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+          "scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "report": {
+          "ACTION": "PREP-AUDIT",
+          "ACTIONABLE": [
+            "DEC-EXEC",
+            "PREP-BINDING-GRANT",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "PREP-AUDIT-K1",
+            "PREP-AUDIT-K2",
+            "PREP-AUDIT-K3"
+          ],
+          "ACTION_RESULT": "BLOCKED",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "DOWNSTREAM_PACKAGE_PREPARED": "NONE (DEC-AUDIT dossier incomplete)",
+          "NEXT_ACTION": "PREP-BINDING-GRANT",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_AUDIT_1_RESULT.md",
+        "result_artifact_sha256": "48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_EXACT_SCOPE_EXTRACTION_AND_RECORDED_FINDINGS",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71 audit/ownership_ledger; \u00a72 WP-06; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; historical catalog finding not rerun"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_SCOPE_EXTRACTION_AND_RECORDED_FINDINGS",
+            "source_artifact_identity": "sha256:2a6e4b49a6d6faa089e0d18f84ad3173f7f58498498f3aeb981eaa09dab1cdb3",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP06_RESULT.md",
+            "source_location": "Evidence and result: unbound namespace and recorded catalog inspection",
+            "validation_status": "SOURCE_BYTES_HASHED; historical catalog finding not rerun"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_SCOPE_EXTRACTION_AND_RECORDED_FINDINGS",
+            "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+            "source_location": "scope/runtime/controller_store/release_authority/operational_context/audit_binding",
+            "validation_status": "SOURCE_BYTES_HASHED; historical catalog finding not rerun"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-11",
+      "proof": {
+        "producer": "PREP-BINDING-GRANT",
+        "source_hash": "a8659a5bd82d4c4188b882dbd0378c153a1d2ada1c3d55577854fd19ce3f24a3",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "PREP-BINDING-GRANT",
+        "action_knowledge_produced": [
+          {
+            "claim": "One conditional provenance-only canonical binding subobject construction can be bounded for existing current invocation/dispatch/release/context, after all construction inputs and approved schema resolve.",
+            "id": "PREP-BINDING-GRANT-K1",
+            "provenance_indices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "claim": "That subobject and its binding_sha256 are distinct from the later complete 22-input authenticated map/binding_digest and from T1 content identity.",
+            "id": "PREP-BINDING-GRANT-K2",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "claim": "Prepared DEC-BINDING scope confers no publication/use, authority issuance, implementation, T1/Candidate-3 construction or runtime effects; BUILD-BINDING gates remain conjunctive.",
+            "id": "PREP-BINDING-GRANT-K3",
+            "provenance_indices": [
+              0,
+              2,
+              3
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "conditions_resolved": [],
+        "downstream_package_prepared": "DEC-BINDING conditional grant dossier (unissued)",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 6,
+          "selected_action": "PREP-BINDING-GRANT"
+        },
+        "report": {
+          "ACTION": "PREP-BINDING-GRANT",
+          "ACTIONABLE": [
+            "DEC-BINDING",
+            "DEC-EXEC",
+            "PREP-RUNTIME_HEAD",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "PREP-BINDING-GRANT-K1",
+            "PREP-BINDING-GRANT-K2",
+            "PREP-BINDING-GRANT-K3"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "DOWNSTREAM_PACKAGE_PREPARED": "DEC-BINDING conditional grant dossier (unissued)",
+          "NEXT_ACTION": "PREP-RUNTIME_HEAD",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_BINDING_GRANT_1_RESULT.md",
+        "result_artifact_sha256": "a8659a5bd82d4c4188b882dbd0378c153a1d2ada1c3d55577854fd19ce3f24a3",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_REQUIREMENTS_AND_ACCEPTED_KNOWLEDGE",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a73 binding-input authority; \u00a72/\u00a76/\u00a77",
+            "validation_status": "SOURCE_BYTES_HASHED; no construction or live applicability assertion"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_REQUIREMENTS_AND_ACCEPTED_KNOWLEDGE",
+            "source_artifact_identity": "sha256:bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+            "source_location": "\u00a72/3 canonical binding gap and independent identities",
+            "validation_status": "SOURCE_BYTES_HASHED; no construction or live applicability assertion"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_REQUIREMENTS_AND_ACCEPTED_KNOWLEDGE",
+            "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+            "source_location": "Accepted inventory and explicit missing inputs",
+            "validation_status": "SOURCE_BYTES_HASHED; no construction or live applicability assertion"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_REQUIREMENTS_AND_ACCEPTED_KNOWLEDGE",
+            "source_artifact_identity": "sha256:2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_INTERFACES_1_RESULT.md",
+            "source_location": "Interface scope, unresolved schema choices and independent identity domains",
+            "validation_status": "SOURCE_BYTES_HASHED; no construction or live applicability assertion"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-12",
+      "proof": {
+        "producer": "PREP-RUNTIME_HEAD",
+        "source_hash": "6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "PREP-RUNTIME_HEAD",
+        "action_knowledge_produced": [
+          {
+            "claim": "Known evidence separates historical head identity, R3-scoped selection and explicitly unpublished prospective R4 transition; none establishes current R4/G4 selection.",
+            "id": "PREP-RUNTIME_HEAD-K1",
+            "provenance_indices": [
+              1
+            ]
+          },
+          {
+            "claim": "The existing binding inventory fixes the proposed R4/G4 invocation/release/context envelope, not a runtime-head authority.",
+            "id": "PREP-RUNTIME_HEAD-K2",
+            "provenance_indices": [
+              2
+            ]
+          },
+          {
+            "claim": "Concrete current head selection and publication-target facts remain missing; DEC-RUNTIME_HEAD cannot be made decision-ready by repeating historical references.",
+            "id": "PREP-RUNTIME_HEAD-K3",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          }
+        ],
+        "action_result": "BLOCKED",
+        "conditions_resolved": [],
+        "downstream_package_prepared": "NONE (DEC-RUNTIME_HEAD dossier incomplete)",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 6,
+          "selected_action": "PREP-RUNTIME_HEAD"
+        },
+        "report": {
+          "ACTION": "PREP-RUNTIME_HEAD",
+          "ACTIONABLE": [
+            "DEC-BINDING",
+            "DEC-EXEC",
+            "PREP-SUPERVISOR",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "PREP-RUNTIME_HEAD-K1",
+            "PREP-RUNTIME_HEAD-K2",
+            "PREP-RUNTIME_HEAD-K3"
+          ],
+          "ACTION_RESULT": "BLOCKED",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "DOWNSTREAM_PACKAGE_PREPARED": "NONE (DEC-RUNTIME_HEAD dossier incomplete)",
+          "NEXT_ACTION": "PREP-SUPERVISOR",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_RUNTIME_HEAD_1_RESULT.md",
+        "result_artifact_sha256": "6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_EVIDENCE",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "WP-03; runtime_head row; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; no historical/live store lookup rerun"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_EVIDENCE",
+            "source_artifact_identity": "sha256:35c5b4fad302b04585d81c5432aa84d160c463333223bdb31da4b36b2b1404d0",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP03_RESULT.md",
+            "source_location": "\u00a72 candidate/current references and recorded G4 source state; \u00a73 acceptance",
+            "validation_status": "SOURCE_BYTES_HASHED; no historical/live store lookup rerun"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_EVIDENCE",
+            "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+            "source_location": "Accepted current R4/G4 scope and release/context reference inventory",
+            "validation_status": "SOURCE_BYTES_HASHED; no historical/live store lookup rerun"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-13",
+      "proof": {
+        "producer": "PREP-SUPERVISOR",
+        "source_hash": "1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "PREP-SUPERVISOR",
+        "action_knowledge_produced": [
+          {
+            "claim": "Recorded supervisor instance observations and their shared runtime-adoption reference do not constitute a current supervisor selection/release authority.",
+            "id": "PREP-SUPERVISOR-K1",
+            "provenance_indices": [
+              1
+            ]
+          },
+          {
+            "claim": "Recorded instance release/context bindings differ from the current R4/G4 envelope; identity authentication alone cannot establish applicability.",
+            "id": "PREP-SUPERVISOR-K2",
+            "provenance_indices": [
+              1,
+              2
+            ]
+          },
+          {
+            "claim": "Concrete applicable supervisor selector and supporting current release/context authority facts are missing from the defined evidence; decision preparation remains incomplete.",
+            "id": "PREP-SUPERVISOR-K3",
+            "provenance_indices": [
+              0,
+              1,
+              2
+            ]
+          }
+        ],
+        "action_result": "BLOCKED",
+        "conditions_resolved": [],
+        "downstream_package_prepared": "NONE (DEC-SUPERVISOR dossier incomplete)",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 5,
+          "selected_action": "PREP-SUPERVISOR"
+        },
+        "report": {
+          "ACTION": "PREP-SUPERVISOR",
+          "ACTIONABLE": [
+            "DEC-BINDING",
+            "DEC-EXEC",
+            "PREP-VALIDATOR",
+            "SEM-IGNORED"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "PREP-SUPERVISOR-K1",
+            "PREP-SUPERVISOR-K2",
+            "PREP-SUPERVISOR-K3"
+          ],
+          "ACTION_RESULT": "BLOCKED",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "DOWNSTREAM_PACKAGE_PREPARED": "NONE (DEC-SUPERVISOR dossier incomplete)",
+          "NEXT_ACTION": "PREP-VALIDATOR",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_SUPERVISOR_1_RESULT.md",
+        "result_artifact_sha256": "1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_EVIDENCE",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "supervisor row; WP-04; \u00a76/7",
+            "validation_status": "SOURCE_BYTES_HASHED; prior catalog/instance findings not rerun"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_EVIDENCE",
+            "source_artifact_identity": "sha256:f75b50d31bc6e5ac6c65c0746a28bc0019d178df567ad1a1860e17a34480d8e5",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP04_RESULT.md",
+            "source_location": "Evidence and evaluation: instance identities, adoption reference and stale bindings",
+            "validation_status": "SOURCE_BYTES_HASHED; prior catalog/instance findings not rerun"
+          },
+          {
+            "extraction_method": "DOSSIER_FROM_RECORDED_EVIDENCE",
+            "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+            "source_location": "Accepted current invocation/dispatch/release/context envelope",
+            "validation_status": "SOURCE_BYTES_HASHED; prior catalog/instance findings not rerun"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-14",
+      "proof": {
+        "producer": "PREP-VALIDATOR",
+        "source_hash": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "PREP-VALIDATOR",
+        "action_knowledge_produced": [
+          {
+            "claim": "Bounded WP-14 grant scope is the active consumer shared pre-effect validation seam, not general adapter repair permission.",
+            "id": "PREP-VALIDATOR-K1",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "claim": "T1 content-body identity verification must precede issuance identity comparison; exact body/schema remains CONTRACT-T1 output, not invented by the grant dossier.",
+            "id": "PREP-VALIDATOR-K2",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          },
+          {
+            "claim": "Differential, malformed-input, zero-effect, shared-helper invocation, mutable-state race and active-import qualification are mandatory \u00a74 outputs before PURE_VALIDATION_READY.",
+            "id": "PREP-VALIDATOR-K3",
+            "provenance_indices": [
+              0
+            ]
+          },
+          {
+            "claim": "The scope dossier suffices for DEC-VALIDATOR review under \u00a73; issued authenticated authority and CONTRACT-T1 remain separate IMPL-VALIDATOR prerequisites.",
+            "id": "PREP-VALIDATOR-K4",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "conditions_resolved": [],
+        "downstream_package_prepared": "DEC-VALIDATOR bounded grant dossier (unissued)",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 5,
+          "eligible_count": 4,
+          "selected_action": "PREP-VALIDATOR"
+        },
+        "report": {
+          "ACTION": "PREP-VALIDATOR",
+          "ACTIONABLE": [
+            "DEC-BINDING",
+            "DEC-EXEC",
+            "DEC-VALIDATOR",
+            "SEM-IGNORED"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "PREP-VALIDATOR-K1",
+            "PREP-VALIDATOR-K2",
+            "PREP-VALIDATOR-K3",
+            "PREP-VALIDATOR-K4"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 3,
+          "DOWNSTREAM_PACKAGE_PREPARED": "DEC-VALIDATOR bounded grant dossier (unissued)",
+          "NEXT_ACTION": "SEM-IGNORED",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+        "result_artifact_sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "BOUNDED_SCOPE_FROM_CONTRACT_AND_ACCEPTED_INTERFACE_SPECIFICATION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a73 implementation authority; \u00a74 complete validator scope and tests; \u00a76/7",
+            "validation_status": "BYTES_HASHED; no adapter imports, tests or implementation performed"
+          },
+          {
+            "extraction_method": "BOUNDED_SCOPE_FROM_CONTRACT_AND_ACCEPTED_INTERFACE_SPECIFICATION",
+            "source_artifact_identity": "sha256:2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_INTERFACES_1_RESULT.md",
+            "source_location": "I-T1; unresolved decisions; bounded repair scope",
+            "validation_status": "BYTES_HASHED; no adapter imports, tests or implementation performed"
+          },
+          {
+            "extraction_method": "BOUNDED_SCOPE_FROM_CONTRACT_AND_ACCEPTED_INTERFACE_SPECIFICATION",
+            "source_artifact_identity": "sha256:a63522a4c901b7a349c64b6ce0edd085471186ebf80a99755880afbf18a5493a",
+            "source_artifact_path": "adapter/workauth_lifecycle.py",
+            "source_location": "consume_and_issue definition location only",
+            "validation_status": "BYTES_HASHED; no adapter imports, tests or implementation performed"
+          },
+          {
+            "extraction_method": "BOUNDED_SCOPE_FROM_CONTRACT_AND_ACCEPTED_INTERFACE_SPECIFICATION",
+            "source_artifact_identity": "sha256:a29c3f4bcd1f76c3e214006b2db875dc715a8e0db5b4610ed53e96441e3de3ed",
+            "source_artifact_path": "adapter/workauth_issuance.py",
+            "source_location": "validate definition location only",
+            "validation_status": "BYTES_HASHED; no adapter imports, tests or implementation performed"
+          },
+          {
+            "extraction_method": "BOUNDED_SCOPE_FROM_CONTRACT_AND_ACCEPTED_INTERFACE_SPECIFICATION",
+            "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+            "source_artifact_path": "adapter/invocation_constructor.py",
+            "source_location": "construct_work_authorization definition location only",
+            "validation_status": "BYTES_HASHED; no adapter imports, tests or implementation performed"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-15",
+      "proof": {
+        "producer": "SEM-IGNORED",
+        "source_hash": "8e071f5f6f7f305bc35e07b2bcb7f77175f54ce03528048522d6db2e0ef7f816",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "SEM-IGNORED",
+        "action_knowledge_produced": [
+          {
+            "claim": "All four input keys are mandatory under the current exact field-set check although overwritten before runtime construction.",
+            "id": "SEM-IGNORED-K1",
+            "provenance_indices": [
+              2,
+              3
+            ]
+          },
+          {
+            "claim": "Outputs are authorization_id=InvocationAttemptId, revision=1, state=INACTIVE, ownership_ledger=audit; those assignments do not define canonical input values.",
+            "id": "SEM-IGNORED-K2",
+            "provenance_indices": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "claim": "Two reviewable unadopted contract alternatives cover all four keys: exact sentinel validation with keys retained, or explicitly versioned key exclusion and consumer assignment.",
+            "id": "SEM-IGNORED-K3",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              4
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "conditions_resolved": [],
+        "downstream_package_prepared": "DEC-IGNORED alternatives dossier (unadopted)",
+        "exception": false,
+        "initial_selection": {
+          "criterion": 3,
+          "eligible_count": 4,
+          "selected_action": "SEM-IGNORED"
+        },
+        "proposal_status": "ALTERNATIVES_ONLY; no sentinel adopted",
+        "report": {
+          "ACTION": "SEM-IGNORED",
+          "ACTIONABLE": [
+            "DEC-BINDING",
+            "DEC-EXEC",
+            "DEC-IGNORED",
+            "DEC-VALIDATOR"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "SEM-IGNORED-K1",
+            "SEM-IGNORED-K2",
+            "SEM-IGNORED-K3"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 5,
+          "DOWNSTREAM_PACKAGE_PREPARED": "DEC-IGNORED alternatives dossier (unadopted)",
+          "NEXT_ACTION": "DEC-BINDING",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 28,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IGNORED_1_RESULT.md",
+        "result_artifact_sha256": "8e071f5f6f7f305bc35e07b2bcb7f77175f54ce03528048522d6db2e0ef7f816",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_ASSIGNMENT_EXTRACTION",
+            "source_artifact_identity": "sha256:bf88220168766599236a22d34f88686fb943bd55682ef4458046d84c36e6eaaf",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_PRODUCTION_CONTRACT_CLOSURE_PLAN_1.md",
+            "source_location": "\u00a71B overwritten fields; \u00a75 no guessed values; \u00a76/7",
+            "validation_status": "BYTES_HASHED; no constructor invoked or policy adopted"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_ASSIGNMENT_EXTRACTION",
+            "source_artifact_identity": "sha256:f5f2dfc5ddddb510cb469e19720667a3cb36e95beb6c3f2fd283696d3cea9d7f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP12_RESULT.md",
+            "source_location": "Exact root condition: canonical ignored-input representation",
+            "validation_status": "BYTES_HASHED; no constructor invoked or policy adopted"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_ASSIGNMENT_EXTRACTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "authorization_id/revision/state/ownership_ledger rows; ignored-key paragraph",
+            "validation_status": "BYTES_HASHED; no constructor invoked or policy adopted"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_ASSIGNMENT_EXTRACTION",
+            "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+            "source_artifact_path": "adapter/invocation_constructor.py",
+            "source_location": "construct_work_authorization exact field set check and fields.update",
+            "validation_status": "BYTES_HASHED; no constructor invoked or policy adopted"
+          },
+          {
+            "extraction_method": "READ_ONLY_CONTRACT_AND_ASSIGNMENT_EXTRACTION",
+            "source_artifact_identity": "sha256:2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_INTERFACES_1_RESULT.md",
+            "source_location": "I-T1 schema/body identity and unresolved decisions",
+            "validation_status": "BYTES_HASHED; no constructor invoked or policy adopted"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-16",
+      "proof": {
+        "producer": "DEC-BINDING",
+        "source_hash": "b5134651f52b0707c800574e56cc33073a8afd84a1bf33f53bf95edfb7eb7eec",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "DEC-BINDING",
+        "authority_id": "E1-ArchitectDecisionAuthority-sha256:fbebb98f3d136b0baab84590628e62db660111dac463b82e49421267b3983ae0",
+        "authority_record": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BINDING_AUTHORITY_1.json",
+        "authorization_basis": "Explicit Architect decisions in user message; batch dossier restrictions preserved.",
+        "conditions_resolved": [],
+        "decision": "APPROVED_OPTION_1",
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BINDING_AUTHORITY_1.json",
+        "result_artifact_sha256": "b5134651f52b0707c800574e56cc33073a8afd84a1bf33f53bf95edfb7eb7eec",
+        "slots_resolved": []
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-17",
+      "proof": {
+        "producer": "DEC-IGNORED",
+        "source_hash": "41f2a2c922a1e2f948ceddc7f28a0eee3893d67378bd558c9fadbb51075a04a7",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "DEC-IGNORED",
+        "authority_id": "E1-ArchitectDecisionAuthority-sha256:ddb9fdad668cc94419c973d725373eddae65defcf62aecea360a79a626a96079",
+        "authority_record": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_IGNORED_AUTHORITY_1.json",
+        "authorization_basis": "Explicit Architect decisions in user message; batch dossier restrictions preserved.",
+        "conditions_resolved": [],
+        "decision": "APPROVED_OPTION_A_NULL_SENTINELS",
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_IGNORED_AUTHORITY_1.json",
+        "result_artifact_sha256": "41f2a2c922a1e2f948ceddc7f28a0eee3893d67378bd558c9fadbb51075a04a7",
+        "slots_resolved": []
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-18",
+      "proof": {
+        "producer": "DEC-VALIDATOR",
+        "source_hash": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "DEC-VALIDATOR",
+        "authority_id": "E1-ArchitectDecisionAuthority-sha256:ddd8e36587e2780f640b7babb0e44951b4f5510955822af1db8a00aa74fdd629",
+        "authority_record": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json",
+        "authorization_basis": "Explicit Architect decisions in user message; batch dossier restrictions preserved.",
+        "conditions_resolved": [
+          "gate:validator_authority"
+        ],
+        "decision": "APPROVED_OPTION_1",
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json",
+        "result_artifact_sha256": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87",
+        "slots_resolved": []
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-19",
+      "proof": {
+        "producer": "INPUT-BUDGET",
+        "source_hash": "d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "INPUT-BUDGET",
+        "action_knowledge_produced": [
+          {
+            "claim": "Recorded budget source body and all SEM-BUDGET cited source identities match; policy and full source restrictions remain unchanged.",
+            "id": "INPUT-BUDGET-K1",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          },
+          {
+            "claim": "Three exact unadopted representation alternatives with source selectors, canonical rules, validation and compatibility consequences are prepared.",
+            "id": "INPUT-BUDGET-K2",
+            "producing_dossier": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "claim": "The bounded representation-only decision has complete factual inputs; current applicability and actual use remain separate unproved obligations.",
+            "id": "INPUT-BUDGET-K3",
+            "producing_dossier": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+            "provenance_indices": [
+              0,
+              1,
+              6
+            ]
+          }
+        ],
+        "action_result": "PASS",
+        "conditions_resolved": [],
+        "decision_readiness_attestation": {
+          "authority_granted": false,
+          "classification": "DECISION_READY",
+          "decision": "DEC-BUDGET",
+          "dossier": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+            "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957"
+          },
+          "method": "Separate post-construction acceptance pass over dossier bytes and each readiness predicate; not external human approval.",
+          "predicates": [
+            {
+              "evidence": "/question; /scope",
+              "predicate": "exact question and scope",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/provenance; /owning_source_identity",
+              "predicate": "hash-bound source inventory and provenance",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/options (A/B/C exact types, selectors, rules and samples)",
+              "predicate": "concrete alternatives with exact canonical value/type/projection contracts",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/options/*/assumptions; /compatibility; /consequence",
+              "predicate": "per-alternative factual assumptions and consequences",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/if_approved; /authority_not_granted",
+              "predicate": "authority granted and explicitly excluded",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/downstream; /required_future_qualification",
+              "predicate": "downstream acceptance/qualification obligations",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/options/*/status; /deferred_downstream_facts",
+              "predicate": "no invented fact or unqualified identity equivalence",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/decision_input_completeness; /deferred_downstream_facts (current applicability excluded)",
+              "predicate": "all facts necessary to choose are established; deferred downstream facts clearly excluded from decision proposition",
+              "status": "PASS"
+            },
+            {
+              "evidence": "Independent reread: source hashes, authority identity, exact option projections, distinct canonical bytes verified; freshness is snapshot identity only, no live assertion",
+              "predicate": "independent readiness check and freshness/source identity validation",
+              "status": "PASS"
+            }
+          ],
+          "review_md": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.md",
+            "sha256": "5ebf7b266d3dc6129257114a184c31396b1322306eb1ce705e3507870cb05e0b"
+          },
+          "scope": "Representation choice only. Actual applicability and source-use qualification excluded."
+        },
+        "dossier": {
+          "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+          "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957"
+        },
+        "exception": null,
+        "initial_selection": {
+          "actionable": [
+            "INPUT-BUDGET",
+            "INPUT-IMPLEMENTATION"
+          ],
+          "deciding_criterion": 5,
+          "selected_action": "INPUT-BUDGET",
+          "trace": [
+            [
+              1,
+              "NOT_DECISIVE"
+            ],
+            [
+              2,
+              "NOT_DECISIVE"
+            ],
+            [
+              3,
+              "APPLIED",
+              [
+                "INPUT-BUDGET",
+                "INPUT-IMPLEMENTATION"
+              ]
+            ],
+            [
+              4,
+              "APPLIED",
+              [
+                "INPUT-BUDGET",
+                "INPUT-IMPLEMENTATION"
+              ]
+            ],
+            [
+              4,
+              "COST_NOT_AVAILABLE"
+            ],
+            [
+              5,
+              "APPLIED",
+              [
+                "INPUT-BUDGET"
+              ]
+            ]
+          ]
+        },
+        "operation_class": "DECISION_INPUT_ACQUISITION",
+        "report": {
+          "ACTION": "INPUT-BUDGET",
+          "ACTIONABLE": [
+            "DEC-BUDGET",
+            "INPUT-IMPLEMENTATION"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "INPUT-BUDGET-K1",
+            "INPUT-BUDGET-K2",
+            "INPUT-BUDGET-K3"
+          ],
+          "ACTION_RESULT": "PASS",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": 3,
+          "DECISION_READINESS_TRANSITION": "DEC-BUDGET: UNSATISFIED -> DECISION_READY",
+          "DOWNSTREAM_PACKAGE_PREPARED": "DEC-BUDGET representation-only dossier",
+          "NEXT_ACTION": "INPUT-IMPLEMENTATION",
+          "OPERATION_CLASS": "DECISION_INPUT_ACQUISITION",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 27,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_RESULT.md",
+        "result_artifact_sha256": "d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_BUDGET_1_RESULT.md",
+            "source_location": "Accepted K1-K3; policy; exact governing decision requirement",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+            "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+            "source_location": "Second JSON block: StatusBudgetAuthority, /authority_id, /policy, /scope, /lineage and control members",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+            "source_artifact_path": "adapter/invocation_constructor.py",
+            "source_location": "_body; artifact; construct_work_authorization",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:54ed15c7764ed1a4c3b4b44c78fadb2a698de0f7e71ec951b2fb618fabf49998",
+            "source_artifact_path": "adapter/context_projection.py",
+            "source_location": "canonical; digest",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "budget_policy row",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "source_location": "budget_policy expected type/mapping",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_EXACT_ARTIFACT_INSPECTION",
+            "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+            "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+            "source_location": "Budget route and dossier/readiness predicates",
+            "validation_status": "SOURCE_BYTES_MATCH; NOT_LIVE_APPLICABILITY_QUALIFICATION"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-20",
+      "proof": {
+        "producer": "INPUT-IMPLEMENTATION",
+        "source_hash": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "INPUT-IMPLEMENTATION",
+        "action_knowledge_produced": [
+          {
+            "claim": "Runtime reference remains a reference, not verified frozen runtime bytes or qualified implementation selector.",
+            "id": "INPUT-IMPLEMENTATION-K1",
+            "provenance_indices": [
+              0,
+              1
+            ]
+          },
+          {
+            "claim": "Constructor requires and hashes the field without defining domain equivalence.",
+            "id": "INPUT-IMPLEMENTATION-K2",
+            "provenance_indices": [
+              0,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "claim": "Partial alternatives and their limits are prepared; distinct-domain owner and canonical selector remain missing, so the exact dossier is fact-blocked.",
+            "id": "INPUT-IMPLEMENTATION-K3",
+            "producing_dossier": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_DOSSIER.json",
+            "provenance_indices": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ]
+          }
+        ],
+        "action_result": "BLOCKED",
+        "conditions_resolved": [],
+        "decision_readiness_attestation": {
+          "authority_granted": false,
+          "classification": "FACT_BLOCKED",
+          "decision": "DEC-IMPLEMENTATION",
+          "dossier": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_DOSSIER.json",
+            "sha256": "a4c30fd0c72205a344359e2dd53703a789c33ebf4b5c09f79ec73fdde9220a31"
+          },
+          "method": "Independent post-preparation source-identity and completeness audit; missing required source/selector prevents ready attestation.",
+          "predicates": [
+            {
+              "evidence": "/scope; /options; /provenance; /stop_rule; /accepted_findings",
+              "predicate": "exact question and scope",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/scope; /options; /provenance; /stop_rule; /accepted_findings",
+              "predicate": "hash-bound source inventory and provenance",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/missing_decision_inputs; /options/B",
+              "predicate": "concrete alternatives with exact canonical value/type/projection contracts",
+              "status": "FAIL"
+            },
+            {
+              "evidence": "/missing_decision_inputs; /options/B",
+              "predicate": "per-alternative factual assumptions and consequences",
+              "status": "FAIL"
+            },
+            {
+              "evidence": "/scope; /options; /provenance; /stop_rule; /accepted_findings",
+              "predicate": "authority granted and explicitly excluded",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/scope; /options; /provenance; /stop_rule; /accepted_findings",
+              "predicate": "downstream acceptance/qualification obligations",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/scope; /options; /provenance; /stop_rule; /accepted_findings",
+              "predicate": "no invented fact or unqualified identity equivalence",
+              "status": "PASS"
+            },
+            {
+              "evidence": "/missing_decision_inputs; /options/B",
+              "predicate": "all facts necessary to choose are established; deferred downstream facts clearly excluded from decision proposition",
+              "status": "FAIL"
+            },
+            {
+              "evidence": "/scope; /options; /provenance; /stop_rule; /accepted_findings",
+              "predicate": "independent readiness check and freshness/source identity validation",
+              "status": "PASS"
+            }
+          ],
+          "review_md": {
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_DOSSIER.md",
+            "sha256": "c70a23bab4e18380c5651c31841f7bc33a3f7b408cd0f8c108775f5bef04fd45"
+          }
+        },
+        "dossier": {
+          "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_DOSSIER.json",
+          "sha256": "a4c30fd0c72205a344359e2dd53703a789c33ebf4b5c09f79ec73fdde9220a31"
+        },
+        "exception": null,
+        "human_handoff": {
+          "basis": "Current explicit user instruction: if only DECISION_READY human actions remain, stop and report batch ready without selecting a DEC action.",
+          "decision_actions": [
+            "DEC-BUDGET"
+          ],
+          "next_action": "NONE",
+          "selection_policy_modified": false
+        },
+        "initial_selection": {
+          "actionable": [
+            "DEC-BUDGET",
+            "INPUT-IMPLEMENTATION"
+          ],
+          "deciding_criterion": 3,
+          "selected_action": "INPUT-IMPLEMENTATION",
+          "trace": [
+            [
+              1,
+              "NOT_DECISIVE"
+            ],
+            [
+              2,
+              "NOT_DECISIVE"
+            ],
+            [
+              3,
+              "APPLIED",
+              [
+                "INPUT-IMPLEMENTATION"
+              ]
+            ]
+          ]
+        },
+        "operation_class": "DECISION_INPUT_ACQUISITION",
+        "report": {
+          "ACTION": "INPUT-IMPLEMENTATION",
+          "ACTIONABLE": [
+            "DEC-BUDGET"
+          ],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "INPUT-IMPLEMENTATION-K1",
+            "INPUT-IMPLEMENTATION-K2",
+            "INPUT-IMPLEMENTATION-K3"
+          ],
+          "ACTION_RESULT": "BLOCKED",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": "HUMAN_DECISION_BATCH_HANDOFF (initial action selected at Criterion 3)",
+          "DECISION_READINESS_TRANSITION": "DEC-IMPLEMENTATION: UNSATISFIED -> FACT_BLOCKED (gate remains UNSATISFIED)",
+          "DOWNSTREAM_PACKAGE_PREPARED": "PARTIAL_ONLY: DEC-IMPLEMENTATION dossier; not decision-ready",
+          "HUMAN_DECISION_BATCH_READY": "YES",
+          "NEXT_ACTION": "NONE",
+          "OPERATION_CLASS": "DECISION_INPUT_ACQUISITION",
+          "PRODUCTION_EFFECT": "NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 27,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md",
+        "result_artifact_sha256": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "extraction_method": "READ_ONLY_BOUNDED_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:7ed6761a1546dc659261691071c9e63b87a82a492a4a32513ff85fa730dfe999",
+            "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IMPLEMENTATION_1_RESULT.md",
+            "source_location": "Accepted K1-K3 and Exact authority requirement",
+            "validation_status": "SOURCE_BYTES_MATCH_ACCEPTED_SNAPSHOT; NOT_RUNTIME_CONTENT_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_BOUNDED_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+            "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+            "source_location": "/runtime; /scope; /controller_store; /identity; absent implementation_identity",
+            "validation_status": "SOURCE_BYTES_MATCH_ACCEPTED_SNAPSHOT; NOT_RUNTIME_CONTENT_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_BOUNDED_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:1af1f3aac2acc34aefb8c0b2a9a6fb775de152f2f8db6eaf6dd0673458ea6b6a",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_TEMPLATE1_PRODUCTION_CONTRACT_1.md",
+            "source_location": "implementation_identity row: conditional runtime identity equivalence",
+            "validation_status": "SOURCE_BYTES_MATCH_ACCEPTED_SNAPSHOT; NOT_RUNTIME_CONTENT_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_BOUNDED_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "source_location": "implementation_identity row; authenticated source and per-field provenance requirements",
+            "validation_status": "SOURCE_BYTES_MATCH_ACCEPTED_SNAPSHOT; NOT_RUNTIME_CONTENT_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_BOUNDED_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:5908b257fdc7325d94d7524fbacbe3a7ec26d18d98507d6232c9ba1d41e8f9f7",
+            "source_artifact_path": "adapter/invocation_constructor.py",
+            "source_location": "_body required keys and return; artifact digest",
+            "validation_status": "SOURCE_BYTES_MATCH_ACCEPTED_SNAPSHOT; NOT_RUNTIME_CONTENT_QUALIFICATION"
+          },
+          {
+            "extraction_method": "READ_ONLY_BOUNDED_SOURCE_INSPECTION",
+            "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+            "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+            "source_location": "Implementation-identity route; common dossier predicates",
+            "validation_status": "SOURCE_BYTES_MATCH_ACCEPTED_SNAPSHOT; NOT_RUNTIME_CONTENT_QUALIFICATION"
+          }
+        ]
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-21",
+      "proof": {
+        "producer": "DEC-BUDGET",
+        "source_hash": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "DEC-BUDGET",
+        "authority_id": "E1-ArchitectDecisionAuthority-sha256:ee89f5678d536856c160ae249b4343001b4051f5a1b3631b721dc80d2059b550",
+        "authority_record": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+        "authorization_basis": "Explicit current Architect approval of Option A.",
+        "conditions_resolved": [],
+        "decision": "APPROVED_OPTION_A_AUTHORITY_REFERENCE",
+        "result": "PASS",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+        "result_artifact_sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+        "slots_resolved": []
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-22",
+      "proof": {
+        "producer": "REEVAL-BUDGET",
+        "source_hash": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "REEVAL-BUDGET",
+        "action_knowledge_produced": [
+          {
+            "claim": "Explicit authenticated Option A record fixes AUTHORITY_IDENTITY JSON string and /authority_id selector; policy remains /policy of authenticated owner.",
+            "id": "REEVAL-BUDGET-K1",
+            "provenance": [
+              {
+                "location": "/canonical_input_contract",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+                "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4"
+              }
+            ]
+          },
+          {
+            "claim": "Recorded source body identity, complete policy and controls match the accepted dossier; no budget value changed.",
+            "id": "REEVAL-BUDGET-K2",
+            "provenance": [
+              {
+                "location": "second JSON block",
+                "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+                "sha256": "5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f"
+              },
+              {
+                "location": "/unchanged_policy; /unchanged_source_controls",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+                "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957"
+              }
+            ]
+          },
+          {
+            "claim": "Full reevaluation cannot pass: exact current applicability/freshness proof remains missing from the accepted evidence. No live source investigation or mapping executed.",
+            "id": "REEVAL-BUDGET-K3",
+            "provenance": [
+              {
+                "location": "/deferred_downstream_facts",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+                "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957"
+              },
+              {
+                "location": "/validation_requirements",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+                "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4"
+              }
+            ]
+          }
+        ],
+        "action_result": "BLOCKED",
+        "authority_record": {
+          "location": "whole artifact",
+          "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4"
+        },
+        "conditions_resolved": [],
+        "exception": null,
+        "report": {
+          "ACTION": "REEVAL-BUDGET",
+          "ACTIONABLE": [],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "REEVAL-BUDGET-K1",
+            "REEVAL-BUDGET-K2",
+            "REEVAL-BUDGET-K3"
+          ],
+          "ACTION_RESULT": "BLOCKED",
+          "AUTHORITY_RECORD": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DEC-BUDGET": "APPROVED_OPTION_A_AUTHORITY_REFERENCE",
+          "DECIDING_CRITERION": "EMPTY_ACTIONABLE",
+          "NEXT_ACTION": "NONE",
+          "OPERATION_CLASS": "DETERMINISTIC_MAPPING (NON_EFFECTING reevaluation only)",
+          "PRODUCTION_EFFECT": "YES \u2014 authorized control-plane decision record only; runtime effects NO",
+          "RESOLUTION_PLAN_EXCEPTION": "NO",
+          "ROOT_CONDITIONS_REMAINING": 27,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "BLOCKED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+        "result_artifact_sha256": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": []
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "LEGACY-23",
+      "proof": {
+        "producer": "FACT-BUDGET-APPLICABILITY",
+        "source_hash": "6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "purpose": "Historical classification, not native admission",
+      "record": {
+        "action": "FACT-BUDGET-APPLICABILITY",
+        "action_knowledge_produced": [
+          {
+            "claim": "The named issued source is locally readable, has expected record_type, and its 1189-byte canonical body reproduces the exact StatusBudgetAuthority identity. This proves recorded identity/type and integrity, not current publication or authorization.",
+            "id": "FACT-BUDGET-K1",
+            "provenance": [
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+                "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+                "source_location": "second JSON block /record_type /authority_id; canonical body excluding authority_id",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              }
+            ]
+          },
+          {
+            "claim": "All five named target snapshots contain equal runtime, controller_store and programmer_profile references and the exact source authority reference. Release snapshot repeats the source lineage string. These are reference comparisons only.",
+            "id": "FACT-BUDGET-K2",
+            "provenance": [
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+                "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+                "source_location": "second JSON block /runtime /controller_store /programmer_profile /lineage",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+                "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+                "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+                "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+                "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+                "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+                "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+                "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+                "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+                "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+                "source_location": "/runtime /controller_store /programmer_profile /status_budget_authority; release /lineage where present",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              }
+            ]
+          },
+          {
+            "claim": "Source scope is EXECUTION and all five target scopes are REQUEST. The bounded source/contract set contains no accepted current scope/phase applicability proof; neither equivalence nor incompatibility is inferred.",
+            "id": "FACT-BUDGET-K3",
+            "provenance": [
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+                "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+                "source_location": "second JSON block /scope",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+                "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+                "source_location": "/scope",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+                "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+                "source_location": "/scope",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+                "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+                "source_location": "/scope",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+                "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+                "source_location": "/scope",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+                "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+                "source_location": "/scope",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+                "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+                "source_location": "field provenance and currentness requirements",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+                "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+                "source_location": "/scope; /validation_requirements",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              }
+            ]
+          },
+          {
+            "claim": "No independent current publication/owning-store resolution, lifecycle/usage validity or phase bridge evidence is established in the allowed corpus. The resolver default FRESH label and snapshot status/identity labels are not such proof. This is bounded absence, not global nonexistence.",
+            "id": "FACT-BUDGET-K4",
+            "provenance": [
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+                "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+                "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+                "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+                "source_artifact_path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+                "source_artifact_path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+                "source_artifact_path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+                "source_artifact_path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+                "source_artifact_path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+                "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+                "source_artifact_path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+                "source_artifact_path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+                "source_artifact_path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              },
+              {
+                "extraction_method": "BOUNDED_FILE_ACQUISITION_AND_FIELD_COMPARISON",
+                "source_artifact_identity": "sha256:62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+                "source_artifact_path": "adapter/authority_resolution.py",
+                "source_location": "whole bounded corpus; no qualified evidence for required current propositions",
+                "validation_status": "RECORDED_BYTES_VERIFIED_NOT_CURRENTNESS"
+              }
+            ]
+          }
+        ],
+        "action_result": "EXTERNAL_GATE_REQUIRED",
+        "conditions_resolved": [],
+        "initial_selection": {
+          "actionable": [
+            "FACT-BUDGET-APPLICABILITY"
+          ],
+          "criterion": 0,
+          "selected_action": "FACT-BUDGET-APPLICABILITY"
+        },
+        "operation_class": "SOURCE_ACQUISITION",
+        "proof_matrix_artifact": {
+          "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_FACT_BUDGET_APPLICABILITY_1_RESULT.json",
+          "sha256": "bb566f2e7b42157ea0b783a39e5b06de970ad367e33c738275416afa88284232"
+        },
+        "reentry_route": "C",
+        "report": {
+          "ACTION": "FACT-BUDGET-APPLICABILITY",
+          "ACTIONABLE": [],
+          "ACTION_KNOWLEDGE_PRODUCED": [
+            "FACT-BUDGET-K1",
+            "FACT-BUDGET-K2",
+            "FACT-BUDGET-K3",
+            "FACT-BUDGET-K4"
+          ],
+          "ACTION_RESULT": "EXTERNAL_GATE_REQUIRED",
+          "ARCHITECT_DECISION_REQUIRED": "NO",
+          "CANDIDATE3_RESUMPTION_READY": "NO",
+          "DECIDING_CRITERION": "EMPTY_ACTIONABLE (initial selection: singleton at entry)",
+          "EXTERNAL_EVIDENCE_REQUIRED": [
+            "EXT-BUDGET-APPLICABILITY-EVIDENCE"
+          ],
+          "NEXT_ACTION": "NONE",
+          "OPERATION_CLASS": "FACT_ACQUISITION",
+          "PRODUCTION_EFFECT": "NO",
+          "PROOF_OBLIGATIONS_DISPROVED": [],
+          "PROOF_OBLIGATIONS_PROVED": [],
+          "PROOF_OBLIGATIONS_REMAINING": [
+            "BUDGET-PROOF-AVAILABILITY_PUBLICATION",
+            "BUDGET-PROOF-SCOPE",
+            "BUDGET-PROOF-LINEAGE",
+            "BUDGET-PROOF-RUNTIME",
+            "BUDGET-PROOF-CONTROLLER_STORE_G4",
+            "BUDGET-PROOF-PROGRAMMER_PROFILE",
+            "BUDGET-PROOF-TEMPORAL_CURRENTNESS",
+            "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+          ],
+          "ROOT_CONDITIONS_REMAINING": 27,
+          "ROOT_CONDITIONS_RESOLVED": [],
+          "ROOT_CONDITION_TRANSITION": "UNCHANGED",
+          "SLOTS_REMAINING": 41,
+          "SLOTS_RESOLVED": [],
+          "SLOT_TRANSITION": "UNCHANGED",
+          "TEMPLATE1_CONSTRUCTION_READY": "NO"
+        },
+        "result": "EXTERNAL_GATE_REQUIRED",
+        "result_artifact": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_FACT_BUDGET_APPLICABILITY_1_RESULT.md",
+        "result_artifact_sha256": "6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d",
+        "root_condition_transition": "UNCHANGED",
+        "slot_transition": "UNCHANGED",
+        "slots_resolved": [],
+        "source_evidence": [
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+            "sha256": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+            "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_DOSSIER.json",
+            "sha256": "50ba6151aaa86c5e62f5f26e8960e4bad902009e82b8d5aa2e16d6583d356957",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+            "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_HOST_PREREQUISITE_AUTHORITY_ISSUANCE_1.md",
+            "sha256": "5cf24bf05643e69543a9db154af7e2a6edc1943fe32280ea7d7762b06a43132f",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+            "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_CURRENT_DISPATCH_1.json",
+            "sha256": "475861a32de000a8527074748bfbaaf8b0b0efa6e405e9a3f9a0a1f27dfc7b35",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_CURRENT_RELEASE_AUTHORITY_1.json",
+            "sha256": "66f7834aaf9d0b3e5b569e5b9865781340e6e3e7da8420557f09ff65c7fbd991",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_OPERATIONAL_CONTEXT_1.json",
+            "sha256": "3450887d8821a9bc53446499e4bbb2ef5fc1e94acdf830e5d03488a6fe25ef9b",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_OPERATIONAL_BINDING_1.json",
+            "sha256": "e07ed04a43a2345108662d878537d6698457c6c6c7dc549047b1c1773b0fe173",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_WORKAUTHORIZATION_PRODUCTION_CONTRACT_DECISION_1.md",
+            "sha256": "b916edc33d1534b516a187118146364c88aa360f0c8ff4f2dcc91a205aca1ad6",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "whole artifact; authority fields /scope /lineage /runtime /controller_store /programmer_profile and exact source selector where applicable",
+            "path": "docs/experiments/E1/E1_DECISION_INPUT_REENTRY_SEMANTICS_1.md",
+            "sha256": "52827b823847a66266322c86818ae62826f761e30954f179e8282f96d79a5367",
+            "validation": "RAW_SHA256_MATCH"
+          },
+          {
+            "acquisition": "READ_ONLY_EXACT_PINNED_FILE",
+            "location": "ResolvedAuthorityValue.from_bytes default freshness and compose_activation_inputs; interface semantics only, no call executed",
+            "path": "adapter/authority_resolution.py",
+            "sha256": "62bbf793ae1b714b4d3156d764a61762aaa124bd804a37a3123a6d15d1a79acc",
+            "validation": "RAW_SHA256_MATCH"
+          }
+        ],
+        "stage_role": "FACT_ACQUISITION"
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "ALLOW_SELECTION_ONLY",
+      "id": "SELECTED-SELECTION_HISTORY",
+      "proof": null,
+      "record": {
+        "selected_action": "SYNTHETIC-ACTION",
+        "selection_attempt": 1
+      },
+      "target": "SELECTION_HISTORY"
+    },
+    {
+      "expected": "REJECT_SELECTION_PROMOTION",
+      "id": "SELECTED-ACTION_EXECUTED",
+      "proof": null,
+      "record": {
+        "selected_action": "SYNTHETIC-ACTION",
+        "selection_attempt": 1
+      },
+      "target": "ACTION_EXECUTED"
+    },
+    {
+      "expected": "REJECT_SELECTION_PROMOTION",
+      "id": "SELECTED-ACTION_COMPLETED",
+      "proof": null,
+      "record": {
+        "selected_action": "SYNTHETIC-ACTION",
+        "selection_attempt": 1
+      },
+      "target": "ACTION_COMPLETED"
+    },
+    {
+      "expected": "REJECT_SELECTION_PROMOTION",
+      "id": "SELECTED-ACTION_RESULT",
+      "proof": null,
+      "record": {
+        "selected_action": "SYNTHETIC-ACTION",
+        "selection_attempt": 1
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "REJECT_SELECTION_PROMOTION",
+      "id": "SELECTED-ACCEPTED_KNOWLEDGE",
+      "proof": null,
+      "record": {
+        "selected_action": "SYNTHETIC-ACTION",
+        "selection_attempt": 1
+      },
+      "target": "ACCEPTED_KNOWLEDGE"
+    },
+    {
+      "expected": "ALLOW_RECORDED_RESULT_ONLY",
+      "id": "GOOD",
+      "proof": {
+        "producer": "SYNTHETIC-ACTION",
+        "source_hash": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "record": {
+        "action": "SYNTHETIC-ACTION",
+        "result": "PASS",
+        "result_artifact_sha256": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80"
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "NO_INDEPENDENT_RESULT",
+      "id": "MISSING",
+      "proof": null,
+      "record": {
+        "action": "SYNTHETIC-ACTION",
+        "result": "PASS",
+        "result_artifact_sha256": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80"
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "WRONG_PRODUCER",
+      "id": "WRONG-PRODUCER",
+      "proof": {
+        "producer": "OTHER",
+        "source_hash": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "record": {
+        "action": "SYNTHETIC-ACTION",
+        "result": "PASS",
+        "result_artifact_sha256": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80"
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "WRONG_RESULT_SOURCE",
+      "id": "WRONG-SOURCE",
+      "proof": {
+        "producer": "SYNTHETIC-ACTION",
+        "source_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "record": {
+        "action": "SYNTHETIC-ACTION",
+        "result": "PASS",
+        "result_artifact_sha256": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80"
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "STALE_SUPPORT",
+      "id": "STALE",
+      "proof": {
+        "producer": "SYNTHETIC-ACTION",
+        "source_hash": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80",
+        "source_validity": "STALE"
+      },
+      "record": {
+        "action": "SYNTHETIC-ACTION",
+        "result": "PASS",
+        "result_artifact_sha256": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80"
+      },
+      "target": "ACTION_RESULT"
+    },
+    {
+      "expected": "REJECT_UNPROVED_PROMOTION",
+      "id": "RESULT-IS-NOT-KNOWLEDGE",
+      "proof": {
+        "producer": "SYNTHETIC-ACTION",
+        "source_hash": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80",
+        "source_validity": "HISTORICAL_ONLY"
+      },
+      "record": {
+        "action": "SYNTHETIC-ACTION",
+        "result": "PASS",
+        "result_artifact_sha256": "59d9b9b3ead848155962c55a747db4cda584dee7f3900be46c9a9771f8d5ce80"
+      },
+      "target": "ACCEPTED_KNOWLEDGE"
+    }
+  ],
+  "legacy_record_inventory": [
+    {
+      "classification": "SELECTION_HISTORY_ONLY",
+      "native_accepted": false,
+      "producer": null,
+      "result_pin_verified": false,
+      "selector": "/execution_history/0",
+      "source_record_digest": "53970fcb1db4c7732a26795a9bd390046fc601b6c6986faab7eb2222d4eeef69"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "S-ANCESTRY",
+      "result_pin_verified": true,
+      "selector": "/execution_history/1",
+      "source_record_digest": "b2ad1f6c7414bccc3a6ab737ac93678d7d768365772ea7bf4fc993315d0b70ce"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "S-APPROVAL",
+      "result_pin_verified": true,
+      "selector": "/execution_history/2",
+      "source_record_digest": "1cd6756b2c7520111abbb8cf56a1c3fb19a3187636b10ce0a167480f235fd936"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "S-BINDING",
+      "result_pin_verified": true,
+      "selector": "/execution_history/3",
+      "source_record_digest": "fa1bccb1dc77ec20ea46254a13136b58503e6caf67bb54431380ab9e367fd12e"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "S-CONTEXT",
+      "result_pin_verified": true,
+      "selector": "/execution_history/4",
+      "source_record_digest": "98855d4a6982acd80770cb4d9ba56be92a176e9ce28eb1a40778e70676e8b520"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "S-EXEC",
+      "result_pin_verified": true,
+      "selector": "/execution_history/5",
+      "source_record_digest": "d8a95085e7dcd8e0c0fb7c1d04356af30b1ec1e0af2dfd3d8e022e5679de8b85"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "SEM-BUDGET",
+      "result_pin_verified": true,
+      "selector": "/execution_history/6",
+      "source_record_digest": "8cc854d907699331e508d6fa46e8bbb71f5738933e75487063ee0c70d2842766"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "SEM-ELIGIBILITY",
+      "result_pin_verified": true,
+      "selector": "/execution_history/7",
+      "source_record_digest": "ca9e3d3f9f199b55356df73dc8946a2f7e88d1398147661f2a7a9b9a6ae6d364"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "SEM-IMPLEMENTATION",
+      "result_pin_verified": true,
+      "selector": "/execution_history/8",
+      "source_record_digest": "99f8341383e5a50dba0f84fc4941dcc4023c4ca115b58ce23c59b2afd2549a0a"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "SEM-INTERFACES",
+      "result_pin_verified": true,
+      "selector": "/execution_history/9",
+      "source_record_digest": "678095de0057d503d9e74d86c50350c9ef22eed6e8a035b0f49db7aa8988a0fc"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "PREP-AUDIT",
+      "result_pin_verified": true,
+      "selector": "/execution_history/10",
+      "source_record_digest": "b6d103c0b38b7cf19e4b49d9d0908dd82ab8309751acf06a7af9bc8a3fb4a9f4"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "PREP-BINDING-GRANT",
+      "result_pin_verified": true,
+      "selector": "/execution_history/11",
+      "source_record_digest": "4ec1881963e600c0f80786999bbbd8a339aa4f0c2d32728e8ddab09f9b3c0363"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "PREP-RUNTIME_HEAD",
+      "result_pin_verified": true,
+      "selector": "/execution_history/12",
+      "source_record_digest": "ff564c6abe5b91ae573dc40a8e65ca6c7a3faeeef972bbbde6df00a851b80c28"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "PREP-SUPERVISOR",
+      "result_pin_verified": true,
+      "selector": "/execution_history/13",
+      "source_record_digest": "2794f21aea269d88976d942df2ed65aaba9d5f266a72f322f9b5512fda1a4185"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "PREP-VALIDATOR",
+      "result_pin_verified": true,
+      "selector": "/execution_history/14",
+      "source_record_digest": "a68dcf4046c3140b8bc4cd08e4379c9c0ba5e016de70577e67e877298fb620a7"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "SEM-IGNORED",
+      "result_pin_verified": true,
+      "selector": "/execution_history/15",
+      "source_record_digest": "c24e637ba0a28188770551d1346dc2f2a7d75896143afbcf480c37518f0366a7"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "DEC-BINDING",
+      "result_pin_verified": true,
+      "selector": "/execution_history/16",
+      "source_record_digest": "922291f3358e901a26cfb2cae9265a2afffce5fc084c21d611bf6c05399b2d11"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "DEC-IGNORED",
+      "result_pin_verified": true,
+      "selector": "/execution_history/17",
+      "source_record_digest": "4a9518b4079e5b2df6bb7fc48b7d1c7edbbd668bb8ac1f868972ebd51b16ff7f"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "DEC-VALIDATOR",
+      "result_pin_verified": true,
+      "selector": "/execution_history/18",
+      "source_record_digest": "965403ef6a32f258c4eedacfea8964950cb0841c1f24e88cdd0d27624dbe7ec5"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "INPUT-BUDGET",
+      "result_pin_verified": true,
+      "selector": "/execution_history/19",
+      "source_record_digest": "ab7bbf421df8ab5ec04c1ab67b7c41c152f64e4fd1ea6f925c1c8010661ea3e6"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "INPUT-IMPLEMENTATION",
+      "result_pin_verified": true,
+      "selector": "/execution_history/20",
+      "source_record_digest": "50ea798e6b677d2b61d73f62cdcca4b5d9e0688a7357160d2d1913b9b99e8111"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "DEC-BUDGET",
+      "result_pin_verified": true,
+      "selector": "/execution_history/21",
+      "source_record_digest": "dcb6d67892e4b464322bfcbded4625f25565cc4b34dbe6b533faa27d090ae8fa"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "REEVAL-BUDGET",
+      "result_pin_verified": true,
+      "selector": "/execution_history/22",
+      "source_record_digest": "11ed6f4698b4def79b18fa917707f3e2f5ad40dcb27f28bc028990eb40ed941a"
+    },
+    {
+      "classification": "RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE",
+      "native_accepted": false,
+      "producer": "FACT-BUDGET-APPLICABILITY",
+      "result_pin_verified": true,
+      "selector": "/execution_history/23",
+      "source_record_digest": "8b9c7cfecb32a4132dbac0d4aa1227d84c9b7a628da8bad9fa818f0e04809a58"
+    }
+  ],
+  "limitations": "Actual source hash check establishes identity of historical report, not native result/knowledge/proof admission. Synthetic positives do not create real evidence.",
+  "mode": "QUALIFICATION_ONLY_NO_E1_ACTION",
+  "reference_program": "import hashlib\ndef classify(record,proof):\n if record.get('status')=='SELECTION_BLOCKED' and record.get('action_result') is None and 'selection_attempt' in record:\n  if record.get('result_artifact') or record.get('action'):return 'CONTRADICTORY_RECORD'\n  return 'SELECTION_HISTORY_ONLY'\n if 'selected_action' in record and 'result' not in record:return 'SELECTION_HISTORY_ONLY'\n if 'action' not in record or record.get('result') not in ['PASS','FAIL','BLOCKED','AUTHORITY_REQUIRED','EXTERNAL_GATE_REQUIRED']:return 'UNCLASSIFIED_REJECT'\n if not proof:return 'NO_INDEPENDENT_RESULT'\n if proof['producer']!=record['action']:return 'WRONG_PRODUCER'\n if proof['source_hash']!=record.get('result_artifact_sha256'):return 'WRONG_RESULT_SOURCE'\n if proof['source_validity'] not in ['CURRENT','HISTORICAL_ONLY']:return 'STALE_SUPPORT'\n return 'RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE'\ndef promotion(record,proof,target):\n c=classify(record,proof)\n if c=='SELECTION_HISTORY_ONLY':return 'ALLOW_SELECTION_ONLY' if target=='SELECTION_HISTORY' else 'REJECT_SELECTION_PROMOTION'\n if c=='RECORDED_ACTION_RESULT_NOT_ACCEPTED_KNOWLEDGE':return 'ALLOW_RECORDED_RESULT_ONLY' if target=='ACTION_RESULT' else 'REJECT_UNPROVED_PROMOTION'\n return c\n",
+  "schema": "M01-CLOSURE-1-FIXTURES"
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "E2-human-decision-protocol-closure-v1",
+  "decision_subject": "E2-DECIDE",
+  "allow_consequences": {
+    "meaning": "prospective qualification-only USE permission for the E2 mapping target",
+    "authority_consequence": "requires separately applicable synthetic E2-GRANT; no production or E1 authority",
+    "immediate_control": "UNDEFINED",
+    "downstream_actions": "UNDEFINED",
+    "evidence_consequence": "authenticated choice evidence required",
+    "reentry_consequence": "UNDEFINED",
+    "experiment_consequence": "qualification-only synthetic path"
+  },
+  "decline_consequences": {
+    "meaning": "UNDEFINED",
+    "immediate_control": "UNDEFINED",
+    "downstream_actions": "UNDEFINED",
+    "authority_consequence": "UNDEFINED",
+    "evidence_consequence": "UNDEFINED",
+    "reentry_consequence": "UNDEFINED",
+    "experiment_consequence": "UNDEFINED"
+  },
+  "issuer_contract": {
+    "issuer_role": "UNDEFINED",
+    "identity_domain": "UNDEFINED",
+    "decision_class": "ARCHITECT_CONTRACT_DECISION",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1"
+  },
+  "authority_contract": {
+    "type": "E2-GRANT",
+    "identity_domain": "AUTHORITY_IDENTITY",
+    "subject": "E2-REENTER",
+    "permitted_use": "USE",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "issuer": "UNDEFINED",
+    "currentness": "CURRENT required",
+    "applicability_predicate": "exact choice, target, permission, scope, lineage and current independent predicate",
+    "native_binding": "MATERIALIZER_REQUIRED"
+  },
+  "authority_sequence": "UNDEFINED: issuer/authority issuance relationship is not pinned",
+  "choice_evidence_contract": {
+    "native_shape": "KnowledgeRecord decision-choice:E2-DECIDE with accepted current state, statement equal to choice, provenance equal to authenticated record",
+    "binds": ["decision subject", "selected option", "issuer", "dossier", "order/time", "scope", "lineage", "provenance"],
+    "authentication": "DECISION_AUTHENTICATION_CONTRACT_MISSING",
+    "execution_status": "not materialized"
+  },
+  "decision_record_contract": {
+    "native_type": "RecordedDecision",
+    "fields": ["decision", "choice", "record", "authority", "expected_snapshot"],
+    "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+    "currentness": "record and authority must be current"
+  },
+  "apply_recorded_decision_preflight": {
+    "required_inputs": ["decision", "choice", "record", "authority", "expected_snapshot", "applicable authority predicate", "choice evidence"],
+    "protocol_supplies": ["decision subject", "allowed option identifiers", "dossier reference", "scope", "lineage"],
+    "remaining_gaps": ["selected option", "issuer", "authority entity/predicate", "record identity", "choice evidence", "authentication/order"]
+  },
+  "negative_cases": ["missing issuer", "unauthorized issuer", "missing choice evidence", "choice mismatch", "wrong dossier", "wrong subject", "wrong option", "wrong scope", "wrong lineage", "stale decision", "invalid authority", "authority use mismatch", "duplicate decision", "conflicting decision"],
+  "human_decision_ready": false,
+  "human_decision_blockers": ["DECLINE semantics undefined", "issuer undefined", "authority binding absent", "choice evidence mechanism missing", "authentication mechanism missing", "option consequences incomplete"],
+  "selected_option": null,
+  "authority_issued": false,
+  "decision_recorded": false,
+  "next_control_step": "PROTOCOL_CONTRACT_INCOMPLETE",
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "implementation_modified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

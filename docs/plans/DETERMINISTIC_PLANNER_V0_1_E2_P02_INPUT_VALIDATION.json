@@ -1,0 +1,38 @@
+{
+  "schema": "E2-P02-input-closure-v1",
+  "snapshot_format": "PLANNER-SNAPSHOT-1",
+  "snapshot_identity": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+  "snapshot_content_identity": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+  "source_model_identity": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+  "actions": [
+    "E2-COLLECT",
+    "E2-CHECK",
+    "E2-PREPARE",
+    "E2-DECIDE",
+    "E2-FINISH",
+    "E2-REENTER"
+  ],
+  "action_count": 6,
+  "decision_routes": [
+    {
+      "decision": "E2-DECIDE",
+      "input_action": "E2-PREPARE",
+      "semantic_action": "E2-DECIDE",
+      "stage": "DECISION_INPUTS_REQUIRED",
+      "downstream": [
+        "E2-REENTER"
+      ],
+      "provenance": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json"
+    }
+  ],
+  "native_encode": "PASS",
+  "native_decode": "PASS",
+  "semantic_round_trip": "PASS",
+  "initial_control": "RUNNABLE",
+  "initial_actionable": [
+    "E2-CHECK",
+    "E2-COLLECT"
+  ],
+  "initial_selection": "E2-CHECK",
+  "experiment_actions_executed": 0
+}

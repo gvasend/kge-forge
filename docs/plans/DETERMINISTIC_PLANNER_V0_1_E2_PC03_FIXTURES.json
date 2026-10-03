@@ -1,0 +1,51 @@
+{
+  "schema": "E2-PC03-FIXTURES-1",
+  "baseline_ref": "DETERMINISTIC_PLANNER_V0_1_E2_PC01_COMPLETION_1_WHOLE_MODEL.json",
+  "pc02_ref": "DETERMINISTIC_PLANNER_V0_1_E2_PC02_FIXTURES.json",
+  "qualification_only": true,
+  "scope": "E2-QUALIFICATION-ONLY",
+  "lineage": "E2-CANONICAL-BASELINE-1",
+  "cold_restore": {
+    "format": "PLANNER-BUNDLE-1 / PLANNER-SNAPSHOT-1",
+    "checkpoint": "E2-EXTERNAL-CHECKPOINT",
+    "persisted_state": ["initial snapshot", "current snapshot", "ordered event ledger", "source pins", "policy pin", "trusted bundle identity"],
+    "reader_input_allowlist": ["persisted bundle", "trusted bundle identity", "pinned source files", "pinned policy", "reviewed contracts"],
+    "hidden_memory_allowed": false,
+    "expected_control": "EXTERNAL_WAIT",
+    "expected_resume": false,
+    "event_chronology": "ordered and immutable"
+  },
+  "phase_oracle": [
+    {"phase": "INITIAL", "control": "RUNNABLE", "actionable": ["E2-COLLECT", "E2-CHECK"], "resume": false},
+    {"phase": "PRE_EXTERNAL", "control": "PHASE_DEPENDENT", "actionable": ["E2-PREPARE", "E2-DECIDE"], "resume": false},
+    {"phase": "EXTERNAL_CHECKPOINT", "control": "EXTERNAL_WAIT", "actionable": [], "resume": false},
+    {"phase": "COLD_RESTORED", "control": "EXTERNAL_WAIT", "actionable": [], "resume": false},
+    {"phase": "EVIDENCE_RECEIVED", "control": "EXTERNAL_WAIT", "actionable": [], "resume": false},
+    {"phase": "EVIDENCE_VALIDATED", "control": "EXTERNAL_WAIT", "actionable": [], "resume": false},
+    {"phase": "REENTRY_ELIGIBLE", "control": "RUNNABLE", "actionable": ["E2-REENTER"], "resume": true},
+    {"phase": "POST_REENTRY", "control": "RUNNABLE", "actionable": ["E2-FINISH"], "resume": true}
+  ],
+  "case_mutation_rules": {
+    "source": "only designated source bytes/pin changes",
+    "lineage": "only designated lineage changes",
+    "authority": "only grant identity/permission/scope changes",
+    "proof": "only root/slot predicate or proof source changes",
+    "route": "only gate/requirement/receipt/reentry correspondence changes",
+    "persistence": "only trusted checkpoint/event/source bytes change"
+  },
+  "invalidation": [
+    {"source_role": "KNOWLEDGE", "dependent": "held descendant prerequisites", "expected": "stale/ineligible after recompute"},
+    {"source_role": "ROOT_PROOF", "dependent": "E2-ROOT", "expected": "stale/unresolved"},
+    {"source_role": "SLOT_PROOF", "dependent": "E2-SLOT", "expected": "stale/unresolved"},
+    {"source_role": "GRANT", "dependent": "E2-REENTER authority applicability", "expected": "not applicable"},
+    {"source_role": "EXTERNAL_ROUTE", "dependent": "governed waiting", "expected": "PLAN_DEFECT if no alternative"},
+    {"source_role": "RECEIPT", "dependent": "evidence support", "expected": "stale/no resume"}
+  ],
+  "cases": {
+    "positive": ["E2-A01", "E2-A02", "E2-A03", "E2-A04", "E2-A05", "E2-A06", "E2-A07", "E2-A08", "E2-A09", "E2-A10", "E2-A11", "E2-A12", "E2-A13", "E2-A14", "E2-A15", "E2-A16"],
+    "negative": ["E2-N01", "E2-N02", "E2-N03", "E2-N04", "E2-N05", "E2-N06", "E2-N07", "E2-N08", "E2-N09", "E2-N10", "E2-N11", "E2-N12", "E2-N13", "E2-N14", "E2-N15", "E2-N16"],
+    "deferred_integration": ["E2-D01", "E2-END"]
+  },
+  "negative_controls": ["wrong lineage", "wrong source", "stale source", "wrong authority", "invalid proof", "invalidated gate", "tampered persistence", "wrong snapshot lineage", "duplicate evidence", "conflicting evidence", "hidden process state"],
+  "actions_executed": 0
+}

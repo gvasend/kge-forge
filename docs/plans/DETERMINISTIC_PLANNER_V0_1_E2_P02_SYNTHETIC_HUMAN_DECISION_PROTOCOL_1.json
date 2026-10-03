@@ -1,0 +1,113 @@
+{
+  "schema": "deterministic-planner-e2-p02-synthetic-human-decision-protocol-v1",
+  "work_package": "E2-P02-SYNTHETIC-HUMAN-DECISION-PROTOCOL",
+  "purpose": "Qualification-only exercise of DecisionDossier -> HUMAN_HANDOFF -> authenticated choice -> RecordedDecision -> bounded authority/applicability -> EXTERNAL_WAIT.",
+  "qualification_only": true,
+  "branch_policy": {
+    "positive_path": "ALLOW_QUALIFICATION_MAPPING",
+    "negative_control": "DECLINE",
+    "decline_counts_as_p02_positive_exit": false
+  },
+  "options": {
+    "ALLOW_QUALIFICATION_MAPPING": {
+      "meaning": "Permit materialization and application of the narrowly scoped synthetic E2-GRANT required to evaluate E2-REENTER.",
+      "authority_effect": "May produce exactly one current E2-GRANT for E2-REENTER, USE, E2-QUALIFICATION-ONLY, E2-CANONICAL-BASELINE-1.",
+      "control_effect": "Admit the RecordedDecision, evaluate grant applicability, and recompute Planner control.",
+      "downstream_effect": "Continue the bounded E2 path toward the external-evidence checkpoint.",
+      "reentry_effect": "Does not itself execute or complete E2-REENTER; it only permits its governed route.",
+      "termination_or_wait": "Positive path reaches EXTERNAL_WAIT when the external proposition remains absent.",
+      "does_not_authorize": ["production_effects", "E1_work", "general_planner_authority", "proof_satisfaction", "root_or_slot_satisfaction", "external_evidence", "automatic_execution"]
+    },
+    "DECLINE": {
+      "meaning": "Refuse the bounded qualification mapping permission.",
+      "authority_effect": "No E2-GRANT is issued and no reentry authority becomes applicable.",
+      "control_effect": "Record an authenticated decline and terminate the qualification decision branch.",
+      "downstream_effect": "No external-evidence or reentry path is entered.",
+      "reentry_effect": "E2-REENTER remains unauthorized and is not completed.",
+      "termination_or_wait": "Reaches QUALIFICATION_DECLINED, a qualification-only terminal state; it is not EXTERNAL_WAIT."
+    }
+  },
+  "issuer_role": {
+    "role": "E2_QUALIFICATION_DECISION_AUTHORITY",
+    "identity_domain": "QUALIFICATION_AUTHORITY_IDENTITY",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "decision_class": "ARCHITECT_CONTRACT_DECISION",
+    "subject": "E2-DECIDE",
+    "permitted_options": ["ALLOW_QUALIFICATION_MAPPING", "DECLINE"],
+    "trust_root": "Independently pinned E2 qualification protocol artifact and source/content identity, admitted as a qualification-only trust anchor.",
+    "provenance_required": true
+  },
+  "e2_grant": {
+    "authority_id": "E2-GRANT",
+    "authority_type": "QUALIFICATION_USE_GRANT",
+    "identity_domain": "AUTHORITY_IDENTITY",
+    "subject": "E2-REENTER",
+    "permitted_use": "USE",
+    "consumer": "E2-REENTER",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "issuer": "E2_QUALIFICATION_DECISION_AUTHORITY",
+    "validity": "Current only for the pinned decision snapshot and decision sequence.",
+    "applicability": "Selected option is ALLOW_QUALIFICATION_MAPPING and target, permission, scope, lineage, and current independent predicate match exactly.",
+    "generic_planner_authority": false
+  },
+  "authority_sequence": [
+    "human_selects_option_id",
+    "construct_authenticated_choice_evidence",
+    "admit_recorded_decision",
+    "materialize_e2_grant_for_allow_only",
+    "evaluate_authority_applicability",
+    "recompute_planner_control",
+    "establish_external_request_and_expected_absence",
+    "reach_external_wait_on_allow"
+  ],
+  "choice_evidence": {
+    "type": "PINNED_QUALIFICATION_RECORD",
+    "binds": ["E2-DECIDE", "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb", "selected_option", "issuer_identity", "E2-QUALIFICATION-ONLY", "E2-CANONICAL-BASELINE-1", "monotonic_sequence_or_order", "canonical_content_identity", "provenance"],
+    "capture": "Future human interface accepts an explicit option identifier and constructs the authenticated record.",
+    "model_assertion_is_evidence": false,
+    "free_form_text_is_evidence": false
+  },
+  "recorded_decision": {
+    "native_type": "RecordedDecision",
+    "fields": ["decision", "choice", "record", "authority", "expected_snapshot"],
+    "decision": "E2-DECIDE",
+    "choice": "One of the two exact option identifiers.",
+    "record": "Authenticated choice-evidence entity bound to dossier, issuer, scope, lineage and sequence.",
+    "authority": "Applicable authority predicate for the qualification decision.",
+    "expected_snapshot": "Exact current E2 decision-ready snapshot identity.",
+    "additional_admission_inputs": ["accepted decision-choice:E2-DECIDE knowledge", "matching choice/provenance", "current dossier and authority applicability"]
+  },
+  "allow_oracle": {
+    "sequence": ["HUMAN_HANDOFF", "authenticated_allow_choice", "recorded_decision_admitted", "E2-GRANT_current_and_applicable", "E2-DECIDE_recorded_and_completed", "normal_recomputation", "external_request_with_expected_absence", "EXTERNAL_WAIT"],
+    "exit": {"control": "EXTERNAL_WAIT", "actionable": [], "selected": null, "external_evidence": "ABSENT", "external_gate": "VALID", "receipt_route": "VALID", "reentry_route": "VALID", "e2_finish": "NON_ACTIONABLE"}
+  },
+  "decline_oracle": {
+    "sequence": ["HUMAN_HANDOFF", "authenticated_decline_choice", "recorded_decision_admitted_without_grant", "QUALIFICATION_DECLINED"],
+    "exit": {"control": "QUALIFICATION_DECLINED", "grant": "ABSENT", "external_wait": false, "reentry": "NOT_AUTHORIZED"}
+  },
+  "native_capabilities": {
+    "issuer_identity_and_trust": "MATERIALIZER_REQUIRED",
+    "pinned_choice_evidence": "MATERIALIZER_REQUIRED",
+    "recorded_decision_and_apply_recorded_decision": "SUPPORTED",
+    "authority_entity_and_predicate": "MATERIALIZER_REQUIRED",
+    "authority_applicability": "SUPPORTED_ONCE_BOUND_INPUTS_EXIST",
+    "decision_persistence_and_replay": "MATERIALIZER_REQUIRED",
+    "decline_terminal_state": "MISSING_RUNTIME_CAPABILITY_UNLESS_EXISTING_TERMINAL_QUALIFICATION_RECORD_IS_ADOPTED"
+  },
+  "negative_cases": ["unauthorized_issuer", "missing_issuer", "wrong_choice_evidence", "model_generated_choice_evidence", "wrong_dossier", "wrong_subject", "invalid_option", "wrong_scope", "wrong_lineage", "stale_decision", "invalid_authority", "wrong_authority_use", "authority_not_applicable", "duplicate_decision", "conflicting_decision", "decline_with_grant", "allow_grant_outside_e2_scope"],
+  "protocol_complete": true,
+  "human_decision_ready": false,
+  "human_decision_blockers": ["runtime issuer/trust materializer is not yet available", "authenticated choice-evidence capture is not yet available", "E2-GRANT materializer is not yet available", "decision persistence/replay materializer is not yet available", "DECLINE terminal qualification representation is not yet available", "no human option has been selected"],
+  "selected_option": null,
+  "authority_issued": false,
+  "decision_recorded": false,
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

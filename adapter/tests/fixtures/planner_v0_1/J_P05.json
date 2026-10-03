@@ -1,0 +1,858 @@
+{
+  "schema": "PLANNER-P05-FIXTURE-1",
+  "case_id": "J",
+  "sources": [
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/subject_pins",
+      "excerpt": "{\"budget_authority\":\"StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99\",\"controller_store\":\"AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff\",\"programmer_profile\":\"ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67\",\"recorded_lineage\":\"R4-final CURRENT UNIQUE\",\"runtime\":\"sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761\",\"source_scope\":\"LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION\",\"target_context\":\"OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c\",\"target_dispatch\":\"CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3\",\"target_invocation\":\"InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa\",\"target_release\":\"ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e\",\"target_scope\":\"LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/0",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated catalog membership/resolution receipt or publication record, with governing publication rule; not a local-file existence report.\",\"acceptable_authoritative_producer\":\"Existing authority publisher/store owner with competence for this authority.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-AVAILABILITY_PUBLICATION\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Exact referenced authority is available from its competent owning domain and published/registered as required for this target, or governing rule explicitly proves publication not required.\",\"rejection_criteria\":\"Local Markdown existence; ISSUED label; stale catalog; missing membership; no-publication claim without governing rule.\",\"required_identity\":\"Exact budget authority plus owning store/domain, publication record content ID and returned body hash.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current catalog generation/checkpoint and validity rule applicable at receipt; publication time alone insufficient.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/1",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated scope-binding/contract decision or adopted rule plus exact application proof; decision must already exist, not be created by receipt.\",\"acceptable_authoritative_producer\":\"Existing governing scope/contract authority and competent current target source.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-SCOPE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Source EXECUTION-scoped authority applies to budget reference use for the exact REQUEST construction subject under an existing governing rule.\",\"rejection_criteria\":\"Prefix similarity; budget equality; unadopted interpretation; DEC-BUDGET representation approval substituted for applicability.\",\"required_identity\":\"Name exact pinned source and target identities, artifact content identities, identity domains and canonicalization rules. No all-SHA256 equivalence.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Rule version/effective generation and target checkpoint must be applicable together.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/2",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Current lineage/adoption/selection record or authenticated relevant chain and selection proof.\",\"acceptable_authoritative_producer\":\"Competent release/lineage selection authority.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-LINEAGE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Source and target are governed by the applicable current R4 lineage with no disqualifying supersession.\",\"rejection_criteria\":\"Copied lineage string; old selection; missing chain link; selection for different target/generation.\",\"required_identity\":\"Name exact pinned source and target identities, artifact content identities, identity domains and canonicalization rules. No all-SHA256 equivalence. Include lineage/head/selection identity. \",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current selection generation, applicable chain position and supersession status under owning rule.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/3",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated runtime content/selection binding and governing applicability rule; retrievable bytes or qualified proof under that rule.\",\"acceptable_authoritative_producer\":\"Competent runtime/content and runtime selection/release owners.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-RUNTIME\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Exact source runtime binding is independently authenticated and applicable to current target runtime.\",\"rejection_criteria\":\"Matching runtime references only; unverifiable content/selection linkage; obsolete/different runtime; unsupported byte-domain conversion.\",\"required_identity\":\"Exact pinned runtime CONTENT_IDENTITY plus owning selection/content evidence IDs; never another SHA-256 domain.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current applicable runtime selection checkpoint and source-target binding freshness.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/4",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated generation identity and authority resolution/membership proof, with trust/selection chain.\",\"acceptable_authoritative_producer\":\"Competent controller-store generation/catalog owner.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-CONTROLLER_STORE_G4\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Exact G4 generation is applicable to source/target resolution and the authority belongs to the competent current owning domain.\",\"rejection_criteria\":\"Copied G4 reference; guessed directory; membership in different generation; stale or untrusted catalog.\",\"required_identity\":\"Exact G4 generation ID; owning catalog/resolution record IDs; exact authority and target IDs.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current generation selection and catalog checkpoint; coherent with all other evidence.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/5",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Owning profile bytes/identity proof plus authoritative target-profile applicability binding.\",\"acceptable_authoritative_producer\":\"Competent ProgrammerProfile owner and target-binding authority.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-PROGRAMMER_PROFILE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"The exact pinned ProgrammerProfile is authenticated and governs the target where required; or governing rule explicitly establishes check is not applicable.\",\"rejection_criteria\":\"Matching copied references; wrong profile identity domain; absent owning bytes/proof; omission without governing non-applicability rule.\",\"required_identity\":\"Exact ProgrammerProfile identity and owner-record ID; no substitution of released-profile/content/root identities.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Applicable profile version and current target binding checkpoint; explicit supersession status.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/6",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated current validity/usage snapshot or events sufficient to reconstruct it, including governing evaluation rule and trusted current anchor.\",\"acceptable_authoritative_producer\":\"Competent owning authority/current-state or usage-ledger producer under existing policy; concrete producer unknown.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-TEMPORAL_CURRENTNESS\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Source remains valid for this exact target at evaluation: relevant revocation, supersession and single-use state meet existing governing rules.\",\"rejection_criteria\":\"FRESH defaults; stable content hash; old NOT_ACTIVATED; issue date alone; absent trusted current anchor; unknown usage/revocation status; contradictory snapshots.\",\"required_identity\":\"Exact budget/source and invocation identity; snapshot/event IDs; governing rule identity.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Supply owning snapshot/checkpoint/event generation, observation/capture point and governing validity/freshness rule, plus an independently trusted current anchor against which that generation is checked. Timestamp alone is insufficient; no invented TTL. State revocation/supersession/single-use uncertainty explicitly.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/proof_obligations/7",
+      "excerpt": "{\"acceptable_artifact_record_type\":\"Existing adopted phase rule or scoped applicability decision plus exact source/target application and exclusions.\",\"acceptable_authoritative_producer\":\"Competent governing phase/contract authority; current target producer supplies facts only.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-EXECUTION_REQUEST_PHASE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Existing phase semantics permit this EXECUTION authority as the budget reference in REQUEST preconstruction without authorizing execution or consuming authority.\",\"rejection_criteria\":\"Assumed EXECUTION=>REQUEST implication; unadopted proposal; technical compatibility treated as permission; expansion to runtime/issuance/use.\",\"required_identity\":\"Exact rule/decision identity and pinned source/target identities.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Rule effective generation and coherent current target phase snapshot.\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "section": "/reentry_route",
+      "excerpt": "[\"EXT-BUDGET-APPLICABILITY-EVIDENCE\",\"RECEIVE-BUDGET-APPLICABILITY-EVIDENCE\",\"FACT-BUDGET-APPLICABILITY new revalidation attempt\",\"REEVAL-BUDGET new attempt only on accepted full proof\"]",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+      "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+      "section": "/canonical_input_contract",
+      "excerpt": "{\"authoritative_selector\":\"/authority_id\",\"canonicalization\":\"UTF-8 canonical JSON string; sorted-key compact JSON enclosing body, ensure_ascii=True, no coercion or alternate field shape.\",\"exact_value\":\"StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99\",\"field\":\"authenticated_inputs.budget_policy\",\"identity_type\":\"AUTHORITY_IDENTITY\",\"json_type\":\"string\",\"meaning\":\"Reference identifies the owning StatusBudgetAuthority; policy remains /policy of independently authenticated owner. Do not copy or reinterpret policy into the field.\",\"owning_source_type\":\"CURRENT_STATUS_BUDGET_AUTHORITY-1\",\"policy_selector\":\"/policy\"}",
+      "method": "REVIEWED_P05_NORMALIZATION",
+      "scope": "FROZEN_HISTORICAL_REPLAY"
+    }
+  ],
+  "snapshot": {
+    "schema": "PLANNER-SNAPSHOT-1",
+    "snapshot": {
+      "$type": "Snapshot",
+      "actions": [
+        {
+          "$type": "Action",
+          "accepted_inventory": [],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "MAP-BUDGET"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "DETERMINISTIC_MAPPING"
+          },
+          "prerequisites": [
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "ACTION_COMPLETED"
+              },
+              "target": {
+                "$type": "ActionId",
+                "value": "REEVAL-BUDGET"
+              }
+            }
+          ],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "[\"EXT-BUDGET-APPLICABILITY-EVIDENCE\",\"RECEIVE-BUDGET-APPLICABILITY-EVIDENCE\",\"FACT-BUDGET-APPLICABILITY new revalidation attempt\",\"REEVAL-BUDGET new attempt only on accepted full proof\"]",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/reentry_route"
+          }
+        },
+        {
+          "$type": "Action",
+          "accepted_inventory": [],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "REEVAL-BUDGET"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "DETERMINISTIC_VALIDATION"
+          },
+          "prerequisites": [
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "ACTION_COMPLETED"
+              },
+              "target": {
+                "$type": "ActionId",
+                "value": "FACT-BUDGET-APPLICABILITY"
+              }
+            }
+          ],
+          "requirements": [
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-AVAILABILITY_PUBLICATION"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-CONTROLLER_STORE_G4"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-LINEAGE"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-PROGRAMMER_PROFILE"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-RUNTIME"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-SCOPE"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "BUDGET-PROOF-TEMPORAL_CURRENTNESS"
+            }
+          ],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "[\"EXT-BUDGET-APPLICABILITY-EVIDENCE\",\"RECEIVE-BUDGET-APPLICABILITY-EVIDENCE\",\"FACT-BUDGET-APPLICABILITY new revalidation attempt\",\"REEVAL-BUDGET new attempt only on accepted full proof\"]",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/reentry_route"
+          }
+        },
+        {
+          "$type": "Action",
+          "accepted_inventory": [
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "BUDGET-REFERENCE-CONSISTENCY"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"authoritative_selector\":\"/authority_id\",\"canonicalization\":\"UTF-8 canonical JSON string; sorted-key compact JSON enclosing body, ensure_ascii=True, no coercion or alternate field shape.\",\"exact_value\":\"StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99\",\"field\":\"authenticated_inputs.budget_policy\",\"identity_type\":\"AUTHORITY_IDENTITY\",\"json_type\":\"string\",\"meaning\":\"Reference identifies the owning StatusBudgetAuthority; policy remains /policy of independently authenticated owner. Do not copy or reinterpret policy into the field.\",\"owning_source_type\":\"CURRENT_STATUS_BUDGET_AUTHORITY-1\",\"policy_selector\":\"/policy\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4"
+                },
+                "method": "REVIEWED_P05_NORMALIZATION",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+                "scope": "FROZEN_HISTORICAL_REPLAY",
+                "section": "/canonical_input_contract"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_COMPLETE"
+              },
+              "statement": "{\"authoritative_selector\":\"/authority_id\",\"canonicalization\":\"UTF-8 canonical JSON string; sorted-key compact JSON enclosing body, ensure_ascii=True, no coercion or alternate field shape.\",\"exact_value\":\"StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99\",\"field\":\"authenticated_inputs.budget_policy\",\"identity_type\":\"AUTHORITY_IDENTITY\",\"json_type\":\"string\",\"meaning\":\"Reference identifies the owning StatusBudgetAuthority; policy remains /policy of independently authenticated owner. Do not copy or reinterpret policy into the field.\",\"owning_source_type\":\"CURRENT_STATUS_BUDGET_AUTHORITY-1\",\"policy_selector\":\"/policy\"}",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            }
+          ],
+          "accepted_result": {
+            "$enum": "ActionResult",
+            "value": "EXTERNAL_GATE_REQUIRED"
+          },
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "FACT-BUDGET-APPLICABILITY"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "FACT_ACQUISITION"
+          },
+          "prerequisites": [],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "[\"EXT-BUDGET-APPLICABILITY-EVIDENCE\",\"RECEIVE-BUDGET-APPLICABILITY-EVIDENCE\",\"FACT-BUDGET-APPLICABILITY new revalidation attempt\",\"REEVAL-BUDGET new attempt only on accepted full proof\"]",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/reentry_route"
+          }
+        }
+      ],
+      "assertions": [],
+      "evidence_requirements": [
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-AVAILABILITY_PUBLICATION"
+          },
+          "producers": [],
+          "proposition": "Exact referenced authority is available from its competent owning domain and published/registered as required for this target, or governing rule explicitly proves publication not required.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated catalog membership/resolution receipt or publication record, with governing publication rule; not a local-file existence report.\",\"acceptable_authoritative_producer\":\"Existing authority publisher/store owner with competence for this authority.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-AVAILABILITY_PUBLICATION\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Exact referenced authority is available from its competent owning domain and published/registered as required for this target, or governing rule explicitly proves publication not required.\",\"rejection_criteria\":\"Local Markdown existence; ISSUED label; stale catalog; missing membership; no-publication claim without governing rule.\",\"required_identity\":\"Exact budget authority plus owning store/domain, publication record content ID and returned body hash.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current catalog generation/checkpoint and validity rule applicable at receipt; publication time alone insufficient.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/0"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-CONTROLLER_STORE_G4"
+          },
+          "producers": [],
+          "proposition": "Exact G4 generation is applicable to source/target resolution and the authority belongs to the competent current owning domain.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated generation identity and authority resolution/membership proof, with trust/selection chain.\",\"acceptable_authoritative_producer\":\"Competent controller-store generation/catalog owner.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-CONTROLLER_STORE_G4\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Exact G4 generation is applicable to source/target resolution and the authority belongs to the competent current owning domain.\",\"rejection_criteria\":\"Copied G4 reference; guessed directory; membership in different generation; stale or untrusted catalog.\",\"required_identity\":\"Exact G4 generation ID; owning catalog/resolution record IDs; exact authority and target IDs.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current generation selection and catalog checkpoint; coherent with all other evidence.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/4"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+          },
+          "producers": [],
+          "proposition": "Existing phase semantics permit this EXECUTION authority as the budget reference in REQUEST preconstruction without authorizing execution or consuming authority.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Existing adopted phase rule or scoped applicability decision plus exact source/target application and exclusions.\",\"acceptable_authoritative_producer\":\"Competent governing phase/contract authority; current target producer supplies facts only.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-EXECUTION_REQUEST_PHASE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Existing phase semantics permit this EXECUTION authority as the budget reference in REQUEST preconstruction without authorizing execution or consuming authority.\",\"rejection_criteria\":\"Assumed EXECUTION=>REQUEST implication; unadopted proposal; technical compatibility treated as permission; expansion to runtime/issuance/use.\",\"required_identity\":\"Exact rule/decision identity and pinned source/target identities.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Rule effective generation and coherent current target phase snapshot.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/7"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-LINEAGE"
+          },
+          "producers": [],
+          "proposition": "Source and target are governed by the applicable current R4 lineage with no disqualifying supersession.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Current lineage/adoption/selection record or authenticated relevant chain and selection proof.\",\"acceptable_authoritative_producer\":\"Competent release/lineage selection authority.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-LINEAGE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Source and target are governed by the applicable current R4 lineage with no disqualifying supersession.\",\"rejection_criteria\":\"Copied lineage string; old selection; missing chain link; selection for different target/generation.\",\"required_identity\":\"Name exact pinned source and target identities, artifact content identities, identity domains and canonicalization rules. No all-SHA256 equivalence. Include lineage/head/selection identity. \",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current selection generation, applicable chain position and supersession status under owning rule.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/2"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-PROGRAMMER_PROFILE"
+          },
+          "producers": [],
+          "proposition": "The exact pinned ProgrammerProfile is authenticated and governs the target where required; or governing rule explicitly establishes check is not applicable.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Owning profile bytes/identity proof plus authoritative target-profile applicability binding.\",\"acceptable_authoritative_producer\":\"Competent ProgrammerProfile owner and target-binding authority.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-PROGRAMMER_PROFILE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"The exact pinned ProgrammerProfile is authenticated and governs the target where required; or governing rule explicitly establishes check is not applicable.\",\"rejection_criteria\":\"Matching copied references; wrong profile identity domain; absent owning bytes/proof; omission without governing non-applicability rule.\",\"required_identity\":\"Exact ProgrammerProfile identity and owner-record ID; no substitution of released-profile/content/root identities.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Applicable profile version and current target binding checkpoint; explicit supersession status.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/5"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-RUNTIME"
+          },
+          "producers": [],
+          "proposition": "Exact source runtime binding is independently authenticated and applicable to current target runtime.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated runtime content/selection binding and governing applicability rule; retrievable bytes or qualified proof under that rule.\",\"acceptable_authoritative_producer\":\"Competent runtime/content and runtime selection/release owners.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-RUNTIME\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Exact source runtime binding is independently authenticated and applicable to current target runtime.\",\"rejection_criteria\":\"Matching runtime references only; unverifiable content/selection linkage; obsolete/different runtime; unsupported byte-domain conversion.\",\"required_identity\":\"Exact pinned runtime CONTENT_IDENTITY plus owning selection/content evidence IDs; never another SHA-256 domain.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Current applicable runtime selection checkpoint and source-target binding freshness.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/3"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-SCOPE"
+          },
+          "producers": [],
+          "proposition": "Source EXECUTION-scoped authority applies to budget reference use for the exact REQUEST construction subject under an existing governing rule.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated scope-binding/contract decision or adopted rule plus exact application proof; decision must already exist, not be created by receipt.\",\"acceptable_authoritative_producer\":\"Existing governing scope/contract authority and competent current target source.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-SCOPE\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Source EXECUTION-scoped authority applies to budget reference use for the exact REQUEST construction subject under an existing governing rule.\",\"rejection_criteria\":\"Prefix similarity; budget equality; unadopted interpretation; DEC-BUDGET representation approval substituted for applicability.\",\"required_identity\":\"Name exact pinned source and target identities, artifact content identities, identity domains and canonicalization rules. No all-SHA256 equivalence.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Rule version/effective generation and target checkpoint must be applicable together.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/1"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        },
+        {
+          "$type": "EvidenceRequirement",
+          "id": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-TEMPORAL_CURRENTNESS"
+          },
+          "producers": [],
+          "proposition": "Source remains valid for this exact target at evaluation: relevant revocation, supersession and single-use state meet existing governing rules.",
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"acceptable_artifact_record_type\":\"Authenticated current validity/usage snapshot or events sufficient to reconstruct it, including governing evaluation rule and trusted current anchor.\",\"acceptable_authoritative_producer\":\"Competent owning authority/current-state or usage-ledger producer under existing policy; concrete producer unknown.\",\"authentication_requirement\":\"Recompute artifact identities from retrievable exact bytes using the source identity rule; authenticate producer competence through existing trusted authority chain/store/channel and bind evidence to subject/snapshot. A self-hash, arbitrary signature or new exchange wrapper is not authority. Missing trust rule/anchor => evidence unvalidated.\",\"id\":\"BUDGET-PROOF-TEMPORAL_CURRENTNESS\",\"producer_existence\":\"Role expected; concrete qualified current producer/endpoint not established in accepted corpus.\",\"proposition\":\"Source remains valid for this exact target at evaluation: relevant revocation, supersession and single-use state meet existing governing rules.\",\"rejection_criteria\":\"FRESH defaults; stable content hash; old NOT_ACTIVATED; issue date alone; absent trusted current anchor; unknown usage/revocation status; contradictory snapshots.\",\"required_identity\":\"Exact budget/source and invocation identity; snapshot/event IDs; governing rule identity.\",\"required_lineage\":\"Show authenticated lineage binding and current selection, not merely the recorded R4-final CURRENT UNIQUE label.\",\"required_scope\":\"Bind this exact invocation/dispatch/context and recorded source/target phases; broader E1 scope or copied strings are insufficient.\",\"required_timestamp_generation_currentness\":\"Supply owning snapshot/checkpoint/event generation, observation/capture point and governing validity/freshness rule, plus an independently trusted current anchor against which that generation is checked. Timestamp alone is insufficient; no invented TTL. State revocation/supersession/single-use uncertainty explicitly.\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+            },
+            "method": "REVIEWED_P05_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+            "scope": "FROZEN_HISTORICAL_REPLAY",
+            "section": "/proof_obligations/6"
+          },
+          "rule_known": true,
+          "target": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "StatusBudgetAuthority",
+            "sha256": "02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+          }
+        }
+      ],
+      "knowledge": [],
+      "predicates": [
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-AVAILABILITY_PUBLICATION"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-AVAILABILITY_PUBLICATION"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-CONTROLLER_STORE_G4"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-CONTROLLER_STORE_G4"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-EXECUTION_REQUEST_PHASE"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-LINEAGE"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-LINEAGE"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-PROGRAMMER_PROFILE"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-PROGRAMMER_PROFILE"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-RUNTIME"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-RUNTIME"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-SCOPE"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-SCOPE"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        },
+        {
+          "$type": "Predicate",
+          "action": null,
+          "condition": null,
+          "entity": null,
+          "expected": null,
+          "id": {
+            "$type": "PredicateId",
+            "value": "BUDGET-PROOF-TEMPORAL_CURRENTNESS"
+          },
+          "kind": {
+            "$enum": "PredicateKind",
+            "value": "EVIDENCE_OBLIGATION"
+          },
+          "knowledge": null,
+          "obligation": {
+            "$type": "EvidenceId",
+            "value": "BUDGET-PROOF-TEMPORAL_CURRENTNESS"
+          },
+          "operands": [],
+          "other": null,
+          "permission": null
+        }
+      ],
+      "roots": [
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "root:budget"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "slots": [
+        {
+          "$type": "ValueSlot",
+          "evidence": [],
+          "id": {
+            "$type": "SlotId",
+            "value": "slot:authenticated_inputs.budget_policy"
+          },
+          "required_type": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "state": {
+            "$enum": "SlotState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "statuses": [
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "FACT-BUDGET-APPLICABILITY"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        },
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "MAP-BUDGET"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        },
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "REEVAL-BUDGET"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        }
+      ]
+    }
+  },
+  "given": "Approved authority reference; all eight current applicability facts absent.",
+  "when": "Apply the supplied bounded fact-acquisition result.",
+  "then": "Identity knowledge only; REEVAL/MAP remain blocked, roots and slots unchanged.",
+  "must_not": "No source mutation, actual E1 resume, live evidence inference, authority issuance or downstream execution. Expected values are oracle-only.",
+  "expected": {
+    "selected": "FACT-BUDGET-APPLICABILITY",
+    "result": "EXTERNAL_GATE_REQUIRED",
+    "unproved": 8
+  }
+}

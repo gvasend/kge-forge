@@ -1,0 +1,111 @@
+{
+  "actions_executed": [
+    "E2-CHECK",
+    "E2-COLLECT",
+    "E2-PREPARE"
+  ],
+  "attempt": "RETRY_3",
+  "canonical_e2_qualified": false,
+  "counterexamples": [
+    {
+      "class": "DECISION",
+      "id": "P02-DECISION-001",
+      "reason": "canonical decision/authority admission inputs are absent; apply_recorded_decision cannot be invoked without an authenticated scoped record, authority predicate/entity, and pinned choice evidence"
+    }
+  ],
+  "d01_status": "READY_FOR_LATER_PHASE",
+  "decision_operation": "NOT_EXECUTED: no authenticated recorded decision/authority record in pinned canonical state",
+  "decision_stage": "DECISION_READY",
+  "determinism": "PREFIX_PASS; seeds 0,1,7,101 and canonical ordering contract pinned",
+  "dossier_lifecycle": "PASS",
+  "e1_artifacts_modified": 0,
+  "e2_finish_prerequisite": "ENFORCED_NON_ACTIONABLE",
+  "e2_p02_result": "PARTIAL",
+  "e2_p03_ready": false,
+  "end_status": "READY_FOR_LATER_PHASE",
+  "events_admitted": 0,
+  "external_gate": "WAITING_FOR_EXTERNAL_EVIDENCE",
+  "human_handoff": "PASS",
+  "implementation_modified": false,
+  "n_real_satisfied": false,
+  "new_runtime_defects": [],
+  "next_package": "E2-P02-DECISION-AUTHORITY-MATERIALIZATION",
+  "p02_allowed_actions": [
+    "E2-COLLECT",
+    "E2-CHECK",
+    "E2-PREPARE",
+    "E2-DECIDE"
+  ],
+  "p02_exit_predicate": "actionable=[] AND human_ready=[] AND valid external gate/receipt/reentry route AND expected external absence AND resume=false",
+  "p02_target_control": "EXTERNAL_WAIT",
+  "p02_target_phase": "EXTERNAL_WAIT",
+  "pinned_initial_snapshot": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+  "pinned_model_identity": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+  "pinned_policy_identity": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5",
+  "planner_v0_1_requalification_ready": false,
+  "positive_external_evidence": false,
+  "post_dossier_actionable": [
+    "E2-DECIDE"
+  ],
+  "post_dossier_control": "HUMAN_HANDOFF",
+  "post_dossier_selected": null,
+  "production_effect": false,
+  "qualified_prefix": "PASS",
+  "replay": "PREFIX_PASS; target replay not applicable",
+  "result": "PARTIAL",
+  "review_status": "READY_FOR_LATER_PHASE",
+  "schema": "E2-P02-retry-3-result-v1",
+  "target_state": "NOT_REACHED",
+  "trace": [
+    {
+      "action": "E2-CHECK",
+      "actionable": [
+        "E2-CHECK",
+        "E2-COLLECT"
+      ],
+      "control": "RUNNABLE",
+      "knowledge": [
+        "E2-K-CHECK"
+      ],
+      "post_state": "e381424d14336d918fd3bafff16698361395c77ef03fef628d7d74d36af8a9da",
+      "pre_state": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+      "result": "PASS",
+      "selected": "E2-CHECK",
+      "sequence": 1
+    },
+    {
+      "action": "E2-COLLECT",
+      "actionable": [
+        "E2-COLLECT"
+      ],
+      "control": "RUNNABLE",
+      "knowledge": [
+        "E2-K-COLLECT"
+      ],
+      "post_state": "6c7efb221870974d76d12d7ceb372369ef68104bb1f522a16d47f7dc37236677",
+      "pre_state": "e381424d14336d918fd3bafff16698361395c77ef03fef628d7d74d36af8a9da",
+      "result": "PASS",
+      "selected": "E2-COLLECT",
+      "sequence": 2
+    },
+    {
+      "action": "E2-PREPARE",
+      "actionable": [
+        "E2-PREPARE"
+      ],
+      "control": "HUMAN_HANDOFF",
+      "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "knowledge": [
+        "E2-K-PREPARE"
+      ],
+      "post_state": "39114028d38b9571c46e211248644b09a3ac63ad9f47cd21a75fc922a2d152e3",
+      "pre_state": "6c7efb221870974d76d12d7ceb372369ef68104bb1f522a16d47f7dc37236677",
+      "result": "PASS",
+      "selected": "E2-PREPARE",
+      "sequence": 3,
+      "validation_instances": 6
+    }
+  ],
+  "transitions_executed": 3,
+  "work_package": "E2-P02"
+}

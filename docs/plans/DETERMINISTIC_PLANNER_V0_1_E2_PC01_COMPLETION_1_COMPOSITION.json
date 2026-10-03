@@ -1,0 +1,22 @@
+{
+  "schema": "E2-PC01-COMPOSITION-1",
+  "positive": {
+    "id": "E2-PC01-WHOLE-MODEL",
+    "admission": "ACCEPT",
+    "action_count": 6,
+    "source_role_count": 5,
+    "policy_bound": true,
+    "external_positive_evidence": false,
+    "snapshot_round_trip": "PASS",
+    "snapshot_identity": "2e37f24a86b2a5e5f03d23a33a90973d2f19008a2eeb1d385085a385f68a2e2d"
+  },
+  "negative_cases": [
+    {"id": "PC01-N01", "mutation": "duplicate Action identity", "expected": "REJECT"},
+    {"id": "PC01-N02", "mutation": "missing external gate", "expected": "REJECT"},
+    {"id": "PC01-N03", "mutation": "wrong source role", "expected": "REJECT"},
+    {"id": "PC01-N04", "mutation": "positive external evidence at baseline", "expected": "REJECT"},
+    {"id": "PC01-N05", "mutation": "selection record represented as execution result", "expected": "REJECT"}
+  ],
+  "determinism": {"hash_seeds": [0, 1, 7, 101], "action_orders": ["original", "reverse"], "object_keys": ["original", "recursive-reverse"], "result": "PASS"},
+  "actions_executed": 0
+}

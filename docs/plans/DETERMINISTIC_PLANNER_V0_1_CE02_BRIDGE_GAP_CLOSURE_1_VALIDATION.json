@@ -1,0 +1,462 @@
+{
+  "composition_cases": [
+    {
+      "id": "BASE-PROJECTED_PROOFS",
+      "result": true,
+      "scope": "proof inputs projected; ACTION/HISTORY/GRAPH component source bases remain prior synthetic fixtures"
+    },
+    {
+      "id": "BASE-CROSS_ENVELOPE",
+      "result": {
+        "accepted": false,
+        "failed_clause": "ADMISSION_SUBSTITUTION",
+        "output": null
+      }
+    },
+    {
+      "id": "RENAMED-PROJECTED_PROOFS",
+      "result": true,
+      "scope": "proof inputs projected; ACTION/HISTORY/GRAPH component source bases remain prior synthetic fixtures"
+    },
+    {
+      "id": "RENAMED-CROSS_ENVELOPE",
+      "result": {
+        "accepted": false,
+        "failed_clause": "ADMISSION_SUBSTITUTION",
+        "output": null
+      }
+    }
+  ],
+  "determinism": {
+    "hash_seeds": [
+      1,
+      97
+    ],
+    "limitation": "documentary projections and partial composition only; no full-source operational restoration",
+    "per_route_canonical_reload_and_record_order_cases": 3,
+    "result": "PASS"
+  },
+  "full_source_to_O16_cases": 0,
+  "partial_source_to_O16_positive_cases": 2,
+  "per_source_invalidation_cases": 9,
+  "predicate_artifacts_unchanged": true,
+  "preservation": {
+    "baseline": "per-file SHA256 before this task",
+    "existing_files_changed": [],
+    "existing_predicates_modified": false,
+    "existing_tests_modified": false,
+    "frozen_E1_files": 10911,
+    "frozen_E1_inventory_equal": true,
+    "git_diff_check": "PASS",
+    "implementation_modified": false,
+    "json_and_local_links": "PASS"
+  },
+  "reference_validation_program": "import json,hashlib,copy\nfrom pathlib import Path\nP=Path('docs/plans');PRE='DETERMINISTIC_PLANNER_V0_1_';S=PRE+'CE02_BRIDGE_GAP_CLOSURE_1'\ndef load(n):return json.loads((P/(PRE+n+'.json')).read_text())\ndef dump(s,x):(P/(S+s)).write_text(json.dumps(x,indent=2,sort_keys=True)+'\\n')\ndef sha(x):return hashlib.sha256(x).hexdigest()\no8=load('O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1');o9=load('O09_BASELINE_SLOT_PROOF_ADMISSION_1');pf=load('C06A_3_PREFLIGHT_CLOSURE_1');ce=load('CE01_CONTRACT_RECONCILIATION_1');inventory=load('CE02_SOURCE_PROFILE_BRIDGE_1_SOURCE_CLASSES')\ncontext={role:Path(next(path for path,e in inventory['required_source_instances'].items() if e['source_class']==typ)).read_text() for role,typ in [('graph','GRAPH'),('plan','PLAN')]}\nns={};exec(load('CE02_BRIDGE_GAP_CLOSURE_1_MAPPINGS')['program'],ns);old8={};exec(o8['reference']['program'],old8);old9={};exec(o9['reference']['program'],old9)\nbases={};results=[];submissions={}\nfor route,p in [('O08',o8['profile'])]+list(o9['profiles'].items()):\n records=[{'role':role,'identity':pin['identity'],'text':Path(pin['path']).read_text()} for role,pin in p['supports'].items()]\n v={'sources':{role:{'identity':pin['identity'],'state':'CURRENT_AT_PINNED_SNAPSHOT'} for role,pin in p['supports'].items()}}\n if route=='O08':v['context']=p['context']\n else:v.update(snapshot=p['snapshot'],evaluation='PINNED_SNAPSHOT_ONLY')\n base={'route':route,'profile':p,'records':records,'validity':v,'context_sources':context};bases[route]=base\n out=ns['project'](**base);assert out['accepted_projection'],out\n verdict=(old8 if route=='O08' else old9)['admit'](p,out['candidate'],v);assert verdict['accepted'],(route,verdict)\n submissions[route]={'profile':p,'state':out['candidate'],'validity':v};results.append({'id':route+'-POSITIVE','stage':'OXX_ADMISSION','result':verdict})\n # Positive roundtrip/collection/key ordering proof.\n perm=copy.deepcopy(base);perm['records'].reverse();cold=json.loads(ns['canonical'](perm));out2=ns['project'](**cold);assert out2==out\n for kind in ['MISSING_SOURCE','AMBIGUOUS_JOIN','WRONG_DOMAIN','SUBSTITUTED_BYTES','SUBSTITUTED_IDENTITY','STALE_SOURCE','WRONG_ROLE','WRONG_CONTEXT_SOURCE','WRONG_CURRENT_CONTEXT']:\n  bad=copy.deepcopy(base)\n  if kind=='MISSING_SOURCE':bad['records'].pop()\n  elif kind=='AMBIGUOUS_JOIN':bad['records'].append(copy.deepcopy(bad['records'][0]))\n  elif kind=='WRONG_DOMAIN':bad['records'][0]['identity']['domain']='AUTHORITY_IDENTITY'\n  elif kind=='SUBSTITUTED_BYTES':bad['records'][0]['text']+='\\n'\n  elif kind=='SUBSTITUTED_IDENTITY':bad['records'][0]['identity']['sha256']='0'*64\n  elif kind=='STALE_SOURCE':bad['validity']['sources'][bad['records'][0]['role']]['state']='STALE'\n  elif kind=='WRONG_ROLE':bad['records'][0]['role']='UNRELATED'\n  elif kind=='WRONG_CONTEXT_SOURCE':bad['context_sources']['graph']+='\\n'\n  else:\n   if route=='O08':bad['validity']['context']['graph']['sha256']='0'*64\n   else:bad['validity']['snapshot']['sha256']='0'*64\n  verdict=ns['project'](**bad);assert not verdict['accepted_projection'],(route,kind,verdict)\n  results.append({'id':route+'-'+kind,'input':bad,'stage':verdict['stage'],'result':verdict})\n # Structurally well-formed candidate with inadmissible proof type must reach unchanged oracle and reject.\n bad=copy.deepcopy(out['candidate']);bad['proof']['proof_type']='UNRELATED_PROOF';bad['proof']['identity']['sha256']=ns['digest']({k:v for k,v in bad['proof'].items() if k!='identity'})\n verdict=(old8 if route=='O08' else old9)['admit'](p,bad,v);assert not verdict['accepted'];results.append({'id':route+'-INADMISSIBLE_PROJECTED_PROOF','stage':'OXX_ADMISSION','result':verdict,'mutation':'proof_type=UNRELATED_PROOF; recompute proof content identity'})\n # Supporting source invalidation independently for every source, after serialization.\n for role in v['sources']:\n  bad=json.loads(ns['canonical'](base));bad['validity']['sources'][role]['state']='STALE';out3=ns['project'](**bad);assert not out3['accepted_projection'];results.append({'id':route+'-INVALIDATE-'+role,'stage':out3['stage'],'result':out3})\n# Compose these newly generated inputs through the unchanged composed evaluator.\npfns={};exec(ce['reference']['program'],pfns);pff=load('C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES');programs={'O08':o8['reference']['program'],'O09':o9['reference']['program']};composition=[]\nfor name,base in pff['bases'].items():\n out=pfns['compose'](pf['profiles'][name],base['state'],base['validity'],programs,submissions);assert out['accepted'],out\n composition.append({'id':name+'-PROJECTED_PROOFS','result':out['accepted'],'scope':'proof inputs projected; ACTION/HISTORY/GRAPH component source bases remain prior synthetic fixtures'})\n bad=copy.deepcopy(submissions);bad['InvocationAttemptId']['state']['proof']['envelope']['runtime']='OTHER';out=pfns['compose'](pf['profiles'][name],base['state'],base['validity'],programs,bad);assert not out['accepted'];composition.append({'id':name+'-CROSS_ENVELOPE','result':out})\n# Field ownership audit of each constructed candidate (no unexplained fabricated outcome fields).\ndef leaves(x,path=''):\n if isinstance(x,dict):\n  for k,v in x.items():yield from leaves(v,path+'/'+k)\n elif isinstance(x,list) and x:\n  for i,v in enumerate(x):yield from leaves(v,path+'/'+str(i))\n else:yield path\nfields=[]\nfor route,sub in submissions.items():\n for path in leaves(sub['state']):\n  if path.startswith('/documents/'):category='DIRECT_SOURCE_FIELD';source='raw role document'\n  elif path.startswith('/proof/authority/record/') or path.startswith('/proof/source_lineage/') or path=='/proof/scope' and route=='O08' or path.startswith('/proof/implementation_preconditions/') or path.startswith('/proof/decision/option'):category='DIRECT_SOURCE_FIELD';source='authority JSON exact selector; projection program'\n  elif path.startswith('/proof/identity') or path=='/profile_pin' or path.startswith('/proof/authority/identity') or path.startswith('/proof/decision/record_identity') or path.startswith('/proof/context/graph') or path.startswith('/proof/context/plan'):category='DETERMINISTIC_DERIVATION';source='canonical body hash, raw source hash or verified authority-id tagged decomposition'\n  elif path.startswith('/proof/envelope/') or path.startswith('/proof/lineage/') or path=='/proof/value':category='AUTHORIZED_CROSS_SOURCE_JOIN';source='candidate/release typed identity and exact slot join; J-INV/J-PROFILE'\n  elif path.startswith('/proof/provenance') or path.startswith('/proof/supports') or path.startswith('/proof/dossier') or path.startswith('/proof/preparation/source'):category='AUTHORIZED_CROSS_SOURCE_JOIN';source='authenticated role binding + raw content digest + declared selector; graph slot matched by identity'\n  else:category='CONTRACT_CONSTANT';source='existing O08/O09 admission schema/predicate/target/boundary/prerequisite/mapping contract; never a candidate-supplied value'\n  fields.append({'route':route,'target':path,'classification':category,'basis':source})\nprint('3 source-to-Oxx positives;30 negatives;9 invalidations;4 partial composition cases PASS;field leaves',len(fields))",
+  "results": [
+    {
+      "id": "O08-POSITIVE",
+      "result": {
+        "accepted": true,
+        "authority_issued_by_evaluation": false,
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "failed_clause": null,
+        "gate": "gate:validator_authority",
+        "gate_supported": true,
+        "implementation_action_eligible": false,
+        "slot_transition": "UNCHANGED",
+        "validator_complete": false
+      },
+      "stage": "OXX_ADMISSION"
+    },
+    {
+      "id": "O08-MISSING_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "INCOMPLETE_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "O08-AMBIGUOUS_JOIN",
+      "result": {
+        "accepted_projection": false,
+        "reason": "AMBIGUOUS_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "O08-WRONG_DOMAIN",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_DOMAIN",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "O08-SUBSTITUTED_BYTES",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "O08-SUBSTITUTED_IDENTITY",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "O08-STALE_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "O08-WRONG_ROLE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "INCOMPLETE_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "O08-WRONG_CONTEXT_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "GRAPH_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "O08-WRONG_CURRENT_CONTEXT",
+      "result": {
+        "accepted_projection": false,
+        "reason": "GRAPH_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "O08-INADMISSIBLE_PROJECTED_PROOF",
+      "mutation": "proof_type=UNRELATED_PROOF; recompute proof content identity",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_PROOF_TYPE",
+        "gate_supported": false
+      },
+      "stage": "OXX_ADMISSION"
+    },
+    {
+      "id": "O08-INVALIDATE-authority",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "O08-INVALIDATE-dossier",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "O08-INVALIDATE-preparation",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "O08-INVALIDATE-propagation",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "InvocationAttemptId-POSITIVE",
+      "result": {
+        "accepted": true,
+        "authority_granted": false,
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "failed_clause": null,
+        "resolution_scope": "Candidate identity only, no issuance/use",
+        "root_transition": "UNCHANGED",
+        "slot": "slot:authenticated_inputs.InvocationAttemptId",
+        "slot_resolved_supported": true,
+        "value": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa"
+      },
+      "stage": "OXX_ADMISSION"
+    },
+    {
+      "id": "InvocationAttemptId-MISSING_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "INCOMPLETE_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "InvocationAttemptId-AMBIGUOUS_JOIN",
+      "result": {
+        "accepted_projection": false,
+        "reason": "AMBIGUOUS_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "InvocationAttemptId-WRONG_DOMAIN",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_DOMAIN",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "InvocationAttemptId-SUBSTITUTED_BYTES",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "InvocationAttemptId-SUBSTITUTED_IDENTITY",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "InvocationAttemptId-STALE_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "InvocationAttemptId-WRONG_ROLE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "INCOMPLETE_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "InvocationAttemptId-WRONG_CONTEXT_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "GRAPH_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "InvocationAttemptId-WRONG_CURRENT_CONTEXT",
+      "result": {
+        "accepted_projection": false,
+        "reason": "GRAPH_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "InvocationAttemptId-INADMISSIBLE_PROJECTED_PROOF",
+      "mutation": "proof_type=UNRELATED_PROOF; recompute proof content identity",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE",
+        "slot_resolved_supported": false
+      },
+      "stage": "OXX_ADMISSION"
+    },
+    {
+      "id": "InvocationAttemptId-INVALIDATE-acceptance",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "InvocationAttemptId-INVALIDATE-candidate",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "profile_sha256-POSITIVE",
+      "result": {
+        "accepted": true,
+        "authority_granted": false,
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "failed_clause": null,
+        "resolution_scope": "Released profile content digest, not authority ID",
+        "root_transition": "UNCHANGED",
+        "slot": "slot:authenticated_inputs.profile_sha256",
+        "slot_resolved_supported": true,
+        "value": "83b8cbc0549c64d21eaccaffc1fa45b49be368a878ccecdf9572d476477dfcd6"
+      },
+      "stage": "OXX_ADMISSION"
+    },
+    {
+      "id": "profile_sha256-MISSING_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "INCOMPLETE_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "profile_sha256-AMBIGUOUS_JOIN",
+      "result": {
+        "accepted_projection": false,
+        "reason": "AMBIGUOUS_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "profile_sha256-WRONG_DOMAIN",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_DOMAIN",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "profile_sha256-SUBSTITUTED_BYTES",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "profile_sha256-SUBSTITUTED_IDENTITY",
+      "result": {
+        "accepted_projection": false,
+        "reason": "SOURCE_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "profile_sha256-STALE_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "profile_sha256-WRONG_ROLE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "INCOMPLETE_JOIN",
+        "stage": "RECOGNITION"
+      },
+      "stage": "RECOGNITION"
+    },
+    {
+      "id": "profile_sha256-WRONG_CONTEXT_SOURCE",
+      "result": {
+        "accepted_projection": false,
+        "reason": "GRAPH_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "profile_sha256-WRONG_CURRENT_CONTEXT",
+      "result": {
+        "accepted_projection": false,
+        "reason": "GRAPH_IDENTITY",
+        "stage": "SOURCE_VALIDATION"
+      },
+      "stage": "SOURCE_VALIDATION"
+    },
+    {
+      "id": "profile_sha256-INADMISSIBLE_PROJECTED_PROOF",
+      "mutation": "proof_type=UNRELATED_PROOF; recompute proof content identity",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE",
+        "slot_resolved_supported": false
+      },
+      "stage": "OXX_ADMISSION"
+    },
+    {
+      "id": "profile_sha256-INVALIDATE-acceptance",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "profile_sha256-INVALIDATE-candidate",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    },
+    {
+      "id": "profile_sha256-INVALIDATE-release",
+      "result": {
+        "accepted_projection": false,
+        "reason": "CURRENT_SUPPORT_REQUIRED",
+        "stage": "CURRENTNESS"
+      },
+      "stage": "CURRENTNESS"
+    }
+  ],
+  "roundtrips": 3,
+  "schema": "BRIDGE-GAP-VALIDATION-1",
+  "source_to_Oxx_negatives": 30,
+  "source_to_Oxx_positives": 3,
+  "unexplained_constructed_candidate_fields": [],
+  "validation_program_scope": "Specification only. Explicit pinned documentary inputs; no planner runtime imports or mutation."
+}

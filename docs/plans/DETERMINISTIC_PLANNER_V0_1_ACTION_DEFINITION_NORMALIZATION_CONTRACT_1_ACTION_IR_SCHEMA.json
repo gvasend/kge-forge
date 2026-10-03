@@ -1,0 +1,170 @@
+{
+  "additional_fields": false,
+  "fields": [
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "ActionId",
+      "name": "id",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "/resolution_actions/*/id",
+      "type": "string",
+      "validation": "Unique exact membership; no hash-domain substitution"
+    },
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "NONE",
+      "name": "primary_operation_class",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "primary_operation_class",
+      "type": "enum",
+      "validation": "Exact member of corresponding literal rule domain, exact action-source correspondence"
+    },
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "NONE",
+      "name": "executor",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "executor",
+      "type": "enum",
+      "validation": "Exact member of corresponding literal rule domain, exact action-source correspondence"
+    },
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "NONE",
+      "name": "effect_boundary",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "effect_boundary",
+      "type": "enum",
+      "validation": "Exact member of corresponding literal rule domain, exact action-source correspondence"
+    },
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "NONE",
+      "name": "stage_role",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "stage_role",
+      "type": "enum",
+      "validation": "Exact member of corresponding literal rule domain, exact action-source correspondence"
+    },
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "Scope",
+      "name": "scope",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "Explicit SCOPE_BINDING resolves definition scope versus operational profile scope",
+      "type": "string",
+      "validation": "No location inference; source scope retained in provenance; exact profile target context"
+    },
+    {
+      "canonical_representation": "scalar",
+      "cardinality": "1",
+      "identity_domain": "Lineage",
+      "name": "lineage",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "Explicit LINEAGE_BINDING from accepted context/source join",
+      "type": "string",
+      "validation": "No qualification lineage copied into E1; exact envelope correspondence"
+    },
+    {
+      "canonical_representation": "sort by (domain,id); reject duplicates",
+      "cardinality": "0..N",
+      "identity_domain": "ActionId",
+      "name": "prerequisite_actions",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "prerequisite_actions",
+      "type": "array<TypedActionRef>",
+      "validation": "Every id resolves; relation is ACTION_DEPENDENCY, not evidence or proof; preserve independently declared accepted-knowledge dependencies"
+    },
+    {
+      "canonical_representation": "sort by (domain,id); reject duplicates",
+      "cardinality": "0..N",
+      "identity_domain": "ExternalConditionId | EvidenceRequirementId | DecisionId | GateId",
+      "name": "external_prerequisites",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "external_prerequisites plus explicitly bound additional requirement rules",
+      "type": "array<TypedRequirementRef>",
+      "validation": "Each tagged requirement bound to governing source; absence of positive evidence is an unsatisfied requirement, not missing definition"
+    },
+    {
+      "canonical_representation": "sort exact KnowledgeId keys",
+      "cardinality": "0..N",
+      "identity_domain": "KnowledgeId / KnowledgeType",
+      "name": "knowledge_requirements",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "knowledge_requirements via KNOWLEDGE_BINDING",
+      "type": "map<KnowledgeId,KnowledgeType>",
+      "validation": "No fabricated knowledge identity/type; absent source member requires explicit normalization rule; provenance retains producer/outcome/source binding"
+    },
+    {
+      "canonical_representation": "sort by (domain,id); reject duplicates",
+      "cardinality": "0..N",
+      "identity_domain": "AuthorityRequirementId",
+      "name": "authority_requirements",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "authority_rule + exact prerequisite grant contract",
+      "type": "array<TypedRequirementRef>",
+      "validation": "Unknown/unbound rule rejects; empty allowed only by explicit no-outstanding-requirement binding; no grant inferred"
+    },
+    {
+      "canonical_representation": "sorted sets; exact object keys defined by ResultDeclaration",
+      "cardinality": "1",
+      "identity_domain": "ResultType / KnowledgeType / ProofRuleId",
+      "name": "result_contract",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "Independent RESULT_BINDING citing acceptance_criteria and governing result contract",
+      "type": "ResultDeclaration",
+      "validation": "Possible outcomes/knowledge types and independently guarded root/slot transitions; no promised satisfaction"
+    },
+    {
+      "canonical_representation": "canonical object; dependencies sorted by (domain,identity,selector)",
+      "cardinality": "1",
+      "identity_domain": "CONTENT_IDENTITY plus separately tagged subject domains",
+      "name": "provenance",
+      "provenance_requirement": "Exact plan pin + selected ActionId + source member + typed binding identity; cross-source dependencies pinned individually",
+      "source_semantics": "BR-C1 source pins/selectors, context, governing evidence and rule references",
+      "type": "Provenance",
+      "validation": "Accepted binding, current source support, distinct definition/subject scope, full envelope identity domains; no accepting boolean as authority"
+    }
+  ],
+  "identity": {
+    "ActionIRIdentity": "{domain:ACTION_IR_CONTENT_IDENTITY,version:1,sha256:SHA256(canonical({schema:ACTION-IR-1,action:IR}))}",
+    "O01ProfileIdentity": "{domain:O01_CANDIDATE_CONTENT_IDENTITY,version:1,sha256:SHA256(canonical({schema:O01-CANDIDATE-1,definitions:complete_action_set,provenance_context:context})))}",
+    "canonicalization": "UTF-8 JSON, sort object keys, compact separators, ensure_ascii=false; reject duplicate keys/nonfinite/floats; sort declared sets only; preserve ordered values; Unicode preserved without silent normalization",
+    "no_identity_before_complete": "Incomplete rows have null IR/profile identities; an input fingerprint is not an admitted identity"
+  },
+  "projection": "Lossless field projection to the exact14 O01 definition keys; O01 whole-profile context/pins/independent expected definitions remain separately required. Single ActionIR cannot manufacture its own trusted O01 profile.",
+  "schema": "ACTION-IR-CONTRACT-1",
+  "status": "STRUCTURAL_CONTRACT_DEFINED_INSTANCE_BINDINGS_INCOMPLETE",
+  "types": {
+    "Provenance": {
+      "binding_identity": "BR-C1 binding identity",
+      "context": "accepted envelope/graph/ledger/policy/subject correspondence; typed absence retained",
+      "definition_scope": "original literal scope",
+      "governing_evidence": "pinned references; NOT satisfied evidence",
+      "rule_bindings": "all typed rule identities",
+      "selector": "unique ActionId selector plus resolved JSON pointer",
+      "source": "raw source content identity",
+      "supporting_sources": "transitive pinned dependencies"
+    },
+    "ResultDeclaration": {
+      "knowledge_types": "finite governed type set, possibly empty only by explicit rule",
+      "outcomes": "nonempty finite governed Outcome set; neither inferred from report presence nor from operation alone",
+      "root_transition": "UNCHANGED or separately bound proof-guarded transition declaration",
+      "slot_transition": "UNCHANGED or separately bound slot-admission declaration"
+    },
+    "TypedActionRef": {
+      "domain": "ActionId",
+      "id": "exact string"
+    },
+    "TypedRequirementRef": {
+      "domain": "one allowed tagged requirement identity domain",
+      "id": "exact governed requirement identity"
+    }
+  }
+}

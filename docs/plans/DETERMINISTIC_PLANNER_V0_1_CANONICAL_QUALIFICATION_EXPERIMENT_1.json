@@ -1,0 +1,755 @@
+{
+  "actions": [
+    "E2-COLLECT",
+    "E2-CHECK",
+    "E2-PREPARE",
+    "E2-DECIDE",
+    "E2-REENTER",
+    "E2-FINISH"
+  ],
+  "authority_issued": false,
+  "blocking_preflight": [
+    "Exact supported evidence-source admission plus bundle/event/source-pin transaction must be established; existing apply_receipt consumes already admitted concrete entity",
+    "No positive reentry from rule_known=false without independent supported rule admission; mainline uses known validation rule with absent evidence; governed-unknown variant remains unresolved",
+    "All required13-field definitions/proof/grant consumer contracts independent of fixture output"
+  ],
+  "cases": [
+    {
+      "CASE_ID": "E2-A01",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Six exact13-field definitions; no extra/missing actions/statuses/references; no occurred result from declaration",
+      "INITIAL_STATE": "Reviewed six-Action definition contract and frozen source pins",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Construct through existing canonical types; native/O01 validation",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Complete canonical universe and independent O01 profile",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A02",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Same selected ActionId and witnesses; ledger,knowledge,roots,slots unchanged",
+      "INITIAL_STATE": "Two independently eligible read-only acquisition actions",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "recompute and select twice without applying event",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Deterministic selection without execution",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A03",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Only declared knowledge accepted; stale/missing outputs cannot complete current prerequisites; PASS alone does not resolve root/slot",
+      "INITIAL_STATE": "Selected acquisition action with independently specified output contract",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "record_result/append_event with supplied bounded result",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Bounded execution and accepted knowledge",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A04",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Human decision becomes ready only with complete dossier/checks; authority requirement alone did not make it ready",
+      "INITIAL_STATE": "Preparation action dependencies met; no recorded decision",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Apply preparation result then recompute",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Decision readiness and authority separation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A05",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Decision history recorded; bounded authority evaluated by native predicate; no root/slot automatically satisfied",
+      "INITIAL_STATE": "Ready human decision with predefined qualification-only choices and independently pinned record",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "apply_recorded_decision through append_event; exact permitted record",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Synthetic bounded decision/grant",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A06",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "EXTERNAL_WAIT; actionable=[]; human_ready=[]; receipt empty; evidence proof not PROVED; resume false",
+      "INITIAL_STATE": "Reentry action held; known validation rule; evidence unavailable; exact route/producers/context bound",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Native request-ready then waiting events",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "External request and absence",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A07",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Source/policy/event identities pinned; no saved control label treated as authority",
+      "INITIAL_STATE": "E2-A06 checkpoint",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "save_bundle; terminate writer process after immutable manifest committed",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Persist external checkpoint",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A08",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Exact action/knowledge/root/slot/authority/evidence/route/policy/validity/branch/control/resume equality; EXTERNAL_WAIT",
+      "INITIAL_STATE": "Empty fresh process, only immutable bundle/identity/source pins/contracts",
+      "NEGATIVE_INVARIANTS": "No fixture rebuild, conversation, globals, cached objects or hidden files.",
+      "OPERATION": "restore and recompute; compare semantic inventory",
+      "PERSISTENCE_REQUIREMENT": "Actual separate terminated writer/reader PIDs; no same-process roundtrip substitute.",
+      "PURPOSE": "Cold restoration",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A09",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Admitted source exists; gate pending artifact recorded; no receipt observation acceptance or resume yet",
+      "INITIAL_STATE": "Cold restored checkpoint; separately created qualification-only bundle",
+      "NEGATIVE_INVARIANTS": "Cannot mutate pending/stage/status/accepted observations or call dataclass replacement as receipt; stop if required native ingestion transaction unavailable.",
+      "OPERATION": "Independently authenticate bytes/producer/claims through P01-pinned native admission boundary; then EVIDENCE_RECEIVED event",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Evidence ingestion before receipt",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A10",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "ReceiptObservation accepted and external_complete true; resume false until accepted reentry event and named eligibility",
+      "INITIAL_STATE": "Evidence received, current scoped source and authentic independent claims",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "EVIDENCE_VALIDATED event through append_event",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Validation distinct from resume",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A11",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Only named reentry eligible; C03 pins/lineage/currentness/other gates independently pass; no general resume permission",
+      "INITIAL_STATE": "Validated evidence; other prerequisites current; exact policy/context lineage",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "DEPENDENT_ACTION_REENTRY event and resume_eligibility with source root",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "C03 reentry conjunction",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A12",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "New event/state identity and accepted declared knowledge; downstream finishing action evaluated; not just resume Boolean",
+      "INITIAL_STATE": "Reentry action eligible under E2-A11",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "recompute -> deterministic select -> supplied permitted result -> append_event",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Actual post-reentry planning continuation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A13",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Root/slot changes only from their complete source-bound proof; terminal success only if all declared goals proven",
+      "INITIAL_STATE": "Required post-reentry claim available; independently defined proof predicates",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Native proof/root/slot recomputation and selected finishing result",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Root/slot proof independently admitted",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A14",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "EXTERNAL_WAIT; rule remains unknown; no positive proof/evidence/resume; no automatic rule-known transition",
+      "INITIAL_STATE": "Independent canonical copy of external checkpoint with rule_known=false and valid ExternalResolutionContract",
+      "NEGATIVE_INVARIANTS": "Not used as positive receipt continuation unless a separate native rule-admission contract exists; no flag patch.",
+      "OPERATION": "Native recompute, save, terminate, restore",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Governed unknown checkpoint variant",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A15",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Dependent admission stale; ordering obligations retained; held/blocked descendants; resume false; reload preserves invalidation",
+      "INITIAL_STATE": "Restored accepted knowledge/proof/authority state in isolated copy",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "SourceInvalidation event for each disjoint required source",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Post-reload source invalidation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-A16",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "PLAN_DEFECT when no other valid route; waiting label does not suppress defect",
+      "INITIAL_STATE": "Restored E2-A14 variant",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Invalidate required acquisition-contract source",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Governed route invalidation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N01",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "PLAN_DEFECT; no runnable/reentry",
+      "INITIAL_STATE": "E2-A14 copy",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Remove exact external-resolution binding in negative candidate",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Unknown with no route",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N02",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Reject admission or PLAN_DEFECT at contract-defined boundary; never waiting eligibility",
+      "INITIAL_STATE": "E2-A14 copy",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Substitute request/proposition/producer or receipt target",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Malformed route",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N03",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Reject correspondence; invalid unknown-route probe is PLAN_DEFECT; no resume",
+      "INITIAL_STATE": "Checkpoint/evidence copy",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Use correctly hashed but wrong-lineage source/contract",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Wrong lineage",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N04",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Not accepted/current; no eligible reentry or resume",
+      "INITIAL_STATE": "Received/validated copy",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Invalidate evidence or independent attestor",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Stale evidence",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N05",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Pin/domain rejection before planning use",
+      "INITIAL_STATE": "Pinned source set",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Replace bytes or same-digest wrong identity domain",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Source substitution",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N06",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Authority predicate not proved; action ineligible",
+      "INITIAL_STATE": "Authority-dependent action",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Supply unrelated/wrong-class/out-of-scope grant",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Wrong authority",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N07",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Root/slot unresolved/stale; no satisfaction from PASS",
+      "INITIAL_STATE": "Post-reentry candidate",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Missing/wrong-root/wrong-slot/placeholder proof",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Invalid proof",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N08",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Native admission rejects before recompute",
+      "INITIAL_STATE": "Initial candidate",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Reference undeclared ActionId or wrong domain",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Dangling prerequisite",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N09",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Current prerequisite fails; no producer-completion shortcut",
+      "INITIAL_STATE": "Held descendant",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Invalidate knowledge source after producer historical completion",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Stale accepted knowledge",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N10",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Import/restore/selection rejects policy binding",
+      "INITIAL_STATE": "Valid bundle",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Substitute valid unrelated pin or unsupported version",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Wrong selection policy",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N11",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Restore rejects; rehashing attacker bytes cannot replace trusted expected identity",
+      "INITIAL_STATE": "Checkpoint bytes",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Alter event parent/current snapshot/source index; retain trusted expected bundle identity",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Persistence tampering",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N12",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "No native result accepted; ledger/knowledge not fabricated",
+      "INITIAL_STATE": "Selected action with no supplied result",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Attempt to use selection record as execution/completion",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Selection/history conflation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N13",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Reject wrong event/result; knowledge/root/slot unchanged",
+      "INITIAL_STATE": "Admitted Action definition",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Present its output declaration as actual supplied result",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Prospective/actual conflation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N14",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Illegal transition/failed proof; no resume",
+      "INITIAL_STATE": "Waiting or merely received evidence",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Attempt validation/reentry out of order or unrelated artifact",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Receipt/reentry bypass",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N15",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Named-action eligibility false and C03 resume false",
+      "INITIAL_STATE": "Valid receipt/reentry copy",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Leave independent required condition unsatisfied",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Accepted evidence with blocked named action",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-N16",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "RUNNABLE for machine; HUMAN_HANDOFF for only ready human; MIXED_WAIT with factual frontier; unknown still unknown",
+      "INITIAL_STATE": "Governed unknown checkpoint variants",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Add independently eligible machine/human or factual blocked frontier",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Independent branch precedence",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-D01",
+      "DETERMINISM_REQUIREMENT": "Compare branches,witnesses,rejections,all typed identities,not only scalar control.",
+      "EXPECTED_STATE": "Full Computation,selected action,canonical snapshot/bundle identity equal for equal semantics; ordered event chronology preserved",
+      "INITIAL_STATE": "All positive and negative supported semantic states",
+      "NEGATIVE_INVARIANTS": "Do not permute causal ledger history or ordered selection-policy rules as if sets.",
+      "OPERATION": "Seeds0,1,7,101; reversed/rotated action,source,goal,proof,authority orders; object-key permutations; fresh processes",
+      "PERSISTENCE_REQUIREMENT": "At least3 independent cold restores per checkpoint per seed.",
+      "PURPOSE": "Ordering/hash/process determinism",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-END",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "All stage-specific independent oracles pass; real post-reentry event and updated state; no legacy importer or E1 execution",
+      "INITIAL_STATE": "Only independently authored canonical E2 contracts and source bytes",
+      "NEGATIVE_INVARIANTS": "Expected oracle files excluded from execution inputs; no planner output becomes its own oracle.",
+      "OPERATION": "A01-A13 across real writer termination and fresh reader then repeat under D01",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "End-to-end canonical lifecycle",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-REG",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "All prior closed findings remain closed; no skipped requirements or blanket historical count reused",
+      "INITIAL_STATE": "Pinned current code/contracts and read-only E1 corpus",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Full affected native/CLI/importer/constructor suites including A-N,X01-X11,C01-C06,budget and external unknown",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Existing baseline remains required",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    {
+      "CASE_ID": "E2-REVIEW",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "No open correctness/determinism/persistence/authority/resume defect for final acceptance; new finding returns to correction package",
+      "INITIAL_STATE": "E2-END/D01/REG all pass with complete evidence",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "New reviewer probes all enforcing paths and mutations after qualification",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Fresh independent adversarial review",
+      "status": "PLANNED_NOT_EXECUTED"
+    }
+  ],
+  "checkpoint": "EXTERNAL_WAIT",
+  "currently_ready": false,
+  "experiment": "E2",
+  "experiment_executed": false,
+  "legacy_release_obligation_resolved": "N-REAL passed OR separately approved explicit scope reconciliation replacing its release role; neither occurs in this task",
+  "native_snapshot_schema": "PLANNER-SNAPSHOT-1",
+  "packages": [
+    {
+      "acceptance": "All30 requirements assigned; source-shaped negatives and independent expected states complete; no unresolved implementation/interface prerequisite.",
+      "cases": [
+        "E2-A01"
+      ],
+      "id": "E2-P01",
+      "prerequisites": [],
+      "purpose": "Canonical experiment contract and independent fixture/oracle preflight",
+      "status": "PLANNED_NOT_EXECUTED",
+      "work": "Pin6 complete Action definitions, sources/types,13-field O01 expectations,native correspondence,policy,decision/grant/proof/receipt contracts; resolve canonical evidence ingestion transaction and immutable bundle/source-index replay before execution. Stop on unsupported contract; no silent new event or rule-known setter."
+    },
+    {
+      "acceptance": "Reach independently derived EXTERNAL_WAIT with absent evidence,valid gate,no human-ready/machine-actionable work,no resume.",
+      "cases": [
+        "E2-A01",
+        "E2-A02",
+        "E2-A03",
+        "E2-A04",
+        "E2-A05",
+        "E2-A06"
+      ],
+      "id": "E2-P02",
+      "prerequisites": [
+        "E2-P01"
+      ],
+      "purpose": "Initial canonical state and pre-external progression",
+      "status": "PLANNED_NOT_EXECUTED",
+      "work": "Build canonical state; validate; execute only bounded synthetic transitions; retain selected-versus-executed distinctions."
+    },
+    {
+      "acceptance": "Full semantic and canonical identity equality; no hidden state; unknown remains unknown.",
+      "cases": [
+        "E2-A07",
+        "E2-A08",
+        "E2-A14",
+        "E2-A15",
+        "E2-A16"
+      ],
+      "id": "E2-P03",
+      "prerequisites": [
+        "E2-P02"
+      ],
+      "purpose": "Immutable persistence and cold restoration",
+      "status": "PLANNED_NOT_EXECUTED",
+      "work": "Persist and terminate; freshprocess restore with explicit input allowlist; unknown variant and invalidation controls."
+    },
+    {
+      "acceptance": "Received/validated/eligible separated; C03 passes onlyexactnamedroute; actual post-reentry planning/result transition and proofrecomputation.",
+      "cases": [
+        "E2-A09",
+        "E2-A10",
+        "E2-A11",
+        "E2-A12",
+        "E2-A13"
+      ],
+      "id": "E2-P04",
+      "prerequisites": [
+        "E2-P03"
+      ],
+      "purpose": "Canonical synthetic receipt, reentry and continuation",
+      "status": "PLANNED_NOT_EXECUTED",
+      "work": "Admit isolated evidence through pinned native boundary; append every receipt/reentry/result event; no direct state edits."
+    },
+    {
+      "acceptance": "All assigned cases pass; no deferredscope violations; new independent review ready. Does not clear legacy N-REAL obligation.",
+      "cases": [
+        "E2-D01",
+        "E2-END",
+        "E2-REG",
+        "E2-N01",
+        "E2-N02",
+        "E2-N03",
+        "E2-N04",
+        "E2-N05",
+        "E2-N06",
+        "E2-N07",
+        "E2-N08",
+        "E2-N09",
+        "E2-N10",
+        "E2-N11",
+        "E2-N12",
+        "E2-N13",
+        "E2-N14",
+        "E2-N15",
+        "E2-N16"
+      ],
+      "id": "E2-P05",
+      "prerequisites": [
+        "E2-P04"
+      ],
+      "purpose": "Integrated qualification, baseline regressions and determinism",
+      "status": "PLANNED_NOT_EXECUTED",
+      "work": "Run bounded fullmatrix,permutations,hashseeds,freshprocesses,baseline tests; preserveE1 and report pins/limits."
+    },
+    {
+      "acceptance": "Accepted verdict with no open correctness issue; otherwise bounded correction and affected requalification. No automatic QUALIFIED status.",
+      "cases": [
+        "E2-REVIEW"
+      ],
+      "id": "E2-P06",
+      "prerequisites": [
+        "E2-P05"
+      ],
+      "purpose": "Fresh independent adversarial review",
+      "status": "PLANNED_NOT_EXECUTED",
+      "work": "Independent review of finalcode/contracts/evidence; probe hiddenstate,substitution,staleacceptance,authority/receiptbypass,identity/composition and conflation."
+    }
+  ],
+  "planning_validation": {
+    "E1_files_unchanged": 10911,
+    "all_case_references_valid": true,
+    "baseline_files_unchanged": 11328,
+    "cases": 36,
+    "coverage_requirements": 30,
+    "packages": 6,
+    "tests_executed": 0
+  },
+  "qualified_gate": "requalification evidence accepted AND fresh independent review accepted AND no open required findings AND all governing release obligations satisfied",
+  "requalification_gate": "closed_findings_preserved AND baseline_pass AND E2_pass AND cold_pass AND receipt_reentry_pass AND continuation_pass AND determinism_pass AND no_scope_violation AND fresh_review_ready AND legacy_release_obligation_resolved",
+  "schema": "CANONICAL-QUALIFICATION-EXPERIMENT-PLAN-1",
+  "semantic_coverage": [
+    {
+      "cases": [
+        "E2-A01"
+      ],
+      "requirement": 1,
+      "semantic": "complete typed Action definitions"
+    },
+    {
+      "cases": [
+        "E2-A01"
+      ],
+      "requirement": 2,
+      "semantic": "multiple operation classes"
+    },
+    {
+      "cases": [
+        "E2-A03"
+      ],
+      "requirement": 3,
+      "semantic": "prerequisites"
+    },
+    {
+      "cases": [
+        "E2-A03"
+      ],
+      "requirement": 4,
+      "semantic": "accepted knowledge"
+    },
+    {
+      "cases": [
+        "E2-A15"
+      ],
+      "requirement": 5,
+      "semantic": "source validity"
+    },
+    {
+      "cases": [
+        "E2-A15"
+      ],
+      "requirement": 6,
+      "semantic": "stale invalidation"
+    },
+    {
+      "cases": [
+        "E2-A05"
+      ],
+      "requirement": 7,
+      "semantic": "authority requirement versus possession"
+    },
+    {
+      "cases": [
+        "E2-A04"
+      ],
+      "requirement": 8,
+      "semantic": "decision readiness"
+    },
+    {
+      "cases": [
+        "E2-A13"
+      ],
+      "requirement": 9,
+      "semantic": "roots"
+    },
+    {
+      "cases": [
+        "E2-A13"
+      ],
+      "requirement": 10,
+      "semantic": "slots"
+    },
+    {
+      "cases": [
+        "E2-A13"
+      ],
+      "requirement": 11,
+      "semantic": "typed proof admission"
+    },
+    {
+      "cases": [
+        "E2-A05"
+      ],
+      "requirement": 12,
+      "semantic": "typed authority admission"
+    },
+    {
+      "cases": [
+        "E2-A02"
+      ],
+      "requirement": 13,
+      "semantic": "deterministic selection"
+    },
+    {
+      "cases": [
+        "E2-N10"
+      ],
+      "requirement": 14,
+      "semantic": "policy binding"
+    },
+    {
+      "cases": [
+        "E2-A06"
+      ],
+      "requirement": 15,
+      "semantic": "external request"
+    },
+    {
+      "cases": [
+        "E2-A06"
+      ],
+      "requirement": 16,
+      "semantic": "expected absence"
+    },
+    {
+      "cases": [
+        "E2-A14"
+      ],
+      "requirement": 17,
+      "semantic": "governed unknown"
+    },
+    {
+      "cases": [
+        "E2-A09"
+      ],
+      "requirement": 18,
+      "semantic": "receipt"
+    },
+    {
+      "cases": [
+        "E2-A10"
+      ],
+      "requirement": 19,
+      "semantic": "evidence validation"
+    },
+    {
+      "cases": [
+        "E2-A11"
+      ],
+      "requirement": 20,
+      "semantic": "reentry lineage"
+    },
+    {
+      "cases": [
+        "E2-A11"
+      ],
+      "requirement": 21,
+      "semantic": "resume eligibility"
+    },
+    {
+      "cases": [
+        "E2-N16"
+      ],
+      "requirement": 22,
+      "semantic": "branch/global controls"
+    },
+    {
+      "cases": [
+        "E2-A07"
+      ],
+      "requirement": 23,
+      "semantic": "persistence"
+    },
+    {
+      "cases": [
+        "E2-A08"
+      ],
+      "requirement": 24,
+      "semantic": "cold restoration"
+    },
+    {
+      "cases": [
+        "E2-D01"
+      ],
+      "requirement": 25,
+      "semantic": "canonical serialization"
+    },
+    {
+      "cases": [
+        "E2-A01"
+      ],
+      "requirement": 26,
+      "semantic": "provenance"
+    },
+    {
+      "cases": [
+        "E2-A15"
+      ],
+      "requirement": 27,
+      "semantic": "invalidation after reload"
+    },
+    {
+      "cases": [
+        "E2-N12"
+      ],
+      "requirement": 28,
+      "semantic": "selection versus execution"
+    },
+    {
+      "cases": [
+        "E2-N13"
+      ],
+      "requirement": 29,
+      "semantic": "prospective versus actual result"
+    },
+    {
+      "cases": [
+        "E2-N01"
+      ],
+      "requirement": 30,
+      "semantic": "fail-closed unexplained state"
+    }
+  ],
+  "source_format": "PLANNER_SNAPSHOT_V0_1",
+  "status": "PLANNING_ONLY"
+}

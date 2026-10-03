@@ -1,0 +1,46 @@
+{
+  "schema": "deterministic-planner-e2-handoff-identity-divergence-v1",
+  "qualified_handoff_identity": "39114028d38b9571c46e211248644b09a3ac63ad9f47cd21a75fc922a2d152e3",
+  "replay_handoff_identity": "996d1fa73a7c1a880b8cd7a6c27ec48c03386feba4c5a089711482f51aff5069",
+  "identity_algorithm_match": true,
+  "identity_algorithm": {
+    "schema": "PLANNER-SNAPSHOT-1",
+    "serialization": "UTF-8 JSON, sort_keys=true, compact separators, typed dataclass/enum tags",
+    "hash": "SHA-256",
+    "identity_domain": "CONTENT_IDENTITY/planner-snapshot-v1",
+    "excluded_fields": "Only codec versioned-default omissions"
+  },
+  "first_divergence_phase": "POST_DOSSIER_BINDING",
+  "first_divergence_component": "POST_T02_CANONICAL_STATE_REPRESENTATION",
+  "state_differences": [
+    {"component": "prepared_dossier", "classification": "MISSING_LEFT", "detail": "left complete object not emitted"},
+    {"component": "validation_predicate_definitions", "classification": "MISSING_LEFT", "detail": "left definitions/provenance not emitted"},
+    {"component": "validation_instances", "classification": "MISSING_LEFT", "detail": "left complete instances not emitted"},
+    {"component": "post_t02_provenance_and_ordering", "classification": "MISSING_LEFT", "detail": "not recoverable from result metadata"},
+    {"component": "state_identity", "classification": "VALUE_DIFFERENCE", "detail": "391140 != 996d1f"}
+  ],
+  "event_differences": [
+    {"component": "post_t02_materialization_event", "classification": "MISSING_LEFT", "detail": "T02 reports direct transaction but no replayable event payload"}
+  ],
+  "ephemeral_identity_inputs": ["post-T02 in-memory dossier/validation materialization payload"],
+  "nondeterministic_identity_inputs": [],
+  "semantic_equality": "UNPROVABLE",
+  "391140_authority_class": "T02_RESULT_RECORDED_IN_MEMORY_NATIVE_STATE_IDENTITY",
+  "996d1f_authority_class": "CURRENT_NATIVE_REPLAY_RECONSTRUCTION_CODEC_IDENTITY",
+  "391140_authoritative": "NO",
+  "996d1f_authoritative": "NO",
+  "classification": ["PERSISTENCE_DEFECT", "TRACE_ARTIFACT_DEFECT", "QUALIFICATION_RECORD_DEFECT"],
+  "minimum_correction": "Emit exact post-T02 PLANNER-SNAPSHOT-1 bytes and canonical materialization inputs, then fresh-process decode/replay identity comparison.",
+  "prior_qualification_invalidated": ["T02 post-state identity", "T02 persistence/cold-restore identity evidence", "P02 handoff pre-state binding"],
+  "prior_qualification_preserved": ["CHECK/COLLECT prefix", "PREPARE semantic result", "DecisionDossier admission semantics", "T03 protocol", "explicit human ALLOW intent"],
+  "human_choice_reconfirmation_required": "UNRESOLVED",
+  "human_decision_capture_retry_allowed": false,
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "selected_human_option": "ALLOW_QUALIFICATION_MAPPING",
+  "choice_evidence_created": false,
+  "recorded_decision_created": false,
+  "authority_issued": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

@@ -1,0 +1,36 @@
+{
+  "schema": "deterministic-planner-e2-p03-trace-v1",
+  "initial_snapshot": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf",
+  "initial_control": "EXTERNAL_WAIT",
+  "cold_restore": {
+    "identity": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf",
+    "control": "EXTERNAL_WAIT",
+    "equal_identity": true
+  },
+  "a14_governed_unknown": {
+    "identity": "1a0cd7ca0a1cff31e951342142414f3b7647eb24e5601c6f551e0eb3ad129922",
+    "control": "PLAN_DEFECT",
+    "defects": [
+      "UNQUALIFIED_EXTERNAL_CONTRACT:E2-GATE"
+    ],
+    "expected": "EXTERNAL_WAIT",
+    "result": "BLOCKED"
+  },
+  "a15_source_invalidation": {
+    "changed_source": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574",
+    "identity": "ee9f09582f38928c57ba8f25c3fcf9857db0bba6b06e8b0f9cc40ac639dd01dd",
+    "control": "EXTERNAL_WAIT",
+    "result": "PASS"
+  },
+  "operations_executed": [
+    "P03 persistence round-trip",
+    "P03 cold restore",
+    "A14 governed-unknown preflight",
+    "A15 isolated source invalidation"
+  ],
+  "actions_executed": [],
+  "events_admitted": [],
+  "counterexamples": [
+    "UNQUALIFIED_EXTERNAL_CONTRACT:E2-GATE"
+  ]
+}

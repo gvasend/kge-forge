@@ -1,0 +1,967 @@
+{
+  "BR_C1_replay": {
+    "absence": 8,
+    "invalidation": 37,
+    "negative": 16,
+    "present": 54,
+    "result": "PASS"
+  },
+  "M01_MINIMUM_STATE_CONTRACT_COMPLETE": false,
+  "M02_READY": false,
+  "MC01_RESULT": "PARTIAL",
+  "MC02_READY": false,
+  "O01_cases": [
+    {
+      "accepted": true,
+      "clause": null,
+      "id": "BASE-positive"
+    },
+    {
+      "accepted": false,
+      "clause": "DUPLICATE_ID",
+      "id": "BASE-omit-id"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-primary_operation_class"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-executor"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-effect_boundary"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-stage_role"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-scope"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-lineage"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-prerequisite_actions"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-external_prerequisites"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-knowledge_requirements"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-authority_requirements"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-result_contract"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "BASE-omit-provenance"
+    },
+    {
+      "accepted": false,
+      "clause": "RESULT_CONTRACT",
+      "id": "BASE-empty-result"
+    },
+    {
+      "accepted": true,
+      "clause": null,
+      "id": "RENAMED-positive"
+    },
+    {
+      "accepted": false,
+      "clause": "DUPLICATE_ID",
+      "id": "RENAMED-omit-id"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-primary_operation_class"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-executor"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-effect_boundary"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-stage_role"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-scope"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-lineage"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-prerequisite_actions"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-external_prerequisites"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-knowledge_requirements"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-authority_requirements"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-result_contract"
+    },
+    {
+      "accepted": false,
+      "clause": "ACTION_SCHEMA",
+      "id": "RENAMED-omit-provenance"
+    },
+    {
+      "accepted": false,
+      "clause": "RESULT_CONTRACT",
+      "id": "RENAMED-empty-result"
+    }
+  ],
+  "O01_negative_count": 28,
+  "O01_positive_count": 2,
+  "classification": "D",
+  "conflict_set": [],
+  "implementation_modified": false,
+  "input_sha256": {
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.json": "09219492515f1db8ae8583d1e7443cf73694cbd4a3cf9d7de14be0357812fac6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES.json": "9ee7e8f638f5ea24a14642332b95fd60e4ab1c1c487eddc21d16dc3766cb4135",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.json": "190dacd4abf69a09320850e36a68d799970886698159346b917ad57668304ac3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_MC01_CONTRACT.json": "d1a52a22f5d6891e88edaf42ca7d7418345bc083895c4008e1e98ca0e1d1f303",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_MINIMUM_STATE_CLOSURE_PLAN_1.json": "e56fbfeaa57beb6bf019a220265668a9513c37a830ad8ea3cf8dbf91f7e84e29"
+  },
+  "mismatch_set": [
+    "MC01-A: unchanged O01 demands result contract and closed authority/evidence/knowledge fields; no admitted reduced frozen profile or authoritative normalization",
+    "MC01-R: B01-B08 concrete native source-role/target mappings unresolved; complete reached role inventory not established"
+  ],
+  "preservation": {
+    "E1_files_verified": 10911,
+    "E1_modified": 0,
+    "historical_artifacts_modified": false,
+    "implementation_modified": false
+  },
+  "reproducible_read_only_runner": "import json,hashlib,copy\nfrom pathlib import Path\nP=Path('docs/plans');stem='DETERMINISTIC_PLANNER_V0_1_M01_MC01_COMPLETION_1'\ndef read(s):return json.loads((P/s).read_text())\ndef out(s,d):pass\nc=read('DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.json');f=read('DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES.json');ce=read('DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.json');n={};exec(ce['reference']['program'],n)\nfields='id primary_operation_class executor effect_boundary stage_role scope lineage prerequisite_actions external_prerequisites knowledge_requirements authority_requirements result_contract provenance'.split()\n# It is 13 fields in the executable exact-key test, despite historical prose calling it 14.\nrows=[]\nfor field in fields:\n cats=['REQUIRED_FOR_O01_ADMISSION'];native={'id':'Action.id','primary_operation_class':'Action.operation','executor':'operation/human routing; no independent native executor field','effect_boundary':'Action.effect','stage_role':'Action.stage','scope':'Action.source.scope plus context/source bindings','lineage':'context and source-bound graph entities','prerequisite_actions':'Action.prerequisites','external_prerequisites':'Action.requirements, boundaries and ExternalGate','knowledge_requirements':'KNOWLEDGE_ACCEPTED predicates','authority_requirements':'Action.authority and predicate support','result_contract':'Action.accepted_result/accepted_inventory and future result validation','provenance':'Action.source and source pins'}[field]\n if field in ['id','primary_operation_class','effect_boundary','stage_role']:cats+=['REQUIRED_FOR_SELECTION']\n if field in ['prerequisite_actions','external_prerequisites','knowledge_requirements','authority_requirements','scope','lineage','provenance','primary_operation_class','effect_boundary']:cats+=['REQUIRED_FOR_ACTIONABILITY']\n if field!='result_contract':cats+=['REQUIRED_FOR_CONTROL_STATE']\n rows.append(dict(field=field,classifications=cats,native_projection=native,exact_O01_clause={'result_contract':'RESULT_CONTRACT','authority_requirements':'AUTHORITY_BINDING','knowledge_requirements':'KNOWLEDGE_REQUIREMENT'}.get(field,'ACTION_SCHEMA plus field equality/source checks'),frozen_limit='Prospective result transitions not read by held-state control; native retained inventory staleness still affects completion' if field=='result_contract' else 'May be structurally required even when held action bypasses blocker evaluation'))\ncases=[]\nfor label,base in f['bases'].items():\n p=c['profiles'][label];r=n['evaluate'](p,base['state'],base['validity'],'ACTION');assert r['accepted'];cases.append(dict(id=label+'-positive',accepted=True,clause=None))\n for field in fields:\n  x=copy.deepcopy(base);del x['state']['sources']['plan']['resolution_actions'][0][field];r=n['evaluate'](p,x['state'],x['validity'],'ACTION');assert not r['accepted'] and r['failed_clause']==('DUPLICATE_ID' if field=='id' else 'ACTION_SCHEMA');cases.append(dict(id=label+'-omit-'+field,accepted=False,clause=r['failed_clause']))\n x=copy.deepcopy(base);x['state']['sources']['plan']['resolution_actions'][0]['result_contract']={};r=n['evaluate'](p,x['state'],x['validity'],'ACTION');assert not r['accepted'];cases.append(dict(id=label+'-empty-result',accepted=False,clause=r['failed_clause']))\nsource=json.loads(Path('docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json').read_text());actions=[]\nfor i,a in enumerate(source['resolution_actions']):\n actions.append(dict(ActionId=a['id'],source_selector='/resolution_actions/'+str(i),classification='MISSING_O01_REQUIRED_FIELD',common_core_present=True,missing=['independently governed result_contract','native authority/evidence role normalization','exact knowledge requirement semantics where not explicitly empty','real-source expected O01 profile'],reason='O01 requires exact closed definition irrespective of held status; no partial profile contract exists',admitted=False))\nassert len(actions)==63 and len({a['ActionId'] for a in actions})==63\nout('_ACTION_FIELDS',dict(schema='MC01-MINIMAL-ACTION-FIELD-MATRIX-1',primary_classification='D',classification_detail='Authoritative O01 requires prospective result-contract information even when frozen control does not read it; model/admission scope decision required. O01 is an executable specification not currently an installed runtime entrypoint.',minimal_type='Existing model.Action with matching ActionStatus and reference closure; no new FrozenAction type defined',O01_fields=rows,executable_field_count=len(fields),runtime_field_count=16,partial_action_available=False,required_domains=['RESULT_BINDING','AUTHORITY_BINDING','EVIDENCE_BINDING','KNOWLEDGE_BINDING'],normalization_status='No independent source rule establishes all mandatory bindings. Do not invent normalizers or use default empty values.',deferred=['Positive receipts/current applicability and accepted reentry event','Effect grants/actual execution','Complete passive historical result/ledger reconstruction'],missing_required_is_not_deferred=True))\nout('_ACTION_COVERAGE',dict(schema='MC01-FROZEN-ACTION-COVERAGE-1',source='docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json',source_sha256=hashlib.sha256(Path('docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json').read_bytes()).hexdigest(),actions=actions,O01_admissible=0,total=63,qualification_run='Construction completeness against executable required fields, not 63 native imports'))\n# Role signatures describe typed admission boundaries, not unconditional authority to cast a source.\nroledefs=[('ACTION_DEFINITION_SOURCE','plan resolution_actions','Action/ActionId','O01; model.validate_model','B01'),('ROUTING_SOURCE','plan compiled dependencies and condition routes; manifest/handoff routes','Gate/Goal/ConditionId/SlotId/ActionId','project; validate_p05; _global_control','B03'),('LEDGER_SOURCE','pinned plan execution_state/history with exact record kind','ActionStatus and imported support references','O02/O06; current_completion','B02'),('AUTHORITY_RECORD_SOURCE','E1-ARCHITECT-DECISION-AUTHORITY-1 plus accepted chain','EntityId/ArtifactIdentity(AUTHORITY_IDENTITY) and AUTHORITY predicate','O08 and native authority predicate','B05'),('PROOF_SOURCE','independently accepted O08/O09 target-specific source chain','PredicateId/AssertionId/EntityId/KnowledgeId','O08/O09; evaluate_satisfaction','B05'),('ACCEPTED_KNOWLEDGE_SOURCE','accepted source claim with producer/outcome/type and support','KnowledgeRecord/KnowledgeId','KNOWLEDGE_ACCEPTED; O02/O06','B06'),('EXTERNAL_GATE_SOURCE','request/handoff/receipt schema exact joined route','ExternalGate/GateId/EvidenceRequirement/EvidenceId','validate_p05; governed_external_unknown','B04'),('EXPECTED_ABSENCE_SOURCE','manifest false receipt plus checkpoint/handoff correspondence','Expected-absence provenance; no evidence object','BR-C1; no positive admission','B04'),('SELECTION_POLICY_SOURCE','checkpoint-bound policy document and separately extracted policy','ArtifactPin/PolicyBinding','selector policy registry; codec replay','B08'),('GRAPH_SOURCE','pinned typed graph with exact accepted assertion/predicate roles','GraphEntity/GraphAssertion/Predicate','O10; project','B03'),('FROZEN_ENVELOPE_SOURCE','manifest subject_pins and exact plan/checkpoint joins','Recorded references; mapped EvaluationContext where independently defined','O16; native scope/currentness','B07'),('FROZEN_CHECKPOINT_SOURCE','suspension checkpoint and manifest correspondence','baseline and FrozenControlProof references','codec replay; C03','B08'),('SOURCE_INVENTORY_SOURCE','manifest pinned source references','ArtifactPin/source disposition references','codec source verification','B08'),('PROVENANCE_ONLY_SOURCE','authenticated referenced record without admitted operational claim','Provenance/source reference only','no positive proof consumer','B08')]\nsigs=[]\nfor role,src,tgt,consumer,b in roledefs:\n sigs.append(dict(ROLE_ID=role,ALLOWED_SOURCE_TYPES=src,SOURCE_IDENTITY_DOMAIN='CONTENT_IDENTITY/raw bytes plus separately tagged declared schema identity',ALLOWED_TARGET_TYPES=tgt,TARGET_IDENTITY_DOMAIN=tgt,CARDINALITY='Exactly one authorized signature per source selector/role/context; one-to-many target expansion only by explicit typed rule; multiple whole-source roles need separate selectors',SCOPE_REQUIREMENT='Exact source/target frozen scope binding; never equate EXECUTION and REQUEST',LINEAGE_REQUIREMENT='Exact recorded subject envelope; currentness separately verified',CURRENTNESS_REQUIREMENT='Current at pinned snapshot for source binding; accepted current proof separately required for proof/authority/knowledge use',PROVENANCE_REQUIREMENT='Raw source hash, source schema/type, selector, mapping version, target identity, complete dependencies',ADMISSION_CONSUMER=consumer,INVALIDATION_BEHAVIOR='Invalid/stale required source withdraws role binding; downstream native admission must reevaluate; no automatic revalidation',binding_family=b,signature_status='DEFINED_INTERFACE; concrete source/target normalization unresolved where listed in coverage'))\nout('_ROLE_REGISTRY',dict(schema='MC01-NATIVE-ROLE-SIGNATURES-1',roles=sigs,forbidden=['selection record to execution/result without independent result source','expected absence to positive evidence','proof-source role to authority grant','raw digest to semantic identity','historical currentness to current applicability'],admission_boundary='Signature is necessary but insufficient: independently authorized source role and exact native mapping are required. No generic casting or open-role whitelist.'))\nprev=read('DETERMINISTIC_PLANNER_V0_1_M01_MC01_CONTRACT.json');bind=read('DETERMINISTIC_PLANNER_V0_1_M01_MC01_BINDINGS.json');instance=[]\nfor row in prev['source_role_instances']:\n instance.append(dict(id=row['source_role_key'],source=row['source_locator'],identity=row['source_identity'],roles=row['allowed_roles'],classification='PROVENANCE_ONLY' if row['allowed_roles']==['PROVENANCE_ONLY_SOURCE'] else 'VALID_ROLE_BINDING',limit='Recorded source relationship only; native admission not implied',governing_bindings=row['governing_bindings']))\nfor row in prev['expected_absences']:instance.append(dict(id=row['request_id'],classification='EXPECTED_ABSENCE',roles=['EXPECTED_ABSENCE_SOURCE'],source=row['provenance'],receipt=row['receipt_action'],reentry=row['reentry_actions']))\nfor row in prev['target_signature_requirements']:instance.append(dict(id=row['id'],classification='AMBIGUOUS_ROLE',source=row['source_identity'],target=row['target_identity'],reason=row['status']))\ncounts={k:sum(x['classification']==k for x in instance) for k in ['VALID_ROLE_BINDING','EXPECTED_ABSENCE','PROVENANCE_ONLY','UNSUPPORTED_ROLE','AMBIGUOUS_ROLE']}\nout('_ROLE_COVERAGE',dict(schema='MC01-NATIVE-ROLE-COVERAGE-1',instances=instance,counts=counts,unit='37 explicit source payloads + 8 absence routes + 8 unresolved native binding-family signatures; not same unit as 54 BR-C1 value bindings',required_native_role_inventory_complete=False))\n# Re-run previous independent source binding tests exactly; no writes in embedded runner.\npv=read('DETERMINISTIC_PLANNER_V0_1_M01_MC01_VALIDATION.json');exec(pv['reproducible_runner'],{'__name__':'__main__'})\n# Six additional explicit role-use negatives against independently pinned allowed source-role view.\nrole_ns={};exec('''def admit_role(expected,candidate):\n if candidate['identity']!=expected['identity']:return 'IDENTITY_DOMAIN'\n if candidate['role']!=expected['role']:return 'SOURCE_ROLE'\n if candidate['use']!=expected['use']:return 'ROLE_USE'\n if candidate['context']!=expected['context']:return 'ENVELOPE'\n if candidate['provenance']!=expected['provenance']:return 'PROVENANCE'\n if candidate['validity']!='CURRENT_AT_PINNED_SNAPSHOT':return 'STALE_SOURCE'\n return 'ACCEPT'\n''',role_ns)\nexpected={'identity':prev['frozen_scope']['plan'],'role':'ACTION_DEFINITION_SOURCE','use':'RECORDED_DEFINITION','context':prev['frozen_scope'],'provenance':{'role':'plan','selector':'/resolution_actions'},'validity':'CURRENT_AT_PINNED_SNAPSHOT'}\nneg=[]\nfor name,key,value in [('same_source_wrong_role','role','AUTHORITY_RECORD_SOURCE'),('same_digest_wrong_domain','identity',dict(expected['identity'],domain='AUTHORITY_IDENTITY')),('historical_current','use','CURRENT_POSITIVE_PROOF'),('proof_authority','role','PROOF_SOURCE'),('selection_result','use','ACTION_RESULT'),('absence_evidence','use','POSITIVE_EVIDENCE')]:\n e=copy.deepcopy(expected)\n if name=='proof_authority':e.update(role='PROOF_SOURCE',use='TARGET_SPECIFIC_PROOF');key='role';value='AUTHORITY_RECORD_SOURCE'\n if name=='selection_result':e.update(role='LEDGER_SOURCE',use='SELECTION_HISTORY')\n if name=='absence_evidence':e.update(role='EXPECTED_ABSENCE_SOURCE',use='EXPECTED_ABSENCE')\n x=copy.deepcopy(e);x[key]=value;res=role_ns['admit_role'](e,x);assert res!='ACCEPT';neg.append(dict(id=name,expected=e,candidate=x,failed_clause=res,mode='SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION'))\n# This role check is a binding boundary control, not native execution or proof qualification.\npins={str(P/name):hashlib.sha256((P/name).read_bytes()).hexdigest() for name in ['DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.json','DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.json','DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES.json','DETERMINISTIC_PLANNER_V0_1_M01_MC01_CONTRACT.json','DETERMINISTIC_PLANNER_V0_1_M01_MINIMUM_STATE_CLOSURE_PLAN_1.json']}\nout('_VALIDATION',dict(schema='MC01-COMPLETION-PREFLIGHT-1',input_sha256=pins,O01_cases=cases,O01_positive_count=2,O01_negative_count=len(cases)-2,BR_C1_replay={'present':54,'absence':8,'negative':16,'invalidation':37,'result':'PASS'},role_use_cases=neg,role_use_limitation='Checks pinned-role binding exclusion, not actual conversion of proof/selection/absence records to native objects',mismatch_set=['MC01-A: unchanged O01 demands result contract and closed authority/evidence/knowledge fields; no admitted reduced frozen profile or authoritative normalization','MC01-R: B01-B08 concrete native source-role/target mappings unresolved; complete reached role inventory not established'],conflict_set=[],classification='D',MC01_RESULT='PARTIAL',MC02_READY=False,M01_MINIMUM_STATE_CONTRACT_COMPLETE=False,M02_READY=False,implementation_modified=False))\nprint('O01',len(fields),'fields',len(cases),'cases; rolecounts',counts)\n",
+  "role_use_cases": [
+    {
+      "candidate": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "AUTHORITY_RECORD_SOURCE",
+        "use": "RECORDED_DEFINITION",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "expected": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "ACTION_DEFINITION_SOURCE",
+        "use": "RECORDED_DEFINITION",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "failed_clause": "SOURCE_ROLE",
+      "id": "same_source_wrong_role",
+      "mode": "SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION"
+    },
+    {
+      "candidate": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "AUTHORITY_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "ACTION_DEFINITION_SOURCE",
+        "use": "RECORDED_DEFINITION",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "expected": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "ACTION_DEFINITION_SOURCE",
+        "use": "RECORDED_DEFINITION",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "failed_clause": "IDENTITY_DOMAIN",
+      "id": "same_digest_wrong_domain",
+      "mode": "SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION"
+    },
+    {
+      "candidate": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "ACTION_DEFINITION_SOURCE",
+        "use": "CURRENT_POSITIVE_PROOF",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "expected": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "ACTION_DEFINITION_SOURCE",
+        "use": "RECORDED_DEFINITION",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "failed_clause": "ROLE_USE",
+      "id": "historical_current",
+      "mode": "SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION"
+    },
+    {
+      "candidate": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "AUTHORITY_RECORD_SOURCE",
+        "use": "TARGET_SPECIFIC_PROOF",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "expected": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "PROOF_SOURCE",
+        "use": "TARGET_SPECIFIC_PROOF",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "failed_clause": "SOURCE_ROLE",
+      "id": "proof_authority",
+      "mode": "SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION"
+    },
+    {
+      "candidate": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "LEDGER_SOURCE",
+        "use": "ACTION_RESULT",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "expected": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "LEDGER_SOURCE",
+        "use": "SELECTION_HISTORY",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "failed_clause": "ROLE_USE",
+      "id": "selection_result",
+      "mode": "SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION"
+    },
+    {
+      "candidate": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "EXPECTED_ABSENCE_SOURCE",
+        "use": "POSITIVE_EVIDENCE",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "expected": {
+        "context": {
+          "checkpoint": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+          },
+          "embedded_policy": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+          },
+          "envelope": {
+            "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+            "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+            "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+            "recorded_lineage": "R4-final CURRENT UNIQUE",
+            "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+            "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+            "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+            "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+            "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+            "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+            "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+          },
+          "evaluation": "FROZEN_SNAPSHOT_ONLY",
+          "graph": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+          },
+          "ledger": {
+            "domain": "CONTENT_IDENTITY",
+            "namespace": "EXTRACTED_JSON_VALUE",
+            "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+          },
+          "lineage": "R4-final CURRENT UNIQUE",
+          "manifest": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+          },
+          "plan": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+          },
+          "policy_document": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+          "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+        },
+        "identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        },
+        "provenance": {
+          "role": "plan",
+          "selector": "/resolution_actions"
+        },
+        "role": "EXPECTED_ABSENCE_SOURCE",
+        "use": "EXPECTED_ABSENCE",
+        "validity": "CURRENT_AT_PINNED_SNAPSHOT"
+      },
+      "failed_clause": "ROLE_USE",
+      "id": "absence_evidence",
+      "mode": "SYNTHETIC_ROLE_BINDING_PREMISE_NOT_NATIVE_ADMISSION"
+    }
+  ],
+  "role_use_limitation": "Checks pinned-role binding exclusion, not actual conversion of proof/selection/absence records to native objects",
+  "runner_sha256": "c9ab90c6c5166f6e112a439949218d7266ebcba275d7905c168a7f7bf27bdb13",
+  "schema": "MC01-COMPLETION-PREFLIGHT-1"
+}

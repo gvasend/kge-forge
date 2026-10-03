@@ -1,0 +1,43 @@
+{
+  "schema": "E2-decision-dossier-validation-fixture-correction-v1",
+  "categories": [
+    {"id":"QUESTION_SCOPE","proposition":"dossier.question and dossier.scope are non-empty","basis":"native decision_readiness dossier structure","mechanism":"STRUCTURAL","native_hook":"NATIVE_HOOK_SUFFICIENT","positive_fixture":"canonical dossier","negative_fixture":"empty question or scope"},
+    {"id":"SOURCE_PROVENANCE","proposition":"dossier provenance passes native validate_provenance","basis":"native validate_p04","mechanism":"SOURCE_BOUND","native_hook":"NATIVE_HOOK_SUFFICIENT","positive_fixture":"current dossier provenance","negative_fixture":"missing or malformed provenance"},
+    {"id":"CONCRETE_ALTERNATIVES","proposition":"alternatives are non-empty, unique, and each option is non-empty","basis":"native decision_readiness dossier structure","mechanism":"STRUCTURAL","native_hook":"NATIVE_HOOK_SUFFICIENT","positive_fixture":"ALLOW_QUALIFICATION_MAPPING and DECLINE","negative_fixture":"empty or duplicate option"},
+    {"id":"ASSUMPTIONS_CONSEQUENCES","proposition":null,"basis":"no authoritative E2/native proposition","mechanism":"UNDEFINED","native_hook":"CONTRACT_SOURCE_MISSING"},
+    {"id":"AUTHORITY_BOUNDARY","proposition":"authority_granted_if_approved and authority_excluded are non-empty","basis":"native decision_readiness dossier structure","mechanism":"STRUCTURAL","native_hook":"NATIVE_HOOK_SUFFICIENT","positive_fixture":"canonical authority declarations","negative_fixture":"empty authority boundary"},
+    {"id":"DOWNSTREAM_QUALIFICATION","proposition":null,"basis":"no authoritative E2/native proposition","mechanism":"UNDEFINED","native_hook":"CONTRACT_SOURCE_MISSING"},
+    {"id":"NO_INVENTED_FACTS","proposition":null,"basis":"no authoritative E2/native proposition","mechanism":"UNDEFINED","native_hook":"CONTRACT_SOURCE_MISSING"},
+    {"id":"DECISION_FACTS_COMPLETE","proposition":"every dossier.required_facts predicate exists and evaluates PROVED","basis":"native decision_readiness required-fact evaluation","mechanism":"SOURCE_BOUND","native_hook":"NATIVE_HOOK_SUFFICIENT","positive_fixture":"E2-KP-CHECK and E2-KP-COLLECT proved","negative_fixture":"remove one required fact predicate"},
+    {"id":"INDEPENDENT_VALIDATION","proposition":"dossier validation is ACCEPTED and support is current","basis":"native validate_p04 and decision_readiness currentness","mechanism":"CURRENTNESS_BOUND","native_hook":"NATIVE_HOOK_SUFFICIENT","positive_fixture":"ACCEPTED current dossier","negative_fixture":"STALE validation"}
+  ],
+  "fact_proofs": [
+    {"id":"E2-KP-CHECK","source":"E2-CHECK actual accepted knowledge","ready":true},
+    {"id":"E2-KP-COLLECT","source":"E2-COLLECT actual accepted knowledge","ready":true}
+  ],
+  "validation_oracle": {
+    "accept": "both fact proofs admitted AND six supported predicates PASS AND no undefined category is requested",
+    "undefined_behavior": "UNDEFINED_CONTRACT",
+    "implementation_independent": true
+  },
+  "positive_fixtures": 6,
+  "negative_fixtures": 6,
+  "propositions_defined": 6,
+  "predicates_defined": 6,
+  "ambiguous_categories": [],
+  "contract_source_missing": ["ASSUMPTIONS_CONSEQUENCES","DOWNSTREAM_QUALIFICATION","NO_INVENTED_FACTS"],
+  "affected_qualification_cases": ["E2-A04","E2-A05","E2-P02-PREPARE-DECISION"],
+  "fixture_correction": "PARTIAL",
+  "fact_proofs_ready": "2/2",
+  "deterministic_validations_ready": "6/9",
+  "native_hooks_sufficient": "6/9",
+  "dossier_proof_materialization_retry_allowed": false,
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

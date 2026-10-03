@@ -1,0 +1,1313 @@
+{
+  "FieldDerivation": {
+    "constraint": "Every required target field has exactly one justified derivation or explicit multi-source join; no unexplained value; raw validity input must be independently admitted, not trusted because present",
+    "required": [
+      "legacy_identity",
+      "legacy_content_identity",
+      "legacy_schema",
+      "migration_contract",
+      "target_identity",
+      "target_field",
+      "selector",
+      "transform",
+      "dependencies",
+      "validity"
+    ],
+    "transform_values": [
+      "DIRECT",
+      "TYPED_DERIVATION",
+      "AUTHORIZED_JOIN",
+      "CONTRACT_CONSTANT"
+    ],
+    "validity_values": [
+      "CURRENT_ACCEPTED",
+      "HISTORICAL_ONLY",
+      "STALE",
+      "UNRESOLVED"
+    ]
+  },
+  "MigrationManifest": {
+    "canonicalization": "Existing canonical JSON semantics; sorted set collections; ordered causal ledger retained",
+    "identity": "MigrationManifestIdentity=SHA256(canonical({schema:E1-MIGRATION-MANIFEST-1,payload:manifest})); digest external",
+    "qualification_gate": "QUALIFIED_MIGRATION requires zero required unresolved prerequisites and separately verified native admission, completeness and test evidence",
+    "required_fields": {
+      "SOURCE_FORMAT": "E1_LEGACY_V1",
+      "TARGET_FORMAT": "PLANNER_SNAPSHOT_V0_1",
+      "bundle": "native PersistenceBundle identity or null",
+      "external_absences": "eight independently bound absence records for frozen target",
+      "migration_contract": "MigrationContractIdentity",
+      "native_schema": "PLANNER-SNAPSHOT-1",
+      "output_inventory": "MigrationOutputInventoryIdentity; excludes manifest",
+      "provenance_index": "ProvenanceIndexIdentity",
+      "qualification": "NOT_QUALIFIED | QUALIFIED_MIGRATION; latter needs independently verified qualification evidence",
+      "qualification_record": "pinned qualification record or null",
+      "snapshot": "native planner-snapshot-v1 identity or null on incomplete diagnostic",
+      "source_dispositions": "one record per declared source instance",
+      "source_inventory": "SourceInventoryIdentity",
+      "source_pins": "sorted unique ArtifactPin list",
+      "unresolved_prerequisites": "sorted diagnostics; required unresolved prevents qualification"
+    },
+    "unknown_fields": "REJECT"
+  },
+  "crosswalk": [
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O01",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Action definition envelope",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O02",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Prerequisites and explicit holds",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O03",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Bounded result contracts",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O04",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Action authority requirements",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O05",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Decision readiness and dossiers",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O06",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Historical attempts and current overlays",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O07",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Receipt and decision reentry routes",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O08",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Root completion obligations",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O09",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Slot pipelines and baseline values",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O10",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Operational graph and provenance",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O11",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Issued authority and subject bindings",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O12",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "All external frontier evidence contracts",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O13",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Qualified synthetic budget proof profile",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O14",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Selection-policy binding",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O15",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Goals, control and suspension inputs",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O16",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Versioned source-field coverage and importer",
+      "required": "UNCHANGED"
+    },
+    {
+      "admission": "Reuse existing owning oracle",
+      "element": "O17",
+      "migration_target": "See plan target inventory; exact nested field map incomplete",
+      "name": "Full semantic cold-restoration qualification",
+      "required": "UNCHANGED"
+    }
+  ],
+  "history": {
+    "fields": [
+      "record_identity",
+      "ordinal",
+      "kind",
+      "legacy_plan_pin",
+      "legacy_selector",
+      "legacy_record_digest",
+      "action_id_or_null",
+      "outcome_or_null",
+      "result_source_pins",
+      "knowledge_references",
+      "current_support_dependencies"
+    ],
+    "kinds": [
+      "SELECTION_ATTEMPT",
+      "ACTION_ATTEMPT"
+    ],
+    "proposed_type": "ImportedHistoryRecord (canonical metadata, not native ExecutionEvent)",
+    "rule": "Discriminate using recorded fields, not ordinal or filename. Selection attempt with action_result=null is not Action PASS/BLOCKED. Action attempts require explicit action and recorded result. No invented parent snapshots. Subsequent native events start from proved canonical migrated baseline.",
+    "status": "SEMANTIC_ENVELOPE_DEFINED_NATIVE_CODEC_AND_COMPLETE_O02_BINDING_PENDING"
+  },
+  "identity_rules": {
+    "ActionId": "Preserve exact declared identifier",
+    "authority_identity": "Preserve authenticated governing authority identity, not a migration hash",
+    "circularity": "Output inventory excludes manifest; qualification record references immutable output identities, not its containing manifest identity; manifest hashed last",
+    "graph_identity": "Operational projection content identity with original graph pin retained",
+    "legacy_content": "ArtifactPin raw SHA or explicit embedded HashProfile; keep profiles distinct",
+    "legacy_declared": "Preserve original type/domain and canonicalization; never replace by raw file SHA",
+    "metadata_identity": "SHA256(canonical({schema,domain,payload})); independent domain tags for migration contract/inventory/index/manifest",
+    "proof_identity": "Governed proof admission identity, never source-presence digest alone",
+    "result_identity": "Versioned canonical imported-record representation plus type domain and source dependencies; target type mapping remains prerequisite",
+    "snapshot_identity": "Existing codec.snapshot_id; no second codec"
+  },
+  "input_pins": {
+    "docs/experiments/E1/E1_RESUME_MANIFEST_1.json": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac",
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+    "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_CONTRACT.json": "f36bf174337c90d72ef26c912956f1b5070b5323a456b214fdf11c8efdaa0921",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1_PREFLIGHT.json": "b662a38a366bed94d9bb8408b993a41791afbcee4fb6e5c4e7e871ff01d38850",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.json": "00b80a67762828b478a00c0722c294407e73917b49b80b16f8161b25c2ff49d5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.json": "190dacd4abf69a09320850e36a68d799970886698159346b917ad57668304ac3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_ACCEPTANCE_MATRIX_1.md": "e3812752606074a606c301cc38e712092e068daa7cdd0d4c317eeec01e32bfa5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_BOUNDARY_DECISION_1.md": "581596b0dbd5dde0ae54e6a711a1b591b48174708a931c5a35f65e25e57efd3f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.json": "e6f4073d28e5118fb5160ca7dabf11b75ab9e55cc164f4bfe6f773cf22e79b8b",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.md": "78737d02f24fcf02fd0485cb43af2bea391e8df2d26893db1a7dcdd957410be8"
+  },
+  "mode": "SPECIFICATION_ONLY",
+  "schema": "E1-MIGRATION-M01-CONTRACT-1",
+  "source_classes": [
+    {
+      "canonical_target": "Action/ledger/holds/policy",
+      "discriminator": {
+        "field": "schema",
+        "value": "E1-TEMPLATE1-GRAPH-RESOLUTION-PLAN-1"
+      },
+      "field_types": {
+        "execution_history": "list",
+        "execution_state": "dict",
+        "resolution_actions": "list"
+      },
+      "id": "PLAN",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "resolution_actions",
+        "execution_history",
+        "execution_state"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "GraphEntity/GraphAssertion/root/slot",
+      "discriminator": {
+        "field": "schema",
+        "value": "E1-TEMPLATE1-TYPED-KNOWLEDGE-GRAPH-1"
+      },
+      "field_types": {
+        "assertions": "list",
+        "entities": "list",
+        "relation_semantics": "dict",
+        "synchronization": "dict"
+      },
+      "id": "GRAPH",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "entities",
+        "assertions",
+        "relation_semantics",
+        "synchronization"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "source pins/resume routes/subject bindings",
+      "discriminator": {
+        "field": "schema",
+        "value": "E1-RESUME-MANIFEST-1"
+      },
+      "field_types": {
+        "current_graph": "dict",
+        "current_plan": "dict",
+        "execution_ledger": "dict",
+        "subject_pins": "dict"
+      },
+      "id": "MANIFEST",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "current_graph",
+        "current_plan",
+        "execution_ledger",
+        "subject_pins"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "ExternalGate/ControlBoundary",
+      "discriminator": {
+        "field": "schema",
+        "value": "E1-EXTERNAL-HANDOFF-PACKAGE-1"
+      },
+      "field_types": {
+        "control_transfer_items": "list",
+        "external_request_bundles": "list",
+        "source_snapshots": "list"
+      },
+      "id": "HANDOFF",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "control_transfer_items",
+        "external_request_bundles",
+        "source_snapshots"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "suspension/source binding",
+      "discriminator": {
+        "field": "schema",
+        "value": "E1-SUSPENSION-CHECKPOINT-1"
+      },
+      "field_types": {
+        "bindings": "dict",
+        "checkpoint_identity": "str",
+        "state": "dict"
+      },
+      "id": "CHECKPOINT",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "bindings",
+        "state",
+        "checkpoint_identity"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "Decision/typed authority",
+      "discriminator": {
+        "field": "schema",
+        "value": "E1-ARCHITECT-DECISION-AUTHORITY-1"
+      },
+      "field_types": {
+        "authority_id": "str",
+        "decision": "str",
+        "record_type": "str",
+        "scope": "str",
+        "source_artifacts": "list"
+      },
+      "id": "DECISION_AUTHORITY",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "record_type",
+        "decision",
+        "scope",
+        "source_artifacts",
+        "authority_id"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "profile identity/slot proof",
+      "discriminator": {
+        "field": "schema",
+        "value": "CURRENT-R4-PROFILE-ROOT-CANDIDATE-1"
+      },
+      "field_types": {
+        "authorities": "dict",
+        "canonicalization": "str",
+        "identity": "str",
+        "scope": "dict"
+      },
+      "id": "PROFILE_CANDIDATE",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "identity",
+        "scope",
+        "canonicalization",
+        "authorities"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "invocation identity/slot proof",
+      "discriminator": {
+        "record_type": "INVOCATION-CANDIDATE-1",
+        "schema_version": "E1-JOINT-CONSTRUCTION-1"
+      },
+      "field_types": {
+        "allocation": "str",
+        "controller_store": "str",
+        "identity": "str",
+        "release_authority": "str",
+        "runtime": "str",
+        "scope": "str"
+      },
+      "id": "INVOCATION_CANDIDATE",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "identity",
+        "runtime",
+        "controller_store",
+        "scope",
+        "release_authority",
+        "allocation"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "result/dossier/provenance",
+      "discriminator": {
+        "authenticated_kind": "GOVERNED_TEXT"
+      },
+      "field_types": {},
+      "id": "GOVERNED_TEXT",
+      "identity_domain": "CONTENT_IDENTITY/raw-file-sha256",
+      "provenance": "Raw identity + type/schema + reviewed selector contract; authenticated document kind required for text",
+      "required_fields": [
+        "authenticated_kind",
+        "raw_identity",
+        "selectors"
+      ],
+      "status": "STRUCTURAL_RECOGNITION_REUSED_FULL_FIELD_MAPPING_PENDING"
+    },
+    {
+      "canonical_target": "EvidenceRequirement/receipt contract",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "EXTERNAL_REQUEST",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-EXTERNAL-EVIDENCE-REQUEST-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "DISCRIMINATOR_REUSED_NESTED_PROFILE_PENDING"
+    },
+    {
+      "canonical_target": "candidate-only authority",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "CANDIDATE_AUTHORITY",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-CANDIDATE-CONSTRUCTION-AUTHORITY-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "DISCRIMINATOR_REUSED_NESTED_PROFILE_PENDING"
+    },
+    {
+      "canonical_target": "frontier reasons; output labels oracle-only",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "GLOBAL_CONTROL",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-GLOBAL-CONTROL-RECOMPUTATION-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "DISCRIMINATOR_REUSED_NESTED_PROFILE_PENDING"
+    },
+    {
+      "canonical_target": "runtime/G4/context/dispatch/release/profile identities",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "PINNED_SUBJECT",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "closed domain-schema discriminators enumerated in M01; NOT arbitrary JSON",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "CONTRACT_MISSING_EXACT_FIELD_PROFILE"
+    }
+  ],
+  "source_dispositions": {
+    "HISTORICAL_ONLY": "Retain immutable evidence without claiming current truth; operational history still MIGRATED_OPERATIONAL.",
+    "MIGRATED_OPERATIONAL": "At least one operational field. Every field still gets separate disposition. Required admission must follow.",
+    "MIGRATED_PROVENANCE_ONLY": "Source authenticates other objects but supplies no operational predicate; no required rule may be hidden here.",
+    "NOT_REQUIRED": "Proved outside transitive required closure; explicit reason. Unknown relevance is unresolved, not this disposition.",
+    "REPRESENTED_AS_EXPECTED_ABSENCE": "Virtual source expectation with exact external gate contract, missing proposition and no received evidence; not a present file."
+  },
+  "target_elements": [
+    {
+      "admission_contract": "O01",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "63",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.actions",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "ActionId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "MANIFEST",
+        "GOVERNED_TEXT"
+      ],
+      "target_type": "Tuple[Action, ...]"
+    },
+    {
+      "admission_contract": "O02/O06 + native replay where applicable",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "63",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.statuses",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "ActionId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "MANIFEST"
+      ],
+      "target_type": "Tuple[ActionStatus, ...]"
+    },
+    {
+      "admission_contract": "root proof oracle/O08 for validator gate",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "28 tracked; deferred goals separately",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.roots",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "ConditionId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "GRAPH",
+        "PLAN",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Tuple[RootCondition, ...]"
+    },
+    {
+      "admission_contract": "O09 baseline-specific proof + slot oracle",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "43 tracked; two policy-fixed inputs separate",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.slots",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "SlotId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "GRAPH",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT"
+      ],
+      "target_type": "Tuple[ValueSlot, ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "exact admitted claims; full typed count pending",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.knowledge",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "KnowledgeId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GOVERNED_TEXT"
+      ],
+      "target_type": "Tuple[KnowledgeRecord, ...]"
+    },
+    {
+      "admission_contract": "O10 + C01 reference/predicate validation",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "required operational projection; reviewed disposition",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.assertions",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "AssertionId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "GRAPH",
+        "PLAN",
+        "GOVERNED_TEXT"
+      ],
+      "target_type": "Tuple[GraphAssertion, ...]"
+    },
+    {
+      "admission_contract": "O10 + C01 reference/predicate validation",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "required reference closure",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.entities",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "EntityId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "GRAPH",
+        "DECISION_AUTHORITY",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "Tuple[GraphEntity, ...]"
+    },
+    {
+      "admission_contract": "O10 + C01 reference/predicate validation",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "all required executable predicates; missing mappings block",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.predicates",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "PredicateId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Tuple[Predicate, ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.context",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "typed evaluation context",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "MANIFEST",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "Optional[EvaluationContext]"
+    },
+    {
+      "admission_contract": "decision/authority oracle",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "all current named decision contracts",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.decisions",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "DecisionId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "DECISION_AUTHORITY",
+        "GOVERNED_TEXT"
+      ],
+      "target_type": "Tuple[Decision, ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "all required propositions including latent gates",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.evidence_requirements",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "EvidenceId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "HANDOFF",
+        "EXTERNAL_REQUEST",
+        "PLAN"
+      ],
+      "target_type": "Tuple['EvidenceRequirement', ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "8 active; latent gates separately",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.external_gates",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "GateId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "HANDOFF",
+        "EXTERNAL_REQUEST",
+        "MANIFEST"
+      ],
+      "target_type": "Tuple['ExternalGate', ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "explicit empty frozen inventory",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.receipt_admissions",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "typed evidence/receipt identities",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "HANDOFF",
+        "EXTERNAL_REQUEST",
+        "MANIFEST"
+      ],
+      "target_type": "Tuple['ReceiptAdmission', ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "explicit empty frozen receipts",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.receipt_observations",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "GateId/evidence identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "MANIFEST",
+        "HANDOFF"
+      ],
+      "target_type": "Tuple['ReceiptObservation', ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "exact active frontier including fact/implementation boundaries",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.boundaries",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "GateId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "HANDOFF",
+        "GLOBAL_CONTROL",
+        "PLAN"
+      ],
+      "target_type": "Tuple['ControlBoundary', ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "full-run required goals",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.goals",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "ConditionId/SlotId",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "GRAPH",
+        "PLAN",
+        "GLOBAL_CONTROL"
+      ],
+      "target_type": "Tuple['Goal', ...]"
+    },
+    {
+      "admission_contract": "budget proof oracle",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "frozen unsatisfied proof contract; no synthetic positive evidence",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.budget_matrices",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "budget contract/source identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "EXTERNAL_REQUEST",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Tuple['BudgetProofMatrix', ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.initial",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Snapshot"
+    },
+    {
+      "admission_contract": "O02/O06 + native replay where applicable",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "Exact independently inventoried members; empty only when governed",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.events",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Tuple[ExecutionEvent, ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.current",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Snapshot"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "complete required pins",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.sources",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "ArtifactIdentity/HashProfile",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "MANIFEST",
+        "CHECKPOINT"
+      ],
+      "target_type": "Tuple[ArtifactPin, ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.policy",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "admitted policy ArtifactIdentity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "MANIFEST"
+      ],
+      "target_type": "ArtifactPin"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.policy_version",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "registered policy version",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN"
+      ],
+      "target_type": "str"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "PersistenceBundle.scope",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "full-run scope",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "MANIFEST",
+        "CHECKPOINT"
+      ],
+      "target_type": "str"
+    },
+    {
+      "admission_contract": "O02/O06 + native replay where applicable",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "historical_attempts",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "expected_external_absence_records",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "MigrationManifest",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "REQUIRED",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "DerivationIndex",
+      "field_mapping_status": "MISSING_REQUIRED_NESTED_MAPPING",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "Exact independently inventoried members; empty only when governed",
+      "classification": "OPTIONAL",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Snapshot.information",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Only independently computable information metrics; missing metrics fall through selector.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_type": "Tuple[InformationModel, ...]"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "OPTIONAL",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "Action.cost/cost_unit",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Only governed comparable values; absent remains unavailable.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "PROVENANCE_ONLY",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "descriptive titles/report narrative/source annotation",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Any clause defining a gate is operational and excluded from this category.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "PROVENANCE_ONLY",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "global-control/actionable/resume summary labels",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Independent oracle comparisons, never authoritative control inputs.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "NOT_REQUIRED_FOR_FROZEN_RESUME",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "positive external evidence absent at suspension",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Required absence/gate records remain REQUIRED.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "NOT_REQUIRED_FOR_FROZEN_RESUME",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "unreferenced archived experiment payloads",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Only after transitive relevance audit; preserve bytes.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    },
+    {
+      "admission_contract": "native model/codec + O16 full-instance admission",
+      "canonicalization": "Existing codec SET_FIELDS and ordered ledger semantics; canonical JSON wrapper metadata",
+      "cardinality": "1 if REQUIRED; otherwise explicit absence per field contract",
+      "classification": "NOT_REQUIRED_FOR_FROZEN_RESUME",
+      "currentness": "Accepted current source support separately from historical truth; no ambient clock",
+      "field": "complete raw source bodies embedded inside snapshot",
+      "field_mapping_status": "CONTRACT_REUSED_FOR_CLASSIFICATION",
+      "identity_domain": "Existing typed member identity domains; never inherit container digest as member identity",
+      "invalidation_rule": "Transitive source/rule invalidation removes operational support, preserves history",
+      "migration_rule": "Use reviewed field mapping; unbound required mapping rejects; never populate from native defaults",
+      "persistence": "Existing Snapshot/PersistenceBundle or approved migration metadata; immutable canonical bytes",
+      "provenance": "FieldDerivation for every operational member; original pin/selector + migration rule + source dependencies",
+      "rule": "Retain read-only pinned source access plus necessary canonical claims; no artifact database.",
+      "source_classes": [
+        "PLAN",
+        "GRAPH",
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "DECISION_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "EXTERNAL_REQUEST",
+        "CANDIDATE_AUTHORITY",
+        "GLOBAL_CONTROL",
+        "PINNED_SUBJECT"
+      ],
+      "target_type": "metadata/specification record"
+    }
+  ]
+}

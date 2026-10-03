@@ -1,0 +1,93 @@
+{
+  "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+  "negative_cases": [
+    {
+      "failed_clause": "SOURCE_IDENTITY_DOMAIN",
+      "id": "wrong_identity_domain",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "TARGET_IDENTITY_DOMAIN",
+      "id": "same_digest_wrong_target_type",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "SUBSTITUTED_SOURCE",
+      "id": "substituted_source",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "SOURCE_ROLE",
+      "id": "wrong_source_role",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "ENVELOPE_SCOPE_LINEAGE",
+      "id": "wrong_frozen_scope",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "HISTORICAL_NOT_CURRENT_PROOF",
+      "id": "historical_as_current",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "ENVELOPE_SCOPE_LINEAGE",
+      "id": "wrong_lineage",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "STALE_PRESENT_SOURCE",
+      "id": "stale_source",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "AMBIGUOUS_CORRESPONDENCE",
+      "id": "ambiguous_binding",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "ENVELOPE_SCOPE_LINEAGE",
+      "id": "cross_envelope",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "MALFORMED_MISSING_SOURCE",
+      "id": "missing_required_source",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "SOURCE_ROLE",
+      "id": "unsupported_source_role",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "ABSENCE_INVENTORY",
+      "id": "absence_without_gate",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "ABSENCE_GATE_STATE",
+      "id": "absence_synthesizes_evidence",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "ABSENCE_RECEIPT_ACTION",
+      "id": "receipt_route_substitution",
+      "result": "PASS"
+    },
+    {
+      "failed_clause": "PROVENANCE_DEPENDENCIES",
+      "id": "provenance_loss",
+      "result": "PASS"
+    }
+  ],
+  "positive_expected_absences": 8,
+  "positive_expected_binding_count": 54,
+  "positive_source_fixture": "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_FIXTURES.json",
+  "reference_wrapper": "def evaluate(shared,br,candidate,records,validity,roles,usage):\n if roles != shared['source_role_expectations']:\n  return {'accepted':False,'failed_clause':'SOURCE_ROLE'}\n if usage != {'mode':'FROZEN_RECORDED_BINDINGS','subject_applicability':False}:\n  return {'accepted':False,'failed_clause':'HISTORICAL_NOT_CURRENT_PROOF'}\n return admit(br,candidate,records,validity)\n",
+  "reference_wrapper_sha256": "4224ddf8301fb0240fabdd2c6725376422656cc7e9859ed4439748f499868cdc",
+  "reproduce": "Load pinned BR-C1 reference_program; load records from explicit fixture locators; use unchanged project/admit and this role/use wrapper. Validation companion carries complete generating runner.",
+  "schema": "M01-MC01-QUALIFICATION-1",
+  "scope_premise": "BR-C1 independently supplied CURRENT_AT_PINNED_SNAPSHOT; never real positive E1 evidence"
+}

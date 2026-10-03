@@ -1,0 +1,685 @@
+{
+  "M01_MINIMUM_STATE_CONTRACT_COMPLETE": false,
+  "M02_READY": false,
+  "M02_predicate": {
+    "all": [
+      "M01_MINIMUM_STATE_CONTRACT_COMPLETE",
+      "all_required_migration_oracles_executable",
+      "no_unresolved_semantic_input_in_minimum_cone",
+      "no_contract_conflict"
+    ]
+  },
+  "action_fields": [
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Universe, validation and all references",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "id",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ActionId"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Human/machine partition and decision type validation",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "operation",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "OperationClass"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Typed admission, retained decision input validation; future blockers",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "effect",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "EffectClass"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "project ordering and _global_control traversal; do not erase dependencies",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "prerequisites",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[Gate]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Native source validation, invalidation and authenticated action universe",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "source",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Provenance"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Required native constructor field; stale members affect current_completion even on held paths. Future output detail only outside this closure; no invented empty inventory",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "accepted_inventory",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[KnowledgeRecord]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Currentness and native assertion closure",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "evidence",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[AssertionId]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Unsupported rule check on reached actions; governed unknown must resolve exact EVIDENCE_OBLIGATION",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "requirements",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[PredicateId]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "unavailable_support propagates stale authority into action completion; retained reference must validate",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "authority",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Optional[PredicateId]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Human stage semantics and admission; historical narrative not required",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "stage",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ActionStage"
+    },
+    {
+      "classifications": [
+        "NOT_REQUIRED",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "No candidates => selector not called; supplied values still validate",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "cost",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Optional[int]"
+    },
+    {
+      "classifications": [
+        "NOT_REQUIRED",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Must accompany supplied cost; no invented ranking inputs",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "cost_unit",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "str"
+    },
+    {
+      "classifications": [
+        "NOT_REQUIRED",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Not used to create candidates on held paths; existing field still typed",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "pass_model_complete",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "bool"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION",
+        "REQUIRED_ONLY_FOR_REENTRY"
+      ],
+      "control_dependency": "Not proof of historical execution; no apply_result in frozen query",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "accepted_result",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ActionResult"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Retained dossiers validate fully; future preparation narrative not required solely to prove no active human",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "prepared_dossier",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Optional[DecisionDossier]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "unavailable_support/current_completion; never assume accepted from BLOCKED status",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "qualification",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ValidationState"
+    }
+  ],
+  "cut_members": [
+    {
+      "blocker_type": "MISSING_CONTRACT",
+      "canonical_state_required": "Exact 63 source-backed Action records, 13 completed/50 blocked statuses, typed prerequisites, support and minimal-profile compatibility with unchanged O01.",
+      "contract_complete": false,
+      "contract_sufficiency": "INCOMPLETE",
+      "dependencies": [
+        "CUT02",
+        "CUT03"
+      ],
+      "id": "CUT01",
+      "missing_positive_external_source": false,
+      "missing_proof": "Independent source-derived expected profile and positive/negative/invalidation/reload conformance; no compiler result used as oracle",
+      "missing_semantic_normalization": "Admissible minimal fields; prerequisite/authority/evidence/knowledge roles",
+      "name": "Admitted frozen Action/status universe",
+      "planner_consumer": "validate_model/project/_actionability/current_completion",
+      "post_repair_status": "OPEN",
+      "pre_repair_status": "OPEN",
+      "remaining_requirement": "Exact 63 source-backed Action records, 13 completed/50 blocked statuses, typed prerequisites, support and minimal-profile compatibility with unchanged O01.",
+      "source_bindings": [
+        "B01",
+        "B02",
+        "B06"
+      ],
+      "source_sufficiency": "AVAILABLE common core; native semantic joins incomplete"
+    },
+    {
+      "blocker_type": "MISSING_CONTRACT",
+      "canonical_state_required": "Exact roots/slots/goals, conditional prerequisites, eight route bijection including held actions; implementation composite frontier and DEC-EXEC readiness correspondence.",
+      "contract_complete": false,
+      "contract_sufficiency": "INCOMPLETE",
+      "dependencies": [
+        "CUT01",
+        "CUT03"
+      ],
+      "id": "CUT02",
+      "missing_positive_external_source": false,
+      "missing_proof": "Independent source-derived expected profile and positive/negative/invalidation/reload conformance; no compiler result used as oracle",
+      "missing_semantic_normalization": "Conditional goal routes, composite frontier, readiness reentry",
+      "name": "Goal and frontier routing",
+      "planner_consumer": "project/evaluate_satisfaction/_global_control.walk",
+      "post_repair_status": "OPEN",
+      "pre_repair_status": "OPEN",
+      "remaining_requirement": "Exact roots/slots/goals, conditional prerequisites, eight route bijection including held actions; implementation composite frontier and DEC-EXEC readiness correspondence.",
+      "source_bindings": [
+        "B01",
+        "B03",
+        "B04"
+      ],
+      "source_sufficiency": "AVAILABLE source routing; canonical identity choices incomplete"
+    },
+    {
+      "blocker_type": "MISSING_CONTRACT",
+      "canonical_state_required": "Least retained predicate/entity/knowledge/context/assertion closure, source-current completion and retained O08/O09 proof support, source-bound holds.",
+      "contract_complete": false,
+      "contract_sufficiency": "INCOMPLETE",
+      "dependencies": [
+        "CUT01",
+        "CUT02"
+      ],
+      "id": "CUT03",
+      "missing_positive_external_source": false,
+      "missing_proof": "Independent source-derived expected profile and positive/negative/invalidation/reload conformance; no compiler result used as oracle",
+      "missing_semantic_normalization": "Proof identity/type/currentness and retained support closure",
+      "name": "Reached proof/currentness support",
+      "planner_consumer": "unavailable_support/evaluate_predicate/decision_readiness/native validation",
+      "post_repair_status": "OPEN",
+      "pre_repair_status": "OPEN",
+      "remaining_requirement": "Least retained predicate/entity/knowledge/context/assertion closure, source-current completion and retained O08/O09 proof support, source-bound holds.",
+      "source_bindings": [
+        "B02",
+        "B03",
+        "B05",
+        "B06"
+      ],
+      "source_sufficiency": "AVAILABLE records; native interpretation AMBIGUOUS"
+    },
+    {
+      "blocker_type": "MISSING_CONTRACT",
+      "canonical_state_required": "Instantiate independently admitted resolution contract from exact frozen request/requirement/gate/context identities; canonical source bytes, pins and legacy derivation; consumer predicate correspondence.",
+      "contract_complete": false,
+      "contract_sufficiency": "INCOMPLETE",
+      "dependencies": [
+        "CUT01",
+        "CUT02",
+        "CUT03"
+      ],
+      "id": "CUT04",
+      "missing_positive_external_source": false,
+      "missing_proof": "Independent source-derived expected profile and positive/negative/invalidation/reload conformance; no compiler result used as oracle",
+      "missing_semantic_normalization": "Legacy request/envelope to canonical resolution-contract body",
+      "name": "Frozen governed-wait source binding",
+      "planner_consumer": "governed_external_unknown/_global_control/_obligation_proof",
+      "post_repair_status": "NARROWED_NATIVE_DEFECT_CLOSED",
+      "pre_repair_status": "OPEN",
+      "remaining_requirement": "Instantiate independently admitted resolution contract from exact frozen request/requirement/gate/context identities; canonical source bytes, pins and legacy derivation; consumer predicate correspondence.",
+      "source_bindings": [
+        "B04",
+        "B07"
+      ],
+      "source_sufficiency": "AVAILABLE request/absence; canonical binding derivation incomplete"
+    },
+    {
+      "blocker_type": "MISSING_CONTRACT",
+      "canonical_state_required": "Source-pinned identical initial/current baseline, empty new events, exact policy/version/scope; reference and universe coverage certificate with native query checks.",
+      "contract_complete": false,
+      "contract_sufficiency": "INCOMPLETE",
+      "dependencies": [
+        "CUT01",
+        "CUT02",
+        "CUT03",
+        "CUT04"
+      ],
+      "id": "CUT05",
+      "missing_positive_external_source": false,
+      "missing_proof": "Independent source-derived expected profile and positive/negative/invalidation/reload conformance; no compiler result used as oracle",
+      "missing_semantic_normalization": "Baseline source-coverage/proof references without fabricated native history",
+      "name": "Baseline and proof completeness",
+      "planner_consumer": "codec._replay/restore; recompute; resume_eligibility; FrozenControlProof verifier",
+      "post_repair_status": "OPEN_DEPENDS_ON_CUT01_04",
+      "pre_repair_status": "OPEN",
+      "remaining_requirement": "Source-pinned identical initial/current baseline, empty new events, exact policy/version/scope; reference and universe coverage certificate with native query checks.",
+      "source_bindings": [
+        "B08"
+      ],
+      "source_sufficiency": "AVAILABLE policy/checkpoint; admitted baseline not yet defined"
+    }
+  ],
+  "dependency_edges": [
+    {
+      "consumer": "CUT02",
+      "prerequisite": "CUT01",
+      "reason": "Action identity universe needed by goal/receipt/reentry references"
+    },
+    {
+      "consumer": "CUT01",
+      "prerequisite": "CUT02",
+      "reason": "Typed prerequisite/condition correspondence needed by Action definition"
+    },
+    {
+      "consumer": "CUT03",
+      "prerequisite": "CUT01",
+      "reason": "Action/knowledge producer identities and support seeds"
+    },
+    {
+      "consumer": "CUT03",
+      "prerequisite": "CUT02",
+      "reason": "Reached goal/frontier paths bound the support closure"
+    },
+    {
+      "consumer": "CUT01",
+      "prerequisite": "CUT03",
+      "reason": "Current completion/hold and mandatory referenced support admission"
+    },
+    {
+      "consumer": "CUT02",
+      "prerequisite": "CUT03",
+      "reason": "Proof cut points determine the exposed frontier"
+    },
+    {
+      "consumer": "CUT04",
+      "prerequisite": "CUT01",
+      "reason": "Exact consumer and held/reentry ActionIds"
+    },
+    {
+      "consumer": "CUT04",
+      "prerequisite": "CUT02",
+      "reason": "Request/gate/receipt/requirement correspondence"
+    },
+    {
+      "consumer": "CUT04",
+      "prerequisite": "CUT03",
+      "reason": "Context, predicates and provenance/source bindings"
+    },
+    {
+      "consumer": "CUT05",
+      "prerequisite": "CUT01",
+      "reason": "Integrated canonical baseline/certificate requires admitted interface"
+    },
+    {
+      "consumer": "CUT05",
+      "prerequisite": "CUT02",
+      "reason": "Integrated canonical baseline/certificate requires admitted interface"
+    },
+    {
+      "consumer": "CUT05",
+      "prerequisite": "CUT03",
+      "reason": "Integrated canonical baseline/certificate requires admitted interface"
+    },
+    {
+      "consumer": "CUT05",
+      "prerequisite": "CUT04",
+      "reason": "Integrated canonical baseline/certificate requires admitted interface"
+    }
+  ],
+  "dependent_cut_members": [
+    "CUT04",
+    "CUT05"
+  ],
+  "exit_predicate": {
+    "all": [
+      {
+        "cut_contract_complete": "CUT01"
+      },
+      {
+        "cut_contract_complete": "CUT02"
+      },
+      {
+        "cut_contract_complete": "CUT03"
+      },
+      {
+        "cut_contract_complete": "CUT04"
+      },
+      {
+        "cut_contract_complete": "CUT05"
+      },
+      "transitive_source_and_field_coverage_complete",
+      "native_and_O01_compatibility_preserved",
+      "minimum_scope_allocation_accepted",
+      "independent_contract_qualification_passes"
+    ]
+  },
+  "first_package": "MC01",
+  "implementation_modified": false,
+  "input_sha256": {
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_NORMALIZATION_CONTRACT_1.md": "dc568a72ff7ceafe5eab592e4404c4e5c50d9bb022b90f35bb7742d658e8a30e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_ACTION_DEFINITION_SOURCE_MODEL_REVIEW_1.md": "22a5f54938f5c1f28194fdd519242d301027b1bfc8806d0f7a75a85e209c6f7f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_CONTRACT.json": "f36bf174337c90d72ef26c912956f1b5070b5323a456b214fdf11c8efdaa0921",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_SEMANTIC_BINDING_CLOSURE_1.md": "4f1987edb388b49acc89e8d3f334ef1f4147df376bf7dc37504cf16db4e18fd2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_ACCEPTANCE_MATRIX_1.md": "e3812752606074a606c301cc38e712092e068daa7cdd0d4c317eeec01e32bfa5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.md": "78737d02f24fcf02fd0485cb43af2bea391e8df2d26893db1a7dcdd957410be8",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_POST_REPAIR_MINIMUM_STATE_1.md": "004ef1c017f7d64c35acf12569a2b5f9bf9e98be164cbf76a87d59434d44d43f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_POST_REPAIR_MINIMUM_STATE_1_BLOCKING_CUT.json": "e62f376cce00002510a5873848dc2204718075c7c1650ca351817b0942802c7e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_POST_REPAIR_MINIMUM_STATE_1_DEPENDENCIES.json": "255523df67bc50924ded702cc7ac81e934610c0abbe35cc67bce8a9deeea65dd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_M01_POST_REPAIR_MINIMUM_STATE_1_READINESS.json": "1e1b8316cc2d20fec96aa26fb7b9d45b301c512049f730eb43986505e36d519f"
+  },
+  "packages": [
+    {
+      "acceptance": "Independent input-pin/source/domain/selector/disposition inventory; all missing semantics enumerated; signed-off source-to-native signatures and scoped oracle allocation; no required unknown field hidden as optional.",
+      "contract_work": "Declare finite native identity/reference registry and source-role schema for reached cone; explicit old acceptance-case allocation; required/default/empty Action-field semantics and O01 compatibility decision without weakening O01. Reuse BR-C1 mechanisms, do not requalify them as native restoration.",
+      "cut_members_addressed": [
+        "CUT01",
+        "CUT02",
+        "CUT03",
+        "CUT04",
+        "CUT05"
+      ],
+      "expected_newly_complete_state": "Shared signatures only; no cut fully closed",
+      "id": "MC01",
+      "implementation_work": false,
+      "name": "Shared identity, source-role and frozen-scope contract",
+      "namespace": "M01-MINIMUM-CLOSURE-1",
+      "next_operation": "CONTRACT_DEFINITION",
+      "prerequisites": [],
+      "source_bindings": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07",
+        "B08"
+      ],
+      "status": "NOT_EXECUTED",
+      "unlocks": "MC02"
+    },
+    {
+      "acceptance": "63 unique source-backed Action/status rows; 13/50 partition; complete route bindings and independent expected profiles; per-class positives and all concrete rows; wrong/missing/dangling/ambiguous bindings reject. O01 conflict blocks, never falls back to default.",
+      "contract_work": "One shared plan-backed constructor and 63 instances for frozen schema; exact status evidence, typed prerequisite and goal/slot/frontier routing; eight absence-to-route crosswalk. Declare support interfaces consumed by MC03.",
+      "cut_members_addressed": [
+        "CUT01",
+        "CUT02"
+      ],
+      "expected_newly_complete_state": "Action/routing definitions complete subject to MC03 support validation; no premature CUT01 admission",
+      "id": "MC02",
+      "implementation_work": false,
+      "name": "Action universe and control routing contract",
+      "namespace": "M01-MINIMUM-CLOSURE-1",
+      "next_operation": "MIXED",
+      "prerequisites": [
+        "MC01"
+      ],
+      "source_bindings": [
+        "B01",
+        "B02",
+        "B03",
+        "B04",
+        "B06"
+      ],
+      "status": "NOT_EXECUTED",
+      "unlocks": "MC03"
+    },
+    {
+      "acceptance": "Independent positive/unresolved/absence/negative fixtures; stale/reload and cross-envelope rules; every retained reference resolves; unsupported rule remains defect; native governed-wait contract matches exact legacy derivation; eight route bijection preserves factual vs evidence kinds.",
+      "contract_work": "Compute finite reached predicate/entity/assertion/knowledge/context fixed point; qualify retained O08/O09 chains, history/current distinction and all reached unknown resolution bindings. Reconcile MC02 references to closed support declarations.",
+      "cut_members_addressed": [
+        "CUT01",
+        "CUT02",
+        "CUT03",
+        "CUT04"
+      ],
+      "expected_newly_complete_state": "CUT01-04 contract candidates jointly complete, contingent on MC04 integrated oracle validation",
+      "id": "MC03",
+      "implementation_work": false,
+      "name": "Reached support and governed-wait binding contract",
+      "namespace": "M01-MINIMUM-CLOSURE-1",
+      "next_operation": "MIXED",
+      "prerequisites": [
+        "MC02"
+      ],
+      "source_bindings": [
+        "B02",
+        "B03",
+        "B04",
+        "B05",
+        "B06",
+        "B07"
+      ],
+      "status": "NOT_EXECUTED",
+      "unlocks": "MC04"
+    },
+    {
+      "acceptance": "All five contract completion records PASS at pinned identities; C1-C5 independently specified from canonical facts; source/field/reference coverage exact; malformed/stale/unexplained variants reject; cold/determinism test oracle executable; no missing semantic input/conflict; no compiler-output oracle.",
+      "contract_work": "Specify identical initial/current baseline, empty new events, policy/source verification and FrozenControlProof; execute specification/oracle fixtures from preceding packages and complete preflight. No compiler or real frozen migration execution.",
+      "cut_members_addressed": [
+        "CUT01",
+        "CUT02",
+        "CUT03",
+        "CUT04",
+        "CUT05"
+      ],
+      "expected_newly_complete_state": "M01 minimum-state contract milestone complete, not restoration qualified",
+      "id": "MC04",
+      "implementation_work": false,
+      "name": "Baseline certificate and integrated contract qualification",
+      "namespace": "M01-MINIMUM-CLOSURE-1",
+      "next_operation": "QUALIFICATION",
+      "prerequisites": [
+        "MC03"
+      ],
+      "source_bindings": [
+        "B08"
+      ],
+      "status": "NOT_EXECUTED",
+      "unlocks": "M02 gate evaluation"
+    }
+  ],
+  "parallelizable": "MC01 source inventory and oracle/scope review; MC02 action and routing drafting; MC03 O08/O09 and wait-binding fixtures after shared signatures. Final qualification remains dependent.",
+  "production_effect": false,
+  "root_cut_members": [
+    "SCC(CUT01,CUT02,CUT03)"
+  ],
+  "schema": "M01-MINIMUM-STATE-CLOSURE-PLAN-1",
+  "scope": "C1-C5 only; historical MC01-MC26 test IDs remain separate namespace",
+  "source_binding_requirements": [
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT01",
+        "CUT02"
+      ],
+      "id": "B01",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact ActionId equality and typed condition references",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "plan action /resolution_actions and /compiled_action_dependencies",
+      "status": "BR-C1 pins available; per-field semantic mapping missing",
+      "target_identity": "ActionId and typed Gate targets"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT01",
+        "CUT03"
+      ],
+      "id": "B02",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact ActionId, plan content pin, extracted ledger/state identity",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "plan execution_state; manifest completed_actions/blocked_actions; necessary current support",
+      "status": "BR-C1 extracted state/ledger and three hold bindings available; all-action current support reconciliation missing",
+      "target_identity": "ActionStatus and current_completion support"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT02",
+        "CUT03"
+      ],
+      "id": "B03",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact declared source identity, source selector and independently defined typed crosswalk",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "normalized_root_conditions, deferred_conditions, graph slots, compiled routes",
+      "status": "Native identity/predicate/conditional-route crosswalk missing",
+      "target_identity": "ConditionId/SlotId/Goal/PredicateId"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT02",
+        "CUT04"
+      ],
+      "id": "B04",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Request identity + handoff identity + exact receipt/reentry fields",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "manifest request_routes joined to handoff items and receipt contracts",
+      "status": "BR-C1 eight absence bindings available; native projection and two special route correspondences missing",
+      "target_identity": "GateId/EvidenceId/receipt/reentry/held actions"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT03"
+      ],
+      "id": "B05",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact decision/dossier/authority and slot/predicate/source identities under existing O08/O09",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "PREP-VALIDATOR, dossier/Architect decision and bounded grant; two baseline slot proof sources",
+      "status": "Admission profiles reusable; reached real-source parameterization incomplete",
+      "target_identity": "O08 authority/gate and O09 exact slot proof/support identities"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT01",
+        "CUT03"
+      ],
+      "id": "B06",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Producer ActionId + exact report identity + selected accepted claim and outcome",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "accepted non-PASS knowledge/report source and typed definition contract",
+      "status": "BR-C1 raw pins available; claim/type/native predicate join missing",
+      "target_identity": "KnowledgeId/KnowledgeType/source-bound predicate"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT04"
+      ],
+      "id": "B07",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact gate, requirement, proposition, target domain, producers/source class, consumer route",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "budget request obligations + B04 + recorded envelope + independent migration derivation",
+      "status": "Generic legacy provenance reusable; new canonical contract body/source pin and legacy-to-body field derivation absent",
+      "target_identity": "ExternalResolutionContract and canonical contract CONTENT_IDENTITY"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT05"
+      ],
+      "id": "B08",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Raw policy pin distinguished from extracted policy identity; source inventory and canonical snapshot domains",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "checkpoint/manifest policy and initial-current state derivation",
+      "status": "BR-C1 policy/context pins reusable; integrated native baseline/certificate binding missing",
+      "target_identity": "PersistenceBundle and FrozenControlProof references"
+    }
+  ]
+}

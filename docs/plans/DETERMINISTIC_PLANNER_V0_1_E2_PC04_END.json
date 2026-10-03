@@ -1,0 +1,21 @@
+{
+  "schema": "E2-PC04-END-v1",
+  "case_id": "E2-END",
+  "status": "READY_FOR_LATER_PHASE",
+  "operation_executed": false,
+  "dependencies": [
+    "E2-PC01 canonical six-Action model",
+    "E2-PC02 proof/authority/external-lifecycle contracts",
+    "E2-PC03 phase, mutation, persistence and cold-restore oracles",
+    "E2-T01 post-restore evidence admission",
+    "E2-D01 deterministic runner interface",
+    "post-reentry continuation contract"
+  ],
+  "preflight": {
+    "required_inputs_bound": true,
+    "independent_oracle_bound": true,
+    "future_execution_dependency_explicit": true,
+    "circular_future_pass_dependency": false
+  },
+  "later_phase": "canonical E2 lifecycle execution"
+}

@@ -1,0 +1,142 @@
+{
+  "cases": [
+    {
+      "actionable": [],
+      "actual": "PLAN_DEFECT",
+      "branches": [
+        [
+          "TEST-ROOT",
+          "WAITING_FOR_EXTERNAL_EVIDENCE"
+        ]
+      ],
+      "case": "governed_unknown",
+      "cold_process_reload_identical": true,
+      "defects": [
+        "UNQUALIFIED_EXTERNAL_CONTRACT:TEST-GATE"
+      ],
+      "expected": "EXTERNAL_WAIT",
+      "obligation": "UNKNOWN",
+      "reload_identical": true,
+      "snapshot_identity": "1e4e3f4d62a3a6eb7d207d05e3a825dbd09ecc7d053c6bb810c8df2b8d013a49"
+    },
+    {
+      "actionable": [],
+      "actual": "EXTERNAL_WAIT",
+      "branches": [
+        [
+          "TEST-ROOT",
+          "WAITING_FOR_EXTERNAL_EVIDENCE"
+        ]
+      ],
+      "case": "known_rule_missing_evidence",
+      "cold_process_reload_identical": true,
+      "defects": [],
+      "expected": "EXTERNAL_WAIT",
+      "obligation": "UNKNOWN",
+      "reload_identical": true,
+      "snapshot_identity": "aaf7cf5abe34d8929dc0c5713080b19bf8641e102f3494c898b4fc21be1e43d9"
+    },
+    {
+      "actionable": [],
+      "actual": "PLAN_DEFECT",
+      "branches": [
+        [
+          "TEST-ROOT",
+          "DEPENDENCY_BLOCKED"
+        ]
+      ],
+      "case": "unknown_no_route",
+      "cold_process_reload_identical": true,
+      "defects": [
+        "MISSING_CONTROL_ROUTE:TEST-ACTION"
+      ],
+      "expected": "PLAN_DEFECT",
+      "obligation": "UNKNOWN",
+      "reload_identical": true,
+      "snapshot_identity": "6414ce34eb1ccbd0a5af4b46099b200203d75f6fc2c32055e8653c6c7cc53141"
+    },
+    {
+      "actionable": [],
+      "actual": "PLAN_DEFECT",
+      "branches": [
+        [
+          "TEST-ROOT",
+          "WAITING_FOR_EXTERNAL_EVIDENCE"
+        ]
+      ],
+      "case": "unknown_incomplete_contract",
+      "cold_process_reload_identical": true,
+      "defects": [
+        "UNQUALIFIED_EXTERNAL_CONTRACT:TEST-GATE"
+      ],
+      "expected": "PLAN_DEFECT",
+      "obligation": "UNKNOWN",
+      "reload_identical": true,
+      "snapshot_identity": "5798625d4feeead7341f2ac02155158013ec5fb458bd40d7ececed9581e1ffe6"
+    },
+    {
+      "actionable": [],
+      "actual": "PLAN_DEFECT",
+      "branches": [
+        [
+          "TEST-FACT-ROOT",
+          "FACT_ACQUISITION_REQUIRED"
+        ],
+        [
+          "TEST-ROOT",
+          "WAITING_FOR_EXTERNAL_EVIDENCE"
+        ]
+      ],
+      "case": "governed_unknown_plus_fact",
+      "cold_process_reload_identical": true,
+      "defects": [
+        "UNQUALIFIED_EXTERNAL_CONTRACT:TEST-GATE"
+      ],
+      "expected": "MIXED_WAIT",
+      "obligation": "UNKNOWN",
+      "reload_identical": true,
+      "snapshot_identity": "90f0e3fade4c57e3ad292079ad2252da9807a6d44977378fbc22920994ae9745"
+    },
+    {
+      "actionable": [
+        "TEST-FACT"
+      ],
+      "actual": "RUNNABLE",
+      "branches": [
+        [
+          "TEST-ROOT",
+          "WAITING_FOR_EXTERNAL_EVIDENCE"
+        ]
+      ],
+      "case": "governed_unknown_plus_runnable",
+      "cold_process_reload_identical": true,
+      "defects": [
+        "UNQUALIFIED_EXTERNAL_CONTRACT:TEST-GATE"
+      ],
+      "expected": "RUNNABLE",
+      "obligation": "UNKNOWN",
+      "reload_identical": true,
+      "snapshot_identity": "7f8832ce9f907e483975d76d86caf19a3a6644c6e3be3c41bf7357bfbe587735"
+    }
+  ],
+  "probe_program": "import json,hashlib\nfrom dataclasses import replace\nfrom pathlib import Path\nfrom adapter.planner import model as m,core,codec,gates\ncontract={'schema':'SYNTHETIC-GOVERNED-RULE-ACQUISITION-1','qualification_only':True,'scope':'TEST/scope','lineage':'TEST/lineage','gate':'TEST-GATE','requirement':'TEST-RULE','missing_proposition':'Authenticated governing rule for target operation; no rule currently received','expected_producer':'TEST-rule-owner','receipt_action':'TEST-RECEIVE','reentry':['TEST-ACTION'],'branch':'TEST-ROOT','positive_admission':'Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability','acquisition_contract_complete':True}\nraw=json.dumps(contract,sort_keys=True,separators=(',',':')).encode(); path=Path('/tmp/unknown-rule-source.json');path.write_bytes(raw)\nid=m.ArtifactIdentity(m.IdentityKind.CONTENT_IDENTITY,'raw-file-sha256',hashlib.sha256(raw).hexdigest())\np=m.Provenance(str(path),id,'/',raw.decode(),'SYNTHETIC_CONTRACT','TEST/scope')\na=m.ActionId('TEST-ACTION');r=m.ConditionId('TEST-ROOT');g=m.GateId('TEST-GATE');e=m.EvidenceId('TEST-RULE')\nreq=m.EvidenceRequirement(e,contract['missing_proposition'],m.ArtifactIdentity(m.IdentityKind.CANONICAL_OBJECT_IDENTITY,'TEST-target','a'*64),(m.ArtifactIdentity(m.IdentityKind.AUTHORITY_IDENTITY,'TEST-rule-owner','b'*64),),p,False)\npred=m.Predicate(m.PredicateId('TEST-PROOF'),m.PredicateKind.EVIDENCE_OBLIGATION,obligation=e)\naction=m.Action(a,m.OperationClass.SOURCE_ACQUISITION,m.EffectClass.NON_EFFECTING,(),p,(),requirements=(pred.id,))\ngate=m.ExternalGate(g,(e,),contract['receipt_action'],(a,),(a,),m.ExternalStage.WAITING_FOR_EXTERNAL_EVIDENCE,p)\ns=m.Snapshot((action,),(m.ActionStatus(a,m.ActionState.ACTION_ELIGIBLE),),(m.RootCondition(r,m.ConditionState.UNRESOLVED),),(),(),predicates=(pred,),evidence_requirements=(req,),external_gates=(gate,),boundaries=(m.ControlBoundary(g,m.BoundaryKind.EXTERNAL_EVIDENCE,(a,),p),),goals=(m.Goal(r,(a,),p),))\ncases={'governed_unknown':s,'known_rule_missing_evidence':replace(s,evidence_requirements=(replace(req,rule_known=True),)),'unknown_no_route':replace(s,external_gates=(),boundaries=()),'unknown_incomplete_contract':replace(s,external_gates=(replace(gate,contract_complete=False),))}\nb=m.ActionId('TEST-FACT');br=m.ConditionId('TEST-FACT-ROOT');bg=m.GateId('TEST-FACT-GATE')\ncases['governed_unknown_plus_fact']=replace(s,actions=s.actions+(replace(action,id=b,requirements=()),),statuses=s.statuses+(m.ActionStatus(b,m.ActionState.ACTION_ELIGIBLE),),roots=s.roots+(m.RootCondition(br,m.ConditionState.UNRESOLVED),),boundaries=s.boundaries+(m.ControlBoundary(bg,m.BoundaryKind.EXTERNAL_FACT,(b,),p),),goals=s.goals+(m.Goal(br,(b,),p),))\ncases['governed_unknown_plus_runnable']=replace(s,actions=s.actions+(replace(action,id=b,requirements=()),),statuses=s.statuses+(m.ActionStatus(b,m.ActionState.ACTION_ELIGIBLE),))\nexpected={'governed_unknown':'EXTERNAL_WAIT','known_rule_missing_evidence':'EXTERNAL_WAIT','unknown_no_route':'PLAN_DEFECT','unknown_incomplete_contract':'PLAN_DEFECT','governed_unknown_plus_fact':'MIXED_WAIT','governed_unknown_plus_runnable':'RUNNABLE'}\nresults=[]\nfor name,state in cases.items():\n comp=core.recompute(state);reloaded=codec.decode_snapshot(codec.snapshot_bytes(state));same=core.recompute(reloaded)==comp\n results.append({'case':name,'expected':expected[name],'actual':comp.control.value,'defects':list(comp.defects),'actionable':[a.value for a in comp.actionable],'branches':[(a.value,b.value) for a,b in comp.branches],'obligation':gates.obligation_proof(state,e).state.value,'reload_identical':same,'snapshot_identity':codec.snapshot_id(state).sha256})\nprint(json.dumps(results,indent=2));Path('/tmp/unknown_probe_results.json').write_text(json.dumps({'source_contract':contract,'source_sha256':id.sha256,'cases':results},indent=2))\nfor name,state in cases.items():\n Path('/tmp/unknown-'+name+'.json').write_bytes(codec.snapshot_bytes(state))\n",
+  "scope": "Synthetic native snapshot probes only; no bundle resume proof, migration, source publication or E1 action",
+  "source_contract": {
+    "acquisition_contract_complete": true,
+    "branch": "TEST-ROOT",
+    "expected_producer": "TEST-rule-owner",
+    "gate": "TEST-GATE",
+    "lineage": "TEST/lineage",
+    "missing_proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "positive_admission": "Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability",
+    "qualification_only": true,
+    "receipt_action": "TEST-RECEIVE",
+    "reentry": [
+      "TEST-ACTION"
+    ],
+    "requirement": "TEST-RULE",
+    "schema": "SYNTHETIC-GOVERNED-RULE-ACQUISITION-1",
+    "scope": "TEST/scope"
+  },
+  "source_sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+}

@@ -1,0 +1,73 @@
+{
+  "schema": "E2-P02-decision-authority-materialization-closure-v1",
+  "work_package": "E2-P02-DECISION-AUTHORITY-MATERIALIZATION-CLOSURE",
+  "result": "BLOCKED",
+  "human_handoff_state": {
+    "state_id": "39114028d38b9571c46e211248644b09a3ac63ad9f47cd21a75fc922a2d152e3",
+    "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+    "actionable": ["E2-DECIDE"],
+    "decision_ready_actions": ["E2-DECIDE"],
+    "control": "HUMAN_HANDOFF",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1"
+  },
+  "decision_contract": {
+    "action_id": "E2-DECIDE",
+    "operation": "ARCHITECT_CONTRACT_DECISION",
+    "subject": "E2-DECIDE",
+    "options": ["ALLOW_QUALIFICATION_MAPPING", "DECLINE"],
+    "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+    "admission": "authenticated RecordedDecision through apply_recorded_decision",
+    "selected_option": null,
+    "issuer": null
+  },
+  "authority_contract": {
+    "fixture_id": "E2-GRANT",
+    "identity_domain": "AUTHORITY_IDENTITY",
+    "permission": "USE",
+    "subject": "E2-REENTER",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "applicability": "exact choice, target, permission, scope, lineage, and current independent predicate",
+    "native_authority_entity": "MISSING",
+    "native_authority_predicate": "MISSING",
+    "issuer_binding": "MISSING"
+  },
+  "decision_input_classification": "PREAUTHORIZED_SYNTHETIC_QUALIFICATION_DECISION",
+  "authority_admission_path": "MATERIALIZER_OMISSION",
+  "decision_admission_path": "EXISTING_SUPPORTED_PATH",
+  "authority_admission": "NOT_REACHED",
+  "authority_applicability": "NOT_REACHED",
+  "decision_admission": "NOT_REACHED",
+  "negative_cases": [
+    "decision_without_authority",
+    "authority_without_applicability",
+    "wrong_authority",
+    "wrong_subject",
+    "wrong_dossier",
+    "wrong_option",
+    "wrong_scope",
+    "wrong_lineage",
+    "stale_authority",
+    "stale_dossier",
+    "duplicate_decision",
+    "conflicting_decision",
+    "unauthorized_issuer",
+    "superseded_state"
+  ],
+  "post_decision_oracle": {
+    "required": "normal recomputation after admitted recorded decision",
+    "not_evaluated": true
+  },
+  "implementation_package_required": false,
+  "implementation_package": null,
+  "replay": "HUMAN_HANDOFF_PREFIX_PRESERVED",
+  "determinism": "HUMAN_HANDOFF_PREFIX_PRESERVED",
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

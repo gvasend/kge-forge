@@ -1,0 +1,67 @@
+{
+  "schema": "E2-PC02-FIXTURES-1",
+  "baseline_ref": "DETERMINISTIC_PLANNER_V0_1_E2_PC01_COMPLETION_1_WHOLE_MODEL.json",
+  "qualification_only": true,
+  "scope": "E2-QUALIFICATION-ONLY",
+  "lineage": "E2-CANONICAL-BASELINE-1",
+  "source_roles": [
+    {"id": "E2-DOSSIER-SOURCE", "role": "DOSSIER", "domain": "CONTENT_IDENTITY", "target": "E2-DECIDE", "consumer": "decision_readiness"},
+    {"id": "E2-GRANT-SOURCE", "role": "GRANT", "domain": "AUTHORITY_IDENTITY", "target": "E2-REENTER", "consumer": "authority_applicability"},
+    {"id": "E2-ROOT-PROOF-SOURCE", "role": "ROOT_PROOF", "domain": "CONTENT_IDENTITY", "target": "E2-ROOT", "consumer": "root_predicate"},
+    {"id": "E2-SLOT-PROOF-SOURCE", "role": "SLOT_PROOF", "domain": "CONTENT_IDENTITY", "target": "E2-SLOT", "consumer": "slot_predicate"},
+    {"id": "E2-ROUTE-SOURCE", "role": "EXTERNAL_ROUTE", "domain": "CONTENT_IDENTITY", "target": "E2-GATE", "consumer": "governed_external_unknown"},
+    {"id": "E2-ATTEST-SOURCE", "role": "ATTESTOR", "domain": "AUTHORITY_IDENTITY", "target": "future evidence", "consumer": "receipt_authentication"}
+  ],
+  "dossier": {
+    "decision": "E2-DECIDE",
+    "alternatives": ["ALLOW_QUALIFICATION_MAPPING", "DECLINE"],
+    "checks": ["QUESTION_SCOPE", "SOURCE_PROVENANCE", "CONCRETE_ALTERNATIVES", "ASSUMPTIONS_CONSEQUENCES", "AUTHORITY_BOUNDARY", "DOWNSTREAM_QUALIFICATION", "NO_INVENTED_FACTS", "DECISION_FACTS_COMPLETE", "INDEPENDENT_VALIDATION"],
+    "required_facts": ["E2-KP-COLLECT", "E2-KP-CHECK"],
+    "authority_excluded": "production authority, E1 authority, proof or root/slot satisfaction"
+  },
+  "authority": {
+    "id": "E2-GRANT",
+    "identity_domain": "AUTHORITY_IDENTITY",
+    "permission": "USE",
+    "target": "E2-REENTER",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "applicability": "requires exact decision choice, target, permission, scope and current independent predicate"
+  },
+  "proofs": {
+    "root": {"id": "E2-ROOT-PROOF", "target": "E2-ROOT", "predicate": "CONDITION_SATISFIED", "source": "E2-ROOT-PROOF-SOURCE", "state": "UNKNOWN"},
+    "slot": {"id": "E2-SLOT-PROOF", "target": "E2-SLOT", "predicate": "TYPED_EQUAL", "source": "E2-SLOT-PROOF-SOURCE", "state": "UNKNOWN"}
+  },
+  "external_routes": {
+    "known_rule": {"gate": "E2-GATE", "requirement": "E2-EXTERNAL-REQUIREMENT", "rule_known": true, "proposition": "E2 external applicability", "expected_producer": "E2-EXTERNAL-PRODUCER", "receipt_action": "E2-RECEIVE-EVIDENCE", "reentry": "E2-REENTER", "stage": "WAITING_FOR_EXTERNAL_EVIDENCE", "positive_evidence": false},
+    "governed_unknown": {"gate": "E2-GATE-UNKNOWN", "requirement": "E2-UNKNOWN-REQUIREMENT", "rule_known": false, "proposition": "E2 unknown applicability rule", "expected_producer": "E2-RULE-PRODUCER", "receipt_action": "E2-RECEIVE-RULE", "reentry": "E2-REENTER", "stage": "WAITING_FOR_EXTERNAL_EVIDENCE", "positive_evidence": false}
+  },
+  "cases": [
+    {"id": "E2-A04", "kind": "positive", "fixture": "dossier-complete", "expected": "DECISION_READY", "failed_clause": null},
+    {"id": "E2-A05", "kind": "positive", "fixture": "decision-plus-applicable-grant", "expected": "AUTHORITY_APPLICABLE", "failed_clause": null},
+    {"id": "E2-A06", "kind": "positive", "fixture": "known-rule-external-absence", "expected": "EXTERNAL_WAIT", "failed_clause": null},
+    {"id": "E2-A07", "kind": "positive", "fixture": "checkpoint-persistence-inputs", "expected": "PERSISTENCE_READY", "failed_clause": null},
+    {"id": "E2-A08", "kind": "positive", "fixture": "cold-restore-inputs", "expected": "RESTORE_INPUTS_BOUND", "failed_clause": null},
+    {"id": "E2-A09", "kind": "positive", "fixture": "receipt-route-bound", "expected": "RECEIPT_ADMISSION_READY", "failed_clause": null},
+    {"id": "E2-A10", "kind": "positive", "fixture": "received-before-validation", "expected": "EVIDENCE_RECEIVED", "failed_clause": null},
+    {"id": "E2-A11", "kind": "positive", "fixture": "c03-reentry-conjunction", "expected": "REENTRY_PREDICATE_BOUND", "failed_clause": null},
+    {"id": "E2-A12", "kind": "positive", "fixture": "post-reentry-action-contract", "expected": "SELECTION_INPUT_BOUND", "failed_clause": null},
+    {"id": "E2-A13", "kind": "positive", "fixture": "root-slot-specific-proofs", "expected": "PROOF_CONTRACT_BOUND", "failed_clause": null},
+    {"id": "E2-A14", "kind": "positive", "fixture": "governed-unknown-route", "expected": "EXTERNAL_WAIT_UNKNOWN", "failed_clause": null},
+    {"id": "E2-A15", "kind": "positive", "fixture": "source-dependent-state", "expected": "INVALIDATION_DEPENDENCY_BOUND", "failed_clause": null},
+    {"id": "E2-A16", "kind": "positive", "fixture": "route-invalidation", "expected": "PLAN_DEFECT_AFTER_INVALIDATION", "failed_clause": null},
+    {"id": "E2-N01", "kind": "negative", "fixture": "unknown-without-route", "expected": "PLAN_DEFECT", "failed_clause": "NO_GOVERNED_ROUTE"},
+    {"id": "E2-N02", "kind": "negative", "fixture": "malformed-route", "expected": "REJECT", "failed_clause": "ROUTE_CORRESPONDENCE"},
+    {"id": "E2-N03", "kind": "negative", "fixture": "wrong-lineage", "expected": "REJECT", "failed_clause": "LINEAGE"},
+    {"id": "E2-N04", "kind": "negative", "fixture": "stale-evidence", "expected": "NO_REENTRY", "failed_clause": "CURRENTNESS"},
+    {"id": "E2-N05", "kind": "negative", "fixture": "source-substitution", "expected": "REJECT", "failed_clause": "SOURCE_IDENTITY"},
+    {"id": "E2-N06", "kind": "negative", "fixture": "wrong-authority", "expected": "NOT_APPLICABLE", "failed_clause": "AUTHORITY_APPLICABILITY"},
+    {"id": "E2-N07", "kind": "negative", "fixture": "invalid-root-slot-proof", "expected": "UNRESOLVED", "failed_clause": "PROOF_TARGET"},
+    {"id": "E2-N14", "kind": "negative", "fixture": "receipt-reentry-bypass", "expected": "REJECT", "failed_clause": "LIFECYCLE_ORDER"},
+    {"id": "E2-N15", "kind": "negative", "fixture": "blocked-named-action", "expected": "NO_RESUME", "failed_clause": "NAMED_ACTION_ELIGIBILITY"},
+    {"id": "E2-N16", "kind": "negative", "fixture": "independent-branch-precedence", "expected": "CONTROL_PRECEDENCE", "failed_clause": null}
+  ],
+  "invariants": ["authority requirement != possession", "possession != applicability", "evidence requirement != receipt", "receipt != validation", "validation != proof", "proof != resume", "Action PASS != root/slot satisfaction", "expected absence != positive evidence", "selection != execution"],
+  "persistence_ready": true,
+  "actions_executed": 0
+}

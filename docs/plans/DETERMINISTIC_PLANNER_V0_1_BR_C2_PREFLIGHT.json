@@ -1,0 +1,2319 @@
+{
+  "BR_C3_READY": false,
+  "BR_gaps": {
+    "BR-01": "OPEN",
+    "BR-02": "OPEN",
+    "BR-03": "OPEN",
+    "BR-04": "CLOSED",
+    "BR-05": "OPEN"
+  },
+  "C06A_3_RETRY_ALLOWED": false,
+  "C07_RETRY_ALLOWED": false,
+  "CE_02_CLOSED": false,
+  "E1_RESUME_ALLOWED": false,
+  "F03_STATUS": "CLOSED",
+  "NEXT_PACKAGE": "BR-C2 contract definition/completion before execution retry; BR-C4 remains separately assigned",
+  "V0_1_CURRENT_STATUS": "CORRECTION_REQUIRED",
+  "authoritative_package": {
+    "acceptance": [
+      "all assigned action/result fields independently accounted",
+      "scope/effect/authority exclusions retained",
+      "positive source-shaped alternative plus negatives",
+      "no PASS-to-root/slot promotion"
+    ],
+    "blockers": [
+      "D4"
+    ],
+    "chains_unlocked": [
+      "source -> O01",
+      "source report -> O03 bounded result"
+    ],
+    "contract_work": "Define finite action/result source projections and reviewed typed outcome schemas; reuse three existing bounded result predicates without treating them as coverage for all63actions.",
+    "gaps": [
+      "BR-01",
+      "BR-02",
+      "BR-05"
+    ],
+    "id": "BR-C2",
+    "members_unlocked": [
+      "definitions",
+      "normalized plan actions",
+      "results"
+    ],
+    "prerequisites": [
+      "BR-C1"
+    ]
+  },
+  "classification_counts": {
+    "CONTRACT_INCOMPLETE": 67,
+    "EXECUTABLE_CONTRACT": 8
+  },
+  "contract_conflict_set": [],
+  "contract_mismatch_set": [
+    {
+      "affected": "all63action definition routes",
+      "evidence": "Existing profile definitions are BASE/RENAMED three-action fixtures; BR-C1 transforms only raw identity,subvalue identity,tagged references.",
+      "id": "BC2-PF-01",
+      "missing": "complete independently governed source-to-O01 typed definition/result/knowledge/authority/provenance projection"
+    },
+    {
+      "affected": "OR-BINDING,OR-CONTEXT,OR-PREP-VALIDATOR",
+      "evidence": "Existing accepted_expression requires exact synthetic parameter/source/statement; governing_source pin alone is not a transformation.",
+      "id": "BC2-PF-02",
+      "missing": "source-report-to-normalized-result projection and independent source-shaped fixture pairs"
+    },
+    {
+      "affected": "requested O10 graph route; assigned BR-C4",
+      "evidence": "15source relations and962assertions cannot be replaced with BASE/RENAMED graph fixture. No reassignment performed.",
+      "id": "BC2-PF-03",
+      "missing": "source-to-predicate/claim/admission mapping for full graph"
+    }
+  ],
+  "external_evidence_gaps_remaining": 8,
+  "implementation_modified": false,
+  "input_pins": {
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_CONTRACT.json": "f36bf174337c90d72ef26c912956f1b5070b5323a456b214fdf11c8efdaa0921",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_FIXTURES.json": "a0112189adad553bcd3f6670e5191cc9916db8fb4428d51e3d2664a6caee46bb",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_RESULT.md": "5e07c27d412570afba5863f605a33e0cf03b538eaa17d08365afd4d0326b5c09",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_VALIDATION.json": "c78f259f84fe1ac637299ec84af5fa59d1be7b7207fa69b5a8058d23028ddc6c",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_2_FIXTURES_1.json": "6887dd869c8583544059da8023228bc92bffc75097c6e06cd324d5610a02d177",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_2_MAPPING_1.json": "bd33a7e753507b67ef61541e86d0e4e767fe84942fee932be78d1e77c68f7595",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_2_ORACLES_1.json": "a2946a73dc0128e073d6d9507da59ace2951f0e944b7d1c1fbb5301f6554524e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.json": "09219492515f1db8ae8583d1e7443cf73694cbd4a3cf9d7de14be0357812fac6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.md": "3ef49278d0b13ebf91979723496012f7d30292c5b4465060a00dcee4da7c613e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES.json": "9ee7e8f638f5ea24a14642332b95fd60e4ab1c1c487eddc21d16dc3766cb4135",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_PREFLIGHT.json": "7537b8962e1873a9bf0c7ad74952d70ed719297946d891269edfb50c69b48dd3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_VALIDATION.json": "a10c1e345d9c1167313b6961dd10cbbe24fb62ce3ac6b8f4cc55469d2a821269",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.json": "190dacd4abf69a09320850e36a68d799970886698159346b917ad57668304ac3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.md": "4e009476e5c4795b4507ac94ddc7f6e35605c4a8d385c2d910c8578144e6716c",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1_FIXTURES.json": "9430da4b944845a8f97edaa0b9be4f02d4d049317e209e09a961cbc7872244a2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1_PREFLIGHT.json": "f52ff871f0f3f67fd730c4d68a4e323a2cff34642a0f0b557398b0e6d2727329",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1_VALIDATION.json": "e87540d1305e50ecc25dad8dc28cf938eaf88bebbae945bce95695027245263b",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1.md": "654f9730ea19e5c77fed3eebebc05698b164d35a2dc413bd2fa3c9903684a028",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_FIXTURES.json": "9a0286c5333ec6c79b15e47bbb62a04837b76bf03bdb3d94a26ed134d4e46885",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_JOINS.json": "832d93ed741b65d6b2abebe52b0f21cf77bedf4debce3cbf65dfec99b24682a0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_MAPPINGS.json": "df4e3b564b014ce1de270912cc15aac556c142b16b03914479a250294e82bc9f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_PREFLIGHT.json": "08e502810dd1ff6ffd1b072d82f4aa8347c6cf703f5db8a83cd35935cce28d0e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_VALIDATION.json": "f0c8003b3205c6b51d28eddd04c0aca943a7ab900ad545d660ef14197b894e08",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_REMAINING_BRIDGE_DEPENDENCIES_1.json": "ecc8911765b274363c2e3b60a5d7b14fe3ab6b1502969c75b6b536d6dbb73452",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_REMAINING_BRIDGE_DEPENDENCIES_1.md": "e4275f7b264f85e0adf0d0557351dfec2bebef45238f1a69c15bbe25b48d39a5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1.md": "e9cbd16d19e4c88a03b7ad791517de6eb1737de938b7453c80f0fadf65d1d2b5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_FIXTURES.json": "f65350bb357b38b36f82cc3979c4ee64b4fd62776158644797fc6e3eccca649d",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_PREFLIGHT.json": "05e548e14c7b3802e8f97d67baf0124f6a46d2f5fbaabdc6612b930016f90737",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_PROJECTIONS.json": "4cd3ba20397bf978e16cf74243579e824ecb335c019c2646fbdd711c931df574",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_SOURCE_CLASSES.json": "d7af63fd34822ff37832851b05fedf04240bbcb4229587599b865c6f2f02894f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_VALIDATION.json": "8c0903f084bcca0fe6c6bbf9649ce419333df32ff12c9315db91a0ea1b116ea6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1.json": "efa295e04f8cfd169481e4ac73fea5077207303c00d187e3ad104bae945d5806",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1.md": "e00d0811f97c357302d236cf531e9a4e56102f372ced5f84ff6095c68cc936c7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1_FIXTURES.json": "d38ec7e51510f847a1a173f793247f14114f79e07fa8604df15af7d2fc7cb3f2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1_VALIDATION.json": "aae55f676a9c940f9a1b3ef5d0a6d6e40e4e564bbe78cd02fe07120b1a7e3841",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1.json": "946046020d0348dcc98410fe0cdaf6d3a212e136da0c83c8ad357860d2a1a7ce",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1.md": "56bcbc4a501a25991a9df119e59732070237aeb5870bbf99641ea18553960d59",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1_FIXTURES.json": "1a60e080c23a1033fdeb0b5688fabb1b56182ac209a0061fd5f975c2ec1ba258",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1_VALIDATION.json": "003409b1b563993bc06879ecb2e2ec54cc81cd075f26223ea31636f287fedb47"
+  },
+  "new_qualification": {
+    "actions": 0,
+    "determinism": "NOT_RUN_PREFLIGHT_STOP",
+    "graphs": 0,
+    "invalidation": "NOT_RUN_PREFLIGHT_STOP",
+    "persistence": "NOT_RUN_PREFLIGHT_STOP",
+    "results": 0,
+    "source_to_Oxx_negatives": 0,
+    "source_to_Oxx_positives": 0,
+    "suspended_routes": 0
+  },
+  "production_effect": false,
+  "reason": "BR_C2_CONTRACT_INCOMPLETE",
+  "remaining_coverage": 15,
+  "restored_and_qualified": 2,
+  "result": "BLOCKED",
+  "routes": [
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:S-ANCESTRY",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/0",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:S-APPROVAL",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/1",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:S-BINDING",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/2",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:S-EXEC",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/3",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:S-CONTEXT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/4",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:SEM-IMPLEMENTATION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/5",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:SEM-BUDGET",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/6",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:SEM-INTERFACES",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/7",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:SEM-IGNORED",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/8",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:SEM-ELIGIBILITY",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/9",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:PREP-RUNTIME_HEAD",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/10",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:PREP-SUPERVISOR",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/11",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:PREP-AUDIT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/12",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:PREP-VALIDATOR",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/13",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:PREP-BINDING-GRANT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/14",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "PREP-VALIDATOR"
+      ],
+      "route": "ACTION:DEC-VALIDATOR",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/15",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "PREP-BINDING-GRANT"
+      ],
+      "route": "ACTION:DEC-BINDING",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/16",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "PREP-RUNTIME_HEAD"
+      ],
+      "route": "ACTION:DEC-RUNTIME_HEAD",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/17",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "PREP-SUPERVISOR"
+      ],
+      "route": "ACTION:DEC-SUPERVISOR",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/18",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "PREP-AUDIT"
+      ],
+      "route": "ACTION:DEC-AUDIT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/19",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "SEM-IGNORED"
+      ],
+      "route": "ACTION:DEC-IGNORED",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/20",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "S-EXEC"
+      ],
+      "route": "ACTION:DEC-EXEC",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/21",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "SEM-INTERFACES",
+        "REEVAL-IMPLEMENTATION",
+        "REEVAL-BUDGET"
+      ],
+      "route": "ACTION:DEC-INTERFACES",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/22",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "SEM-INTERFACES",
+        "REEVAL-IMPLEMENTATION",
+        "REEVAL-BUDGET",
+        "SEM-ELIGIBILITY",
+        "DEC-IGNORED",
+        "DEC-EXEC",
+        "DEC-INTERFACES",
+        "S-BINDING",
+        "S-CONTEXT"
+      ],
+      "route": "ACTION:CONTRACT-T1",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/23",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-DISPATCH",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/24",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "S-ANCESTRY"
+      ],
+      "route": "ACTION:MAP-ANCESTRY",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/25",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "S-APPROVAL"
+      ],
+      "route": "ACTION:MAP-APPROVAL",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/26",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-RELEASE",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/27",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-CONTEXT_ID",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/28",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-RUNTIME",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/29",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "REEVAL-IMPLEMENTATION"
+      ],
+      "route": "ACTION:MAP-IMPLEMENTATION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/30",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-PAYLOAD",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/31",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-RETENTION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/32",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "REEVAL-BUDGET"
+      ],
+      "route": "ACTION:MAP-BUDGET",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/33",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-LIFECYCLE",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/34",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-IGNORED"
+      ],
+      "route": "ACTION:MAP-IGNORED",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/35",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-PATHS",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/36",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "S-EXEC",
+        "DEC-EXEC"
+      ],
+      "route": "ACTION:MAP-EXEC_BINS",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/37",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-ARGV",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/38",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-SHELL_NETWORK",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/39",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "S-CONTEXT"
+      ],
+      "route": "ACTION:MAP-CONTEXT_PROJECTION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/40",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-TRANSPORT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/41",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-RUNTIME_HEAD"
+      ],
+      "route": "ACTION:MAP-RUNTIME_HEAD",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/42",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-SUPERVISOR"
+      ],
+      "route": "ACTION:MAP-SUPERVISOR",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/43",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-AUDIT",
+        "MAP-IGNORED"
+      ],
+      "route": "ACTION:MAP-AUDIT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/44",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "MAP-SUPERVISOR"
+      ],
+      "route": "ACTION:S-SUCCESSION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/45",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "S-SUCCESSION",
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-SUCCESSION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/46",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "DEC-BINDING",
+        "CONTRACT-T1",
+        "S-BINDING",
+        "S-ANCESTRY",
+        "MAP-DISPATCH",
+        "MAP-RELEASE",
+        "MAP-CONTEXT_ID"
+      ],
+      "route": "ACTION:BUILD-BINDING",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/47",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES",
+        "S-CONTEXT"
+      ],
+      "route": "ACTION:IMPL-CONTEXT",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/48",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES"
+      ],
+      "route": "ACTION:IMPL-GOVERNANCE",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/49",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "DEC-INTERFACES",
+        "MAP-PAYLOAD",
+        "MAP-RETENTION",
+        "MAP-TRANSPORT"
+      ],
+      "route": "ACTION:IMPL-TRANSMISSION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/50",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "DEC-VALIDATOR",
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:IMPL-VALIDATOR",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/51",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "CONTRACT-T1",
+        "S-CONTEXT",
+        "IMPL-CONTEXT",
+        "BUILD-BINDING"
+      ],
+      "route": "ACTION:BUILD-EXECUTION_PROFILE",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/52",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "BUILD-BINDING",
+        "SEM-ELIGIBILITY"
+      ],
+      "route": "ACTION:S-ELIGIBILITY",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/53",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "S-ELIGIBILITY",
+        "CONTRACT-T1"
+      ],
+      "route": "ACTION:MAP-ELIGIBILITY",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/54",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "MAP-DISPATCH",
+        "MAP-ANCESTRY",
+        "MAP-APPROVAL",
+        "MAP-RELEASE",
+        "MAP-CONTEXT_ID",
+        "MAP-RUNTIME",
+        "MAP-IMPLEMENTATION",
+        "MAP-PAYLOAD",
+        "MAP-RETENTION",
+        "MAP-BUDGET",
+        "MAP-LIFECYCLE",
+        "MAP-IGNORED",
+        "MAP-PATHS",
+        "MAP-EXEC_BINS",
+        "MAP-ARGV",
+        "MAP-SHELL_NETWORK",
+        "MAP-CONTEXT_PROJECTION",
+        "MAP-TRANSPORT",
+        "MAP-RUNTIME_HEAD",
+        "MAP-SUPERVISOR",
+        "MAP-AUDIT",
+        "MAP-SUCCESSION",
+        "BUILD-BINDING",
+        "IMPL-CONTEXT",
+        "IMPL-GOVERNANCE",
+        "IMPL-TRANSMISSION",
+        "IMPL-VALIDATOR",
+        "BUILD-EXECUTION_PROFILE",
+        "MAP-ELIGIBILITY"
+      ],
+      "route": "ACTION:CHECK-READINESS",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "READINESS_PLAN",
+      "source_selector": "/resolution_actions/55",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "knowledge_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:INPUT-BUDGET",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "DECISION_INPUT_REENTRY_1",
+      "source_selector": "/resolution_actions/56",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "INPUT-BUDGET"
+      ],
+      "route": "ACTION:DEC-BUDGET",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "DECISION_INPUT_REENTRY_1",
+      "source_selector": "/resolution_actions/57",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "DEC-BUDGET"
+      ],
+      "route": "ACTION:REEVAL-BUDGET",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "DECISION_INPUT_REENTRY_1",
+      "source_selector": "/resolution_actions/58",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [],
+      "route": "ACTION:INPUT-IMPLEMENTATION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "DECISION_INPUT_REENTRY_1",
+      "source_selector": "/resolution_actions/59",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "INPUT-IMPLEMENTATION"
+      ],
+      "route": "ACTION:DEC-IMPLEMENTATION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "DECISION_INPUT_REENTRY_1",
+      "source_selector": "/resolution_actions/60",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "DEC-IMPLEMENTATION"
+      ],
+      "route": "ACTION:REEVAL-IMPLEMENTATION",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "DECISION_INPUT_REENTRY_1",
+      "source_selector": "/resolution_actions/61",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "missing_contract": "BC2-PF-01",
+      "note": "Missing same-named source fields are mapping obligations, not proof that authoritative source facts are absent. No source-to-full-O01 profile transformation supplied.",
+      "prerequisite_projection_required": [
+        "DEC-BUDGET"
+      ],
+      "route": "ACTION:FACT-BUDGET-APPLICABILITY",
+      "source_class": "PLAN",
+      "source_identity": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+      "source_keys_present": [
+        "effect_boundary",
+        "executor",
+        "external_prerequisites",
+        "id",
+        "knowledge_requirements",
+        "prerequisite_actions",
+        "primary_operation_class",
+        "scope",
+        "stage_role"
+      ],
+      "source_scope": "Exact approved StatusBudgetAuthority and recorded current R4/G4/E1 target envelope only.",
+      "source_selector": "/resolution_actions/62",
+      "target": "O01.actions / typed ActionDefinition",
+      "target_keys_without_same_named_source_member": [
+        "authority_requirements",
+        "lineage",
+        "provenance",
+        "result_contract"
+      ]
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "existing_oracle": "Executable for its normalized synthetic source.body.statement and parameter pin",
+      "missing_contract": "BC2-PF-02",
+      "missing_projection": [
+        "governing report section -> each typed payload/claim",
+        "raw report source identity -> normalized source identity with retained provenance",
+        "source-specific prerequisite/scope lineage -> result input",
+        "independent projection-positive and negative fixtures"
+      ],
+      "not_equivalent": "O08 preparation evidence admission does not itself produce OR-PREP-VALIDATOR result profile.",
+      "route": "RESULT:S-BINDING",
+      "source": {
+        "location": "# Identified inputs; Explicit missing inputs and producer requirements",
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+        "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+      },
+      "source_class": "GOVERNED_TEXT",
+      "target": "OR-BINDING"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "existing_oracle": "Executable for its normalized synthetic source.body.statement and parameter pin",
+      "missing_contract": "BC2-PF-02",
+      "missing_projection": [
+        "governing report section -> each typed payload/claim",
+        "raw report source identity -> normalized source identity with retained provenance",
+        "source-specific prerequisite/scope lineage -> result input",
+        "independent projection-positive and negative fixtures"
+      ],
+      "not_equivalent": "O08 preparation evidence admission does not itself produce OR-PREP-VALIDATOR result profile.",
+      "route": "RESULT:S-CONTEXT",
+      "source": {
+        "location": "# Accepted inventory knowledge",
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+        "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+      },
+      "source_class": "GOVERNED_TEXT",
+      "target": "OR-CONTEXT"
+    },
+    {
+      "classification": "CONTRACT_INCOMPLETE",
+      "existing_oracle": "Executable for its normalized synthetic source.body.statement and parameter pin",
+      "missing_contract": "BC2-PF-02",
+      "missing_projection": [
+        "governing report section -> each typed payload/claim",
+        "raw report source identity -> normalized source identity with retained provenance",
+        "source-specific prerequisite/scope lineage -> result input",
+        "independent projection-positive and negative fixtures"
+      ],
+      "not_equivalent": "O08 preparation evidence admission does not itself produce OR-PREP-VALIDATOR result profile.",
+      "route": "RESULT:PREP-VALIDATOR",
+      "source": {
+        "location": "# Proposed DEC-VALIDATOR dossier; Required future qualification; Exclusions",
+        "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+        "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+      },
+      "source_class": "GOVERNED_TEXT",
+      "target": "OR-PREP-VALIDATOR"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-BUDGET-APPLICABILITY-EVIDENCE",
+      "reentry": [
+        "FACT-BUDGET-APPLICABILITY",
+        "REEVAL-BUDGET"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-BUDGET-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-ANCESTRY-EVIDENCE",
+      "reentry": [
+        "S-ANCESTRY"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-ANCESTRY-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-APPROVAL-EVIDENCE",
+      "reentry": [
+        "S-APPROVAL"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-APPROVAL-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-AUDIT-SOURCE-EVIDENCE",
+      "reentry": [
+        "PREP-AUDIT"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-AUDIT-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-RUNTIME-HEAD-EVIDENCE",
+      "reentry": [
+        "PREP-RUNTIME_HEAD"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-RUNTIME-HEAD-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-SUPERVISOR-EVIDENCE",
+      "reentry": [
+        "PREP-SUPERVISOR"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-SUPERVISOR-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-EXEC-POLICY-EVIDENCE",
+      "reentry": [
+        "DEC-EXEC readiness reevaluation"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-EXEC-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "classification": "EXECUTABLE_CONTRACT",
+      "positive_evidence_received": false,
+      "receipt": "RECEIVE-IMPLEMENTATION-SOURCE-EVIDENCE",
+      "reentry": [
+        "INPUT-IMPLEMENTATION"
+      ],
+      "route": "ABSENCE:E1-EXTERNAL-REQUEST-IMPLEMENTATION-1",
+      "scope": "BR-C1 shared absence binding only; no new BR-C2 action/result projection qualified"
+    },
+    {
+      "assertions": 962,
+      "assignment": "BR-C4, not BR-C2, under authoritative dependency plan",
+      "classification": "CONTRACT_INCOMPLETE",
+      "entities": 343,
+      "missing_contract": "BC2-PF-03",
+      "missing_projection": [
+        "complete source relationship -> typed predicate map",
+        "source provenance -> admitted/descriptive claim disposition",
+        "support/currentness/context projection for all assigned assertions"
+      ],
+      "route": "GRAPH:O10",
+      "scope_resolution": "Recorded for complete requested-route preflight; not executed or reassigned. No predicate contradiction established.",
+      "source_class": "GRAPH",
+      "source_relations": [
+        "APPLIES_TO",
+        "AUTHORIZED_BY",
+        "BINDS",
+        "CONSUMED_BY",
+        "CORRESPONDS_TO",
+        "DERIVED_FROM",
+        "EVIDENCED_BY",
+        "HAS_IDENTITY_TYPE",
+        "HAS_SLOT",
+        "PRODUCED_BY",
+        "REQUIRES",
+        "REQUIRES_FIELD",
+        "SUPERSEDES",
+        "TRANSFORMED_BY",
+        "VALIDATED_BY"
+      ]
+    }
+  ],
+  "schema": "BR-C2-COMPLETE-PREFLIGHT-1",
+  "scope_counts": {
+    "assigned_action_routes": 63,
+    "bounded_result_routes": 3,
+    "preserved_external_absence_routes": 8,
+    "requested_graph_route_outside_package": 1
+  },
+  "scope_discrepancy": "Prompt describes graph as BR-C2, dependency plan assigns it to prohibited BR-C4. Conditional assigned-route clauses preserve BR-C4 boundary. Even an expanded-scope reading remains blocked by BC2-PF-03.",
+  "shared_binding_prerequisite": "PASS under BR-C1 specification scope",
+  "source_graph_assigned_to": "BR-C4",
+  "validation": {
+    "existing_files_changed": [],
+    "frozen_E1_files_unchanged": 10911,
+    "frozen_inventory_equal": true,
+    "implementation_tests": "NOT_RUN_PREFLIGHT_STOP",
+    "input_pins": "PASS",
+    "local_links": "PASS",
+    "new_files": [
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_PREFLIGHT.json",
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_RESULT.md"
+    ],
+    "route_inventory": "PASS"
+  },
+  "work_package": "BR-C2"
+}

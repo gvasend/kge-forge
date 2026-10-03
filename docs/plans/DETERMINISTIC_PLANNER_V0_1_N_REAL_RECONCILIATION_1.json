@@ -1,0 +1,660 @@
+{
+  "E2_coverage_counts": {
+    "COVERED_ONLY_SYNTHETICALLY": 4,
+    "FULLY_COVERED": 2,
+    "NOT_APPLICABLE": 0,
+    "NOT_COVERED": 2,
+    "PARTIALLY_COVERED": 4
+  },
+  "alternatives": [
+    {
+      "authority": "NO_CHANGE_REQUIRED to retain current gate;additional evidence needed to pass",
+      "classification": [
+        "PRESERVES_ASSURANCE"
+      ],
+      "id": "KEEP_UNCHANGED",
+      "lost_obligations": [],
+      "remaining": "NR01-NR09,NR12 real reconstruction residual and future execution checks",
+      "rule": "Existing gate remains conjunctive;E2 adds evidence but never replaces N-REAL"
+    },
+    {
+      "authority": "QUALIFICATION_AUTHORITY_DECISION for revised acceptance allocation",
+      "classification": [
+        "PRESERVES_ASSURANCE",
+        "CHANGES_ASSURANCE_MECHANISM"
+      ],
+      "condition": "Equivalent only when all12 obligations satisfied; archive-only checks cannot replace executed real-state obligations",
+      "current_viability": "Cannot unblock broadrelease now;real-source lane remainsblocked",
+      "id": "DECOMPOSE",
+      "lost_obligations": [],
+      "rule": "Assign portable native lifecycle tests to E2; retain real-source ingestion/coverage/oracle/cold correspondence and tailoredmutation tests as separately required lane; require explicit coupling proof"
+    },
+    {
+      "authority": "QUALIFICATION_AUTHORITY_DECISION cannot describe lost coverage as preserved",
+      "classification": [
+        "REDUCES_ASSURANCE"
+      ],
+      "current_viability": "Not valid as equivalent replacement; would requireexplicit narrowedclaim",
+      "equivalent": false,
+      "id": "REPLACE_WITH_E2",
+      "lost_obligations": [
+        "NR01",
+        "real portions NR02-NR09",
+        "real import NR12"
+      ],
+      "rule": "Remove N-REAL and accept currentE2 as substitute"
+    },
+    {
+      "authority": "QUALIFICATION_AUTHORITY_DECISION must authorize releaseclaim scope and terminology",
+      "classification": [
+        "CHANGES_ASSURANCE_MECHANISM",
+        "REDUCES_ASSURANCE for an unqualified broadrelease claim"
+      ],
+      "condition": "No lost obligation if legacy lane remains explicitlyunqualified and broadclaim unavailable;canonical-only release has narrowerassurance",
+      "id": "TWO_TIER",
+      "labels_limit": "New scoped evidence labels,not existing QUALIFIED status aliases",
+      "lost_obligations": [],
+      "proposed_labels": [
+        "CANONICAL_E2_QUALIFIED",
+        "LEGACY_E1_COMPATIBILITY"
+      ],
+      "rule": "Separate proposed canonical-runtime qualification from E1-legacy compatibility qualification; broadoriginalclaim requiresboth"
+    }
+  ],
+  "authority_limit": "Repository identifiesgoverningplan/statusreviewgate,not namedindividual delegation. Requirementowner/releasequalificationauthority must explicitlyapprove scopechange; Architect suppliessemanticimpactonly. No self-issuedauthority.",
+  "exact_text": {
+    "section8": "## 8. Actual frozen-manifest readiness test (N-REAL)\n\nThis is a **future C06/C07 non-effecting validation test**, not executed by this planning task. It does not release suspension or run any selected action.\n\n1. Start a new Python process with an empty temporary output directory and no prior planner objects. Inputs are the actual frozen `docs/experiments/E1/E1_RESUME_MANIFEST_1.json`, its checkpoint, pinned referenced sources, supported policy and reviewed mapping version. Do not supply the M replay snapshot as initial state.\n2. Verify raw and embedded identity domains, checkpoint identity, full ledger/state/policy bindings, authority semantic identity rules and every required contract proof pin. Never repin a mismatch. Historical stale references are retained as historical with explicit acceptance/currentness limits; no silent freshness upgrade.\n3. Import the complete operational contract inventory in section 6. Run C01 admission and C02 enforcement validation. Check goal/slot/root/action coverage and exact typed authority/evidence/decision/result/reentry contracts. Incomplete required semantics produce a precise failing readiness diagnostic.\n4. Recompute all root/slot qualifications, readiness, ACTIONABLE, selection, holds, frontier, control and C03 resume proof solely from admitted contracts and evidence. Retain source identities and derivation traces.\n5. Separately read the pinned manifest, handoff and checkpoint as an **oracle**. Compare their mutual consistency and the computed state. The frozen records currently describe suspension/MIXED_WAIT, empty machine/human-ready sets, no received evidence, 27 unresolved roots, 41 unresolved slots and Candidate-3 authority VALID_UNCONSUMED. These values are not injected into predicates or control calculation, and are not numeric shortcuts in the importer.\n6. Persist a new isolated canonical bundle; terminate the process. Restore it in another fresh process, recompute and compare operational objects, all reference/contract identities, canonical state, actionable/blocked sets, typed branch/frontier output, policy binding and resume eligibility. Compare meaningful fields, not merely opaque byte counts.\n7. In **separate explicitly synthetic copies**, test a supported renamed contract/target and supplied evidence. A complete accepted receipt enables only its legitimate route; applying a separately supplied result in the replay harness must obey that restored action's actual acceptance contract. Empty default PASS, partial proofs or invented output are rejected. A declared decision route must reconstruct and enforce its dossier/authority checks. This extension tests semantics, never modifies or operates actual E1.\n8. Negative copies outside E1: dangling/stale/wrong-domain target, omitted required contract/goal, conflicting overlay, changed policy, stale ordering, missing receipt proof and changed source bytes. Fail before operational use with exact diagnostics. Their checksums may be recomputed only for synthetic fixture identity, never to authenticate altered frozen evidence.\n9. Compare the complete frozen file inventory before/after, require 10,911 identical paths and hashes, and assert no authority consumption, network acquisition, request sending, implementation effect, Template-1/Candidate-3 construction or planner action execution in the real-manifest readiness path.\n\n\u201cReady to restore and compute a suspended state\u201d is separate from `E1_RESUME_ALLOWED`. Successful N-REAL must still report no actual E1 resumption permission for the frozen input.\n\n",
+    "section9": "## 9. Requalification gate\n\nAll conditions below are conjunctive. A failing/missing item keeps current status CORRECTION_REQUIRED; passing the original suite alone does not restore qualification.\n\n- F01\u2013F04 CLOSED with independent before-fails/after-passes counterexamples; F05/F06 CLOSED; observations handled as above.\n- C01\u2013C06 accepted; original A\u2013N and X01\u2013X11 PASS with no waiver, skip or NOT_YET_APPLICABLE.\n- Importer, CLI, policy binding, full cold resume, actual frozen-E1 operational import/validation, persistence and seven global controls PASS.\n- Fresh-process repeated suites and controlled permutations preserve complete outputs and canonical identities. Equal-spelling typed IDs, source/predicate/reference ordering and phase/history distinctions are included; two hash seeds alone are insufficient.\n- Required fail-open counterexamples no longer reproduce; **fail-open paths = 0 and hidden nondeterminism = 0 within the tested v0.1 scope**, not an unprovable universal software-security claim.\n- All 10,911 frozen E1 files byte-identical; historical qualification/review/authority records preserved; no E1 resume; no production effects; deferred-scope violations = 0; affected repository regressions PASS; links/JSON/whitespace/change scope validated.\n- New qualification evidence records commands, test identities, rule/mapping/policy/code/source hashes, exact output identities, counterexample results and limits. Evidence for closing a finding must not reuse the failing computation as its only oracle.\n- A fresh independent adversarial review examines corrected enforcing paths and new mutations. Only QUALIFICATION_CONFIRMED or QUALIFICATION_CONFIRMED_WITH_MINOR_FINDINGS with **no open correctness/determinism/persistence/authority/resume-affecting finding** permits status 2 to say QUALIFIED. Any required new correction returns to its owning package or an explicitly bounded follow-up plan.\n\n",
+    "sha256": "9937098fc263ce9b7a6c05d04c0399e8303d36c55f9c373f9d61c83f39f1b329",
+    "source": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md"
+  },
+  "gates": {
+    "CANONICAL_E2_QUALIFIED": "AllE2P01-P05contracts/casespass AND independentE2P06reviewaccepted AND noopenrequireddefect AND source/code/policy/evidencepinned AND scopepreserved",
+    "FINAL_QUALIFIED": "Allcurrentreleaseobligationspassed AND acceptedfreshindependentreview AND append-onlyqualification/statusapproval;notgrantedhere",
+    "LEGACY_E1_COMPATIBILITY": "Complete reviewedlegacycontract plus actualE1migration/nativeadmission plus N_REAL_SATISFIED;currentfalse",
+    "N_REAL_SATISFIED": "AllNR01-NR12acceptedrunrecordsunderoriginalsource/scopeconstraints;notE2scalarsorarchivalpinsalone",
+    "PLANNER_V0_1_REQUALIFICATION_READY": "closedfindingspreserved AND baselinepass AND E2lifecycle/determinism/cold/reentry/continuationpass AND noScopeViolation AND freshreviewready AND N_REAL_SATISFIED under currentgate; any replacement requiresseparateissuedreconciliation"
+  },
+  "obligations": [
+    {
+      "E2_CASES": [
+        "E2-A01",
+        "E2-END"
+      ],
+      "E2_CLASSIFICATION": "NOT_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "State derived from real source closure",
+      "NEGATIVE_INVARIANT": "No fixture substitution",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR01",
+      "PRESERVED_E1_EVIDENCE": "Pinned manifest/checkpoint/source inventory exist; BR-C1 documentary bindings pass",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "REAL_ARTIFACT_INGESTION",
+      "REQUIRED_INPUT": "Actual frozen manifest,checkpoint,referenced bytes,mapping,policy",
+      "REQUIRED_OPERATION": "Fresh process import with no M fixture/prior objects",
+      "WHY_REAL_INPUT_MATTERS": "Distinguishes source-driven ingestion from canonical fixture construction",
+      "residual_after_assuming_E2_pass": "Complete real-E1 source-to-canonical import absent",
+      "source_step": "8.1"
+    },
+    {
+      "E2_CASES": [
+        "E2-A01",
+        "E2-N03",
+        "E2-N05",
+        "E2-N10"
+      ],
+      "E2_CLASSIFICATION": "PARTIALLY_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Authenticated complete required-source closure",
+      "NEGATIVE_INVARIANT": "Hash is not semantic authority/currentness",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR02",
+      "PRESERVED_E1_EVIDENCE": "54 shared present bindings,37 source invalidations and real issued record pins are preserved",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "REAL_SOURCE_PROVENANCE",
+      "REQUIRED_INPUT": "Raw and embedded identity domains;ledger/state/policy/authority/proof pins",
+      "REQUIRED_OPERATION": "Verify every required pin/domain without repinning; retain stale history",
+      "WHY_REAL_INPUT_MATTERS": "Real multi-artifact identity and scope correspondence must be exercised",
+      "residual_after_assuming_E2_pass": "Complete reached native provenance/identity mapping and verification absent",
+      "source_step": "8.2"
+    },
+    {
+      "E2_CASES": [
+        "E2-A01",
+        "E2-A04",
+        "E2-A05"
+      ],
+      "E2_CLASSIFICATION": "COVERED_ONLY_SYNTHETICALLY",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Every required operational contract present; incomplete rejects",
+      "NEGATIVE_INVARIANT": "No opaque-object/default-PASS substitutes",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR03",
+      "PRESERVED_E1_EVIDENCE": "819-cell inventory;186 unresolved fields;0/63 complete source Action admissions;8 native role families incomplete",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "FULL_CONTRACT_RESTORATION",
+      "REQUIRED_INPUT": "Complete real action/goal/root/slot/decision/result/authority/evidence inventory",
+      "REQUIRED_OPERATION": "Import typed full inventory and compare independent coverage",
+      "WHY_REAL_INPUT_MATTERS": "F03 was omitted real semantics despite valid serialization",
+      "residual_after_assuming_E2_pass": "Authoritative complete63-Action definitions and native role crosswalks absent",
+      "source_step": "8.3"
+    },
+    {
+      "E2_CASES": [
+        "E2-A15",
+        "E2-N07",
+        "E2-N08",
+        "E2-N09",
+        "E2-REG"
+      ],
+      "E2_CLASSIFICATION": "COVERED_ONLY_SYNTHETICALLY",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Malformed/stale references rejected; current gates enforced",
+      "NEGATIVE_INVARIANT": "Do not delete stale ordering obligations",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR04",
+      "PRESERVED_E1_EVIDENCE": "Closed C01/C02 and native adversarial regressions; no full-source reconstruction",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "ADMISSION_AND_ENFORCEMENT",
+      "REQUIRED_INPUT": "Source-restored typed model",
+      "REQUIRED_OPERATION": "Run C01 admission/C02 invalidation/prerequisite enforcement",
+      "WHY_REAL_INPUT_MATTERS": "Portable engine property plus application to real reconstructed state",
+      "residual_after_assuming_E2_pass": "Real restored-state enforcement coverage still untested",
+      "source_step": "8.3"
+    },
+    {
+      "E2_CASES": [
+        "E2-A02",
+        "E2-A06",
+        "E2-A11",
+        "E2-A13",
+        "E2-A14"
+      ],
+      "E2_CLASSIFICATION": "COVERED_ONLY_SYNTHETICALLY",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Exact native conclusions with traceable sources",
+      "NEGATIVE_INVARIANT": "No saved-label/count injection",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR05",
+      "PRESERVED_E1_EVIDENCE": "Real actionability/selection history and frontier exist; bounded A-N replay; external unknown repair separately closed",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "REAL_ACTIONABILITY_AND_CONTROL",
+      "REQUIRED_INPUT": "Admitted complete E1 operational state",
+      "REQUIRED_OPERATION": "Recompute roots,slots,readiness,actionability,selection,holds,frontier,control,C03",
+      "WHY_REAL_INPUT_MATTERS": "Checks actual suspended run semantics,not arbitrary synthetic equivalent",
+      "residual_after_assuming_E2_pass": "Complete real-state independent recomputation missing",
+      "source_step": "8.4"
+    },
+    {
+      "E2_CASES": [
+        "E2-END",
+        "E2-A08"
+      ],
+      "E2_CLASSIFICATION": "NOT_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "MIXED_WAIT;empty machine/human-ready;27 unresolved roots,41slots;no receipt;Candidate3 VALID_UNCONSUMED",
+      "NEGATIVE_INVARIANT": "Oracle outputs not algorithm inputs",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR06",
+      "PRESERVED_E1_EVIDENCE": "Real mutually referenced suspension records and eight requests preserved",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "INDEPENDENT_FROZEN_ORACLE",
+      "REQUIRED_INPUT": "Pinned manifest,handoff,checkpoint read separately",
+      "REQUIRED_OPERATION": "Compare consistency and recomputed states",
+      "WHY_REAL_INPUT_MATTERS": "Real oracle is an external constraint on reconstruction",
+      "residual_after_assuming_E2_pass": "No full-source canonical computation to compare with real oracle",
+      "source_step": "8.5"
+    },
+    {
+      "E2_CASES": [
+        "E2-A07",
+        "E2-A08",
+        "E2-D01"
+      ],
+      "E2_CLASSIFICATION": "COVERED_ONLY_SYNTHETICALLY",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Identical full semantic state,canonical identities,control,resume",
+      "NEGATIVE_INVARIANT": "Not only opaque byte equality",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR07",
+      "PRESERVED_E1_EVIDENCE": "Native codec/cold tests and reduced N replay preserved",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "REAL_E1_COLD_RESUME",
+      "REQUIRED_INPUT": "New complete canonical bundle derived from actual E1",
+      "REQUIRED_OPERATION": "Persist;terminate;freshprocess restore/recompute semantic inventories",
+      "WHY_REAL_INPUT_MATTERS": "Cold persistence of omitted semantics was original risk",
+      "residual_after_assuming_E2_pass": "No complete E1-derived bundle with real-source cold comparison",
+      "source_step": "8.6"
+    },
+    {
+      "E2_CASES": [
+        "E2-A09",
+        "E2-A10",
+        "E2-A11",
+        "E2-A12",
+        "E2-A13",
+        "E2-N14",
+        "E2-N15"
+      ],
+      "E2_CLASSIFICATION": "PARTIALLY_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Only legitimate reentry;actual restored output contract enforced",
+      "NEGATIVE_INVARIANT": "No default emptyPASS,partialproof,inventedoutput",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR08",
+      "PRESERVED_E1_EVIDENCE": "C06 refined/budget and receipt/decision qualification available with limits",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "NO_FIXTURE_OVERFITTING_AND_SUPPORTED_CONTINUATION",
+      "REQUIRED_INPUT": "Separate synthetic copies of restored supported contracts",
+      "REQUIRED_OPERATION": "Rename target;valid receipt;bounded result;decision/dossier route",
+      "WHY_REAL_INPUT_MATTERS": "Test itself synthetic but ties to source-restored contract family",
+      "residual_after_assuming_E2_pass": "E2 full run not executed; even if passed real-restored contract correspondence remains",
+      "source_step": "8.7"
+    },
+    {
+      "E2_CASES": [
+        "E2-N01",
+        "E2-N02",
+        "E2-N03",
+        "E2-N04",
+        "E2-N05",
+        "E2-N07",
+        "E2-N08",
+        "E2-N09",
+        "E2-N10",
+        "E2-N11",
+        "E2-N14",
+        "E2-REG"
+      ],
+      "E2_CLASSIFICATION": "PARTIALLY_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Reject before use with exact diagnostics",
+      "NEGATIVE_INVARIANT": "No silent unsupported required members",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR09",
+      "PRESERVED_E1_EVIDENCE": "Existing native negatives and BR source-binding negatives retained",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "FULL_IMPORT_MUTATION_REJECTION",
+      "REQUIRED_INPUT": "Synthetic negative copies of real restoration contract",
+      "REQUIRED_OPERATION": "Mutate omittedgoal/contract,overlay,target,policy,ordering,receipt,source",
+      "WHY_REAL_INPUT_MATTERS": "Covers transformations and composition exercised by real import",
+      "residual_after_assuming_E2_pass": "No real-import composed mutation suite; E2 omitted-goal/conflicting-overlay named cases not explicit",
+      "source_step": "8.8"
+    },
+    {
+      "E2_CASES": [
+        "E2-REG",
+        "E2-END"
+      ],
+      "E2_CLASSIFICATION": "FULLY_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Identical corpus",
+      "NEGATIVE_INVARIANT": "No rewritten history or authority record",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR10",
+      "PRESERVED_E1_EVIDENCE": "Repeated full preservation checks including this planning task",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "FROZEN_CORPUS_PRESERVATION",
+      "REQUIRED_INPUT": "All10911 E1 filepaths/raw hashes",
+      "REQUIRED_OPERATION": "Compare additions,deletions,content before/after each qualification run",
+      "WHY_REAL_INPUT_MATTERS": "A real corpus check cannot use synthetic replacements",
+      "residual_after_assuming_E2_pass": "Must repeat around future executed test; planning preservation not prospective run evidence",
+      "source_step": "8.9"
+    },
+    {
+      "E2_CASES": [
+        "E2-END",
+        "E2-REG"
+      ],
+      "E2_CLASSIFICATION": "FULLY_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "E1 stays suspended;resume false for frozen input",
+      "NEGATIVE_INVARIANT": "Ready to restore is not allowed to resume",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR11",
+      "PRESERVED_E1_EVIDENCE": "Manifest Candidate3 VALID_UNCONSUMED;allbranch tasks preserve noresume",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "NO_E1_RESUMPTION_OR_EFFECT",
+      "REQUIRED_INPUT": "Frozen authority/status;isolated output/process restrictions",
+      "REQUIRED_OPERATION": "Assert no requests,authorityconsumption,E1execution,construction,productioneffects",
+      "WHY_REAL_INPUT_MATTERS": "Real authority/effect boundary must remain unchanged",
+      "residual_after_assuming_E2_pass": "Future experiment isolation/noeffect verification still required",
+      "source_step": "8.9;8 final paragraph"
+    },
+    {
+      "E2_CASES": [
+        "E2-D01",
+        "E2-A08",
+        "E2-REG"
+      ],
+      "E2_CLASSIFICATION": "PARTIALLY_COVERED",
+      "E2_EVIDENCE_STATUS": "PLANNED_NOT_EXECUTED",
+      "EXPECTED_OUTPUT": "Deterministic semantics,policy selection and persistence identity",
+      "NEGATIVE_INVARIANT": "No conversational state or expected fixture answers",
+      "NREAL_DISCHARGED_NOW": false,
+      "NREAL_OBLIGATION_ID": "NR12",
+      "PRESERVED_E1_EVIDENCE": "Native determinism/cold tests and F05/F06 corrections retained",
+      "PRESERVED_E1_LIMIT": "Not a complete native migrated run; partial evidence cannot discharge conjunction",
+      "PROPERTY": "DETERMINISM_AND_NO_HIDDEN_STATE",
+      "REQUIRED_INPUT": "Identical supported pinned context/source/event inputs",
+      "REQUIRED_OPERATION": "Freshprocess/order/hash variations with complete output comparisons",
+      "WHY_REAL_INPUT_MATTERS": "Portable engine property; full-source importer order sensitivity also matters",
+      "residual_after_assuming_E2_pass": "Full real-import ordering/repeated-process coverage absent",
+      "source_step": "9 determinism gate; originalN"
+    }
+  ],
+  "reference_inventory": [
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md",
+      "line": 129,
+      "role": "ORIGINAL_DEFINITION_OR_GATE",
+      "sha256": "9937098fc263ce9b7a6c05d04c0399e8303d36c55f9c373f9d61c83f39f1b329",
+      "text": "- **TESTS:** T03/T-IMPORT/N-REAL as below; semantic reference/contract inventory comparison independent of imported output; isolated post-reentry result acceptance/rejection, decision reentry, stale-source and conflicting overlay controls; cold round-trips preserving each operational field; alpha-renamed synthetic contract instances and changed-but-supported values to prevent fixture-specific shortcuts."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md",
+      "line": 229,
+      "role": "ORIGINAL_DEFINITION_OR_GATE",
+      "sha256": "9937098fc263ce9b7a6c05d04c0399e8303d36c55f9c373f9d61c83f39f1b329",
+      "text": "## 8. Actual frozen-manifest readiness test (N-REAL)"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md",
+      "line": 243,
+      "role": "ORIGINAL_DEFINITION_OR_GATE",
+      "sha256": "9937098fc263ce9b7a6c05d04c0399e8303d36c55f9c373f9d61c83f39f1b329",
+      "text": "\u201cReady to restore and compute a suspended state\u201d is separate from `E1_RESUME_ALLOWED`. Successful N-REAL must still report no actual E1 resumption permission for the frozen input."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md",
+      "line": 271,
+      "role": "ORIGINAL_DEFINITION_OR_GATE",
+      "sha256": "9937098fc263ce9b7a6c05d04c0399e8303d36c55f9c373f9d61c83f39f1b329",
+      "text": " A_N + X01_X11 + N_REAL + DETERMINISM_PERSISTENCE_CONTROLS +"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C07_RESULT.md",
+      "line": 12,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "32e2a2723f89e1ae778133d2941ab7fad35c9e3cd8041f7ce47f2120517e4c7c",
+      "text": "The [correction plan](DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md), section 3, defines C07 as **Integrated requalification and fresh adversarial review**. It includes the section 9 conjunctive gate, N-REAL, all replay/invariant/counterexample suites, determinism and persistence variations, and a fresh independent review. Requalification is inside C07, not a separate operation automatically following C07 PASS. Status 2 is permitted only after the entire gate succeeds. Implementation defects return to their owning package."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C07_RESULT.md",
+      "line": 44,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "32e2a2723f89e1ae778133d2941ab7fad35c9e3cd8041f7ce47f2120517e4c7c",
+      "text": "The next required operation is reconciliation of this C06 acceptance-scope mismatch: provide the original plan-required operational restoration/coverage evidence, or explicitly revise the governing correction contract. C07 cannot perform that implementation repair opportunistically. After the prerequisite is legitimately satisfied, retry C07: execute its full section 9 qualification (including N-REAL), then fresh independent adversarial review; only successful review permits a new qualified status. Neither that gate nor any E1 action was executed here."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_ACCEPTANCE_MATRIX_1.md",
+      "line": 43,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "e3812752606074a606c301cc38e712092e068daa7cdd0d4c317eeec01e32bfa5",
+      "text": "| MC23 / M07 | Actual10,911-file frozen inventory; migrate required closure to isolated output, terminate, native cold-load/recompute | Correct actions, proof/decision/gate/ledger/policy state and identities; MIXED_WAIT, [], [], resume=false; eight gaps unresolved | No conversation/process state, expected-label injection, authority consumption, requests or E1 action execution. C N-REAL/F. |"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06_C07_RECONCILIATION_1.md",
+      "line": 7,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c238020a48671b8537ed20b675c3a9002d388ec0162f26b41d5a3190ce6b6c31",
+      "text": "- [Correction Plan 1](DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md): C06/C07 definitions; sections 6 (restoration inventory), 8 (N-REAL), 9 (conjunctive gate)."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06_C07_RECONCILIATION_1.md",
+      "line": 8,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c238020a48671b8537ed20b675c3a9002d388ec0162f26b41d5a3190ce6b6c31",
+      "text": "- [Correction Matrix 1](DETERMINISTIC_PLANNER_V0_1_CORRECTION_MATRIX_1.md): F03, T03, T-IMPORT, N-REAL, state/persistence table and qualification checklist."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06_C07_RECONCILIATION_1.md",
+      "line": 43,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c238020a48671b8537ed20b675c3a9002d388ec0162f26b41d5a3190ce6b6c31",
+      "text": "| O17 Full semantic N-REAL cold restoration and supported renamed continuation/decision tests | C; cold restore itself B (R15/R22/P06) | Reduced-state cold restoration: IMPLEMENTED_AND_TESTED. Full required operational N-REAL qualification: NOT_IMPLEMENTED as a complete test path; dependent contract implementation also missing. |"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06_C07_RECONCILIATION_1.md",
+      "line": 85,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c238020a48671b8537ed20b675c3a9002d388ec0162f26b41d5a3190ce6b6c31",
+      "text": "**UNLOCKS:** C07 prerequisite retry only. C07 still owns integrated section 9 qualification, N-REAL verification and fresh independent review before any status update. No E1 execution is unlocked."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06_C07_RECONCILIATION_1.md",
+      "line": 108,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c238020a48671b8537ed20b675c3a9002d388ec0162f26b41d5a3190ce6b6c31",
+      "text": "TEST_COVERAGE_GAPS = [independent field inventory, supported positive result/decision continuation, full semantic N-REAL, full-contract mutation and cold-replay tests]"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.json",
+      "line": 30,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "1c026b86d6ce90b5b17669381a527c5be0ccb6edc068c40c50d87cd890f0393f",
+      "text": "  \"release_obligation\": \"N-REAL retained until pass or separately approved explicit scope reconciliation\","
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_MATRIX_1.md",
+      "line": 43,
+      "role": "ORIGINAL_DEFINITION_OR_GATE",
+      "sha256": "ab28859bf917b13bc4457a281dfb13b6d1e35dd3f1e01bb08e3ef4d3ebb69d8e",
+      "text": "| N-REAL / C06\u2013C07 | Actual frozen manifest/checkpoint/handoff and pinned sources in fresh process, no M snapshot or prior objects | Typed contract import and independent computation match source-derived frozen oracle; no E1 action is run; new isolated bundle cold-restores identical semantic state. Synthetic continuation tests are separate. |"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CORRECTION_MATRIX_1.md",
+      "line": 69,
+      "role": "ORIGINAL_DEFINITION_OR_GATE",
+      "sha256": "ab28859bf917b13bc4457a281dfb13b6d1e35dd3f1e01bb08e3ef4d3ebb69d8e",
+      "text": "| C06 | C01\u2013C05 | A\u2013N, full actual-manifest N | X01\u2013X11; T03/T-IMPORT/N-REAL | C07 |"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.md",
+      "line": 15,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "7940658fcf04ab82ebb89e1ea3185f74341a5c0614e9c35df2c0a560e5719f67",
+      "text": "| A\u2013N deterministic replay and actionability/selection cases | Bounded reviewed fixtures; not full real-source N-REAL restoration |"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.md",
+      "line": 57,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "7940658fcf04ab82ebb89e1ea3185f74341a5c0614e9c35df2c0a560e5719f67",
+      "text": "The user permits deferral to remove the legacy path as a release blocker **unless governing requirements explicitly require it**. They do: [Correction Plan 1 \u00a78\u20139](DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md) requires actual frozen-E1 operational import/validation and N-REAL in its conjunctive requalification gate. The migration-boundary decision also retains the restoration coverage floor until separately justified reconciliation."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.md",
+      "line": 59,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "7940658fcf04ab82ebb89e1ea3185f74341a5c0614e9c35df2c0a560e5719f67",
+      "text": "Therefore this disposition defers the work but **does not waive its existing release obligation**. E2 is an additional canonical qualification path, not an automatic substitute for N-REAL. Before a future Planner v0.1 QUALIFIED claim, either N-REAL must pass or an explicit governing scope reconciliation must define a canonical-only release claim, replacement coverage and limitations. That reconciliation is not issued in this task. No historical plan is silently overwritten."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.md",
+      "line": 61,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "7940658fcf04ab82ebb89e1ea3185f74341a5c0614e9c35df2c0a560e5719f67",
+      "text": "`LEGACY_RELEASE_GATE = RETAINED_PENDING_EXPLICIT_SCOPE_RECONCILIATION_OR_N_REAL_PASS`."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.md",
+      "line": 78,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "7940658fcf04ab82ebb89e1ea3185f74341a5c0614e9c35df2c0a560e5719f67",
+      "text": "LEGACY_RELEASE_GATE = RETAINED_PENDING_EXPLICIT_SCOPE_RECONCILIATION_OR_N_REAL_PASS"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_BOUNDARY_DECISION_1.md",
+      "line": 15,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "581596b0dbd5dde0ae54e6a711a1b591b48174708a931c5a35f65e25e57efd3f",
+      "text": "- [Correction plan C06, section6 and N-REAL](DETERMINISTIC_PLANNER_V0_1_CORRECTION_PLAN_1.md): use a finite versioned structured importer, restore actual operational contracts, distinguish historical attempts from current holds, and preserve explicit unsupported reasons. Opaque records cannot replace operational predicates. Required supported contracts must work in isolated positive tests; marking everything unsupported cannot qualify the runtime."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_RETRY_1_RESULT.md",
+      "line": 33,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "77a9b2636b4e09ada0c8be6466c0128c0da40a9025f393c0df5473b38c287522",
+      "text": "This retry implements the budget proof profile requested under the oracle. It does **not** replace the full frozen-E1 M normalization or complete all original C06A restoration families. The [reconciliation](DETERMINISTIC_PLANNER_V0_1_C06_C07_RECONCILIATION_1.md) still requires source-driven full action/decision/dossier/authority/history/root/slot/frontier contracts, an independent complete field-coverage inventory, supported decision-route tests and full semantic N-REAL acceptance."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_RETRY_1_RESULT.md",
+      "line": 35,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "77a9b2636b4e09ada0c8be6466c0128c0da40a9025f393c0df5473b38c287522",
+      "text": "Accordingly the overall C06A classification is PARTIAL even if the bounded budget tests pass. `FULL_IMPORT_CONTRACT` for the broader reconciled package is not passed. Legacy N regression success is not represented as the stronger N-REAL gate. No finding is reopened: F03 remains CLOSED under the accepted refined repair."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_RETRY_1_RESULT.md",
+      "line": 42,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "77a9b2636b4e09ada0c8be6466c0128c0da40a9025f393c0df5473b38c287522",
+      "text": "| Required full-import positive/negative tests including decision route and full N-REAL | Not satisfied by this scoped profile |"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_RETRY_1_RESULT.md",
+      "line": 89,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "77a9b2636b4e09ada0c8be6466c0128c0da40a9025f393c0df5473b38c287522",
+      "text": "COLD_RESUME = PASS (native budget profile and legacy N; not full reconciled N-REAL)"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_RETRY_1_RESULT.md",
+      "line": 93,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "77a9b2636b4e09ada0c8be6466c0128c0da40a9025f393c0df5473b38c287522",
+      "text": "C07_RETRY_PREREQUISITES = [complete remaining full-import contracts and field coverage, supported decision-route tests, full semantic N-REAL, C06A PASS against reconciled gate]"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.md",
+      "line": 291,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "ef54df46dbd707d8ace26b4594e31cea0acdb7b43fccb9b70404cf6f9405abf7",
+      "text": "**Independent positive oracle/test:** C06A source-shaped synthetic complete cold import and renamed continuation; C07 owns final actual N-REAL/requalification/review."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.md",
+      "line": 402,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "ef54df46dbd707d8ace26b4594e31cea0acdb7b43fccb9b70404cf6f9405abf7",
+      "text": "**TESTS:** Source-shaped synthetic full cold import/renamed continuation+decision; complete semantic member equality; keys/set orders/seeds/new processes; A\u2013N/X01\u2013X11/C01\u2013C06 regression and10911-file preservation. Prepare actual N-REAL path, do not perform C07 final readiness here."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.md",
+      "line": 425,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "ef54df46dbd707d8ace26b4594e31cea0acdb7b43fccb9b70404cf6f9405abf7",
+      "text": "This analysis did not call the real importer, resume path, or readiness test. C06A composition qualifies source-shaped synthetic cold restoration and prepares the real contract path. **C07 itself owns the actual N-REAL readiness test, integrated section9 requalification and fresh independent adversarial review.** They are not waived or deferred past a C07 PASS. C07 retry readiness is not qualification; requiring C07's own final review before permitting its retry would be circular."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md",
+      "line": 86,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd",
+      "text": "E2 adds lifecycle evidence; it neither erases past findings nor proves frozen E1 migration. The [legacy disposition](DETERMINISTIC_PLANNER_V0_1_E1_LEGACY_BRANCH_DISPOSITION_1.md) records the explicit N-REAL release obligation that still exists."
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md",
+      "line": 102,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd",
+      "text": "  N_REAL_PASS"
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.json",
+      "line": 133,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "00b80a67762828b478a00c0722c294407e73917b49b80b16f8161b25c2ff49d5",
+      "text": "      \"tests\": \"Source-shaped synthetic full cold import/renamed continuation+decision; complete semantic member equality; keys/set orders/seeds/new processes; A\\u2013N/X01\\u2013X11/C01\\u2013C06 regression and10911-file preservation. Prepare actual N-REAL path, do not perform C07 final readiness here.\","
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.json",
+      "line": 534,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "00b80a67762828b478a00c0722c294407e73917b49b80b16f8161b25c2ff49d5",
+      "text": "        \"positive_oracle\": \"C06A source-shaped synthetic complete cold import and renamed continuation; C07 owns final actual N-REAL/requalification/review.\","
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.json",
+      "line": 545,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "00b80a67762828b478a00c0722c294407e73917b49b80b16f8161b25c2ff49d5",
+      "text": "      \"positive_oracle\": \"C06A source-shaped synthetic complete cold import and renamed continuation; C07 owns final actual N-REAL/requalification/review.\","
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "line": 418,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d",
+      "text": "  \"legacy_release_obligation_resolved\": \"N-REAL passed OR separately approved explicit scope reconciliation replacing its release role; neither occurs in this task\","
+    },
+    {
+      "artifact": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "line": 485,
+      "role": "LATER_REFERENCE_NOT_REPLACEMENT",
+      "sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d",
+      "text": "      \"acceptance\": \"All assigned cases pass; no deferredscope violations; new independent review ready. Does not clear legacy N-REAL obligation.\","
+    }
+  ],
+  "report": {
+    "CANONICAL_E2_QUALIFIED": "NO",
+    "E1_ARTIFACTS_MODIFIED": 0,
+    "E2_EXECUTION_RECOMMENDATION": "PROCEED_IN_PARALLEL",
+    "IMPLEMENTATION_MODIFIED": "NO",
+    "LEGACY_E1_COMPATIBILITY": "NOT_QUALIFIED_DEFERRED",
+    "N_REAL_DECISION_READY": "YES for explicitrelease-scope choice;NO equivalenceproof forreplacement",
+    "N_REAL_SATISFIED": "NO",
+    "PLANNER_V0_1_REQUALIFICATION_READY": "NO",
+    "PRIMARY_CLASSIFICATION": "E",
+    "PRODUCTION_EFFECT": "NO",
+    "RECONCILIATION_AUTHORITY_REQUIRED": "QUALIFICATION_AUTHORITY_DECISION",
+    "RELATIONSHIP": "C currently;B only for portable subset,notwholeobjective;A false;D falseforportablebuttrueforrealreconstruction subset"
+  },
+  "residual": {
+    "actual_unsatisfied": [
+      "NR01",
+      "NR02",
+      "NR03",
+      "NR04",
+      "NR05",
+      "NR06",
+      "NR07",
+      "NR08",
+      "NR09",
+      "NR10",
+      "NR11",
+      "NR12"
+    ],
+    "limits": "Projected residual assumes E2passes,notcurrent evidence;mustrepeatpreservation/noeffects aroundeachrun. No set subtraction may treat syntheticcoverage as realcoverage.",
+    "portable_run_obligations": [
+      "NR10",
+      "NR11"
+    ],
+    "projected_after_E2_pass": [
+      "NR01",
+      "NR02",
+      "NR03",
+      "NR04",
+      "NR05",
+      "NR06",
+      "NR07",
+      "NR08",
+      "NR09",
+      "NR12"
+    ]
+  },
+  "schema": "N-REAL-RECONCILIATION-1",
+  "search_boundary": "Literal N-REAL/N_REAL across docs/plans and docs/backlog before newartifact;semantic predecessors separately read in implementationplan/acceptancematrix/adversarialreview",
+  "selected_option": null,
+  "status": "ANALYSIS_ONLY_NO_AUTHORITY",
+  "validation": {
+    "E1_files_unchanged": 10911,
+    "E2_case_references_valid": true,
+    "atomic_obligations": 12,
+    "authority_issued": false,
+    "experiments_executed": 0,
+    "prior_baseline_files_unchanged": 11333,
+    "reference_occurrences": 36
+  }
+}

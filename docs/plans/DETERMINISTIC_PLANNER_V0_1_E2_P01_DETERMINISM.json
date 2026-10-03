@@ -1,0 +1,152 @@
+{
+  "canonical_rules": {
+    "bundle": "codec.bundle_id: planner-bundle-v1 over replay-validated PLANNER-BUNDLE-1 bytes",
+    "identity_domains": "Never compare digests across identity types/profiles as identity equality",
+    "ordered_exclusions": [
+      "causal event history",
+      "ordered policy clauses"
+    ],
+    "snapshot": "codec.snapshot_id: planner-snapshot-v1 over PLANNER-SNAPSHOT-1 typed canonical bytes",
+    "wire": "codec._wire/SET_FIELDS; canonical UTF-8 sorted object keys and declared unordered collections"
+  },
+  "dimensions": [
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "HASH_SEEDS",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        0,
+        1,
+        7,
+        101
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "ACTION_ORDER",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "original",
+        "reverse",
+        "rotate"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "SOURCE_ORDER",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "original",
+        "reverse",
+        "rotate"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "PROOF_ORDER",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "original",
+        "reverse",
+        "rotate"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "AUTHORITY_ORDER",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "original",
+        "reverse",
+        "rotate"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "GOAL_ORDER",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "original",
+        "reverse",
+        "rotate"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "OBJECT_KEYS",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "original",
+        "recursive reverse"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "COLD_RESTORE",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "fresh writer terminates",
+        "three fresh readers per checkpoint per seed"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "INDEPENDENT_PROCESS",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "fresh interpreter without hidden fixtures"
+      ]
+    },
+    {
+      "cases": [
+        "E2-D01",
+        "E2-END"
+      ],
+      "dimension": "REPEAT_COMPUTATION",
+      "status": "DEFINED_NOT_RUN",
+      "values": [
+        "same inputs twice without event"
+      ]
+    }
+  ],
+  "e2_identity_values": null,
+  "invariants": [
+    "typed admission/rejection and reasons",
+    "full Computation and branch witnesses",
+    "action states and deterministic selected ActionId",
+    "knowledge/root/slot/authority/evidence/route/source validity",
+    "policy identity",
+    "resume proof",
+    "snapshot identity",
+    "bundle and event identities"
+  ],
+  "schema": "E2-P01-DETERMINISM-MATRIX-1",
+  "status": "MATRIX_DEFINED_FIXTURES_PENDING"
+}

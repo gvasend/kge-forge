@@ -1,0 +1,906 @@
+{
+  "C06A_3_RETRY_ALLOWED": false,
+  "CE_02_CLOSED": false,
+  "F03_STATUS": "CLOSED",
+  "V0_1_CURRENT_STATUS": "CORRECTION_REQUIRED",
+  "backward_routes": [
+    {
+      "backward_chain": [
+        "O16.output.actions",
+        "O01 actions()",
+        "definitions and normalized plan actions",
+        "D4",
+        "ActionId+exact plan selector+bounded rule binding",
+        "P resolution_actions; O03 named reports"
+      ],
+      "first_missing_edge": "source action/rule -> independently governed complete typed action contract",
+      "gap": "BR-01",
+      "id": "R1"
+    },
+    {
+      "backward_chain": [
+        "O16.sources.results and action.result_contract",
+        "O03 bounded oracle; O02/O06 history()",
+        "typed result records with outcome/knowledge/holds",
+        "D4",
+        "ActionId+result artifact raw identity+accepted event selector",
+        "P/M; S-BINDING/S-CONTEXT/PREP-VALIDATOR reports"
+      ],
+      "first_missing_edge": "document/result -> typed bounded result candidate with exact acceptance contract",
+      "gap": "BR-01",
+      "id": "R2"
+    },
+    {
+      "backward_chain": [
+        "O16.output.history",
+        "O02/O06 history()",
+        "ordered action events,results,overrides,current summary",
+        "D5",
+        "ledger container/pointer/hash +event/result +hold/override source",
+        "P execution_history/execution_state; M ledger and named result pins"
+      ],
+      "first_missing_edge": "heterogeneous historical events -> non-lossy operational event subset plus provenance dispositions",
+      "gap": "BR-02",
+      "id": "R3"
+    },
+    {
+      "backward_chain": [
+        "O16.output.graph",
+        "O10 graph()",
+        "entities/assertions/predicates and accepted support roles",
+        "D6",
+        "assertion source identity/selector/extraction +typed subject/object/predicate",
+        "G entities/assertions/relation_semantics/source_manifest"
+      ],
+      "first_missing_edge": "source assertion/provenance -> admitted or descriptive claim with exact typed predicate",
+      "gap": "BR-03",
+      "id": "R4"
+    },
+    {
+      "backward_chain": [
+        "O16.context/sources/currentness",
+        "evaluate(INSTANCE),current(),source()",
+        "full source role/context/dependency set",
+        "D1/D2/D7",
+        "S/M/P/G exact raw or canonical subvalue identities",
+        "P,G,M,H,S"
+      ],
+      "first_missing_edge": "pinned container and component identities -> complete normalized role/context binding",
+      "gap": "BR-05",
+      "id": "R5"
+    },
+    {
+      "backward_chain": [
+        "O16.coverage/profile_pin/admissions",
+        "compose() and pinned O08/O09 admit()",
+        "independent full-source profile +source coverage +proof submissions",
+        "D3/D7",
+        "all assigned selector identities and projected member identities",
+        "2733-field inventory +16owners +explicit pinned dependencies"
+      ],
+      "first_missing_edge": "independent expected profile/coverage -> composed acceptance for actual source shapes",
+      "gap": "BR-05",
+      "id": "R6"
+    }
+  ],
+  "closed_preserved": [
+    "BR-04"
+  ],
+  "closure_packages": [
+    {
+      "acceptance": [
+        "every common value maps to V03/V04/V05/V07/V12/V13/V14/V17 or remains explicitly unavailable",
+        "two identity domains with same digest never substitute",
+        "policy-document and embedded-policy hashes remain separate",
+        "no generated candidate is its own oracle",
+        "missing/stale source and cross-envelope negatives defined"
+      ],
+      "blockers": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "chains_unlocked": [
+        "common prerequisites for O01/O02/O06/O10; no standalone admission claimed"
+      ],
+      "contract_work": "Define common role/identity/context/provenance/dependency projection and independently accepted expected-profile process. Account named frozen dependencies outside16 owners explicitly. Preserve unknown external subjects and historical scope.",
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "BR-C1",
+      "members_unlocked": [
+        "context",
+        "source pins",
+        "source_dependencies",
+        "validity inputs",
+        "profile trust boundary"
+      ],
+      "prerequisites": [
+        "preserved BR-04 and current pinned contract set"
+      ]
+    },
+    {
+      "acceptance": [
+        "all assigned action/result fields independently accounted",
+        "scope/effect/authority exclusions retained",
+        "positive source-shaped alternative plus negatives",
+        "no PASS-to-root/slot promotion"
+      ],
+      "blockers": [
+        "D4"
+      ],
+      "chains_unlocked": [
+        "source -> O01",
+        "source report -> O03 bounded result"
+      ],
+      "contract_work": "Define finite action/result source projections and reviewed typed outcome schemas; reuse three existing bounded result predicates without treating them as coverage for all63actions.",
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-05"
+      ],
+      "id": "BR-C2",
+      "members_unlocked": [
+        "definitions",
+        "normalized plan actions",
+        "results"
+      ],
+      "prerequisites": [
+        "BR-C1"
+      ]
+    },
+    {
+      "acceptance": [
+        "all24history records have explicit disposition",
+        "selection-only event never becomes action/result",
+        "stale completed-producer proof unusable; BLOCKED/current knowledge usable",
+        "reload and reordered input cannot change causal semantics"
+      ],
+      "blockers": [
+        "D5"
+      ],
+      "chains_unlocked": [
+        "source -> O02/O06"
+      ],
+      "contract_work": "Define event variants,provenance-only selection records,causal sequence/result identities,current holds and overrides; source-bound accepted knowledge remains independent of producer completion.",
+      "gaps": [
+        "BR-02",
+        "BR-05"
+      ],
+      "id": "BR-C3",
+      "members_unlocked": [
+        "history",
+        "knowledge",
+        "holds",
+        "current action summary"
+      ],
+      "prerequisites": [
+        "BR-C2"
+      ]
+    },
+    {
+      "acceptance": [
+        "343entity/962assertion source identities and assigned fields accounted",
+        "SOURCE_LOCATED alone never acceptance",
+        "no unsupported mandatory assertion hidden as descriptive",
+        "wrong-domain,dangling,cycle,conflict and stale negatives; exact source ordering invariant"
+      ],
+      "blockers": [
+        "D6"
+      ],
+      "chains_unlocked": [
+        "source -> O10"
+      ],
+      "contract_work": "Define typed predicates and explicit operational/descriptive/source-unsupported dispositions from graph semantics and accepted support. Retain all assigned entity/assertion provenance; do not turn all15relations into prerequisites.",
+      "gaps": [
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "BR-C4",
+      "members_unlocked": [
+        "entities",
+        "assertions",
+        "predicates",
+        "deterministic projection"
+      ],
+      "prerequisites": [
+        "BR-C1"
+      ]
+    },
+    {
+      "acceptance": [
+        "16owners and2733assigned rows have exact dispositions and pins",
+        "every named supporting dependency accounted by explicit join or justified provenance-only retention",
+        "two supported source-shaped instances; all local and cross-envelope negatives",
+        "no currentness inferred for absent external subjects",
+        "no unsupported required field; no predicate weakening"
+      ],
+      "blockers": [
+        "D7"
+      ],
+      "chains_unlocked": [
+        "complete source -> local admissions -> O16"
+      ],
+      "contract_work": "Define actual source-shaped complete coverage and independent profile binding; compose all locally admitted projections including absence/hold state. This is contract closure, not runtime qualification or C06A execution.",
+      "gaps": [
+        "BR-05"
+      ],
+      "id": "BR-C5",
+      "members_unlocked": [
+        "full-instance coverage",
+        "admission submission bindings",
+        "all required composed members"
+      ],
+      "prerequisites": [
+        "BR-C2",
+        "BR-C3",
+        "BR-C4",
+        "BR-04 existing projected proof checks remain valid"
+      ]
+    }
+  ],
+  "conditions": [
+    "target is faithful frozen suspended state, not all external requirements satisfied",
+    "explicitly referenced archived support may be joined by independently verified pins;16owners is not a prohibition on named support reads",
+    "D1-D7 resolved without unsupported required semantics or candidate-generated oracle",
+    "existing Oxx can represent all required dispositions; any actual incompatibility is reported rather than silently weakened",
+    "source-to-local-to-composed positive/negative/invalidation/cold tests then pass; implementation qualification is later"
+  ],
+  "cut_minimality": "four independent missing interface obligations at this abstraction; not a proven graph-theoretic minimum or globally minimal package count",
+  "external_evidence_boundaries": [
+    {
+      "frontier": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+      "id": "HANDOFF-BUDGET",
+      "missing": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/0"
+    },
+    {
+      "frontier": "EXT-REENTRY-S-ANCESTRY",
+      "id": "HANDOFF-ANCESTRY",
+      "missing": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/1"
+    },
+    {
+      "frontier": "EXT-REENTRY-S-APPROVAL",
+      "id": "HANDOFF-APPROVAL",
+      "missing": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/2"
+    },
+    {
+      "frontier": "EXT-REENTRY-PREP-AUDIT",
+      "id": "HANDOFF-AUDIT",
+      "missing": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/3"
+    },
+    {
+      "frontier": "EXT-REENTRY-PREP-RUNTIME_HEAD",
+      "id": "HANDOFF-RUNTIME-HEAD",
+      "missing": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/4"
+    },
+    {
+      "frontier": "EXT-REENTRY-PREP-SUPERVISOR",
+      "id": "HANDOFF-SUPERVISOR",
+      "missing": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/5"
+    },
+    {
+      "frontier": "EXT-REENTRY-DEC-EXEC",
+      "id": "HANDOFF-EXEC",
+      "missing": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/6"
+    },
+    {
+      "frontier": "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR",
+      "id": "HANDOFF-IMPLEMENTATION",
+      "missing": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+      "needed_for_positive_reentry": true,
+      "needed_for_suspended_restoration": false,
+      "source": "H#/control_transfer_items/7"
+    }
+  ],
+  "feasibility": {
+    "BR-01": "CLOSABLE_AFTER_CONTRACT_DEFINITION",
+    "BR-02": "CLOSABLE_AFTER_CONTRACT_DEFINITION",
+    "BR-03": "CLOSABLE_AFTER_CONTRACT_DEFINITION",
+    "BR-05": "CLOSABLE_AFTER_CONTRACT_DEFINITION"
+  },
+  "feasibility_qualifier": "conditional on complete non-lossy, independently governed source mappings; no promise all unsupported semantics will be derivable",
+  "full_source_to_O16_feasible_from_frozen_sources": "CONDITIONAL",
+  "implementation_modified": false,
+  "input_pins": {
+    "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43",
+    "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342",
+    "docs/experiments/E1/E1_EXTERNAL_HANDOFF_PACKAGE_1.json": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332",
+    "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+    "docs/experiments/E1/E1_RESUME_MANIFEST_1.json": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac",
+    "docs/experiments/E1/E1_SUSPENSION_CHECKPOINT_1.json": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4",
+    "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b",
+    "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1_ISSUANCE_RESULT.md": "6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5",
+    "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87",
+    "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d",
+    "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08",
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c",
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337",
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a",
+    "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_2_MAPPING_1.json": "bd33a7e753507b67ef61541e86d0e4e767fe84942fee932be78d1e77c68f7595",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_2_ORACLES_1.json": "a2946a73dc0128e073d6d9507da59ace2951f0e944b7d1c1fbb5301f6554524e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.json": "09219492515f1db8ae8583d1e7443cf73694cbd4a3cf9d7de14be0357812fac6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1.md": "3ef49278d0b13ebf91979723496012f7d30292c5b4465060a00dcee4da7c613e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES.json": "9ee7e8f638f5ea24a14642332b95fd60e4ab1c1c487eddc21d16dc3766cb4135",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_PREFLIGHT.json": "7537b8962e1873a9bf0c7ad74952d70ed719297946d891269edfb50c69b48dd3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_VALIDATION.json": "a10c1e345d9c1167313b6961dd10cbbe24fb62ce3ac6b8f4cc55469d2a821269",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.json": "00b80a67762828b478a00c0722c294407e73917b49b80b16f8161b25c2ff49d5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.md": "ef54df46dbd707d8ace26b4594e31cea0acdb7b43fccb9b70404cf6f9405abf7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.json": "190dacd4abf69a09320850e36a68d799970886698159346b917ad57668304ac3",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1.md": "4e009476e5c4795b4507ac94ddc7f6e35605c4a8d385c2d910c8578144e6716c",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1_FIXTURES.json": "9430da4b944845a8f97edaa0b9be4f02d4d049317e209e09a961cbc7872244a2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1_PREFLIGHT.json": "f52ff871f0f3f67fd730c4d68a4e323a2cff34642a0f0b557398b0e6d2727329",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE01_CONTRACT_RECONCILIATION_1_VALIDATION.json": "e87540d1305e50ecc25dad8dc28cf938eaf88bebbae945bce95695027245263b",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1.md": "654f9730ea19e5c77fed3eebebc05698b164d35a2dc413bd2fa3c9903684a028",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_FIXTURES.json": "9a0286c5333ec6c79b15e47bbb62a04837b76bf03bdb3d94a26ed134d4e46885",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_JOINS.json": "832d93ed741b65d6b2abebe52b0f21cf77bedf4debce3cbf65dfec99b24682a0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_MAPPINGS.json": "df4e3b564b014ce1de270912cc15aac556c142b16b03914479a250294e82bc9f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_PREFLIGHT.json": "08e502810dd1ff6ffd1b072d82f4aa8347c6cf703f5db8a83cd35935cce28d0e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_BRIDGE_GAP_CLOSURE_1_VALIDATION.json": "f0c8003b3205c6b51d28eddd04c0aca943a7ab900ad545d660ef14197b894e08",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1.md": "e9cbd16d19e4c88a03b7ad791517de6eb1737de938b7453c80f0fadf65d1d2b5",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_FIXTURES.json": "f65350bb357b38b36f82cc3979c4ee64b4fd62776158644797fc6e3eccca649d",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_PREFLIGHT.json": "05e548e14c7b3802e8f97d67baf0124f6a46d2f5fbaabdc6612b930016f90737",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_PROJECTIONS.json": "4cd3ba20397bf978e16cf74243579e824ecb335c019c2646fbdd711c931df574",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_SOURCE_CLASSES.json": "d7af63fd34822ff37832851b05fedf04240bbcb4229587599b865c6f2f02894f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_SOURCE_PROFILE_BRIDGE_1_VALIDATION.json": "8c0903f084bcca0fe6c6bbf9649ce419333df32ff12c9315db91a0ea1b116ea6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1.json": "efa295e04f8cfd169481e4ac73fea5077207303c00d187e3ad104bae945d5806",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1.md": "e00d0811f97c357302d236cf531e9a4e56102f372ced5f84ff6095c68cc936c7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1_FIXTURES.json": "d38ec7e51510f847a1a173f793247f14114f79e07fa8604df15af7d2fc7cb3f2",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O08_VALIDATOR_AUTHORITY_GATE_ADMISSION_1_VALIDATION.json": "aae55f676a9c940f9a1b3ef5d0a6d6e40e4e564bbe78cd02fe07120b1a7e3841",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1.json": "946046020d0348dcc98410fe0cdaf6d3a212e136da0c83c8ad357860d2a1a7ce",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1.md": "56bcbc4a501a25991a9df119e59732070237aeb5870bbf99641ea18553960d59",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1_FIXTURES.json": "1a60e080c23a1033fdeb0b5688fabb1b56182ac209a0061fd5f975c2ec1ba258",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_O09_BASELINE_SLOT_PROOF_ADMISSION_1_VALIDATION.json": "003409b1b563993bc06879ecb2e2ec54cc81cd075f26223ea31636f287fedb47"
+  },
+  "inventory": {
+    "actions": 63,
+    "assertions": 962,
+    "assigned_fields": 2733,
+    "classes": 9,
+    "entities": 343,
+    "history_records": 24,
+    "manifest_result_pins": 23,
+    "named_result_dependencies_outside16": 19,
+    "relations": 15,
+    "required_owners": 16
+  },
+  "mode": "ANALYSIS_ONLY",
+  "named_result_source_verification": [
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BINDING_AUTHORITY_1.json"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_IGNORED_AUTHORITY_1.json"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": true,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_FACT_BUDGET_APPLICABILITY_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_AUDIT_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_BINDING_GRANT_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_RUNTIME_HEAD_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_SUPERVISOR_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": true,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_BUDGET_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_ELIGIBILITY_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IGNORED_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IMPLEMENTATION_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_INTERFACES_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_ANCESTRY_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_APPROVAL_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": true,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": true,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md"
+    },
+    {
+      "exists": true,
+      "hash_match": true,
+      "in_16_owners": false,
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_EXEC_1_RESULT.md"
+    }
+  ],
+  "next_package": "BR-C1",
+  "open_gaps": [
+    "BR-01",
+    "BR-02",
+    "BR-03",
+    "BR-05"
+  ],
+  "production_effect": false,
+  "restored_and_qualified": "2/17",
+  "schema": "CE02-REMAINING-BRIDGE-DEPENDENCIES-1",
+  "shared_root_blockers": [
+    {
+      "depends_on": [],
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "D1",
+      "name": "Shared typed context and role-specific identity projection",
+      "nature": "BRIDGE_DEFECT",
+      "types": [
+        "IDENTITY_PROJECTION_MISSING",
+        "ENVELOPE_BINDING_MISSING",
+        "CROSS_SOURCE_JOIN_MISSING"
+      ],
+      "values": [
+        "V03",
+        "V04",
+        "V05",
+        "V12",
+        "V13"
+      ]
+    },
+    {
+      "depends_on": [
+        "D1"
+      ],
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "D2",
+      "name": "Source provenance,dependency and snapshot-validity projection",
+      "nature": "BRIDGE_DEFECT; existing currentness rules must be mapped, not replaced",
+      "types": [
+        "PROVENANCE_BINDING_MISSING",
+        "CROSS_SOURCE_JOIN_MISSING",
+        "PROFILE_PROJECTION_MISSING"
+      ],
+      "values": [
+        "V03",
+        "V07",
+        "V09",
+        "V14",
+        "V17"
+      ]
+    },
+    {
+      "depends_on": [
+        "D1"
+      ],
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "D3",
+      "name": "Independent expected-profile governance boundary",
+      "nature": "BRIDGE_CONTRACT_DEFECT; existing local evaluators exist but no accepted full-source parameter set",
+      "types": [
+        "LOCAL_ADMISSION_MISSING",
+        "COMPOSITION_BINDING_MISSING"
+      ],
+      "values": [
+        "V02",
+        "V08",
+        "V11",
+        "V16"
+      ]
+    },
+    {
+      "depends_on": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-05"
+      ],
+      "id": "D4",
+      "name": "Action and bounded-result normalization",
+      "nature": "BRIDGE_DEFECT",
+      "types": [
+        "PROFILE_PROJECTION_MISSING",
+        "IDENTITY_PROJECTION_MISSING"
+      ],
+      "values": [
+        "V01",
+        "V02",
+        "V07"
+      ]
+    },
+    {
+      "depends_on": [
+        "D4"
+      ],
+      "gaps": [
+        "BR-02",
+        "BR-05"
+      ],
+      "id": "D5",
+      "name": "History,accepted knowledge and hold reconciliation",
+      "nature": "BRIDGE_DEFECT",
+      "types": [
+        "PROFILE_PROJECTION_MISSING",
+        "CROSS_SOURCE_JOIN_MISSING"
+      ],
+      "values": [
+        "V06",
+        "V07",
+        "V08",
+        "V09"
+      ]
+    },
+    {
+      "depends_on": [
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "gaps": [
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "D6",
+      "name": "Typed graph predicates and admitted/descriptive projection",
+      "nature": "BRIDGE_DEFECT",
+      "types": [
+        "PROFILE_PROJECTION_MISSING",
+        "PROVENANCE_BINDING_MISSING"
+      ],
+      "values": [
+        "V10",
+        "V11",
+        "V14"
+      ]
+    },
+    {
+      "depends_on": [
+        "D4",
+        "D5",
+        "D6"
+      ],
+      "gaps": [
+        "BR-05"
+      ],
+      "id": "D7",
+      "name": "Full-instance membership,coverage and composition binding",
+      "nature": "BRIDGE_DEFECT; also consumes already closed BR-04 projections",
+      "types": [
+        "COMPOSITION_BINDING_MISSING",
+        "CROSS_SOURCE_JOIN_MISSING"
+      ],
+      "values": [
+        "V13",
+        "V16",
+        "V17"
+      ]
+    },
+    {
+      "depends_on": [],
+      "gaps": [],
+      "id": "X1",
+      "name": "Positive real external subject evidence",
+      "nature": "FROZEN_SOURCE_INCOMPLETENESS; not a prerequisite of suspended-state restoration",
+      "types": [
+        "SOURCE_EVIDENCE_ABSENT"
+      ],
+      "values": [
+        "V15",
+        "V18"
+      ]
+    }
+  ],
+  "source_availability": [
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "Converting strings to typed references and checking dependent identities is missing; READINESS_PLAN is not the target REQUEST scope.",
+      "id": "V01",
+      "source": "P#/resolution_actions/*",
+      "value": "action IDs,operation,executor,effect,stage,scope,prerequisite strings"
+    },
+    {
+      "availability": "NOT_PRESENT",
+      "boundary": "Governing prose and three bounded result oracles exist; a complete independently accepted machine table is a contract deliverable, not external runtime evidence.",
+      "id": "V02",
+      "source": "P#/resolution_actions/*/{acceptance_criteria,authority_rule,completion_does_not_imply}; C06A_2_ORACLES_1",
+      "value": "per-action executable result/knowledge/authority acceptance table"
+    },
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "A source locator/pin does not prove accepted operational truth.",
+      "id": "V03",
+      "source": "16-owner source registry; P evidence; G provenance; M/S bindings",
+      "value": "raw source content pins and exact source pointers"
+    },
+    {
+      "availability": "AVAILABLE_BY_DEFINED_DERIVATION",
+      "boundary": "All three canonical extracted hashes checked against P; ledger digest is not plan raw hash.",
+      "id": "V04",
+      "source": "M#/{execution_ledger,execution_state,embedded_selection_policy}; S#/bindings",
+      "value": "plan ledger/state/policy subvalue content identity"
+    },
+    {
+      "availability": "AVAILABLE_BY_AUTHORIZED_JOIN",
+      "boundary": "Document hash and embedded policy hash are distinct; the named document is outside the 16 owners but explicitly referenced.",
+      "id": "V05",
+      "source": "S#/bindings/selection_policy_document; P#/selection_policy/artifact",
+      "value": "governing policy-document content identity"
+    },
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "Current typed event/hold reconciliation remains missing; no executed action may be invented for event0.",
+      "id": "V06",
+      "source": "P#/execution_history; P#/execution_state",
+      "value": "historical attempts,selection-only event,latest execution overlay"
+    },
+    {
+      "availability": "AVAILABLE_BY_AUTHORIZED_JOIN",
+      "boundary": "23 named result pins verified:4 are within16 owners and19 are explicitly referenced frozen files outside the owner set. Per-event semantic join is not thereby qualified.",
+      "id": "V07",
+      "source": "M#/execution_result_artifacts; P result_artifact pointers",
+      "value": "historical result document bytes"
+    },
+    {
+      "availability": "NOT_PRESENT",
+      "boundary": "Needs deterministic identity projection and reviewed event variant rules. Synthetic ATTEMPT/R/QUAL-LEDGER values are not source facts.",
+      "id": "V08",
+      "source": "P#/execution_history and current overlay",
+      "value": "typed event/result/hold/override IDs and complete normalized current-state table"
+    },
+    {
+      "availability": "AMBIGUOUS",
+      "boundary": "Facts and source rules are present; the complete fieldwise mapping of all mandatory support roles and supersessions has not been established. Do not equate ambiguity with missing external facts.",
+      "id": "V09",
+      "source": "P knowledge/result/reentry fields; G synchronization; named result reports",
+      "value": "accepted historical knowledge payload/current dependency selection"
+    },
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "343 entities/962 assertions/15 relation kinds; source shape differs from PF graph contract.",
+      "id": "V10",
+      "source": "G#/{entities,assertions,relation_semantics,prerequisite_projection}",
+      "value": "entity/assertion IDs,relations,classes,ordering flags,source provenance"
+    },
+    {
+      "availability": "NOT_PRESENT",
+      "boundary": "Rules exist in source; complete machine mapping from SOURCE_LOCATED/reported/issued provenance to accepted or descriptive state is absent. No blanket acceptance or blanket descriptive downgrade.",
+      "id": "V11",
+      "source": "G#/{relation_semantics,assertions,synchronization}",
+      "value": "typed graph predicate table,claims and operational admission dispositions"
+    },
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "These are typed subject references, not proof all named objects are current/applicable; preserve source EXECUTION versus target REQUEST.",
+      "id": "V12",
+      "source": "M#/subject_pins; governing O08/O09 envelopes",
+      "value": "runtime,G4,invocation,dispatch,context,release,ProgrammerProfile subject references"
+    },
+    {
+      "availability": "AVAILABLE_BY_AUTHORIZED_JOIN",
+      "boundary": "Pinned correspondences exist; normalized instance identity and role-to-member projection remain contract work.",
+      "id": "V13",
+      "source": "S#/bindings <-> M current graph/plan/ledger/state/policy <-> P/G",
+      "value": "composed graph/plan/ledger/policy context and source-to-component correspondence"
+    },
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "Rules already exist; per-normalized-source dependency DAG and snapshot-scoped validity projection are missing.",
+      "id": "V14",
+      "source": "G#/synchronization; M#/mismatch_rule; CE01 current/history/graph",
+      "value": "transitive invalidation and historical-current separation rules"
+    },
+    {
+      "availability": "NOT_PRESENT",
+      "boundary": "Genuinely absent external evidence. Not required to restore recorded absence/holds; required to make those positive governed claims.",
+      "id": "V15",
+      "source": "H#/common_evidence_contract; M#/request_routes",
+      "value": "live freshness/current applicability for all referenced external subjects"
+    },
+    {
+      "availability": "NOT_PRESENT",
+      "boundary": "Coverage source rows exist; independent expected real-source normalization and profile acceptance binding do not. Candidate-derived expected tables would be circular.",
+      "id": "V16",
+      "source": "C06A2 mapping inventory; existing PF profiles BASE/RENAMED",
+      "value": "complete accepted real-source profile allowlist and2733-field coverage"
+    },
+    {
+      "availability": "AVAILABLE_DIRECTLY",
+      "boundary": "All eight evidence_received=false; enough to represent waiting, not enough to resume.",
+      "id": "V17",
+      "source": "M#/request_routes; H#/control_transfer_items; S#/resume_condition",
+      "value": "eight evidence-not-received states and named reentry routes"
+    },
+    {
+      "availability": "NOT_PRESENT",
+      "boundary": "Do not synthesize these for composition. A complete restoration may contain governed unsatisfied values.",
+      "id": "V18",
+      "source": "H#/control_transfer_items; M#/resume_rule",
+      "value": "new completed OperationalBinding/implementation owner-selector and positive receipt payloads"
+    }
+  ],
+  "source_to_O16_blocking_cut": [
+    {
+      "blocker": "D4",
+      "edge": "source action/results -> admitted typed definitions/result contracts",
+      "gaps": [
+        "BR-01",
+        "BR-02",
+        "BR-05"
+      ],
+      "id": "CUT-A"
+    },
+    {
+      "blocker": "D5",
+      "edge": "source history/overlay -> reconciled current history",
+      "gaps": [
+        "BR-02",
+        "BR-05"
+      ],
+      "id": "CUT-H"
+    },
+    {
+      "blocker": "D6",
+      "edge": "source graph -> typed admitted projection",
+      "gaps": [
+        "BR-03",
+        "BR-05"
+      ],
+      "id": "CUT-G"
+    },
+    {
+      "blocker": "D7",
+      "edge": "complete projected local state -> trusted covered O16 instance",
+      "gaps": [
+        "BR-05"
+      ],
+      "id": "CUT-I"
+    }
+  ],
+  "validation": {
+    "E1_files_unchanged": 10911,
+    "dependency_graph": "ACYCLIC",
+    "existing_files_modified": [],
+    "implementation_or_predicate_execution": false,
+    "input_pins": "PASS",
+    "local_links": "PASS",
+    "manifest_result_pins_checked": 23,
+    "manifest_subvalue_hashes_checked": 3,
+    "new_files": [
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_REMAINING_BRIDGE_DEPENDENCIES_1.json",
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_CE02_REMAINING_BRIDGE_DEPENDENCIES_1.md"
+    ],
+    "reference_integrity": "PASS",
+    "result_pins_match": true
+  }
+}

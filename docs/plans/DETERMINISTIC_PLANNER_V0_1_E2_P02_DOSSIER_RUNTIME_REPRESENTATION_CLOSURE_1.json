@@ -1,0 +1,39 @@
+{
+  "schema": "E2-P02-dossier-runtime-representation-closure-v1",
+  "work_package": "E2-P02-DOSSIER-RUNTIME-REPRESENTATION-CLOSURE",
+  "result": "BLOCKED",
+  "prepared_dossier_classification": "E2_MATERIALIZER_OMISSION",
+  "validation_instance_classification": "MISSING_NATIVE_RUNTIME_CAPABILITY",
+  "native_representation": {
+    "prepared_dossier": "Action.prepared_dossier and SuppliedResult.dossier",
+    "dossier_consumer": "Decision.dossier / gates.decision_readiness",
+    "validation_representation": "Snapshot.predicates referenced by DecisionCheck",
+    "runtime_append_interface": "ABSENT"
+  },
+  "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+  "prepared_dossier": "NOT_MATERIALIZED",
+  "fact_proofs": "2/2 independent oracle",
+  "validation_evaluations": "6/6 independent oracle",
+  "typed_validation_instances": "0/6",
+  "dossier_admission": "NOT_REACHED",
+  "replay": {"check":"PASS","collect":"PASS","prepare_selection":"PASS","prepare_admission":"BLOCKED"},
+  "negative_regressions": [
+    "PREPARE PASS without dossier rejected",
+    "missing validation instance admission unavailable",
+    "wrong dossier/producer/lineage tests deferred until runtime contract"
+  ],
+  "invalidation": "CONTRACT_REQUIRED",
+  "determinism": "PASS_FOR_REACHED_STATES",
+  "post_dossier": {"decision_ready":[],"actionable":[],"selected":null,"control":"NOT_REACHED"},
+  "implementation_required": true,
+  "implementation_modified": false,
+  "new_runtime_defects": [],
+  "other_p02_blockers": ["RUNTIME_VALIDATION_RESULT_ADMISSION_CONTRACT"],
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

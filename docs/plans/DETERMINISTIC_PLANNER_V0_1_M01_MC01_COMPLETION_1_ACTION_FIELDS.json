@@ -1,0 +1,166 @@
+{
+  "O01_fields": [
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_SELECTION",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "id",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.id"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_SELECTION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "primary_operation_class",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.operation"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "executor",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "operation/human routing; no independent native executor field"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_SELECTION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "effect_boundary",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.effect"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_SELECTION",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "stage_role",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.stage"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "scope",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.source.scope plus context/source bindings"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "lineage",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "context and source-bound graph entities"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "prerequisite_actions",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.prerequisites"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "external_prerequisites",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.requirements, boundaries and ExternalGate"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "KNOWLEDGE_REQUIREMENT",
+      "field": "knowledge_requirements",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "KNOWLEDGE_ACCEPTED predicates"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "AUTHORITY_BINDING",
+      "field": "authority_requirements",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.authority and predicate support"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION"
+      ],
+      "exact_O01_clause": "RESULT_CONTRACT",
+      "field": "result_contract",
+      "frozen_limit": "Prospective result transitions not read by held-state control; native retained inventory staleness still affects completion",
+      "native_projection": "Action.accepted_result/accepted_inventory and future result validation"
+    },
+    {
+      "classifications": [
+        "REQUIRED_FOR_O01_ADMISSION",
+        "REQUIRED_FOR_ACTIONABILITY",
+        "REQUIRED_FOR_CONTROL_STATE"
+      ],
+      "exact_O01_clause": "ACTION_SCHEMA plus field equality/source checks",
+      "field": "provenance",
+      "frozen_limit": "May be structurally required even when held action bypasses blocker evaluation",
+      "native_projection": "Action.source and source pins"
+    }
+  ],
+  "classification_detail": "Authoritative O01 requires prospective result-contract information even when frozen control does not read it; model/admission scope decision required. O01 is an executable specification not currently an installed runtime entrypoint.",
+  "deferred": [
+    "Positive receipts/current applicability and accepted reentry event",
+    "Effect grants/actual execution",
+    "Complete passive historical result/ledger reconstruction"
+  ],
+  "executable_field_count": 13,
+  "minimal_type": "Existing model.Action with matching ActionStatus and reference closure; no new FrozenAction type defined",
+  "missing_required_is_not_deferred": true,
+  "normalization_status": "No independent source rule establishes all mandatory bindings. Do not invent normalizers or use default empty values.",
+  "partial_action_available": false,
+  "primary_classification": "D",
+  "required_domains": [
+    "RESULT_BINDING",
+    "AUTHORITY_BINDING",
+    "EVIDENCE_BINDING",
+    "KNOWLEDGE_BINDING"
+  ],
+  "runtime_field_count": 16,
+  "schema": "MC01-MINIMAL-ACTION-FIELD-MATRIX-1"
+}

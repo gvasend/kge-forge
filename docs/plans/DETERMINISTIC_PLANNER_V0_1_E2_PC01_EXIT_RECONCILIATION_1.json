@@ -1,0 +1,47 @@
+{
+  "schema": "E2-PC01-EXIT-RECONCILIATION-1",
+  "pc01_exit_conditions": {
+    "six_complete_o01_actions": "SATISFIED",
+    "78_o01_cells_bound": "SATISFIED",
+    "native_required_fields_and_references": "SATISFIED",
+    "whole_model_admission": "SATISFIED",
+    "operational_baseline_source_roles": "SATISFIED",
+    "expected_external_absence": "SATISFIED",
+    "selection_policy_whole_model_binding": "SATISFIED",
+    "canonical_persistence_representation": "SATISFIED",
+    "deterministic_identity": "SATISFIED",
+    "no_actual_outputs_or_execution": "SATISFIED",
+    "no_contract_conflict": "SATISFIED"
+  },
+  "pc01_owned_incomplete_cases": [],
+  "later_package_incomplete_cases": {
+    "E2-PC02": ["E2-A04", "E2-A05", "E2-A06", "E2-A09", "E2-A10", "E2-A11", "E2-A12", "E2-A13", "E2-A14", "E2-A16", "E2-N01", "E2-N02", "E2-N03", "E2-N04", "E2-N05", "E2-N06", "E2-N07", "E2-N14", "E2-N15", "E2-N16"],
+    "E2-PC03": ["E2-A01", "E2-A02", "E2-A03", "E2-A04", "E2-A05", "E2-A06", "E2-A07", "E2-A08", "E2-A09", "E2-A10", "E2-A11", "E2-A12", "E2-A13", "E2-A14", "E2-A15", "E2-A16", "E2-N01", "E2-N02", "E2-N03", "E2-N04", "E2-N05", "E2-N06", "E2-N07", "E2-N08", "E2-N09", "E2-N10", "E2-N11", "E2-N12", "E2-N13", "E2-N14", "E2-N15", "E2-N16", "E2-D01", "E2-END"],
+    "E2-PC04": ["E2-D01", "E2-END", "E2-REVIEW"]
+  },
+  "residual_pc01_blockers": [],
+  "baseline_model_complete": true,
+  "dependency_incomplete_cases": {
+    "E2-D01": "PC03 oracle/process inputs, then PC04 integrated dependency audit",
+    "E2-END": "PC03 lifecycle evidence, then PC04 integrated composition",
+    "E2-REVIEW": "PC04 review-input schema; execution is later and not a PC01 prerequisite",
+    "E2-A01": "PC03 phase oracle only; PC01 baseline itself is complete"
+  },
+  "package_boundary_classification": "B_AND_C",
+  "boundary_finding": "The prior PARTIAL status carried later-package fixture and oracle work into the PC01 exit interpretation. The closure plan's CASE_IDS are shared consumption lists, not additional PC01 acceptance conditions.",
+  "minimum_closure_action": "PC01_COMPLETE_NOW",
+  "e2_pc01_result": "PASS",
+  "pc02_readiness": "YES",
+  "pc02_readiness_blockers": [],
+  "updated_case_counts": {"EXECUTABLE": 2, "FIXTURE_INCOMPLETE": 30, "DEPENDENCY_INCOMPLETE": 4, "ORACLE_INCOMPLETE": 0, "IMPLEMENTATION_CAPABILITY_MISSING": 0, "CONTRACT_CONFLICT": 0},
+  "e2_p01_retry_allowed": false,
+  "e2_p02_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "planner_v0_1_requalification_ready": false,
+  "implementation_modified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false,
+  "git_diff_check": "PASS"
+}

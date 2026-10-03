@@ -1,0 +1,503 @@
+{
+  "schema": "PLANNER-P04-FIXTURE-1",
+  "case_id": "E",
+  "sources": [
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+      "section": "Acceptance and scope",
+      "excerpt": "**PASS — inventory complete with explicit gaps.**",
+      "method": "reviewed-P01-E-slice-v1",
+      "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+      "section": "Explicit missing inputs and producer requirements",
+      "excerpt": "None of the inspected objects contains this member; WP-01 already records the missing producer/object.",
+      "method": "reviewed-P01-E-slice-v1",
+      "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability"
+    },
+    {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+      "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a",
+      "section": "Accepted inventory knowledge",
+      "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+      "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+      "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY"
+    }
+  ],
+  "snapshot": {
+    "schema": "PLANNER-SNAPSHOT-1",
+    "snapshot": {
+      "$type": "Snapshot",
+      "actions": [
+        {
+          "$type": "Action",
+          "accepted_inventory": [],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "TEST-AFTER-INVENTORY"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "SOURCE_ACQUISITION"
+          },
+          "prerequisites": [
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "ACTION_COMPLETED"
+              },
+              "target": {
+                "$type": "ActionId",
+                "value": "S-BINDING"
+              }
+            },
+            {
+              "$type": "Gate",
+              "kind": {
+                "$enum": "GateKind",
+                "value": "CONDITION_SATISFIED"
+              },
+              "target": {
+                "$type": "ConditionId",
+                "value": "root:binding"
+              }
+            }
+          ],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "**PASS — inventory complete with explicit gaps.**",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+            },
+            "method": "reviewed-P01-E-slice-v1",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+            "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+            "section": "Acceptance and scope"
+          }
+        },
+        {
+          "$type": "Action",
+          "accepted_inventory": [
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "P01-BINDING-GAP"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "None of the inspected objects contains this member; WP-01 already records the missing producer/object.",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+                },
+                "method": "reviewed-P01-E-slice-v1",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+                "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+                "section": "Explicit missing inputs and producer requirements"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_INCOMPLETE"
+              },
+              "statement": "Canonical binding object remains absent in the inspected source set.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            },
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "P01-BINDING-INVENTORY"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "**PASS — inventory complete with explicit gaps.**",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+                },
+                "method": "reviewed-P01-E-slice-v1",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+                "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+                "section": "Acceptance and scope"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_COMPLETE"
+              },
+              "statement": "Recorded S-BINDING inventory is complete with explicit gaps; not input completeness.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            }
+          ],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "S-BINDING"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "SOURCE_ACQUISITION"
+          },
+          "prerequisites": [],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "**PASS — inventory complete with explicit gaps.**",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+            },
+            "method": "reviewed-P01-E-slice-v1",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+            "scope": "HISTORICAL_READINESS_PLAN_ONLY; no current applicability",
+            "section": "Acceptance and scope"
+          }
+        },
+        {
+          "$type": "Action",
+          "accepted_inventory": [
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "S-CONTEXT-K1"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+                },
+                "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+                "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY",
+                "section": "Accepted inventory knowledge"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_INCOMPLETE"
+              },
+              "statement": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            },
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "S-CONTEXT-K2"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+                },
+                "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+                "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY",
+                "section": "Accepted inventory knowledge"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_INCOMPLETE"
+              },
+              "statement": "- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            },
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "S-CONTEXT-K3"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+                },
+                "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+                "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY",
+                "section": "Accepted inventory knowledge"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_INCOMPLETE"
+              },
+              "statement": "- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            },
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "S-CONTEXT-K4"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+                },
+                "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+                "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY",
+                "section": "Accepted inventory knowledge"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_INCOMPLETE"
+              },
+              "statement": "- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            },
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "S-CONTEXT-K5"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+                },
+                "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+                "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+                "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY",
+                "section": "Accepted inventory knowledge"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_INCOMPLETE"
+              },
+              "statement": "- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            }
+          ],
+          "effect": {
+            "$enum": "EffectClass",
+            "value": "NON_EFFECTING"
+          },
+          "evidence": [],
+          "id": {
+            "$type": "ActionId",
+            "value": "S-CONTEXT"
+          },
+          "operation": {
+            "$enum": "OperationClass",
+            "value": "SOURCE_ACQUISITION"
+          },
+          "prerequisites": [],
+          "source": {
+            "$type": "Provenance",
+            "excerpt": "- **S-CONTEXT-K1**: Current recorded OperationalContext identity independently recomputes; exact scope/runtime/G4 and acceptance-manifest reference are inventoried.\n- **S-CONTEXT-K2**: context_binding owning summary is OperationalContext, while required runtime shape remains CommittedContext-like; accepted JSON hydration is not supplied by this inventory.\n- **S-CONTEXT-K3**: context_projection requires its own capture/clearance specification and verified binding; OperationalContext references payload/clearance authorities but does not supply a qualified consumer projection.\n- **S-CONTEXT-K4**: AcceptanceEvidenceManifest is PRE_EXECUTION_STRUCTURE_ONLY with NOT_YET_PRODUCED obligations; its verified reference is not evidence of completed acceptance or a materialized committed acceptance object.\n- **S-CONTEXT-K5**: execution_profile is canonical runtime specification(binding, acceptance), whose inputs include binding.repos and acceptance path/capture_commit/digest; concrete value remains unconstructed.\n\n| Field/input | Owning evidence and required input | Remaining boundary |\n|---|---|---|\n| context_binding | E1_OPERATIONAL_CONTEXT_1.json is the recorded current context summary; WP-09 and CommittedContext define the required object interface. | No accepted JSON hydration or concrete current committed binding is supplied. Existing root:context_hydration remains unresolved. |\n| context_projection | OperationalContext contains exact payload_authority/content_clearance references; derive(spec,binding) requires verified binding plus capture_path/capture_sha256 and clearance_path/clearance_sha256. | Exact consumer projection source/shape and mapping remain incomplete; no projection was derived or authority store traversed. root:context_projection unchanged. |\n| acceptance evidence | E1_ACCEPTANCE_EVIDENCE_MANIFEST_1.json is explicitly referenced by OperationalContext; scope is LIVE_R4/G4/E1-WP-001, while context scope adds FIRST_PROGRAMMER_REQUEST. Runtime and G4 references match. | PRE_EXECUTION_STRUCTURE_ONLY, nine obligations NOT_YET_PRODUCED; this is not a completed event proof or a substitute for a CommittedContext acceptance input. No scope equality or new consumer mapping inferred. |\n| execution_profile | WP-08 and runnable_profile.specification(binding,acceptance): binding.repos[forge], acceptance.path/capture_commit/digest, and runtime policy inputs. | Concrete binding/acceptance inputs and materialized runtime specification still required; no producer executed or executable identities acquired. root:execution_profile unchanged. |\n\nThe context identity is `OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c` (2185 canonical bytes); acceptance identity is `AcceptanceEvidenceManifest-sha256:9b1ed227b7404d01799aa12c3de24dafc9f22f6c215fe729896be0c4ea9f7d98` (3875 canonical bytes). Both were independently recomputed using compact sorted-key UTF-8 JSON excluding identity and canonical_byte_length. The context acceptance reference exactly matches the manifest identity. These content checks do not establish runtime hydration, field completeness or issuance authority.\n\nAll gaps are explicit inventory limitations within the already-recorded source/representation/producer requirements. No new plan/contract inconsistency is asserted. Existing WP-09 exceptions are preserved, not reopened. No historical fallback or null value was selected.",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+            },
+            "method": "REVIEWED_DETERMINISTIC_FIXTURE_NORMALIZATION",
+            "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+            "scope": "PARTIAL_HISTORICAL_DECISION_REPLAY",
+            "section": "Accepted inventory knowledge"
+          }
+        }
+      ],
+      "assertions": [],
+      "knowledge": [],
+      "roots": [
+        {
+          "$type": "RootCondition",
+          "evidence": [],
+          "id": {
+            "$type": "ConditionId",
+            "value": "root:binding"
+          },
+          "state": {
+            "$enum": "ConditionState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "slots": [
+        {
+          "$type": "ValueSlot",
+          "evidence": [],
+          "id": {
+            "$type": "SlotId",
+            "value": "binding_sha256"
+          },
+          "required_type": {
+            "$enum": "IdentityKind",
+            "value": "BINDING_DIGEST"
+          },
+          "state": {
+            "$enum": "SlotState",
+            "value": "UNRESOLVED"
+          }
+        },
+        {
+          "$type": "ValueSlot",
+          "evidence": [],
+          "id": {
+            "$type": "SlotId",
+            "value": "canonical_binding"
+          },
+          "required_type": {
+            "$enum": "IdentityKind",
+            "value": "CANONICAL_OBJECT_IDENTITY"
+          },
+          "state": {
+            "$enum": "SlotState",
+            "value": "UNRESOLVED"
+          }
+        }
+      ],
+      "statuses": [
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "S-BINDING"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        },
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "S-CONTEXT"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        },
+        {
+          "$type": "ActionStatus",
+          "id": {
+            "$type": "ActionId",
+            "value": "TEST-AFTER-INVENTORY"
+          },
+          "state": {
+            "$enum": "ActionState",
+            "value": "ACTION_ELIGIBLE"
+          }
+        }
+      ]
+    }
+  },
+  "given": "Partial original E inventory slice, both bounded knowledge contracts pinned.",
+  "when": "Apply the two supplied inventory PASS results sequentially.",
+  "then": "Both complete while roots and slots stay unresolved; no other action executes.",
+  "must_not": "Do not adopt an alternative, invent facts, satisfy roots/slots, issue authority, execute human decisions, or modify E1. Historical slice only.",
+  "expected": {
+    "actions": [
+      "S-BINDING",
+      "S-CONTEXT"
+    ],
+    "root_transition": "UNCHANGED",
+    "slot_transition": "UNCHANGED"
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "C06A_4_READY": false,
+  "C07_RETRY_ALLOWED": false,
+  "E1_files_verified_unchanged": 10911,
+  "F03_status": "CLOSED",
+  "O09_specification_cases": {
+    "negative": 52,
+    "passed": 54,
+    "positive": 2
+  },
+  "assigned": [
+    "O01",
+    "O02",
+    "O03",
+    "O06",
+    "O08",
+    "O09",
+    "O10",
+    "O16"
+  ],
+  "attempt": "RETRY_1",
+  "authority_conditioned_proof_fixture_count": 0,
+  "completion_specification_cases_passed": 104,
+  "contract_mismatch": [
+    "O08_VALIDATOR_AUTHORITY_ROOT_PROOF_ORACLE_UNINSTANTIATED"
+  ],
+  "coverage": {
+    "promoted": [],
+    "remaining": 15,
+    "restored_and_qualified": 2,
+    "total": 17
+  },
+  "current_status": "CORRECTION_REQUIRED",
+  "exception": "C06A_3_CONTRACT_MISMATCH",
+  "fixture_root_targets": [
+    "root:qualified"
+  ],
+  "implementation_modified": false,
+  "importer_read_only_observations": {
+    "M_normalization_source_present": true,
+    "initial_satisfied_roots": [],
+    "operative_graph_relations": 0,
+    "planner_actions_executed": false,
+    "readiness_test_executed": false,
+    "resolved_slots_with_no_requirements": [
+      "slot:authenticated_inputs.InvocationAttemptId",
+      "slot:authenticated_inputs.profile_sha256"
+    ]
+  },
+  "preexisting_files_modified": [],
+  "production_effect": false,
+  "required_root_registry_entry": {
+    "ancestor_actions": [
+      "PREP-VALIDATOR"
+    ],
+    "ancestor_conditions": [],
+    "authority_requirement": "Separate implementation authority required for implementation; separate construction/release authority required for those actions. Definition adoption alone grants none.",
+    "completion_rule": {
+      "all_ancestor_outputs_must_be_accepted": true,
+      "conditional_branch_rule": "An absent source, waived decision without sufficient alternative evidence, semantic uncertainty or stale identity leaves this condition UNRESOLVED.",
+      "drafts_or_grants_alone_close_value_slots": false,
+      "required_final_action": "DEC-VALIDATOR",
+      "required_outcome": "ACCEPTED_COMPLETE_PROOF"
+    },
+    "final_producer": "DEC-VALIDATOR",
+    "kind": "ROOT",
+    "registered_rule": "ALL_CURRENT_INDEPENDENT_OBLIGATIONS",
+    "required_proof_class": "ACCEPTED_COMPLETE_PROOF",
+    "source": {
+      "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json",
+      "pointer": "/normalized_root_conditions/27"
+    },
+    "special_case": "ISSUED_BOUNDED_VALIDATOR_GRANT_PROOF",
+    "target": "gate:validator_authority",
+    "unavailable_input_semantics": "UNKNOWN and condition unsatisfied, not an unsupported oracle and not permission to invent a proof. Independent final proof and source predicates must be registered/accepted; a PASS/status string never supplies them."
+  },
+  "result": "BLOCKED",
+  "runtime_conformance_classification": "Not completed: stopped at contract gate. Structural observations do not substitute for independently admitted operational tests.",
+  "work_package": "C06A-3"
+}

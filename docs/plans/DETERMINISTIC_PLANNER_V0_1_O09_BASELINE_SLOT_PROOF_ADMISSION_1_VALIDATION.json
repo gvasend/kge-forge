@@ -1,0 +1,768 @@
+{
+  "determinism": {
+    "case_order": "reversed",
+    "hash_seeds": [
+      0,
+      17,
+      113
+    ],
+    "object_key_order": "recursive reversal",
+    "result": "PASS",
+    "semantic_digest": "5eb7024bbe72f199e9195e7cda741d53c95741365b4483e815b87702c116315e"
+  },
+  "harness_note": "Initial result-digest harness used tuples, rejected by JSON-only canonicalizer; changed temporary harness rows to JSON arrays and reran all three seeds. Predicate results unchanged.",
+  "negative": 52,
+  "planner_tests_run": false,
+  "positive": 2,
+  "qualification_scope": "Independent specification only, not planner integration",
+  "results": [
+    {
+      "expected": {
+        "accepted": true,
+        "failed_clause": null
+      },
+      "id": "POS-InvocationAttemptId",
+      "result": {
+        "accepted": true,
+        "authority_granted": false,
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "failed_clause": null,
+        "resolution_scope": "Candidate identity only, no issuance/use",
+        "root_transition": "UNCHANGED",
+        "slot": "slot:authenticated_inputs.InvocationAttemptId",
+        "slot_resolved_supported": true,
+        "value": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa"
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": true,
+        "failed_clause": null
+      },
+      "id": "POS-profile_sha256",
+      "result": {
+        "accepted": true,
+        "authority_granted": false,
+        "evaluation": "PINNED_SNAPSHOT_ONLY",
+        "failed_clause": null,
+        "resolution_scope": "Released profile content digest, not authority ID",
+        "root_transition": "UNCHANGED",
+        "slot": "slot:authenticated_inputs.profile_sha256",
+        "slot_resolved_supported": true,
+        "value": "83b8cbc0549c64d21eaccaffc1fa45b49be368a878ccecdf9572d476477dfcd6"
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C01_PROOF_REQUIRED"
+      },
+      "id": "InvocationAttemptId-missing-proof",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C01_PROOF_REQUIRED",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE"
+      },
+      "id": "InvocationAttemptId-knowledge-only",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE"
+      },
+      "id": "InvocationAttemptId-wrong-proof-type",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET"
+      },
+      "id": "InvocationAttemptId-wrong-slot",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET"
+      },
+      "id": "InvocationAttemptId-other-baseline-slot",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN"
+      },
+      "id": "InvocationAttemptId-wrong-value-type",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN"
+      },
+      "id": "InvocationAttemptId-placeholder",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN"
+      },
+      "id": "InvocationAttemptId-wrong-domain",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C05_SCOPE"
+      },
+      "id": "InvocationAttemptId-wrong-scope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C05_SCOPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C06_LINEAGE"
+      },
+      "id": "InvocationAttemptId-wrong-lineage",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C06_LINEAGE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C09_PROVENANCE"
+      },
+      "id": "InvocationAttemptId-missing-provenance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C09_PROVENANCE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C08_PREREQUISITES"
+      },
+      "id": "InvocationAttemptId-missing-prerequisite",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C08_PREREQUISITES",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C10_MAPPING"
+      },
+      "id": "InvocationAttemptId-wrong-mapping",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C10_MAPPING",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS"
+      },
+      "id": "InvocationAttemptId-missing-source",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C07_ENVELOPE"
+      },
+      "id": "InvocationAttemptId-conflicting-envelope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C07_ENVELOPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS"
+      },
+      "id": "InvocationAttemptId-dangling-source",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C13_SOURCE_BYTES"
+      },
+      "id": "InvocationAttemptId-wrong-source-bytes",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C13_SOURCE_BYTES",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C17_PROOF_IDENTITY"
+      },
+      "id": "InvocationAttemptId-proof-identity",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_PROOF_IDENTITY",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-historical-only",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-live-currentness-inference",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-wrong-snapshot",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-stale-candidate",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-invalid-candidate",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-stale-acceptance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "InvocationAttemptId-invalid-acceptance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C01_PROOF_REQUIRED"
+      },
+      "id": "profile_sha256-missing-proof",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C01_PROOF_REQUIRED",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE"
+      },
+      "id": "profile_sha256-knowledge-only",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE"
+      },
+      "id": "profile_sha256-wrong-proof-type",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C03_COMPLETION_PROOF_TYPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET"
+      },
+      "id": "profile_sha256-wrong-slot",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET"
+      },
+      "id": "profile_sha256-other-baseline-slot",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C02_TARGET",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN"
+      },
+      "id": "profile_sha256-wrong-value-type",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN"
+      },
+      "id": "profile_sha256-placeholder",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN"
+      },
+      "id": "profile_sha256-wrong-domain",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C04_VALUE_DOMAIN",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C05_SCOPE"
+      },
+      "id": "profile_sha256-wrong-scope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C05_SCOPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C06_LINEAGE"
+      },
+      "id": "profile_sha256-wrong-lineage",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C06_LINEAGE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C09_PROVENANCE"
+      },
+      "id": "profile_sha256-missing-provenance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C09_PROVENANCE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C08_PREREQUISITES"
+      },
+      "id": "profile_sha256-missing-prerequisite",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C08_PREREQUISITES",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C10_MAPPING"
+      },
+      "id": "profile_sha256-wrong-mapping",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C10_MAPPING",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS"
+      },
+      "id": "profile_sha256-missing-source",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C07_ENVELOPE"
+      },
+      "id": "profile_sha256-conflicting-envelope",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C07_ENVELOPE",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS"
+      },
+      "id": "profile_sha256-dangling-source",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C11_SUPPORT_BINDINGS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C13_SOURCE_BYTES"
+      },
+      "id": "profile_sha256-wrong-source-bytes",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C13_SOURCE_BYTES",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C17_PROOF_IDENTITY"
+      },
+      "id": "profile_sha256-proof-identity",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C17_PROOF_IDENTITY",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-historical-only",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-live-currentness-inference",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-wrong-snapshot",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-stale-candidate",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-invalid-candidate",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-stale-acceptance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-invalid-acceptance",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-stale-release",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    },
+    {
+      "expected": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS"
+      },
+      "id": "profile_sha256-invalid-release",
+      "result": {
+        "accepted": false,
+        "failed_clause": "C12_CURRENTNESS",
+        "slot_resolved_supported": false
+      },
+      "roundtrip": "PASS"
+    }
+  ],
+  "schema": "O09-SPECIFICATION-VALIDATION-1",
+  "source_invalidation_sequences": [
+    {
+      "accepted_then_reload_then_invalidate_then_reload": "PASS",
+      "invalidated_role": "acceptance",
+      "proof_unchanged": true,
+      "slot": "slot:authenticated_inputs.InvocationAttemptId"
+    },
+    {
+      "accepted_then_reload_then_invalidate_then_reload": "PASS",
+      "invalidated_role": "candidate",
+      "proof_unchanged": true,
+      "slot": "slot:authenticated_inputs.InvocationAttemptId"
+    },
+    {
+      "accepted_then_reload_then_invalidate_then_reload": "PASS",
+      "invalidated_role": "acceptance",
+      "proof_unchanged": true,
+      "slot": "slot:authenticated_inputs.profile_sha256"
+    },
+    {
+      "accepted_then_reload_then_invalidate_then_reload": "PASS",
+      "invalidated_role": "candidate",
+      "proof_unchanged": true,
+      "slot": "slot:authenticated_inputs.profile_sha256"
+    },
+    {
+      "accepted_then_reload_then_invalidate_then_reload": "PASS",
+      "invalidated_role": "release",
+      "proof_unchanged": true,
+      "slot": "slot:authenticated_inputs.profile_sha256"
+    }
+  ],
+  "source_pins": "PASS"
+}

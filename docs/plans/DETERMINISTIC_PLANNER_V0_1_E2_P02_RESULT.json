@@ -1,0 +1,64 @@
+{
+  "schema": "E2-P02-result-v1",
+  "work_package": "E2-P02",
+  "result": "BLOCKED",
+  "pinned_inputs": {
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_RETRY_1_RESULT.md": "8326a9b2ddc78f37f39facf7e53c43a0aa7a2e2022a24a98393bc8cf884e4b00",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_RETRY_1_RESULT.json": "3c8e93ed72d858e792263a87f8363148445b445ed01398632d52dc3ef3c2e7a7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_COMPLETION_1_WHOLE_MODEL.json": "53ad5ede34f6e5084ca6643c4021bdef886ded6608a67e52c302a0966c156fce",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_FIXTURES.json": "82dd532b779864b3bdb4ae1d2e70a989567717b431db7ebc9148c91319cd2716",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_FIXTURES.json": "1610f526a7f055f759355ce1cde4abee5b6780ec73eb3358c57b7a9738bda248",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_ORACLE.py": "415ae952ecde760a0934ae29723f6fee712c4e12556ac381fb8d879983b7236e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC03_FIXTURES.json": "e601d1cdc133cdc790a90ed8c7218c779214bd47407bc044b7e9b86e7f5c7fd4",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC03_ORACLE.py": "9d1546baad3d540390de4f01e09c041bfbfcd287280bc7302c0efefa848589ba",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T01_RESULT.md": "ee494579c962c2b0742de0d7df532d5467f7961b585706445d7f9d2b6ff70577"
+  },
+  "prerequisites": {"E2_P01": "PASS"},
+  "contract": {
+    "purpose": "canonical construction, initial selection/results, dossier/decision and external wait",
+    "allowed_actions": ["E2-COLLECT", "E2-CHECK", "E2-PREPARE", "E2-DECIDE"],
+    "target_control": "EXTERNAL_WAIT",
+    "target_actionable": [],
+    "target_human_ready": [],
+    "target_resume_allowed": false,
+    "unlock": "E2-P03"
+  },
+  "initial_state": {
+    "required_schema": "PLANNER-SNAPSHOT-1",
+    "required_identity": true,
+    "available": false,
+    "reason": "PC01 fixture native_snapshot is null; PC01 whole-model companion is metadata-only; PC02 baseline_ref points to metadata"
+  },
+  "execution": {
+    "transitions_executed": 0,
+    "actions_selected": [],
+    "actions_executed": [],
+    "trace": [],
+    "replay": "NOT_RUN",
+    "determinism": "NOT_RUN",
+    "provenance": "NOT_EVALUATED"
+  },
+  "counterexamples": [
+    {
+      "id": "P02-INPUT-001",
+      "class": "FIXTURE_INCOMPLETE",
+      "expected": "pinned PLANNER-SNAPSHOT-1 initial state",
+      "observed": "null snapshot / metadata-only baseline",
+      "runtime_defect": false
+    }
+  ],
+  "E2_P03_READY": false,
+  "NEXT_PACKAGE": "E2-P02-INPUT-CLOSURE",
+  "D01_STATUS": "READY_FOR_LATER_PHASE",
+  "END_STATUS": "READY_FOR_LATER_PHASE",
+  "REVIEW_STATUS": "READY_FOR_LATER_PHASE",
+  "N_REAL_SATISFIED": false,
+  "CANONICAL_E2_QUALIFIED": false,
+  "PLANNER_V0_1_REQUALIFICATION_READY": false,
+  "IMPLEMENTATION_MODIFIED": false,
+  "EXPERIMENT_ACTIONS_EXECUTED": 0,
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "PRODUCTION_EFFECT": false
+}

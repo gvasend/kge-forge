@@ -1,0 +1,25 @@
+{
+  "schema": "E2-PC04-D01-v1",
+  "case_id": "E2-D01",
+  "status": "READY_FOR_LATER_PHASE",
+  "operation_executed": false,
+  "dependencies": [
+    {"id": "E2-PC01", "status": "PASS"},
+    {"id": "E2-PC02", "status": "PASS"},
+    {"id": "E2-PC03", "status": "PASS"},
+    {"id": "E2-T01", "status": "PASS"}
+  ],
+  "dimensions": {
+    "hash_seeds": [0, 1, 7, 101],
+    "unordered_permutations": ["original", "reversed", "rotated"],
+    "object_key_permutations": true,
+    "independent_processes": true,
+    "cold_readers_per_checkpoint": 3
+  },
+  "oracle": {
+    "implementation_independent": true,
+    "compare": ["full_computation", "witnesses", "selection", "typed_state", "policy", "resume_proof", "snapshot_identity", "bundle_identity", "event_identity"],
+    "causal_ledger_order_is_permutable": false
+  },
+  "unlocks": "P01 retry eligibility evaluation only"
+}

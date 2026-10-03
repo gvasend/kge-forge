@@ -1,0 +1,445 @@
+{
+  "counts": {
+    "CONTROL_CRITICAL": 13,
+    "CONTROL_SUPPORTING": 11,
+    "NOT_REQUIRED": 4,
+    "OUTSIDE_FROZEN_CONTROL_CONE": 2,
+    "PROVENANCE_ONLY": 5
+  },
+  "schema": "FROZEN-CONTROL-TARGET-CLASSIFICATION-1",
+  "targets": [
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core.project; core._actionability; model.validate_model",
+        "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+      ],
+      "dependency_nodes": [
+        "S01",
+        "S10"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.actions"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core.project; core._actionability; model.validate_model",
+        "gates.current_completion; gates.unavailable_support"
+      ],
+      "dependency_nodes": [
+        "S01",
+        "S02"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.statuses"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core.evaluate_satisfaction; core._global_control.walk",
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+      ],
+      "dependency_nodes": [
+        "S03",
+        "S04"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.roots"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core.evaluate_satisfaction; core._global_control.walk",
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+      ],
+      "dependency_nodes": [
+        "S03",
+        "S04"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.slots"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+      ],
+      "dependency_nodes": [
+        "S04"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.knowledge"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "gates.current_completion; gates.unavailable_support",
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+        "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+      ],
+      "dependency_nodes": [
+        "S02",
+        "S04",
+        "S10"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.assertions"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+        "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+      ],
+      "dependency_nodes": [
+        "S04",
+        "S10"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.entities"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+        "model.validate_model/validate_p03/validate_p04/validate_p05; core.project"
+      ],
+      "dependency_nodes": [
+        "S04",
+        "S10"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.predicates"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts"
+      ],
+      "dependency_nodes": [
+        "S04"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.context"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core._human; core._actionability; gates.decision_readiness; core.resume_eligibility",
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S07",
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.decisions"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+      ],
+      "dependency_nodes": [
+        "S06"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.evidence_requirements"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core._global_control; model.validate_p05; pinned manifest request_routes",
+        "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+      ],
+      "dependency_nodes": [
+        "S05",
+        "S06"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.external_gates"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+      ],
+      "dependency_nodes": [
+        "S06"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "Snapshot.receipt_admissions"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof"
+      ],
+      "dependency_nodes": [
+        "S06"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "Snapshot.receipt_observations"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core._global_control; model.validate_p05; pinned manifest request_routes"
+      ],
+      "dependency_nodes": [
+        "S05"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.boundaries"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "core.evaluate_satisfaction; core._global_control.walk"
+      ],
+      "dependency_nodes": [
+        "S03"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "Snapshot.goals"
+    },
+    {
+      "classification": "NOT_REQUIRED",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "Snapshot.budget_matrices"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "PersistenceBundle.initial"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "PersistenceBundle.events"
+    },
+    {
+      "classification": "CONTROL_CRITICAL",
+      "dependency_evidence": [
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "PersistenceBundle.current"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "codec._replay provenance pins; codec.load_pinned; source-bound certificate verification"
+      ],
+      "dependency_nodes": [
+        "S09"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": "A_REQUIRED_TO_DERIVE_C1_C5",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "PersistenceBundle.sources"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "PersistenceBundle.policy"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "PersistenceBundle.policy_version"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "codec._replay; core.resume_eligibility"
+      ],
+      "dependency_nodes": [
+        "S08"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "PersistenceBundle.scope"
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": "E_PROVENANCE_ONLY",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "historical_attempts"
+    },
+    {
+      "classification": "CONTROL_SUPPORTING",
+      "dependency_evidence": [
+        "core._global_control; model.validate_p05; pinned manifest request_routes",
+        "codec._replay provenance pins; codec.load_pinned; source-bound certificate verification"
+      ],
+      "dependency_nodes": [
+        "S05",
+        "S09"
+      ],
+      "extent": "Reachable operational/reference subset only; not entire inventory",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "expected_external_absence_records"
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "MigrationManifest"
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": "E_PROVENANCE_ONLY",
+      "prior_status": "CONTRACT_INCOMPLETE",
+      "target": "DerivationIndex"
+    },
+    {
+      "classification": "OUTSIDE_FROZEN_CONTROL_CONE",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "Snapshot.information"
+    },
+    {
+      "classification": "OUTSIDE_FROZEN_CONTROL_CONE",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "Action.cost/cost_unit"
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "descriptive titles/report narrative/source annotation"
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "CONTRACT_COMPLETE",
+      "target": "global-control/actionable/resume summary labels"
+    },
+    {
+      "classification": "NOT_REQUIRED",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "NOT_REQUIRED",
+      "target": "positive external evidence absent at suspension"
+    },
+    {
+      "classification": "NOT_REQUIRED",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "NOT_REQUIRED",
+      "target": "unreferenced archived experiment payloads"
+    },
+    {
+      "classification": "NOT_REQUIRED",
+      "dependency_evidence": [],
+      "dependency_nodes": [],
+      "extent": "No live C1-C5 evaluation of the full category; empty required container/structural validity still preserved",
+      "incomplete_classification": null,
+      "prior_status": "NOT_REQUIRED",
+      "target": "complete raw source bodies embedded inside snapshot"
+    }
+  ]
+}

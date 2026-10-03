@@ -1,0 +1,16 @@
+{
+  "schema": "E2-PC01-OPERATIONAL-SOURCE-ROLES-1",
+  "scope": "E2-QUALIFICATION-ONLY",
+  "lineage": "E2-CANONICAL-BASELINE-1",
+  "valid_roles": [
+    {"source_id": "E2-PC01-SOURCE", "source_type": "canonical Action definition registry", "role": "ACTION_DEFINITION", "target": "six ActionIds", "consumer": "O01/model.Action", "currentness": "CURRENT", "invalidation": "definition source stale -> Action support stale"},
+    {"source_id": "E2-SELECTION-POLICY", "source_type": "supported policy artifact", "role": "SELECTION_POLICY", "target": "six-Action universe", "consumer": "selector/codec", "currentness": "CURRENT", "invalidation": "policy pin mismatch -> restore/selection reject"},
+    {"source_id": "E2-ROUTE-SOURCE", "source_type": "ExternalResolutionContract", "role": "EXTERNAL_ROUTE", "target": "E2-GATE/E2-EXTERNAL-REQUIREMENT", "consumer": "external control and later admission", "currentness": "CURRENT", "invalidation": "route stale -> waiting route invalid; no fail-open"},
+    {"source_id": "E2-GATE", "source_type": "ExternalGate/EvidenceRequirement", "role": "EXPECTED_EXTERNAL_ABSENCE", "target": "E2-GATE", "consumer": "control state", "currentness": "CURRENT", "invalidation": "gate stale -> no governed wait"},
+    {"source_id": "E2-ROOT", "source_type": "RootCondition", "role": "ROOT_STATE", "target": "E2-ROOT", "consumer": "root/goal evaluation", "currentness": "UNRESOLVED", "invalidation": "proof source stale -> root stale"}
+  ],
+  "expected_external_absences": ["E2-EXTERNAL-REQUIREMENT"],
+  "unsupported_roles": [],
+  "ambiguous_roles": [],
+  "role_exclusions": ["selection != execution", "expected absence != evidence", "definition != result", "proof != authority"]
+}

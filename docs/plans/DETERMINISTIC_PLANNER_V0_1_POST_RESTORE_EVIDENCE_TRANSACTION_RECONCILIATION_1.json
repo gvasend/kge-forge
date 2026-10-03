@@ -1,0 +1,432 @@
+{
+  "E2_direct_cases": [
+    "E2-A09",
+    "E2-A10",
+    "E2-A11",
+    "E2-A12",
+    "E2-A13",
+    "E2-N04",
+    "E2-N14",
+    "E2-N15",
+    "E2-END"
+  ],
+  "E2_transitive_or_variant_cases": [
+    "E2-A15",
+    "E2-N03",
+    "E2-N05",
+    "E2-N11",
+    "E2-D01",
+    "E2-REVIEW"
+  ],
+  "atomicity": "Two consecutive ledger entries, admission then existing receipt, in one durable transaction. Validation/reentry separate commits.",
+  "authority_issued": false,
+  "classification": "MISSING_RUNTIME_CAPABILITY",
+  "durability": "Immutable sources/events/bundle fsynced, directory metadata fsynced; trusted local head advanced last via atomic rename and parent compare under one writer lock. No success or planning from uncommitted candidate. Crash yields old or complete new head.",
+  "event": {
+    "fields": {
+      "admission": "one ReceiptAdmission bound to entity, producer, target, unique claims and existing independently trusted authentication PredicateId",
+      "command_key": "content identity of canonical request excluding this key; namespace planner-evidence-command-v1; includes exact parent and request fields",
+      "contract_pin": "current pinned ingress contract content identity, part of pre-state source table",
+      "entity": "one GraphEntity EVIDENCE with deterministic EntityId, typed raw-content identity, provenance, exact context scope/lineage/generation, expiry",
+      "expected_bundle": "ArtifactIdentity CONTENT_IDENTITY/planner-bundle-v1 of exact pre-transaction prefix",
+      "expected_parent_event": "last ExecutionEvent.identity or null for empty ledger",
+      "expected_snapshot": "ArtifactIdentity CONTENT_IDENTITY/planner-snapshot-v1",
+      "field_provenance": "selectors into new bytes or pinned pre-state ingress/requirement/route/trust records for every inserted field; no implementation defaults",
+      "gate": "existing GateId at WAITING_FOR_EXTERNAL_EVIDENCE",
+      "receipt_action": "exact gate.receipt_action string, not inferred ActionId",
+      "requirements": "sorted nonempty distinct EvidenceId subset of gate requirements; proposition and typed target must match pre-state declarations",
+      "schema": "literal PLANNER-EVIDENCE-ADMISSION-1",
+      "source_additions": "nonempty sorted unique ArtifactPin list for new immutable evidence bytes only; RAW content identities; no replacement pins"
+    },
+    "forbidden_mutations": [
+      "Action definitions/statuses",
+      "knowledge",
+      "authority entities or permissions",
+      "predicates",
+      "rule_known",
+      "roots/slots",
+      "receipt observations",
+      "gate requirements/routes",
+      "policy or evaluation context"
+    ],
+    "permitted_mutations": [
+      "add one evidence entity",
+      "add one independently verified ReceiptAdmission",
+      "append new source pins at exact event sequence"
+    ],
+    "proposed_name": "EvidenceSourceAdmission",
+    "schema_version": 1
+  },
+  "event_type_classification": "NEW_EVENT_TYPE_REQUIRED",
+  "fail_closed_cases": [
+    {
+      "id": "T01",
+      "input": "no matching gate",
+      "outcome": "No commit; old bundle/head unchanged",
+      "reason": "NO_ACTIVE_GATE"
+    },
+    {
+      "id": "T02",
+      "input": "wrong proposition/requirement/target",
+      "outcome": "No commit",
+      "reason": "RECEIPT_CORRESPONDENCE"
+    },
+    {
+      "id": "T03",
+      "input": "unexpected source/producer or same hash wrong domain",
+      "outcome": "No commit",
+      "reason": "SOURCE_DOMAIN_OR_PRODUCER"
+    },
+    {
+      "id": "T04",
+      "input": "wrong scope/lineage/generation",
+      "outcome": "No commit",
+      "reason": "ENVELOPE_MISMATCH"
+    },
+    {
+      "id": "T05",
+      "input": "expired/stale evidence or stale attestor",
+      "outcome": "No commit; later stale invalidation withdraws support",
+      "reason": "SOURCE_NOT_CURRENT"
+    },
+    {
+      "id": "T06",
+      "input": "same transaction key and canonical request bytes retried",
+      "outcome": "Return original committed outcome, no new event; also report current head, do not rewind it",
+      "reason": "DUPLICATE_IDENTICAL"
+    },
+    {
+      "id": "T07",
+      "input": "same transaction key with different payload",
+      "outcome": "Reject without overwrite",
+      "reason": "IDEMPOTENCY_CONFLICT"
+    },
+    {
+      "id": "T08",
+      "input": "old live receipt/event against a new head",
+      "outcome": "Reject unless exact previously committed transaction retry",
+      "reason": "PARENT_MISMATCH"
+    },
+    {
+      "id": "T09",
+      "input": "entity/source identity collision with changed bytes/claims",
+      "outcome": "Reject; no overwrite/rebinding",
+      "reason": "IDENTITY_CONFLICT"
+    },
+    {
+      "id": "T10",
+      "input": "conflicting claim outcomes against prior accepted claims for same gate obligation",
+      "outcome": "Reject receipt admission; preserve prior history. Independent legacy conflicting observations remain UNKNOWN under native rules",
+      "reason": "CLAIM_CONFLICT"
+    },
+    {
+      "id": "T11",
+      "input": "malformed bytes/unknown schema/unexplained fields",
+      "outcome": "No commit",
+      "reason": "MALFORMED_RECEIPT"
+    },
+    {
+      "id": "T12",
+      "input": "gate/route source invalidated before receipt",
+      "outcome": "No commit; recompute native defect/wait semantics",
+      "reason": "ROUTE_NOT_CURRENT"
+    },
+    {
+      "id": "T13",
+      "input": "wrong expected bundle/snapshot/event parent",
+      "outcome": "No commit",
+      "reason": "PARENT_MISMATCH"
+    },
+    {
+      "id": "T14",
+      "input": "validly authenticated DISPROVED claim",
+      "outcome": "May be received; native validation/obligation recompute does not grant positive completion or resume",
+      "reason": "NOT_POSITIVE_PROOF"
+    },
+    {
+      "id": "T15",
+      "input": "source invalidated between received and validate",
+      "outcome": "Native negative observation, return to waiting, no reentry",
+      "reason": "VALIDATION_FAILED"
+    },
+    {
+      "id": "T16",
+      "input": "attempt to import authority/predicate/Action via evidence payload",
+      "outcome": "No commit",
+      "reason": "ADMISSION_SCOPE_EXCEEDED"
+    },
+    {
+      "id": "T17",
+      "input": "unknown rule with valid route and evidence",
+      "outcome": "Receipt cannot set rule_known; native validation cannot prove unknown obligation",
+      "reason": "RULE_STILL_UNKNOWN"
+    },
+    {
+      "id": "T18",
+      "input": "commit/crash at any write boundary",
+      "outcome": "Old or full new committed bundle; never admission-only committed state",
+      "reason": "ATOMIC_RECOVERY"
+    },
+    {
+      "id": "T19",
+      "input": "concurrent requests with same parent",
+      "outcome": "Only first serialized commit succeeds; second must revalidate against new head",
+      "reason": "SERIALIZATION_CONFLICT"
+    },
+    {
+      "id": "T20",
+      "input": "source deleted/substituted after commit before cold restore",
+      "outcome": "Restore rejects; no cached bytes used to silently repin",
+      "reason": "PIN_FAILURE"
+    }
+  ],
+  "idempotence": "Canonical request key scoped to parent; identical committed retry returns prior outcome without append; same key/different bytes rejects; replay applies one entry once in sequence.",
+  "implementation_package": {
+    "acceptance": [
+      "new events replay source availability by prefix",
+      "only exact scoped evidence admitted",
+      "durable pair and idempotence tests pass",
+      "native validation and C03 separation unchanged",
+      "fault-injection/cold restore/invalidation/determinism pass",
+      "A-N/X01-X11/C01-C06/budget/external-unknown and current baseline pass",
+      "all 10911 E1 files unchanged",
+      "git diff --check pass"
+    ],
+    "id": "E2-T01",
+    "modules": [
+      "adapter/planner/model.py",
+      "adapter/planner/gates.py",
+      "adapter/planner/core.py",
+      "adapter/planner/codec.py",
+      "adapter/planner/__main__.py",
+      "bounded new tests; preserve old tests"
+    ],
+    "prerequisites": [
+      "Review and pin this contract",
+      "independent canonical positive/negative fixtures, all identity/provenance selectors and ingress pins",
+      "do not issue trust/qualification authority from runtime inputs"
+    ],
+    "purpose": "Bounded native evidence-source admission + atomic receipt persistence",
+    "unlocks": "E2-G01 implementation prerequisite only; not P01 PASS or P02"
+  },
+  "ingress_scope": "Explicit pre-existing pinned contract and current independently authenticated producer; evidence cannot bootstrap its own trust. Unknown attestor/permission requires separate contract, not this transaction.",
+  "input_pins": {
+    "adapter/planner/__init__.py": "25c834058e64b6606d1689177ed1a875ee421275d97d5d3a98d7378ac5a4ab64",
+    "adapter/planner/__main__.py": "94d927fa2c85688842472f4a51dd90f30ce2cf4b3f5ee97980c08d66e863ce00",
+    "adapter/planner/budget.py": "3655ac5bc1f292ba3d0ccd237c3bb56a18f21cbd623622046ab424124f0c41d3",
+    "adapter/planner/codec.py": "1cac29d96641ce109410abfdd696d0e0cb5bdd6329f023edbb8e519c3f9fc422",
+    "adapter/planner/core.py": "1e8a2c19d176493f8879ae54556519df5b48ffb340f270f1483a5ad658d7dd20",
+    "adapter/planner/gates.py": "dd2a60651694a69e52bee978aaab92407e76d8197af6dce48d1f2a20ee47da4a",
+    "adapter/planner/model.py": "3e3bc302c38743690423bd459c6bf151be8bff6406667f88261bf28174581a9f",
+    "adapter/planner/replay.py": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e",
+    "adapter/planner/selector.py": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_ACTIONS.json": "2fb98f14e7bf1ea498e5ba5293bffb149e482a45e6025ac608cabc2477abf2d1",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_DETERMINISM.json": "c5be77db3b93b5f40afdead40bcee61acd2f82c8d43001a9fd3b8775e54da702",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_FIXTURES_ORACLES.json": "963196821bea24273eb23e375a65f07b6a1f4dd1b2168e9afe21b31a366b6751",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_PREFLIGHT.json": "43b767456297abcf363d7fb5e1423d17c87888f87f57cd93e7c1ce04a4993c92",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_PROOF_AUTHORITY.json": "54aeae69ab415fe7e5418bced40d7ce8e9a425c380bda0029a1843d3745e5428",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_RESULT.md": "2a764798eee14c3fc16c75c4d50f55eccd45345dbced800d4dc6957a5671849a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_SOURCE_ROLES.json": "078d0755bfc95e33e3ba1a6c58ee276d363414fe72ba03a10124ce09481b9111",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_EXTERNAL_UNKNOWN_RULE_REPAIR_1_RESULT.md": "645ede21ac9adb630da0453b21167767050f78a93a015e4891ed6a26c17e0bc8",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_N_REAL_RECONCILIATION_1.md": "173316ed87afe6792db0e69321679123b9deebc3b262f1b2fc30035dcb8cae38"
+  },
+  "interfaces": [
+    {
+      "capability": "Build initial canonical state; not a live transition or ledger-preserving substitute.",
+      "classification": "INITIAL_LOAD_ONLY",
+      "interface": "decode_snapshot / constructors"
+    },
+    {
+      "capability": "Pinned bounded historical/synthetic fixture imports; PLANNER-REPLAY cases A-N, not live evidence ingestion.",
+      "classification": "INITIAL_LOAD_ONLY",
+      "interface": "replay.import_fixture / load_p03/p04/p05 / import_budget"
+    },
+    {
+      "capability": "Frozen import reconstruction, not live receipt; cannot reset a restored ledger.",
+      "classification": "INITIAL_LOAD_ONLY",
+      "interface": "replay.import_e1 / restore_accepted_knowledge"
+    },
+    {
+      "capability": "Verify canonical bundle/source pins/event files; replay event history and return immutable live bundle.",
+      "classification": "REPLAY_ONLY",
+      "interface": "codec.restore / _replay"
+    },
+    {
+      "capability": "Add only bounded declared knowledge and status; no evidence entity/source-index insertion.",
+      "classification": "LIVE_COMMAND",
+      "interface": "core.apply_result / SuppliedResult"
+    },
+    {
+      "capability": "Record independently applicable decision and permitted result; no arbitrary grant/entity ingestion.",
+      "classification": "LIVE_COMMAND",
+      "interface": "core.apply_recorded_decision / RecordedDecision"
+    },
+    {
+      "capability": "Reenable declared routes subject to native checks; no evidence import.",
+      "classification": "LIVE_COMMAND",
+      "interface": "core.apply_decision_reentry / DecisionReentry"
+    },
+    {
+      "capability": "Lifecycle reference to existing produced entity; validation evaluates independent ReceiptAdmission.",
+      "classification": "LIVE_EVIDENCE_RECEIPT",
+      "interface": "core.apply_receipt / ExternalEvent"
+    },
+    {
+      "capability": "Mark dependent state stale; cannot create positive evidence.",
+      "classification": "LIVE_COMMAND",
+      "interface": "core.apply_event / SourceInvalidation"
+    },
+    {
+      "capability": "Construct/verify sequenced events and replay lineage; source table is not extended.",
+      "classification": "LIVE_APPEND",
+      "interface": "codec.record_result / append_event"
+    },
+    {
+      "capability": "Decode registered event, record_result, plan_output and save_bundle; same closed union.",
+      "classification": "LIVE_COMMAND",
+      "interface": "CLI apply --event"
+    },
+    {
+      "capability": "Apply fixture supplied event list and compare harness expectations; no extra event capability.",
+      "classification": "REPLAY_ONLY",
+      "interface": "CLI replay"
+    },
+    {
+      "capability": "Read/compute/save existing state; no new evidence transaction.",
+      "classification": "OTHER",
+      "interface": "CLI validate / plan / restore"
+    },
+    {
+      "capability": "Immutable persistence of already valid replay state; not admission.",
+      "classification": "OTHER",
+      "interface": "save_bundle"
+    },
+    {
+      "capability": "Test setup, not supported live runtime transaction.",
+      "classification": "OTHER",
+      "interface": "tests synthetic_receipt / dataclass replace"
+    }
+  ],
+  "ordering": "Single serialized writer per canonical head; integer ledger sequence and parent identities. Same ordered event input => same identities; do not sort competing live events by hash or treat histories as sets.",
+  "other_P01_blockers": [
+    "E2-G02",
+    "E2-G03",
+    "E2-G04",
+    "E2-G05",
+    "E2-G06",
+    "E2-G07",
+    "E2-G08"
+  ],
+  "persistence_contract": {
+    "commit_pair": "Every admission event must be immediately followed by its same-gate same-entity EVIDENCE_RECEIVED event; no published bundle may end on unpaired admission. Intermediate snapshot exists only privately. Both event identities include pre/post snapshots.",
+    "compatibility": "Old bundles with no admission events retain bytes and identities; existing five events and native receipt/validation semantics unchanged. No new unreviewed E2 policy version or scope is admitted.",
+    "reuse": "Existing snapshot/bundle/event identity algorithms and source pins; additive closed event registration, no historical initial-state rewrite",
+    "source_schedule": "Final bundle sources = initial source set union disjoint source_additions from admitted events. Derive initial set by subtracting additions, replay strictly by sequence, reconstruct each prefix bundle identity for expected_bundle. No newly added source available to earlier prefix. Reject duplicate/replaced/colliding pin keys."
+  },
+  "report": {
+    "CANONICAL_E2_QUALIFIED": "NO",
+    "E1_ARTIFACTS_MODIFIED": 0,
+    "E2_P01_RETRY_ALLOWED": "NO",
+    "E2_P02_READY": "NO",
+    "IMPLEMENTATION_MODIFIED": "NO",
+    "IMPLEMENTATION_PACKAGE_REQUIRED": "YES",
+    "N_REAL_SATISFIED": "NO",
+    "PLANNER_V0_1_REQUALIFICATION_READY": "NO",
+    "PRODUCTION_EFFECT": "NO"
+  },
+  "schema": "POST-RESTORE-EVIDENCE-TRANSACTION-CONTRACT-1",
+  "state_machine": [
+    {
+      "from": "WAITING",
+      "operation": "authenticated source admission candidate",
+      "outcome": "New evidence entity+ReceiptAdmission; no observation/proof or gate-stage change",
+      "to": "PRIVATE_ADMITTED"
+    },
+    {
+      "from": "PRIVATE_ADMITTED",
+      "operation": "existing ExternalEvent EVIDENCE_RECEIVED",
+      "outcome": "Set pending entity/history only; both ledger entries atomically durable before return",
+      "to": "RECEIVED"
+    },
+    {
+      "from": "RECEIVED",
+      "operation": "existing ExternalEvent EVIDENCE_VALIDATED, accepted and all obligations PROVED",
+      "outcome": "ReceiptObservation accepted; C03 still requires accepted reentry lineage and eligibility",
+      "to": "VALIDATED"
+    },
+    {
+      "from": "RECEIVED",
+      "operation": "validation rejected or obligations not all PROVED",
+      "outcome": "Native observation outcome preserved; no forced new enum; valid DISPROVED claim may have accepted observation but gate returns waiting",
+      "to": "WAITING"
+    },
+    {
+      "from": "VALIDATED",
+      "operation": "existing DEPENDENT_ACTION_REENTRY then recompute",
+      "outcome": "All C03 pins/currentness/lineage and named prerequisites independently tested",
+      "to": "REENTRY_ELIGIBLE_OR_BLOCKED"
+    },
+    {
+      "from": "ANY_COMMITTED",
+      "operation": "SourceInvalidation",
+      "outcome": "Native recomputation and replay; no in-memory-only validity",
+      "to": "STALE_DEPENDENTS"
+    }
+  ],
+  "status": "SPECIFIED_NOT_IMPLEMENTED_NOT_QUALIFIED",
+  "tests": {
+    "determinism": [
+      "hash seeds 0,1,7,101",
+      "source/pin/claim/object-key ordering",
+      "independent process same ordered inputs",
+      "three cold restores",
+      "fault injection at every durable publication boundary"
+    ],
+    "execution": "NOT_RUN; test specifications only, not executable fixture suite",
+    "negative_control": "No positive proof/root/slot/knowledge/actionability/resume merely from source admission/receipt",
+    "positive": [
+      "cold waiting -> two-event durable receipt -> fresh restore",
+      "separate validation -> accepted reentry -> named action eligibility",
+      "duplicate retry after lost acknowledgement",
+      "two different gates serialized against successive heads"
+    ],
+    "state_cases": [
+      "T01",
+      "T02",
+      "T03",
+      "T04",
+      "T05",
+      "T06",
+      "T07",
+      "T08",
+      "T09",
+      "T10",
+      "T11",
+      "T12",
+      "T13",
+      "T14",
+      "T15",
+      "T16",
+      "T17",
+      "T18",
+      "T19",
+      "T20"
+    ]
+  },
+  "validation": {
+    "E1_files_checked": 10911,
+    "E1_path_and_content_preservation": "PASS",
+    "E2_actions_executed": 0,
+    "authority_issued": false,
+    "case_references": "PASS",
+    "git_diff_check": "PASS",
+    "input_pins": "PASS",
+    "json": "PASS",
+    "mode": "static inspection and contract consistency only",
+    "preexisting_files_changed": [],
+    "preexisting_files_checked": 11342,
+    "runtime_tests": "NOT_RUN"
+  }
+}

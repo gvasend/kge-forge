@@ -1,0 +1,267 @@
+{
+  "conclusion_inputs": {
+    "C1": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S09",
+      "S10"
+    ],
+    "C2": [
+      "S01",
+      "S02",
+      "S09",
+      "S10"
+    ],
+    "C3": [
+      "S01",
+      "S02",
+      "S07",
+      "S09",
+      "S10"
+    ],
+    "C4": [
+      "S01",
+      "S02",
+      "S03",
+      "S04",
+      "S05",
+      "S06",
+      "S07",
+      "S08",
+      "S09",
+      "S10"
+    ],
+    "C5": [
+      "S05",
+      "S06",
+      "S09",
+      "S10"
+    ]
+  },
+  "minimality": "Sound bounded native API dependency requirements, not a proven minimum-cardinality canonical instance; exact native projection blocked by missing typed mappings. No hash-of-entire-snapshot argument makes unrelated data semantically necessary.",
+  "mode": "ANALYSIS_ONLY",
+  "nodes": [
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "executable_evidence": "core.project; core._actionability; model.validate_model",
+      "id": "S01",
+      "name": "Complete action universe and admitted action/status structure",
+      "required_state": "63 exact plan ActionIds and current 13 COMPLETED/50 BLOCKED partition; Action objects still required by validate_model/project; future result schemas are not read by held-action actionability",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "executable_evidence": "gates.current_completion; gates.unavailable_support",
+      "id": "S02",
+      "name": "Current holds/completion support and transitive stale-support closure",
+      "required_state": "Current statuses plus necessary source/evidence/qualification support; do not replay all historical attempts to prove holds",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4"
+      ],
+      "executable_evidence": "core.evaluate_satisfaction; core._global_control.walk",
+      "id": "S03",
+      "name": "Goal/root/slot state and typed prerequisite routing",
+      "required_state": "Unsatisfied goal targets, entry/recovery/failure paths, required action/condition edges and satisfied cut points; no invented empty goal set",
+      "source_availability": "AVAILABLE_AS_UNRESOLVED_STATE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4"
+      ],
+      "executable_evidence": "gates._evaluate_predicate; gates.usable; gates.unavailable_support; model.validate_predicate_contracts",
+      "id": "S04",
+      "name": "Reached proof/predicate/entity/knowledge and evaluation-context closure",
+      "required_state": "Only support reachable from satisfaction, current completion, action requirements inspected by control, decision reentry and native reference validation; native real-source joins unresolved",
+      "source_availability": "AMBIGUOUS"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "core._global_control; model.validate_p05; pinned manifest request_routes",
+      "id": "S05",
+      "name": "Eight exact request/frontier/receipt/reentry correspondences",
+      "required_state": "Pinned request/handoff absence inventory; one budget evidence frontier and seven factual frontiers; typed canonical mapping still required",
+      "source_availability": "AVAILABLE_AS_EXPECTED_ABSENCE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "core._global_control EXTERNAL_EVIDENCE rule_known check; gates._obligation_proof",
+      "id": "S06",
+      "name": "Budget unresolved requirements, qualified wait contract and empty receipts",
+      "required_state": "Evidence obligations and no receipts present in source; meaning of rule_known across wait classification versus unknown real applicability requires reconciliation",
+      "source_availability": "AMBIGUOUS"
+    },
+    {
+      "conclusions": [
+        "C3",
+        "C1",
+        "C4"
+      ],
+      "executable_evidence": "core._human; core._actionability; gates.decision_readiness; core.resume_eligibility",
+      "id": "S07",
+      "name": "Active human-action universe, holds/stages and necessary decision links",
+      "required_state": "All human actions held/completed; active ready set is not set of historically complete dossiers; retain stages/routes used by C4 and validation",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C4"
+      ],
+      "executable_evidence": "codec._replay; core.resume_eligibility",
+      "id": "S08",
+      "name": "Admitted canonical baseline/replay envelope and empty new event inventory",
+      "required_state": "Initial/current identical admitted baseline, zero new native events; no historical selection converted to execution; policy/version/scope valid",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "codec._replay provenance pins; codec.load_pinned; source-bound certificate verification",
+      "id": "S09",
+      "name": "Source pins and independently verifiable field/source bindings",
+      "required_state": "Authenticate control premises and universe completeness; exact required source closure contract still incomplete; no need full historical payload database",
+      "source_availability": "AVAILABLE"
+    },
+    {
+      "conclusions": [
+        "C1",
+        "C2",
+        "C3",
+        "C4",
+        "C5"
+      ],
+      "executable_evidence": "model.validate_model/validate_p03/validate_p04/validate_p05; core.project",
+      "id": "S10",
+      "name": "Native structural/reference and projection integrity",
+      "required_state": "Least closure including all retained typed references, source provenance, cycles/order and output-reference compatibility; missing mappings cannot be replaced by placeholders",
+      "source_availability": "AMBIGUOUS"
+    }
+  ],
+  "requires_edges": [
+    {
+      "consumer": "S01",
+      "requires": "S02"
+    },
+    {
+      "consumer": "S01",
+      "requires": "S03"
+    },
+    {
+      "consumer": "S03",
+      "requires": "S04"
+    },
+    {
+      "consumer": "S02",
+      "requires": "S04"
+    },
+    {
+      "consumer": "S05",
+      "requires": "S06"
+    },
+    {
+      "consumer": "S07",
+      "requires": "S04"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S01"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S07"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S05"
+    },
+    {
+      "consumer": "S01",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S02",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S03",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S04",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S05",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S06",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S07",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S09"
+    },
+    {
+      "consumer": "S01",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S03",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S04",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S05",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S07",
+      "requires": "S10"
+    },
+    {
+      "consumer": "S08",
+      "requires": "S10"
+    }
+  ],
+  "schema": "FROZEN-CONTROL-DEPENDENCY-CONE-1"
+}

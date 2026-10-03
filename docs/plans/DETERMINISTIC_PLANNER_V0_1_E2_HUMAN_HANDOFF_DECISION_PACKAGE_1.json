@@ -1,0 +1,58 @@
+{
+  "schema": "E2-human-handoff-decision-package-v1",
+  "decision_subject": "E2-DECIDE",
+  "why_human_handoff": "ARCHITECT_CONTRACT_DECISION is decision-ready but cannot be issued autonomously",
+  "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+  "options": [
+    {
+      "id": "ALLOW_QUALIFICATION_MAPPING",
+      "semantic_meaning": "NOT SPECIFIED; dossier documents only prospective qualification-only USE permission for the E2 mapping target",
+      "consequences": "NOT SPECIFIED",
+      "downstream_effects": "NOT SPECIFIED"
+    },
+    {
+      "id": "DECLINE",
+      "semantic_meaning": "NOT SPECIFIED",
+      "consequences": "NOT SPECIFIED",
+      "downstream_effects": "NOT SPECIFIED"
+    }
+  ],
+  "fact_proofs": [
+    {"id": "E2-KP-CHECK", "proposition": "E2-K-CHECK accepted", "source": "E2-CHECK actual accepted knowledge", "result": "PASS"},
+    {"id": "E2-KP-COLLECT", "proposition": "E2-K-COLLECT accepted", "source": "E2-COLLECT actual accepted knowledge", "result": "PASS"}
+  ],
+  "deterministic_validations": [
+    {"id": "QUESTION_SCOPE", "result": "PASS"},
+    {"id": "SOURCE_PROVENANCE", "result": "PASS"},
+    {"id": "CONCRETE_ALTERNATIVES", "result": "PASS"},
+    {"id": "AUTHORITY_BOUNDARY", "result": "PASS"},
+    {"id": "DECISION_FACTS_COMPLETE", "result": "PASS"},
+    {"id": "INDEPENDENT_VALIDATION", "result": "PASS"}
+  ],
+  "authority_requirement": {
+    "type": "E2-GRANT / AUTHORITY_IDENTITY",
+    "subject": "E2-REENTER",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "permission": "USE",
+    "issuer_requirement": "UNDEFINED",
+    "applicability": "exact selected choice, target, permission, scope, lineage and current independent predicate"
+  },
+  "recorded_decision_contract": {
+    "native_type": "RecordedDecision",
+    "required": ["decision", "choice", "record", "authority", "expected_snapshot"],
+    "choice_evidence": "accepted current KnowledgeRecord decision-choice:E2-DECIDE with statement equal to choice and provenance equal to record",
+    "choice_evidence_contract": "CHOICE_EVIDENCE_CONTRACT_MISSING_FOR_EXECUTION"
+  },
+  "human_decision_ready": false,
+  "human_decision_blockers": ["issuer/owner undefined", "native authority entity/predicate absent", "selected option not issued", "authenticated record absent", "choice evidence source absent", "option consequences not specified"],
+  "selected_option": null,
+  "authority_issued": false,
+  "decision_recorded": false,
+  "e2_p02_retry_allowed": false,
+  "e2_p03_ready": false,
+  "implementation_modified": false,
+  "experiment_actions_executed": 0,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

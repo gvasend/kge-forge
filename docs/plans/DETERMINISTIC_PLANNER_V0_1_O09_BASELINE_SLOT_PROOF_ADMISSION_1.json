@@ -1,0 +1,252 @@
+{
+  "C06A_3_RETRY_ALLOWED": true,
+  "C06A_3_RETRY_PREREQUISITES": [
+    "Prior C06A-2 completion and mapping inventory remain pinned",
+    "Both baseline-specific admission profiles complete",
+    "Both positive and all 52 negative fixtures pass independent specification",
+    "All five required source-role invalidations survive reload",
+    "Registry binding specified; installation remains C06A-3 implementation work",
+    "No additional prerequisite recorded in the prior completion or C06A-3 stop"
+  ],
+  "C06A_4_READY": false,
+  "C07_RETRY_ALLOWED": false,
+  "O09_EXECUTABLE": true,
+  "O09_MISSING_ELEMENTS": [],
+  "coverage": {
+    "newly_restored": [],
+    "restored_and_qualified": 2,
+    "total": 17
+  },
+  "governing_source_pins": {
+    "docs/backlog/DETERMINISTIC_REASONING_PLANNING_RUNTIME.md": "bfb21268967e416475d416916edef31b6e627114369002d0d22e0a7c88bf0543",
+    "docs/backlog/DETERMINISTIC_REASONING_PLANNING_RUNTIME_E1_TRACEABILITY.md": "03647f86b30b63782896bb6c40e028edf9806790a50abd03077b94643529e500",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_2_ORACLE_COMPLETION_1.json": "fc7a223b753982fca2ca7f7173ae2c9e52ba43eeccd36d256a4bb3bce9e0447a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_3_CONTRACT_CHECK.json": "6bf69818c8983b2b82f7ffda747cf7c2d6133961e66b02c533ef9df4e6a33e0f",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_C06A_REMAINING_CONTRACT_1.json": "00b80a67762828b478a00c0722c294407e73917b49b80b16f8161b25c2ff49d5"
+  },
+  "mode": "SPECIFICATION_ONLY",
+  "profiles": {
+    "InvocationAttemptId": {
+      "candidate_prefix": "InvocationAttempt-sha256:",
+      "envelope": {
+        "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+        "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+        "scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+      },
+      "lineage": {
+        "allocation": "R13_NAMESPACE",
+        "predecessor": "R12_HISTORY"
+      },
+      "mapping": {
+        "governing_result": "acceptance",
+        "id": "O09-MAP-InvocationAttemptId-1",
+        "selector": "/identity",
+        "source": "candidate",
+        "target": "slot:authenticated_inputs.InvocationAttemptId",
+        "transform": "IDENTITY_STRING"
+      },
+      "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+      "predicate": "ADMIT_SLOT_PROOF_InvocationAttemptId_1",
+      "prerequisites": {
+        "accepted_mapping_record": "acceptance",
+        "resolution_scope": "Candidate identity only, no issuance/use",
+        "root_dependencies": [],
+        "source_identity_verified": "REQUIRED"
+      },
+      "proof_type": "ACCEPTED_BASELINE_SLOT_COMPLETION_1",
+      "provenance": {
+        "graph_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+        },
+        "graph_slot_pointer": "/entities/174",
+        "method": "O09_PINNED_SOURCE_AND_ACCEPTED_MAPPING_1",
+        "sources": {
+          "acceptance": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+            "selector": "## 2. Bounded inspection and identity checks / ### Current invocation candidate; ## 3. Acceptance criteria"
+          },
+          "candidate": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+            },
+            "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+            "selector": "/identity + body excluding identity/canonical_byte_length"
+          }
+        }
+      },
+      "required_result_excerpts": [
+        "| Exact InvocationAttemptId | `PASS` | Current candidate identity and canonical body length independently recompute. |",
+        "WP-01 overall is `BLOCKED`, not PASS."
+      ],
+      "resolution_scope": "Candidate identity only, no issuance/use",
+      "schema": "O09-BASELINE-PROFILE-1",
+      "slot": "slot:authenticated_inputs.InvocationAttemptId",
+      "snapshot": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+      },
+      "supports": {
+        "acceptance": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+          },
+          "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+          "selector": "## 2. Bounded inspection and identity checks / ### Current invocation candidate; ## 3. Acceptance criteria"
+        },
+        "candidate": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+          },
+          "path": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+          "selector": "/identity + body excluding identity/canonical_byte_length"
+        }
+      },
+      "value": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+      "value_domain": "INSTANCE_IDENTITY"
+    },
+    "profile_sha256": {
+      "candidate_prefix": "CurrentProfileRootCandidate-sha256:",
+      "envelope": {
+        "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+        "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+        "scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+      },
+      "lineage": {
+        "lineage": "R4-final CURRENT UNIQUE"
+      },
+      "mapping": {
+        "governing_result": "acceptance",
+        "id": "O09-MAP-profile_sha256-1",
+        "selector": "/identity",
+        "source": "candidate",
+        "target": "slot:authenticated_inputs.profile_sha256",
+        "transform": "VERIFIED_CONTENT_IDENTITY_SHA256_COMPONENT"
+      },
+      "mode": "SYNTHETIC_QUALIFICATION_ONLY",
+      "predicate": "ADMIT_SLOT_PROOF_profile_sha256_1",
+      "prerequisites": {
+        "accepted_mapping_record": "acceptance",
+        "resolution_scope": "Released profile content digest, not authority ID",
+        "root_dependencies": [],
+        "source_identity_verified": "REQUIRED"
+      },
+      "proof_type": "ACCEPTED_BASELINE_SLOT_COMPLETION_1",
+      "provenance": {
+        "graph_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+        },
+        "graph_slot_pointer": "/entities/215",
+        "method": "O09_PINNED_SOURCE_AND_ACCEPTED_MAPPING_1",
+        "sources": {
+          "acceptance": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+            },
+            "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md",
+            "selector": "## Accepted mapping"
+          },
+          "candidate": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+            },
+            "path": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json",
+            "selector": "/identity + body excluding identity/canonical_byte_length"
+          },
+          "release": {
+            "identity": {
+              "domain": "CONTENT_IDENTITY",
+              "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+            },
+            "path": "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md",
+            "selector": "## Issued authority / sole JSON block /candidate_profile_identity and /authority_id"
+          }
+        }
+      },
+      "release_authority": "ReleasedProfileAuthority-sha256:ec39636dc469f50ab460844d68fef31129035ea1a556e98e7a4b2951f1faa407",
+      "required_result_excerpts": [
+        "For `authenticated_inputs.profile_sha256`, the consumer's profile reference denotes the exact released profile content, not an authority-record identity or a host projection identity.",
+        "Only `authenticated_inputs.profile_sha256` is directly resolved."
+      ],
+      "resolution_scope": "Released profile content digest, not authority ID",
+      "schema": "O09-BASELINE-PROFILE-1",
+      "slot": "slot:authenticated_inputs.profile_sha256",
+      "snapshot": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+      },
+      "supports": {
+        "acceptance": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+          },
+          "path": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md",
+          "selector": "## Accepted mapping"
+        },
+        "candidate": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+          },
+          "path": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json",
+          "selector": "/identity + body excluding identity/canonical_byte_length"
+        },
+        "release": {
+          "identity": {
+            "domain": "CONTENT_IDENTITY",
+            "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+          },
+          "path": "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md",
+          "selector": "## Issued authority / sole JSON block /candidate_profile_identity and /authority_id"
+        }
+      },
+      "value": "83b8cbc0549c64d21eaccaffc1fa45b49be368a878ccecdf9572d476477dfcd6",
+      "value_domain": "CONTENT_IDENTITY"
+    }
+  },
+  "reference": {
+    "entrypoint": "admit(profile,state,currentness)",
+    "execution_boundary": "Qualification specification only; not executable code accepted from imported runtime artifacts.",
+    "program": "\"\"\"O09 independent qualification specification; no planner imports or I/O.\nThe caller/harness pins the contract profile independently of supplied proof.\nCurrentness is an independently admitted persisted invalidation view.\n\"\"\"\nimport hashlib, json, re\n\ndef canonical(v):\n    def check(x):\n        if type(x) not in (dict,list,str,int,bool,type(None)): raise ValueError('JSON type')\n        if type(x) is dict:\n            if any(type(k) is not str for k in x): raise ValueError('key')\n            for y in x.values(): check(y)\n        if type(x) is list:\n            for y in x: check(y)\n    check(v)\n    return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode('utf-8')\ndef digest(v): return hashlib.sha256(canonical(v)).hexdigest()\ndef raw(v): return hashlib.sha256(v.encode('utf-8')).hexdigest()\ndef fields(v,names): return type(v) is dict and set(v)==set(names.split())\ndef parse(text):\n    def pairs(items):\n        d={}\n        for k,v in items:\n            if k in d: raise ValueError('duplicate key')\n            d[k]=v\n        return d\n    return json.loads(text,object_pairs_hook=pairs,parse_constant=lambda _: (_ for _ in ()).throw(ValueError('constant')))\ndef reject(clause): return {'accepted':False,'failed_clause':clause,'slot_resolved_supported':False}\ndef admit(profile,state,currentness):\n    try: return _admit(profile,state,currentness)\n    except (KeyError,TypeError,ValueError,UnicodeError): return reject('C00_SCHEMA')\ndef _admit(p,s,c):\n    if not fields(s,'schema mode profile_pin proof documents') or s['schema']!='O09-SLOT-PROOF-INPUT-1' or s['mode']!='SYNTHETIC_QUALIFICATION_ONLY' or s['profile_pin']!=digest(p): return reject('C00_SCHEMA')\n    q=s['proof']\n    if q is None:return reject('C01_PROOF_REQUIRED')\n    if not fields(q,'identity schema predicate slot value value_domain proof_type scope lineage envelope provenance prerequisites mapping supports') or q['schema']!='O09-SLOT-PROOF-1':return reject('C00_SCHEMA')\n    if q['slot']!=p['slot'] or q['predicate']!=p['predicate']:return reject('C02_TARGET')\n    if q['proof_type']!=p['proof_type']:return reject('C03_COMPLETION_PROOF_TYPE')\n    if type(q['value']) is not str or q['value']!=p['value'] or q['value_domain']!=p['value_domain']:return reject('C04_VALUE_DOMAIN')\n    if q['scope']!=p['resolution_scope']:return reject('C05_SCOPE')\n    if q['lineage']!=p['lineage']:return reject('C06_LINEAGE')\n    if q['envelope']!=p['envelope']:return reject('C07_ENVELOPE')\n    if q['prerequisites']!=p['prerequisites']:return reject('C08_PREREQUISITES')\n    if q['provenance']!=p['provenance']:return reject('C09_PROVENANCE')\n    if q['mapping']!=p['mapping']:return reject('C10_MAPPING')\n    if q['supports']!=p['supports']:return reject('C11_SUPPORT_BINDINGS')\n    if not fields(c,'snapshot evaluation sources') or c['snapshot']!=p['snapshot'] or c['evaluation']!='PINNED_SNAPSHOT_ONLY' or set(c['sources'])!=set(p['supports']):return reject('C12_CURRENTNESS')\n    for role,pin in p['supports'].items():\n        if c['sources'][role]!={'identity':pin['identity'],'state':'CURRENT_AT_PINNED_SNAPSHOT'}:return reject('C12_CURRENTNESS')\n    if type(s['documents']) is not dict or set(s['documents'])!=set(p['supports']):return reject('C13_SOURCE_BYTES')\n    for role,pin in p['supports'].items():\n        if type(s['documents'][role]) is not str or raw(s['documents'][role])!=pin['identity']['sha256']:return reject('C13_SOURCE_BYTES')\n    obj=parse(s['documents']['candidate']);body={k:v for k,v in obj.items() if k not in ['identity','canonical_byte_length']}\n    if type(obj['canonical_byte_length']) is not int or obj['canonical_byte_length']!=len(canonical(body)) or obj['identity']!=p['candidate_prefix']+digest(body):return reject('C14_SOURCE_IDENTITY')\n    if p['slot']=='slot:authenticated_inputs.InvocationAttemptId':\n        if obj['record_type']!='INVOCATION-CANDIDATE-1' or obj['identity']!=q['value']:return reject('C14_SOURCE_IDENTITY')\n        if {k:obj[k] for k in p['envelope']}!=p['envelope'] or {k:obj[k] for k in p['lineage']}!=p['lineage']:return reject('C15_SOURCE_CORRESPONDENCE')\n    elif p['slot']=='slot:authenticated_inputs.profile_sha256':\n        if obj['schema']!='CURRENT-R4-PROFILE-ROOT-CANDIDATE-1' or digest(body)!=q['value']:return reject('C14_SOURCE_IDENTITY')\n        blocks=re.findall(r'```json\\s*\\n(.*?)\\n```',s['documents']['release'],re.S)\n        if len(blocks)!=1:return reject('C15_SOURCE_CORRESPONDENCE')\n        rel=parse(blocks[0]);rb={k:v for k,v in rel.items() if k!='authority_id'}\n        if rel['authority_id']!='ReleasedProfileAuthority-sha256:'+digest(rb) or rel['authority_id']!=p['release_authority'] or rel['record_type']!='RELEASED-PROFILE-AUTHORITY-1' or rel['status']!='ISSUED' or rel['candidate_profile_identity']!=obj['identity']:return reject('C15_SOURCE_CORRESPONDENCE')\n        if {k:rel[k] for k in p['envelope']}!=p['envelope'] or obj['scope']['lineage']!=p['lineage']['lineage'] or rel['lineage']!=p['lineage']['lineage']:return reject('C15_SOURCE_CORRESPONDENCE')\n        if any(obj['scope'][k]!=p['envelope'][k] for k in ['runtime','controller_store']):return reject('C15_SOURCE_CORRESPONDENCE')\n    else:return reject('C02_TARGET')\n    # Source-pinned result text is the historical acceptance, not an input PASS flag.\n    for text in p['required_result_excerpts']:\n        if text not in s['documents']['acceptance']:return reject('C16_ACCEPTANCE_RECORD')\n    if q['identity']!={'domain':'CONTENT_IDENTITY','namespace':'O09SlotProof-sha256','sha256':digest({k:v for k,v in q.items() if k!='identity'})}:return reject('C17_PROOF_IDENTITY')\n    return {'accepted':True,'failed_clause':None,'slot_resolved_supported':True,'slot':q['slot'],'value':q['value'],'resolution_scope':q['scope'],'evaluation':'PINNED_SNAPSHOT_ONLY','authority_granted':False,'root_transition':'UNCHANGED'}\n",
+    "sha256": "80e7f563e8087b4662b0355569016942a4db7d7c97b455c6b867de9c516c4b9d"
+  },
+  "registry_bindings_required": [
+    {
+      "expected_proof_type": "ACCEPTED_BASELINE_SLOT_COMPLETION_1",
+      "predicate": "ADMIT_SLOT_PROOF_InvocationAttemptId_1",
+      "profile_sha256": "d89c4d8cbda92f5e9f73378d5072f2f7b6f437b97c5a0a0917f3c0c39dca5aa9",
+      "required_source_domains": {
+        "acceptance": "CONTENT_IDENTITY",
+        "candidate": "CONTENT_IDENTITY"
+      },
+      "schema": "O09-SLOT-PROOF-1",
+      "slot": "slot:authenticated_inputs.InvocationAttemptId"
+    },
+    {
+      "expected_proof_type": "ACCEPTED_BASELINE_SLOT_COMPLETION_1",
+      "predicate": "ADMIT_SLOT_PROOF_profile_sha256_1",
+      "profile_sha256": "ea24bba73bfb2f1fb12ad9756e3e3db58ffce7259161d6c35ce0ec0fc8d95d04",
+      "required_source_domains": {
+        "acceptance": "CONTENT_IDENTITY",
+        "candidate": "CONTENT_IDENTITY",
+        "release": "CONTENT_IDENTITY"
+      },
+      "schema": "O09-SLOT-PROOF-1",
+      "slot": "slot:authenticated_inputs.profile_sha256"
+    }
+  ],
+  "schema": "O09-BASELINE-ADMISSION-CONTRACT-1",
+  "source_invalidation": "Any required raw source or mapping-acceptance record becomes STALE/INVALID or is absent => C12/C13 rejection after reload. Persist currentness independently; prior accepted label never overrides it.",
+  "trust_boundary": "Profiles and snapshot currentness/invalidation admissions are independently pinned by qualification harness or governed source acceptance; never supplied or repinned by a candidate proof. Raw source pins authenticate documentary evidence, not new live applicability."
+}

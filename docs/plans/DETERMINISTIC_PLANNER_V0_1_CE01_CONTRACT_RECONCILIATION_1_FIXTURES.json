@@ -1,0 +1,49 @@
+{
+  "base_fixture": "DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES.json",
+  "cases": 1000,
+  "dimensions": {
+    "base": [
+      "BASE",
+      "RENAMED"
+    ],
+    "composition_complete": [
+      true,
+      false
+    ],
+    "evidence": [
+      "PRESENT",
+      "ABSENT",
+      "SUBSTITUTED",
+      "STALE",
+      "WRONG_DOMAIN"
+    ],
+    "graph": [
+      "PRESENT",
+      "ABSENT",
+      "SUBSTITUTED",
+      "STALE",
+      "WRONG_DOMAIN"
+    ],
+    "history_consistent": [
+      true,
+      false
+    ],
+    "override": [
+      "PRESENT",
+      "ABSENT",
+      "SUBSTITUTED",
+      "STALE",
+      "WRONG_DOMAIN"
+    ]
+  },
+  "existing_cases_runner": "import json,sys,copy,hashlib\nfrom pathlib import Path\np=Path('docs/plans');stem='DETERMINISTIC_PLANNER_V0_1_C06A_3_PREFLIGHT_CLOSURE_1'\nc=json.loads((p/(stem+'.json')).read_text());f=json.loads((p/(stem+'_FIXTURES.json')).read_text());n={};exec(REFINED_PROGRAM,n)\nprograms={k:json.loads((p/v).read_text())['reference']['program'] for k,v in c['oracle_program_paths'].items()}\ndef rev(x):\n if type(x) is dict:return {k:rev(v) for k,v in reversed(list(x.items()))}\n if type(x) is list:return [rev(v) for v in x]\n return x\ndef run(profile,base,family):return n['compose'](profile,base['state'],base['validity'],programs,c['existing_admission_submissions']) if family=='INSTANCE' else n['evaluate'](profile,base['state'],base['validity'],family)\ndef subset(a,b):\n if isinstance(a,dict):return all(k in b and subset(v,b[k]) for k,v in a.items())\n return a==b\nrows=[]\nfor case in reversed(f['cases']):\n x=copy.deepcopy(f['bases'][case['base']]);pr=c['profiles'][case['base']]\n for m in case['mutations']:\n  ps=m['path'].split('/')[1:];o=x\n  for k in ps[:-1]:o=o[int(k)] if type(o) is list else o[k]\n  k=int(ps[-1]) if type(o) is list else ps[-1]\n  if m['op']=='remove':del o[k]\n  else:o[k]=m['value']\n out=run(pr,x,case['family']);assert out['accepted']==case['expected_accepted'] and out['failed_clause']==case['expected_clause']\n if 'expected_projection' in case:assert subset(case['expected_projection'],out['output'])\n if 'expected_eligible' in case:assert out['output']['prerequisite_eligible']==case['expected_eligible'] and all(not k['current'] for k in out['output']['knowledge'].values())\n assert run(rev(pr),rev(x),case['family'])==out\n assert run(json.loads(n['canon'](pr)),json.loads(n['canon'](x)),case['family'])==out\n rows.append([case['id'],out])\n# Both components admissible independently; mixing them must reject.\na=f['bases']['BASE'];b=f['bases']['RENAMED'];assert run(c['profiles']['BASE'],a,'GRAPH')['accepted'];assert run(c['profiles']['RENAMED'],b,'GRAPH')['accepted']\nx=copy.deepcopy(a);x['state']['sources']['graph']=copy.deepcopy(b['state']['sources']['graph']);out=run(c['profiles']['BASE'],x,'INSTANCE');assert out['failed_clause']=='SOURCE_PIN';rows.append(['MIX_INDIVIDUALLY_ADMITTED_GRAPHS',out])\n# Invalidate support after a successful import-equivalent admission, retaining bytes.\nfor label,base in f['bases'].items():\n for role in base['validity']['sources']:\n  assert run(c['profiles'][label],base,'INSTANCE')['accepted'];x=json.loads(n['canon'](base));x['validity']['sources'][role]['state']='STALE';x=json.loads(n['canon'](x));out=run(c['profiles'][label],x,'INSTANCE');assert not out['accepted'];rows.append([label+'-INVALIDATE-'+role,out])\nprint(n['digest'](sorted(rows)))\nif len(sys.argv)>1:Path(sys.argv[1]).write_text(json.dumps({'additional_sequences':11,'canonical_output_digest':n['digest'](sorted(rows)),'all_62_cases_roundtrip_and_key_reversal':'PASS','mixed_individually_accepted_graphs':'REJECT_SOURCE_PIN','invalidation_sequences':10},indent=2)+'\\n')\n",
+  "expected_formula": {
+    "GRAPH": "evidence=PRESENT AND graph=PRESENT",
+    "HISTORY": "evidence in {PRESENT,STALE} AND override=PRESENT AND history_consistent",
+    "O16": "evidence=override=graph=PRESENT AND history_consistent AND composition_complete"
+  },
+  "runner": "import json,hashlib,copy,itertools\nfrom pathlib import Path\nP=Path('docs/plans');prefix='DETERMINISTIC_PLANNER_V0_1_'\ndef load(s):return json.loads((P/(prefix+s+'.json')).read_text())\nc=load('C06A_3_PREFLIGHT_CLOSURE_1');f=load('C06A_3_PREFLIGHT_CLOSURE_1_FIXTURES');old={};exec(c['reference']['program'],old)\nnew={};exec(REFINED_PROGRAM,new)\nprograms={k:json.loads((P/path).read_text())['reference']['program'] for k,path in c['oracle_program_paths'].items()}\ndef evaluate(ns,p,x,fam):return ns['compose'](p,x['state'],x['validity'],programs,c['existing_admission_submissions']) if fam=='INSTANCE' else ns['evaluate'](p,x['state'],x['validity'],fam)\ndef all_results(ns,p,x):return {k:evaluate(ns,p,x,role) for k,role in [('O02','HISTORY'),('O06','HISTORY'),('O10','GRAPH'),('O16','INSTANCE')]}\nreproductions=[]\nfor label,base in f['bases'].items():\n p=c['profiles'][label]\n for family,role in [('HISTORY','evidence'),('HISTORY','override'),('GRAPH','evidence')]:\n  for mutation in ['substitution','omission']:\n   x=copy.deepcopy(base)\n   if mutation=='omission':del x['state']['sources'][role]\n   elif role=='override':x['state']['sources'][role]['action']='UNRELATED-ACTION'\n   else:x['state']['sources'][role]['knowledge_type']='UNRELATED-KNOWLEDGE-TYPE'\n   before=all_results(old,p,x);after=all_results(new,p,x)\n   key='O10' if family=='GRAPH' else 'O02'\n   assert before[key]['accepted'] and not before['O16']['accepted']\n   assert not after[key]['accepted'] and not after['O16']['accepted']\n   assert after[key]['failed_clause']==('SOURCE_MISSING' if mutation=='omission' else 'SOURCE_PIN')\n   reproductions.append({'id':label+'-'+family+'-'+role+'-'+mutation,'source_role':role,'source_state':mutation,'governing_rule':'closure PF-02 pinned accepted supporting records / PF-03 accepted source pins','before':before,'after':after})\n# Cross product expected outcomes derived from ownership table, not the predicate output.\nclasses=['PRESENT','ABSENT','SUBSTITUTED','STALE','WRONG_DOMAIN'];rows=[]\nfor label,base in f['bases'].items():\n for e,o,g,h,complete in itertools.product(classes,classes,classes,[True,False],[True,False]):\n  x=copy.deepcopy(base);p=c['profiles'][label]\n  for role,kind in [('evidence',e),('override',o),('graph',g)]:\n   if kind=='ABSENT':del x['state']['sources'][role]\n   elif kind=='SUBSTITUTED':x['state']['sources'][role]['schema']='SUBSTITUTED-SCHEMA'\n   elif kind=='STALE':x['validity']['sources'][role]['state']='STALE'\n   elif kind=='WRONG_DOMAIN':x['validity']['sources'][role]['identity']={'domain':'AUTHORITY_IDENTITY','sha256':p['pins'][role]}\n  if not h:x['state']['sources']['plan']['execution_state']['action_states'][('' if label=='BASE' else 'ALT-')+'S-EXEC']='COMPLETED'\n  if not complete:x['state']['coverage']=[]\n  expected={'O02':e in ['PRESENT','STALE'] and o=='PRESENT' and h,'O06':e in ['PRESENT','STALE'] and o=='PRESENT' and h,'O10':e=='PRESENT' and g=='PRESENT','O16':e==o==g=='PRESENT' and h and complete}\n  out=all_results(new,p,x);assert {k:v['accepted'] for k,v in out.items()}==expected,(label,e,o,g,h,complete,out,expected)\n  reload=all_results(new,json.loads(new['canon'](p)),json.loads(new['canon'](x)));assert out==reload\n  if out['O16']['accepted']:assert all(out[k]['accepted'] for k in ['O02','O06','O10']) and evaluate(new,p,x,'ACTION')['accepted']\n  if out['O02']['accepted'] and e=='STALE':assert out['O02']['output']['prerequisite_eligible']==[] and all(not q['current'] for q in out['O02']['output']['knowledge'].values())\n  rows.append({'base':label,'evidence':e,'override':o,'graph':g,'history_consistent':h,'composition_complete':complete,'expected':expected,'actual':{k:{'accepted':v['accepted'],'failed_clause':v['failed_clause']} for k,v in out.items()}})\n# Ordered invalidation is compared with independently constructed equivalent fresh state.\nsequences=[]\nfor label,base in f['bases'].items():\n for role in ['evidence','override','graph']:\n  for state in ['STALE','REVOKED']:\n   p=c['profiles'][label];assert evaluate(new,p,base,'INSTANCE')['accepted']\n   restored=json.loads(new['canon'](base));restored['validity']['sources'][role]['state']=state;restored=json.loads(new['canon'](restored))\n   fresh=copy.deepcopy(base);fresh['validity']['sources'][role]['state']=state\n   a=all_results(new,p,restored);assert a==all_results(new,p,fresh) and not a['O16']['accepted']\n   sequences.append({'base':label,'source':role,'invalidity':state,'pass':True})\n# Exact byte substitutions reject regardless of which envelope/provenance dimension changed.\ntargeted=[]\nfor label,base in f['bases'].items():\n for role,field in itertools.product(['evidence','override'],['scope','lineage','runtime','ledger','identity','provenance']):\n  x=copy.deepcopy(base);x['state']['sources'][role][field]='OTHER';a=all_results(new,c['profiles'][label],x)\n  assert not a['O02']['accepted'] and not a['O16']['accepted']\n  if role=='evidence':assert not a['O10']['accepted']\n  targeted.append({'base':label,'source':role,'substitution_field':field,'pass':True})\nOUTPUT={'reproductions':reproductions,'combinatorial_cases':len(rows),'combinatorial_results':rows,'invalidation_sequences':sequences,'substitution_cases':targeted,'meta_invariants':{str(i):'PASS' for i in range(1,6)}}\nprint('CE-01 variants',len(reproductions),'cross-product',len(rows),'invalidation',len(sequences),'substitution',len(targeted),'PASS')\n",
+  "runner_input": "REFINED_PROGRAM = reference.program from CE01 contract; fixed base profiles and fixtures unchanged",
+  "schema": "CE01-BOUNDED-FIXTURES-1",
+  "synthetic_qualification_only": true
+}

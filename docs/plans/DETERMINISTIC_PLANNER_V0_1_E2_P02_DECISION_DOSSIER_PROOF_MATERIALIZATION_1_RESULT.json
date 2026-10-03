@@ -1,0 +1,100 @@
+{
+  "schema": "E2-P02-decision-dossier-proof-materialization-v1",
+  "work_package": "E2-P02-DECISION-DOSSIER-PROOF-MATERIALIZATION",
+  "result": "BLOCKED",
+  "dossier_identity": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+  "dossier_source": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_FIXTURES.json#/native_actions/E2-PREPARE/prepared_dossier",
+  "dossier_binding": "NOT_MATERIALIZED",
+  "proof_inventory": {
+    "required_facts": [
+      {
+        "proof_id": "E2-KP-CHECK",
+        "proposition": "accepted E2-K-CHECK",
+        "proof_type": "KNOWLEDGE_ACCEPTED",
+        "source": "E2-CHECK actual result",
+        "target": "E2-DECIDE dossier",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "status": "SOURCE_AVAILABLE_NOT_MATERIALIZED"
+      },
+      {
+        "proof_id": "E2-KP-COLLECT",
+        "proposition": "accepted E2-K-COLLECT",
+        "proof_type": "KNOWLEDGE_ACCEPTED",
+        "source": "E2-COLLECT actual result",
+        "target": "E2-DECIDE dossier",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "status": "SOURCE_AVAILABLE_NOT_MATERIALIZED"
+      }
+    ],
+    "dossier_checks": [
+      "E2-CHECK-QUESTION_SCOPE",
+      "E2-CHECK-SOURCE_PROVENANCE",
+      "E2-CHECK-CONCRETE_ALTERNATIVES",
+      "E2-CHECK-ASSUMPTIONS_CONSEQUENCES",
+      "E2-CHECK-AUTHORITY_BOUNDARY",
+      "E2-CHECK-DOWNSTREAM_QUALIFICATION",
+      "E2-CHECK-NO_INVENTED_FACTS",
+      "E2-CHECK-DECISION_FACTS_COMPLETE",
+      "E2-CHECK-INDEPENDENT_VALIDATION"
+    ],
+    "dossier_check_source": "PC02 fixture labels only",
+    "dossier_check_source_identity": "1610f526a7f055f759355ce1cde4abee5b6780ec73eb3358c57b7a9738bda248",
+    "dossier_provenance_identity": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121",
+    "required": 11,
+    "admitted": 0,
+    "missing_native_instances": 11,
+    "proof_rule_missing": [
+      "E2-CHECK-QUESTION_SCOPE",
+      "E2-CHECK-SOURCE_PROVENANCE",
+      "E2-CHECK-CONCRETE_ALTERNATIVES",
+      "E2-CHECK-ASSUMPTIONS_CONSEQUENCES",
+      "E2-CHECK-AUTHORITY_BOUNDARY",
+      "E2-CHECK-DOWNSTREAM_QUALIFICATION",
+      "E2-CHECK-NO_INVENTED_FACTS",
+      "E2-CHECK-DECISION_FACTS_COMPLETE",
+      "E2-CHECK-INDEPENDENT_VALIDATION"
+    ]
+  },
+  "replay": {
+    "initial_snapshot": "33c0bb5c4ed55496cde6ec0ce3eb5ee74307872697d8202a06db65c2c731e9b5",
+    "check": "PASS",
+    "collect": "PASS",
+    "prepare_selection": "PASS",
+    "prepare_admission": "BLOCKED",
+    "post_dossier_oracle": "NOT_REACHED"
+  },
+  "static_model_changed": false,
+  "initial_snapshot_identity": "33c0bb5c4ed55496cde6ec0ce3eb5ee74307872697d8202a06db65c2c731e9b5",
+  "runtime_materialization_capability": "MISSING",
+  "classification": ["MISSING_PROOF_CONTRACT", "MISSING_RUNTIME_MATERIALIZATION_CAPABILITY"],
+  "negative_cases": [
+    "missing required fact",
+    "missing dossier check",
+    "wrong proposition",
+    "wrong source",
+    "wrong target dossier",
+    "wrong producer",
+    "wrong scope",
+    "wrong lineage",
+    "stale proof source",
+    "substituted dossier",
+    "duplicate proof used for another proposition",
+    "PREPARE PASS without proofs"
+  ],
+  "post_dossier": {
+    "decision_ready": [],
+    "actionable": [],
+    "selected": null,
+    "control": "NOT_REACHED"
+  },
+  "p02_retry_allowed": false,
+  "other_p02_blockers": ["NATIVE_PROOF_CONTRACTS_FOR_NINE_CHECKS", "RUNTIME_DOSSIER_BINDING"],
+  "p03_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "implementation_modified": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

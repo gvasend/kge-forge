@@ -1,0 +1,37 @@
+{
+  "schema": "E2-P02-dossier-proof-source-closure-v1",
+  "proof_obligations": 11,
+  "rows": [
+    {"id":"E2-KP-CHECK","category":"REQUIRED_FACT","proposition_defined":true,"source_defined":true,"source_available":true,"producer_defined":true,"construction_rule_defined":true,"admission_rule_defined":true,"control_route_defined":true,"current_status":"READY_FOR_MATERIALIZATION"},
+    {"id":"E2-KP-COLLECT","category":"REQUIRED_FACT","proposition_defined":true,"source_defined":true,"source_available":true,"producer_defined":true,"construction_rule_defined":true,"admission_rule_defined":true,"control_route_defined":true,"current_status":"READY_FOR_MATERIALIZATION"},
+    {"id":"E2-CHECK-QUESTION_SCOPE","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-SOURCE_PROVENANCE","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-CONCRETE_ALTERNATIVES","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-ASSUMPTIONS_CONSEQUENCES","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-AUTHORITY_BOUNDARY","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-DOWNSTREAM_QUALIFICATION","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-NO_INVENTED_FACTS","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-DECISION_FACTS_COMPLETE","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"},
+    {"id":"E2-CHECK-INDEPENDENT_VALIDATION","category":"DOSSIER_CHECK","proposition_defined":false,"source_defined":false,"source_available":false,"producer_defined":false,"construction_rule_defined":false,"admission_rule_defined":false,"control_route_defined":false,"current_status":"PROPOSITION_UNDEFINED"}
+  ],
+  "root_cause_groups": [
+    {"id":"FACT_PROOF_TEMPLATES","obligations":["E2-KP-CHECK","E2-KP-COLLECT"],"status":"STATIC_MATERIALIZATION_MISSING"},
+    {"id":"DOSSIER_CHECK_SEMANTICS","obligations":["E2-CHECK-QUESTION_SCOPE","E2-CHECK-SOURCE_PROVENANCE","E2-CHECK-CONCRETE_ALTERNATIVES","E2-CHECK-ASSUMPTIONS_CONSEQUENCES","E2-CHECK-AUTHORITY_BOUNDARY","E2-CHECK-DOWNSTREAM_QUALIFICATION","E2-CHECK-NO_INVENTED_FACTS","E2-CHECK-DECISION_FACTS_COMPLETE","E2-CHECK-INDEPENDENT_VALIDATION"],"status":"PROPOSITION_AND_PROOF_RULE_MISSING"},
+    {"id":"DOSSIER_RUNTIME_BINDING","obligations":"all","status":"E2-PREPARE_RESULT_BINDING_MISSING"}
+  ],
+  "closure_packages": [
+    {"id":"DPC01","operation_class":"CONTRACT_AND_FIXTURE","unlocks":"nine defined check propositions, sources, validator rules and oracles"},
+    {"id":"DPC02","operation_class":"STATIC_MATERIALIZATION","unlocks":"two fact predicate instances and dossier/result binding"},
+    {"id":"DPC03","operation_class":"RUNTIME_IMPLEMENTATION","unlocks":"11-proof construction and native dossier admission"}
+  ],
+  "classification":"COMBINED",
+  "dossier_proof_materialization_retry_allowed":false,
+  "e2_p02_retry_allowed":false,
+  "e2_p03_ready":false,
+  "n_real_satisfied":false,
+  "canonical_e2_qualified":false,
+  "implementation_modified":false,
+  "experiment_actions_executed":0,
+  "e1_artifacts_modified":0,
+  "production_effect":false
+}

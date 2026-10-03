@@ -1,0 +1,625 @@
+{
+  "BR_C2_status": "SUSPENDED",
+  "C06A_3_retry_allowed": false,
+  "C07_retry_allowed": false,
+  "CE_02_status": "OPEN_MIGRATION_WORKSTREAM",
+  "expected_frozen": {
+    "control": "MIXED_WAIT",
+    "decision_ready": [],
+    "external_gates": 8,
+    "resume_allowed": false,
+    "roots_unresolved": 27,
+    "runnable": [],
+    "slots_unresolved": 41
+  },
+  "first_package": "M01",
+  "implementation_modified": false,
+  "missing_contracts": [
+    "four ActionIR semantic domains",
+    "real-source3 result profile parameterization",
+    "native imported-history representation",
+    "full semantic disposition and provenance closure"
+  ],
+  "mode": "PLAN_ONLY",
+  "native_wire_schema": "PLANNER-SNAPSHOT-1 through existing codec; package version is not a second snapshot codec",
+  "planning_validation": {
+    "acceptance_case_ids": 26,
+    "existing_files_unchanged": 11258,
+    "frozen_E1_files_unchanged": 10911,
+    "implementation_tests": "NOT_RUN_PLAN_ONLY",
+    "links": "PASS",
+    "new_files": [
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_ACCEPTANCE_MATRIX_1.md",
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.json",
+      "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.md"
+    ],
+    "package_dependency_DAG": "PASS"
+  },
+  "production_effect": false,
+  "qualification_status": "NOT_EXECUTED",
+  "schema": "E1-MIGRATION-IMPLEMENTATION-PLAN-1",
+  "source_classes": [
+    {
+      "canonical_target": "Action/ledger/holds/policy",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "PLAN",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-TEMPLATE1-GRAPH-RESOLUTION-PLAN-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "GraphEntity/GraphAssertion/root/slot",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "GRAPH",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-TEMPLATE1-TYPED-KNOWLEDGE-GRAPH-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "source pins/resume routes/subject bindings",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "MANIFEST",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-RESUME-MANIFEST-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "ExternalGate/ControlBoundary",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "HANDOFF",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-EXTERNAL-HANDOFF-PACKAGE-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "suspension/source binding",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "CHECKPOINT",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-SUSPENSION-CHECKPOINT-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "Decision/typed authority",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "DECISION_AUTHORITY",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-ARCHITECT-DECISION-AUTHORITY-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "profile identity/slot proof",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "PROFILE_CANDIDATE",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=CURRENT-R4-PROFILE-ROOT-CANDIDATE-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "invocation identity/slot proof",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "INVOCATION_CANDIDATE",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "record_type=INVOCATION-CANDIDATE-1; schema_version=E1-JOINT-CONSTRUCTION-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "result/dossier/provenance",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "GOVERNED_TEXT",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "authenticated document-kind + pinned section mapping; no extension-only recognition",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "SCHEMA_FAMILY_DEFINED_REQUIRES_M01_EXACT_FIELD_PROFILE"
+    },
+    {
+      "canonical_target": "EvidenceRequirement/receipt contract",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "EXTERNAL_REQUEST",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-EXTERNAL-EVIDENCE-REQUEST-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "candidate-only authority",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "CANDIDATE_AUTHORITY",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-CANDIDATE-CONSTRUCTION-AUTHORITY-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "frontier reasons; output labels oracle-only",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "GLOBAL_CONTROL",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "schema=E1-GLOBAL-CONTROL-RECOMPUTATION-1",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "EXISTING_VERSIONED_SOURCE_CLASS"
+    },
+    {
+      "canonical_target": "runtime/G4/context/dispatch/release/profile identities",
+      "currentness": "historical existence distinct from current accepted binding; no clock inference",
+      "id": "PINNED_SUBJECT",
+      "identity_domain": "CONTENT_IDENTITY raw container, plus preserved separately typed declared domain identities",
+      "provenance": "raw pin + schema/version + exact selector + transformation contract + dependencies",
+      "recognition": "closed domain-schema discriminators enumerated in M01; NOT arbitrary JSON",
+      "requirement": "Migrate required fields only; explicit rejection of unsupported required semantics",
+      "status": "SCHEMA_FAMILY_DEFINED_REQUIRES_M01_EXACT_FIELD_PROFILE"
+    }
+  ],
+  "source_format": "E1_LEGACY_V1",
+  "target_fields": [
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.actions",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.statuses",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.roots",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.slots",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.knowledge",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.assertions",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.entities",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.predicates",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.context",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.decisions",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.evidence_requirements",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.external_gates",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.receipt_admissions",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.receipt_observations",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.boundaries",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.goals",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "Snapshot.budget_matrices",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.initial",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.events",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.current",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.sources",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.policy",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.policy_version",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "PersistenceBundle.scope",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "historical_attempts",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "expected_external_absence_records",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "MigrationManifest",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "REQUIRED",
+      "field": "DerivationIndex",
+      "rule": "Exact governed inventory/content; collection can be explicitly empty where independently justified. Do not default absent field to empty."
+    },
+    {
+      "classification": "OPTIONAL",
+      "field": "Snapshot.information",
+      "rule": "Only independently computable information metrics; missing metrics fall through selector."
+    },
+    {
+      "classification": "OPTIONAL",
+      "field": "Action.cost/cost_unit",
+      "rule": "Only governed comparable values; absent remains unavailable."
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "field": "descriptive titles/report narrative/source annotation",
+      "rule": "Any clause defining a gate is operational and excluded from this category."
+    },
+    {
+      "classification": "PROVENANCE_ONLY",
+      "field": "global-control/actionable/resume summary labels",
+      "rule": "Independent oracle comparisons, never authoritative control inputs."
+    },
+    {
+      "classification": "NOT_REQUIRED_FOR_FROZEN_RESUME",
+      "field": "positive external evidence absent at suspension",
+      "rule": "Required absence/gate records remain REQUIRED."
+    },
+    {
+      "classification": "NOT_REQUIRED_FOR_FROZEN_RESUME",
+      "field": "unreferenced archived experiment payloads",
+      "rule": "Only after transitive relevance audit; preserve bytes."
+    },
+    {
+      "classification": "NOT_REQUIRED_FOR_FROZEN_RESUME",
+      "field": "complete raw source bodies embedded inside snapshot",
+      "rule": "Retain read-only pinned source access plus necessary canonical claims; no artifact database."
+    }
+  ],
+  "target_format": "PLANNER_SNAPSHOT_V0_1",
+  "work_packages": [
+    {
+      "acceptance": "All required operational fields have independent semantics; no missing rule hidden as absence. Input schemas and historical result compatibility qualified in specification.",
+      "current_eligibility": "READY_FOR_SPECIFICATION",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M01",
+      "implementation": [
+        "Complete four remaining action semantic domains or record exact blocker",
+        "Bind real-source result profiles without altering historical synthetic fixtures",
+        "Resolve native immutable imported-attempt representation and every source/target field",
+        "Freeze reviewed mappings, schema whitelist, independent positive/negative oracle and all17-element crosswalk"
+      ],
+      "name": "Migration contract and independent oracle closure",
+      "oracles_and_tests": [
+        "MC01",
+        "MC02",
+        "MC03",
+        "MC04",
+        "MC05",
+        "MC06"
+      ],
+      "prerequisites": [],
+      "source_classes": [
+        "ALL_REQUIRED"
+      ],
+      "target_types": [
+        "ActionIR bindings",
+        "native history admission contract",
+        "reviewed real-source profiles",
+        "field/disposition coverage"
+      ],
+      "unlocks": "M02"
+    },
+    {
+      "acceptance": "Unknown/ambiguous/malformed schemas and unexplained source/target coverage reject; source pins/joins/provenance verified; deterministic read-only inventory.",
+      "current_eligibility": "BLOCKED_BY_PREREQUISITES",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M02",
+      "implementation": [
+        "Reuse codec strict parsing/pins/canonicalization",
+        "Versioned structural recognition; exact joins; required-source closure; exclusive source dispositions",
+        "Minimal migration.py orchestrator and passive metadata types; no imported code execution",
+        "Manifest hashes artifacts without self-hash cycle"
+      ],
+      "name": "Pinned source reader, provenance and migration manifest",
+      "oracles_and_tests": [
+        "MC01",
+        "MC02",
+        "MC07",
+        "MC08",
+        "MC09",
+        "MC10"
+      ],
+      "prerequisites": [
+        "M01"
+      ],
+      "source_classes": [
+        "ALL_REQUIRED"
+      ],
+      "target_types": [
+        "ArtifactPin",
+        "MigrationManifest",
+        "DerivationIndex",
+        "MigrationIR"
+      ],
+      "unlocks": "M03"
+    },
+    {
+      "acceptance": "63/63 complete independent O01 admissions; all assigned negatives and stale support tests pass.",
+      "current_eligibility": "BLOCKED_BY_PREREQUISITES",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M03",
+      "implementation": [
+        "One constructor plus approved legacy semantic registry and29 literal bindings",
+        "All63 action instances, typed dependencies/result contracts/authority/evidence/knowledge roles",
+        "O01 admission before canonical Action use; no per-ActionId special branches"
+      ],
+      "name": "Shared plan-backed action migration",
+      "oracles_and_tests": [
+        "MC03",
+        "MC06",
+        "MC11",
+        "MC12"
+      ],
+      "prerequisites": [
+        "M02"
+      ],
+      "source_classes": [
+        "PLAN",
+        "MANIFEST",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_types": [
+        "ActionIR",
+        "Action",
+        "Predicate",
+        "Gate"
+      ],
+      "unlocks": "M04"
+    },
+    {
+      "acceptance": "3/3 report profiles admitted; complete required ledger and O02/O06 history interface qualified; blocked producers retain valid accepted knowledge.",
+      "current_eligibility": "BLOCKED_BY_PREREQUISITES",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M04",
+      "implementation": [
+        "All three bounded report routes with original and canonical identities",
+        "All required24 ledger entries accounted for; claimed subset cannot replace complete required history",
+        "Use native ExecutionEvent only with proved parent/after snapshots; otherwise approved M01 imported-history representation",
+        "O02/O06 source-backed holds/history/knowledge; no automatic current proof"
+      ],
+      "name": "Historical result and accepted-knowledge migration",
+      "oracles_and_tests": [
+        "MC04",
+        "MC05",
+        "MC13",
+        "MC14"
+      ],
+      "prerequisites": [
+        "M03"
+      ],
+      "source_classes": [
+        "PLAN",
+        "GOVERNED_TEXT",
+        "DECISION_AUTHORITY"
+      ],
+      "target_types": [
+        "SuppliedResult",
+        "KnowledgeRecord",
+        "approved immutable historical attempts",
+        "current hold overlay"
+      ],
+      "unlocks": "M05"
+    },
+    {
+      "acceptance": "Required graph/proof/decision contracts admitted, positive and invalidation controls pass; no projection from generic proof to unrelated target.",
+      "current_eligibility": "BLOCKED_BY_PREREQUISITES",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M05",
+      "implementation": [
+        "O10 deterministic typed projection and reference validation",
+        "O08 validator grant chain and O09 two baseline slot proof admissions",
+        "Root/slot/decision source-bound predicates and exact authority limits",
+        "Budget completeness contract restored as unsatisfied at frozen state; synthetic positive profile kept separate"
+      ],
+      "name": "Graph, decisions, authority and proof migration",
+      "oracles_and_tests": [
+        "MC06",
+        "MC15",
+        "MC16",
+        "MC17",
+        "MC18"
+      ],
+      "prerequisites": [
+        "M04"
+      ],
+      "source_classes": [
+        "GRAPH",
+        "DECISION_AUTHORITY",
+        "CANDIDATE_AUTHORITY",
+        "PROFILE_CANDIDATE",
+        "INVOCATION_CANDIDATE",
+        "GOVERNED_TEXT",
+        "PINNED_SUBJECT"
+      ],
+      "target_types": [
+        "GraphEntity",
+        "GraphAssertion",
+        "Predicate",
+        "RootCondition",
+        "ValueSlot",
+        "Decision",
+        "DecisionDossier",
+        "BudgetProofMatrix"
+      ],
+      "unlocks": "M06"
+    },
+    {
+      "acceptance": "Eight gates unresolved with correct routes; no internal/human-ready action; control and resume predicates reject unsupported permission.",
+      "current_eligibility": "BLOCKED_BY_PREREQUISITES",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M06",
+      "implementation": [
+        "Eight BR-C1 expected absences and exact request/receipt/reentry contracts",
+        "No fabricated received claims; unknown producer competence stays unresolved",
+        "FACT_BLOCKED/dependency holds and human readiness derived from predicates",
+        "Complete goal scope and suspension binding; existing control/resume algorithms only"
+      ],
+      "name": "Expected absences, branch control and reentry",
+      "oracles_and_tests": [
+        "MC19",
+        "MC20",
+        "MC21",
+        "MC22"
+      ],
+      "prerequisites": [
+        "M05"
+      ],
+      "source_classes": [
+        "MANIFEST",
+        "HANDOFF",
+        "CHECKPOINT",
+        "EXTERNAL_REQUEST",
+        "GLOBAL_CONTROL",
+        "PLAN",
+        "GOVERNED_TEXT"
+      ],
+      "target_types": [
+        "EvidenceRequirement",
+        "ExternalGate",
+        "ControlBoundary",
+        "Goal",
+        "ReceiptAdmission",
+        "resume-proof inputs"
+      ],
+      "unlocks": "M07"
+    },
+    {
+      "acceptance": "Every migration gate PASS; expected snapshot independently derived; all10911 frozen files unchanged. Does not itself qualify Planner v0.1 or authorize E1 resume.",
+      "current_eligibility": "BLOCKED_BY_PREREQUISITES",
+      "execution_status": "NOT_EXECUTED",
+      "id": "M07",
+      "implementation": [
+        "Assemble only admitted canonical objects into existing codec format",
+        "Thin explicit migration entrypoint; integrate existing import_e1 without fallback to N fixture",
+        "Run full frozen non-effecting cold test, isolated synthetic reentry and all affected regressions",
+        "Compare independent snapshot contract coverage and source preservation; publish new migration qualification record only"
+      ],
+      "name": "Canonical assembly, cold migration qualification and CLI integration",
+      "oracles_and_tests": [
+        "MC01",
+        "MC02",
+        "MC03",
+        "MC04",
+        "MC05",
+        "MC06",
+        "MC07",
+        "MC08",
+        "MC09",
+        "MC10",
+        "MC11",
+        "MC12",
+        "MC13",
+        "MC14",
+        "MC15",
+        "MC16",
+        "MC17",
+        "MC18",
+        "MC19",
+        "MC20",
+        "MC21",
+        "MC22",
+        "MC23",
+        "MC24",
+        "MC25",
+        "MC26"
+      ],
+      "prerequisites": [
+        "M06"
+      ],
+      "source_classes": [
+        "ALL_REQUIRED"
+      ],
+      "target_types": [
+        "Snapshot",
+        "PersistenceBundle",
+        "MigrationManifest",
+        "qualification record"
+      ],
+      "unlocks": "Migration closure review -> remaining correction gate -> full requalification/fresh adversarial review"
+    }
+  ]
+}

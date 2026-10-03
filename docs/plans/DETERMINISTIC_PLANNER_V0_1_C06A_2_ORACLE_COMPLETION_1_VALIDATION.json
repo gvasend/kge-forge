@@ -1,0 +1,2630 @@
+{
+  "canonical_roundtrip": "PASS",
+  "cases": 104,
+  "cold_process_replay": {
+    "cases_per_process": 104,
+    "result": "PASS",
+    "seeds": [
+      0,
+      17,
+      113
+    ],
+    "semantic_output_digest": "5415f3a379684042cba018a64a4470a6e99542c463134d7e7fdd04899d930bf1"
+  },
+  "family_query_checks": [
+    {
+      "actual": true,
+      "case": "DECISION-INPUTS",
+      "expected": true,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "DECISION_INPUTS_REQUIRED"
+      }
+    },
+    {
+      "actual": true,
+      "case": "AUTHORITY-REQUIRED-NOT-READY",
+      "expected": true,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "AUTHORITY_REQUIRED"
+      }
+    },
+    {
+      "actual": false,
+      "case": "AUTHORITY-REQUIRED-NOT-READY",
+      "expected": false,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "DECISION_READY"
+      }
+    },
+    {
+      "actual": true,
+      "case": "AUTHORITY-REQUIRED-NOT-READY",
+      "expected": true,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "FACT_BLOCKED"
+      }
+    },
+    {
+      "actual": true,
+      "case": "DECISION-DOSSIER",
+      "expected": true,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "DECISION_DOSSIER_READY"
+      }
+    },
+    {
+      "actual": true,
+      "case": "DECISION-READY",
+      "expected": true,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "DECISION_READY"
+      }
+    },
+    {
+      "actual": true,
+      "case": "DECISION-RECORDED",
+      "expected": true,
+      "query": {
+        "family": "decision_state",
+        "id": "DEC-Q",
+        "state": "DECISION_RECORDED"
+      }
+    },
+    {
+      "actual": true,
+      "case": "AUTHORITY-APPLICABLE",
+      "expected": true,
+      "query": {
+        "family": "authority_use",
+        "id": "DEC-Q"
+      }
+    },
+    {
+      "actual": false,
+      "case": "REFERENCE-NOT-APPLICABILITY",
+      "expected": false,
+      "query": {
+        "family": "authority_use",
+        "id": "DEC-Q"
+      }
+    },
+    {
+      "actual": true,
+      "case": "PROOF-COMPLETE",
+      "expected": true,
+      "query": {
+        "family": "proof",
+        "id": "root:qualified"
+      }
+    },
+    {
+      "actual": true,
+      "case": "PROOF-COMPLETE",
+      "expected": true,
+      "query": {
+        "family": "proof",
+        "id": "slot:qualified"
+      }
+    },
+    {
+      "actual": false,
+      "case": "STALE-TRANSITIVE-SOURCE",
+      "expected": false,
+      "query": {
+        "family": "proof",
+        "id": "slot:qualified"
+      }
+    },
+    {
+      "actual": true,
+      "case": "RECEIPT-WAITING",
+      "expected": true,
+      "query": {
+        "family": "receipt_state",
+        "id": "receipt",
+        "state": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      }
+    },
+    {
+      "actual": false,
+      "case": "STAGE-TEXT-NOT-REENTRY",
+      "expected": false,
+      "query": {
+        "family": "receipt_state",
+        "id": "receipt",
+        "state": "DEPENDENT_ACTION_REENTRY"
+      }
+    },
+    {
+      "actual": true,
+      "case": "CONTROL-RUNNABLE",
+      "expected": true,
+      "query": {
+        "family": "control",
+        "state": "RUNNABLE"
+      }
+    },
+    {
+      "actual": true,
+      "case": "RECEIPT-REENTRY",
+      "expected": true,
+      "query": {
+        "family": "resume"
+      }
+    },
+    {
+      "actual": false,
+      "case": "RECEIPT-VALIDATED",
+      "expected": false,
+      "query": {
+        "family": "resume"
+      }
+    },
+    {
+      "actual": true,
+      "case": "PROOF-COMPLETE",
+      "expected": true,
+      "query": {
+        "family": "overlay"
+      }
+    },
+    {
+      "actual": false,
+      "case": "OVERLAY-WRONG-GRAPH",
+      "expected": false,
+      "query": {
+        "family": "overlay"
+      }
+    }
+  ],
+  "fixture_identity": "a159d19755c19b30b16a0f3636047e56712c0b8dc2d54516c42d9d9174c578d6",
+  "negative_cases": 74,
+  "object_key_reversal": "PASS",
+  "oracle_identity": "fc7a223b753982fca2ca7f7173ae2c9e52ba43eeccd36d256a4bb3bce9e0447a",
+  "outputs": [
+    {
+      "id": "PROOF-COMPLETE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "2bc80aacdafebe9a2b395c8bccea134788d114ae2043df344412511b838676fb"
+    },
+    {
+      "id": "DECISION-INPUTS",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_INPUTS_REQUIRED",
+            "dossier_ready": false,
+            "fact_blocked": true,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_INPUTS_REQUIRED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "a1c09e309845cd3928baba99e496c4bd76a06cb2af102cc57295f8ff056fc3b9"
+    },
+    {
+      "id": "DECISION-DOSSIER",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_DOSSIER_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_DOSSIER_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "5f4c5a5f8d5587a6a72b49472022f88bef92aac946b1532f864f75a6dccae4a0"
+    },
+    {
+      "id": "DECISION-READY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "117371d6d80b4f1797212fb57cd4c35e7de703c4658bfb273321b8091e625359"
+    },
+    {
+      "id": "DECISION-RECORDED",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": true,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "70d1c10b284c901ab5ce4a0f07b56eda631ad2a3d6eb45e2a8b2b6f820b045e4"
+    },
+    {
+      "id": "AUTHORITY-REQUIRED-NOT-READY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_INPUTS_REQUIRED",
+            "dossier_ready": false,
+            "fact_blocked": true,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_INPUTS_REQUIRED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "a1c09e309845cd3928baba99e496c4bd76a06cb2af102cc57295f8ff056fc3b9"
+    },
+    {
+      "id": "DECISION-RECORDED-REJECT",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "d7a5b8812e8043fb802ca93c8756996abbf53ef36f5840f914d0e0bd96d8356b"
+    },
+    {
+      "id": "DECISION-RECORDED-DEFER",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "d7a5b8812e8043fb802ca93c8756996abbf53ef36f5840f914d0e0bd96d8356b"
+    },
+    {
+      "id": "AUTHORITY-APPLICABLE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": true,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "70d1c10b284c901ab5ce4a0f07b56eda631ad2a3d6eb45e2a8b2b6f820b045e4"
+    },
+    {
+      "id": "RECORDED-NOT-ROOT-SLOT",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": true,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "5d2bf292df31b2bdcce41a727ecdb838c1502591e94528bdfa543bc69e5816e8"
+    },
+    {
+      "id": "RECEIPT-REQUEST",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_REQUEST_READY",
+            "received": false,
+            "reentry": false,
+            "stage_currently_supported": true,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "bc3fc2645342b0584d4148bfb942a71bcb20ddb933aae35818e8b0e06ebda89a"
+    },
+    {
+      "id": "RECEIPT-WAITING",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "WAITING_FOR_EXTERNAL_EVIDENCE",
+            "received": false,
+            "reentry": false,
+            "stage_currently_supported": true,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "5d78ee4e9baf6be8474a5b902a97dfa245cbcc8e235e7a0ffb573adda15145fe"
+    },
+    {
+      "id": "RECEIPT-RECEIVED",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": true,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "27dda405382e9ad50e2e2ca70e64719044bc60b1efea0a36105ac5830e402379"
+    },
+    {
+      "id": "RECEIPT-VALIDATED",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_VALIDATED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": true,
+            "validated": true
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "9a515be281c2f36e7e4ab236b4a95d50e2e78ac4e934ec266968ebd36c212bf4"
+    },
+    {
+      "id": "RECEIPT-REENTRY",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "DEPENDENT_ACTION_REENTRY",
+            "received": true,
+            "reentry": true,
+            "stage_currently_supported": true,
+            "validated": true
+          }
+        },
+        "resume_allowed": true
+      },
+      "output_identity": "c48f8f58a3dc5db167a481e53e867f7895e814279084fee15714b8968d4802ae"
+    },
+    {
+      "id": "C03-ADMITTED-DECISION-REENTRY",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": true,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": true
+      },
+      "output_identity": "8ac661d5c91d373962c1e467a589a8ffa3389f2aef46eb66a5bb6ed28bed54dc"
+    },
+    {
+      "id": "E1-EXTERNAL-ONLY-EXCLUDES-DECISION",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": true,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "a3a831ecbf456305e38c0a99643f9c2847ab80067c0f93031fc26996e9ef2a44"
+    },
+    {
+      "id": "C03-IMPORTED-REENTRY",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "DEPENDENT_ACTION_REENTRY",
+            "received": true,
+            "reentry": true,
+            "stage_currently_supported": true,
+            "validated": true
+          }
+        },
+        "resume_allowed": true
+      },
+      "output_identity": "c48f8f58a3dc5db167a481e53e867f7895e814279084fee15714b8968d4802ae"
+    },
+    {
+      "id": "CONTROL-RUNNABLE",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "78e7dba954e25d9cb6cd085063eaf66829abac62c33df80cc64aebdad9547948"
+    },
+    {
+      "id": "CONTROL-HUMAN_HANDOFF",
+      "output": {
+        "accepted": true,
+        "control": "HUMAN_HANDOFF",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [
+          "H"
+        ],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "4bcbb518479d6de2dd1cb7c787aa0fbb9acfa0a6a02befc66c64bb4a7ec9f7c8"
+    },
+    {
+      "id": "CONTROL-EXTERNAL_WAIT",
+      "output": {
+        "accepted": true,
+        "control": "EXTERNAL_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "WAITING_FOR_EXTERNAL_EVIDENCE",
+            "received": false,
+            "reentry": false,
+            "stage_currently_supported": true,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "064a2c637ae8f1628b394b46db05cc1558f1543ac7833ce24b40ba57e9ab7043"
+    },
+    {
+      "id": "CONTROL-MIXED_WAIT",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CONTROL-PLAN_DEFECT",
+      "output": {
+        "accepted": true,
+        "control": "PLAN_DEFECT",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "e230256f1e0acd1f1db96d1d2ca45454cc05c4bbdfa803c266046e964b2f8a93"
+    },
+    {
+      "id": "CONTROL-TERMINAL_SUCCESS",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "2bc80aacdafebe9a2b395c8bccea134788d114ae2043df344412511b838676fb"
+    },
+    {
+      "id": "CONTROL-TERMINAL_FAILURE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_FAILURE",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "69934cf4b090686a4387695e5ac3ae9576b2adaf94e10a1636b19ca6e4e6b85a"
+    },
+    {
+      "id": "MACHINE-BEFORE-HUMAN-WAIT",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [
+          "H"
+        ],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "d8afbf40810402af9052c50bc1972e41515ffd93cb4aadc0023ed39f8731e454"
+    },
+    {
+      "id": "HUMAN-BEFORE-EXTERNAL-WAIT",
+      "output": {
+        "accepted": true,
+        "control": "HUMAN_HANDOFF",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [
+          "H"
+        ],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "4bcbb518479d6de2dd1cb7c787aa0fbb9acfa0a6a02befc66c64bb4a7ec9f7c8"
+    },
+    {
+      "id": "GLOBAL-DEFECT-BEFORE-MACHINE",
+      "output": {
+        "accepted": true,
+        "control": "PLAN_DEFECT",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "4a435345080acae005404fd6119a895fe6ed1474359aa4eab4f261237ab716f6"
+    },
+    {
+      "id": "LOCAL-DEFECT-INDEPENDENT-WORK",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "bf7e26e0928ff21bac87abd27e6dc04dbe8750ae33d723b2005b00b9c4dcf640"
+    },
+    {
+      "id": "BLOCKED-PRODUCER-ACCEPTED-KNOWLEDGE",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "A"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "bf7e26e0928ff21bac87abd27e6dc04dbe8750ae33d723b2005b00b9c4dcf640"
+    },
+    {
+      "id": "WRONG-AUTHORITY-DOMAIN",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-AUTHORITY-TYPE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "STALE-AUTHORITY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-DOSSIER",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-OPTION",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-SCOPE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-LINEAGE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "DANGLING-AUTHORITY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "SINGLE-USE-CONSUMED",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "SINGLE-USE-UNKNOWN",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "GRANT-PERMISSION-EXPANSION",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "EXCLUSION-REMOVED",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-REEVALUATION",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "FACT-MISSING",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_INPUTS_REQUIRED",
+            "dossier_ready": false,
+            "fact_blocked": true,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "06eeef6bd901b2bcb07143e1f4dc18ba9c9bda2ac66a595c1fd7b0a44c3e52a0"
+    },
+    {
+      "id": "FACT-STALE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_INPUTS_REQUIRED",
+            "dossier_ready": false,
+            "fact_blocked": true,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "06eeef6bd901b2bcb07143e1f4dc18ba9c9bda2ac66a595c1fd7b0a44c3e52a0"
+    },
+    {
+      "id": "INDEPENDENT-ATTESTATION-MISSING",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_DOSSIER_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "94e68007c3ebf9818023e0ef9e7119dd5e64d4cfca08ddf0c2cd3e8e9d38048e"
+    },
+    {
+      "id": "WRONG-ATTESTED-DOSSIER",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_DOSSIER_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "94e68007c3ebf9818023e0ef9e7119dd5e64d4cfca08ddf0c2cd3e8e9d38048e"
+    },
+    {
+      "id": "CHECKLIST-INCOMPLETE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_DOSSIER_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_READY",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "94e68007c3ebf9818023e0ef9e7119dd5e64d4cfca08ddf0c2cd3e8e9d38048e"
+    },
+    {
+      "id": "REFERENCE-NOT-APPLICABILITY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": false,
+            "derived_stage": "DECISION_RECORDED",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": true
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "d7a5b8812e8043fb802ca93c8756996abbf53ef36f5840f914d0e0bd96d8356b"
+    },
+    {
+      "id": "MISSING-PROOF",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "STALE-TRANSITIVE-SOURCE",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "HISTORICAL-SOURCE",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "PLACEHOLDER",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "KNOWLEDGE-ONLY",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "WRONG-ROOT-TARGET",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "WRONG-SLOT-DOMAIN",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "8918076c94a164e446e7451af46c45e9be3f059a0c9d6328ce1da1d01c8bb5f8"
+    },
+    {
+      "id": "REMOVED-MANDATORY-SUPPORT",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "8918076c94a164e446e7451af46c45e9be3f059a0c9d6328ce1da1d01c8bb5f8"
+    },
+    {
+      "id": "PASS-NOT-PROOF",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "OVERLAY-WRONG-GRAPH",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "OVERLAY-WRONG-PLAN",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "OVERLAY-WRONG-POLICY",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "OVERLAY-WRONG-POLICY-VERSION",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "LEDGER-HEAD-MISMATCH",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "UNPROVEN-OVERLAY-COMPLETION",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "WRONG-PRODUCER",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "WRONG-REQUEST",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "WRONG-RECEIPT-SCOPE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "WRONG-RECEIPT-LINEAGE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "INCOMPLETE-RECEIPT",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "STALE-RECEIPT-ATTESTOR",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "INVALID-RECEIPT-RULE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "NEGATIVE-RECEIPT-PROOF",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_RECEIVED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": false
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "18b78623b74f08f7b874d8fc75db46efb74b6749a4cbd80cb61175cce991c302"
+    },
+    {
+      "id": "STAGE-TEXT-NOT-REENTRY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_VALIDATED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": false,
+            "validated": true
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "d79d0fd95eb2b17f2f05edca84c9ae3b8e724bd9615ee5ae9662ad428242b4ea"
+    },
+    {
+      "id": "VALID-RECEIPT-ORIGINAL-GATE-UNRESOLVED",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "DEPENDENT_ACTION_REENTRY",
+            "received": true,
+            "reentry": true,
+            "stage_currently_supported": true,
+            "validated": true
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "eb8207ed9e3727c60bac8290c9c0d70f2cbe9f15925b524293efc48f2b3def9e"
+    },
+    {
+      "id": "UNRELATED-ACTION-NOT-RESUME",
+      "output": {
+        "accepted": true,
+        "control": "RUNNABLE",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [
+          "B"
+        ],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {
+          "receipt": {
+            "derived_stage": "EVIDENCE_VALIDATED",
+            "received": true,
+            "reentry": false,
+            "stage_currently_supported": true,
+            "validated": true
+          }
+        },
+        "resume_allowed": false
+      },
+      "output_identity": "b3255b2abcfa1f4bc42b207ce7a4be5ac3f2de5598120361bb5a78d54226a4a1"
+    },
+    {
+      "id": "REORDERED-LEDGER",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "REENTRY-WRONG-GENERATION",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "SAVED-LABEL-NOT-AUTHORITY",
+      "output": {
+        "accepted": false,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "4a25ebabdb04cce77388a6d8205e4015b46a9404df49f79f6b1c21e633aeffab"
+    },
+    {
+      "id": "CROSS-RUNTIME",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-G4",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-PROFILE",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-INVOCATION",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-DISPATCH",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-CONTEXT",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-BINDING",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "CROSS-RELEASE",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "UNVERIFIED-BYTES",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "MISSING-PROVENANCE",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "SELF-REPIN-UNTRUSTED",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "OMITTED-REQUIRED-GOAL",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "UNKNOWN-STATE",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "SUBSTITUTED-SEMANTIC-AUTHORITY-IDENTITY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "INTEGER-NOT-BOOLEAN-AUTHORITY",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "WRONG-KNOWLEDGE-TYPE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "2bc80aacdafebe9a2b395c8bccea134788d114ae2043df344412511b838676fb"
+    },
+    {
+      "id": "MISSING-FAILURE-PROOF-NOT-TERMINAL",
+      "output": {
+        "accepted": true,
+        "control": "PLAN_DEFECT",
+        "decisions": {},
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "e230256f1e0acd1f1db96d1d2ca45454cc05c4bbdfa803c266046e964b2f8a93"
+    },
+    {
+      "id": "WAIT-LABEL-WITHOUT-RECEIPT-CONTRACT",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "WRONG-PROOF-HASH-DOMAIN",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "IDENTITY-NOT-CURRENTNESS",
+      "output": {
+        "accepted": true,
+        "control": "MIXED_WAIT",
+        "decisions": {},
+        "frontier": [
+          "gate:outside"
+        ],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": false,
+          "slot:qualified": false
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "da121e9afd658729d5b26d282db2563f034a9b653e8b122bc9dd1301c7dc882d"
+    },
+    {
+      "id": "RELOAD-CANNOT-CLEAR-STALE-ADMISSION",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "REIDENTIFIED-AUTHORITY-WRONG-SCOPE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "REIDENTIFIED-AUTHORITY-WRONG-LINEAGE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "REIDENTIFIED-AUTHORITY-WRONG-AUTHORITY_TYPE",
+      "output": {
+        "accepted": true,
+        "control": "TERMINAL_SUCCESS",
+        "decisions": {
+          "DEC-Q": {
+            "authority_required": true,
+            "decision_ready": true,
+            "derived_stage": "DECISION_READY",
+            "dossier_ready": true,
+            "fact_blocked": false,
+            "gap_established": true,
+            "grant_usable": false,
+            "historical_stage": "DECISION_RECORDED",
+            "recorded": false
+          }
+        },
+        "frontier": [],
+        "human": [],
+        "machine": [],
+        "proofs": {
+          "root:qualified": true,
+          "slot:qualified": true
+        },
+        "receipts": {},
+        "resume_allowed": false
+      },
+      "output_identity": "1330f0703cc7cfb118b7b5de5d1da5a839ca3883e2bf637a4f64c703b4b62ab9"
+    },
+    {
+      "id": "REIDENTIFIED-AUTHORITY-BAD-BOOLEAN",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    },
+    {
+      "id": "UNKNOWN-REQUIRED-PROOF-RULE",
+      "output": {
+        "accepted": false,
+        "control": "PLAN_DEFECT",
+        "error": "MALFORMED_OR_UNBOUND_INPUT",
+        "resume_allowed": false
+      },
+      "output_identity": "8271616aff8eb4627d964655ea0cb29b3fbdb19e760a75fe907cac0fd80daed1"
+    }
+  ],
+  "planner_imports": 0,
+  "planner_tests_executed": 0,
+  "positive_cases": 30,
+  "preservation": {
+    "existing_tests_modified": false,
+    "frozen_E1_files_verified": 10911,
+    "git_diff_check": "PASS",
+    "historical_partial_result_modified": false,
+    "implementation_modified": false,
+    "new_files": 4,
+    "preexisting_files_modified": 0,
+    "source_pins_json_counts_links": "PASS"
+  },
+  "real_E1_readiness_executed": false,
+  "schema": "C06A2-ORACLE-SPECIFICATION-VALIDATION-1",
+  "scope": "New reference oracle only; NOT planner qualification"
+}

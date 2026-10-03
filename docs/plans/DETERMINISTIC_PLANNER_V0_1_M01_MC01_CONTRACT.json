@@ -1,0 +1,2301 @@
+{
+  "binding_rule": {
+    "canonicalization": "BR-C1 canonical JSON; raw content pins over unmodified bytes",
+    "cardinality": "exactly one source/role/context target correspondence; duplicate/missing rejects",
+    "join": "BR-C1 explicit selector/join plus independently registered source role; no repository matching",
+    "lineage": "exact recorded lineage; not a machine freshness attestation",
+    "native_handoff": "BOUND means source relationship only; every operational target still requires its native/Oxx admission",
+    "provenance": "source identity/profile/selector, contract version, dependencies, target identity, exact frozen envelope",
+    "scope": "exact frozen context, separate source EXECUTION and target REQUEST scopes"
+  },
+  "expected_absences": [
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-BUDGET"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/0"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/0"
+      },
+      "receipt_action": "RECEIVE-BUDGET-APPLICABILITY-EVIDENCE",
+      "reentry_actions": [
+        "FACT-BUDGET-APPLICABILITY",
+        "REEVAL-BUDGET"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-BUDGET-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+          "exact_missing_propositions": "The full eight-proposition contract in E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json is incorporated unchanged.",
+          "expected_owner": "Owning authority/catalog, lineage/runtime/profile/current-state and governing phase-rule owners; concrete qualified endpoints UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-BUDGET-APPLICABILITY-EVIDENCE",
+          "id": "HANDOFF-BUDGET",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-ANCESTRY"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/1"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/1"
+      },
+      "receipt_action": "RECEIVE-ANCESTRY-EVIDENCE",
+      "reentry_actions": [
+        "S-ANCESTRY"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-ANCESTRY-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+          "exact_missing_propositions": "Exact current allocation record, predecessor/attempt-chain source and concrete session/turn ownership for pinned invocation; complete identity, chronology and owning provenance. R12_HISTORY or R13_NAMESPACE strings alone are not records.",
+          "expected_owner": "Authoritative invocation allocator/history/session-turn owner; concrete source not established.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-S-ANCESTRY",
+          "id": "HANDOFF-ANCESTRY",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-APPROVAL"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/2"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/2"
+      },
+      "receipt_action": "RECEIVE-APPROVAL-EVIDENCE",
+      "reentry_actions": [
+        "S-APPROVAL"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-APPROVAL-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+          "exact_missing_propositions": "Existing issued specific-approval record with exact decision identity and target applicability/lineage/freshness. Do not substitute another grant or request a new approval to fill a missing fact. If absent, report absence.",
+          "expected_owner": "Owning specific-approval issuer/domain; concrete applicable record not established.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-S-APPROVAL",
+          "id": "HANDOFF-APPROVAL",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-AUDIT"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/3"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/3"
+      },
+      "receipt_action": "RECEIVE-AUDIT-SOURCE-EVIDENCE",
+      "reentry_actions": [
+        "PREP-AUDIT"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-AUDIT-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+          "exact_missing_propositions": "Concrete proposed namespace/store identity and owning source, exact location plus independently evidenced placement outside agent roots, target release/context applicability. Supplying a candidate target does not select/authorize it or create a ledger.",
+          "expected_owner": "Audit namespace/store owner; exact competent producer and target UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-AUDIT",
+          "id": "HANDOFF-AUDIT",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-RUNTIME-HEAD"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/4"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/4"
+      },
+      "receipt_action": "RECEIVE-RUNTIME-HEAD-EVIDENCE",
+      "reentry_actions": [
+        "PREP-RUNTIME_HEAD"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-RUNTIME-HEAD-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+          "exact_missing_propositions": "Concrete proposed current R4/G4 head selector and source authority body/identity, exact publication target/domain/mechanism and current release/context/lineage facts. Distinguish already-published authority from a proposal; no R3 or unpublished R4 substitution.",
+          "expected_owner": "Runtime-head selection/release authority and owning catalog publisher; concrete current selector UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-RUNTIME_HEAD",
+          "id": "HANDOFF-RUNTIME-HEAD",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-SUPERVISOR"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/5"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/5"
+      },
+      "receipt_action": "RECEIVE-SUPERVISOR-EVIDENCE",
+      "reentry_actions": [
+        "PREP-SUPERVISOR"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-SUPERVISOR-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+          "exact_missing_propositions": "Concrete proposed supervisor selector and supporting owning authority/selection facts for exact current release/context, lineage and freshness. Immutable stale instances cannot be rebound by response or copied runtime identity.",
+          "expected_owner": "Supervisor selection/release owner; concrete current selection UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-PREP-SUPERVISOR",
+          "id": "HANDOFF-SUPERVISOR",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-EXEC"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/6"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/6"
+      },
+      "receipt_action": "RECEIVE-EXEC-POLICY-EVIDENCE",
+      "reentry_actions": [
+        "DEC-EXEC readiness reevaluation"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-EXEC-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+          "exact_missing_propositions": "Existing independently authoritative executable-policy source and exact projector, or exact independently grounded permission proposal with source/scope/semantics/consequences. No executable permissions inferred from argv; proposal is not granted policy.",
+          "expected_owner": "Independent executable-policy owner/proposal producer; not established by argv/profile inventory.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "EXT-REENTRY-DEC-EXEC",
+          "id": "HANDOFF-EXEC",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "checkpoint",
+        "handoff",
+        "manifest"
+      ],
+      "handoff_ids": [
+        "HANDOFF-IMPLEMENTATION"
+      ],
+      "provenance": {
+        "checkpoint_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+        },
+        "checkpoint_selector": "/resume_condition",
+        "handoff_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+        },
+        "handoff_selectors": [
+          "/control_transfer_items/7"
+        ],
+        "manifest_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        },
+        "manifest_selector": "/request_routes/7"
+      },
+      "receipt_action": "RECEIVE-IMPLEMENTATION-SOURCE-EVIDENCE",
+      "reentry_actions": [
+        "INPUT-IMPLEMENTATION"
+      ],
+      "request_id": "E1-EXTERNAL-REQUEST-IMPLEMENTATION-1",
+      "requirements": [
+        {
+          "acceptable_evidence_source": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+          "exact_missing_propositions": "Provide the actual authoritative identity-domain object/contract, owning record/identity, exact canonical byte domain/serialization/hash or reference rule, source field/path/selector, target scope/lineage and supported runtime relationship. An unadopted proposal must be labeled; it is not an authoritative object.",
+          "expected_owner": "Implementation identity-domain contract owner/source producer; concrete distinct-domain owner UNKNOWN.",
+          "freshness_currentness_requirements": "Bind evidence to exact target and coherent owning snapshot/generation with governing effective/currentness rule and trusted anchor. Reject stale/inapplicable/ambiguous evidence; no arbitrary TTL or currentness inference from static identity.",
+          "frontier_member": "IMPLEMENTATION-OWNING-SOURCE + IMPLEMENTATION-SELECTOR",
+          "id": "HANDOFF-IMPLEMENTATION",
+          "scope_lineage_requirements": "Exact R4/G4/E1-WP-001 invocation/dispatch/release/context envelope pinned in resume subject; preserve source-specific scopes. Do not equate EXECUTION with REQUEST or substitute historical releases/contexts."
+        }
+      ]
+    }
+  ],
+  "field_requirements": [
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Universe, validation and all references",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "id",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ActionId"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Human/machine partition and decision type validation",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "operation",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "OperationClass"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Typed admission, retained decision input validation; future blockers",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "effect",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "EffectClass"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "project ordering and _global_control traversal; do not erase dependencies",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "prerequisites",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[Gate]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Native source validation, invalidation and authenticated action universe",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "source",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Provenance"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Required native constructor field; stale members affect current_completion even on held paths. Future output detail only outside this closure; no invented empty inventory",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "accepted_inventory",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[KnowledgeRecord]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Currentness and native assertion closure",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "evidence",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[AssertionId]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Unsupported rule check on reached actions; governed unknown must resolve exact EVIDENCE_OBLIGATION",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "requirements",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Tuple[PredicateId]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "unavailable_support propagates stale authority into action completion; retained reference must validate",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "authority",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Optional[PredicateId]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Human stage semantics and admission; historical narrative not required",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "stage",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ActionStage"
+    },
+    {
+      "classifications": [
+        "NOT_REQUIRED",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "No candidates => selector not called; supplied values still validate",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "cost",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Optional[int]"
+    },
+    {
+      "classifications": [
+        "NOT_REQUIRED",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Must accompany supplied cost; no invented ranking inputs",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "cost_unit",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "str"
+    },
+    {
+      "classifications": [
+        "NOT_REQUIRED",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Not used to create candidates on held paths; existing field still typed",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "pass_model_complete",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "bool"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION",
+        "REQUIRED_ONLY_FOR_REENTRY"
+      ],
+      "control_dependency": "Not proof of historical execution; no apply_result in frozen query",
+      "deferred_detail": "Full ranking/pass-model or prospective result application; not permission to omit native field",
+      "field": "accepted_result",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ActionResult"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "Retained dossiers validate fully; future preparation narrative not required solely to prove no active human",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "prepared_dossier",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "Optional[DecisionDossier]"
+    },
+    {
+      "classifications": [
+        "REQUIRED_BY_FROZEN_CONTROL",
+        "REQUIRED_BY_NATIVE_ACTION_VALIDATION"
+      ],
+      "control_dependency": "unavailable_support/current_completion; never assume accepted from BLOCKED status",
+      "deferred_detail": "Only unreferenced future/history detail; preserve reached support",
+      "field": "qualification",
+      "required_now": true,
+      "required_now_meaning": "Field/type/reference semantics must be justified; optional None/empty needs independent projection rule, never inferred from default",
+      "type": "ValidationState"
+    }
+  ],
+  "frozen_scope": {
+    "checkpoint": {
+      "domain": "CONTENT_IDENTITY",
+      "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+    },
+    "embedded_policy": {
+      "domain": "CONTENT_IDENTITY",
+      "namespace": "EXTRACTED_JSON_VALUE",
+      "sha256": "3ae218d1becf1160229a26901ffdc49f1840275a41119044a04458c66954f8a4"
+    },
+    "envelope": {
+      "budget_authority": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99",
+      "controller_store": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff",
+      "programmer_profile": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67",
+      "recorded_lineage": "R4-final CURRENT UNIQUE",
+      "runtime": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761",
+      "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+      "target_context": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c",
+      "target_dispatch": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3",
+      "target_invocation": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa",
+      "target_release": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e",
+      "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+    },
+    "evaluation": "FROZEN_SNAPSHOT_ONLY",
+    "graph": {
+      "domain": "CONTENT_IDENTITY",
+      "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+    },
+    "ledger": {
+      "domain": "CONTENT_IDENTITY",
+      "namespace": "EXTRACTED_JSON_VALUE",
+      "sha256": "c90290d4d922190183e30392c9cca8cbb6e5b0a9ebef2f1b6c91708f3e55119a"
+    },
+    "lineage": "R4-final CURRENT UNIQUE",
+    "manifest": {
+      "domain": "CONTENT_IDENTITY",
+      "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+    },
+    "plan": {
+      "domain": "CONTENT_IDENTITY",
+      "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+    },
+    "policy_document": {
+      "domain": "CONTENT_IDENTITY",
+      "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+    },
+    "source_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION",
+    "target_scope": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+  },
+  "identity_domains": [
+    {
+      "canonical_form": {
+        "type": "ActionId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "ActionId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "ActionId"
+    },
+    {
+      "canonical_form": {
+        "type": "ConditionId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "ConditionId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "ConditionId"
+    },
+    {
+      "canonical_form": {
+        "type": "SlotId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "SlotId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "SlotId"
+    },
+    {
+      "canonical_form": {
+        "type": "KnowledgeId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "KnowledgeId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "KnowledgeId"
+    },
+    {
+      "canonical_form": {
+        "type": "AssertionId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "AssertionId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "AssertionId"
+    },
+    {
+      "canonical_form": {
+        "type": "EntityId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "EntityId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "EntityId"
+    },
+    {
+      "canonical_form": {
+        "type": "PredicateId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "PredicateId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "PredicateId"
+    },
+    {
+      "canonical_form": {
+        "type": "GateId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "GateId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "GateId"
+    },
+    {
+      "canonical_form": {
+        "type": "EvidenceId",
+        "value": "nonempty exact source-governed string; no whitespace repair"
+      },
+      "equality": "same exact type and value",
+      "identity_type": "EvidenceId",
+      "non_equivalence": [
+        "same spelling in another Identifier type",
+        "source locator or source digest"
+      ],
+      "provenance": "Raw source pin + exact record selector + mapping version; no new ID emitted until mapping is defined",
+      "source_representation": "Exact independently assigned record/selector; absence of a native crosswalk is unresolved",
+      "target_representation": "EvidenceId"
+    },
+    {
+      "canonical_form": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/CONTENT_IDENTITY",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "kind": "AUTHORITY_IDENTITY",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/AUTHORITY_IDENTITY",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "kind": "INSTANCE_IDENTITY",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/INSTANCE_IDENTITY",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "kind": "RELEASE_IDENTITY",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/RELEASE_IDENTITY",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "kind": "CANONICAL_OBJECT_IDENTITY",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/CANONICAL_OBJECT_IDENTITY",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "kind": "WORKAUTHORIZATION_ID",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/WORKAUTHORIZATION_ID",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "kind": "BINDING_DIGEST",
+        "namespace": "required accepted schema namespace",
+        "sha256": "64 lowercase hexadecimal"
+      },
+      "equality": "all of kind, namespace and sha256 equal",
+      "identity_type": "ArtifactIdentity/BINDING_DIGEST",
+      "non_equivalence": [
+        "same digest in another kind",
+        "same digest in another namespace",
+        "raw container hash versus embedded semantic identity"
+      ],
+      "provenance": "Source pin and selector; native kind/namespace conversion must be independently mapped",
+      "source_representation": "Raw bytes for raw-file-sha256; otherwise exact governing declared identity/canonicalization contract",
+      "target_representation": "ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:budget_authority",
+        "value": "StatusBudgetAuthority-sha256:02cc22de4ad70612c8b1e39e4df6f3bf8733c777d4729fb66d59d519fc6edc99"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:budget_authority",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/budget_authority",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/budget_authority"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:target_invocation",
+        "value": "InvocationAttempt-sha256:e89c032eb0b0a006b041e3b0ddf0093d8d8b7a7f30882ac21f9ab05b0eb8bbfa"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:target_invocation",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/target_invocation",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/target_invocation"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:target_dispatch",
+        "value": "CurrentDispatch-sha256:ee06120a0b5d6301ab66de62d4b90747e1ddea164ecd635675e369f770775aa3"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:target_dispatch",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/target_dispatch",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/target_dispatch"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:target_context",
+        "value": "OperationalContext-sha256:ff57a2103cdcbfa578a4ce22d774ecea374a34267cdaf8d53385fca916dbc10c"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:target_context",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/target_context",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/target_context"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:target_release",
+        "value": "ReleaseAuthority-sha256:18184991d9ebdddcae05b1ee138dbc2bbef27be72cd6ad07e1515bf4fb29ff1e"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:target_release",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/target_release",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/target_release"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:source_scope",
+        "value": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_EXECUTION"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:source_scope",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/source_scope",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/source_scope"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:target_scope",
+        "value": "LIVE_R4/G4/E1-WP-001/FIRST_PROGRAMMER_REQUEST"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:target_scope",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/target_scope",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/target_scope"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:recorded_lineage",
+        "value": "R4-final CURRENT UNIQUE"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:recorded_lineage",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/recorded_lineage",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/recorded_lineage"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:runtime",
+        "value": "sha256:b6bcbb437f63c1433167103b1c7e15b723190721518e02ff2e4d2523fd625761"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:runtime",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/runtime",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/runtime"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:controller_store",
+        "value": "AUTHORITY-STORE-GENERATION-sha256:ab07c7cbd889588fd80976bf5c47b7358722eaf6e2e1b7364e612c03899bf9ff"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:controller_store",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/controller_store",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/controller_store"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "SUBJECT_REFERENCE:programmer_profile",
+        "value": "ProgrammerProfile-sha256:0a0718f285a942c13a9f00e4b367cbea2394937fa18c4d7e11ed2c6c2803dd67"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "SUBJECT_REFERENCE:programmer_profile",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/subject_pins/programmer_profile",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+        }
+      },
+      "source_representation": {
+        "role": "manifest",
+        "selector": "/subject_pins/programmer_profile"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "RECORDED_HOLD:DEC-EXEC",
+        "value": "FACT_BLOCKED"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "RECORDED_HOLD:DEC-EXEC",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/resolution_actions/21/blocking_result",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        }
+      },
+      "source_representation": {
+        "role": "plan",
+        "selector": "/resolution_actions/21/blocking_result"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "RECORDED_HOLD:INPUT-IMPLEMENTATION",
+        "value": "FACT_BLOCKED"
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "RECORDED_HOLD:INPUT-IMPLEMENTATION",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/resolution_actions/59/execution_result/decision_readiness",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        }
+      },
+      "source_representation": {
+        "role": "plan",
+        "selector": "/resolution_actions/59/execution_result/decision_readiness"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": {
+        "domain": "RECORDED_HOLD:BUILD-BINDING",
+        "value": [
+          {
+            "id": "CONTRACT-T1",
+            "kind": "ACTION"
+          },
+          {
+            "id": "S-ANCESTRY",
+            "kind": "ACTION"
+          },
+          {
+            "id": "MAP-DISPATCH",
+            "kind": "ACTION"
+          },
+          {
+            "id": "MAP-RELEASE",
+            "kind": "ACTION"
+          },
+          {
+            "id": "MAP-CONTEXT_ID",
+            "kind": "ACTION"
+          }
+        ]
+      },
+      "equality": "domain and exact value; context and source binding also required",
+      "identity_type": "RECORDED_HOLD:BUILD-BINDING",
+      "non_equivalence": [
+        "native authority/instance identity without explicit conversion",
+        "current applicability proof"
+      ],
+      "provenance": {
+        "context_identity_inputs": [
+          "manifest",
+          "checkpoint"
+        ],
+        "governing_bindings": [
+          "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+        ],
+        "method": "BR-C1-EXPLICIT-SOURCE-BINDING-1",
+        "projection_version": "BR-C1-1",
+        "selector": "/resolution_actions/47/unresolved_prerequisites",
+        "source_identity": {
+          "domain": "CONTENT_IDENTITY",
+          "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+        }
+      },
+      "source_representation": {
+        "role": "plan",
+        "selector": "/resolution_actions/47/unresolved_prerequisites"
+      },
+      "target_representation": "Recorded BR-C1 tagged reference; not automatically native ArtifactIdentity"
+    },
+    {
+      "canonical_form": "role + content identity + extraction profile + governing selector",
+      "equality": "same role/profile/identity; no aliasing between graph, ledger and policy",
+      "identity_type": "GRAPH_SOURCE/LEDGER/POLICY",
+      "non_equivalence": [
+        "raw graph bytes versus graph entity identity",
+        "ledger extraction digest versus raw plan digest",
+        "embedded policy digest versus policy-document digest"
+      ],
+      "provenance": "Explicit BR-C1 extraction and source pin",
+      "source_representation": "BR-C1 context graph/ledger/embedded_policy/policy_document",
+      "target_representation": "Graph provenance, immutable imported ledger reference, distinct policy pins"
+    },
+    {
+      "canonical_form": "Native PredicateId/AssertionId/EntityId or ArtifactIdentity only under O08/O09/native contract",
+      "equality": "native type and governed target-specific admission",
+      "identity_type": "PROOF/OPERATIONAL_BINDING",
+      "non_equivalence": [
+        "known value versus accepted proof",
+        "binding digest versus authority identity"
+      ],
+      "provenance": "Supporting source chain; no guessed namespace",
+      "source_representation": "Exact accepted proof or binding record; no bare hash cast",
+      "target_representation": "UNRESOLVED_TARGET_SIGNATURE"
+    }
+  ],
+  "reuse": {
+    "BR_C1_path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_CONTRACT.json",
+    "BR_C1_sha256": "f36bf174337c90d72ef26c912956f1b5070b5323a456b214fdf11c8efdaa0921",
+    "fixture_path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C1_FIXTURES.json",
+    "fixture_sha256": "a0112189adad553bcd3f6670e5191cc9916db8fb4428d51e3d2664a6caee46bb"
+  },
+  "schema": "M01-MC01-SHARED-BINDINGS-1",
+  "scope": "SPECIFICATION_ONLY_PARTIAL_NATIVE_SIGNATURE_CLOSURE",
+  "scope_allocation": {
+    "later": [
+      "Complete historical ActionResult/ledger reconstruction outside current support",
+      "Prospective output contracts only outside native/O01 mandatory fields",
+      "Positive reentry and effecting execution"
+    ],
+    "now": [
+      "MC01/02 source recognition and disposition for minimum cone",
+      "MC03/06 native and O01 validity for retained Actions/support",
+      "MC04/05 current source-backed hold and proof support"
+    ],
+    "unresolved": "Exact minimal native Action to unchanged O01 expected-profile compatibility; mandatory fields may not be omitted or filled by defaults"
+  },
+  "source_role_expectations": {
+    "checkpoint": [
+      "FROZEN_CHECKPOINT_SOURCE",
+      "EXPECTED_ABSENCE_SOURCE"
+    ],
+    "graph": [
+      "GRAPH_SOURCE"
+    ],
+    "handoff": [
+      "EXTERNAL_GATE_SOURCE",
+      "EXPECTED_ABSENCE_SOURCE"
+    ],
+    "manifest": [
+      "FROZEN_ENVELOPE_SOURCE",
+      "EXPECTED_ABSENCE_SOURCE",
+      "SOURCE_INVENTORY_SOURCE"
+    ],
+    "plan": [
+      "ACTION_DEFINITION_SOURCE",
+      "ROUTING_SOURCE",
+      "LEDGER_SOURCE"
+    ],
+    "source:09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4": [
+      "AUTHORITY_RECORD_SOURCE"
+    ],
+    "source:2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:41f2a2c922a1e2f948ceddc7f28a0eee3893d67378bd558c9fadbb51075a04a7": [
+      "AUTHORITY_RECORD_SOURCE"
+    ],
+    "source:464f653148b2266151f71bdf6228a154541afe12d0310b1eca7a3cf8a275f9f1": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5": [
+      "SELECTION_POLICY_SOURCE"
+    ],
+    "source:48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276": [
+      "EXTERNAL_GATE_SOURCE"
+    ],
+    "source:6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:6f1a396ce4ef8619c9e6c518ffb41fab7c146fceb767df0d1c3c569c2699f9d2": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:7ed6761a1546dc659261691071c9e63b87a82a492a4a32513ff85fa730dfe999": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:8e071f5f6f7f305bc35e07b2bcb7f77175f54ce03528048522d6db2e0ef7f816": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:a8659a5bd82d4c4188b882dbd0378c153a1d2ada1c3d55577854fd19ce3f24a3": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:b5134651f52b0707c800574e56cc33073a8afd84a1bf33f53bf95edfb7eb7eec": [
+      "AUTHORITY_RECORD_SOURCE"
+    ],
+    "source:b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a": [
+      "PROVENANCE_ONLY_SOURCE"
+    ],
+    "source:df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87": [
+      "AUTHORITY_RECORD_SOURCE"
+    ],
+    "source:eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43": [
+      "PROVENANCE_ONLY_SOURCE"
+    ]
+  },
+  "source_role_instances": [
+    {
+      "allowed_roles": [
+        "FROZEN_CHECKPOINT_SOURCE",
+        "EXPECTED_ABSENCE_SOURCE"
+      ],
+      "authorized_relation": "Checkpoint identity and suspension/absence relationships",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_SUSPENSION_CHECKPOINT_1.json"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "7aca20f346a23b17fe9e6e8d5b9c41c701224b459f03b93f181713278bcb77a4"
+      },
+      "source_locator": "docs/experiments/E1/E1_SUSPENSION_CHECKPOINT_1.json",
+      "source_role_key": "checkpoint",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "GRAPH_SOURCE"
+      ],
+      "authorized_relation": "Typed legacy graph records, not native projection or proof admission",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "7964c9eea0b00e0198f9f698b6efbd1b2d88d7a48e5266731e67c2408835e399"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_TYPED_KNOWLEDGE_GRAPH_1.json",
+      "source_role_key": "graph",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "EXTERNAL_GATE_SOURCE",
+        "EXPECTED_ABSENCE_SOURCE"
+      ],
+      "authorized_relation": "Missing proposition, expected owner, receipt/reentry declaration",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_EXTERNAL_HANDOFF_PACKAGE_1.json"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "bdc1a353055a40d91b4cecee432d2530af042e32c76385fba51b28bc3e909332"
+      },
+      "source_locator": "docs/experiments/E1/E1_EXTERNAL_HANDOFF_PACKAGE_1.json",
+      "source_role_key": "handoff",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "FROZEN_ENVELOPE_SOURCE",
+        "EXPECTED_ABSENCE_SOURCE",
+        "SOURCE_INVENTORY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned subject/reference and no-receipt routing facts",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_RESUME_MANIFEST_1.json"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+      },
+      "source_locator": "docs/experiments/E1/E1_RESUME_MANIFEST_1.json",
+      "source_role_key": "manifest",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "ACTION_DEFINITION_SOURCE",
+        "ROUTING_SOURCE",
+        "LEDGER_SOURCE"
+      ],
+      "authorized_relation": "Declared action/routing/current-state and historical-record fields, separately selected",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json",
+      "source_role_key": "plan",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/18"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_ANCESTRY_1_RESULT.md",
+      "source_role_key": "source:09a9f1279ef9e4c4dc8c397c7460295385f619bef1572de01e7764e33032181f",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/10"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_SUPERVISOR_1_RESULT.md",
+      "source_role_key": "source:1c1d280b85a3a92e36780776af96c9287a9212780c3fa9a7eff7f4c2e48a7a7e",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "AUTHORITY_RECORD_SOURCE"
+      ],
+      "authorized_relation": "Declared bounded decision/grant record and exclusions; current applicability and O08 admission independently required",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/1"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BUDGET_AUTHORITY_1.json",
+      "source_role_key": "source:2439eeb699057196323ed5373dc72082c4a7210d745713995a9c3e2fd494e1f4",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/17"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_INTERFACES_1_RESULT.md",
+      "source_role_key": "source:2b7bb889f71a4eebabbc2109f4c6c88369c0a8ae7a8b8e5cfd54c7dd2108976f",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "AUTHORITY_RECORD_SOURCE"
+      ],
+      "authorized_relation": "Declared bounded decision/grant record and exclusions; current applicability and O08 admission independently required",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/2"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "41f2a2c922a1e2f948ceddc7f28a0eee3893d67378bd558c9fadbb51075a04a7"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_IGNORED_AUTHORITY_1.json",
+      "source_role_key": "source:41f2a2c922a1e2f948ceddc7f28a0eee3893d67378bd558c9fadbb51075a04a7",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/22"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "464f653148b2266151f71bdf6228a154541afe12d0310b1eca7a3cf8a275f9f1"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_EXEC_1_RESULT.md",
+      "source_role_key": "source:464f653148b2266151f71bdf6228a154541afe12d0310b1eca7a3cf8a275f9f1",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "SELECTION_POLICY_SOURCE"
+      ],
+      "authorized_relation": "Pinned policy document identity; no alias with embedded policy",
+      "governing_bindings": [
+        "checkpoint#/bindings/selection_policy_document"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+      },
+      "source_locator": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+      "source_role_key": "source:475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/7"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_AUDIT_1_RESULT.md",
+      "source_role_key": "source:48bd8c492aa1cbf7cd8b3b7ee31b75e85488dca7ddbf0082965aa1fc44b3dfb1",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/19"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_APPROVAL_1_RESULT.md",
+      "source_role_key": "source:4b896d8522ab08c4926dc2fe3e3889a9ff5dd499ab193f3e65fe719b5345d850",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP08_RESULT.md",
+      "source_role_key": "source:653093bb221684231cd71f8f3e3d2f8dcd2d5bfe30a29b3482d05a215361fb08",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/4"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_FACT_BUDGET_APPLICABILITY_1_RESULT.md",
+      "source_role_key": "source:6b3f486f72b1beeca3ae3a2beb6b1a3e5156f4d85ee35068bf5f6cb1f0d46b2d",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "EXTERNAL_GATE_SOURCE"
+      ],
+      "authorized_relation": "Budget obligation contract, not accepted positive budget proof",
+      "governing_bindings": [
+        "manifest#/budget_external_contract"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276"
+      },
+      "source_locator": "docs/experiments/E1/E1_BUDGET_APPLICABILITY_EXTERNAL_EVIDENCE_REQUEST_1.json",
+      "source_role_key": "source:6ea27dd395422437e0f2acf24cbaff1a5bda9e5bb92df9bb6021287feb384276",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/9"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_RUNTIME_HEAD_1_RESULT.md",
+      "source_role_key": "source:6ebfe3a8f57ba309cc810fdb27610ad14ee6b048f2a5f989a05e61338b094897",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1_ISSUANCE_RESULT.md"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1_ISSUANCE_RESULT.md",
+      "source_role_key": "source:6ee91360c12e6c255135fcba009f0ff30b578d038860c16cbe53bdd6915069a5",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/14"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "6f1a396ce4ef8619c9e6c518ffb41fab7c146fceb767df0d1c3c569c2699f9d2"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_ELIGIBILITY_1_RESULT.md",
+      "source_role_key": "source:6f1a396ce4ef8619c9e6c518ffb41fab7c146fceb767df0d1c3c569c2699f9d2",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/16"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "7ed6761a1546dc659261691071c9e63b87a82a492a4a32513ff85fa730dfe999"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IMPLEMENTATION_1_RESULT.md",
+      "source_role_key": "source:7ed6761a1546dc659261691071c9e63b87a82a492a4a32513ff85fa730dfe999",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342"
+      },
+      "source_locator": "docs/experiments/E1/E1_CURRENT_PROFILE_ROOT_CANDIDATE_1.json",
+      "source_role_key": "source:8116f039c40f380470e53151d6189b1b12be98e077275b5229cff9d50a2e3342",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+        "manifest#/execution_result_artifacts/20"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md",
+      "source_role_key": "source:829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/12"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_REEVAL_BUDGET_1_RESULT.md",
+      "source_role_key": "source:8692f4214410724921e0b1c346b2dfc37c2ae95d0bf2d8cad71949972a130b59",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/15"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "8e071f5f6f7f305bc35e07b2bcb7f77175f54ce03528048522d6db2e0ef7f816"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_IGNORED_1_RESULT.md",
+      "source_role_key": "source:8e071f5f6f7f305bc35e07b2bcb7f77175f54ce03528048522d6db2e0ef7f816",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DECISION_BATCH_1.md",
+      "source_role_key": "source:985f3d69c89b220940db9c4d19d27223802127900a2157d2adcd33d05ae4d32b",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/6"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_IMPLEMENTATION_1_RESULT.md",
+      "source_role_key": "source:a1000808e24e1a5193a79023d9f23384c03e343cb4be308273401ca4ccd97205",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/8"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "a8659a5bd82d4c4188b882dbd0378c153a1d2ada1c3d55577854fd19ce3f24a3"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_BINDING_GRANT_1_RESULT.md",
+      "source_role_key": "source:a8659a5bd82d4c4188b882dbd0378c153a1d2ada1c3d55577854fd19ce3f24a3",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "AUTHORITY_RECORD_SOURCE"
+      ],
+      "authorized_relation": "Declared bounded decision/grant record and exclusions; current applicability and O08 admission independently required",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/0"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "b5134651f52b0707c800574e56cc33073a8afd84a1bf33f53bf95edfb7eb7eec"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_BINDING_AUTHORITY_1.json",
+      "source_role_key": "source:b5134651f52b0707c800574e56cc33073a8afd84a1bf33f53bf95edfb7eb7eec",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/13"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_SEM_BUDGET_1_RESULT.md",
+      "source_role_key": "source:b8ba709b79227bd765c26f262f2a9ce784a7aa02ac85defe29de2eabae4d7320",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_CLOSURE_WP01_RESULT.md",
+      "source_role_key": "source:bda7ec419589f732bcd362a4e6ab822bcfb4bbe057844f7b95e0856d100ebe8d",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+        "manifest#/execution_result_artifacts/11"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PREP_VALIDATOR_1_RESULT.md",
+      "source_role_key": "source:bf0662e3aeba6128ab4c1b268a626e872c89cdc0eb77edc7c98d262cc4742337",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a"
+      },
+      "source_locator": "docs/experiments/E1/E1_INVOCATION_CANDIDATE_1.json",
+      "source_role_key": "source:c0fdde77ba3dddd1fcaecc798b5a7252e5b333238063aec750bbaa522ede7c6a",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "manifest#/execution_result_artifacts/5"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_INPUT_BUDGET_1_RESULT.md",
+      "source_role_key": "source:d23e956938b2d29380157032bfd5e76748f887994a24fe44d175ec742947ba84",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+        "manifest#/execution_result_artifacts/21"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_CONTEXT_1_RESULT.md",
+      "source_role_key": "source:d3b52c2607e81e43deae3d319596ac3b91e40222676ba8bd0dbbb90b83d1ff6a",
+      "source_status": "PROVENANCE_ONLY"
+    },
+    {
+      "allowed_roles": [
+        "AUTHORITY_RECORD_SOURCE"
+      ],
+      "authorized_relation": "Declared bounded decision/grant record and exclusions; current applicability and O08 admission independently required",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json",
+        "manifest#/execution_result_artifacts/3"
+      ],
+      "operational_role_complete": true,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87"
+      },
+      "source_locator": "docs/experiments/E1/E1_TEMPLATE1_ARCHITECT_DEC_VALIDATOR_AUTHORITY_1.json",
+      "source_role_key": "source:df2828f5350de92a10f588c08c86f15dabcf6207c8357ec29aefde38ef97cd87",
+      "source_status": "BOUND"
+    },
+    {
+      "allowed_roles": [
+        "PROVENANCE_ONLY_SOURCE"
+      ],
+      "authorized_relation": "Exact pinned source reference only; no current proof or action execution established",
+      "governing_bindings": [
+        "CE02_SOURCE_CLASSES#/required_source_instances/docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md"
+      ],
+      "operational_role_complete": false,
+      "source_identity": {
+        "domain": "CONTENT_IDENTITY",
+        "sha256": "eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43"
+      },
+      "source_locator": "docs/experiments/E1/E1_CURRENT_PROFILE_RELEASE_1.md",
+      "source_role_key": "source:eb4f1b06c1c095db97d0e7bce48212f6c5a14ac8259a3283d0844bcf8dcf1e43",
+      "source_status": "PROVENANCE_ONLY"
+    }
+  ],
+  "source_roles": [
+    "ACTION_DEFINITION_SOURCE",
+    "AUTHORITY_RECORD_SOURCE",
+    "EXPECTED_ABSENCE_SOURCE",
+    "EXTERNAL_GATE_SOURCE",
+    "FROZEN_CHECKPOINT_SOURCE",
+    "FROZEN_ENVELOPE_SOURCE",
+    "GRAPH_SOURCE",
+    "LEDGER_SOURCE",
+    "PROVENANCE_ONLY_SOURCE",
+    "ROUTING_SOURCE",
+    "SELECTION_POLICY_SOURCE",
+    "SOURCE_INVENTORY_SOURCE"
+  ],
+  "target_signature_requirements": [
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT01",
+        "CUT02"
+      ],
+      "id": "B01",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact ActionId equality and typed condition references",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "plan action /resolution_actions and /compiled_action_dependencies",
+      "status": "BR-C1 pins available; per-field semantic mapping missing",
+      "target_identity": "ActionId and typed Gate targets"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT01",
+        "CUT03"
+      ],
+      "id": "B02",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact ActionId, plan content pin, extracted ledger/state identity",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "plan execution_state; manifest completed_actions/blocked_actions; necessary current support",
+      "status": "BR-C1 extracted state/ledger and three hold bindings available; all-action current support reconciliation missing",
+      "target_identity": "ActionStatus and current_completion support"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT02",
+        "CUT03"
+      ],
+      "id": "B03",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact declared source identity, source selector and independently defined typed crosswalk",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "normalized_root_conditions, deferred_conditions, graph slots, compiled routes",
+      "status": "Native identity/predicate/conditional-route crosswalk missing",
+      "target_identity": "ConditionId/SlotId/Goal/PredicateId"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT02",
+        "CUT04"
+      ],
+      "id": "B04",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Request identity + handoff identity + exact receipt/reentry fields",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "manifest request_routes joined to handoff items and receipt contracts",
+      "status": "BR-C1 eight absence bindings available; native projection and two special route correspondences missing",
+      "target_identity": "GateId/EvidenceId/receipt/reentry/held actions"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT03"
+      ],
+      "id": "B05",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact decision/dossier/authority and slot/predicate/source identities under existing O08/O09",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "PREP-VALIDATOR, dossier/Architect decision and bounded grant; two baseline slot proof sources",
+      "status": "Admission profiles reusable; reached real-source parameterization incomplete",
+      "target_identity": "O08 authority/gate and O09 exact slot proof/support identities"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT01",
+        "CUT03"
+      ],
+      "id": "B06",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Producer ActionId + exact report identity + selected accepted claim and outcome",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "accepted non-PASS knowledge/report source and typed definition contract",
+      "status": "BR-C1 raw pins available; claim/type/native predicate join missing",
+      "target_identity": "KnowledgeId/KnowledgeType/source-bound predicate"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT04"
+      ],
+      "id": "B07",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Exact gate, requirement, proposition, target domain, producers/source class, consumer route",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "budget request obligations + B04 + recorded envelope + independent migration derivation",
+      "status": "Generic legacy provenance reusable; new canonical contract body/source pin and legacy-to-body field derivation absent",
+      "target_identity": "ExternalResolutionContract and canonical contract CONTENT_IDENTITY"
+    },
+    {
+      "currentness": "Pinned source validity and transitive dependencies; stale binding withdraws dependent admission",
+      "cuts": [
+        "CUT05"
+      ],
+      "id": "B08",
+      "identity_domains": "Preserve legacy semantic identity separately from CONTENT_IDENTITY/raw-file-sha256 and extracted JSON; use target-specific Identifier types",
+      "join_key": "Raw policy pin distinguished from extracted policy identity; source inventory and canonical snapshot domains",
+      "lineage": "Exact recorded subject lineage plus independently bound native context; no applicability inferred",
+      "provenance": "Source locator, exact raw hash/profile, selector, governing rule/version, dependencies and target identity; no filename-based identity",
+      "scope": "Retain exact declared definition/source/target scopes; operational equality only where native contract requires",
+      "source_identity": "checkpoint/manifest policy and initial-current state derivation",
+      "status": "BR-C1 policy/context pins reusable; integrated native baseline/certificate binding missing",
+      "target_identity": "PersistenceBundle and FrozenControlProof references"
+    }
+  ],
+  "validity_rule": "CURRENT_AT_PINNED_SNAPSHOT authenticates recorded input only; current subject applicability requires native proof; historical-only use cannot support current state"
+}

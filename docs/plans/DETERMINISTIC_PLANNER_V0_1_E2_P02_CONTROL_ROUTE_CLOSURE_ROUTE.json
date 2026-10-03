@@ -1,0 +1,30 @@
+{
+  "schema": "E2-P02-control-route-v1",
+  "route_id": "DecisionRoute:E2-DECIDE:E2-PREPARE",
+  "route_type": "INTERNAL_DECISION_INPUT_ACQUISITION",
+  "source": {
+    "action": "E2-PREPARE",
+    "knowledge": ["E2-K-CHECK", "E2-K-COLLECT"],
+    "provenance": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json#/declarations/2",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1"
+  },
+  "target": "E2-PREPARE",
+  "decision": {
+    "action": "E2-DECIDE",
+    "semantic_action": "E2-DECIDE",
+    "input_action": "E2-PREPARE",
+    "stage": "DECISION_INPUTS_REQUIRED",
+    "downstream": ["E2-REENTER"]
+  },
+  "derivation": "source prepared_dossier decision owner plus typed prerequisite consumers",
+  "admission": "native validate_model",
+  "fail_closed": [
+    "missing route",
+    "wrong input operation",
+    "wrong action identity domain",
+    "wrong scope or lineage",
+    "invalid downstream reference",
+    "stale route provenance"
+  ]
+}
