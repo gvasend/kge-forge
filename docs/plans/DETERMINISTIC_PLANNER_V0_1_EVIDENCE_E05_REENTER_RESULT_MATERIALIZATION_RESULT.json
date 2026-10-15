@@ -1,0 +1,112 @@
+{
+  "action_completed_e2_reenter": true,
+  "action_materialization": "PASS_GENERIC_OUTPUT_DECLARATION_MAPPING",
+  "authoritative_e2_reenter_result": {
+    "id": "E2-K-REENTER",
+    "outcome": "PASS",
+    "producer": "E2-REENTER",
+    "statement": "Bounded reentry mapping produced",
+    "type": "KnowledgeRecord"
+  },
+  "canonical_e2_qualified": false,
+  "cold_restore": "PASS",
+  "corrected_accepted_inventory": [
+    {
+      "$type": "KnowledgeRecord",
+      "evidence": [],
+      "id": {
+        "$type": "KnowledgeId",
+        "value": "E2-K-REENTER"
+      },
+      "outcome": {
+        "$enum": "ActionResult",
+        "value": "PASS"
+      },
+      "producer": {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+        },
+        "method": "SYNTHETIC_CONTRACT",
+        "path": "source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/"
+      },
+      "state": {
+        "$enum": "KnowledgeState",
+        "value": "KNOWN_COMPLETE"
+      },
+      "statement": "Bounded reentry mapping produced",
+      "validation": {
+        "$enum": "ValidationState",
+        "value": "ACCEPTED"
+      }
+    }
+  ],
+  "corrected_snapshot_identity": "28363d19bda9d8755072897905ae78dc1fe9063aa9a6379aabc3b26ca8c9ca06",
+  "defective_accepted_inventory": [],
+  "determinism": "PASS",
+  "e05_result": "PARTIAL",
+  "e1_artifacts_modified": 0,
+  "e2_finish_after_reenter": "NON_ACTIONABLE_UNRESOLVED_ROOT_CONTROL_PATH",
+  "e2_finish_before_result": "NON_ACTIONABLE",
+  "e2_finish_executed": false,
+  "e2_k_reenter": "PASS",
+  "e2_p03_result": "BLOCKED",
+  "e2_p04_ready": false,
+  "e2_reenter_execution": "PASS_ORDINARY_NATIVE_RESULT_PATH",
+  "e2_reenter_result_id": "fa6535cc5f8d3cc9234869cb54d31d5534cc4a05920b75398f5e4b6f814b318e",
+  "full_suite_status": "BLOCKED_BY_PREEXISTING_FROZEN_E1_DUPLICATE_IMPORT",
+  "lifecycle_reconstruction": "PASS_FROM_E04_REENTRY_ELIGIBLE_CHECKPOINT",
+  "n_real_satisfied": false,
+  "negative_results": [
+    [
+      "wrong output",
+      "REJECTED",
+      true
+    ],
+    [
+      "wrong action",
+      "REJECTED",
+      true
+    ],
+    [
+      "no execution prospective state",
+      "REJECTED",
+      true
+    ]
+  ],
+  "next_package": "E2 root-control-path qualification / P03 exit reconciliation",
+  "o01": "PASS",
+  "old_snapshot_identity": "65ec09d5bd0b809078279ffd838425b6819b04bc114b24f061fa8a72b6acabce",
+  "old_snapshot_status": "INVALIDATED",
+  "p03_exit_predicate": false,
+  "p03_target_state": "E2-REENTER_COMPLETED_ROOT_UNRESOLVED",
+  "persistence": "PASS_NATIVE_SNAPSHOT",
+  "positive_result_preflight": "PASS",
+  "production_effect": false,
+  "replay": "PASS_SNAPSHOT_REPLAY",
+  "result": "PARTIAL",
+  "result_admission": "PASS",
+  "root_cause": [
+    "ACTION_MATERIALIZER_OMISSION",
+    "FIXTURE_OMISSION"
+  ],
+  "selection_oracle": "PASS_ACTIONABLE_SELECTED_NOT_COMPLETED",
+  "target_snapshot_artifact": "DETERMINISTIC_PLANNER_V0_1_E2_P03_E05_TARGET_SNAPSHOT.json",
+  "target_snapshot_identity": "df74cd4e6582bbd5e472cec6893221d462b5652630943bc187e775fc7bfd267f",
+  "targeted_regressions": "PASS (model/O01/materializer/result admission); full suite frozen E1 duplicate-import blocker",
+  "whole_model": "PASS_6_OF_6_ACTIONS",
+  "work_package": "EVIDENCE-E05"
+}

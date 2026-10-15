@@ -1,0 +1,109 @@
+"""Static bootstrap/dependency inspection and unselected decision only."""
+import ast,copy,hashlib,json,os,pathlib,re,stat,struct,subprocess,sys
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';B='synthetic-recovery-tests-v2-';P='synthetic-recovery-tests-bootstrap-read-';W=pathlib.Path('/tmp/kge-forge-recovery-synthetic-once-20261014-v1')
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canon(x)).hexdigest()}
+def pin(p):return {'path':str(p),'raw_sha256':sha(p)}
+def write(n,x):
+ with (D/(P+n)).open('x') as f:json.dump(x,f,indent=2,sort_keys=True);f.write('\n')
+prior={str(p):sha(p) for p in D.glob('synthetic-recovery-tests-*') if p.is_file()}
+for p in (W/'execution-start.json',W/'outcome.json',R/'recover.py',R/'test_recover.py',R/'recover_test_source.toml'):prior[str(p)]=sha(p)
+if (D/(P+'preservation-before.json')).exists():
+ for path,h in json.loads((D/(P+'preservation-before.json')).read_text()).items():assert sha(path)==h,path
+else:write('preservation-before.json',prior)
+old=json.loads((D/(B+'filesystem-serialization-corrected-subject.json')).read_text());c=old['CONTENT'];assert old['IDENTITY']==cid(old['IDENTITY']['namespace'],c)
+spent=json.loads((D/(B+'consumed-suite-attempt.json')).read_text());assert spent['IDENTITY']==cid(spent['IDENTITY']['namespace'],spent['RECORD'])
+assert spent['RECORD']['STATE']=='CONSUMED' and spent['RECORD']['INVOCATIONS_RESERVED_AND_SUBMITTED']==1 and spent['RECORD']['ACTUAL_WORKER_TEST_CASES_EXECUTED']==0
+start=json.loads((W/'execution-start.json').read_text());out=json.loads((W/'outcome.json').read_text());report=json.loads((D/(B+'runtime-final-report.json')).read_text())
+assert start['ARGV']==c['EXACT_SANDBOX_ARGV'] and start['SUBJECT_IDENTITY']==old['IDENTITY']
+assert sha(W/'execution-start.json')==spent['RECORD']['EXECUTION_START_PIN']['raw_sha256'] and sha(W/'outcome.json')==spent['RECORD']['OUTCOME_PIN']['raw_sha256']
+assert out['EXIT_CODE']==1 and out['STATE']=='FAILED' and out['SUITE_INVOCATION_RESERVATIONS_CONSUMED']==1
+assert report['EXACT_MISSING_BOOTSTRAP_PATH']==c['EXACT_SANDBOX_ARGV'][0] and report['SUITE_INVOCATIONS_REMAINING']==0
+for p in c['ALLOWED_SOURCE_COPIES']+list(c['EXECUTABLE_PINS'].values()):assert sha(p['path'])==p['raw_sha256']
+for p in c['ALLOWED_SOURCE_COPIES']:assert sha(W/pathlib.Path(p['path']).name)==p['raw_sha256']
+cachetext=subprocess.check_output(['/sbin/ldconfig','-p'],text=True)
+cache={}
+for line in cachetext.splitlines():
+ m=re.match(r'\s*(\S+) \(([^)]*)\) => (\S+)',line)
+ if m and 'x86-64' in m.group(2):cache.setdefault(m.group(1),m.group(3))
+def elf(path):
+ path=pathlib.Path(path);data=path.read_bytes();assert data[:6]==b'\x7fELF\x02\x01'
+ assert struct.unpack_from('<H',data,18)[0]==62
+ po=struct.unpack_from('<Q',data,32)[0];sz,num=struct.unpack_from('<HH',data,54);segments=[];interpreter=None;dynamic=[]
+ for i in range(num):
+  x=struct.unpack_from('<IIQQQQQQ',data,po+i*sz);segments.append(x)
+  if x[0]==3:interpreter=data[x[2]:x[2]+x[5]].rstrip(b'\0').decode()
+  if x[0]==2:
+   for j in range(x[2],x[2]+x[5],16):
+    tag,val=struct.unpack_from('<qQ',data,j)
+    if tag==0:break
+    dynamic.append((tag,val))
+ def mapped(addr):
+  for x in segments:
+   if x[0]==1 and x[3]<=addr<x[3]+x[5]:return x[2]+addr-x[3]
+  raise ValueError('unmapped string-table address')
+ strings=next((mapped(v) for t,v in dynamic if t==5),None)
+ def string(n):
+  assert strings is not None;p=strings+n;end=data.index(b'\0',p);return data[p:end].decode()
+ needed=[string(v) for t,v in dynamic if t==1]
+ paths=[string(v) for t,v in dynamic if t in (15,29)]
+ # independent installed readelf parse; never ldd or executable invocation
+ text=subprocess.check_output(['/usr/bin/readelf','-l','-d',str(path)],text=True)
+ found=re.findall(r'\(NEEDED\).*Shared library: \[([^]]+)\]',text)
+ interp=re.findall(r'Requesting program interpreter: ([^]]+)\]',text)
+ assert found==needed and (interp[0] if interp else None)==interpreter
+ st=path.stat();assert stat.S_ISREG(st.st_mode)
+ return {'PATH':str(path),'RESOLVED_PATH':str(path.resolve()),'SHA256':hashlib.sha256(data).hexdigest(),'SIZE_BYTES':len(data),'MODE':oct(stat.S_IMODE(st.st_mode)),'UID_GID':[st.st_uid,st.st_gid],'INTERPRETER':interpreter,'DT_NEEDED':needed,'RPATH_RUNPATH':paths,'READ_ELF_INDEPENDENT_AGREEMENT':True}
+roots=list(c['EXECUTABLE_PINS'])
+for mod in ('_hashlib','_ssl','_queue'):
+ found=list(pathlib.Path('/usr/lib/python3.8/lib-dynload').glob(mod+'.*.so'));assert len(found)==1;roots.append(str(found[0]))
+inventory={};edges=[];queue=roots[:]
+while queue:
+ path=queue.pop(0)
+ if path in inventory:continue
+ v=elf(path);inventory[path]=v
+ if v['INTERPRETER']:
+  assert pathlib.Path(v['INTERPRETER']).exists();edges.append({'FROM':path,'KIND':'PT_INTERP','TO':v['INTERPRETER']});queue.append(v['INTERPRETER'])
+ for needed in v['DT_NEEDED']:
+  assert needed in cache,'unresolved '+needed
+  target=cache[needed];assert pathlib.Path(target).exists();edges.append({'FROM':path,'KIND':'DT_NEEDED','SONAME':needed,'TO':target});queue.append(target)
+helper=c['EXACT_SANDBOX_ARGV'][0];assert inventory[helper]['INTERPRETER'] is None and inventory[helper]['DT_NEEDED']==[]
+assert pathlib.Path(helper).resolve()==pathlib.Path(helper) and os.access(helper,os.X_OK)
+parents=[]
+for p in pathlib.Path(helper).parents:
+ st=os.lstat(p);assert stat.S_ISDIR(st.st_mode);parents.append({'PATH':str(p),'UID_GID':[st.st_uid,st.st_gid],'MODE':oct(stat.S_IMODE(st.st_mode))})
+# Startup/test stdlib source locations; no project module imported.
+modules=['encodings/__init__.py','encodings/aliases.py','encodings/ascii.py','encodings/utf_8.py','codecs.py','site.py','os.py','stat.py','argparse.py','ast.py','contextlib.py','hashlib.py','json/__init__.py','pathlib.py','selectors.py','subprocess.py','tempfile.py','unittest/__init__.py','unittest/mock.py','asyncio/__init__.py','ssl.py']
+stdlib=[]
+for n in modules:
+ p=pathlib.Path('/usr/lib/python3.8')/n;assert p.is_file();stdlib.append(pin(p))
+builtin=json.loads(subprocess.check_output(['/usr/bin/python3.8','-I','-B','-c','import sys,json;print(json.dumps(list(sys.builtin_module_names)))'],text=True))
+required_builtin=['_socket','select','fcntl','_posixsubprocess','math','_struct','_datetime','array','binascii','_heapq','_pickle','_random','_sha256','_sha512','_sha3','_blake2','_bisect','unicodedata']
+assert set(required_builtin)<=set(builtin)
+hooks=[]
+for root in [pathlib.Path('/usr/lib/python3/dist-packages'),pathlib.Path('/usr/local/lib/python3.8/dist-packages')]:
+ if root.exists():
+  for p in root.glob('*.pth'):hooks.append(dict(pin(p),TEXT=p.read_text()))
+# Linux system runtime objects are already under the unchanged :minimal scope.
+# Actual compiled namespace visibility remains fresh entry, not a static host file assertion.
+assert all(p==helper or p.startswith(('/usr/','/lib/','/lib64/','/bin/')) for p in inventory)
+ledger={'RESULT':'PASS_STATIC_OBJECT_DEPENDENCY_CLOSURE','FAILED_RUNTIME_REPORT_PIN':pin(D/(B+'runtime-final-report.json')),'CONSUMED_RECORD_IDENTITY':spent['IDENTITY'],'CONSUMED_RECORD_PIN':pin(D/(B+'consumed-suite-attempt.json')),'WORKSPACE_RESERVATION_PIN':pin(W/'execution-start.json'),'WORKSPACE_OUTCOME_PIN':pin(W/'outcome.json'),'ELF_ROOTS':roots,'ELF_INVENTORY':inventory,'DEPENDENCY_EDGES':edges,'LD_CACHE_PIN':pin(pathlib.Path('/etc/ld.so.cache')),'CODEX_HELPER_STATIC_PIE':True,'CODEX_HELPER_LOADER_REQUIRED':False,'CODEX_HELPER_SHARED_LIBRARIES_REQUIRED':[],'NODE_WRAPPER_OR_INTERPRETER_REQUIRED':False,'MINIMUM_ADDITIONAL_HOME_TREE_READ_BINDINGS':[{'PATH':helper,'ACCESS':'read','SHA256':inventory[helper]['SHA256'],'TYPE':'Exact regular ELF file; no parent-directory subtree grant'}],'HELPER_PARENT_METADATA':parents,'UNCHANGED_SYSTEM_RUNTIME_SCOPE':':minimal read; standard /usr,/bin,/lib,/lib64 runtime resources, dynamic loader/cache and Python stdlib. No new system-tree write or home-tree read proposed.','SYSTEM_RUNTIME_VISIBILITY_RULE':'Fresh launcher resolution must retain the approved minimal system runtime exposure for every inventoried interpreter/library and stdlib root; if platform expansion does not cover one, stop rather than silently add another binding. Static availability is not claimed as observed future namespace membership.','PYTHON_STDLIB_ROOT':'/usr/lib/python3.8','STARTUP_AND_TEST_STDLIB_SOURCE_PINS':stdlib,'PYTHON_REQUIRED_BUILTIN_MODULES':required_builtin,'PYTHON_BUILTIN_METADATA_QUERY':'Pinned Python -I -B metadata only, no test/utility import','SYSTEM_SITE_PTH_RECORDS':hooks,'DYNAMIC_IMPORT_LIMITATION':'Conservative standard unittest/mock/hashlib/asyncio startup support inspected. This does not promise every future optional import or successful test; such outcomes belong to authorized execution. No unbounded import graph or requirement for successful future output is introduced.','HOST_WRITER_RISK':'Pinned helper is UID/GID1000 mode0775. A read-only worker binding does not prevent an outside host writer; fresh hash/ownership and operator concurrency exclusion remain required. No newly adopted group-write ban or chmod authority inferred.','NO_LDD_OR_PROJECT_EXECUTION':True,'NEW_SUITE_INVOCATIONS':0}
+write('dependency-ledger.json',ledger)
+new=copy.deepcopy(c);key='permissions.'+c['PROFILE_NAME']+'.filesystem.'+helper;assert key not in new['PERMISSION_RULES'];new['PERMISSION_RULES'][key]='read'
+prefix='permissions.'+c['PROFILE_NAME']+'.filesystem.';fs={k[len(prefix):]:v for k,v in new['PERMISSION_RULES'].items() if k.startswith(prefix)}
+def toml(v):
+ if isinstance(v,dict):return '{'+', '.join(json.dumps(k)+' = '+toml(x) for k,x in v.items())+'}'
+ if isinstance(v,bool):return 'true' if v else 'false'
+ return json.dumps(v)
+argv=new['EXACT_SANDBOX_ARGV'];oldvalue=next(v for v in argv if v.startswith('permissions.'+c['PROFILE_NAME']+'.filesystem='));argv[argv.index(oldvalue)]='permissions.'+c['PROFILE_NAME']+'.filesystem='+toml(fs)
+# Separate fixed records distinguish the genuinely NEW allocation from the spent one.
+reservation='execution-start.bootstrap-read-1.json';outcome='outcome.bootstrap-read-1.json'
+new['ATTEMPT_POLICY']=new['ATTEMPT_POLICY'].replace('execution-start.json',reservation)+' Distinct new allocation; preserve original spent execution-start.json and outcome.json permanently. No restoration, reset or refund of earlier grant.'
+new['EVIDENCE_CAPTURE']=new['EVIDENCE_CAPTURE'].replace('execution-start.json',reservation).replace('outcome.json',outcome)
+content={'ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','DECISION_SCOPE':'Prospective exact helper-file read correction plus one NEW separately budgeted synthetic suite invocation; no current issuance/effectiveness/execution','PARENT_CONSUMED_GRANT_IDENTITY':spent['RECORD']['GRANT_IDENTITY'],'PARENT_CONSUMED_RECORD_IDENTITY':spent['IDENTITY'],'PARENT_CONSUMED_RECORD_PIN':pin(D/(B+'consumed-suite-attempt.json')),'PARENT_SUBJECT_IDENTITY':old['IDENTITY'],'PRESERVE_ORIGINAL_RESERVED_INVOCATION':True,'NO_RESET_OR_REFUND':True,'NEW_ALLOCATION_ID':'synthetic-recovery-suite-bootstrap-read-1','NEW_LIMITS':copy.deepcopy(c['LIMITS']),'NEW_RESERVATION_PATH':str(W/reservation),'NEW_OUTCOME_PATH':str(W/outcome),'OLD_RECORD_PATHS_UNCHANGED':[str(W/'execution-start.json'),str(W/'outcome.json')],'CORRECTED_EXECUTION_CONTRACT':new,'ONLY_NEW_RUNTIME_READ_PERMISSION':{'PATH':helper,'ACCESS':'read','SHA256':c['EXECUTABLE_PINS'][helper]['raw_sha256']},'DEPENDENCY_LEDGER_PIN':pin(D/(P+'dependency-ledger.json')),'STATIC_VERIFICATION_SCOPE':'ELF machine/type/loader/DT_NEEDED closure, real paths and hashes, existing executable pins, Python stdlib/builtin/extension availability, full command/resource/capture equivalence. Future compiled namespace/control/caller/current-state checks remain fail-closed entry.','ISSUANCE_AND_EFFECTIVENESS_RULE':'Owner selection followed by qualified exclusive durable issuance and separate independently verified effectiveness of NEW grant; no implicit reuse of consumed authority','ENTRY_GUARDS':['current exact newly effective authority, unrevoked/unsuperseded and unused new reservation','old consumed record and outcome still intact; no reset/refund','reverify prepared workspace and same three input hashes; no recopy/recreate/cleanup','same native tools and inventoried loader/library/source identities available, exact helper leaf included read-only','same :minimal/denies/network-off policy; no full home/.nvm/credential/repository exposure','cleared environment and approved resource/capture/context guards','new reservation/outcome absent; existing stdout/stderr absent or stop without overwrite','reserve distinct new attempt before submitting exact corrected vector once; failure/unknown stays spent'],'RISK_JUDGMENT':'One public pinned executable read-only is minimum correction for demonstrated bootstrap absence. No shared libraries/Node/home subtree required for this static helper. Other runtime objects stay in existing minimal system scope. Finite unsuccessful execution is possible and useful; no guarantee of success or mandatory new supervisor.','NEXT_AFTER_APPROVAL':'Separately issue/verify new one-off authority; resume existing guard using prepared workspace; run once only if entry passes.'}
+subject={'CONTENT':content,'IDENTITY':cid('kge-forge-exact-bootstrap-read-new-synthetic-suite-subject-v1',content)}
+write('owner-decision-subject.json',subject)
+dossier={'STATUS':'UNSELECTED_PROSPECTIVE','ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','SUBJECT_IDENTITY':subject['IDENTITY'],'SUBJECT_PIN':pin(D/(P+'owner-decision-subject.json')),'OPTIONS':[{'OPTION_ID':'AUTHORIZE_EXACT_CODEX_BOOTSTRAP_READ_AND_ONE_NEW_SYNTHETIC_SUITE','SUBJECT_IDENTITY':subject['IDENTITY'],'EFFECT':'Authorize separately verified issuance/effectiveness only; execution requires fresh entry under new allocation; old remains spent'},{'OPTION_ID':'DECLINE_EXACT_CODEX_BOOTSTRAP_READ_AND_ONE_NEW_SYNTHETIC_SUITE','SUBJECT_IDENTITY':subject['IDENTITY'],'EFFECT':'No new authority; preserve prior consumption/evidence'}],'SELECTED_OPTION':None,'NEW_GRANT_ISSUED':False,'NEW_GRANT_EFFECTIVE':False,'NEW_SUITE_EXECUTED':False}
+write('unselected-owner-decision-dossier.json',dossier)
+print(json.dumps({'RESULT':'PASS_STATIC_PREPARATION','SUBJECT_IDENTITY':subject['IDENTITY'],'ELF_OBJECTS':len(inventory),'DEPENDENCY_EDGES':len(edges),'NEW_READ_BINDINGS':1,'NEW_AUTHORITY_ISSUED':False,'NEW_SUITE_EXECUTED':False}))

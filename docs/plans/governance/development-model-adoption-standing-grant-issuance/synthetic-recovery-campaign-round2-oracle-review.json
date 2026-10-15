@@ -1,0 +1,183 @@
+{
+  "COUNT": 19,
+  "EXECUTED": false,
+  "ORIGINAL_FALSE_POSITIVES": [
+    "broad OSError accepted unrelated PermissionError in both symlink tests",
+    "wrong-owner EXPECTED_UID perturbation also altered ancestor acceptance",
+    "fsync test expected any OSError without proving injected sync reached"
+  ],
+  "PRODUCTION_RECOVER_CHANGED": false,
+  "TESTS": [
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "OSError errno ENOTDIR, exact alias component",
+      "INTENDED_PHASE": "ancestor walk",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_ancestor_symlink_rejected"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: source not authenticated",
+      "INTENDED_PHASE": "buffer authentication",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_bad_source_never_consumes"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: synthetic attempt consumed",
+      "INTENDED_PHASE": "mock adapter",
+      "MOCK_CONSUMPTION_CALLS": 1,
+      "TEST_ID": "test_existing_consumption"
+    },
+    {
+      "CONTENT_WRITES": 1,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "exact injected EIO object; mock remains used",
+      "INTENDED_PHASE": "after content write",
+      "MOCK_CONSUMPTION_CALLS": 1,
+      "TEST_ID": "test_fsync_failure_remains_consumed"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: destination link/size mismatch",
+      "INTENDED_PHASE": "destination validation",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_hardlink"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: no verified consumption result",
+      "INTENDED_PHASE": "adapter result",
+      "MOCK_CONSUMPTION_CALLS": 1,
+      "TEST_ID": "test_no_consumption_result"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: destination link/size mismatch",
+      "INTENDED_PHASE": "destination validation",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_nonempty"
+    },
+    {
+      "CONTENT_WRITES": "helper only",
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "injected EIO after positive short write; exactly two calls and suffix",
+      "INTENDED_PHASE": "isolated write helper",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_partial_failure_no_retry"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: destination receipt identity mismatch",
+      "INTENDED_PHASE": "held-path recheck",
+      "MOCK_CONSUMPTION_CALLS": 1,
+      "TEST_ID": "test_path_replaced_after_consumption"
+    },
+    {
+      "CONTENT_WRITES": "helper only",
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "exact reconstructed1091 bytes",
+      "INTENDED_PHASE": "isolated write helper",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_short_write_suffix_only"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: attempt occupied/consumed: never retry",
+      "INTENDED_PHASE": "synthetic disposition scan",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_store_existing_record_rejected"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: conflicting authority/use event: revocation.json",
+      "INTENDED_PHASE": "synthetic disposition scan",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_store_revocation_rejected"
+    },
+    {
+      "CONTENT_WRITES": 1,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "exact bytes, same inode, one mock consumption and write",
+      "INTENDED_PHASE": "full synthetic transaction",
+      "MOCK_CONSUMPTION_CALLS": 1,
+      "TEST_ID": "test_success_same_inode"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "OSError errno ELOOP, exact alias component",
+      "INTENDED_PHASE": "destination open",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_symlink_rejected"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: unknown publication; used true, zero write",
+      "INTENDED_PHASE": "mock adapter",
+      "MOCK_CONSUMPTION_CALLS": 1,
+      "TEST_ID": "test_unknown_consumption_no_write"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: destination receipt identity mismatch",
+      "INTENDED_PHASE": "destination validation",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_wrong_inode"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: destination mode mismatch",
+      "INTENDED_PHASE": "destination validation",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_wrong_mode"
+    },
+    {
+      "CONTENT_WRITES": 0,
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: destination owner mismatch; target-only fstat perturbation",
+      "INTENDED_PHASE": "destination validation",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_wrong_owner"
+    },
+    {
+      "CONTENT_WRITES": "helper only",
+      "EARLY_PERMISSION_ERROR_ALLOWED": false,
+      "ENVIRONMENTAL_GUARD": "setup actually opens synthetic parent through unmodified directory_fd before negative injection",
+      "EXACT_ORACLE": "Stop: zero/invalid write result: stop",
+      "INTENDED_PHASE": "isolated write helper",
+      "MOCK_CONSUMPTION_CALLS": 0,
+      "TEST_ID": "test_zero_write_stops"
+    }
+  ]
+}

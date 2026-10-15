@@ -1,0 +1,255 @@
+{
+  "COMMAND_ARGUMENT_VECTOR": [
+    "/usr/bin/systemd-run",
+    "--no-ask-password",
+    "--quiet",
+    "--wait",
+    "--collect",
+    "--pipe",
+    "--unit=kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "--slice=system.slice",
+    "--uid=1000",
+    "--gid=1000",
+    "--working-directory=/",
+    "--property=TasksAccounting=yes",
+    "--property=TasksMax=8",
+    "--property=MemoryAccounting=yes",
+    "--property=MemoryMax=67108864",
+    "--property=RuntimeMaxSec=20s",
+    "--property=TimeoutStopSec=2s",
+    "--property=KillMode=control-group",
+    "--property=SendSIGKILL=yes",
+    "--property=Restart=no",
+    "--property=NoNewPrivileges=yes",
+    "--property=PrivateNetwork=yes",
+    "--property=PrivateTmp=yes",
+    "--property=ProtectSystem=strict",
+    "--property=ProtectHome=yes",
+    "--property=ReadOnlyPaths=/sys/fs/cgroup",
+    "--property=RestrictAddressFamilies=AF_UNIX",
+    "--property=LimitCPU=5",
+    "--property=LimitAS=134217728",
+    "--property=LimitFSIZE=65536",
+    "--property=LimitNOFILE=32",
+    "--property=UMask=0077",
+    "/usr/bin/python3.8",
+    "-I",
+    "-B",
+    "-c",
+    "import os,json,pathlib,time,datetime,sys\nUNIT = 'kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service'\nMAX_OUTPUT = 65536\nwritten = 0\ndef emit(value):\n global written\n raw=(json.dumps(value,sort_keys=True,separators=(',',':'))+'\\n').encode()\n if len(raw)>8192 or written+len(raw)>MAX_OUTPUT: raise RuntimeError('OUTPUT_BOUND')\n offset=0\n while offset<len(raw):\n  n=os.write(1,raw[offset:])\n  if n<=0: raise RuntimeError('OUTPUT_WRITE')\n  offset+=n; written+=n\n\ndef snapshot(phase):\n if os.geteuid()!=1000 or os.getegid()!=1000: raise RuntimeError('NONROOT_IDENTITY_MISMATCH')\n entries={}\n for line in pathlib.Path('/proc/self/cgroup').read_text().splitlines():\n  unused,controllers,path=line.split(':',2)\n  for controller in controllers.split(','): entries[controller]=path\n pids=entries.get('pids'); manager=entries.get('name=systemd')\n if pids is None or manager is None: raise RuntimeError('MISSING_V1_CONTROLLER')\n if not pids.startswith('/') or '..' in pids.split('/'): raise RuntimeError('CGROUP_PATH')\n location=pathlib.Path('/sys/fs/cgroup/pids')/pids.lstrip('/')\n maximum=(location/'pids.max').read_text().strip()\n current=(location/'pids.current').read_text().strip()\n record={'schema':'H86-PIDS-METADATA-1','phase':phase,'service_unit':UNIT,\n 'SERVICE_PID':os.getpid(),'SERVICE_PIDS_CGROUP':pids,'SERVICE_SYSTEMD_CGROUP':manager,\n 'KERNEL_PIDS_MAX':maximum,'KERNEL_PIDS_CURRENT':current,\n 'SYSTEMD_TASKS_MAX':None,'OBSERVATION_TIME':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n 'EVIDENCE_PROVENANCE':'service readonly proc/sysfs observation; SYSTEMD_TASKS_MAX supplied only by independent manager query'}\n emit(record)\n if pids!='/system.slice/'+UNIT or maximum!='8' or not current.isdigit() or not 1<=int(current)<=8:\n  raise RuntimeError('SERVICE_SPECIFIC_PIDS_LIMIT_NOT_CONFIRMED')\ntry:\n snapshot('START')\n time.sleep(8)\n snapshot('BEFORE_EXIT')\nexcept BaseException as exc:\n try: emit({'schema':'H86-PIDS-ERROR-1','error_type':type(exc).__name__,'service_unit':UNIT,'retry_allowed':False})\n except BaseException: pass\n sys.exit(2)\n"
+  ],
+  "CONSUMPTION_REQUIREMENTS": {
+    "ACTUAL_FILESYSTEM_DURABILITY_PROOF": null,
+    "ACTUAL_KEY": null,
+    "AUTOMATIC_RETRIES": 0,
+    "CONTRACT_COMPLETE": false,
+    "DECISION_READY": false,
+    "EXISTING_GATE_STATUS": "STATIC_ONLY; zero active synthetic tests; real-authority binding disabled; original H77 command/subject and limits cannot authorize systemd substitute",
+    "FAILURE_REOPENS_PERMISSION": false,
+    "ISSUANCE_READY": false,
+    "KEY_DOMAIN": "qualification-h87-system-probe-consumption-key-v1",
+    "KEY_ENCODING": "UTF8 JSON sorted keys, compact separators, ensure_ascii=False, reject nonfinite values; SHA256",
+    "KEY_EXCLUDES": [
+      "timestamp",
+      "pid",
+      "random path",
+      "execution result"
+    ],
+    "KEY_INPUTS": [
+      "issued_probe_grant_identity",
+      "approved_probe_subject_identity",
+      "retained_package86_probe_subject_identity",
+      "exact_command_identity",
+      "qualified_direct_host_context_identity",
+      "authorized_attempt_number=1"
+    ],
+    "KEY_NOT_IN_SUBJECT_DIGEST": "Only the rule is sealed; issued grant/context identities are bound after issuance, avoiding circular approval/content dependencies.",
+    "KEY_SCHEMA": "SYSTEM-PIDS-SINGLE-ATTEMPT-KEY-1",
+    "MANUAL_PROMISE_IS_NOT_QUALIFIED_MECHANISM": true,
+    "MAX_PROBE_ATTEMPTS": 1,
+    "MECHANISM_APPLICABILITY_PROOF": null,
+    "NORMAL_RULES_SPECIFIED": true,
+    "NORMATIVE_STATE_MACHINE": [
+      "APPROVED",
+      "ISSUED",
+      "EFFECTIVE",
+      "CONSUMED",
+      "LAUNCH_ATTEMPT",
+      "OBSERVED_COMPLETED_OR_FAILED_OR_UNKNOWN"
+    ],
+    "PERMANENT_STORE_BINDING": null,
+    "QUALIFICATION_NEXT_PREREQUISITE": "Independently qualify a durable consumption-to-system-manager launch bridge under separately applicable construction/test authority; do not modify existing gate or reuse old campaign here.",
+    "QUALIFIED_MECHANISM_FOR_THIS_PROBE": null,
+    "REQUIRED_MECHANISM": [
+      "permanent atomic O_EXCL/no-follow identity-keyed reservation in one owner-controlled stable pinned store",
+      "complete record write; file fsync; parent directory fsync; independent readonly identity/inode reread",
+      "current exact grant/subject/command/epoch/resource verification",
+      "launch permitted only to the first claimant after durability/verification; one-shot capability invalidated before submission to system manager",
+      "duplicates, stale/partial/conflicting claims and ambiguous launch remain unavailable across concurrent callers/restarts",
+      "separate launch/exit evidence; completion never restores permission"
+    ],
+    "SYSTEMD_UNIT_NAME_IS_NOT_CONSUMPTION": "--collect unloads unit; unique name is not a permanent grant-consumption key and can be resubmitted after collection.",
+    "UNKNOWN_OUTCOME_REOPENS_PERMISSION": false
+  },
+  "DECISION_OPTIONS": [],
+  "DIRECT_CONTEXT_REQUIRED": true,
+  "EFFECTIVE_CHARTER": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "kge-forge-qualification-governance-charter-v1",
+    "sha256": "d26962c58f17281173e965433dae63a941e078115f3dcc30e2a3512fa21812b8"
+  },
+  "EFFECTIVE_LIFECYCLE": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "kge-forge-charter-lifecycle-record-v1",
+    "sha256": "a27516baa0ab7f34a36a1130490b6cfa38c508975ca337e0824c8eac33715cbb"
+  },
+  "ENTRY_PREDICATES": {
+    "ANY_UNKNOWN_DENIES_LAUNCH": true,
+    "EXECUTION_READY": false,
+    "GOVERNING_ACTIVATION_RULE_PIN": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/charter-content.json",
+    "PREDICATES": [
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "HOST_IDENTITY",
+        "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+        "REQUIRED": "UBUNTU01",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "DIRECT_HOST_CONTEXT",
+        "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+        "REQUIRED": "VERIFIED",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "SYSTEM_MANAGER_AVAILABLE",
+        "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+        "REQUIRED": "YES",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "SUDO_PERMISSION",
+        "PROOF_RULE": "Actual direct-host permission for exact retained argv/unit/properties; owner attestation is not sudo evidence. No privilege acquisition here. Any elevation envelope needs its own explicit exact identity/permission binding; retained argv is unchanged.",
+        "REQUIRED": "VERIFIED_FOR_EXACT_OPERATION",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "APPROVED_BINARY_IDENTITIES",
+        "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+        "REQUIRED": "EXACT",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "APPROVED_RESOURCE_LIMITS",
+        "PROOF_RULE": "Verify capability to enforce the bounded service profile before launch; service-specific pids.max is the intended observation, not assumed prior PASS or permission to stress excess tasks.",
+        "REQUIRED": "ENFORCEABLE",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "SERVICE_USER",
+        "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+        "REQUIRED": "UID1000_GID1000",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "OUTPUT_BOUNDARY",
+        "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+        "REQUIRED": "EXACT",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "UNVERIFIED",
+        "PREDICATE": "ONE_ATTEMPT_AVAILABLE",
+        "PROOF_RULE": "Independent qualified permanent key claim, exact applicable grant, current unrevoked epoch, durable reread and crash/concurrency proof; no existing/partial/unknown record can admit launch.",
+        "REQUIRED": "YES",
+        "RESULT": "BLOCK_EXECUTION"
+      },
+      {
+        "CURRENT": "NOT_ISSUED",
+        "PREDICATE": "ISSUED_PROBE_GRANT",
+        "PROOF_RULE": "Only future persisted independently verified explicit grant, not owner declaration/charter/static test.",
+        "REQUIRED": "EFFECTIVE",
+        "RESULT": "BLOCK_EXECUTION"
+      }
+    ],
+    "RULE": "QUALIFICATION_EXECUTION_AUTHORITY.ACTIVATION_PRECONDITIONS separates authority decision from activation resource checks; it does not waive qualified executable/one-use requirements."
+  },
+  "EVIDENCE_BOUNDARY": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-process-enforcement-86/future-authorized-observation/kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service/",
+  "EXACT_HOST": "ubuntu01",
+  "EXECUTABLE_PINS": {
+    "/bin/systemctl": "ec3c1aa59f5047dacfdd00a90504e02557032bf4016f0d28799d95792e9005b1",
+    "/usr/bin/python3.8": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+    "/usr/bin/systemd-run": "15c14831822016fd68ab3e2f265223463c46b4cf7fcc4595a91f09c5bbd950eb"
+  },
+  "FAILURE_POLICY": "first failure authoritative, secondary errors retained, no retry/reopen; exact retained cleanup only",
+  "FUTURE_ISSUED_GRANT": null,
+  "FUTURE_PROJECT_APPROVAL": null,
+  "HISTORICAL_EXCLUSIONS": [
+    "excess-task stress test",
+    "broader host-control suite",
+    "synthetic gate campaign",
+    "H77-02 probe/execution/grant",
+    "A15 execution/capture",
+    "Package72 campaign/journal reuse",
+    "persistent systemd/polkit/sudoers/security or delegation changes",
+    "root service payload",
+    "production/external effects"
+  ],
+  "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY",
+  "NON_ROOT_SERVICE_USER": {
+    "GID": 1000,
+    "UID": 1000
+  },
+  "ONE_ATTEMPT_LIMIT": 1,
+  "OWNER_ADMINISTRATOR_DECLARATION": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h87-owner-administrator-declaration-v1",
+    "sha256": "7140c4fec8a2921556d0ef3baa5315cf37ff9f55d58776b6ad28220a38d4876c"
+  },
+  "PACKAGE_86_COMMAND_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h86-retained-command-vector-v1",
+    "sha256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50"
+  },
+  "PROPOSED_CONTENT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h87-system-probe-authority-subject-v1",
+    "sha256": "f8f63dd10b76d01a86b05631de0c4948017b6c6e03a2e0b90ff870eabc891d35"
+  },
+  "RESOURCE_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "FILESYSTEM_WRITES": "payload0 regular-file bytes; system manager transient/cgroup/private-tmp/telemetry bookkeeping only; observer new bounded evidence files",
+    "MAX_OPEN_DESCRIPTORS": 32,
+    "MAX_SERVICE_ADDRESS_SPACE_BYTES": 134217728,
+    "MAX_SERVICE_CPU_SECONDS": 5,
+    "MAX_SERVICE_LAUNCHES": 1,
+    "MAX_SERVICE_MEMORY_BYTES": 67108864,
+    "MAX_SERVICE_OUTPUT_BYTES": 65536,
+    "MAX_SERVICE_TASKS": 8,
+    "MAX_SERVICE_WALL_TIME_SECONDS": 20,
+    "NETWORK_ACCESS": "NONE_AUTHORIZED",
+    "OBSERVER_TOTAL_WALL_SECONDS": 25,
+    "STOP_TIMEOUT_SECONDS": 2
+  },
+  "RETAINED_PACKAGE86_SUBJECT": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h86-system-service-verification-subject-v1",
+    "sha256": "a05d3419b337aa1e851be22d047b58259945f6759684007cb68d28d62a7d1972"
+  },
+  "STATUS": "PROPOSED_INCOMPLETE_NOT_AUTHORIZABLE"
+}

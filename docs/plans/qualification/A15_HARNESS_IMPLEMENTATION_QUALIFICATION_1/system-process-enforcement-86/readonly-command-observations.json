@@ -1,0 +1,40 @@
+[
+  {
+    "ARGV": [
+      "/usr/bin/systemd-run",
+      "--version"
+    ],
+    "CONTEXT": "CODEX_MANAGED_READONLY_INVENTORY",
+    "EXIT_STATUS": 0,
+    "STDERR": "",
+    "STDOUT": "systemd 245 (245.4-4ubuntu3.24)\n+PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=hybrid\n",
+    "UNIT_CREATED": false
+  },
+  {
+    "ARGV": [
+      "/usr/bin/systemd-run",
+      "--help"
+    ],
+    "CONTEXT": "CODEX_MANAGED_READONLY_INVENTORY",
+    "EXIT_STATUS": 0,
+    "STDERR": "",
+    "STDOUT": "systemd-run [OPTIONS...] COMMAND [ARGUMENTS...]\n\nRun the specified command in a transient scope or service.\n\n  -h --help                       Show this help\n     --version                    Show package version\n     --no-ask-password            Do not prompt for password\n     --user                       Run as user unit\n  -H --host=[USER@]HOST           Operate on remote host\n  -M --machine=CONTAINER          Operate on local container\n     --scope                      Run this as scope rather than service\n  -u --unit=UNIT                  Run under the specified unit name\n  -p --property=NAME=VALUE        Set service or scope unit property\n     --description=TEXT           Description for unit\n     --slice=SLICE                Run in the specified slice\n     --no-block                   Do not wait until operation finished\n  -r --remain-after-exit          Leave service around until explicitly stopped\n     --wait                       Wait until service stopped again\n     --send-sighup                Send SIGHUP when terminating\n     --service-type=TYPE          Service type\n     --uid=USER                   Run as system user\n     --gid=GROUP                  Run as system group\n     --nice=NICE                  Nice level\n     --working-directory=PATH     Set working directory\n  -d --same-dir                   Inherit working directory from caller\n  -E --setenv=NAME=VALUE          Set environment\n  -t --pty                        Run service on pseudo TTY as STDIN/STDOUT/\n                                  STDERR\n  -P --pipe                       Pass STDIN/STDOUT/STDERR directly to service\n  -q --quiet                      Suppress information messages during runtime\n  -G --collect                    Unload unit after it ran, even when failed\n  -S --shell                      Invoke a $SHELL interactively\n\nPath options:\n     --path-property=NAME=VALUE   Set path unit property\n\nSocket options:\n     --socket-property=NAME=VALUE Set socket unit property\n\nTimer options:\n     --on-active=SECONDS          Run after SECONDS delay\n     --on-boot=SECONDS            Run SECONDS after machine was booted up\n     --on-startup=SECONDS         Run SECONDS after systemd activation\n     --on-unit-active=SECONDS     Run SECONDS after the last activation\n     --on-unit-inactive=SECONDS   Run SECONDS after the last deactivation\n     --on-calendar=SPEC           Realtime timer\n     --on-timezone-change         Run when the timezone changes\n     --on-clock-change            Run when the realtime clock jumps\n     --timer-property=NAME=VALUE  Set timer unit property\n\nSee the systemd-run(1) man page for details.\n",
+    "UNIT_CREATED": false
+  },
+  {
+    "ARGV": [
+      "/bin/systemctl",
+      "--no-pager",
+      "show",
+      "--property=Version",
+      "--property=SystemState",
+      "--property=ControlGroup",
+      "--property=DefaultTasksMax"
+    ],
+    "CONTEXT": "CODEX_MANAGED_READONLY_INVENTORY",
+    "EXIT_STATUS": 1,
+    "STDERR": "Failed to connect to bus: Operation not permitted\n",
+    "STDOUT": "",
+    "UNIT_CREATED": false
+  }
+]

@@ -1,0 +1,683 @@
+{
+  "CANONICAL": "UTF8sortedcompactJSON,ensure_ascii=False,no floats/duplicatekeys;closedfieldsets/enums and integerwidths;validate before encoding",
+  "CAUSAL_SCOPE": "arbitraryunbounded originalerrors notclaimedfullypreserved;explicitINCOMPLETE stops positivequalification,per105section8",
+  "CLOSED_CAUSE_CODES": [
+    "GRANT_REJECTED",
+    "COMMAND_REJECTED",
+    "DUPLICATE_REJECTED",
+    "PARTIAL_RECORD",
+    "CALLBACK_FAILURE",
+    "UNKNOWN_OUTCOME",
+    "REVOKED",
+    "RESOURCE_EXHAUSTION",
+    "CONTROLLER_TIMEOUT",
+    "OBSERVER_FAILURE",
+    "AUDIT_FAILURE",
+    "UNMODELLED_NATIVE_EXCEPTION"
+  ],
+  "CLOSED_CAUSE_PHASES": [
+    "VALIDATE",
+    "RESERVE",
+    "PUBLISH",
+    "FILE_FSYNC",
+    "DIRECTORY_FSYNC",
+    "REREAD",
+    "HANDOFF",
+    "CALLBACK",
+    "OBSERVE",
+    "RECOVER",
+    "FINALIZE",
+    "AFTER_DURABLE_CONSUMPTION"
+  ],
+  "CRITICAL_SCHEMAS": [
+    {
+      "DURABILITY_REQUIREMENT": "exclusiveone-shotregularrecord write,file+directoryfsync,independentreadonlyreread;failed/partialwrite retained,no retry",
+      "FAILURE_RULE": "unknown cause/provenance/overflow prevents qualification success",
+      "INDEPENDENT_READER": "standalonecanonical/hash/schema andtypedfault/callback/durablestate comparison,not bridge success alone",
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "cause": {
+          "code": "UNMODELLED_NATIVE_EXCEPTION",
+          "errno": -9223372036854775807,
+          "observed_witness_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "original_cause_complete": false,
+          "phase": "AFTER_DURABLE_CONSUMPTION"
+        },
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "primary_record_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "termination_complete": false,
+        "type": "FIRST_CAUSAL_FAILURE"
+      },
+      "MAX_FIELD_LENGTHS": {
+        "all_other_strings": "fixedclosed enums only,no variablemessage/traceback/callbacktext",
+        "case_label": 28,
+        "hash_hex": 64,
+        "signed63_decimal": 20,
+        "uint64_decimal": 20
+      },
+      "MAX_OCCURRENCES": 4,
+      "MAX_RECORD_BYTES": 911,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "cause",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "primary_record_sha256",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "termination_complete",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-FIRST_CAUSAL_FAILURE-V1",
+      "TRUNCATION_OR_REFERENCE_POLICY": "knownclosed controlledcause mustmatchindependentfixture/fault/observedwitness. No str(exception) orrawtraceback. Unmodeled/missingoriginal=>evidence_complete false andINCOMPLETE verdict;witness hash identifiesboundedobservedtuple only,neverabsent original. References onlywithinsealedboundedcase root;noexternalresolver."
+    },
+    {
+      "DURABILITY_REQUIREMENT": "exclusiveone-shotregularrecord write,file+directoryfsync,independentreadonlyreread;failed/partialwrite retained,no retry",
+      "FAILURE_RULE": "unknown cause/provenance/overflow prevents qualification success",
+      "INDEPENDENT_READER": "standalonecanonical/hash/schema andtypedfault/callback/durablestate comparison,not bridge success alone",
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "cause": {
+          "code": "UNMODELLED_NATIVE_EXCEPTION",
+          "errno": -9223372036854775807,
+          "observed_witness_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "original_cause_complete": false,
+          "phase": "AFTER_DURABLE_CONSUMPTION"
+        },
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "primary_record_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "termination_complete": false,
+        "type": "SECONDARY_FAILURE"
+      },
+      "MAX_FIELD_LENGTHS": {
+        "all_other_strings": "fixedclosed enums only,no variablemessage/traceback/callbacktext",
+        "case_label": 28,
+        "hash_hex": 64,
+        "signed63_decimal": 20,
+        "uint64_decimal": 20
+      },
+      "MAX_OCCURRENCES": 19,
+      "MAX_RECORD_BYTES": 908,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "cause",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "primary_record_sha256",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "termination_complete",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-SECONDARY_FAILURE-V1",
+      "TRUNCATION_OR_REFERENCE_POLICY": "knownclosed controlledcause mustmatchindependentfixture/fault/observedwitness. No str(exception) orrawtraceback. Unmodeled/missingoriginal=>evidence_complete false andINCOMPLETE verdict;witness hash identifiesboundedobservedtuple only,neverabsent original. References onlywithinsealedboundedcase root;noexternalresolver."
+    },
+    {
+      "DURABILITY_REQUIREMENT": "exclusiveone-shotregularrecord write,file+directoryfsync,independentreadonlyreread;failed/partialwrite retained,no retry",
+      "FAILURE_RULE": "unknown cause/provenance/overflow prevents qualification success",
+      "INDEPENDENT_READER": "standalonecanonical/hash/schema andtypedfault/callback/durablestate comparison,not bridge success alone",
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "cause": {
+          "code": "UNMODELLED_NATIVE_EXCEPTION",
+          "errno": -9223372036854775807,
+          "observed_witness_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "original_cause_complete": false,
+          "phase": "AFTER_DURABLE_CONSUMPTION"
+        },
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "primary_record_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "termination_complete": false,
+        "type": "UNKNOWN_OUTCOME"
+      },
+      "MAX_FIELD_LENGTHS": {
+        "all_other_strings": "fixedclosed enums only,no variablemessage/traceback/callbacktext",
+        "case_label": 28,
+        "hash_hex": 64,
+        "signed63_decimal": 20,
+        "uint64_decimal": 20
+      },
+      "MAX_OCCURRENCES": 4,
+      "MAX_RECORD_BYTES": 906,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "cause",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "primary_record_sha256",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "termination_complete",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-UNKNOWN_OUTCOME-V1",
+      "TRUNCATION_OR_REFERENCE_POLICY": "knownclosed controlledcause mustmatchindependentfixture/fault/observedwitness. No str(exception) orrawtraceback. Unmodeled/missingoriginal=>evidence_complete false andINCOMPLETE verdict;witness hash identifiesboundedobservedtuple only,neverabsent original. References onlywithinsealedboundedcase root;noexternalresolver."
+    },
+    {
+      "DURABILITY_REQUIREMENT": "exclusiveone-shotregularrecord write,file+directoryfsync,independentreadonlyreread;failed/partialwrite retained,no retry",
+      "FAILURE_RULE": "unknown cause/provenance/overflow prevents qualification success",
+      "INDEPENDENT_READER": "standalonecanonical/hash/schema andtypedfault/callback/durablestate comparison,not bridge success alone",
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "cause": {
+          "code": "UNMODELLED_NATIVE_EXCEPTION",
+          "errno": -9223372036854775807,
+          "observed_witness_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "original_cause_complete": false,
+          "phase": "AFTER_DURABLE_CONSUMPTION"
+        },
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "primary_record_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "termination_complete": false,
+        "type": "RESOURCE_EXHAUSTION"
+      },
+      "MAX_FIELD_LENGTHS": {
+        "all_other_strings": "fixedclosed enums only,no variablemessage/traceback/callbacktext",
+        "case_label": 28,
+        "hash_hex": 64,
+        "signed63_decimal": 20,
+        "uint64_decimal": 20
+      },
+      "MAX_OCCURRENCES": 4,
+      "MAX_RECORD_BYTES": 910,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "cause",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "primary_record_sha256",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "termination_complete",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-RESOURCE_EXHAUSTION-V1",
+      "TRUNCATION_OR_REFERENCE_POLICY": "knownclosed controlledcause mustmatchindependentfixture/fault/observedwitness. No str(exception) orrawtraceback. Unmodeled/missingoriginal=>evidence_complete false andINCOMPLETE verdict;witness hash identifiesboundedobservedtuple only,neverabsent original. References onlywithinsealedboundedcase root;noexternalresolver."
+    },
+    {
+      "DURABILITY_REQUIREMENT": "exclusiveone-shotregularrecord write,file+directoryfsync,independentreadonlyreread;failed/partialwrite retained,no retry",
+      "FAILURE_RULE": "unknown cause/provenance/overflow prevents qualification success",
+      "INDEPENDENT_READER": "standalonecanonical/hash/schema andtypedfault/callback/durablestate comparison,not bridge success alone",
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "cause": {
+          "code": "UNMODELLED_NATIVE_EXCEPTION",
+          "errno": -9223372036854775807,
+          "observed_witness_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "original_cause_complete": false,
+          "phase": "AFTER_DURABLE_CONSUMPTION"
+        },
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "primary_record_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "termination_complete": false,
+        "type": "CONSUMPTION_STATE"
+      },
+      "MAX_FIELD_LENGTHS": {
+        "all_other_strings": "fixedclosed enums only,no variablemessage/traceback/callbacktext",
+        "case_label": 28,
+        "hash_hex": 64,
+        "signed63_decimal": 20,
+        "uint64_decimal": 20
+      },
+      "MAX_OCCURRENCES": 4,
+      "MAX_RECORD_BYTES": 908,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "cause",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "primary_record_sha256",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "termination_complete",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-CONSUMPTION_STATE-V1",
+      "TRUNCATION_OR_REFERENCE_POLICY": "knownclosed controlledcause mustmatchindependentfixture/fault/observedwitness. No str(exception) orrawtraceback. Unmodeled/missingoriginal=>evidence_complete false andINCOMPLETE verdict;witness hash identifiesboundedobservedtuple only,neverabsent original. References onlywithinsealedboundedcase root;noexternalresolver."
+    },
+    {
+      "DURABILITY_REQUIREMENT": "exclusiveone-shotregularrecord write,file+directoryfsync,independentreadonlyreread;failed/partialwrite retained,no retry",
+      "FAILURE_RULE": "unknown cause/provenance/overflow prevents qualification success",
+      "INDEPENDENT_READER": "standalonecanonical/hash/schema andtypedfault/callback/durablestate comparison,not bridge success alone",
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "cause": {
+          "code": "UNMODELLED_NATIVE_EXCEPTION",
+          "errno": -9223372036854775807,
+          "observed_witness_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+          "original_cause_complete": false,
+          "phase": "AFTER_DURABLE_CONSUMPTION"
+        },
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "primary_record_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "termination_complete": false,
+        "type": "FINAL_AUDIT"
+      },
+      "MAX_FIELD_LENGTHS": {
+        "all_other_strings": "fixedclosed enums only,no variablemessage/traceback/callbacktext",
+        "case_label": 28,
+        "hash_hex": 64,
+        "signed63_decimal": 20,
+        "uint64_decimal": 20
+      },
+      "MAX_OCCURRENCES": 1,
+      "MAX_RECORD_BYTES": 902,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "cause",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "primary_record_sha256",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "termination_complete",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-FINAL_AUDIT-V1",
+      "TRUNCATION_OR_REFERENCE_POLICY": "knownclosed controlledcause mustmatchindependentfixture/fault/observedwitness. No str(exception) orrawtraceback. Unmodeled/missingoriginal=>evidence_complete false andINCOMPLETE verdict;witness hash identifiesboundedobservedtuple only,neverabsent original. References onlywithinsealedboundedcase root;noexternalresolver."
+    }
+  ],
+  "CRITICAL_SCHEMAS_COMPLETE_AS_PROPOSAL": true,
+  "ENUM_VALIDATION": "Every string excepthash/caselabel isexactconstant/closedenum fromits schema. No otherstrings accepted;code andphase maximalinstances use longestdefinedchoices. Only codedboundedtuple/witness hash canbeclaimed,notmissingoriginalerror.",
+  "NORMAL_SCHEMAS": [
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "attempt": 1,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_body": {
+          "approved_probe_subject_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "bridge102-synthetic-subject-v1",
+            "sha256": "c06238b37c14e14cde4cbe1a318838a424287ceed94766c0dc8459ea531ef4e7"
+          },
+          "attempt_number": 1,
+          "exact_command_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "bridge102-synthetic-command-v1",
+            "sha256": "c9876139d623c306b7acbb65887e752ad50fced71c1c60a44d03c28397ced0bd"
+          },
+          "host_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "bridge102-synthetic-host-v1",
+            "sha256": "ee4c498232c3651e1966e961cebd074a03f298a18db4496a221a2417dcbe1813"
+          },
+          "issued_probe_grant_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "bridge105-synthetic-variant-grant-v1",
+            "sha256": "0111a4ba594be2b09f68b805b0b85462a3a6251e99fd7bebb50a4e2d95e41ebf"
+          },
+          "qualified_direct_host_context_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "bridge103-synthetic-context-v1",
+            "sha256": "317d2e8e1fe41a44e8f69947517d290a415f6bcf17cb01213f67fa0655d3a6f1"
+          },
+          "retained_package86_subject_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "qualification-h86-system-service-verification-subject-v1",
+            "sha256": "a05d3419b337aa1e851be22d047b58259945f6759684007cb68d28d62a7d1972"
+          },
+          "schema": "FIXED-COMMAND-BRIDGE-CONSUMPTION-CANDIDATE-103-V1",
+          "service_unit_identity": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "bridge102-synthetic-unit-v1",
+            "sha256": "69c760dd883bd9a186379ac56c3ef0f23b598070c1495a14df2087c33d25e5f7"
+          }
+        },
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "pid": 18446744073709551615,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "start_token": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED",
+        "store_device": 18446744073709551615,
+        "store_inode": 18446744073709551615,
+        "type": "CLAIM"
+      },
+      "MAX_RECORD_BYTES": 2044,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "attempt",
+        "case_id",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_body",
+        "key_sha256",
+        "order",
+        "pid",
+        "schema",
+        "source_sha256",
+        "start_token",
+        "state",
+        "store_device",
+        "store_inode",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-CLAIM-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "expiration_checked": false,
+        "fresh": false,
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "schema": "BRIDGE105-EPOCH-V1",
+        "state": "EFFECTIVE"
+      },
+      "MAX_RECORD_BYTES": 174,
+      "REQUIRED_FIELDS": [
+        "expiration_checked",
+        "fresh",
+        "grant_sha256",
+        "schema",
+        "state"
+      ],
+      "SCHEMA_ID": "BRIDGE105-EPOCH-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "callback_count": 1,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "claim_raw_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "evidence_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "phase_mask": 18446744073709551615,
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "CONSUMED_OUTCOME_UNKNOWN",
+        "type": "REQUEST_AUDIT"
+      },
+      "MAX_RECORD_BYTES": 686,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "callback_count",
+        "case_id",
+        "claim_raw_sha256",
+        "evidence_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "phase_mask",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-REQUEST_AUDIT-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "event": "CALLBACK_EXCEPTION",
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "outcome": "INERT_EXPECTED_FAILURE",
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "type": "CALLBACK_WITNESS"
+      },
+      "MAX_RECORD_BYTES": 553,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "event",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "outcome",
+        "retry",
+        "schema",
+        "source_sha256",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-CALLBACK_WITNESS-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "claim_raw_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "launch_allowed": false,
+        "order": 18446744073709551615,
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "OUTCOME_UNKNOWN",
+        "type": "RECOVERY"
+      },
+      "MAX_RECORD_BYTES": 616,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "claim_raw_sha256",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "launch_allowed",
+        "order",
+        "retry",
+        "schema",
+        "source_sha256",
+        "state",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-RECOVERY-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "exit_observed": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "pid": 18446744073709551615,
+        "remaining_members": 18446744073709551615,
+        "schema": "BRIDGE105-RECORD-V1",
+        "session_id": 18446744073709551615,
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "start_token": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "type": "PROCESS_OBSERVATION",
+        "wait_status": -9223372036854775807
+      },
+      "MAX_RECORD_BYTES": 718,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "exit_observed",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "pid",
+        "remaining_members",
+        "schema",
+        "session_id",
+        "source_sha256",
+        "start_token",
+        "type",
+        "wait_status"
+      ],
+      "SCHEMA_ID": "BRIDGE105-PROCESS_OBSERVATION-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "comparison_complete": false,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "observation_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "oracle_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "state": "INCOMPLETE",
+        "type": "CASE_VERDICT"
+      },
+      "MAX_RECORD_BYTES": 691,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "comparison_complete",
+        "fixture_sha256",
+        "grant_sha256",
+        "key_sha256",
+        "observation_sha256",
+        "oracle_sha256",
+        "order",
+        "schema",
+        "source_sha256",
+        "state",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-CASE_VERDICT-V1"
+    },
+    {
+      "MAXIMAL_INSTANCE": {
+        "actor_ordinal": 5,
+        "case_id": "B102-PARTIAL_RECORD_RECOVERY",
+        "consumed": true,
+        "fixture_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "grant_scope": "INERT_ONLY",
+        "grant_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "key_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "order": 18446744073709551615,
+        "real_launch": false,
+        "retry": false,
+        "schema": "BRIDGE105-RECORD-V1",
+        "source_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "type": "CAMPAIGN_ACTIVATION"
+      },
+      "MAX_RECORD_BYTES": 555,
+      "REQUIRED_FIELDS": [
+        "actor_ordinal",
+        "case_id",
+        "consumed",
+        "fixture_sha256",
+        "grant_scope",
+        "grant_sha256",
+        "key_sha256",
+        "order",
+        "real_launch",
+        "retry",
+        "schema",
+        "source_sha256",
+        "type"
+      ],
+      "SCHEMA_ID": "BRIDGE105-CAMPAIGN_ACTIVATION-V1"
+    }
+  ],
+  "RUNTIME_CODING_QUALIFIED": false,
+  "SAFE_ENCODED_BOUNDS_NOT_CLAIM_ALL_MAXIMAL_CROSS_FIELDS_OBSERVED": true,
+  "SIZE_TOKENS_NOT_ACTUAL_EVENTS": true
+}

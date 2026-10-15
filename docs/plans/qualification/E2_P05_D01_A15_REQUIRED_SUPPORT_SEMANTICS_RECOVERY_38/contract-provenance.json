@@ -1,0 +1,170 @@
+[
+  {
+    "APPLICABILITY": "A15",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_FROZEN_CONTRACT",
+    "DERIVATION": "Apply membership only to exact sealed A15 pre-state, not later/historical alternative state",
+    "EXACT_CONTRACT_MEANING": "Restored accepted knowledge/proof/authority state in isolated copy",
+    "RULE_TERM": "A15_ACCEPTANCE_BOUNDARY",
+    "SOURCE_LOCATION": "/cases/14/INITIAL_STATE"
+  },
+  {
+    "APPLICABILITY": "A15",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_FROZEN_REQUIREMENT_WITH_MISSING_DISCRIMINATORS",
+    "DERIVATION": "For-each coverage is explicit; required consumer/root, necessity predicate and partition are not enumerated",
+    "EXACT_CONTRACT_MEANING": "SourceInvalidation event for each disjoint required source",
+    "RULE_TERM": "A15_REQUIRED_SOURCE_CARDINALITY",
+    "SOURCE_LOCATION": "/cases/14/OPERATION"
+  },
+  {
+    "APPLICABILITY": "FINISH-F02/A13; cannot infer whole A15 owner set",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_FINISH_F02_SUPPORT_RESOLUTION.json",
+      "raw_sha256": "d2d3c72f2deabcd9003b434c667b00ce4a54efca9963861dcead60ba23483709"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_SCOPED_CONTRACT_CORROBORATED_BY_NATIVE_DATA",
+    "DERIVATION": "Exact native proof targets/supports and FINISH prerequisite corroborate this scoped chain",
+    "EXACT_CONTRACT_MEANING": "Root source -> root contract/proof provenance -> E2-ROOT -> FINISH prerequisite; actual slot support -> root contract",
+    "RULE_TERM": "FINISH_ROOT_SUPPORT_OWNER",
+    "SOURCE_LOCATION": "/e06_reevaluation_binding/edges"
+  },
+  {
+    "APPLICABILITY": "Installed F02 proof/source/policy dependency normalization",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/FINISH_F02_1/support-resolution-contract.json",
+      "raw_sha256": "6564fdd8486162f896545b02cc5a4b30d23a568beafea2d668a7a8d897d1ce2c"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_SCOPED_CONTRACT",
+    "DERIVATION": "Distinguishes operative/current matching role from arbitrary installed/source declaration",
+    "EXACT_CONTRACT_MEANING": "Only matching active configuration/contract descriptors; include affected concrete contract IDs/targets and original dependency in bounded reevaluation",
+    "RULE_TERM": "ACTIVE_MATCHED_DEPENDENCY_NORMALIZATION",
+    "SOURCE_LOCATION": "/invalidation_dependency_normalization/rule"
+  },
+  {
+    "APPLICABILITY": "PC02 abstract roles; mapping into current A15 target scope still required",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_FIXTURES.json",
+      "raw_sha256": "1610f526a7f055f759355ce1cde4abee5b6780ec73eb3358c57b7a9738bda248"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_FIXTURE_CONTRACT",
+    "DERIVATION": "Named role owners are separate; semantic domain labels cannot become SourceInvalidation content inputs without exact provenance mapping",
+    "EXACT_CONTRACT_MEANING": "GRANT targets REENTER applicability; ROOT_PROOF targets E2-ROOT; SLOT_PROOF targets E2-SLOT; authority identity is not source content identity",
+    "RULE_TERM": "AUTHORITY_AND_ROOT_SLOT_ROLE_SEPARATION",
+    "SOURCE_LOCATION": "/source_roles and /authority and /proofs"
+  },
+  {
+    "APPLICABILITY": "PC03 role outcomes, not a set-choice rule",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC03_FIXTURES.json",
+      "raw_sha256": "e601d1cdc133cdc790a90ed8c7218c779214bd47407bc044b7e9b86e7f5c7fd4"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_FIXTURE_CONTRACT",
+    "DERIVATION": "General role outcome table supplies no exact A15 source/root set; external route also has separate A16 case",
+    "EXACT_CONTRACT_MEANING": "Knowledge/root/slot/grant/route/receipt roles have distinct dependent and expected invalidation outcomes",
+    "RULE_TERM": "INVALIDATION_ROLE_OUTCOMES",
+    "SOURCE_LOCATION": "/invalidation"
+  },
+  {
+    "APPLICABILITY": "Graph/result projection; no direct A15 ownership",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_BR_C2_PROJECTION_CONTRACT_CLOSURE_1.md",
+      "raw_sha256": "de3b801e1002a6319df3f4da19431b21ddd8a372b6c8e92a865cb2ce2f82d1c4"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_SCOPED_CONTRACT",
+    "DERIVATION": "Historical records are not new current support membership; this conditional does not define which source is required",
+    "EXACT_CONTRACT_MEANING": "Required support becoming stale withdraws current usability after reload; historical record remains historical evidence",
+    "RULE_TERM": "HISTORICAL_EXISTENCE_VS_CURRENT_USABILITY",
+    "SOURCE_LOCATION": "lines 119-124"
+  },
+  {
+    "APPLICABILITY": "A15 native input validity; not normative target selection",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "CONFIDENCE_CLASSIFICATION": "NATIVE_IMPLEMENTATION_CONSTRAINT",
+    "DERIVATION": "Source body/pin content matching, not namespace substitution by similar hash",
+    "EXACT_CONTRACT_MEANING": "changed members must be CONTENT_IDENTITY, not permission/authority/event identities",
+    "RULE_TERM": "NATIVE_SOURCE_IDENTITY_DOMAIN",
+    "SOURCE_LOCATION": "invalidate_sources lines 304-313"
+  },
+  {
+    "APPLICABILITY": "Invalidation effects only",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "CONFIDENCE_CLASSIFICATION": "NATIVE_IMPLEMENTATION_BEHAVIOR",
+    "DERIVATION": "This is effect propagation after supplied changed sources, not an inverse target selector",
+    "EXACT_CONTRACT_MEANING": "Seed stale support, propagate assertions/predicates/roots/descendants and held statuses forward",
+    "RULE_TERM": "DEPENDENT_WITHDRAWAL_DIRECTION",
+    "SOURCE_LOCATION": "invalidate_sources lines 314-433"
+  },
+  {
+    "APPLICABILITY": "Reevaluation affected-action closure, not invalidation target closure",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/typed_proofs.py",
+      "raw_sha256": "f3d95766cc21ec263ab7f6dc8679d821a8a16cdee5c5806de9e28cb34baf830b"
+    },
+    "CONFIDENCE_CLASSIFICATION": "NATIVE_IMPLEMENTATION_BEHAVIOR",
+    "DERIVATION": "Finite monotone reachability handles duplicates/shared support/cycles without choosing a minimal target cut",
+    "EXACT_CONTRACT_MEANING": "Dependencies reach consuming predicates/contracts/targets/actions through forward edges until set stabilizes",
+    "RULE_TERM": "FORWARD_AFFECTED_ACTION_FIXPOINT",
+    "SOURCE_LOCATION": "affected_actions lines 112-139"
+  },
+  {
+    "APPLICABILITY": "Existing typed proof contracts, after owner mapping",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/typed_proofs.py",
+      "raw_sha256": "f3d95766cc21ec263ab7f6dc8679d821a8a16cdee5c5806de9e28cb34baf830b"
+    },
+    "CONFIDENCE_CLASSIFICATION": "NATIVE_IMPLEMENTATION_CORROBORATION",
+    "DERIVATION": "Currentness is richer than record existence; a source provenance may be operational under this rule",
+    "EXACT_CONTRACT_MEANING": "Accepted proof/contract, current installed role, context/expiry, authority, support fingerprints and prerequisites required for usable proof",
+    "RULE_TERM": "CURRENT_LIVE_PROOF_BINDING",
+    "SOURCE_LOCATION": "usable lines 60-108"
+  },
+  {
+    "APPLICABILITY": "Scoped native currentness; no rule selecting A15 consumer roots",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/proof_installation.py",
+      "raw_sha256": "9adbfb67d2fa7ff4e75bea856816423fe2e0476b9856df897eec889da4544e26"
+    },
+    "CONFIDENCE_CLASSIFICATION": "NATIVE_IMPLEMENTATION_CORROBORATION",
+    "DERIVATION": "Superseded/historical registry entries cannot be blanket current operative supports",
+    "EXACT_CONTRACT_MEANING": "Exact active/current descriptor, accepted state/context/authority and matching proof configuration/contract owners",
+    "RULE_TERM": "INSTALLED_ROLE_CURRENTNESS",
+    "SOURCE_LOCATION": "support_current and contract_current lines 156-190"
+  },
+  {
+    "APPLICABILITY": "Original local fixture only",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/tests/qualify_p03_prospective.py",
+      "raw_sha256": "ddfdf076983c6064559e6b5782393e1a099ad5d662e628b64e3f9f1ce1a2f3b4"
+    },
+    "CONFIDENCE_CLASSIFICATION": "LOCAL_QUALIFICATION_IMPLEMENTATION_NOT_NORMATIVE_A15_RULE",
+    "DERIVATION": "Evidence for local recipe/disjointness, not formal A15 required-support predicate for installed P04 state",
+    "EXACT_CONTRACT_MEANING": "Local accepted/typed-support suite tests source pins whose identities occur in current Provenance, independently per singleton",
+    "RULE_TERM": "LOCAL_SINGLETON_PROVENANCE_RECIPE",
+    "SOURCE_LOCATION": "lines 156-170"
+  },
+  {
+    "APPLICABILITY": "Frozen E1 policy read-only; no E1 import/execution",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+      "raw_sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+    },
+    "CONFIDENCE_CLASSIFICATION": "EXPLICIT_POLICY_IN_OTHER_DOMAIN",
+    "DERIVATION": "Neither lexicographic Action selection nor latest/current labels determine A15 source target membership",
+    "EXACT_CONTRACT_MEANING": "Ranks already actionable resolution Action IDs; missing metric information does not become inferred scores",
+    "RULE_TERM": "SELECTOR_IS_NOT_SOURCE_TARGET_SELECTOR",
+    "SOURCE_LOCATION": "Normative policy and criterion 5"
+  }
+]

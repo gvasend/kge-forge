@@ -1,0 +1,162 @@
+{
+  "AGGREGATE_IDENTITY": "qualification-D01-source-aggregate-v1:630f524e83f3d80007d8b6af79f77a32d2866194753f76495a98c7e4a65b01ed",
+  "ALL_51_COMPLETE_OPERANDS_TYPED": true,
+  "COVERAGE": "51/51",
+  "DETERMINISM": [
+    {
+      "coverage": "51/51",
+      "seed": 0,
+      "semantic_hash": "f3512cd58da08b92b16c0eb728a09904834055f5bcc8caff51f6a17cbe41cac6"
+    },
+    {
+      "coverage": "51/51",
+      "seed": 1,
+      "semantic_hash": "f3512cd58da08b92b16c0eb728a09904834055f5bcc8caff51f6a17cbe41cac6"
+    },
+    {
+      "coverage": "51/51",
+      "seed": 7,
+      "semantic_hash": "f3512cd58da08b92b16c0eb728a09904834055f5bcc8caff51f6a17cbe41cac6"
+    },
+    {
+      "coverage": "51/51",
+      "seed": 101,
+      "semantic_hash": "f3512cd58da08b92b16c0eb728a09904834055f5bcc8caff51f6a17cbe41cac6"
+    }
+  ],
+  "DISPATCH_FIELDS_ADDED": [
+    "per_source_expansion"
+  ],
+  "FUNCTION_CHANGES": [
+    "execute_job",
+    "static_preflight"
+  ],
+  "NATIVE_ENTRYPOINT_EXISTS": true,
+  "NATIVE_PLANNER_CHANGE": false,
+  "NEGATIVES": {
+    "CASES": [
+      {
+        "NAME": "single-source selection",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "first-source selection",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "last-source selection",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "missing one of 51",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "duplicate one of 51",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "52nd foreign source",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "source pin from another instance",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "source/provenance mismatch",
+        "REJECTION": "WRONG_CAPSULE_OR_PROVENANCE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "aggregate ANY",
+        "REJECTION": "AGGREGATE_NOT_ALL",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "aggregate FIRST_PASS",
+        "REJECTION": "AGGREGATE_NOT_ALL",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "aggregate MAJORITY",
+        "REJECTION": "AGGREGATE_NOT_ALL",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "aggregate ORDER_DEPENDENT_PASS",
+        "REJECTION": "AGGREGATE_NOT_ALL",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "one failed",
+        "REJECTION": "INSTANCE_NOT_PASS",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "one missing",
+        "REJECTION": "INCOMPLETE_AGGREGATE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "one twice",
+        "REJECTION": "INCOMPLETE_AGGREGATE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "two collapsed",
+        "REJECTION": "INCOMPLETE_AGGREGATE",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "reversal changes aggregate identity",
+        "REJECTION": "AGGREGATE_IDENTITY_MISMATCH",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "rotation changes aggregate identity",
+        "REJECTION": "AGGREGATE_IDENTITY_MISMATCH",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "hash seed changes aggregate identity",
+        "REJECTION": "AGGREGATE_IDENTITY_MISMATCH",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "presentation-order selection",
+        "REJECTION": "PRESENTATION_SELECTION_FORBIDDEN",
+        "RESULT": "PASS"
+      },
+      {
+        "NAME": "native Planner behavior modified",
+        "REJECTION": "EXPANSION_PIN_CHANGED",
+        "RESULT": "PASS"
+      }
+    ],
+    "PASS": 21,
+    "TOTAL": 21
+  },
+  "NON_SOURCE_DISPATCHES_UNCHANGED": 127,
+  "PERMUTATIONS": "reverse + all 51 rotations + seed presentations PASS",
+  "QUALIFICATION_CASES_EXECUTED": 0,
+  "RESULT": "PASS",
+  "SOURCE_DOMAIN_COUNT": 51,
+  "STATIC_BASE_PREFLIGHT": {
+    "complete_matrix_validation": "NOT_AVAILABLE",
+    "construction_readiness": false,
+    "dispatch": "PASS_128_OF_128_STATIC",
+    "fixture_structural_loads": 117,
+    "native_targets": "PASS_EXISTING_FUNCTIONS",
+    "qualification_case_calls": 0,
+    "runner_execution": false
+  },
+  "STATIC_PREFLIGHT": "PASS"
+}

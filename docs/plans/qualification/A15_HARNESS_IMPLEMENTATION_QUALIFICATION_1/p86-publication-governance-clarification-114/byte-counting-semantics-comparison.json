@@ -1,0 +1,67 @@
+[
+  {
+    "ALTERNATIVE_ID": "A",
+    "AUTHORITY_SUPPORT": "Numeric field authenticates; existing source does not select complete measure. Owner must approve exact new normative definition.",
+    "BYTE_MEASURE": "Logical intended serialized publication bytes",
+    "COMPATIBILITY_WITH_EXISTING_CEILING": "Retains65536; actual budget feasibility remains to be derived, not assumed",
+    "ENFORCEABILITY": "Pre-write full-record admission and immutable artifact ledger; every copied/repeated logical publication charged separately",
+    "FAILURE_BEHAVIOR": "Full precharged length remains spent even if write fails or is partial",
+    "IMPLEMENTATION_IMPACT": "Fixed exact observer/writer mediation, no command change or execution permission",
+    "INDEPENDENT_VERIFIABILITY": "Observe admitted encoding/charges, API progress and barrier/reader results as separate facts",
+    "PARTIAL_WRITE_BEHAVIOR": "Charge entire admitted record/artifact once; positive suffix continuations do not charge same logical bytes again",
+    "PROSPECTIVELY_PREFERRED": false,
+    "UNRESOLVED_RISKS": "Does not bound total API submission traffic; separate finite CPU/wall and writer controls remain mandatory"
+  },
+  {
+    "ALTERNATIVE_ID": "B",
+    "AUTHORITY_SUPPORT": "Numeric field authenticates; existing source does not select complete measure. Owner must approve exact new normative definition.",
+    "BYTE_MEASURE": "Lengths of all publication API buffers submitted",
+    "COMPATIBILITY_WITH_EXISTING_CEILING": "Retains65536; actual budget feasibility remains to be derived, not assumed",
+    "ENFORCEABILITY": "Independent all-API write interception and accounting",
+    "FAILURE_BEHAVIOR": "Failed submissions charged",
+    "IMPLEMENTATION_IMPACT": "Fixed exact observer/writer mediation, no command change or execution permission",
+    "INDEPENDENT_VERIFIABILITY": "Observe admitted encoding/charges, API progress and barrier/reader results as separate facts",
+    "PARTIAL_WRITE_BEHAVIOR": "Resubmitted suffixes charged again; API versus syscall level must be pinned",
+    "PROSPECTIVELY_PREFERRED": false,
+    "UNRESOLVED_RISKS": "Conservative payload submission figure cannot be imported into observer publication without defining domains; no passing budget inferred"
+  },
+  {
+    "ALTERNATIVE_ID": "C",
+    "AUTHORITY_SUPPORT": "Numeric field authenticates; existing source does not select complete measure. Owner must approve exact new normative definition.",
+    "BYTE_MEASURE": "Successful transferred bytes",
+    "COMPATIBILITY_WITH_EXISTING_CEILING": "Retains65536; actual budget feasibility remains to be derived, not assumed",
+    "ENFORCEABILITY": "Pre-admission plus independently reconciled return counts required for prevention",
+    "FAILURE_BEHAVIOR": "Failed/no-transfer writes charge zero, but evidence may be absent",
+    "IMPLEMENTATION_IMPACT": "Fixed exact observer/writer mediation, no command change or execution permission",
+    "INDEPENDENT_VERIFIABILITY": "Observe admitted encoding/charges, API progress and barrier/reader results as separate facts",
+    "PARTIAL_WRITE_BEHAVIOR": "Positive returns only; repeated copies charged",
+    "PROSPECTIVELY_PREFERRED": false,
+    "UNRESOLVED_RISKS": "Not durable persistence; failed operations still consume resources and need evidence"
+  },
+  {
+    "ALTERNATIVE_ID": "D",
+    "AUTHORITY_SUPPORT": "Numeric field authenticates; existing source does not select complete measure. Owner must approve exact new normative definition.",
+    "BYTE_MEASURE": "Durability-qualified persisted bytes",
+    "COMPATIBILITY_WITH_EXISTING_CEILING": "Retains65536; actual budget feasibility remains to be derived, not assumed",
+    "ENFORCEABILITY": "Exact durability and independent cold/reader assurance as required",
+    "FAILURE_BEHAVIOR": "Undurable failed records do not count as durable but cannot yield success",
+    "IMPLEMENTATION_IMPACT": "Fixed exact observer/writer mediation, no command change or execution permission",
+    "INDEPENDENT_VERIFIABILITY": "Observe admitted encoding/charges, API progress and barrier/reader results as separate facts",
+    "PARTIAL_WRITE_BEHAVIOR": "Transfer does not qualify until barriers/reread",
+    "PROSPECTIVELY_PREFERRED": false,
+    "UNRESOLVED_RISKS": "Cannot rely solely on retrospective success to prevent resource excess; unqualified fsync is insufficient"
+  },
+  {
+    "ALTERNATIVE_ID": "E",
+    "AUTHORITY_SUPPORT": "Numeric field authenticates; existing source does not select complete measure. Owner must approve exact new normative definition.",
+    "BYTE_MEASURE": "Composite: original service transferred-output ceiling + logical admitted observer/control-plane publication cap + independent durability outcome",
+    "COMPATIBILITY_WITH_EXISTING_CEILING": "Retains65536; actual budget feasibility remains to be derived, not assumed",
+    "ENFORCEABILITY": "Separate stream counter, all-producer publication admission ledger and independent durability verification",
+    "FAILURE_BEHAVIOR": "Publication admission charged regardless of subsequent outcome; failed barrier/reread =>INCOMPLETE",
+    "IMPLEMENTATION_IMPACT": "Fixed exact observer/writer mediation, no command change or execution permission",
+    "INDEPENDENT_VERIFIABILITY": "Observe admitted encoding/charges, API progress and barrier/reader results as separate facts",
+    "PARTIAL_WRITE_BEHAVIOR": "Service internal suffix writes distinguish submitted/transfer; each observer logical artifact precharged once",
+    "PROSPECTIVELY_PREFERRED": true,
+    "UNRESOLVED_RISKS": "Requires explicit normative scope expansion and downstream validated budgets/guard; no present execution readiness"
+  }
+]

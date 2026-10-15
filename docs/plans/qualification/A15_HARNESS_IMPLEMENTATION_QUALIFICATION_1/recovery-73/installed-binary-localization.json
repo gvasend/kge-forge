@@ -1,0 +1,24 @@
+{
+  "BINARY_RAW_SHA256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987",
+  "BWRAP_EXECUTED": false,
+  "CLASSIFICATION": "Installed pinned binary confirms route-netlink socket creation failure; rejecting policy still unidentified",
+  "DISASSEMBLY_SELECTION": [
+    "    8eac:\t31 d2                \txor    %edx,%edx",
+    "    8eae:\tbe 03 00 08 00       \tmov    $0x80003,%esi",
+    "    8eb3:\tbf 10 00 00 00       \tmov    $0x10,%edi",
+    "    8eba:\te8 b1 ad ff ff       \tcallq  3c70 <socket@plt>",
+    "    8ebf:\t89 c5                \tmov    %eax,%ebp",
+    "    8ec1:\t85 c0                \ttest   %eax,%eax",
+    "    8ec3:\t0f 88 ce 01 00 00    \tjs     9097 <socket@plt+0x5427>",
+    "    9097:\t48 8d 3d 3a 4a 00 00 \tlea    0x4a3a(%rip),%rdi        # dad8 <pivot_root@@Base+0x3788>"
+  ],
+  "ELF_NOTES": "\nDisplaying notes found in: .note.gnu.property\n  Owner                Data size \tDescription\n  GNU                  0x00000010\tNT_GNU_PROPERTY_TYPE_0\n      Properties: x86 feature: IBT, SHSTK\n\nDisplaying notes found in: .note.gnu.build-id\n  Owner                Data size \tDescription\n  GNU                  0x00000014\tNT_GNU_BUILD_ID (unique build ID bitstring)\n    Build ID: 17011425c585f67ecd454a9cf416113c08c28a33\n\nDisplaying notes found in: .note.ABI-tag\n  Owner                Data size \tDescription\n  GNU                  0x00000010\tNT_GNU_ABI_TAG (ABI version tag)\n    OS: Linux, ABI: 3.2.0\n",
+  "FAILURE_BRANCH": "negative socket() result at 0x8ec3 branches to 0x9097 referencing exact diagnostic at .rodata address 0xdad8",
+  "PACKAGE": "bubblewrap\t0.4.0-1ubuntu4.1\tinstall ok installed",
+  "SOCKET_ARGUMENTS_X86_64_ABI": {
+    "edi_address_family": 16,
+    "edx_protocol": 0,
+    "esi_type_and_flags": 524291
+  },
+  "UPSTREAM_VERSION_EMBEDDED": "0.4.0"
+}

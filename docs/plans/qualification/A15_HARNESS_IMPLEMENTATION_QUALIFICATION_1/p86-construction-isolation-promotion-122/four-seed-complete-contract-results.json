@@ -1,0 +1,895 @@
+{
+  "COMPARISON_RULE": "Same semantic identity within each verifier stage; final stage adds contract coverage, so stage identities are distinct and retained, never normalized.",
+  "FRESH_PROCESSES": [
+    {
+      "HASH_SEED": "0",
+      "RECONSTRUCTION": {
+        "ADDITIONAL_CONTRACT_COVERAGE": "PASS",
+        "ADDITIONAL_CONTRACT_IDENTITIES": {
+          "a-versus-b-comparison.json": "620932f84388379d4d5652d3978dca22f6238af981e1ea561d8d1864bbcfa9d1",
+          "authority-and-amendment-assessment.json": "f5065182dff674f8f877aacea3c0e1b79c88b032868019067abdd95c9282fcaf",
+          "candidate-handoff-contract.json": "3337b0f3ae081b15398456e1b867368c8880531e78bd066e03d9d177305943de",
+          "disposable-isolation-contract.json": "0dfc754ff76e984ff453e86653ff65071a473bbc18c53022788ed72ead83f5df",
+          "existing-isolation-promotion-mechanism-assessment.json": "7f8d35f1f3c2795b7d4ee4ccf5a06ab307159de6c7f40fce0f51664345aa21d4",
+          "independent-static-verifier-contract.json": "d1b7fd2bfdc78278036e18a2c3425b1bbaedc3505b0044f01e60b372c5c980cc",
+          "lessons-review.json": "5cc558ce59881d77f639ac2e8724ecdaffbf1fac2e42857bf527d0447e6ef25b",
+          "protected-evidence-contract.json": "9c87f8e1cc5a6e73f6c6b7da6944a531ed01fc6dda909dd9fd29e3a10b318845",
+          "remaining-gap-dossier.json": "43e202f2c2203f631c720e13f06936376c99d5754662a6da239e27e66d557b48",
+          "threat-and-failure-analysis.json": "7beb3c6ee7fdc77c32965c59a617895bdaba67b877710f6ef80ec6fe6495e244",
+          "two-file-promotion-contract.json": "36b6ef6540f14805eed07af01437c199ea4180578116a7bc381681524bf30721"
+        },
+        "BASE_RECONSTRUCTION": {
+          "COMMAND_SHA256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50",
+          "CONDITIONAL_DELTA": 125034,
+          "CONTROL_TRACE_SHA256": "7290e42d89554a25bae26e7ebbc3abe219a9da7f3b8bd2b5f0ba6ff432a35c5a",
+          "DECISION_OPTIONS": [],
+          "EXACT_SOURCE_PATHS": [
+            "adapter/qualification_bootstrap/systemd_pids_fixed_bridge.py",
+            "adapter/tests/test_systemd_pids_fixed_bridge.py"
+          ],
+          "FULL_SIZE_CONDITIONAL_CHARGE": 500136,
+          "GOVERNANCE_CHANGE_REQUIRED_FOR_NONWEAKENING_SPLIT": "NO",
+          "GRAPH_ACYCLIC": true,
+          "INPUT_PIN_SET_SHA256": "fad8ad7d7d664dbc33caef6a019e92dca04ac63ddc8137109a7919c7bcd0dde3",
+          "ISOLATION_QUALIFIED": false,
+          "NEGATIVES": [
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "forged source pins before candidate exists",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "missing scoped authority requirement",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "dossier treated as issued grant",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "workspace write access presented as isolation",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "unverified isolation receipt invented",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "symlink escape admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "hardlink alias admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "detection not admission",
+              "DESIGN": "post-write checks presented as admission",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "protected paths omitted",
+              "DESIGN": "protected path omitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "insufficient promotion principal qualified",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "forged promoter receipt",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "changed86command",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "source allowlist",
+              "DESIGN": "widened source allowlist",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing file fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing directory fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "partial two-file promotion treated as success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "both files without pair verification called success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "implicit retry",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "reused consumption",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unknown not pass",
+              "DESIGN": "unknown outcome pass",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "own future outcome required before authority",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "entry safety deferred",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "promotion copy silently exempted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "budget reset between phases",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete resource split complete",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete decision options supplied",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "development authority cycle",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "promotion own-outcome cycle",
+              "RESULT": "REJECTED"
+            }
+          ],
+          "OUTCOME": "C_NEITHER_CURRENTLY_QUALIFIED",
+          "P120_POLICY_SHA256": "0405a4b19e4b2634f28a9463ef5f3238b3c904d251096427ac4b8ed776613cec",
+          "PHASE_COUNT": 36,
+          "PRIOR_PRESERVATION": "PASS",
+          "PROMOTION_QUALIFIED": false,
+          "READINESS": {
+            "DECISION_OPTIONS": [],
+            "DISPOSABLE_CONSTRUCTION_DECISION_READY": false,
+            "DISPOSABLE_CONSTRUCTION_ENTRY_READY": false,
+            "GOVERNANCE_CHANGE_REQUIRED": "NO",
+            "INERT_QUALIFICATION_DECISION_READY": false,
+            "INERT_QUALIFICATION_ENTRY_READY": false,
+            "POST_EXECUTION_QUALIFICATION_COMPLETE": false,
+            "PROMOTION_DECISION_READY": false,
+            "PROMOTION_ENTRY_READY": false,
+            "REAL_PROBE_DECISION_READY": false,
+            "REAL_PROBE_ENTRY_READY": false,
+            "SELECTED_ROUTE": "C_NEITHER_CURRENTLY_QUALIFIED"
+          },
+          "RESERVED_DEVELOPMENT_BYTES": 250068,
+          "RESOURCE_APPLICABILITY_COMPLETE": false,
+          "TRACE_SHA256": "77a7f900417ed43b062902757faf94d19ee3a330af9a03c3c36ef44ee3c03146"
+        },
+        "BASE_SEMANTIC_SHA256": "6159d76b69176c45a967fb6dce0b3e9e290d9284adaaa8c2ba97a87b561ba528",
+        "OPERATIONAL_QUALIFICATION": false,
+        "OVERALL_PACKAGE": "PARTIAL"
+      },
+      "SEMANTIC_SHA256": "1715bf12e269b62bc1d72ad1a6c28be739203aba121a6fdc890c723e7a9b399f"
+    },
+    {
+      "HASH_SEED": "1",
+      "RECONSTRUCTION": {
+        "ADDITIONAL_CONTRACT_COVERAGE": "PASS",
+        "ADDITIONAL_CONTRACT_IDENTITIES": {
+          "a-versus-b-comparison.json": "620932f84388379d4d5652d3978dca22f6238af981e1ea561d8d1864bbcfa9d1",
+          "authority-and-amendment-assessment.json": "f5065182dff674f8f877aacea3c0e1b79c88b032868019067abdd95c9282fcaf",
+          "candidate-handoff-contract.json": "3337b0f3ae081b15398456e1b867368c8880531e78bd066e03d9d177305943de",
+          "disposable-isolation-contract.json": "0dfc754ff76e984ff453e86653ff65071a473bbc18c53022788ed72ead83f5df",
+          "existing-isolation-promotion-mechanism-assessment.json": "7f8d35f1f3c2795b7d4ee4ccf5a06ab307159de6c7f40fce0f51664345aa21d4",
+          "independent-static-verifier-contract.json": "d1b7fd2bfdc78278036e18a2c3425b1bbaedc3505b0044f01e60b372c5c980cc",
+          "lessons-review.json": "5cc558ce59881d77f639ac2e8724ecdaffbf1fac2e42857bf527d0447e6ef25b",
+          "protected-evidence-contract.json": "9c87f8e1cc5a6e73f6c6b7da6944a531ed01fc6dda909dd9fd29e3a10b318845",
+          "remaining-gap-dossier.json": "43e202f2c2203f631c720e13f06936376c99d5754662a6da239e27e66d557b48",
+          "threat-and-failure-analysis.json": "7beb3c6ee7fdc77c32965c59a617895bdaba67b877710f6ef80ec6fe6495e244",
+          "two-file-promotion-contract.json": "36b6ef6540f14805eed07af01437c199ea4180578116a7bc381681524bf30721"
+        },
+        "BASE_RECONSTRUCTION": {
+          "COMMAND_SHA256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50",
+          "CONDITIONAL_DELTA": 125034,
+          "CONTROL_TRACE_SHA256": "7290e42d89554a25bae26e7ebbc3abe219a9da7f3b8bd2b5f0ba6ff432a35c5a",
+          "DECISION_OPTIONS": [],
+          "EXACT_SOURCE_PATHS": [
+            "adapter/qualification_bootstrap/systemd_pids_fixed_bridge.py",
+            "adapter/tests/test_systemd_pids_fixed_bridge.py"
+          ],
+          "FULL_SIZE_CONDITIONAL_CHARGE": 500136,
+          "GOVERNANCE_CHANGE_REQUIRED_FOR_NONWEAKENING_SPLIT": "NO",
+          "GRAPH_ACYCLIC": true,
+          "INPUT_PIN_SET_SHA256": "fad8ad7d7d664dbc33caef6a019e92dca04ac63ddc8137109a7919c7bcd0dde3",
+          "ISOLATION_QUALIFIED": false,
+          "NEGATIVES": [
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "forged source pins before candidate exists",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "missing scoped authority requirement",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "dossier treated as issued grant",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "workspace write access presented as isolation",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "unverified isolation receipt invented",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "symlink escape admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "hardlink alias admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "detection not admission",
+              "DESIGN": "post-write checks presented as admission",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "protected paths omitted",
+              "DESIGN": "protected path omitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "insufficient promotion principal qualified",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "forged promoter receipt",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "changed86command",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "source allowlist",
+              "DESIGN": "widened source allowlist",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing file fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing directory fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "partial two-file promotion treated as success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "both files without pair verification called success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "implicit retry",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "reused consumption",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unknown not pass",
+              "DESIGN": "unknown outcome pass",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "own future outcome required before authority",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "entry safety deferred",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "promotion copy silently exempted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "budget reset between phases",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete resource split complete",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete decision options supplied",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "development authority cycle",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "promotion own-outcome cycle",
+              "RESULT": "REJECTED"
+            }
+          ],
+          "OUTCOME": "C_NEITHER_CURRENTLY_QUALIFIED",
+          "P120_POLICY_SHA256": "0405a4b19e4b2634f28a9463ef5f3238b3c904d251096427ac4b8ed776613cec",
+          "PHASE_COUNT": 36,
+          "PRIOR_PRESERVATION": "PASS",
+          "PROMOTION_QUALIFIED": false,
+          "READINESS": {
+            "DECISION_OPTIONS": [],
+            "DISPOSABLE_CONSTRUCTION_DECISION_READY": false,
+            "DISPOSABLE_CONSTRUCTION_ENTRY_READY": false,
+            "GOVERNANCE_CHANGE_REQUIRED": "NO",
+            "INERT_QUALIFICATION_DECISION_READY": false,
+            "INERT_QUALIFICATION_ENTRY_READY": false,
+            "POST_EXECUTION_QUALIFICATION_COMPLETE": false,
+            "PROMOTION_DECISION_READY": false,
+            "PROMOTION_ENTRY_READY": false,
+            "REAL_PROBE_DECISION_READY": false,
+            "REAL_PROBE_ENTRY_READY": false,
+            "SELECTED_ROUTE": "C_NEITHER_CURRENTLY_QUALIFIED"
+          },
+          "RESERVED_DEVELOPMENT_BYTES": 250068,
+          "RESOURCE_APPLICABILITY_COMPLETE": false,
+          "TRACE_SHA256": "77a7f900417ed43b062902757faf94d19ee3a330af9a03c3c36ef44ee3c03146"
+        },
+        "BASE_SEMANTIC_SHA256": "6159d76b69176c45a967fb6dce0b3e9e290d9284adaaa8c2ba97a87b561ba528",
+        "OPERATIONAL_QUALIFICATION": false,
+        "OVERALL_PACKAGE": "PARTIAL"
+      },
+      "SEMANTIC_SHA256": "1715bf12e269b62bc1d72ad1a6c28be739203aba121a6fdc890c723e7a9b399f"
+    },
+    {
+      "HASH_SEED": "7",
+      "RECONSTRUCTION": {
+        "ADDITIONAL_CONTRACT_COVERAGE": "PASS",
+        "ADDITIONAL_CONTRACT_IDENTITIES": {
+          "a-versus-b-comparison.json": "620932f84388379d4d5652d3978dca22f6238af981e1ea561d8d1864bbcfa9d1",
+          "authority-and-amendment-assessment.json": "f5065182dff674f8f877aacea3c0e1b79c88b032868019067abdd95c9282fcaf",
+          "candidate-handoff-contract.json": "3337b0f3ae081b15398456e1b867368c8880531e78bd066e03d9d177305943de",
+          "disposable-isolation-contract.json": "0dfc754ff76e984ff453e86653ff65071a473bbc18c53022788ed72ead83f5df",
+          "existing-isolation-promotion-mechanism-assessment.json": "7f8d35f1f3c2795b7d4ee4ccf5a06ab307159de6c7f40fce0f51664345aa21d4",
+          "independent-static-verifier-contract.json": "d1b7fd2bfdc78278036e18a2c3425b1bbaedc3505b0044f01e60b372c5c980cc",
+          "lessons-review.json": "5cc558ce59881d77f639ac2e8724ecdaffbf1fac2e42857bf527d0447e6ef25b",
+          "protected-evidence-contract.json": "9c87f8e1cc5a6e73f6c6b7da6944a531ed01fc6dda909dd9fd29e3a10b318845",
+          "remaining-gap-dossier.json": "43e202f2c2203f631c720e13f06936376c99d5754662a6da239e27e66d557b48",
+          "threat-and-failure-analysis.json": "7beb3c6ee7fdc77c32965c59a617895bdaba67b877710f6ef80ec6fe6495e244",
+          "two-file-promotion-contract.json": "36b6ef6540f14805eed07af01437c199ea4180578116a7bc381681524bf30721"
+        },
+        "BASE_RECONSTRUCTION": {
+          "COMMAND_SHA256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50",
+          "CONDITIONAL_DELTA": 125034,
+          "CONTROL_TRACE_SHA256": "7290e42d89554a25bae26e7ebbc3abe219a9da7f3b8bd2b5f0ba6ff432a35c5a",
+          "DECISION_OPTIONS": [],
+          "EXACT_SOURCE_PATHS": [
+            "adapter/qualification_bootstrap/systemd_pids_fixed_bridge.py",
+            "adapter/tests/test_systemd_pids_fixed_bridge.py"
+          ],
+          "FULL_SIZE_CONDITIONAL_CHARGE": 500136,
+          "GOVERNANCE_CHANGE_REQUIRED_FOR_NONWEAKENING_SPLIT": "NO",
+          "GRAPH_ACYCLIC": true,
+          "INPUT_PIN_SET_SHA256": "fad8ad7d7d664dbc33caef6a019e92dca04ac63ddc8137109a7919c7bcd0dde3",
+          "ISOLATION_QUALIFIED": false,
+          "NEGATIVES": [
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "forged source pins before candidate exists",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "missing scoped authority requirement",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "dossier treated as issued grant",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "workspace write access presented as isolation",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "unverified isolation receipt invented",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "symlink escape admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "hardlink alias admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "detection not admission",
+              "DESIGN": "post-write checks presented as admission",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "protected paths omitted",
+              "DESIGN": "protected path omitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "insufficient promotion principal qualified",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "forged promoter receipt",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "changed86command",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "source allowlist",
+              "DESIGN": "widened source allowlist",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing file fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing directory fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "partial two-file promotion treated as success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "both files without pair verification called success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "implicit retry",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "reused consumption",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unknown not pass",
+              "DESIGN": "unknown outcome pass",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "own future outcome required before authority",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "entry safety deferred",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "promotion copy silently exempted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "budget reset between phases",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete resource split complete",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete decision options supplied",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "development authority cycle",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "promotion own-outcome cycle",
+              "RESULT": "REJECTED"
+            }
+          ],
+          "OUTCOME": "C_NEITHER_CURRENTLY_QUALIFIED",
+          "P120_POLICY_SHA256": "0405a4b19e4b2634f28a9463ef5f3238b3c904d251096427ac4b8ed776613cec",
+          "PHASE_COUNT": 36,
+          "PRIOR_PRESERVATION": "PASS",
+          "PROMOTION_QUALIFIED": false,
+          "READINESS": {
+            "DECISION_OPTIONS": [],
+            "DISPOSABLE_CONSTRUCTION_DECISION_READY": false,
+            "DISPOSABLE_CONSTRUCTION_ENTRY_READY": false,
+            "GOVERNANCE_CHANGE_REQUIRED": "NO",
+            "INERT_QUALIFICATION_DECISION_READY": false,
+            "INERT_QUALIFICATION_ENTRY_READY": false,
+            "POST_EXECUTION_QUALIFICATION_COMPLETE": false,
+            "PROMOTION_DECISION_READY": false,
+            "PROMOTION_ENTRY_READY": false,
+            "REAL_PROBE_DECISION_READY": false,
+            "REAL_PROBE_ENTRY_READY": false,
+            "SELECTED_ROUTE": "C_NEITHER_CURRENTLY_QUALIFIED"
+          },
+          "RESERVED_DEVELOPMENT_BYTES": 250068,
+          "RESOURCE_APPLICABILITY_COMPLETE": false,
+          "TRACE_SHA256": "77a7f900417ed43b062902757faf94d19ee3a330af9a03c3c36ef44ee3c03146"
+        },
+        "BASE_SEMANTIC_SHA256": "6159d76b69176c45a967fb6dce0b3e9e290d9284adaaa8c2ba97a87b561ba528",
+        "OPERATIONAL_QUALIFICATION": false,
+        "OVERALL_PACKAGE": "PARTIAL"
+      },
+      "SEMANTIC_SHA256": "1715bf12e269b62bc1d72ad1a6c28be739203aba121a6fdc890c723e7a9b399f"
+    },
+    {
+      "HASH_SEED": "101",
+      "RECONSTRUCTION": {
+        "ADDITIONAL_CONTRACT_COVERAGE": "PASS",
+        "ADDITIONAL_CONTRACT_IDENTITIES": {
+          "a-versus-b-comparison.json": "620932f84388379d4d5652d3978dca22f6238af981e1ea561d8d1864bbcfa9d1",
+          "authority-and-amendment-assessment.json": "f5065182dff674f8f877aacea3c0e1b79c88b032868019067abdd95c9282fcaf",
+          "candidate-handoff-contract.json": "3337b0f3ae081b15398456e1b867368c8880531e78bd066e03d9d177305943de",
+          "disposable-isolation-contract.json": "0dfc754ff76e984ff453e86653ff65071a473bbc18c53022788ed72ead83f5df",
+          "existing-isolation-promotion-mechanism-assessment.json": "7f8d35f1f3c2795b7d4ee4ccf5a06ab307159de6c7f40fce0f51664345aa21d4",
+          "independent-static-verifier-contract.json": "d1b7fd2bfdc78278036e18a2c3425b1bbaedc3505b0044f01e60b372c5c980cc",
+          "lessons-review.json": "5cc558ce59881d77f639ac2e8724ecdaffbf1fac2e42857bf527d0447e6ef25b",
+          "protected-evidence-contract.json": "9c87f8e1cc5a6e73f6c6b7da6944a531ed01fc6dda909dd9fd29e3a10b318845",
+          "remaining-gap-dossier.json": "43e202f2c2203f631c720e13f06936376c99d5754662a6da239e27e66d557b48",
+          "threat-and-failure-analysis.json": "7beb3c6ee7fdc77c32965c59a617895bdaba67b877710f6ef80ec6fe6495e244",
+          "two-file-promotion-contract.json": "36b6ef6540f14805eed07af01437c199ea4180578116a7bc381681524bf30721"
+        },
+        "BASE_RECONSTRUCTION": {
+          "COMMAND_SHA256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50",
+          "CONDITIONAL_DELTA": 125034,
+          "CONTROL_TRACE_SHA256": "7290e42d89554a25bae26e7ebbc3abe219a9da7f3b8bd2b5f0ba6ff432a35c5a",
+          "DECISION_OPTIONS": [],
+          "EXACT_SOURCE_PATHS": [
+            "adapter/qualification_bootstrap/systemd_pids_fixed_bridge.py",
+            "adapter/tests/test_systemd_pids_fixed_bridge.py"
+          ],
+          "FULL_SIZE_CONDITIONAL_CHARGE": 500136,
+          "GOVERNANCE_CHANGE_REQUIRED_FOR_NONWEAKENING_SPLIT": "NO",
+          "GRAPH_ACYCLIC": true,
+          "INPUT_PIN_SET_SHA256": "fad8ad7d7d664dbc33caef6a019e92dca04ac63ddc8137109a7919c7bcd0dde3",
+          "ISOLATION_QUALIFIED": false,
+          "NEGATIVES": [
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "forged source pins before candidate exists",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "missing scoped authority requirement",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no absent/inferred authority",
+              "DESIGN": "dossier treated as issued grant",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "workspace write access presented as isolation",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "workspace permission not qualified isolation",
+              "DESIGN": "unverified isolation receipt invented",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "symlink escape admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "link escape policy",
+              "DESIGN": "hardlink alias admitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "detection not admission",
+              "DESIGN": "post-write checks presented as admission",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "protected paths omitted",
+              "DESIGN": "protected path omitted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "unbounded memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary CPU",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "finite retained proposed resource values",
+              "DESIGN": "arbitrary memory",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "insufficient promotion principal qualified",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unqualified principal",
+              "DESIGN": "forged promoter receipt",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no forged command/source pins",
+              "DESIGN": "changed86command",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "source allowlist",
+              "DESIGN": "widened source allowlist",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing file fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "durability barriers",
+              "DESIGN": "missing directory fsync",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "partial two-file promotion treated as success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "partial or unverified pair not success",
+              "DESIGN": "both files without pair verification called success",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "implicit retry",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "consumed no retry/reuse",
+              "DESIGN": "reused consumption",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "unknown not pass",
+              "DESIGN": "unknown outcome pass",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "own future outcome required before authority",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "earliest entry safety/own-result distinction",
+              "DESIGN": "entry safety deferred",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "promotion copy silently exempted",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "no copy exemption/reset",
+              "DESIGN": "budget reset between phases",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete resource split complete",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "incomplete subject not selectable",
+              "DESIGN": "incomplete decision options supplied",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "development authority cycle",
+              "RESULT": "REJECTED"
+            },
+            {
+              "CAUSE": "dependency cycle",
+              "DESIGN": "promotion own-outcome cycle",
+              "RESULT": "REJECTED"
+            }
+          ],
+          "OUTCOME": "C_NEITHER_CURRENTLY_QUALIFIED",
+          "P120_POLICY_SHA256": "0405a4b19e4b2634f28a9463ef5f3238b3c904d251096427ac4b8ed776613cec",
+          "PHASE_COUNT": 36,
+          "PRIOR_PRESERVATION": "PASS",
+          "PROMOTION_QUALIFIED": false,
+          "READINESS": {
+            "DECISION_OPTIONS": [],
+            "DISPOSABLE_CONSTRUCTION_DECISION_READY": false,
+            "DISPOSABLE_CONSTRUCTION_ENTRY_READY": false,
+            "GOVERNANCE_CHANGE_REQUIRED": "NO",
+            "INERT_QUALIFICATION_DECISION_READY": false,
+            "INERT_QUALIFICATION_ENTRY_READY": false,
+            "POST_EXECUTION_QUALIFICATION_COMPLETE": false,
+            "PROMOTION_DECISION_READY": false,
+            "PROMOTION_ENTRY_READY": false,
+            "REAL_PROBE_DECISION_READY": false,
+            "REAL_PROBE_ENTRY_READY": false,
+            "SELECTED_ROUTE": "C_NEITHER_CURRENTLY_QUALIFIED"
+          },
+          "RESERVED_DEVELOPMENT_BYTES": 250068,
+          "RESOURCE_APPLICABILITY_COMPLETE": false,
+          "TRACE_SHA256": "77a7f900417ed43b062902757faf94d19ee3a330af9a03c3c36ef44ee3c03146"
+        },
+        "BASE_SEMANTIC_SHA256": "6159d76b69176c45a967fb6dce0b3e9e290d9284adaaa8c2ba97a87b561ba528",
+        "OPERATIONAL_QUALIFICATION": false,
+        "OVERALL_PACKAGE": "PARTIAL"
+      },
+      "SEMANTIC_SHA256": "1715bf12e269b62bc1d72ad1a6c28be739203aba121a6fdc890c723e7a9b399f"
+    }
+  ],
+  "INITIAL_ROUND": "four-seed-results.json",
+  "RESULT": "PASS"
+}

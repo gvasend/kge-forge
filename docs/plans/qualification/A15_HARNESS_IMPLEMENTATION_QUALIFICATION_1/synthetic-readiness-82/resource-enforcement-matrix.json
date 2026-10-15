@@ -1,0 +1,122 @@
+{
+  "ACTUAL_APPROVED_LIMITS": {
+    "CHILD_AS": 1073741824,
+    "CHILD_CPU": 30,
+    "CHILD_FDS": 64,
+    "CHILD_FSIZE": 16777216,
+    "CHILD_WALL": 60,
+    "MAX_ACTUAL_PROCESS_SLOTS": 4,
+    "MAX_PAYLOAD_LAUNCHES": 128,
+    "RETRIES": 0,
+    "TOTAL_WALL": 600,
+    "TOTAL_WRITES": 67108864
+  },
+  "CONTROLS": [
+    {
+      "CONTROL_ID": "CHILD_AS",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Hard/soft RLIMIT_AS1GiB, verified inheritance",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 1073741824,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "CHILD_CPU",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Hard/soft RLIMIT_CPU30 on all authorized children, verified inheritance",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 30,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "CHILD_FDS",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Hard/soft RLIMIT_NOFILE64, verified descriptor behavior",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 64,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "CHILD_FSIZE",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Hard/soft RLIMIT_FSIZE16MiB, verified inheritance and aggregate scope",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 16777216,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "CHILD_WALL",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Independent supervisor deadline and owned process-group termination/reaping",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 60,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "MAX_ACTUAL_PROCESS_SLOTS",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Qualified inclusive descendant accounting/admission and OS or equivalent independently proven fixed process-tree control",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 4,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "MAX_PAYLOAD_LAUNCHES",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Supervisor-owned durable launch count, including test interpreters, claimants, trackers and confinement helpers as applicable",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 128,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "RETRIES",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "No automatic retries; only distinct presealed deliberate negative cases continue",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 0,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "TOTAL_WALL",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Supervisor absolute monotonic campaign deadline600s, no reset on seeds/restarts",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 600,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    },
+    {
+      "CONTROL_ID": "TOTAL_WRITES",
+      "CURRENT_HOST_EVIDENCE": "Supplied direct namespace launch and cgroupv1 observation; no corresponding control qualified",
+      "ENFORCEMENT_MECHANISM": "Cumulative64MiB accounting including overwritten bytes, fixtures/audit/results/stdout; final file size alone insufficient",
+      "FAILURE_BEHAVIOR": "Stop on first unexpected limit/permission/control failure, preserve evidence, no retry",
+      "LIMIT": 67108864,
+      "REQUIRED_PERMISSION": "Actual owned process/filesystem control; applicable cgroupv1 delegation if used, never charter-inferred",
+      "STATUS": "PROPOSED_LIMIT_NOT_QUALIFIED_ENFORCEMENT",
+      "TEST_ENTRY_PREDICATE": "Independent actual-host capability/control proof plus fresh exact controller seal; unknown denies affected phase"
+    }
+  ],
+  "LIMIT_SOURCE_PIN": {
+    "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+    "RAW_SHA256": "ae570d1915a4fe028fb6c3781302370c9b0020e0f071ff6331085267e0980fcf"
+  },
+  "RESOURCE_ENFORCEMENT_VERIFIED": false,
+  "SLOT_WARNING": "Test interpreter, multiprocessing resource tracker, two simultaneous claimants and any timeout/Bubblewrap monitors must all be counted. Do not assume a composed launch fits four slots."
+}

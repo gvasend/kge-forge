@@ -1,0 +1,30 @@
+{
+  "ALIAS_POLICY": "No writable protected regular, directory, socket or duplicated alias at any allowed FD; number alone is not safety",
+  "ALLOWLIST_SPECIFIED": true,
+  "FD0": {
+    "DESTINATION": "stdin, never protected regular/directory/socket backing",
+    "DIRECTION": "read",
+    "MODE": "O_RDONLY; fstat device/type must be independently verified",
+    "OWNER": "existing nonprivileged caller",
+    "TYPE": "read-only character /dev/null"
+  },
+  "FD1": {
+    "DESTINATION": "separate passive-check stdout allocation",
+    "DIRECTION": "write to independently bounded outside collector",
+    "MODE": "write-only; no host file/socket/dir alias",
+    "OWNER": "qualified outside collector same authorized nonprivileged context",
+    "TYPE": "anonymous pipe write end"
+  },
+  "FD2": {
+    "DESTINATION": "same combined capture allocation with parent exit tag charged",
+    "DIRECTION": "write to independently bounded outside collector",
+    "MODE": "write-only; no protected backing",
+    "OWNER": "qualified outside collector",
+    "TYPE": "distinct anonymous pipe write end"
+  },
+  "OTHER_FDS": "All >=3 closed before requested prlimit exec; internal exec-error pipe must be CLOEXEC and not persist into target",
+  "PASS_FDS": [],
+  "PRE_ENTRY_CLOSURE_VERIFIED": false,
+  "RACE_POLICY": "Caller owns fixed pipe endpoints through fork/exec, no concurrent close/dup2/reopen mutation; no reliance only on pre-fork enumeration or non-atomic CLOEXEC setting",
+  "STANDARD_ENDPOINT_IDENTITIES_VERIFIED": false
+}

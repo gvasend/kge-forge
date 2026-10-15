@@ -1,0 +1,2057 @@
+{
+  "A14_EXECUTED": "NO",
+  "A14_RUNTIME_PERSISTENCE_EXECUTION_READY": "NO",
+  "ALLOWED_EFFECTS": {
+    "ALLOWED_EFFECTS": [
+      "Exactly two row-owned native content-addressed bundle files",
+      "Exactly two row-owned persisted handoff metadata files",
+      "Native required parent store directories and transient .planner-* files, cleaned under existing immutable writer contract",
+      "Bounded qualification evidence/log records for guards/PIDs/exit/output comparisons and mandatory post-audit; no native facts/receipts/events"
+    ],
+    "DURABILITY": "File fsync-before-link for new publication and normal process visibility only; no directory fsync/HEAD/general crash durability",
+    "EVIDENCE_DIRECTORY_CREATED_NOW": false,
+    "EXACT_HANDOFF_FILES": [
+      "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+      "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json"
+    ],
+    "EXACT_NATIVE_FILES": [
+      "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+      "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json"
+    ],
+    "PROHIBITED_EFFECTS": [
+      "HEAD mutation",
+      "Planner lifecycle/Action/A14/D01/P05/P06 execution",
+      "new event/genesis/authority/INSTALL",
+      "policy or source or E1 mutation/import",
+      "foreign target or altered bundle",
+      "directory-fsync/power-loss/general crash claims",
+      "warm reader/object/descriptor transfer",
+      "reexecution substituted for zero-event replay",
+      "all-128 output oracle creation or END binding"
+    ],
+    "QUALIFICATION_EVIDENCE_DIRECTORY": "/home/gvasend/app/kge-forge/docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_QUALIFICATION_31",
+    "SAVES_PERFORMED_NOW": 0
+  },
+  "ARTIFACTS": {
+    "allowed-prohibited-effects.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/allowed-prohibited-effects.json",
+      "raw_sha256": "1c2c8e9d3289e8574591a44b90efa13a3daf3559d433e52e1f3d0e583fd56971"
+    },
+    "authority-audit.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/authority-audit.json",
+      "raw_sha256": "0243432b1fde22cf272ca2015e65e9f7069c01dc712eaf24607ed6e61982a3a4"
+    },
+    "bounded-execution-decision-dossier.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/bounded-execution-decision-dossier.json",
+      "raw_sha256": "25838d74f9cce459f90516c94c5672db7a9298dc0c7049e40e1c17dde2b98a99"
+    },
+    "bounded-execution-decision-subject.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/bounded-execution-decision-subject.json",
+      "raw_sha256": "ee579ab7bc581230677a98a8a011c4dd6c6b563cf09c2b0c3f4426fd7368c8ce"
+    },
+    "determinism.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/determinism.json",
+      "raw_sha256": "8126d36e8e59b4e09815590f215de67d8e5a676a9bdcb2fb6d54c57e65e98f1d"
+    },
+    "execution-input-manifest.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/execution-input-manifest.json",
+      "raw_sha256": "aae8eaf3f7ab680da8b7ef76e0cc982e550f9b0d0aa9eb4a3720ec11d97fbafe"
+    },
+    "execution-readiness.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/execution-readiness.json",
+      "raw_sha256": "5854c7ce4bc1c372cdebeda602264fd7fc49cd141c5452a6097f7fa89476bc92"
+    },
+    "expected-success-evidence.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/expected-success-evidence.json",
+      "raw_sha256": "a3b4e3ccfa156003e96fb1cb6d40e644bdc6e1b4b19c4c0c70f0ccdcaa3ee48f"
+    },
+    "failure-contract.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/failure-contract.json",
+      "raw_sha256": "b896db81cba1ed993c511db1fd1d10e4e6a392fd2c7d2329dbe861dabe288fc8"
+    },
+    "negative-suite.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/negative-suite.json",
+      "raw_sha256": "60d704a3546097991c6a7c2cc566c807e82770119ab58435e9ab5232e58b0e00"
+    },
+    "negatives.py": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/negatives.py",
+      "raw_sha256": "1ee8d95c239822abfb960c5078e7d77b0aedb821c467d47d020ce19a504558af"
+    },
+    "post-execution-audit-contract.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/post-execution-audit-contract.json",
+      "raw_sha256": "aff5226a69a040e14f6b2e8beab19be1f501db7ab2ae9bd1f866bec8096f9ba1"
+    },
+    "preservation.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/preservation.json",
+      "raw_sha256": "0b914c2c10a7a2c30f94df5e7b420130ac06c9f0918449cfb7d2a73559130d4a"
+    },
+    "process-isolation.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/process-isolation.json",
+      "raw_sha256": "65017988fa0386edc09288b9bae60351e07171a77ff9b8be955498f4407f0d2c"
+    },
+    "prospective-operand-impact.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/prospective-operand-impact.json",
+      "raw_sha256": "7bfdbc0787efc8403388c183eac313befd54d9216207093c0fe452bc95bdf798"
+    },
+    "report.py": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/report.py",
+      "raw_sha256": "cbafedd58b1bae426e8771d9a982e5cff8bb350f958d377dc6dcc7121c91c6cc"
+    },
+    "retry-contract.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/retry-contract.json",
+      "raw_sha256": "a854e93f83aa85ede12d87da314b67f0721fe8e435b09b914dbcff84ea236652"
+    },
+    "runtime-guards.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/runtime-guards.json",
+      "raw_sha256": "4b60f10e0472492998a173c9456f8712c55a271c036a688bd14cb8193a1e1515"
+    },
+    "runtime-sequence.json": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/runtime-sequence.json",
+      "raw_sha256": "8952a6ab0cd9ae83a6de56f0ff54756a9a9cbe0442e812c71799eaf420be4c9b"
+    },
+    "seal.py": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/seal.py",
+      "raw_sha256": "27b1dcd27881a90fdf96602afc583fbb51f8a63f979eaee59bf57ac970d77fe0"
+    },
+    "verify.py": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/verify.py",
+      "raw_sha256": "cc6db9bbd6938cf2afeab54c0eb3806ad466e47ef9b35ff50b2d820c4302d076"
+    }
+  },
+  "AUTHORITY_AUDIT": {
+    "AUTHORITY_SCOPE": "Bounded two-row prospective zero-event persistence/save/independent-reader sequence only; not full A14/D01 qualification or P05 execution",
+    "DECISION_REQUIRED": true,
+    "EXISTING_AUTHORITY_COVERS_SEQUENCE": false,
+    "ROWS": [
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "provenance_fixture",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_PROSPECTIVE_A14_PROVENANCE_FIXTURE_CORRECTION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/scope-authentication.json",
+          "raw_sha256": "6518fc03dd494b9a5464d5fba3157cac5726b2ea40dbb6426c7ab2e9b858156a"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "decision_source",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_DECIDE_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_DECIDE_MATERIALIZATION_9/scope-authentication.json",
+          "raw_sha256": "a1b4019c5c554729ed5435bf71720035dd41289eed1228fbf3ffcce8379e4af7"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "source_json",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_SOURCE_JSON_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SOURCE_JSON_MATERIALIZATION_11/scope-authentication.json",
+          "raw_sha256": "fb96ec42260494db5658ef3c154fc239fc77cb50bdc9f756b85c6548491fc6ce"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "check_source",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_CHECK_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_CHECK_MATERIALIZATION_13/scope-authentication.json",
+          "raw_sha256": "fa7468d81488ea34240ed32378077845e0c33f3322cbe61b1bc029ce70e93ecc"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "collect_source",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_COLLECT_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_COLLECT_MATERIALIZATION_15/scope-authentication.json",
+          "raw_sha256": "65775a27aeb7b0068adf6a232acaedeed9a4ca04ff6bc6ce5a16df1ec36b5cee"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "finish_source",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_FINISH_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_FINISH_MATERIALIZATION_17/scope-authentication.json",
+          "raw_sha256": "a0220626518c4af245d72abc13034acbaea9ac5f5ba5a0af865c8d182133902a"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "prepare_source",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_PREPARE_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_PREPARE_MATERIALIZATION_19/scope-authentication.json",
+          "raw_sha256": "b5627c1f0e9ddb98f03996c2d173826ea66ff72e50b15503695bc8b85023e315"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "resolution_source",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_RESOLUTION_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_RESOLUTION_MATERIALIZATION_21/scope-authentication.json",
+          "raw_sha256": "e46a103c0100a31baa341667d0ed3681dba6dbad2000d1b446170b771b12c525"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "history_frame",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_PROSPECTIVE_A14_CHECKPOINT_HISTORY_FRAME",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_CHECKPOINT_HISTORY_FRAME_24/scope-authentication.json",
+          "raw_sha256": "43643246d4dbdc99e21c1865b0ba1677fee909e98526ff89bdfd06d839672d9f"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "P06_policy",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_POLICY_BINDING_E1_SELECTION_1_P06",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/scope-authentication.json",
+          "raw_sha256": "b43561133ad70525ea80d21b7557e9fa186cfa49832b5b1935e90aefc5858cab"
+        }
+      },
+      {
+        "REASON": "Exact fixture/source/history/policy/acceptance scope only; current saved reader/writer execution is excluded or not granted",
+        "RUNTIME_PERSISTENCE_EXPLICITLY_AUTHORIZED": false,
+        "SCOPE_CLASS": "composite_END",
+        "SELECTED_OPTION": "AUTHORIZE_COMPOSITE_P05_END_QUALIFICATION_MAPPING",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_COMPOSITE_END_QUALIFICATION_1/scope-authentication.json",
+          "raw_sha256": "5c6d52b9dc06ac524584195318c5d435d33c2be6534a86b9053def4731ed0024"
+        }
+      }
+    ],
+    "RUNTIME_PERSISTENCE_AUTHORITY_REQUIRED": true
+  },
+  "BUNDLE_ID": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-bundle-v1",
+    "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+  },
+  "COLD_READERS_EXECUTED": 0,
+  "CURRENT_OPERANDS": "58/53",
+  "D01_CASES_EXECUTED": 0,
+  "DECISION_DOSSIER": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/bounded-execution-decision-dossier.json",
+    "raw_sha256": "25838d74f9cce459f90516c94c5672db7a9298dc0c7049e40e1c17dde2b98a99"
+  },
+  "DECISION_OPTIONS": [
+    "AUTHORIZE_BOUNDED_A14_RUNTIME_PERSISTENCE_QUALIFICATION",
+    "DECLINE_A14_RUNTIME_PERSISTENCE_QUALIFICATION"
+  ],
+  "DECISION_READY": "YES",
+  "DECISION_REQUIRED": "YES",
+  "DECISION_SELECTED": "NO",
+  "DECISION_SUBJECT_IDENTITY": "qualification-A14-runtime-persistence-decision-v1:924439185024f3cc55d723225766492bb4478522494f389c99923aef78eecc97",
+  "DETERMINISM": {
+    "SEEDS": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "STATUS": "PASS_STATIC_SEQUENCE_GUARDS_IDENTITIES_EVIDENCE_AND_AUTHORITY_SUBJECT"
+  },
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "END_INTERFACES_BOUND": "4/6",
+  "EXECUTION_READINESS_GAP": "Required exact runtime sequence authority not selected; all specified runtime guards remain unmet",
+  "EXPECTED_BYTES": 153602,
+  "EXPECTED_HASH": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+  "EXPECTED_SUCCESS_EVIDENCE": {
+    "EXPECTED_GUARDS_AT_SUCCESS": [
+      "G1_SAVE_RETURN",
+      "G2_PUBLICATION_VERIFIED",
+      "G3_PERSISTED_HANDOFF",
+      "G4_WRITER_EXIT_OBSERVED",
+      "G5_READER_STARTED_FRESH",
+      "G6_RESTORE_VALIDATED",
+      "G7_REPLAY_VALIDATED"
+    ],
+    "EXPECTED_RESTORED_IDENTITIES": {
+      "BUNDLE_ID": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+      },
+      "EVENT_COUNT": 0,
+      "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+      "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+      "ORACLE_SOURCE": "Pre-existing independently qualified Closure26 native candidate and selected bindings, not future reader output",
+      "POLICY_BINDING_IDENTITY": "qualification-A14-P06-policy-binding-v1:02bb344a95f2c61a3ad8ed6ade4b11c0a29bf9672f35ce845ae70aa32b8d836e",
+      "POLICY_PIN": {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+        },
+        "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      "POLICY_VERSION": "E1-SELECTION-1-P06",
+      "REPLAY_SCOPE_IDENTITY": "qualification-A14-replay-scope-v1:9a46e75e7fa26ce57ebb6c41cbc50495b1556566e8da526eb36f43fc47be445b",
+      "SNAPSHOT_ID": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      },
+      "SOURCE_PINS": [
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+          },
+          "path": "E2-DECIDE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "path": "E2-PREPARE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "path": "E2-COLLECT.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "path": "E2-CHECK.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+          },
+          "path": "resolution.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+          },
+          "path": "E2-FINISH.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "path": "source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      ]
+    },
+    "FULL_D01_OUTPUT_VALUES_NOT_CONSTRUCTED": true,
+    "REQUIRED_RECORDS": [
+      "Save-return record with row target/native identity and actual success provenance",
+      "Publication-verification record with actual file length/hash/nonalias native identity",
+      "Persisted handoff path and actual canonical hash/content",
+      "Supervisor writer-exit PID/wait/returncode evidence",
+      "Reader PID/start model/environment/hash-seed evidence",
+      "Native restore status or exact native/wrapper failure",
+      "Zero-event replay boundary/policy/scope result",
+      "Complete independent bundle/Snapshot/frame/policy/scope/source identity comparisons",
+      "Reader process exit observation plus semantic-success decision; exit code alone insufficient"
+    ],
+    "RUNTIME_RECORDS_CREATED_NOW": false,
+    "SCHEMA_SOURCES": [
+      {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_WRITER_HANDOFF_CLOSURE_28/two-targets-and-guarded-handoff.json",
+        "raw_sha256": "e5cb94a97c85b3266976105a9e2a2cd45b6af1956c48f5db39c4e24e033d965b"
+      },
+      {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_COLD_READER_BINDING_CLOSURE_29/reader-output-and-success-contract.json",
+        "raw_sha256": "687f37263201ed873f04f06a4005a1037b2be052ec75eca36981bda82364b5ba"
+      },
+      {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_COLD_READER_BINDING_CLOSURE_29/supervisor-evidence-input-schema.json",
+        "raw_sha256": "7af46baab1202beef2343d1f82e0a826074897b2e076c35942a6591b506c9702"
+      }
+    ]
+  },
+  "FIRST_REMAINING_BLOCKER": "RUNTIME_PERSISTENCE_AUTHORIZATION",
+  "FULL_OUTPUT_ORACLES": "0/128",
+  "GIT_DIFF_CHECK": "PASS",
+  "GUARANTEED_NEW_OPERAND_RESOLUTIONS": 0,
+  "NEGATIVE_SUITE": {
+    "COUNT": 20,
+    "MODE": "In-memory plan/authority validation only; runtime guards remain unsatisfied",
+    "STATUS": "PASS_STATIC_RUNTIME_CONTRACT_GUARDS"
+  },
+  "P05_EXECUTION_READY": "NO",
+  "POST_SEQUENCE_FRONTIER_AUDIT": {
+    "NO_111_OF_111_ASSUMED": true,
+    "NO_END_QUALIFICATION_OR_D01_AGGREGATE_PASS": true,
+    "REQUIRED_ORDER": [
+      "Validate all actual save/handoff/process/reader evidence against exact input manifest and independent identity oracle",
+      "Re-run native read-only persisted bundle/source/policy/restore validation within authorized sequence; preserve failure boundaries",
+      "Re-audit all 111 references, preserving original 58 static bindings and distinguishing runtime guards from operands",
+      "Re-evaluate A16/N02 dependency boundaries only where exact restored input and independent descriptor rules suffice",
+      "Identify exact first remaining operand blocker; no automatic promotion or mutation construction",
+      "Run complete 128-row static invocation preflight only if unresolved count reaches zero; keep output oracles 0/128 otherwise"
+    ]
+  },
+  "POTENTIALLY_RESOLVED_BY_RUNTIME_SEQUENCE": [
+    {
+      "GUARANTEED_RESOLVED_BY_SUCCESS": false,
+      "POTENTIAL_EFFECT": "Verified actual restored A14 baseline may supply the exact route/parent boundary needed for the A16 invalidation descriptor. Only post-execution independent audit can close it; descriptor derivation is not assumed or performed.",
+      "REFERENCE": {
+        "CAPSULE_ID": "D01-FIXTURE:E2-A16:CANONICAL_REQUIRED_BEHAVIOR",
+        "CASE_ID": "E2-A16",
+        "CURRENTNESS": "NOT_ESTABLISHED",
+        "CURRENT_GAP": "EXACT_INVALIDATION_TARGET_SOURCE_IDENTITY_NOT_SEALED; baseline alone does not establish role",
+        "DEPENDENT_BOUNDARY": "D01_A14_GOVERNED_UNKNOWN_BEFORE_AND_AFTER_COLD_RESTORE",
+        "DISPATCH_ID": "D01-DISPATCH:E2-A16_OPERANDS",
+        "EXACT_ROOT_CAUSE": "EXACT_INVALIDATION_TARGET_SOURCE_IDENTITY_NOT_SEALED; baseline alone does not establish role",
+        "EXPECTED_IDENTITY_DOMAIN": "SourceInvalidation native model domain",
+        "EXPECTED_TYPE": "SourceInvalidation",
+        "INITIAL_GAP": "fixture_field absent from sealed capsule arguments",
+        "LINEAGE": "E2-CANONICAL-BASELINE-1",
+        "OBLIGATION_ID": "D01-OBL:E2-A16_OPERANDS",
+        "OPERAND_NAME": "event",
+        "PRIMARY_CAUSE": "A14_BOUNDARY",
+        "PROVENANCE": [
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+            "pointer": "",
+            "raw_sha256": "87dbd8ce65e1758b3dc89c82020e834c57648a8a08a03d367328417cc485de6e"
+          }
+        ],
+        "REQUIRED_BY_ENTRYPOINT": "adapter.planner.core.apply_event",
+        "REQUIREMENT": "REQUIRED_EXPLICIT",
+        "SCOPE": "E2-QUALIFICATION-ONLY",
+        "SEMANTIC_ROLE": "INVALIDATION",
+        "SOURCE_ARTIFACT": null,
+        "SOURCE_IDENTITY": null,
+        "SOURCE_TYPE": null,
+        "STATE_VARIANT_ID": "D01-VARIANT:E2-A16:CANONICAL_REQUIRED_BEHAVIOR",
+        "STATUS": "UNRESOLVED",
+        "STEP": 0
+      }
+    },
+    {
+      "GUARANTEED_RESOLVED_BY_SUCCESS": false,
+      "POTENTIAL_EFFECT": "Verified actual restored A14 baseline may supply the exact route/parent boundary needed for the A16 invalidation descriptor. Only post-execution independent audit can close it; descriptor derivation is not assumed or performed.",
+      "REFERENCE": {
+        "CAPSULE_ID": "D01-FIXTURE:E2-A16:CANONICAL_REQUIRED_BEHAVIOR",
+        "CASE_ID": "E2-A16",
+        "CURRENTNESS": "NOT_ESTABLISHED",
+        "CURRENT_GAP": "EXACT_INVALIDATION_TARGET_SOURCE_IDENTITY_NOT_SEALED; baseline alone does not establish role",
+        "DEPENDENT_BOUNDARY": "D01_A14_GOVERNED_UNKNOWN_BEFORE_AND_AFTER_COLD_RESTORE",
+        "DISPATCH_ID": "D01-DISPATCH:E2-A16_ORACLE",
+        "EXACT_ROOT_CAUSE": "EXACT_INVALIDATION_TARGET_SOURCE_IDENTITY_NOT_SEALED; baseline alone does not establish role",
+        "EXPECTED_IDENTITY_DOMAIN": "SourceInvalidation native model domain",
+        "EXPECTED_TYPE": "SourceInvalidation",
+        "INITIAL_GAP": "fixture_field absent from sealed capsule arguments",
+        "LINEAGE": "E2-CANONICAL-BASELINE-1",
+        "OBLIGATION_ID": "D01-OBL:E2-A16_ORACLE",
+        "OPERAND_NAME": "event",
+        "PRIMARY_CAUSE": "A14_BOUNDARY",
+        "PROVENANCE": [
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+            "pointer": "",
+            "raw_sha256": "87dbd8ce65e1758b3dc89c82020e834c57648a8a08a03d367328417cc485de6e"
+          }
+        ],
+        "REQUIRED_BY_ENTRYPOINT": "adapter.planner.core.apply_event",
+        "REQUIREMENT": "REQUIRED_EXPLICIT",
+        "SCOPE": "E2-QUALIFICATION-ONLY",
+        "SEMANTIC_ROLE": "INVALIDATION",
+        "SOURCE_ARTIFACT": null,
+        "SOURCE_IDENTITY": null,
+        "SOURCE_TYPE": null,
+        "STATE_VARIANT_ID": "D01-VARIANT:E2-A16:CANONICAL_REQUIRED_BEHAVIOR",
+        "STATUS": "UNRESOLVED",
+        "STEP": 0
+      }
+    }
+  ],
+  "PRESERVATION": {
+    "A14_EXECUTED": "NO",
+    "CHANGED_FILES": [],
+    "COLD_READERS_EXECUTED": 0,
+    "CURRENT_OPERANDS": "58/53",
+    "D01_CASES_EXECUTED": 0,
+    "DIRECTORY_FSYNC_CLAIMED": "NO",
+    "E1_ARTIFACTS_MODIFIED": 0,
+    "E1_IMPORTED": "NO",
+    "END_INTERFACES_BOUND": "4/6",
+    "EVENT_COUNT": 0,
+    "FULL_OUTPUT_ORACLES": "0/128",
+    "GENERAL_CRASH_DURABILITY_CLAIMED": "NO",
+    "GIT_DIFF_CHECK": "PASS",
+    "HEAD_UPDATED": "NO",
+    "HISTORICAL_UNPROVEN_LABELS": "PRESERVED",
+    "INSTALL_EVENTS": 0,
+    "NATIVE_IMPLEMENTATION_CHANGED": "NO",
+    "NATIVE_STATE_CHANGED": "NO",
+    "NEW_AUTHORITIES": 0,
+    "N_REAL_SATISFIED": "NO",
+    "ORIGINAL_D01_COMPLETE_INPUT_MATRIX": "UNRECOVERED",
+    "P05_EXECUTED": "NO",
+    "P05_STAGE_BINDINGS": "13/13",
+    "P06_EXECUTED": "NO",
+    "PRE_EXISTING_FILES_CHECKED": 17450,
+    "PRODUCTION_EFFECT": "NO",
+    "RUNTIME_GUARDS_SATISFIED": 0,
+    "SAVES_PERFORMED": 0,
+    "SOURCE_CLOSURE": "10/10",
+    "STATUS": "PASS",
+    "WRITERS_TERMINATED": 0
+  },
+  "PROCESS_ISOLATION": {
+    "ALLOWED_CHANNELS": [
+      "Persisted exact native bundle and handoff reference",
+      "Independently sealed reader configuration/oracles/runtime contracts",
+      "Authenticated actual supervisor wait/process evidence"
+    ],
+    "CLOSE_FDS": true,
+    "CWD": "/home/gvasend/app/kge-forge",
+    "ENVIRONMENT": {
+      "LC_ALL": "C.UTF-8",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTHONHASHSEED": "One exact selected value per reader in 0,1,7,101; no random/default seed",
+      "PYTHONPATH": "/home/gvasend/app/kge-forge"
+    },
+    "FORBIDDEN_TRANSFER": [
+      "in-memory bundle",
+      "Snapshot object",
+      "decoded model",
+      "open descriptor",
+      "writer cache",
+      "Python object identity",
+      "writer-local temporary state"
+    ],
+    "HASH_SEEDS": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "MODEL": "Fresh executable interpreter subprocess after independently observed writer exit; no forked writer object graph",
+    "NO_LIVE_WRITER_CACHE_OR_OBJECTS": true,
+    "WRITER_READER_DISTINCT_PROCESSES": true
+  },
+  "PRODUCTION_EFFECT": "NO",
+  "PROHIBITED_EFFECTS": [
+    "HEAD mutation",
+    "Planner lifecycle/Action/A14/D01/P05/P06 execution",
+    "new event/genesis/authority/INSTALL",
+    "policy or source or E1 mutation/import",
+    "foreign target or altered bundle",
+    "directory-fsync/power-loss/general crash claims",
+    "warm reader/object/descriptor transfer",
+    "reexecution substituted for zero-event replay",
+    "all-128 output oracle creation or END binding"
+  ],
+  "READER_FAILURE_CONTRACT": {
+    "FUTURE_RESULT_HANDLING": "Structured error classification + original native/wrapper exception type/message + failing boundary. No source/policy/state repair; no lifecycle mutation or output oracle inferred.",
+    "before writer exit": "WRITER_EXIT_NOT_OBSERVED / RUNTIME_GUARDS_UNMET; supervisor gate before launch",
+    "decode failure": "Native parse_json/_unwire exception recorded with operation boundary restore",
+    "handoff failure": "HANDOFF_IDENTITY_MISMATCH / HANDOFF_CONTENT_MISMATCH",
+    "missing persisted file": "Native PlannerError bundle unavailable (wrapper file read may surface OSError before restore; classified persisted input unavailable)",
+    "validation failure": "Native PlannerError exact message/type retained; no PASS from exit code",
+    "warm-state leakage": "WARM_READER / forbidden input-channel schema; no reader launch",
+    "wrong Snapshot": "RESTORED_CHECKPOINT_MISMATCH",
+    "wrong bytes/hash/bundle ID": "PERSISTED_BYTES_MISMATCH wrapper or native bundle identity mismatch",
+    "wrong policy/P05": "WRONG_FRAME_POLICY_OR_REPLAY_SCOPE or native unsupported selection policy identity/version binding",
+    "wrong replay scope/nonzero history": "WRONG_FRAME_POLICY_OR_REPLAY_SCOPE; reject before claiming success",
+    "wrong source pin": "RESTORED_SOURCE_SET_MISMATCH or native pinned source/provenance validation error"
+  },
+  "RESULT": "PASS",
+  "RESULT_SCOPE": "Exact future bounded persistence qualification contract and unselected execution dossier sealed; no runtime authorization or operation occurs",
+  "RETRY_CONTRACT": {
+    "BOUND": "One initial writer attempt and one explicitly bounded identical writer retry per row; three required successful readers per seed plus at most one fresh retry for each failed reader slot; otherwise stop",
+    "NO_DUPLICATE_SEMANTIC_EXECUTION": true,
+    "SEMANTIC_OPERATION_COUNT": "Zero lifecycle events/Actions on all successful or failed attempts",
+    "after_writer_failure": "Re-establish full authorized writer-success/publication/handoff/exit chain; file presence alone cannot resume guards",
+    "before_successful_save": "Same exact native candidate/row target only; no assumed predecessor success",
+    "identical_published_retry": "Native accepts exact nonsymlink same bytes/content address; no extra semantic event or changed policy; no fresh fsync promised on reuse",
+    "reader_restore_failure": "Fresh reader retry only after re-verifying G1-G4 and exact persisted references; no source/identity repair or warm state; record every failed attempt"
+  },
+  "RUNTIME_GUARDS": [
+    {
+      "EVIDENCE": "Successful native return path/identity captured in exact persisted handoff; no exception/failure-hook",
+      "ID": "G1_SAVE_RETURN",
+      "OBSERVER": "Trusted supervisor protocol verifier",
+      "PREDECESSORS": [],
+      "PRODUCER": "Native save caller in writer"
+    },
+    {
+      "EVIDENCE": "Corresponding final path exists, nonsymlink, 153602 bytes, exact raw hash and native ID",
+      "ID": "G2_PUBLICATION_VERIFIED",
+      "OBSERVER": "Supervisor and independent reader",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN"
+      ],
+      "PRODUCER": "Writer-side exact file verifier"
+    },
+    {
+      "EVIDENCE": "Actual expected handoff file at row-specific path; self-certification of writer exit expressly false",
+      "ID": "G3_PERSISTED_HANDOFF",
+      "OBSERVER": "Supervisor/reader exact hash/content validation",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN",
+        "G2_PUBLICATION_VERIFIED"
+      ],
+      "PRODUCER": "Qualification harness immutable metadata publisher"
+    },
+    {
+      "EVIDENCE": "Actual writer PID, process-complete wait, exit code 0, stdout/stderr/target association; writer cannot produce this future fact",
+      "ID": "G4_WRITER_EXIT_OBSERVED",
+      "OBSERVER": "Parent supervisor, independently authenticated to reader",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN",
+        "G2_PUBLICATION_VERIFIED",
+        "G3_PERSISTED_HANDOFF"
+      ],
+      "PRODUCER": "Parent supervisor wait result"
+    },
+    {
+      "EVIDENCE": "Exec of new interpreter after writer wait; PID distinct, close_fds, sealed cwd/env; no warm objects",
+      "ID": "G5_READER_STARTED_FRESH",
+      "OBSERVER": "Supervisor and reader PID/environment verification",
+      "PREDECESSORS": [
+        "G4_WRITER_EXIT_OBSERVED"
+      ],
+      "PRODUCER": "Trusted process launcher"
+    },
+    {
+      "EVIDENCE": "Native restore status + exact bundle/Snapshot/source/policy/frame identities and original exception classification if failed",
+      "ID": "G6_RESTORE_VALIDATED",
+      "OBSERVER": "Supervisor compares structured result to independent oracle",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN",
+        "G2_PUBLICATION_VERIFIED",
+        "G3_PERSISTED_HANDOFF",
+        "G4_WRITER_EXIT_OBSERVED",
+        "G5_READER_STARTED_FRESH"
+      ],
+      "PRODUCER": "Native restore and reader identity comparator"
+    },
+    {
+      "EVIDENCE": "P06, PARTIAL_HISTORICAL_REPLAY, exact initial=current, zero event count, ten pins and exact reconstructed Snapshot; reader exit 0 necessary but insufficient",
+      "ID": "G7_REPLAY_VALIDATED",
+      "OBSERVER": "Supervisor semantic identity/result comparator",
+      "PREDECESSORS": [
+        "G6_RESTORE_VALIDATED"
+      ],
+      "PRODUCER": "Native zero-event bundle validation and independent range/scope comparison"
+    }
+  ],
+  "RUNTIME_GUARDS_SATISFIED": 0,
+  "RUNTIME_PERSISTENCE_AUTHORITY_REQUIRED": "YES",
+  "RUNTIME_SEQUENCE": {
+    "CALLABLE_LAUNCH_MODEL": "Trusted qualification supervisor supplies scope/guard callbacks to pinned writer/reader callables in separate interpreter subprocesses. Runtime authorization is not accepted from arbitrary spec booleans; exact subject/frame/input allowlist must be verified.",
+    "EXECUTION_ROWS": [
+      {
+        "READER_SCHEDULE": [
+          {
+            "reader_index": 1,
+            "seed": 0
+          },
+          {
+            "reader_index": 2,
+            "seed": 0
+          },
+          {
+            "reader_index": 3,
+            "seed": 0
+          },
+          {
+            "reader_index": 1,
+            "seed": 1
+          },
+          {
+            "reader_index": 2,
+            "seed": 1
+          },
+          {
+            "reader_index": 3,
+            "seed": 1
+          },
+          {
+            "reader_index": 1,
+            "seed": 7
+          },
+          {
+            "reader_index": 2,
+            "seed": 7
+          },
+          {
+            "reader_index": 3,
+            "seed": 7
+          },
+          {
+            "reader_index": 1,
+            "seed": 101
+          },
+          {
+            "reader_index": 2,
+            "seed": 101
+          },
+          {
+            "reader_index": 3,
+            "seed": 101
+          }
+        ],
+        "READER_SPEC": {
+          "EXPECTED_BUNDLE_ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          "EXPECTED_BYTE_LENGTH": 153602,
+          "EXPECTED_HANDOFF_HASH": "3e0746b7cd25d3f974be9beedd3b44df2aaa6975e17bd121e6c2a1757d877442",
+          "EXPECTED_HANDOFF_RECORD": {
+            "CHECKPOINT_SNAPSHOT": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+            },
+            "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+            "GENERATION": "E2-GENERATION-1",
+            "INPUT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+              "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "LINEAGE": "E2-CANONICAL-BASELINE-1",
+            "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+            "POLICY_VERSION": "E1-SELECTION-1-P06",
+            "PROVENANCE": [
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+                "pointer": "",
+                "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+                "pointer": "",
+                "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+                "pointer": "",
+                "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+              }
+            ],
+            "PUBLISHED_TARGET_VERIFIED": true,
+            "SAVED_BYTE_LENGTH": 153602,
+            "SAVED_NATIVE_ID": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-bundle-v1",
+              "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "SAVED_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+            "SAVED_SHA256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+            "SAVE_CONTRACT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_SAVE_CONTRACT_CLOSURE_27/save-contract.json",
+              "pointer": "",
+              "raw_sha256": "cc5a5c27e57ac6b49e7754a19b20df6606601be0606e99f5106b0db309a43eca"
+            },
+            "SAVE_SUCCESS_VERIFIED": true,
+            "SCHEMA": "A14-PERSISTED-SAVE-HANDOFF-1",
+            "SCOPE": "E2-QUALIFICATION-ONLY",
+            "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+            "TARGET_ID": "D01-OBL:E2-A14_OPERANDS",
+            "WRITER_EXIT_CLAIMED_BY_RECORD": false
+          },
+          "EXPECTED_HASH": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+          "EXPECTED_NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+          "EXPECTED_POLICY_PIN": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "EXPECTED_POLICY_VERSION": "E1-SELECTION-1-P06",
+          "EXPECTED_SNAPSHOT_ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+          },
+          "EXPECTED_SOURCE_PINS": [
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+              },
+              "path": "E2-DECIDE.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+              },
+              "path": "E2-PREPARE.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+              },
+              "path": "E2-COLLECT.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+              },
+              "path": "E2-CHECK.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+              },
+              "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+              },
+              "path": "resolution.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+              },
+              "path": "E2-FINISH.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+              },
+              "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+              },
+              "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+              },
+              "path": "source.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            }
+          ],
+          "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+          "GENERATION": "E2-GENERATION-1",
+          "GUARD_OWNERSHIP": {
+            "PERSISTED_HANDOFF_AVAILABLE": "Qualification harness immutable metadata publication; supervisor/reader validate exact expected hash/content",
+            "PUBLISHED_TARGET_VERIFIED": "Writer-side byte/identity verifier, corroborated by trusted harness/supervisor and rechecked by reader",
+            "SAVE_RETURNED_SUCCESSFULLY": "Actual native save caller; trusted supervisor authenticates successful writer protocol",
+            "WRITER_EXIT_OBSERVED_BY_SUPERVISOR": "Parent/supervisor only, actual wait/returncode; writer cannot certify its future exit"
+          },
+          "HANDOFF_CONTRACT_IDENTITY": "qualification-A14-persisted-handoff-contract-v1:c0fa2f008716c17adcf9fb0b0d5e4913b4ea22efbac715b6dba4c99de668ae93",
+          "HANDOFF_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+          "INPUTS_CLASSIFICATION": {
+            "NATIVE_DEFAULTS": "None; restore has no optional/default operands",
+            "policy/replay/identity comparisons": "EXPLICIT_SEALED_COMPARISON_CONFIGURATION_NOT_PLANNER_STATE_INPUT",
+            "restore.expected_identity": "EXPLICIT_INDEPENDENT_NATIVE_PRECOMMITMENT",
+            "restore.path": "DERIVED_FROM_VERIFIED_PERSISTED_HANDOFF; exact expected future target",
+            "restore.repo_root": "EXPLICIT_EXACT_SOURCE_ROOT",
+            "supervisor evidence": "EXPLICIT_TRUSTED_RUNTIME_INPUT; actual values produced later, not defaults"
+          },
+          "LINEAGE": "E2-CANONICAL-BASELINE-1",
+          "POLICY_BINDING_IDENTITY": "qualification-A14-P06-policy-binding-v1:02bb344a95f2c61a3ad8ed6ade4b11c0a29bf9672f35ce845ae70aa32b8d836e",
+          "PROVENANCE": [
+            {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+              "pointer": "",
+              "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+              "pointer": "",
+              "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+            },
+            {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+              "pointer": "",
+              "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+            }
+          ],
+          "REPLAY_SCOPE_IDENTITY": "qualification-A14-replay-scope-v1:9a46e75e7fa26ce57ebb6c41cbc50495b1556566e8da526eb36f43fc47be445b",
+          "REQUIRED_GUARDS": [
+            "SAVE_RETURNED_SUCCESSFULLY",
+            "PUBLISHED_TARGET_VERIFIED",
+            "PERSISTED_HANDOFF_AVAILABLE",
+            "WRITER_EXIT_OBSERVED_BY_SUPERVISOR"
+          ],
+          "RUNTIME_GUARDS_SATISFIED_NOW": false,
+          "SCHEMA": "A14-COLD-READER-SPEC-1",
+          "SCOPE": "E2-QUALIFICATION-ONLY",
+          "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+          "TARGET_ID": "D01-OBL:E2-A14_OPERANDS",
+          "TARGET_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json"
+        },
+        "TARGET_ID": "D01-OBL:E2-A14_OPERANDS",
+        "WRITER_COUNT": 1,
+        "WRITER_SEED": 0,
+        "WRITER_SPEC": {
+          "EXECUTION_AUTHORIZATION": "Trusted future caller scope_verifier required; this package does not grant runtime save permission",
+          "EXPECTED_BUNDLE_ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          "EXPECTED_SUCCESS_HANDOFF_RECORD": {
+            "CHECKPOINT_SNAPSHOT": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+            },
+            "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+            "GENERATION": "E2-GENERATION-1",
+            "INPUT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+              "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "LINEAGE": "E2-CANONICAL-BASELINE-1",
+            "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+            "POLICY_VERSION": "E1-SELECTION-1-P06",
+            "PROVENANCE": [
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+                "pointer": "",
+                "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+                "pointer": "",
+                "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+                "pointer": "",
+                "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+              }
+            ],
+            "PUBLISHED_TARGET_VERIFIED": true,
+            "SAVED_BYTE_LENGTH": 153602,
+            "SAVED_NATIVE_ID": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-bundle-v1",
+              "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "SAVED_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+            "SAVED_SHA256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+            "SAVE_CONTRACT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_SAVE_CONTRACT_CLOSURE_27/save-contract.json",
+              "pointer": "",
+              "raw_sha256": "cc5a5c27e57ac6b49e7754a19b20df6606601be0606e99f5106b0db309a43eca"
+            },
+            "SAVE_SUCCESS_VERIFIED": true,
+            "SCHEMA": "A14-PERSISTED-SAVE-HANDOFF-1",
+            "SCOPE": "E2-QUALIFICATION-ONLY",
+            "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+            "TARGET_ID": "D01-OBL:E2-A14_OPERANDS",
+            "WRITER_EXIT_CLAIMED_BY_RECORD": false
+          },
+          "EXPECTED_TARGET": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+          "HANDOFF_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+          "INPUT_SOURCE": {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+            "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          "OUTPUT_DIRECTORY": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store",
+          "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+          "TARGET_ID": "D01-OBL:E2-A14_OPERANDS"
+        }
+      },
+      {
+        "READER_SCHEDULE": [
+          {
+            "reader_index": 1,
+            "seed": 0
+          },
+          {
+            "reader_index": 2,
+            "seed": 0
+          },
+          {
+            "reader_index": 3,
+            "seed": 0
+          },
+          {
+            "reader_index": 1,
+            "seed": 1
+          },
+          {
+            "reader_index": 2,
+            "seed": 1
+          },
+          {
+            "reader_index": 3,
+            "seed": 1
+          },
+          {
+            "reader_index": 1,
+            "seed": 7
+          },
+          {
+            "reader_index": 2,
+            "seed": 7
+          },
+          {
+            "reader_index": 3,
+            "seed": 7
+          },
+          {
+            "reader_index": 1,
+            "seed": 101
+          },
+          {
+            "reader_index": 2,
+            "seed": 101
+          },
+          {
+            "reader_index": 3,
+            "seed": 101
+          }
+        ],
+        "READER_SPEC": {
+          "EXPECTED_BUNDLE_ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          "EXPECTED_BYTE_LENGTH": 153602,
+          "EXPECTED_HANDOFF_HASH": "23b3afe40ed38f7630bcd2ca0a46fdd741765bd0758137ddd558482edbc9e6bd",
+          "EXPECTED_HANDOFF_RECORD": {
+            "CHECKPOINT_SNAPSHOT": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+            },
+            "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+            "GENERATION": "E2-GENERATION-1",
+            "INPUT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+              "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "LINEAGE": "E2-CANONICAL-BASELINE-1",
+            "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+            "POLICY_VERSION": "E1-SELECTION-1-P06",
+            "PROVENANCE": [
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+                "pointer": "",
+                "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+                "pointer": "",
+                "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+                "pointer": "",
+                "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+              }
+            ],
+            "PUBLISHED_TARGET_VERIFIED": true,
+            "SAVED_BYTE_LENGTH": 153602,
+            "SAVED_NATIVE_ID": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-bundle-v1",
+              "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "SAVED_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+            "SAVED_SHA256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+            "SAVE_CONTRACT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_SAVE_CONTRACT_CLOSURE_27/save-contract.json",
+              "pointer": "",
+              "raw_sha256": "cc5a5c27e57ac6b49e7754a19b20df6606601be0606e99f5106b0db309a43eca"
+            },
+            "SAVE_SUCCESS_VERIFIED": true,
+            "SCHEMA": "A14-PERSISTED-SAVE-HANDOFF-1",
+            "SCOPE": "E2-QUALIFICATION-ONLY",
+            "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+            "TARGET_ID": "D01-OBL:E2-A14_ORACLE",
+            "WRITER_EXIT_CLAIMED_BY_RECORD": false
+          },
+          "EXPECTED_HASH": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+          "EXPECTED_NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+          "EXPECTED_POLICY_PIN": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "EXPECTED_POLICY_VERSION": "E1-SELECTION-1-P06",
+          "EXPECTED_SNAPSHOT_ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+          },
+          "EXPECTED_SOURCE_PINS": [
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+              },
+              "path": "E2-DECIDE.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+              },
+              "path": "E2-PREPARE.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+              },
+              "path": "E2-COLLECT.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+              },
+              "path": "E2-CHECK.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+              },
+              "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+              },
+              "path": "resolution.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+              },
+              "path": "E2-FINISH.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+              },
+              "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+              },
+              "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            },
+            {
+              "$type": "ArtifactPin",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+              },
+              "path": "source.json",
+              "pointer": "",
+              "profile": {
+                "$enum": "HashProfile",
+                "value": "raw-file-sha256"
+              }
+            }
+          ],
+          "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+          "GENERATION": "E2-GENERATION-1",
+          "GUARD_OWNERSHIP": {
+            "PERSISTED_HANDOFF_AVAILABLE": "Qualification harness immutable metadata publication; supervisor/reader validate exact expected hash/content",
+            "PUBLISHED_TARGET_VERIFIED": "Writer-side byte/identity verifier, corroborated by trusted harness/supervisor and rechecked by reader",
+            "SAVE_RETURNED_SUCCESSFULLY": "Actual native save caller; trusted supervisor authenticates successful writer protocol",
+            "WRITER_EXIT_OBSERVED_BY_SUPERVISOR": "Parent/supervisor only, actual wait/returncode; writer cannot certify its future exit"
+          },
+          "HANDOFF_CONTRACT_IDENTITY": "qualification-A14-persisted-handoff-contract-v1:c0fa2f008716c17adcf9fb0b0d5e4913b4ea22efbac715b6dba4c99de668ae93",
+          "HANDOFF_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+          "INPUTS_CLASSIFICATION": {
+            "NATIVE_DEFAULTS": "None; restore has no optional/default operands",
+            "policy/replay/identity comparisons": "EXPLICIT_SEALED_COMPARISON_CONFIGURATION_NOT_PLANNER_STATE_INPUT",
+            "restore.expected_identity": "EXPLICIT_INDEPENDENT_NATIVE_PRECOMMITMENT",
+            "restore.path": "DERIVED_FROM_VERIFIED_PERSISTED_HANDOFF; exact expected future target",
+            "restore.repo_root": "EXPLICIT_EXACT_SOURCE_ROOT",
+            "supervisor evidence": "EXPLICIT_TRUSTED_RUNTIME_INPUT; actual values produced later, not defaults"
+          },
+          "LINEAGE": "E2-CANONICAL-BASELINE-1",
+          "POLICY_BINDING_IDENTITY": "qualification-A14-P06-policy-binding-v1:02bb344a95f2c61a3ad8ed6ade4b11c0a29bf9672f35ce845ae70aa32b8d836e",
+          "PROVENANCE": [
+            {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+              "pointer": "",
+              "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+              "pointer": "",
+              "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+            },
+            {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+              "pointer": "",
+              "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+            }
+          ],
+          "REPLAY_SCOPE_IDENTITY": "qualification-A14-replay-scope-v1:9a46e75e7fa26ce57ebb6c41cbc50495b1556566e8da526eb36f43fc47be445b",
+          "REQUIRED_GUARDS": [
+            "SAVE_RETURNED_SUCCESSFULLY",
+            "PUBLISHED_TARGET_VERIFIED",
+            "PERSISTED_HANDOFF_AVAILABLE",
+            "WRITER_EXIT_OBSERVED_BY_SUPERVISOR"
+          ],
+          "RUNTIME_GUARDS_SATISFIED_NOW": false,
+          "SCHEMA": "A14-COLD-READER-SPEC-1",
+          "SCOPE": "E2-QUALIFICATION-ONLY",
+          "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+          "TARGET_ID": "D01-OBL:E2-A14_ORACLE",
+          "TARGET_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json"
+        },
+        "TARGET_ID": "D01-OBL:E2-A14_ORACLE",
+        "WRITER_COUNT": 1,
+        "WRITER_SEED": 0,
+        "WRITER_SPEC": {
+          "EXECUTION_AUTHORIZATION": "Trusted future caller scope_verifier required; this package does not grant runtime save permission",
+          "EXPECTED_BUNDLE_ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          "EXPECTED_SUCCESS_HANDOFF_RECORD": {
+            "CHECKPOINT_SNAPSHOT": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+            },
+            "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+            "GENERATION": "E2-GENERATION-1",
+            "INPUT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+              "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "LINEAGE": "E2-CANONICAL-BASELINE-1",
+            "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+            "POLICY_VERSION": "E1-SELECTION-1-P06",
+            "PROVENANCE": [
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+                "pointer": "",
+                "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+                "pointer": "",
+                "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+              },
+              {
+                "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+                "pointer": "",
+                "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+              }
+            ],
+            "PUBLISHED_TARGET_VERIFIED": true,
+            "SAVED_BYTE_LENGTH": 153602,
+            "SAVED_NATIVE_ID": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-bundle-v1",
+              "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+            },
+            "SAVED_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+            "SAVED_SHA256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+            "SAVE_CONTRACT_SOURCE": {
+              "path": "docs/plans/qualification/E2_P05_D01_A14_SAVE_CONTRACT_CLOSURE_27/save-contract.json",
+              "pointer": "",
+              "raw_sha256": "cc5a5c27e57ac6b49e7754a19b20df6606601be0606e99f5106b0db309a43eca"
+            },
+            "SAVE_SUCCESS_VERIFIED": true,
+            "SCHEMA": "A14-PERSISTED-SAVE-HANDOFF-1",
+            "SCOPE": "E2-QUALIFICATION-ONLY",
+            "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+            "TARGET_ID": "D01-OBL:E2-A14_ORACLE",
+            "WRITER_EXIT_CLAIMED_BY_RECORD": false
+          },
+          "EXPECTED_TARGET": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+          "HANDOFF_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+          "INPUT_SOURCE": {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+            "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          "OUTPUT_DIRECTORY": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store",
+          "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+          "TARGET_ID": "D01-OBL:E2-A14_ORACLE"
+        }
+      }
+    ],
+    "EXPECTED_COLD_READERS": 24,
+    "EXPECTED_SUCCESSFUL_NATIVE_SAVES": 2,
+    "EXPECTED_SUCCESSFUL_WRITERS": 2,
+    "FULL_D01_OUTPUT_LIMIT": "Required identity/persistence result schema is exact from Closure29. No all-128 full-output oracle or D01 aggregate PASS is produced; Computation/action qualification excluded.",
+    "NATIVE_INTERNAL_ORDER_NOTE": "codec.restore verifies raw bundle identity before decode and performs policy/model/source/replay checks internally. Later numbered validation terms are independent post-return assertions, not instructions to weaken or reorder native internal checks.",
+    "ORDERED_STEPS": [
+      {
+        "POSITION": 1,
+        "PREDECESSOR_POSITION": null,
+        "STEP": "Start authorized isolated qualification writer"
+      },
+      {
+        "POSITION": 2,
+        "PREDECESSOR_POSITION": 1,
+        "STEP": "Load exact sealed native bundle candidate"
+      },
+      {
+        "POSITION": 3,
+        "PREDECESSOR_POSITION": 2,
+        "STEP": "Invoke exact native save"
+      },
+      {
+        "POSITION": 4,
+        "PREDECESSOR_POSITION": 3,
+        "STEP": "Require successful native save return"
+      },
+      {
+        "POSITION": 5,
+        "PREDECESSOR_POSITION": 4,
+        "STEP": "Verify corresponding published target exists"
+      },
+      {
+        "POSITION": 6,
+        "PREDECESSOR_POSITION": 5,
+        "STEP": "Verify target exact bytes/hash/native bundle identity"
+      },
+      {
+        "POSITION": 7,
+        "PREDECESSOR_POSITION": 6,
+        "STEP": "Perform only permitted writer post-save handoff publication/handle closing"
+      },
+      {
+        "POSITION": 8,
+        "PREDECESSOR_POSITION": 7,
+        "STEP": "Writer normal completion/termination"
+      },
+      {
+        "POSITION": 9,
+        "PREDECESSOR_POSITION": 8,
+        "STEP": "Supervisor independently observes exit code 0"
+      },
+      {
+        "POSITION": 10,
+        "PREDECESSOR_POSITION": 9,
+        "STEP": "Launch authorized fresh cold-reader interpreter"
+      },
+      {
+        "POSITION": 11,
+        "PREDECESSOR_POSITION": 10,
+        "STEP": "Reader opens exact persisted target"
+      },
+      {
+        "POSITION": 12,
+        "PREDECESSOR_POSITION": 11,
+        "STEP": "Native decode/restore"
+      },
+      {
+        "POSITION": 13,
+        "PREDECESSOR_POSITION": 12,
+        "STEP": "Independent returned bundle identity comparison"
+      },
+      {
+        "POSITION": 14,
+        "PREDECESSOR_POSITION": 13,
+        "STEP": "Independent Snapshot comparison"
+      },
+      {
+        "POSITION": 15,
+        "PREDECESSOR_POSITION": 14,
+        "STEP": "Validate exact ten source identities/physical pins"
+      },
+      {
+        "POSITION": 16,
+        "PREDECESSOR_POSITION": 15,
+        "STEP": "Validate exact selected P06 binding"
+      },
+      {
+        "POSITION": 17,
+        "PREDECESSOR_POSITION": 16,
+        "STEP": "Validate zero-event checkpoint frame"
+      },
+      {
+        "POSITION": 18,
+        "PREDECESSOR_POSITION": 17,
+        "STEP": "Validate PARTIAL_HISTORICAL_REPLAY empty-fold reconstruction"
+      },
+      {
+        "POSITION": 19,
+        "PREDECESSOR_POSITION": 18,
+        "STEP": "Compare complete required persisted/restored identity result envelope"
+      },
+      {
+        "POSITION": 20,
+        "PREDECESSOR_POSITION": 19,
+        "STEP": "Reader normal completion/termination observed by supervisor"
+      }
+    ],
+    "READER_REPEAT_MEANING": "Three fresh readers per checkpoint/seed for each of two existing row-owned save targets. Same immutable bundle may be read repeatedly; no semantic Action/event replay is introduced.",
+    "REORDERING_ALLOWED": false
+  },
+  "SAVES_PERFORMED": 0,
+  "SAVE_TARGETS": [
+    {
+      "ACTUAL_HANDOFF_FILE_EXISTS": false,
+      "DEPENDENCY_TYPE": "FUTURE_SAVE_OUTPUT_DEPENDENCY",
+      "EXPECTED_BUNDLE_ID": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+      },
+      "EXPECTED_BYTES": 153602,
+      "EXPECTED_HANDOFF_BYTE_LENGTH": 2285,
+      "EXPECTED_HANDOFF_HASH": "3e0746b7cd25d3f974be9beedd3b44df2aaa6975e17bd121e6c2a1757d877442",
+      "EXPECTED_HASH": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+      "EXPECTED_RECORD": {
+        "CHECKPOINT_SNAPSHOT": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+        },
+        "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+        "GENERATION": "E2-GENERATION-1",
+        "INPUT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+          "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+        },
+        "LINEAGE": "E2-CANONICAL-BASELINE-1",
+        "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+        "POLICY_VERSION": "E1-SELECTION-1-P06",
+        "PROVENANCE": [
+          {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+            "pointer": "",
+            "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+            "pointer": "",
+            "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+            "pointer": "",
+            "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+          }
+        ],
+        "PUBLISHED_TARGET_VERIFIED": true,
+        "SAVED_BYTE_LENGTH": 153602,
+        "SAVED_NATIVE_ID": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+        },
+        "SAVED_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+        "SAVED_SHA256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+        "SAVE_CONTRACT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SAVE_CONTRACT_CLOSURE_27/save-contract.json",
+          "pointer": "",
+          "raw_sha256": "cc5a5c27e57ac6b49e7754a19b20df6606601be0606e99f5106b0db309a43eca"
+        },
+        "SAVE_SUCCESS_VERIFIED": true,
+        "SCHEMA": "A14-PERSISTED-SAVE-HANDOFF-1",
+        "SCOPE": "E2-QUALIFICATION-ONLY",
+        "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+        "TARGET_ID": "D01-OBL:E2-A14_OPERANDS",
+        "WRITER_EXIT_CLAIMED_BY_RECORD": false
+      },
+      "GUARD_CONDITION": "Successful corresponding native save return PLUS exact published target existence/bytes/identity verification",
+      "HANDOFF_IDENTITY_DOMAIN": "Qualification RAW metadata checksum, not native bundle identity",
+      "HANDOFF_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+      "HANDOFF_TYPE": "Persisted qualification reference record plus exact native bundle file",
+      "PRESENT_AS_RUNTIME_QUALIFICATION_FACT": false,
+      "TARGET_ID": "D01-OBL:E2-A14_OPERANDS",
+      "TARGET_PATH": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json"
+    },
+    {
+      "ACTUAL_HANDOFF_FILE_EXISTS": false,
+      "DEPENDENCY_TYPE": "FUTURE_SAVE_OUTPUT_DEPENDENCY",
+      "EXPECTED_BUNDLE_ID": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+      },
+      "EXPECTED_BYTES": 153602,
+      "EXPECTED_HANDOFF_BYTE_LENGTH": 2283,
+      "EXPECTED_HANDOFF_HASH": "23b3afe40ed38f7630bcd2ca0a46fdd741765bd0758137ddd558482edbc9e6bd",
+      "EXPECTED_HASH": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+      "EXPECTED_RECORD": {
+        "CHECKPOINT_SNAPSHOT": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+        },
+        "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+        "GENERATION": "E2-GENERATION-1",
+        "INPUT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+          "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+        },
+        "LINEAGE": "E2-CANONICAL-BASELINE-1",
+        "NATIVE_REPLAY_SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+        "POLICY_VERSION": "E1-SELECTION-1-P06",
+        "PROVENANCE": [
+          {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/prospective-a14-bundle.json",
+            "pointer": "",
+            "raw_sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/p06-policy-binding.json",
+            "pointer": "",
+            "raw_sha256": "b8df8b70f18ea335bf4b7fd577f4174a3be7ef4bc672705968fe47623c57aa3e"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/replay-scope-binding.json",
+            "pointer": "",
+            "raw_sha256": "9419fb86b442cc808c8433ee2c8422f8c42595b9ad62f47d408bbcb1ed69f1df"
+          }
+        ],
+        "PUBLISHED_TARGET_VERIFIED": true,
+        "SAVED_BYTE_LENGTH": 153602,
+        "SAVED_NATIVE_ID": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e"
+        },
+        "SAVED_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+        "SAVED_SHA256": "3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e",
+        "SAVE_CONTRACT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SAVE_CONTRACT_CLOSURE_27/save-contract.json",
+          "pointer": "",
+          "raw_sha256": "cc5a5c27e57ac6b49e7754a19b20df6606601be0606e99f5106b0db309a43eca"
+        },
+        "SAVE_SUCCESS_VERIFIED": true,
+        "SCHEMA": "A14-PERSISTED-SAVE-HANDOFF-1",
+        "SCOPE": "E2-QUALIFICATION-ONLY",
+        "SOURCE_ROOT": "/home/gvasend/app/kge-forge",
+        "TARGET_ID": "D01-OBL:E2-A14_ORACLE",
+        "WRITER_EXIT_CLAIMED_BY_RECORD": false
+      },
+      "GUARD_CONDITION": "Successful corresponding native save return PLUS exact published target existence/bytes/identity verification",
+      "HANDOFF_IDENTITY_DOMAIN": "Qualification RAW metadata checksum, not native bundle identity",
+      "HANDOFF_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/a14-save-handoff-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json",
+      "HANDOFF_TYPE": "Persisted qualification reference record plus exact native bundle file",
+      "PRESENT_AS_RUNTIME_QUALIFICATION_FACT": false,
+      "TARGET_ID": "D01-OBL:E2-A14_ORACLE",
+      "TARGET_PATH": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store/bundle-3e91c8e78f5352cc547964409d8d4dfb6643b5bf4f1d223f0268f694f97e9e2e.json"
+    }
+  ],
+  "WORK_PACKAGE": "E2-P05-D01-A14-RUNTIME-PERSISTENCE-CONTRACT-30",
+  "WRITERS_TERMINATED": 0,
+  "WRITER_FAILURE_CONTRACT": {
+    "after_publication_verification": "Visible exact file alone cannot satisfy handoff/exit; reader denied",
+    "after_save_return": "G1 possibly observed but remaining gates denied until actual publication/handoff/exit independently complete",
+    "before_exit_observation": "No G4, reader denied even if all files visible",
+    "before_save": "No G1-G4; reader launch prohibited",
+    "during_save": "No success/handoff/exit qualification assumed; staged/final artifact may or may not exist, no rollback/crash guarantee"
+  }
+}

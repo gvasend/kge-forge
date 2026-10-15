@@ -71,7 +71,7 @@ def field_bindings(entity, admission, contract):
     return tuple(sorted(result,key=lambda x:x.target))
 
 
-def apply(snapshot, event):
+def apply(snapshot, event, evidence_attestation=None):
     from . import codec as c, core, gates
     m.validate_model(snapshot); m.validate_types(event, m.EvidenceSourceAdmission)
     if event.schema != 'PLANNER-EVIDENCE-ADMISSION-1' or event.command_key != command_key(event):
@@ -95,6 +95,9 @@ def apply(snapshot, event):
         route = next((r for r in gate.resolution_contracts if r.requirement == ref),None)
         if route is None or route.source_class != contract.source_class:
             raise m.PlannerError('EXPECTED_SOURCE_CLASS')
+        from .installation import route_support_current
+        if not route_support_current(snapshot,route):
+            raise m.PlannerError('ROUTE_NOT_CURRENT')
         if not any(gates.governed_external_unknown(snapshot,gate,requirements[ref],a)
                    for a in gate.held_actions + gate.reentry):
             raise m.PlannerError('ROUTE_NOT_CURRENT')
@@ -104,7 +107,7 @@ def apply(snapshot, event):
     if (entity.id != evidence_id(gate.id,entity.identity,ctx) or entity.kind is not m.EntityKind.EVIDENCE or
         (entity.scope,entity.lineage,entity.generation) != (ctx.scope,ctx.lineage,ctx.generation) or
         entity.valid_until != contract.valid_until or entity.valid_until < ctx.tick or
-        not entity.produced or not entity.validated or entity.validation is not m.ValidationState.ACCEPTED or
+        not entity.produced or entity.validation not in (m.ValidationState.NOT_EVALUATED, m.ValidationState.ACCEPTED) or
         entity.permissions or entity.target is not None or entity.consumed or entity.validator is not None or
         entity.decision is not None or entity.choice is not None):
         raise m.PlannerError('ADMISSION_SCOPE_OR_CURRENTNESS')
@@ -139,15 +142,44 @@ def apply(snapshot, event):
                 raise m.PlannerError('CLAIM_CONFLICT')
     auth = next((p for p in snapshot.predicates if p.id == admission.authentication),None)
     owner = next((e for e in snapshot.entities if auth is not None and e.id == auth.entity),None)
-    if (auth is None or auth.kind is not m.PredicateKind.AUTHORITY or auth.permission is not m.AuthorityClass.ATTEST or
-        auth.expected != entity.identity or owner is None or owner.identity != admission.producer or
-        owner.provenance.identity == source.identity or owner.provenance.path == source.path or
-        gates.evaluate_predicate(snapshot,auth.id).state is not m.ProofState.PROVED):
+    from .authentication_installation import consumer_guard
+    from .evidence_transaction import validate as validate_operand
+    evidence_attestation = validate_operand(snapshot,event,contract,evidence_attestation)
+    consumer_guard(snapshot,contract,evidence_attestation)
+    if evidence_attestation is not None:
+        from . import evidence_attestation as ea
+        if gates.evaluate_predicate(snapshot, admission.authentication).state is not m.ProofState.PROVED:
+            raise m.PlannerError('SOURCE_ATTESTOR_PREDICATE_UNPROVED')
+        ea.validate(evidence_attestation, entity=entity, contract=contract, gate=gate.id,
+                    context=ctx, source_pin=admission.producer,
+                    semantic_evidence=evidence_attestation.semantic_evidence,
+                    content=evidence_attestation.content,
+                    proposition=next(r.proposition for r in snapshot.evidence_requirements
+                                     if r.id == contract.requirements[0]),
+                    attestor=evidence_attestation.attestor)
+    elif (auth is None or auth.kind is not m.PredicateKind.AUTHORITY or auth.permission is not m.AuthorityClass.ATTEST or
+          auth.expected != entity.identity or owner is None or owner.identity != admission.producer or
+          owner.provenance.identity == source.identity or owner.provenance.path == source.path or
+          gates.evaluate_predicate(snapshot,auth.id).state is not m.ProofState.PROVED):
         raise m.PlannerError('PRODUCER_AUTHENTICATION_UNPROVED')
-    updated = replace(snapshot,entities=snapshot.entities+(entity,),receipt_admissions=snapshot.receipt_admissions+(admission,))
+    received = replace(entity, validated=False, validation=m.ValidationState.NOT_EVALUATED)
+    # Persist only the attestation identity at the receipt boundary.  The
+    # attestation itself was fully validated before commit; this reference is
+    # what lets later proof checks bind to the exact admitted evidence without
+    # promoting receipt into validation.
+    if evidence_attestation is not None:
+        admission = replace(admission, attestation=evidence_attestation.attestation_id)
+    updated = replace(snapshot,entities=snapshot.entities+(received,),receipt_admissions=snapshot.receipt_admissions+(admission,))
     m.validate_model(updated)
     # Before any observation is accepted, insertion cannot advance planning.
     before, after = core.recompute(snapshot), core.recompute(updated)
     if before != after:
         raise m.PlannerError('ADMISSION_CHANGED_CONTROL')
-    return core.TransitionReport(updated,(),after)
+    # Receipt admission must publish the recomputed action statuses.  The
+    # computation is derived from the candidate state, but leaving the old
+    # status tuple attached would preserve pre-admission ACTION_ELIGIBLE
+    # values and make downstream actions appear runnable before validation or
+    # proof.  Publish only the derived status projection; no lifecycle stage
+    # is advanced here.
+    updated = replace(updated, statuses=after.statuses)
+    return core.TransitionReport(updated,(),core.recompute(updated))

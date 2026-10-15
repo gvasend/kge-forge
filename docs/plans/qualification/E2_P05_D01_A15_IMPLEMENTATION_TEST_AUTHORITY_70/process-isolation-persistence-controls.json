@@ -1,0 +1,56 @@
+{
+  "CROSS_VARIANT_STATE_REUSE": false,
+  "DIRECTORY_DURABILITY_CLAIM": false,
+  "GENERAL_CRASH_DURABILITY_CLAIM": false,
+  "HANDOFF_IS_EXIT_PROOF": false,
+  "HEAD_MUTATION": false,
+  "INPUTS_READ_ONLY": true,
+  "NATIVE_SEQUENCE": [
+    "record_result",
+    "save_bundle",
+    "restore"
+  ],
+  "OUTPUT_ROWS_DISTINCT": true,
+  "PER_SUCCESS_CASE": {
+    "FRESH_READERS_PER_VARIANT": 4,
+    "READER_HASH_SEEDS": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "SUPERVISORS": 1,
+    "WRITERS": 2,
+    "WRITER_HASH_SEED": 0
+  },
+  "SCHEMA_ID": "A15-SYNTHETIC-PROCESS-CONTRACT-70-1",
+  "SEQUENCE": [
+    "independent fixture/oracle/authority/environment seals",
+    "fresh worker with exact immutable start",
+    "record_result once on synthetic invalidation",
+    "full independent output/byte/protection comparison",
+    "save_bundle to exact isolated synthetic row",
+    "verify immutable files and persist handoff without self-exit claim",
+    "worker exits",
+    "supervisor independently waits own child status zero and verifies publication/handoff",
+    "only then four fresh readers restore exact saved identity and compare every field",
+    "controller aggregate audit and preservation"
+  ],
+  "SYNTHETIC_PROCESS_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  },
+  "WORKER_SELF_CERTIFIES_EXIT": false,
+  "WORKER_START": "Independently restore exact immutable synthetic fixture; verify full start/source/policy pins",
+  "WRITER_EXIT_PROOF": "Supervisor own-child wait result, observed child ID/status/monotonic time; worker/handoff claims insufficient"
+}

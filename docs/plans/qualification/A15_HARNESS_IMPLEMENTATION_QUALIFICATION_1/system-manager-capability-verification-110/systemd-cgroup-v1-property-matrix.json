@@ -1,0 +1,93 @@
+[
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Documented supported; exact account and live effective UID/GID must match",
+    "PROPERTY": "User",
+    "RETAINED_VALUE": "1000",
+    "VALUE_SOURCE": "Original --uid=1000"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Dedicated service pids.max=8 required; no user-manager substitution",
+    "PROPERTY": "TasksMax",
+    "RETAINED_VALUE": "8",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Legacy property supported, but replacing MemoryMax changes sealed argv; retain original best-effort v1 translation and read memory.limit_in_bytes",
+    "PROPERTY": "MemoryLimit",
+    "RETAINED_VALUE": null,
+    "VALUE_SOURCE": "Original uses MemoryMax=67108864, not MemoryLimit"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Documented maps to legacy cpu.cfs_quota_us; finite numeric quota unresolved",
+    "PROPERTY": "CPUQuota",
+    "RETAINED_VALUE": null,
+    "VALUE_SOURCE": "Absent original"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Documented supported; actual type/runtime effective properties and exit observed; no implicit oneshot assumption",
+    "PROPERTY": "RuntimeMaxSec",
+    "RETAINED_VALUE": "20s",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Documented supported; final termination observation required",
+    "PROPERTY": "TimeoutStopSec",
+    "RETAINED_VALUE": "2s",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Not evidence all descendants remain members",
+    "PROPERTY": "KillMode",
+    "RETAINED_VALUE": "control-group",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Inspect actual process status and manager property",
+    "PROPERTY": "NoNewPrivileges",
+    "RETAINED_VALUE": "yes",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Metadata/configuration not behavioral network denial",
+    "PROPERTY": "PrivateNetwork",
+    "RETAINED_VALUE": "yes",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Read-only filesystem property, not cumulative output accounting",
+    "PROPERTY": "ProtectSystem",
+    "RETAINED_VALUE": "strict",
+    "VALUE_SOURCE": "Original argv"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Do not add arbitrary writable directory or expand scope; no regular payload-file writes authorized",
+    "PROPERTY": "ReadWritePaths",
+    "RETAINED_VALUE": null,
+    "VALUE_SOURCE": "Absent original"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Exact --pipe retained; independently bound capture needed, not invented property",
+    "PROPERTY": "StandardOutput",
+    "RETAINED_VALUE": null,
+    "VALUE_SOURCE": "Original --pipe"
+  },
+  {
+    "CURRENT_ASSURANCE": "DOCUMENTED_ONLY_NOT_LIVE_QUALIFIED",
+    "DOCUMENTARY_ASSESSMENT": "Aggregate raw capture/output cap from retained contract; independent truncation/failure policy required",
+    "PROPERTY": "StandardError",
+    "RETAINED_VALUE": null,
+    "VALUE_SOURCE": "Original --pipe"
+  }
+]

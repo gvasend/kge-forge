@@ -1,0 +1,50 @@
+# Static documentary reconstruction only; no target code imported/executed.
+import pathlib,json,hashlib,copy,os
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-risk-adaptive-capability-decision-129'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'source-authentication.json')
+for p,h in a['PINS'].items():assert raw(R/p)==h,p
+for p,x in a['NATIVE_PINS'].items():assert raw(pathlib.Path(p))==x['RAW_SHA256'],p
+for p,x in a['LOCAL_SOURCE_PINS'].items():assert raw(pathlib.Path(p))==x['RAW_SHA256'],p
+ga=read(O/'governance-authentication.json');gr=read(O/'governance-reader-output.txt');assert raw(O/'governance-reader-output.txt')==ga['RESULT_RAW_SHA256'];assert digest(gr['RECONSTRUCTION'])==gr['SEMANTIC_SHA256'];assert gr['RECONSTRUCTION']['CHARTER_EFFECTIVE'] and gr['RECONSTRUCTION']['AMENDMENT_EFFECTIVE']
+p124=read(B/'p86-isolation-capability-124/exact-candidate-profile.json');p127=read(B/'p86-minimal-host-procedure-127/prospective-parent-procedure.json')
+assert digest(p124['CONTENT'])==p124['IDENTITY']['sha256'];assert digest(p127['CONTENT'])==p127['IDENTITY']['sha256']
+h=read(O/'exact-host-procedure-assessment.json');assert h['P124_EXACT_ARGV']==p124['CONTENT']['ARGV'] and h['P127_EXACT_ARGV']==p127['CONTENT']['ARGV']
+m=read(O/'entry-observation-matrix.json');old=read(B/'p86-descriptor-closure-128/entry-execution-matrix.json');assert len(m['ROWS'])==36
+assert [(x['REQUIREMENT_ID'],x['PHASE'],x['ORIGINAL_CLASS']) for x in m['ROWS']]==[(x['REQUIREMENT_ID'],x['PHASE'],x['ORIGINAL_CLASS']) for x in old['ROWS']]
+risk=read(O/'risk-and-inaction-comparison.json');assert len(risk['RISKS'])==10 and any(x['RISK']=='continued non-execution' for x in risk['RISKS'])
+g=read(O/'dependency-graph.json');assert acyclic(g['EDGES'])
+ev=read(O/'bounded-output-resource-assessment.json');assert 8658872+5542+2336==8666750 and ev['TOTAL_PROPOSED_BYTES']==8666750 and ev['COLLECTOR_CONTRACT']=='INCOMPLETE'
+charter=read(R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/charter-content.json');gc=read(O/'governance-classification.json')
+for row in gc['CLAUSES']:
+ value=charter
+ for key in row['POINTER'].strip('/').split('/'):value=value[int(key)] if isinstance(value,list) else value[key]
+ assert value==row['EXACT_CLAUSE']
+facts={'argv':h['P127_EXACT_ARGV'],'permission_verified':False,'output_complete':False,'descendant_risk_included':True,'fd_verified':False,'aggregate_verified':False,'timeout_is_tree_kill':False,'retry_unknown':False,'future_witness_entry':False,'inaction_risk_included':True,'grant_effective':False,'owner_attestation_is_permission':False,'mandatory_context_waived':False,'decision_ready':False,'scope':['PASSIVE_P124_STATIC_PREPARATION'],'options':[],'graph':g['EDGES'],'durability_from_write':False}
+def valid(x):
+ if x['argv']!=p127['CONTENT']['ARGV'] or x['scope']!=['PASSIVE_P124_STATIC_PREPARATION'] or x['options']!=[] or not acyclic(x['graph']):return False
+ if not x['descendant_risk_included'] or not x['inaction_risk_included']:return False
+ return not any(x[k] for k in ['permission_verified','output_complete','fd_verified','aggregate_verified','timeout_is_tree_kill','retry_unknown','future_witness_entry','grant_effective','owner_attestation_is_permission','mandatory_context_waived','decision_ready','durability_from_write'])
+assert valid(facts)
+neg=[('fabricated_permission','permission_verified',True),('unbounded_output_accepted','output_complete',True),('descendant_risk_omitted','descendant_risk_included',False),('descriptor_closure_forged','fd_verified',True),('aggregate_limit_assumed','aggregate_verified',True),('timeout_called_tree_kill','timeout_is_tree_kill',True),('retry_after_unknown','retry_unknown',True),('future_witness_own_entry','future_witness_entry',True),('inaction_risk_omitted','inaction_risk_included',False),('unissued_grant_effective','grant_effective',True),('owner_attestation_permission','owner_attestation_is_permission',True),('mandatory_context_waived','mandatory_context_waived',True),('incomplete_subject_ready','decision_ready',True),('write_return_called_durable','durability_from_write',True),('P86_scope_added','scope',['PASSIVE_P124_STATIC_PREPARATION','P86']),('H77_scope_added','scope',['PASSIVE_P124_STATIC_PREPARATION','H77-02']),('A15_scope_added','scope',['PASSIVE_P124_STATIC_PREPARATION','A15']),('manufactured_option','options',['AUTHORIZE'])]
+out=[]
+for name,k,v in neg:
+ x=copy.deepcopy(facts);x[k]=v;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(facts);x['argv'].append('--changed');assert not valid(x);out.append({'DESIGN':'changed_argv','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(facts);x['graph'].append(['ACTUAL_WITNESS_EXIT_USAGE','QUALIFIED_CONTEXT']);assert not valid(x);out.append({'DESIGN':'own_witness_cycle','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+# Raw pin mutation checked directly against persisted source bytes.
+k=next(iter(a['PINS']));assert raw(R/k)!='0'*64;out.append({'DESIGN':'forged_retained_raw_pin','MUTATION_SHA256':digest({k:'0'*64}),'RESULT':'REJECTED'})
+before=read(O/'preservation-before.json');assert all((R/n).is_file() and raw(R/n)==h for n,h in before.items())
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+s={'INPUT_PIN_SHA256':digest(a['PINS']),'GOVERNANCE_SEMANTIC_SHA256':gr['SEMANTIC_SHA256'],'PROFILE_IDENTITY':p124['IDENTITY'],'PARENT_IDENTITY':p127['IDENTITY'],'MATRIX_SHA256':digest(m),'RISK_SHA256':digest(risk),'GOVERNANCE_CLASSIFICATION_SHA256':digest(gc),'OUTPUT_SHA256':digest(ev),'GRAPH_ACYCLIC':True,'DECISION_READY':False,'OPTIONS':[],'PRESERVATION':'PASS','PRIOR_FILES':len(before),'NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

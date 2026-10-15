@@ -1,0 +1,78 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A06_HISTORICAL_REQUEST_WAIT_TRACE": "UNPROVEN",
+  "PROSPECTIVE_A06_TRACE_IS_ORIGINAL_TRACE": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "STOP_ON_DIVERGENCE": [
+    "FIRST_COUNTEREXAMPLE",
+    "EXPECTED",
+    "ACTUAL",
+    "STATE_ID",
+    "EVENT_ID",
+    "CLASSIFICATION"
+  ],
+  "entry": [
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/authorization-capture.json",
+      "pointer": "",
+      "raw_sha256": "d19764e0c1aaaec12487196d9b609f790c26a9591be286214129ac78c97e3061"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/sealed-fixtures.json",
+      "pointer": "",
+      "raw_sha256": "45ee0dee0d72ef0300deb3312f63938f084f97600714c3a282367e5f150e320c"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/trace-and-state-oracles.json",
+      "pointer": "",
+      "raw_sha256": "b4dd8fbd393e4c58c83d15d356960ff4a23c7fc5b9bdea0702af7614ffcffc22"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/sealed-negative-oracles.json",
+      "pointer": "",
+      "raw_sha256": "3a39a3cd3f0da4b463e622aaf85286bcb784369d86c26b936f31177ccd9f3fee"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/persistence-replay-determinism-contract.json",
+      "pointer": "",
+      "raw_sha256": "7baa83bac82394fdf99394529bac1dd1aa55aa6825dfef1272c68134810d7b7d"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/END-N12-N13-mapping.json",
+      "pointer": "",
+      "raw_sha256": "de1ebe08613c112113ebd3c12a842078aeddbcb7b232a049a4cd3dd8cfa9e95b"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/post-A06-complete-P05-readiness-oracle.json",
+      "pointer": "",
+      "raw_sha256": "7050ec8374b6fb5bb9f23471dcedd5aca909fd60dac05d6829d34b3116822d40"
+    }
+  ],
+  "expected_data_is_not_operation_input": true,
+  "no_INSTALL_or_grant_or_human_choice": true,
+  "no_P05_P06_A07_A13_execution": true,
+  "no_live_repair": true,
+  "no_reselection_of_request_sources_authority_or_expected_values": true,
+  "required_verdicts": {
+    "ADDITIONAL_AUTHORITY_REQUIRED": "NO",
+    "PROSPECTIVE_A06_EXECUTED": "NO",
+    "PROSPECTIVE_A06_EXECUTION_READY": "YES",
+    "contract": "PASS"
+  },
+  "schema": "E2-P05-A06-LATER-EXECUTION-CONTRACT-1",
+  "steps": [
+    "Verify all contract/code/source/scope hashes, labels, exact sealed start and empty ledger; no substituted fixture",
+    "Bootstrap only an unchanged start store; commit actual request-ready command once with ordinary native commit_event",
+    "Compare actual result/event/Snapshot/bundle with ready oracle; STOP on first mismatch",
+    "Persist ready checkpoint and terminate writer; restore in fresh process; verify exact parent/head and current request/gate",
+    "Construct waiting command from actual ready Snapshot; require sealed identity equality; commit once through native path",
+    "Compare exact two-event trace, order, parents, state/absence/control/source/policy/context and final bundle",
+    "Persist immutable native events and bundle; terminate writer; run cold readers and historical replay without appending",
+    "Run four primary hash-seed writers, three distinct presealed reproductions and permitted permutations",
+    "Run all isolated sealed A06 negatives; preserve successful lineage and native failure boundaries",
+    "Evaluate authorized A06-only END mapping and N12/N13 independently; keep historical labels/IDs distinct",
+    "If all qualify, create read-only new binding evidence changing only A06 from missing to AUTHORIZED_PROSPECTIVE_REPLACEMENT",
+    "Re-evaluate all thirteen rows and every sealed global P05 readiness term; identify first remaining non-stage blocker"
+  ],
+  "work_package": "E2-P05-A06-PROSPECTIVE-REQUEST-WAIT-QUALIFICATION-EXECUTION-1"
+}

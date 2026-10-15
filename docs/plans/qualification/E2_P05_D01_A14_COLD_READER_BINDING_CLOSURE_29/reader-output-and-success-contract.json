@@ -1,0 +1,51 @@
+{
+  "D01_FULL_CAPTURE_SCHEMA": {
+    "ENTRYPOINT": "capture; future qualified harness observation only, not execute_job",
+    "FIELDS": [
+      "qualification_label",
+      "typed_snapshot",
+      "typed_bundle",
+      "Computation",
+      "selection",
+      "resume",
+      "branches",
+      "witnesses",
+      "rejections",
+      "policy",
+      "source_pins",
+      "snapshot_identity",
+      "bundle_identity",
+      "event_identities",
+      "native_result",
+      "output_field_set"
+    ],
+    "FULL_EXPECTED_VALUES_SEALED": false,
+    "NORMALIZATION": "Native unordered collections canonical; event/lifecycle sequences ordered",
+    "SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_FIXTURE_ORACLE_CLOSURE_2/runner_v2.py",
+      "raw_sha256": "b5fa62e3ce6b88bed0e6fbece60b03484b4391bea78af435a5d98d20268b24dd"
+    }
+  },
+  "D01_QUALIFICATION_SUCCESS": "Additionally full typed capture output compared to independent full-output oracle; current FULL_OUTPUT_ORACLES remains 0/128. No full D01 PASS can follow from identity reader result alone.",
+  "IDENTITY_ORACLE_SOURCE": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_COLD_READER_BINDING_CLOSURE_29/expected-restored-identity-oracle.json",
+    "raw_sha256": "233df2e0fab672c46889a8fb3ac8c154a3ccc42f7bd258d39ae9ffebe60f312f"
+  },
+  "IDENTITY_READER_SCHEMA": {
+    "FIELDS": [
+      "restore_status",
+      "bundle_identity",
+      "snapshot_identity",
+      "policy_version",
+      "native_replay_scope",
+      "event_count",
+      "source_policy_validation",
+      "identity_comparison",
+      "reader_pid",
+      "failure",
+      "full_D01_output_comparison"
+    ],
+    "schema": "A14-COLD-READER-IDENTITY-RESULT-1"
+  },
+  "SEMANTIC_SUCCESS": "All runtime guards authenticated, independent process, exact handoff/file/source/policy/model/native identities and empty frame match; process exit 0 alone insufficient"
+}

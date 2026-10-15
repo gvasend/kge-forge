@@ -1,0 +1,1449 @@
+{
+  "A09_READY": "YES",
+  "A10_READY": "YES",
+  "A11_DEFINITION_READINESS": "YES",
+  "A11_NATIVE_PATH_QUALIFIED": "PASS",
+  "A11_READY": "YES",
+  "A12_FIRST_BLOCKER": "canonical E2-REENTER accepted_inventory is empty; bounded prospective PASS + E2-K-REENTER accepted-result materialization/installation remains unclosed",
+  "BROAD_REGRESSION_STATUS": "NOT_RUN; focused regressions only; prior frozen-E1 collection blocker/current pytest absence preserved separately",
+  "CANONICAL_A11_EVENT_ADMITTED": "NO",
+  "CANONICAL_BYTES_EQUAL": "YES",
+  "CANONICAL_IDENTITY_EQUAL": "YES",
+  "COLD_RESTORE": "PASS: 12 fresh readers after writer exit, three per hash seed, includes post-event set reversal",
+  "DETERMINISM": {
+    "R04_bundle_identity_preserved": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0"
+    },
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "independent_reproductions": 4,
+    "native_unordered_reversal": "PASS",
+    "ordered_causal_history": "UNCHANGED",
+    "readers": 12,
+    "result": "PASS"
+  },
+  "DUPLICATE_SEMANTICS": "PROHIBITED: producer constructs a set; shared native guard rejects duplicates rather than silently deduplicating; codec bytes/hash contract unchanged",
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "FIELD_SEMANTICS": "UNIQUE_UNORDERED_IDENTITY_SET in typed tuple representation; codec.SET_FIELDS is authoritative",
+  "INVALIDATION": {
+    "R04_cases": [
+      {
+        "classification": "APPLICABLE_DEPENDENCY_WITHDRAWAL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "DECISION:E2-DECIDE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:OBLIGATION:E2-EXTERNAL-REQUIREMENT:UNKNOWN:PROOF_RULE_KNOWN_EVIDENCE_MISSING",
+            "EXTERNAL:E2-GATE:RECEIPT:EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685:STALE_PREREQUISITE_SUPPORT"
+          ],
+          "supporting_identities": []
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "16cacc858ec5c11631c5c2594a0261dd1fa844fcfbb6cd5250530e1f4e7caa7d"
+        },
+        "expected_allowed": false,
+        "name": "Evidence_source",
+        "result": "PASS"
+      },
+      {
+        "classification": "APPLICABLE_DEPENDENCY_WITHDRAWAL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "DECISION:E2-DECIDE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:OBLIGATION:E2-EXTERNAL-REQUIREMENT:UNKNOWN:PROOF_RULE_KNOWN_EVIDENCE_MISSING",
+            "EXTERNAL:E2-GATE:RECEIPT:EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685:UNQUALIFIED_RECEIPT_CONTRACT",
+            "EXTERNAL:E2-GATE:RECEIPT_CONTRACT_UNQUALIFIED"
+          ],
+          "supporting_identities": []
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "2b81daa861be9f079df79be9d4df330dbee8137eebf50c313624669e562c6f20"
+        },
+        "expected_allowed": false,
+        "name": "validation/support_definition",
+        "result": "PASS"
+      },
+      {
+        "classification": "APPLICABLE_DEPENDENCY_WITHDRAWAL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "DECISION:E2-DECIDE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:OBLIGATION:E2-EXTERNAL-REQUIREMENT:UNKNOWN:PROOF_RULE_KNOWN_EVIDENCE_MISSING",
+            "EXTERNAL:E2-GATE:RECEIPT:EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685:UNQUALIFIED_RECEIPT_CONTRACT",
+            "EXTERNAL:E2-GATE:RECEIPT_CONTRACT_UNQUALIFIED"
+          ],
+          "supporting_identities": []
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "9f5335df6983d53bca8aa344eeb4168c5cbf6ffe7f705e59dec30158e96f25d2"
+        },
+        "expected_allowed": false,
+        "name": "gate_source",
+        "result": "PASS"
+      },
+      {
+        "classification": "UNRELATED_INVALIDATION_CONTROL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            }
+          ],
+          "allowed": true,
+          "reasons": [],
+          "supporting_identities": [
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-event-v1",
+              "sha256": "57c8db886a64e0636d96e808f5afffc90fee04d8550bb0989cd7535dc8849af8"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-event-v1",
+              "sha256": "7f8969c9aa4bf1af92cfd1f0d5c1f0f2f9dc9cf86696d36305adba85d4c1ec1f"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-resume-binding-v1",
+              "sha256": "639c8cc943fd7394dda03aabfd82498ee5971f56e685eaea898cd84d576b1e37"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "2068b14f232fa07e582d3c3f6ac4fa70bc43b7915790ebf4e4aa1b76f3e0c519"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "a359b97247a986639241698aa80a849844810e1957db75b2b50880e2605b2fbd"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "01f4c890347fb54514b0809a19cc286a235a3c572731014aa83160343b16b55a"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "072686aaee68ff6f9fa704c45467f93b65cd457955a96200e4578bbe0b0d38a8"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "091def488b87ec0c26f6170547f901ded08dd0034d23b1221cc5d0fb1f77689b"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "0b775c6c83db114e87e4416ed1f16e50fd499d5ea13b9244a5bfaf232c3601ad"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "1257fa6c440df70ff1d4fe7cf7e8eb90c8da00d11ca16a31ecbe9477a9497874"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "207e2c6a8b69eb01c4aef1c9d44897c2b658df28ccbb7ce84efd50fd54a3450d"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "2544f4a3258212dfda7cbc7803aae2d3f17f9c3cc7a6901113659a4c7504423b"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "2c351047c6d1d70db5bba80db5b0fc895ce7a708ac09d7d2364d7e68a1249cbc"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "320aa7273d2030daf0b879e1ecd8a3ef0dde1ff209e943a96b9c92a1230d1554"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "3a53f3adc76960339e472a96ec0e351b4db1588d04b2b18a04f666c6802057f2"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "3e34062b2106d2efa070138f46b5057bd2f094d9bdcc0f0d7ba142f25fa65e9d"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "41c7e65b0d30ae7ff458fd0d8551209acb76bac15a25775c6bc053bc22bdd9d1"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "42e7ce51e6dfc3fa9395491663e34fae286a2d8ed71586858e4ce4edd05fc3b4"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "6620db190e7fd39b5f7acb6ced20cecb37536249c649587dd0546e90f9616d2d"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "76a1358ea02e5657fb4819905c86b577d5f9d37c86c76a6f312b310fa26a653b"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "892e7d645ec73941443c505f282fad500bca3ad95b53159baa11e83f690db622"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "8bf34241624ae07559203a278855c08626aabd3eedf6675d27a64a2a6f6b0236"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "8facd8df588c644748d110f5ac5993b7021a873e5020018d4c2c55e15e9501d9"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "94fff2c47ddaa656b3279a42dea31db39ea0cc4829035360e3d7fe84d7b3c4c7"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "966a23b17e754fa28b5de64d979c56a91f75677a8b1d49628bc30dfa9f8e5f67"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "9ad9096ba5cb2b84a9edcb74ea792dd00ae183e26d776ed96c726f153ac854ed"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "9f038b61e6d22413f7e25e2c1d658d5fb1667531e3009f1b18cb25197e7abea5"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "aa031fdb1da1a109d5eddf4309dd775403ddbd56f9b23274be39b62c6957d788"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "ba2ac22de8be26c3380955f2c36e77c1317ad6d81d788451325c6721cf9c8fb4"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "bb528a253ed466ff2fce89cadfdd6a1b0cdab41458651230d733f7455aba2567"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "bce5320d831bd228af30dab403add01e0fa1b9e82896ff5ea2449b495e43bf36"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "c0d228cc551dc60c83ff09f8f8e087d60c4c882871fc4af8dfd541a135c6a2db"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "db89cd62739a5d92ff98d5d6db391c45a81d3cfe4a2647adb38e978bf09d1461"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "dc952fd03ad1366c9f2b76326287b7cacac1dae4a7bb017bc3c60db591def602"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "f8fd990004b3e4d4653fd420ebf682841fc041b33335d9d8efa25cdc9051c5d3"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "fa5956679566a52fb61b653dba5c2f324f0c53013082812851a87cc8a00f024e"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "fa6926113ad80b42bb83b10575cf3b961afa32e6fcd86ab4277fee104280a025"
+            }
+          ]
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "d925c8455aab8023d0a8cd6ebcd6b23cbe67dc5bb7611f30bc511c90c0079e73"
+        },
+        "expected_allowed": true,
+        "name": "authority_source:E2-GRANT",
+        "result": "PASS"
+      },
+      {
+        "classification": "APPLICABLE_DEPENDENCY_WITHDRAWAL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "DECISION:E2-DECIDE:E2-REENTER:DECISION_REENTRY_REQUIRED",
+            "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "DECISION:E2-DECIDE:RECORDED_DECISION_UNPROVED",
+            "EXTERNAL:E2-GATE:E2-REENTER:DECISION_REENTRY_REQUIRED",
+            "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE"
+          ],
+          "supporting_identities": []
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "f4a78537da9c35765ea8fe30554dbbe3ab78d39bac2af03f05533e1f836cfe64"
+        },
+        "expected_allowed": false,
+        "name": "authority_source:E2-PROSPECTIVE-CHOICE",
+        "result": "PASS"
+      },
+      {
+        "classification": "APPLICABLE_DEPENDENCY_WITHDRAWAL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "DECISION:E2-DECIDE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:OBLIGATION:E2-EXTERNAL-REQUIREMENT:UNKNOWN:PROOF_RULE_KNOWN_EVIDENCE_MISSING",
+            "EXTERNAL:E2-GATE:RECEIPT:EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685:UNQUALIFIED_RECEIPT_CONTRACT",
+            "EXTERNAL:E2-GATE:RECEIPT_CONTRACT_UNQUALIFIED"
+          ],
+          "supporting_identities": []
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "67912a06a5343a586a3d8bbef7faf394eb049bbb7d18a3faf698619751bf3ed7"
+        },
+        "expected_allowed": false,
+        "name": "authority_source:E2-ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca",
+        "result": "PASS"
+      },
+      {
+        "classification": "APPLICABLE_DEPENDENCY_WITHDRAWAL",
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "DECISION:E2-DECIDE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:E2-REENTER:PRIOR_ATTEMPT_HOLD:WAITING",
+            "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE",
+            "EXTERNAL:E2-GATE:OBLIGATION:E2-EXTERNAL-REQUIREMENT:UNKNOWN:PROOF_RULE_KNOWN_EVIDENCE_MISSING",
+            "EXTERNAL:E2-GATE:RECEIPT:EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685:UNQUALIFIED_RECEIPT_CONTRACT",
+            "EXTERNAL:E2-GATE:RECEIPT_CONTRACT_UNQUALIFIED"
+          ],
+          "supporting_identities": []
+        },
+        "event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "67912a06a5343a586a3d8bbef7faf394eb049bbb7d18a3faf698619751bf3ed7"
+        },
+        "expected_allowed": false,
+        "name": "authority_source:E2-SYNTHETIC-ATTESTOR:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539",
+        "result": "PASS"
+      }
+    ],
+    "permuted_actual_states": "membership invalidation withdraws C03 in reverse/rotate/sorted representations; historical event prefix retained",
+    "result": "PASS"
+  },
+  "MEMBERSHIP_NEGATIVES": {
+    "actual_support_guard": "VALIDATION_SUPPORT_WITHOUT_RESULT",
+    "different_sets": [
+      [
+        "A,B",
+        "A,C"
+      ],
+      [
+        "A",
+        "A,B"
+      ]
+    ],
+    "domain_identity_preserved": true,
+    "duplicates": [
+      {
+        "reason": "duplicate identifier",
+        "result": "REJECTED",
+        "type": "ValidationResultRecord"
+      },
+      {
+        "reason": "duplicate identifier",
+        "result": "REJECTED",
+        "type": "ValidationAssessment"
+      },
+      {
+        "reason": "duplicate identifier",
+        "result": "REJECTED",
+        "type": "ValidationSupportRecord"
+      }
+    ],
+    "result": "PASS"
+  },
+  "MINIMAL_COUNTEREXAMPLE": {
+    "before_implementation_sha256": "856bc7ac2ef7b590e98422c0abeab66e14582d54b43bb9d1715f9880af8935ab",
+    "call_path": [
+      "model.validate_model",
+      "hash-verified pre-repair validation_transaction.validate_records",
+      "inst.inputs == r.input_identities"
+    ],
+    "canonical_P04_modified": false,
+    "canonical_bytes_equal": true,
+    "canonical_identity_equal": true,
+    "inputs": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "p04-semantic-content-v1",
+        "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "p04-semantic-evidence-v1",
+        "sha256": "16ca198426ed66e06cc15e1095a853ed36405f8c3ed7a3f70c4f6a41a3c266c4"
+      }
+    ],
+    "post_repair_V1": "PASS",
+    "post_repair_V2": "PASS",
+    "pre_repair_V1": "PASS",
+    "pre_repair_V2": "VALIDATION_PROJECTION_REQUIRED",
+    "role": "ISOLATED_MODEL_COMPONENT_FIXTURE_NOT_EVENT_ADMITTED_STATE"
+  },
+  "NEXT_PACKAGE": "A12 bounded accepted Action-result/knowledge contract and legitimate installation/materialization closure",
+  "N_REAL_SATISFIED": "NO",
+  "ORDER_SENSITIVE_CONSUMERS": [
+    "verify_assessment",
+    "project",
+    "validate_records/VALIDATION_PROJECTION_REQUIRED"
+  ],
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_EXECUTION_READY": "NO",
+  "PERMUTATION_QUALIFICATION": {
+    "actual_input_set_permutations": [
+      {
+        "admission_Proof_C03_replay": "PASS",
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0"
+        },
+        "dependency_invalidation": "PASS",
+        "ordering": "reverse",
+        "path": "docs/plans/qualification/REENTRY_R05_1/permutation-reverse/bundle-6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0.json"
+      },
+      {
+        "admission_Proof_C03_replay": "PASS",
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0"
+        },
+        "dependency_invalidation": "PASS",
+        "ordering": "rotate",
+        "path": "docs/plans/qualification/REENTRY_R05_1/permutation-rotate/bundle-6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0.json"
+      },
+      {
+        "admission_Proof_C03_replay": "PASS",
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0"
+        },
+        "dependency_invalidation": "PASS",
+        "ordering": "sorted",
+        "path": "docs/plans/qualification/REENTRY_R05_1/permutation-sorted/bundle-6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0.json"
+      }
+    ],
+    "applicability": "0/1/2/3/5 input/projection/identity components tested exhaustively; actual A10 DAG has 15 required inputs, smaller subsets uniformly rejected; full model/Proof/C03 use complete current DAG",
+    "component_cardinalities": [
+      {
+        "Proof_C03": "unchanged existing authoritative state; invalid operands never applied",
+        "actual_A10_admission": "REJECTED_EQUIVALENTLY: mandatory actual DAG members missing",
+        "canonical_bytes_identity_membership_projection": "PASS",
+        "cardinality": 0,
+        "permutations": 1
+      },
+      {
+        "Proof_C03": "unchanged existing authoritative state; invalid operands never applied",
+        "actual_A10_admission": "REJECTED_EQUIVALENTLY: mandatory actual DAG members missing",
+        "canonical_bytes_identity_membership_projection": "PASS",
+        "cardinality": 1,
+        "permutations": 1
+      },
+      {
+        "Proof_C03": "unchanged existing authoritative state; invalid operands never applied",
+        "actual_A10_admission": "REJECTED_EQUIVALENTLY: mandatory actual DAG members missing",
+        "canonical_bytes_identity_membership_projection": "PASS",
+        "cardinality": 2,
+        "permutations": 2
+      },
+      {
+        "Proof_C03": "unchanged existing authoritative state; invalid operands never applied",
+        "actual_A10_admission": "REJECTED_EQUIVALENTLY: mandatory actual DAG members missing",
+        "canonical_bytes_identity_membership_projection": "PASS",
+        "cardinality": 3,
+        "permutations": 6
+      },
+      {
+        "Proof_C03": "unchanged existing authoritative state; invalid operands never applied",
+        "actual_A10_admission": "REJECTED_EQUIVALENTLY: mandatory actual DAG members missing",
+        "canonical_bytes_identity_membership_projection": "PASS",
+        "cardinality": 5,
+        "permutations": 120
+      }
+    ],
+    "component_permutations": 130,
+    "full_actual_native_input_count": 15,
+    "generic_unit_tests": {
+      "name": "generic_input_unit_tests",
+      "result": "PASS",
+      "tests": 5
+    },
+    "result": "PASS"
+  },
+  "PERSISTENCE": "PASS: same native bytes/IDs for equivalent actual presentations; four R04 checkpoints emitted in new isolated directory",
+  "PRE_REPAIR_ADMISSION_EQUAL": "NO",
+  "PRODUCTION_EFFECT": "NO",
+  "R04_INVALIDATION": "PASS",
+  "R04_NEGATIVES": {
+    "cases": [
+      {
+        "name": "proof_unsatisfied_received_only",
+        "rejection": "illegal external lifecycle transition",
+        "result": "PASS"
+      },
+      {
+        "name": "receipt_absent_pre_A09",
+        "rejection": "illegal external lifecycle transition",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_gate",
+        "rejection": "unknown external gate",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_prestate",
+        "rejection": "external event pre-state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_parent",
+        "rejection": "ledger sequence/parent mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "foreign_lineage_envelope",
+        "rejection": "ledger sequence/parent mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "conflicting_event_same_identity",
+        "rejection": "conflicting event replay",
+        "result": "PASS"
+      },
+      {
+        "name": "successful_result_retry_is_stale",
+        "rejection": "external event pre-state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "new_event_stale_parent",
+        "rejection": "external event pre-state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "caller_eligibility_operand",
+        "rejection": "unsupported event",
+        "result": "PASS"
+      },
+      {
+        "name": "persistent_eligibility_boolean",
+        "rejection": "invalid typed record: unknown or missing typed fields",
+        "result": "PASS"
+      },
+      {
+        "name": "A11_result_execution_payload",
+        "rejection": "invalid typed record: unknown or missing typed fields",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_receipt",
+        "rejection": "receipt observation differs from admitted claims",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_Evidence",
+        "rejection": "unknown pending receipt",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_ValidationResult",
+        "rejection": "VALIDATION_RESULT_ID",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_support",
+        "rejection": "VALIDATION_SUPPORT_REQUIRED",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_named_reentry",
+        "rejection": "ledger/current state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "unrelated_Action_reopening",
+        "rejection": "ledger/current state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_scope",
+        "rejection": "VALIDATION_RESULT_NOT_CURRENT",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_lineage",
+        "rejection": "VALIDATION_RESULT_NOT_CURRENT",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_generation",
+        "rejection": "VALIDATION_RESULT_NOT_CURRENT",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_provenance",
+        "rejection": "ledger/current state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "wrong_proposition",
+        "rejection": "ledger/current state mismatch",
+        "result": "PASS"
+      },
+      {
+        "name": "required_DECIDE_authority_absent",
+        "rejection": "REFERENCE_CONTRACT: dangling entity: E2-PROSPECTIVE-CHOICE-AUTHORITY",
+        "result": "PASS"
+      },
+      {
+        "name": "stale_validation_projection",
+        "rejection": "passing validation must be current",
+        "result": "PASS"
+      },
+      {
+        "name": "cached_Proof_from_another_state_operand",
+        "rejection": "invalid typed record: unknown or missing typed fields",
+        "result": "PASS"
+      },
+      {
+        "name": "conflicting_named_Action_payload",
+        "rejection": "invalid typed record: unknown or missing typed fields",
+        "result": "PASS"
+      },
+      {
+        "eligibility": {
+          "$type": "ResumeEligibility",
+          "actions": [],
+          "allowed": false,
+          "reasons": [
+            "SOURCE_PIN_FAILED:docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/E2_P04_CONTINUATION_INPUT_CLOSURE_1/native-payload.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/E2_P04_CONTINUATION_INPUT_CLOSURE_1/resolution-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/E2_P04_CONTINUATION_INPUT_CLOSURE_1/semantic-payload.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I02_1/install-authority-admission.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I03_1/attestor-body.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I03_1/authentication-set-body.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I03_1/authority-body.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I03_1/authority_predicate-body.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I03_1/ingress-body.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I03_1/source_predicate-body.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I04_1/authentication-install-admission.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I04_1/ingress-install-admission.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/INSTALLATION_I04_1/operating-attest-admission.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/attestor-and-evidence-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/choice-evidence.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/grant-source.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-00.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-02.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-03.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-04.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-05.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-06.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-07.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-08.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/negative-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/root-slot-model.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V01_1/generic-validation-support-protocol.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V01_1/p04-definition-set.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V01_1/p04-semantic-native-binding-template.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V01_1/p04-support-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V01_1/p04-transaction-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V01_1/p04-validation-contract.json",
+            "SOURCE_PIN_FAILED:docs/plans/qualification/VALIDATION_V02_1/install-authority-admission.json"
+          ],
+          "supporting_identities": [
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-event-v1",
+              "sha256": "57c8db886a64e0636d96e808f5afffc90fee04d8550bb0989cd7535dc8849af8"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-event-v1",
+              "sha256": "7f8969c9aa4bf1af92cfd1f0d5c1f0f2f9dc9cf86696d36305adba85d4c1ec1f"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-resume-binding-v1",
+              "sha256": "639c8cc943fd7394dda03aabfd82498ee5971f56e685eaea898cd84d576b1e37"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "2068b14f232fa07e582d3c3f6ac4fa70bc43b7915790ebf4e4aa1b76f3e0c519"
+            },
+            {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "a359b97247a986639241698aa80a849844810e1957db75b2b50880e2605b2fbd"
+            }
+          ]
+        },
+        "name": "wrong_physical_source_root",
+        "result": "PASS"
+      }
+    ],
+    "count": 28,
+    "result": "PASS"
+  },
+  "R04_POSITIVE_PATH": "PASS: exact Proof, ExternalEvent DEPENDENT_ACTION_REENTRY then required DecisionReentry, C03, only named E2-REENTER actionable/selected, A12 initial oracle; no execution",
+  "R04_RETRY": "PASS: identical envelope no-op; conflicting/stale fresh envelopes rejected; fresh successful-result retry fails closed",
+  "R04_required_events": [
+    "ExternalEvent DEPENDENT_ACTION_REENTRY",
+    "DecisionReentry for recorded E2-DECIDE route; not a second ExternalEvent or combined event"
+  ],
+  "REPAIR": {
+    "E2_special_case": false,
+    "canonical_identity_semantics_modified": false,
+    "codec_modified": false,
+    "diff": "qualification/REENTRY_R05_1/generic-repair.diff",
+    "file": "adapter/planner/validation_transaction.py",
+    "helper": "canonical_inputs: full identity-domain uniqueness check plus existing deterministic tuple sort",
+    "uses": [
+      "input construction",
+      "assessment binding",
+      "ordered projection construction",
+      "result/support admission and exact membership equality"
+    ]
+  },
+  "REPLAY": "PASS: recorded validation/support and both distinct reentry events, no new validation/permission decision",
+  "RESULT": "PASS",
+  "RESUME_ELIGIBILITY_PERSISTED": "NO; comparison evidence only",
+  "ROOT_CAUSE": "COMBINED_ADMISSION_AND_PROJECTION_ORDER_SENSITIVITY_DEFECT; codec equivalence and field representation are valid",
+  "WORK_PACKAGE": "REENTRY-R05",
+  "canonical_A09": "UNEXECUTED",
+  "canonical_A10": "UNEXECUTED",
+  "canonical_A11": "UNEXECUTED",
+  "canonical_A12": "UNEXECUTED",
+  "consumer_inventory": [
+    {
+      "after": "UNCHANGED",
+      "before": "ORDER_INDEPENDENT",
+      "consumer": "codec.SET_FIELDS / _wire",
+      "contract": "assessment/result/support input_identities are unordered; serialization sorts, does not deduplicate"
+    },
+    {
+      "after": "shared canonical_inputs; same tuple order and identity",
+      "before": "CANONICALIZED_BEFORE_USE: sorted unique set producer",
+      "consumer": "validation_transaction.inputs"
+    },
+    {
+      "after": "CANONICALIZED_BEFORE_USE; exact unique membership, all other bindings unchanged",
+      "before": "ORDER_SENSITIVE assessment.input_identities == expected ids",
+      "consumer": "verify_assessment"
+    },
+    {
+      "after": "UNCHANGED identity hashing; duplicate and support membership guards added",
+      "before": "ORDER_INDEPENDENT canonical bytes",
+      "consumer": "result record identity / support record identity / validate_prefix"
+    },
+    {
+      "after": "canonical deterministic tuple; legacy projection remains ordered",
+      "before": "ORDER_SENSITIVE copying unordered presentation into ordered projection",
+      "consumer": "project -> ValidationInstance.inputs"
+    },
+    {
+      "after": "ordered projection equals canonical unique result-input tuple; currentness/outcome/dossier unchanged",
+      "before": "ORDER_SENSITIVE inst.inputs == r.input_identities",
+      "consumer": "validate_records -> VALIDATION_PROJECTION_REQUIRED"
+    },
+    {
+      "after": "exact canonical unique membership equality, not hash-only or Boolean",
+      "before": "built from same expected input set; missing direct public membership guard",
+      "consumer": "support/result input relationship"
+    },
+    {
+      "after": "same native logic; corrected guard no longer rejects equivalent presentation",
+      "before": "public model admission reaches order-sensitive projection guard",
+      "consumer": "Proof / external_complete / dependent-action reentry"
+    },
+    {
+      "after": "same native event/policy/source/authority/actionability checks; no persisted eligibility",
+      "before": "replay/model admission inherits same guard defect",
+      "consumer": "C03 / ResumeEligibility"
+    },
+    {
+      "after": "UNCHANGED membership dependencies",
+      "before": "ORDER_INDEPENDENT changed.intersection(result.input_identities), any(... in legacy inputs)",
+      "consumer": "codec invalidation"
+    },
+    {
+      "after": "all equivalent raw and restored presentations pass; no codec change",
+      "before": "canonical decode normalizes sets; raw equivalent permutation failed semantic admission",
+      "consumer": "cold restore/replay/full computation comparison"
+    }
+  ],
+  "evidence": {
+    "R04_requalification": "qualification/REENTRY_R05_1/r04-requalification",
+    "before_model_component": "qualification/REENTRY_R05_1/minimal-two-reproducer.py",
+    "directory": "qualification/REENTRY_R05_1",
+    "full_input_permutations": "qualification/REENTRY_R05_1/permutation-qualification.json"
+  },
+  "full_actual_pre_repair_counterexample": {
+    "bundle": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "6b1e2cec5c5163552d496e5b682fe72652c297cfa22b75ee9c538931ade767e0"
+    },
+    "call_path": [
+      "model.validate_model",
+      "validation_transaction.validate_records",
+      "inst.inputs == r.input_identities"
+    ],
+    "canonical_bytes_equal": true,
+    "canonical_identity_equal": true,
+    "error": "VALIDATION_PROJECTION_REQUIRED",
+    "original_inputs": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "p04-semantic-content-v1",
+        "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "p04-semantic-evidence-v1",
+        "sha256": "16ca198426ed66e06cc15e1095a853ed36405f8c3ed7a3f70c4f6a41a3c266c4"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "c2b5b1eee72d50749a8d54896f79f1f1d1d915466efe435ec564e533a326eadf"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "d657ce20fc6a70ed77328e8ff4154349490207afa8ed8b7aa3c6a7f4bcb08bdf"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-receipt-admission-reference-v1",
+        "sha256": "b66649731611e25026e7c3543eeea96db84e120b7c51a35daeb65166ccfbf3e8"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "3eda33e153ac4e6ea25ee8f75c5f7b8b75a346f09b8458009168db5283271edf"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "01f4c890347fb54514b0809a19cc286a235a3c572731014aa83160343b16b55a"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "091def488b87ec0c26f6170547f901ded08dd0034d23b1221cc5d0fb1f77689b"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "1257fa6c440df70ff1d4fe7cf7e8eb90c8da00d11ca16a31ecbe9477a9497874"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a53f3adc76960339e472a96ec0e351b4db1588d04b2b18a04f666c6802057f2"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "9ad9096ba5cb2b84a9edcb74ea792dd00ae183e26d776ed96c726f153ac854ed"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "bce5320d831bd228af30dab403add01e0fa1b9e82896ff5ea2449b495e43bf36"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "f8fd990004b3e4d4653fd420ebf682841fc041b33335d9d8efa25cdc9051c5d3"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "fa5956679566a52fb61b653dba5c2f324f0c53013082812851a87cc8a00f024e"
+      }
+    ],
+    "pre_repair_admission_equal": false,
+    "reversed_inputs": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "fa5956679566a52fb61b653dba5c2f324f0c53013082812851a87cc8a00f024e"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "f8fd990004b3e4d4653fd420ebf682841fc041b33335d9d8efa25cdc9051c5d3"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "bce5320d831bd228af30dab403add01e0fa1b9e82896ff5ea2449b495e43bf36"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "9ad9096ba5cb2b84a9edcb74ea792dd00ae183e26d776ed96c726f153ac854ed"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a53f3adc76960339e472a96ec0e351b4db1588d04b2b18a04f666c6802057f2"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "1257fa6c440df70ff1d4fe7cf7e8eb90c8da00d11ca16a31ecbe9477a9497874"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "091def488b87ec0c26f6170547f901ded08dd0034d23b1221cc5d0fb1f77689b"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "01f4c890347fb54514b0809a19cc286a235a3c572731014aa83160343b16b55a"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "3eda33e153ac4e6ea25ee8f75c5f7b8b75a346f09b8458009168db5283271edf"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-receipt-admission-reference-v1",
+        "sha256": "b66649731611e25026e7c3543eeea96db84e120b7c51a35daeb65166ccfbf3e8"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "d657ce20fc6a70ed77328e8ff4154349490207afa8ed8b7aa3c6a7f4bcb08bdf"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "c2b5b1eee72d50749a8d54896f79f1f1d1d915466efe435ec564e533a326eadf"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "p04-semantic-evidence-v1",
+        "sha256": "16ca198426ed66e06cc15e1095a853ed36405f8c3ed7a3f70c4f6a41a3c266c4"
+      },
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "p04-semantic-content-v1",
+        "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+      }
+    ]
+  },
+  "preservation": {
+    "baseline_files": 12833,
+    "canonical_bundle_changed": false,
+    "changed": [
+      "adapter/planner/validation_transaction.py"
+    ],
+    "git_diff_check": "PASS",
+    "prior_qualification_artifacts_changed": []
+  },
+  "regressions": [
+    {
+      "name": "affected_regressions",
+      "result": "PASS",
+      "tests": 68
+    },
+    {
+      "name": "generic_input_unit_tests",
+      "result": "PASS",
+      "tests": 5
+    }
+  ],
+  "targeted_tests_total": 73
+}

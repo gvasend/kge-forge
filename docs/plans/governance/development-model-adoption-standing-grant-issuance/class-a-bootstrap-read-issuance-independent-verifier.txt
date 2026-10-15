@@ -1,0 +1,43 @@
+import copy,hashlib,json,pathlib,runpy,sys
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';P='class-a-bootstrap-read-'
+def read(n):return json.loads((D/(P+n)).read_text())
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()).hexdigest()}
+runpy.run_path(str(D/(P+'independent-static-verifier.txt')))
+s=read('amendment-subject.json');assert s['IDENTITY']['sha256']=='eea302132bf330fbc74477b8b4cec610d48eefb5ac74b6065bd986720561b84f';assert sha(D/(P+'amendment-subject.json'))=='656a02e37a2aae047d0b7f505a0b64308c047dace69b3956161022a8395b3180'
+ap=read('owner-approval.json');assert ap['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and ap['OPTION_ID']=='AUTHORIZE_CLASS_A_EXACT_CODEX_BOOTSTRAP_READ_LAUNCH_OVERLAY' and ap['SUBJECT_IDENTITY']==s['IDENTITY']
+expected=read('issuance-candidate.json')
+def validate(v):
+ r=v['RECORD'];assert v['AMENDMENT_IDENTITY']==cid('kge-forge-class-a-bootstrap-read-issued-amendment-v1',r)
+ assert r['APPROVED_CONTENT']==s['CONTENT'] and r['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+ assert r['ONLY_PERMISSION_DELTA']==s['CONTENT']['ONLY_NEW_PERMISSION'] and r['PARENT_STANDING_GRANT_IDENTITY']==s['CONTENT']['PARENT_STANDING_GRANT_IDENTITY']
+ assert r['INSTALLED_PROFILE_MUTATION_ALLOWED'] is False and r['RESOURCE_ACCOUNTING_UNCHANGED'] and r['NO_NEW_STANDING_GRANT_OR_EPOCH'] and r['FRESH_ENVIRONMENT_ENTRY_REQUIRED']
+ assert not r['PROFILE_ACTIVATED'] and not r['ENVIRONMENT_ADMITTED'] and not r['PILOT_EXECUTED'] and r['PILOT_STARTS_CONSUMED_BY_ISSUANCE']==0 and not r['ACCOUNTING_INITIALIZED']
+ for p in r['SOURCE_AUTHORITY_PINS']+[r['APPROVED_SUBJECT_PIN'],r['OWNER_APPROVAL_PIN'],r['PUBLICATION_MECHANISM_PIN']]:assert sha(p['path'])==p['raw_sha256']
+ assert r==expected['RECORD']
+validate(read(sys.argv[1]))
+mutations=[('wrong issuer',lambda r:r.update(ISSUER_ROLE='OTHER')),('wrong parent',lambda r:r['PARENT_STANDING_GRANT_IDENTITY'].update(sha256='0'*64)),('installed file edit',lambda r:r.update(INSTALLED_PROFILE_MUTATION_ALLOWED=True)),('new epoch',lambda r:r.update(NO_NEW_STANDING_GRANT_OR_EPOCH=False)),('counter reset',lambda r:r.update(RESOURCE_ACCOUNTING_UNCHANGED=False)),('pilot started',lambda r:r.update(PILOT_EXECUTED=True)),('profile activated',lambda r:r.update(PROFILE_ACTIVATED=True)),('counter initialized',lambda r:r.update(ACCOUNTING_INITIALIZED=True)),('home subtree',lambda r:r['ONLY_PERMISSION_DELTA'].update(PATH='/home/gvasend')),('helper writable',lambda r:r['ONLY_PERMISSION_DELTA'].update(ACCESS='write')),('wrong helper hash',lambda r:r['ONLY_PERMISSION_DELTA'].update(RAW_SHA256='0'*64)),('network enabled',lambda r:r['APPROVED_CONTENT']['AFTER_PERMISSION_MAP']['permissions']['kge-forge-class-a']['network'].update(enabled=True))]
+for name,f in mutations:
+ b=copy.deepcopy(expected);f(b['RECORD']);b['AMENDMENT_IDENTITY']=cid('kge-forge-class-a-bootstrap-read-issued-amendment-v1',b['RECORD'])
+ try:validate(b)
+ except (AssertionError,KeyError,TypeError,ValueError):pass
+ else:raise AssertionError('accepted negative '+name)
+for p,h in read('issuance-preservation-before.json').items():assert sha(p)==h,p
+out={'RESULT':'PASS','AMENDMENT_IDENTITY':expected['AMENDMENT_IDENTITY'],'SUBJECT_IDENTITY':s['IDENTITY'],'ORIGINAL_STATIC_NEGATIVE_DESIGNS':19,'ISSUANCE_NEGATIVE_DESIGNS':12,'ONLY_PERMISSION_DELTA':'ONE_EXACT_READ_ONLY_FILE','INSTALLED_PROFILE_UNCHANGED':True,'STANDING_GRANT_AND_ALLOCATIONS_UNCHANGED':True,'WORKER_OR_PILOT_EXECUTED':False,'HISTORICAL_PRESERVATION':'PASS'}
+if len(sys.argv)>2:
+ e=read('effectiveness-reference.json')
+ def effect(v):
+  r=v['RECORD'];assert v['IDENTITY']==cid('kge-forge-class-a-bootstrap-read-effectiveness-v1',r)
+  assert r['STATUS']=='EFFECTIVE_DEPENDENT_CLASS_A_BOOTSTRAP_READ_ONLY_AMENDMENT' and r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+  assert r['AMENDMENT_IDENTITY']==expected['AMENDMENT_IDENTITY'] and r['SUBJECT_IDENTITY']==s['IDENTITY'] and r['PARENT_STANDING_GRANT_IDENTITY']==s['CONTENT']['PARENT_STANDING_GRANT_IDENTITY']
+  assert r['ONLY_PERMISSION_DELTA']==s['CONTENT']['ONLY_NEW_PERMISSION'] and not r['PROFILE_ACTIVATED'] and not r['ENVIRONMENT_ADMITTED'] and r['PILOT_STARTS_CONSUMED_BY_ISSUANCE']==0
+  for k in ['AMENDMENT_PIN','ISSUANCE_VERIFICATION_PIN','CONFLICT_RECHECK_PIN']:assert sha(r[k]['path'])==r[k]['raw_sha256']
+ effect(e)
+ bads=[('forged parent',lambda r:r['PARENT_STANDING_GRANT_IDENTITY'].update(sha256='0'*64)),('forged amendment',lambda r:r['AMENDMENT_IDENTITY'].update(sha256='0'*64)),('premature admission',lambda r:r.update(ENVIRONMENT_ADMITTED=True)),('effect scope expansion',lambda r:r['ONLY_PERMISSION_DELTA'].update(ACCESS='write'))]
+ for name,f in bads:
+  b=copy.deepcopy(e);f(b['RECORD']);b['IDENTITY']=cid('kge-forge-class-a-bootstrap-read-effectiveness-v1',b['RECORD'])
+  try:effect(b)
+  except (AssertionError,KeyError,ValueError,TypeError):pass
+  else:raise AssertionError('accepted effect negative '+name)
+ out['EFFECTIVENESS_IDENTITY']=e['IDENTITY'];out['EFFECT_NEGATIVE_DESIGNS']=4
+print(json.dumps(out,sort_keys=True))

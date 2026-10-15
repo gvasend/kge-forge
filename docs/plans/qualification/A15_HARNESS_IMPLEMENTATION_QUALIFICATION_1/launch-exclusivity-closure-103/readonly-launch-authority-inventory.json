@@ -1,0 +1,66 @@
+{
+  "ALTERNATE_CALLERS": "notenumeratedbypublicpolicy orownerattestation;nohost-wideexclusionproof",
+  "AUDITABILITY": "nativejournal/process/manager APIsdocumented;qualifiedexactobservation/retentionstillmissing",
+  "CONTEXT": "managedread-onlyview,notdirect-hostattestation",
+  "CURRENT_UID": 1000,
+  "OBSERVATIONS": [
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "ERROR": {
+        "errno": 13,
+        "type": "PermissionError"
+      },
+      "MISSING": "authorizeddirectread ofapplicablepolicy/role;noescalationorpermissiontest performed",
+      "PATH": "/etc/sudoers",
+      "RESPONSIBLE_OWNER": "ubuntu01systemadministrator"
+    },
+    {
+      "CLASSIFICATION": "HOST_OBSERVED",
+      "LIMIT": "currentmanagedUID1000,notattesteddirect-host permission/exclusivity",
+      "OBSERVATION": {
+        "entries": [
+          "README"
+        ]
+      },
+      "PATH": "/etc/sudoers.d"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "ERROR": {
+        "errno": 2,
+        "type": "FileNotFoundError"
+      },
+      "MISSING": "authorizeddirectread ofapplicablepolicy/role;noescalationorpermissiontest performed",
+      "PATH": "/etc/polkit-1/rules.d",
+      "RESPONSIBLE_OWNER": "ubuntu01systemadministrator"
+    },
+    {
+      "CLASSIFICATION": "HOST_OBSERVED",
+      "LIMIT": "currentmanagedUID1000,notattesteddirect-host permission/exclusivity",
+      "OBSERVATION": {
+        "bytes": 3819,
+        "raw_sha256": "c85361f4512728a86fb5bf35e71af6bdd2e3ffb7c23ade906ae56c1b7cf662b8"
+      },
+      "PATH": "/usr/share/polkit-1/actions/org.freedesktop.systemd1.policy"
+    }
+  ],
+  "OWNER_ATTESTATION": {
+    "CLASSIFICATION": "OWNER_ATTESTED",
+    "LIMIT": "noactualsudo/delegatedexclusive roleproof",
+    "SOURCE": {
+      "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-probe-authority-87/administrator-declaration-provenance.json",
+      "raw_sha256": "c5a5330bec0a615cc0afb033125f4aafbc9ab10366b25553034992ba10e39d7f"
+    }
+  },
+  "PUBLIC_POLKIT_METADATA": {
+    "ACTUAL_CALLER_AUTHORIZATION": "UNDETERMINED",
+    "AVAILABLE": true,
+    "MANAGE_UNITS_ACTION": "<action id=\"org.freedesktop.systemd1.manage-units\">\n                <description gettext-domain=\"systemd\">Manage system services or other units</description>\n                <message gettext-domain=\"systemd\">Authentication is required to manage system services or other units.</message>\n                <defaults>\n                        <allow_any>auth_admin</allow_any>\n                        <allow_inactive>auth_admin</allow_inactive>\n                        <allow_active>auth_admin_keep</allow_active>\n                </defaults>\n        </action>",
+    "PATH": "/usr/share/polkit-1/actions/org.freedesktop.systemd1.policy",
+    "RAW_SHA256": "c85361f4512728a86fb5bf35e71af6bdd2e3ffb7c23ade906ae56c1b7cf662b8"
+  },
+  "RESTRICTED_LAUNCHER_SUPPORT": "prospectiveexactqualifiedOSrolepossible;noimplementedapplicablepolicy verified",
+  "SERVICE_CREATION_INTERFACE": "retainedsystem-managerStartTransientUnit andmanage-units action;actualauthorizedcaller/cache/role UNDETERMINED",
+  "SUDO_SYSTEMD_EXECUTIONS": 0,
+  "UNIT_COLLISION": "existingliveunit and--collect/unloadreuse do notprovepergrantoneuse;actualmanagerstate unqueried"
+}

@@ -1,0 +1,40 @@
+{
+  "CHECKS": [
+    "all ten physical sources exist at exact pinned root and paths",
+    "codec._path canonical paths; no symlink aliases",
+    "codec.validate_pin and codec.load_pinned exact RAW hashes/identity domains",
+    "every native initial/current provenance required by eventual bundle represented; current Snapshot exact references sealed here",
+    "unique (path,pointer,HashProfile.RAW) keys; identical repeated provenance deduplicated without dropping distinct identities",
+    "source lookup cannot replace sources with reports, excerpts or other content domains",
+    "scope/lineage/generation equal Snapshot/provenance contract; raw source.json TEST payload remains byte-identical",
+    "codec.decode_snapshot, model.validate_model and snapshot_id exact unchanged Snapshot",
+    "resolution source bytes equal native route wire body excluding $type/provenance under EXTERNAL-RESOLUTION-CONTRACT-1"
+  ],
+  "EXPECTED_SNAPSHOT_ID": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+  },
+  "FORBIDDEN": [
+    "A14 recompute/case execution",
+    "save/restore/commit",
+    "new authority/receipt/event",
+    "full-output oracle construction"
+  ],
+  "NOT_EXECUTED": true,
+  "SNAPSHOT_SOURCE": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/corrected-prospective-snapshot.json",
+    "pointer": "",
+    "raw_sha256": "0c3efd163fc76a752bf4221c14d284fc75863cd9f587511b57313087f1c3fe89"
+  },
+  "SOURCE_ORACLE": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_RESOLUTION_SOURCE_RECOVERY_20/post-materialization-source-oracle.json",
+    "pointer": "",
+    "raw_sha256": "d3fd642f33f8acf149f8a11f4fa71996cbb3895bc39158a959682adf8cd9832e"
+  },
+  "TYPE": "FUTURE_READ_ONLY_VALIDATION_ORACLE"
+}

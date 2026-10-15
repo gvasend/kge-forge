@@ -1,0 +1,40 @@
+HOST-SIDE PROCEDURE — NOT EXECUTED HERE
+Use the existing operator-controlled host, not a Codex command terminal inside the current sandbox. The standing grant and approved environment setup do not create OS/administrator permission.
+
+1. Verify this approved profile's source SHA-256: b694333f4c108c8fea455f7e117cda1d003f3c915bb36d78ae7ec466022b47f8. Confirm actual operator authority over the user Codex configuration and that the destination is absent. If an existing destination exactly matches, reuse it; otherwise stop instead of overwriting it. No unrelated configuration files need to be modified.
+
+2. Exclusive new-file installation; run only under that host authority:
+(
+  umask 077
+  set -o noclobber
+  /usr/bin/cat -- /home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/restricted-permission-profile.toml.txt > /home/gvasend/.codex/kge-forge-class-a.config.toml
+)
+Stop on any nonzero/partial outcome; no automatic rerun or overwrite. Independently reread the new file and compare its exact SHA-256. Required new file ownership UID1000, mode0600. This installs only the named overlay; it does not activate the current thread.
+
+3. Host-side preparation uses the sealed admission handoff. Seed only its thirteen pinned non-sensitive files in the exact standalone working-copy root below, with the sealed read-only overlay. No symlinks/hardlinks, original .git, credentials, live authority stores or broad mount. Reconcile persistent accounting before new consumption; do not create a new epoch or assume prior usage is zero. Preserve all approved limits, including twelve pilot starts and two cumulative automatic retries per work item.
+
+4. Check effective configuration layers: no legacy sandbox_mode/sandbox_workspace_write or --sandbox selection may override the named profile. Do not broaden managed requirements. The host app-server can use config/read, configRequirements/read and permissionProfile/list at the exact cwd to inspect the effective configuration. CLI --profile selects the overlay file; --permission-profile selects the permission policy.
+
+5. Start one restricted thread from the host after the prepared root exists:
+/home/gvasend/.nvm/versions/node/v20.20.2/bin/codex --profile kge-forge-class-a --permission-profile kge-forge-class-a --cd /tmp/kge-forge-class-a/0b0445692912111a63244a7ed06e816dd7901e43e89db26463cdafd42c0730da --ask-for-approval on-request
+A supported host thread/resume with explicit cwd and named permissions is an alternative; it must take effect before the next work turn. No daemon restart, new grant or new per-test owner decision is inherently required. Editing a config file without selecting/verifying it is insufficient.
+
+6. Provide the new thread with the existing approved grant/contract/pilot handoff and current authority/usage receipt via the conversation host. Do not give the worker original repository access to read these records. Resume admission before any project import/test: active profile receipt, protected paths and credentials denied, worker network off, nonprivileged identity, exact native limits and persistent accounting. The bounded pure preflight is charged to the pilot and standing grant. Proceed to tests only after independent admission passes.
+
+SOCKET DIAGNOSIS AND CONDITIONAL HOST REPAIR
+Exact control symlink: /home/gvasend/.codex/app-server-control/app-server-control.sock
+Exact resolved socket: /tmp/codex-daemon-1000/4ea042da9d70a0a0732f23269a0cc5bc4b74363a4a69fc48cb501280a5f7e55e
+Exact affected directory: /tmp/codex-daemon-1000
+This command namespace covers that directory with read-only mode000 tmpfs masks. This is not evidence of wrong actual host directory permissions. Do not chmod/chown/unmount the mask or allow the socket into the development worker.
+
+On the actual host, existing operator metadata permission may be used to resolve this symlink and inspect the real directory:
+/usr/bin/readlink -- /home/gvasend/.codex/app-server-control/app-server-control.sock
+/usr/bin/stat --format='%n:%F:%a:%u:%g:%d:%i' -- /tmp/codex-daemon-1000
+/usr/bin/findmnt --target /tmp/codex-daemon-1000
+Do not treat these as authority from Packages138/141, or as commands executed here. Reject a symlink/non-directory/unexpected owner or a sandbox-mask context. If the real host directory is UID1000 mode0700, no repair is indicated.
+
+Only if the actual host directory is genuinely owned by UID1000 with incorrect mode, and the operator has independently applicable control over that exact directory, the bounded nonrecursive repair is:
+/usr/bin/chmod 0700 -- /tmp/codex-daemon-1000
+Reread the directory metadata. No recursive chmod/chown, socket-file chmod, deletion, unmount, sudo, daemon restart or unrelated permission change is included. Wrong owner or managed mount belongs to the existing host administrator; no privilege is inferred. This conditional instruction has not authorized or performed chmod and is unnecessary if host state is already correct.
+
+Current state: profile not active; environment not admitted; pilot not executed; development allocations untouched by this review. Resume the same admission task after host activation.

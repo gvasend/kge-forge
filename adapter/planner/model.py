@@ -166,6 +166,8 @@ class AuthorityClass(Enum):
     IMPLEMENT_TEST = 'IMPLEMENT_TEST'
     DECIDE = 'DECIDE'
     ATTEST = 'ATTEST'
+    GENESIS = 'GENESIS'
+    INSTALL = 'INSTALL'
 
 
 class ValidatorRule(Enum):
@@ -264,7 +266,9 @@ class Gate:
 
 
 class ValidationState(Enum):
+    NOT_EVALUATED = 'NOT_EVALUATED'
     ACCEPTED = 'ACCEPTED'
+    REJECTED = 'REJECTED'
     STALE = 'STALE'
 
 
@@ -473,12 +477,14 @@ class Action:
     accepted_result: ActionResult = ActionResult.PASS
     prepared_dossier: Optional[DecisionDossier] = None
     qualification: ValidationState = ValidationState.ACCEPTED
+    blocked_terminal: bool = True
 
 
 @dataclass(frozen=True)
 class ActionStatus:
     id: ActionId
     state: ActionState
+    terminal_failure: bool = False
 
 
 @dataclass(frozen=True)
@@ -502,6 +508,16 @@ class Snapshot:
     goals: Tuple['Goal', ...] = ()
     budget_matrices: Tuple['BudgetProofMatrix', ...] = ()
     validation_instances: Tuple[ValidationInstance, ...] = ()
+    proof_contracts: Tuple['TypedProofContract', ...] = ()
+    typed_proofs: Tuple['TypedProof', ...] = ()
+    reevaluations: Tuple['ReevaluationRecord', ...] = ()
+    installed_definitions: Tuple['InstalledDefinition', ...] = ()
+    ingress_contracts: Tuple['EvidenceIngressContract', ...] = ()
+    validation_contracts: Tuple['EvidenceValidationContract', ...] = ()
+    validation_support_contracts: Tuple['EvidenceValidationSupportContract', ...] = ()
+    validation_transaction_contracts: Tuple['EvidenceValidationTransactionContract', ...] = ()
+    validation_results: Tuple['ValidationResultRecord', ...] = ()
+    validation_support_records: Tuple['ValidationSupportRecord', ...] = ()
 
 
 @dataclass(frozen=True)
@@ -541,9 +557,15 @@ def unique(items, key):
 
 def validate_model(snapshot):
     validate_types(snapshot, Snapshot)
+    unique(snapshot.ingress_contracts, lambda item: (item.gate,item.receipt_action))
+    unique(snapshot.installed_definitions, lambda item: item.id)
+    unique(snapshot.installed_definitions, lambda item: item.request.sequence)
     for collection in (snapshot.actions, snapshot.statuses, snapshot.roots,
                        snapshot.slots, snapshot.knowledge, snapshot.assertions, snapshot.entities, snapshot.predicates):
         unique(collection, lambda item: item.id)
+    for status in snapshot.statuses:
+        if status.terminal_failure and status.state is not ActionState.BLOCKED:
+            raise PlannerError('terminal result failure requires BLOCKED')
     actions = {a.id for a in snapshot.actions}
     roots = {r.id for r in snapshot.roots}
     if {s.id for s in snapshot.statuses} != actions:
@@ -606,9 +628,15 @@ def validate_model(snapshot):
             raise PlannerError('validation dossier identity must be content identity')
         if instance.result is ValidationOutcome.PASS and instance.currentness is not ValidationState.ACCEPTED:
             raise PlannerError('passing validation must be current')
+    if snapshot.validation_contracts or snapshot.validation_results or snapshot.validation_support_records:
+        from .validation_transaction import validate_records
+        validate_records(snapshot)
     validate_p03(snapshot)
     validate_p04(snapshot)
     validate_p05(snapshot)
+    if snapshot.proof_contracts or snapshot.typed_proofs:
+        from .typed_proofs import validate_records
+        validate_records(snapshot)
     if snapshot.budget_matrices or any(k.provenance.method == 'BUDGET_ORACLE_1' for k in snapshot.knowledge):
         from .budget import validate_restored
         validate_restored(snapshot)
@@ -651,10 +679,37 @@ class ExecutionEvent:
     sequence: int
     parent_snapshot: ArtifactIdentity
     parent_event: Optional[ArtifactIdentity]
-    result: Union[SuppliedResult, 'RecordedDecision', 'DecisionReentry', 'ExternalEvent', 'SourceInvalidation', 'EvidenceSourceAdmission']
+    result: Union[SuppliedResult, 'RecordedDecision', 'DecisionReentry', 'ExternalEvent', 'SourceInvalidation', 'EvidenceSourceAdmission', 'TypedProofAdmission', 'ProofDependencyChange', 'ActionReevaluation', 'InstallDefinition', 'ValidationSupportAdmission']
     after_snapshot: ArtifactIdentity
     identity: ArtifactIdentity
     resume_binding: Optional[ArtifactIdentity] = None
+
+
+@dataclass(frozen=True)
+class GenesisEvent:
+    """Parentless declaration that a canonical state starts a new lineage."""
+    event_type: str
+    source_snapshot_id: ArtifactIdentity
+    source_state_id: ArtifactIdentity
+    genesis_authority_id: ArtifactIdentity
+    authority_class: AuthorityClass
+    scope: str
+    lineage: str
+    provenance: Provenance
+    pre_genesis_history: str = 'NOT_REPRESENTED'
+    parent_event_id: Optional[ArtifactIdentity] = None
+
+
+@dataclass(frozen=True)
+class DossierMaterializationBinding:
+    """Hash-bound replay/source boundary for a native SuppliedResult event.
+
+    Validation bodies live only in the Snapshot addressed by after_snapshot.
+    This record is not an event payload or a separately identified entity.
+    """
+    event_identity: ArtifactIdentity
+    expected_bundle: ArtifactIdentity
+    source_additions: Tuple[ArtifactPin, ...]
 
 
 @dataclass(frozen=True)
@@ -666,6 +721,66 @@ class PersistenceBundle:
     policy: ArtifactPin
     policy_version: str = 'E1-SELECTION-1-P01-SUBSET'
     scope: str = 'PARTIAL_HISTORICAL_REPLAY'
+    dossier_materializations: Tuple[DossierMaterializationBinding, ...] = ()
+
+
+class InstallationOperation(Enum):
+    INSTALL = 'INSTALL'
+    REPLACE = 'REPLACE'
+    SUPERSEDE = 'SUPERSEDE'
+    CONFLICT = 'CONFLICT'
+
+
+@dataclass(frozen=True)
+class InstallableDefinition:
+    id: ArtifactIdentity
+    descriptor_json: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class InstallAuthority:
+    id: ArtifactIdentity
+    authority_class: AuthorityClass
+    grant_json: str
+    admission_provenance: Provenance
+
+
+@dataclass(frozen=True)
+class DefinitionAuthorityBinding:
+    authority_class: AuthorityClass
+    declared_authority_reference: ArtifactIdentity
+    operating_authorization_id: ArtifactIdentity
+    issued_authorization_json: str
+    accepted_admission_provenance: Provenance
+
+
+@dataclass(frozen=True)
+class InstallDefinition:
+    event_type: str
+    schema_version: int
+    command_key: ArtifactIdentity
+    expected_bundle: ArtifactIdentity
+    expected_snapshot: ArtifactIdentity
+    expected_parent_event: ArtifactIdentity
+    sequence: int
+    definition: InstallableDefinition
+    authority: InstallAuthority
+    operation: InstallationOperation
+    expected_old_reference: Optional[ArtifactIdentity]
+    policy: ArtifactPin
+    policy_version: str
+    source_additions: Tuple[ArtifactPin, ...]
+    authority_bindings: Tuple[DefinitionAuthorityBinding, ...] = ()
+    definition_sources: Tuple[Provenance, ...] = ()
+
+
+@dataclass(frozen=True)
+class InstalledDefinition:
+    id: ArtifactIdentity
+    request: InstallDefinition
+    supersedes: Optional[ArtifactIdentity]
+    validation: ValidationState = ValidationState.ACCEPTED
 
 
 def validate_predicate_contracts(snapshot):
@@ -969,6 +1084,11 @@ class ReceiptAdmission:
     authentication: PredicateId
     provenance: Provenance
     dependencies: Tuple[Provenance, ...] = ()
+    # Optional persisted identity of the independently validated
+    # evidence-bound attestation.  Its contents are qualified at admission;
+    # retaining the identity keeps the later receipt/proof boundary explicit.
+    # E07 preserves the full typed witness in the committed ingress event.
+    attestation: Optional[ArtifactIdentity] = None
 
 
 @dataclass(frozen=True)
@@ -1183,6 +1303,48 @@ class EvidenceFieldProvenance:
 
 
 @dataclass(frozen=True)
+class EvidenceBoundAttestation:
+    attestation_id: ArtifactIdentity
+    attestor_authority: ArtifactIdentity
+    attestor: ArtifactIdentity
+    source_predicate: PredicateId
+    source_pin: ArtifactIdentity
+    native_entity: EntityId
+    semantic_evidence: ArtifactIdentity
+    content: ArtifactIdentity
+    proposition: str
+    gate: GateId
+    scope: str
+    lineage: str
+    provenance: ArtifactIdentity
+
+
+@dataclass(frozen=True)
+class SemanticNativeBinding:
+    semantic_evidence_id: ArtifactIdentity
+    native_entity_id: EntityId
+    content_id: ArtifactIdentity
+    proposition: str
+    source_pin: ArtifactIdentity
+    attestor: ArtifactIdentity
+    attestor_predicate: PredicateId
+    gate: GateId
+    scope: str
+    lineage: str
+    provenance: ArtifactIdentity
+
+
+@dataclass(frozen=True)
+class EvidenceAttestationOperand:
+    """E02 instance and E01 binding sealed into one parent-bound command."""
+    attestation: EvidenceBoundAttestation
+    binding: SemanticNativeBinding
+    expected_bundle: ArtifactIdentity
+    expected_snapshot: ArtifactIdentity
+    expected_parent_event: Optional[ArtifactIdentity]
+
+
+@dataclass(frozen=True)
 class EvidenceSourceAdmission:
     schema: str
     expected_bundle: ArtifactIdentity
@@ -1197,3 +1359,205 @@ class EvidenceSourceAdmission:
     entity: GraphEntity
     admission: ReceiptAdmission
     field_provenance: Tuple[EvidenceFieldProvenance, ...]
+    attestation_operand: Optional[EvidenceAttestationOperand] = None
+
+
+class TypedProofKind(Enum):
+    SLOT_PROOF = 'SLOT_PROOF'
+    ROOT_PROOF = 'ROOT_PROOF'
+
+
+@dataclass(frozen=True)
+class TypedProofContract:
+    id: ArtifactIdentity
+    proof_type: TypedProofKind
+    proposition: str
+    target: Union[SlotId, ConditionId]
+    supports: Tuple[Union[KnowledgeId, SlotId], ...]
+    support_identities: Tuple[ArtifactIdentity, ...]
+    scope: str
+    lineage: str
+    generation: str
+    valid_until: int
+    authority: EntityId
+    authority_identity: ArtifactIdentity
+    provenance: Provenance
+    validation: ValidationState = ValidationState.ACCEPTED
+
+
+@dataclass(frozen=True)
+class TypedProof:
+    id: ArtifactIdentity
+    contract: ArtifactIdentity
+    proof_type: TypedProofKind
+    proposition: str
+    target: Union[SlotId, ConditionId]
+    supports: Tuple[Union[KnowledgeId, SlotId], ...]
+    support_identities: Tuple[ArtifactIdentity, ...]
+    scope: str
+    lineage: str
+    generation: str
+    valid_until: int
+    authority: EntityId
+    authority_identity: ArtifactIdentity
+    provenance: Provenance
+    validation: ValidationState = ValidationState.ACCEPTED
+
+
+@dataclass(frozen=True)
+class TypedProofAdmission:
+    proof: TypedProof
+    expected_snapshot: ArtifactIdentity
+
+
+@dataclass(frozen=True)
+class ProofDependencyChange:
+    dependencies: Tuple[Union[KnowledgeId, SlotId, ConditionId, EntityId, ArtifactIdentity], ...]
+    expected_snapshot: ArtifactIdentity
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class ReevaluationRecord:
+    dependencies: Tuple[Union[ActionId, KnowledgeId, SlotId, ConditionId, EntityId, PredicateId, ArtifactIdentity], ...]
+    action: ActionId
+    old_state: ActionState
+    support_state: ArtifactIdentity
+    new_state: ActionState
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class ActionReevaluation:
+    dependencies: Tuple[Union[ActionId, KnowledgeId, SlotId, ConditionId, EntityId, PredicateId, ArtifactIdentity], ...]
+    expected_snapshot: ArtifactIdentity
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class EvidenceValidationContract:
+    id: ArtifactIdentity
+    body_json: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class EvidenceValidationSupportContract:
+    id: ArtifactIdentity
+    body_json: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class EvidenceValidationTransactionContract:
+    id: ArtifactIdentity
+    body_json: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class ValidationClause:
+    clause_id: str
+    expected_json: str
+    actual_json: str
+    reasons: Tuple[str, ...]
+
+
+@dataclass(frozen=True)
+class ValidationAssessment:
+    id: ArtifactIdentity
+    command_key: ArtifactIdentity
+    input_identities: Tuple[ArtifactIdentity, ...]
+    validation_contract: ArtifactIdentity
+    rule_id: str
+    clauses: Tuple[ValidationClause, ...]
+    outcome: ValidationOutcome
+    scope: str
+    lineage: str
+    generation: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class ValidationSupportCommand:
+    event_type: str
+    schema_version: int
+    command_key: ArtifactIdentity
+    expected_bundle: ArtifactIdentity
+    expected_snapshot: ArtifactIdentity
+    expected_parent_event: ArtifactIdentity
+    sequence: int
+    policy: ArtifactPin
+    policy_version: str
+    definition_set: ArtifactIdentity
+    validation_contract: ArtifactIdentity
+    support_contract: ArtifactIdentity
+    transaction_contract: ArtifactIdentity
+    evidence: EntityId
+    receipt_reference: ArtifactIdentity
+    semantic_binding: SemanticNativeBinding
+    scope: str
+    lineage: str
+    generation: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class ValidationResultRecord:
+    id: ArtifactIdentity
+    command_key: ArtifactIdentity
+    pre_state: ArtifactIdentity
+    parent_event: ArtifactIdentity
+    sequence: int
+    validation_contract: ArtifactIdentity
+    definition_set: ArtifactIdentity
+    evidence: EntityId
+    receipt_reference: ArtifactIdentity
+    semantic_evidence: ArtifactIdentity
+    content: ArtifactIdentity
+    proposition: str
+    rule_id: str
+    assessment_identity: ArtifactIdentity
+    outcome: ValidationOutcome
+    input_identities: Tuple[ArtifactIdentity, ...]
+    scope: str
+    lineage: str
+    generation: str
+    valid_until: int
+    provenance: Provenance
+
+
+class ValidationSupportOutcome(Enum):
+    ACCEPTED_RECEIPT_SUPPORT = 'ACCEPTED_RECEIPT_SUPPORT'
+    REJECTED_RECEIPT_OBSERVATION = 'REJECTED_RECEIPT_OBSERVATION'
+
+
+@dataclass(frozen=True)
+class ValidationSupportRecord:
+    id: ArtifactIdentity
+    command_key: ArtifactIdentity
+    parent_event: ArtifactIdentity
+    sequence: int
+    support_contract: ArtifactIdentity
+    validation_result_id: ArtifactIdentity
+    evidence: EntityId
+    receipt_reference: ArtifactIdentity
+    gate: GateId
+    requirements: Tuple[EvidenceId, ...]
+    observation: ReceiptObservation
+    outcome: ValidationSupportOutcome
+    input_identities: Tuple[ArtifactIdentity, ...]
+    scope: str
+    lineage: str
+    generation: str
+    provenance: Provenance
+
+
+@dataclass(frozen=True)
+class ValidationSupportAdmission:
+    command: ValidationSupportCommand
+    assessment: ValidationAssessment
+    validation_result: ValidationResultRecord
+    support: ValidationSupportRecord
+    post_state: ArtifactIdentity
+    precommit_seal: ArtifactIdentity

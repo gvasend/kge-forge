@@ -1,0 +1,45 @@
+{
+  "ALTERNATIVES": [
+    {
+      "BENEFIT": "Minimal additional infrastructure if caller and native semantics are authenticated",
+      "ID": "A existing qualified API",
+      "RISK": "New interpreter before closure or unsafe stdio defeats ordering; current caller unknown"
+    },
+    {
+      "BENEFIT": "Could encode exact closure",
+      "COST": "Separate source construction and qualification authority; not performed or default next step",
+      "ID": "B minimal wrapper"
+    },
+    {
+      "BENEFIT": "Potential independent outer boundary",
+      "COST": "No authenticated existing environment; greater permissions/assurance overhead; not universally mandatory",
+      "ID": "C dedicated isolation host"
+    }
+  ],
+  "LIKELIHOODS": "Unknown; no quantified probabilities invented",
+  "NO_AUTO_RETRY": true,
+  "NO_NEW_NUMERIC_ALLOCATION": true,
+  "RETAINED_RESOURCE_PROPOSALS": {
+    "AUTOMATIC_RETRIES": 0,
+    "MAX_ADDRESS_SPACE_BYTES_PER_PROCESS": 268435456,
+    "MAX_AGGREGATE_LIVE_TASKS": 8,
+    "MAX_ATTEMPTS": 1,
+    "MAX_CPU_SECONDS_AGGREGATE": 1800,
+    "MAX_CPU_SECONDS_PER_PROCESS": 60,
+    "MAX_FDS_AGGREGATE": 512,
+    "MAX_FDS_PER_PROCESS": 64,
+    "MAX_MEMORY_BYTES_AGGREGATE": 2147483648,
+    "MAX_ORDINARY_WITNESS_PUBLICATION_BYTES": 8664414,
+    "MAX_OUTPUT_AND_TOTAL_EVIDENCE_BYTES": 8666750,
+    "MAX_TOTAL_PROCESS_CREATIONS": 113,
+    "MAX_WALL_SECONDS": 200,
+    "PROTECTED_CRITICAL_BYTES": 2336
+  },
+  "RISK_ACCEPTANCE": "Does not establish technical permission or waive binding exact environment/protection controls",
+  "SEPARATE_UNRESOLVED_GATES": [
+    "aggregate CPU/memory/tasks and process creations",
+    "finite scratch capacity/inodes",
+    "whole-workload cutoff and descendant observation",
+    "bounded independent collector and durable publication/claim writer"
+  ]
+}

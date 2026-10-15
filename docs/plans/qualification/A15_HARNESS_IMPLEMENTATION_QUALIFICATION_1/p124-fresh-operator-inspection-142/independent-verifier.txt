@@ -1,0 +1,50 @@
+# Static documentary verification only; no host inspection vector, setup builtin or target module runs.
+import pathlib,json,hashlib,shlex,copy,os
+R=pathlib.Path('/home/gvasend/app/kge-forge');B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';D=B/'p124-fresh-operator-inspection-142'
+def j(p):return json.loads(p.read_text())
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def h(v):return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def cid(ns,v):return dict(kind='CONTENT_IDENTITY',namespace=ns,sha256=h(v))
+a=j(D/'authenticated-grant-reference-index.json')
+for p,digest in a['CURRENT_RAW_PINS'].items():assert raw(R/p)==digest,p
+specs={'141':('qualification-p141-prospective-inspection-effectiveness-reference-v1','qualification-p141-prospective-p124-inspection-issued-grant-v1','GRANT_EFFECTIVE'),'138':('qualification-p138-directory-provisioning-effectiveness-reference-v1','qualification-p138-p124-directory-provisioning-issued-grant-v1','PROVISIONING_GRANT_EFFECTIVE'),'136':('qualification-p136-single-p124-grant-effectiveness-reference-v1','qualification-p136-single-p124-direct-shell-issued-grant-v1','GRANT_EFFECTIVE')}
+records={}
+for name,(ens,gns,flag) in specs.items():
+ r=a['GRANTS'][name];e=j(R/r['EFFECTIVENESS_PIN']['path']);g=j(R/r['GRANT_PIN']['path']);assert raw(R/r['EFFECTIVENESS_PIN']['path'])==r['EFFECTIVENESS_PIN']['raw_sha256'] and raw(R/r['GRANT_PIN']['path'])==r['GRANT_PIN']['raw_sha256'];assert e['IDENTITY']==cid(ens,e['CONTENT']) and e['CONTENT'][flag];assert g['GRANT_IDENTITY']==cid(gns,g['RECORD'])==e['CONTENT']['GRANT_IDENTITY']==r['GRANT_IDENTITY'];records[name]=g['RECORD']
+s=j(B/'p124-provisioning-reconciliation-140/prospective-inspection-authority-subject.json');c=s['CONTENT'];assert s['IDENTITY']==cid('qualification-p140-prospective-provisioning-inspection-subject-v1',c)==records['141']['APPROVED_SUBJECT_IDENTITY'];assert c==records['141']['APPROVED_CONTENT']
+# Actual charter content/lifecycle, not broad documentary echo scanning.
+E=R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66';C=E.parent/'KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65'
+def typed(ns,v):return {'$type':'ArtifactIdentity','kind':{'$enum':'IdentityKind','value':'CONTENT_IDENTITY'},'namespace':ns,'sha256':hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()}
+ref=j(E/'effective-charter-reference.json');ch=j(C/'charter-content.json');assert typed('kge-forge-qualification-governance-charter-v1',ch)==ref['CHARTER_CONTENT_IDENTITY']==c['GOVERNING_CHARTER_IDENTITY'] and ref['CHARTER_EFFECTIVE'];prev={'$type':'ArtifactIdentity','kind':{'$enum':'IdentityKind','value':'CONTENT_IDENTITY'},'namespace':'raw-file-sha256','sha256':raw(C/'charter-content-identity.json')};states=['DRAFT','REVIEWED','APPROVED','EFFECTIVE'];decid=typed('kge-forge-charter-owner-adoption-decision-v1',j(E/'owner-adoption-decision.json'))
+for i,t in enumerate(ref['TRANSITIONS'],1):
+ doc=j(R/t['PATH']);r=doc['RECORD'];identity=typed('kge-forge-charter-lifecycle-record-v1',r);assert identity==doc['IDENTITY']==t['IDENTITY'] and r['predecessor_lifecycle_record_identity']==prev;assert (r['from_state'],r['to_state'])==(states[i-1],states[i]) and r['decision_evidence_identity']==decid and r['actor_identity_or_authorized_role']==c['ISSUER_ROLE'];prev=identity
+assert prev==ref['EFFECTIVE_LIFECYCLE_IDENTITY']
+reg=j(R/'docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json');head='0'*64;heads=[]
+for ev in reg['EVENTS']:
+ v=dict(ev);eh=v.pop('EVENT_HASH');assert v['PREVIOUS_EVENT_HASH']==head and h(v)==eh;head=eh;heads.append(eh)
+assert head=='76f87581bcbd67d7ffecc8d1c9f8b92d7e5b35e23681b372083a120cafaedcdc' and '885fd0eaceb15847201dfd058217682741fb43c255298713ccbc1e7251eec791' in heads
+ledger=j(D/'exact-vector-admission-ledger.json');assert len(ledger['INSPECTIONS'])==17 and len(ledger['TEMPORARY_SETUP'])==3
+for row,source in zip(ledger['INSPECTIONS'],c['STEPS']):
+ assert row['VECTOR_ID']==source['STEP_ID'] and row['PRESERVED_RAW_SOURCE_STEP']==source and row['AUTHORITY_IDENTITY']==a['GRANTS']['141']['GRANT_IDENTITY'];assert row['MAX_CALLS']==row['CHARGE_PER_ATTEMPT']==1 and row['CODEX_CALLS_THIS_PACKAGE']==0 and row['CHARGED_CALLS']=='UNKNOWN_LIVE_STATE' and row['REMAINING']=='UNKNOWN_LIVE_STATE' and row['ADMISSION'].startswith('NOT_RELEASED')
+ if 'ARGV' in source:assert row['EXACT_ARGV']==source['ARGV'] and row['EXECUTABLE_PIN']==c['QUALIFIED_EXISTING_NATIVE_PINS'][source['ARGV'][0]]
+ else:assert row['EXACT_SHELL_TEXT']==source['SHELL_TEXT'] and row['EXACT_ARGV']==shlex.split(source['SHELL_TEXT']) and row['EXECUTABLE_PIN']['RAW_SHA256']==c['QUALIFIED_EXISTING_BASH_PIN']['RAW_SHA256']
+for row,text in zip(ledger['TEMPORARY_SETUP'],c['ALLOCATION']['CONTEXT_SETUP_VECTOR']):assert row['EXACT_SHELL_TEXT']==text and row['EXACT_ARGV']==shlex.split(text) and row['MAX_CALLS']==1 and row['CODEX_CALLS_THIS_PACKAGE']==0
+entry=j(D/'fresh-inspection-entry-determination.json');receipt=j(D/'operator-receipt-assessment.json');fs=j(D/'filesystem-and-i3-evidence-matrix.json');creation=j(D/'package138-creation-eligibility.json');assert not entry['INSPECTION_ENTRY_READY'] and not entry['OPERATOR_HANDOFF_RELEASED'] and receipt['FRESH_141_ENTRY_RECEIPT'] is None;assert not fs['I3_EVIDENCE_COMPLETE'];assert not creation['PROVISIONING_ENTRY_READY'] and not creation['P141_RESTORES_OR_ADDS_CREATION_PERMISSION'];assert all(x['CURRENT_141_RESULT'] is None for x in fs['ROWS'])
+def acyclic(edges):
+ nodes={x for e in edges for x in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(src in done for src,dst in edges if dst==n)}
+  if not ready:return False
+  done|=ready
+ return True
+edges=j(D/'ll12-and-dependency-review.json')['GRAPH_EDGES'];assert acyclic(edges)
+# Negative metadata fixtures reject false admissions or provenance; no actual positive live guard fabricated.
+f={'grant':a['GRANTS']['141']['GRANT_IDENTITY'],'subject':s['IDENTITY'],'step':c['STEPS'][11],'fresh':False,'current_receipt':False,'I3':None,'revocation_clear':False,'remaining':None,'per_invocation':True,'max_step_calls':1,'old_reset':False,'new_creation':False,'witness':False,'prior139charged141':False,'own_future_is_entry':False}
+def valid(v):return v['grant']==f['grant'] and v['subject']==f['subject'] and v['step']==c['STEPS'][11] and not v['fresh'] and not v['current_receipt'] and v['I3'] is None and not v['revocation_clear'] and v['remaining'] is None and v['per_invocation'] and v['max_step_calls']==1 and not any(v[x] for x in ['old_reset','new_creation','witness','prior139charged141','own_future_is_entry'])
+neg=[]
+for name,mut in [('wrong_grant',lambda v:v['grant'].update(sha256='0'*64)),('wrong_subject',lambda v:v['subject'].update(namespace='wrong')),('substituted_command',lambda v:v['step']['ARGV'].append('/other')),('forged_freshness',lambda v:v.update(fresh=True)),('stale_snapshot_as_current',lambda v:v.update(current_receipt=True)),('path_count_not_invocation',lambda v:v.update(per_invocation=False)),('unapproved_rerun',lambda v:v.update(max_step_calls=2)),('silent_counter_reset',lambda v:v.update(old_reset=True)),('fabricated_I3',lambda v:v.update(I3={'PASS':True})),('invented_revocation_clearance',lambda v:v.update(revocation_clear=True)),('remaining17_inferred',lambda v:v.update(remaining=17)),('restored_creation',lambda v:v.update(new_creation=True)),('witness_execution',lambda v:v.update(witness=True)),('old139assigned141',lambda v:v.update(prior139charged141=True)),('own_result_as_initial_entry',lambda v:v.update(own_future_is_entry=True))]:
+ v=copy.deepcopy(f);mut(v);assert not valid(v),name;neg.append({'DESIGN':name,'RESULT':'REJECTED','MUTATION_SHA256':h(v)})
+bad=copy.deepcopy(edges);bad.append(['AUTHORIZED_PRE_CREATION_READS','INSPECTION_ENTRY_REVIEW']);assert not acyclic(bad);neg.append({'DESIGN':'circular_self_entry_proof','RESULT':'REJECTED','MUTATION_SHA256':h(bad)})
+sem={'GRANTS':{n:a['GRANTS'][n]['GRANT_IDENTITY'] for n in ['141','138','136']},'SUBJECT_IDENTITY':s['IDENTITY'],'LEDGER_SHA256':h(ledger),'MAX_INSPECTIONS':17,'MAX_SETUP':3,'ENTRY_READY':False,'I3_COMPLETE':False,'CREATION_READY':False,'HOST_CALLS':0,'CHARGES_REMAINING':'UNKNOWN_LIVE_STATE','GRAPH_ACYCLIC':True,'LL12_HEAD':head,'NEGATIVES':neg}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'RESULT':'PASS_STATIC_RECONSTRUCTION','SEMANTIC':sem,'SEMANTIC_SHA256':h(sem)},sort_keys=True))
+

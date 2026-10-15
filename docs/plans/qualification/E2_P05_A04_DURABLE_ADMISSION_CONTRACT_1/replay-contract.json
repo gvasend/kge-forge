@@ -1,0 +1,67 @@
+{
+  "algorithm": [
+    "Validate the complete bundle and native event identities; collect all exact source introductions from existing admissions and new dossier bindings",
+    "Initial replay sources = bundle.sources minus explicitly recorded introductions; validate initial Snapshot/provenance and unchanged policy/scope",
+    "Walk native events in sequence, checking parent_snapshot/current state and parent_event/previous event",
+    "For each ordinary event without a dossier binding preserve existing native dispatch behavior",
+    "For bound dossier event require exact SuppliedResult type/dossier, selected native decision-input Action, original expected_snapshot and binding.expected_bundle == native current prefix bundle ID",
+    "Resolve archive exclusively by event.after_snapshot; verify canonical PLANNER-SNAPSHOT-1 bytes and native identity/model",
+    "Select original ValidationInstances by dossier checks/unique native PredicateIds; verify full subject/proposition/ordered inputs/scope/lineage/provenance/currentness and historical source boundary",
+    "Make exactly the binding source additions available at this event; verify raw source contents and reject duplicate/unrelated introduction",
+    "Invoke unchanged T02 admission as a pure historical state projection using event.result and the resolved original typed records; never call the live producer or independent validator",
+    "Compare entire canonical recomputed Snapshot with archive, not just validations or decision-ready flag; require after_snapshot equality",
+    "Advance event head exactly once; preserve native computed readiness separately from history and persisted outcomes",
+    "For prefixes keep only included binding entries and source introductions; for final bundle require exact current Snapshot hash and exact sources"
+  ],
+  "cold_restore_inputs": [
+    "externally trusted planner-bundle-v1 identity or audited HEAD",
+    "canonical bundle file",
+    "immutable event files",
+    "immutable Snapshot archive files addressed by event.after_snapshot",
+    "raw source and policy pins"
+  ],
+  "cold_restore_order": [
+    "verify expected bundle hash/known schema/type/canonical wire",
+    "verify policy and source files",
+    "verify unique binding/event correspondence and archive hash/model",
+    "replay complete history with historical archive resolver",
+    "compare final state/Snapshot/source inventory; audit HEAD previous/command when restoring HEAD",
+    "reconstruct exact A04 occurrence, parent, sequence/index, actual result/outputs and typed member bindings"
+  ],
+  "exactly_once": "Historical verification folds each committed event once; replay returns the historical bundle/state, never commits a second occurrence or increments HEAD",
+  "fresh_reader_contract": "No writer process/imported expected-state object may supply the archive. Missing disk archive fails even if latest current Snapshot or a report contains an equivalent value.",
+  "historical_outcomes": "ValidationOutcome/currentness is read from the original event-bound archived Snapshot. Readiness/model/binding checks may recompute; independent validation is not rerun as a new epistemic decision.",
+  "later_invalidation": "Retain original archive/event for historical audit. Replay later source/check invalidation separately; current readiness may become false without deleting or rewriting the original occurrence.",
+  "not_allowed": [
+    "latest mutable bundle.current as historical operand for an earlier event",
+    "writer caches or report paths as operand identity",
+    "rerunning PREPARE/source acquisition/independent validation",
+    "adding event/knowledge/result/authority on replay",
+    "inventing missing historical Snapshot/typed outcomes from final state",
+    "serializing computed permission/eligibility"
+  ],
+  "prefix_equivalence": "Reconstructed original prefix must preserve exact sources, bindings, policy, initial/current state and event order; expected_bundle is checked before the new binding is added, avoiding a hash cycle",
+  "qualification_requirements": [
+    "positive durable A04 event/complete state/source boundary",
+    "older 24 negatives plus durable negatives",
+    "injected failures at every precommit boundary",
+    "retry/no-op/conflict with descendants",
+    "cold restore and full replay in fresh processes after writer exit",
+    "replay after later validation/source invalidation retains original archive",
+    "missing archive/forged mapping must fail",
+    "zero live-producer/validator calls during replay",
+    "hash seeds0,1,7,101 and native unordered presentations"
+  ],
+  "result_output_correlation": "Full native event.result values must match the admitted post-state KnowledgeRecords/dossier and exact T02 effect; no separate invented ActionResult identity",
+  "status": "SEALED_CONTRACT_NOT_IMPLEMENTED_OR_QUALIFIED",
+  "validation_correlation": "Immutable after_snapshot selects exact original typed tuple; binding pin introductions authenticate historical provenance; whole-state projection closes correlation",
+  "validation_tamper_rejection": [
+    "wrong archive hash/canonical bytes",
+    "missing or duplicate PredicateId",
+    "wrong dossier/ordered inputs/provenance",
+    "changed generation/context/post-state",
+    "missing new source pin or changed raw source",
+    "wrong prefix/binding expected_bundle",
+    "event.result mismatch"
+  ]
+}

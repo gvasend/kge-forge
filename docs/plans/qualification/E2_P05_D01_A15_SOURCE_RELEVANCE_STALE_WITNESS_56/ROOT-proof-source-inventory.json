@@ -1,0 +1,186 @@
+{
+  "ADMISSION": {
+    "EVENT_ID": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "88fb01def0514728ab17bc53f3885448725cd5a968ede91c8a0e52ea7c98fcc6"
+    },
+    "PARENT_EVENT": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "14773dd4ba849bc2eb9e533e5e4680208bb1a77fb2bef6ba6388e56f392a7a80"
+    },
+    "PARENT_SNAPSHOT": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "859c9afa463878a31825fb8c244a40643951718d8c010cd143d2357525c598ee"
+    },
+    "POSITION": 19
+  },
+  "CONTRACT_IDENTITY": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-TypedProofContract-v1",
+    "sha256": "10f96412ca6b0096f8fdf83878b123728946d18049e7ce2d432d8b65512a62ec"
+  },
+  "CURRENTNESS_REQUIREMENTS": {
+    "authority": {
+      "$type": "EntityId",
+      "value": "P04-A13-ROOT_PROOF-FIXTURE-AUTHORITY:4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+    },
+    "authority_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+    },
+    "common_configuration": [
+      {
+        "CURRENT": true,
+        "ID": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "INSTANCE_IDENTITY"
+          },
+          "namespace": "planner-installed-definition-v1",
+          "sha256": "78b11bb2492e7fa5da9d51fb201b72c6255130cafe667996696df65ce8691c7b"
+        },
+        "NATIVE_RULE": "installation.support_ids \u2192 stale installed role; proof_installation.contract_current/typed_proofs.usable",
+        "SOURCE_IN_SUPPORT_IDS": true,
+        "TARGET_CONTRACTS": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-TypedProofContract-v1",
+            "sha256": "02b2c4c3f0faf45a9d111a27d8cdec7252a8f3e2156a8fd29b2e1cf6d2510315"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-TypedProofContract-v1",
+            "sha256": "10f96412ca6b0096f8fdf83878b123728946d18049e7ce2d432d8b65512a62ec"
+          }
+        ]
+      }
+    ],
+    "context": {
+      "$type": "EvaluationContext",
+      "allowed_effects": [],
+      "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+      "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "tick": 0
+    },
+    "contract_current": true,
+    "native_usable": true,
+    "support_fingerprints_match": true
+  },
+  "DECLARED_SUPPORTS": [
+    {
+      "$type": "SlotId",
+      "value": "E2-SLOT"
+    }
+  ],
+  "NATIVE_RULE_LOCATION": "invalidate_sources typed_proofs/proof_contracts replacement",
+  "NATIVE_RULE_SOURCE": {
+    "path": "adapter/planner/codec.py",
+    "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+  },
+  "NO_NATIVE_EVENT_MUTATED": true,
+  "PROOF_IDENTITY": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-TypedProof-v1",
+    "sha256": "07a9656600dd8fa9ba547047eb2203f7a273c1f33636edc81048d28d307bf646"
+  },
+  "PROVENANCE_DEPENDENCIES": {
+    "$type": "Provenance",
+    "excerpt": "{\"asserts_execution\":false,\"asserts_satisfaction\":false,\"consumer\":\"E2-P04/A13\",\"expected_value\":\"E2-SLOT RESOLVED under independently accepted SLOT_PROOF AND separate ROOT_PROOF admission\",\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":\"P04-A13-INDEPENDENT-ROOT-SOURCE-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"proposition\":{\"id\":\"E2-ROOT-PROPOSITION\",\"production\":false,\"statement\":\"The independently admitted E2-SLOT proof establishes the bounded post-reentry qualification root.\",\"type\":\"synthetic independent root proposition\"},\"provenance_origin\":{\"artifact\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_ROOT_SLOT_FIXTURE_AUTHORITY_1.json\",\"identity\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"3cb3f97dd589433de5cb6af84d11ba3d8b4c967f1fef8513b3545f07f7e146b0\"},\"origin_id\":\"PC02:INDEPENDENT_ROOT_DECLARATION\",\"section\":\"/root_proposition\"},\"qualification_only\":true,\"role\":\"ROOT_PROOF\",\"schema\":\"PLANNER-QUALIFICATION-PROPOSITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"support_selector\":{\"native_state\":\"RESOLVED\",\"proof_kind\":\"SLOT_PROOF\",\"proposition\":\"E2-SLOT-PROPOSITION\",\"slot\":\"E2-SLOT\"},\"target\":\"E2-ROOT\",\"valid_until\":100}",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+    },
+    "method": "F02_SEALED_PROSPECTIVE_DEFINITION",
+    "path": "docs/plans/qualification/FINISH_F02_1/independent-root-source.json",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "section": "/"
+  },
+  "SOURCE_CONTENT_IDENTITIES": [
+    {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+    }
+  ],
+  "SOURCE_PIN": {
+    "$type": "ArtifactPin",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+    },
+    "path": "docs/plans/qualification/FINISH_F02_1/independent-root-source.json",
+    "pointer": "",
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    }
+  },
+  "SUPPORT_FINGERPRINTS": [
+    {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-proof-support-v1",
+      "sha256": "8454899aee963eed14246f4e071c4148523e917ef53fda14d375795f7aea8efb"
+    }
+  ],
+  "TARGET": {
+    "$type": "ConditionId",
+    "value": "E2-ROOT"
+  },
+  "VALIDATION_WITHDRAWAL_RULE": "Starting ACCEPTED, current TypedProof.validation becomes STALE iff proof.provenance.identity is in SourceInvalidation.changed. This is a direct source condition, not membership in supports tuple."
+}

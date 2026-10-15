@@ -1,0 +1,23 @@
+{
+  "CONTRACT_COMPLETE": true,
+  "DIRECTORY_FSYNC_REQUIRED": false,
+  "HEAD_REQUIRED": false,
+  "PROHIBITED": [
+    "using static expected-save-bytes.bin or candidate file as saved source",
+    "trusting self-declared manifest alone",
+    "warm-reader substitution",
+    "native HEAD or crash-durability claims"
+  ],
+  "REQUIRED": [
+    "future save execution separately authorized",
+    "native save returned successfully at corresponding target",
+    "published target exists and equals expected byte/hash/native identity",
+    "writer completed permitted post-save actions and persisted exact handoff reference",
+    "supervisor observed process exit 0",
+    "reader launched only after wait in new interpreter without inherited writer objects/descriptors",
+    "reader uses handoff path but authenticates bundle with independent sealed precommitment and source root",
+    "reader exact entrypoint/argument/output-association to be sealed next; no launch now"
+  ],
+  "RUNTIME_PREREQUISITES_OCCURRED": false,
+  "STATIC_ONLY": true
+}

@@ -1,0 +1,550 @@
+{
+  "A05_DEFINITION": {
+    "A05_AUTHORITY": "Exact native DECIDE predicate bound to admitted choice entity and dossier source; distinct bounded USE predicate for E2-REENTER",
+    "A05_EXPECTED_RESULT": "Accepted RecordedDecision with exact ALLOW_QUALIFICATION_MAPPING on the positive P02 path",
+    "A05_ID": "E2-A05",
+    "A05_INPUTS": {
+      "choice_knowledge_id": "decision-choice:E2-DECIDE",
+      "choice_predicate": {
+        "$type": "Predicate",
+        "action": null,
+        "condition": null,
+        "entity": {
+          "$type": "EntityId",
+          "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "expected": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "id": {
+          "$type": "PredicateId",
+          "value": "E2-CHOICE-AUTHORITY:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "kind": {
+          "$enum": "PredicateKind",
+          "value": "AUTHORITY"
+        },
+        "knowledge": null,
+        "operands": [],
+        "other": null,
+        "permission": {
+          "$enum": "AuthorityClass",
+          "value": "DECIDE"
+        }
+      },
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "E2-GENERATION-1",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "tick": 0
+      },
+      "dossier_canonical_identity": "planner-dossier-sha256:6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "dossier_provenance_content_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+      },
+      "original_handoff_state": "planner-snapshot-v1:9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa",
+      "record_authority_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "e2-choice-record",
+        "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+      },
+      "record_entity_id": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+      "record_provenance_content_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+      },
+      "recorded_decision_fields": [
+        "decision",
+        "choice",
+        "record",
+        "authority",
+        "expected_snapshot"
+      ]
+    },
+    "A05_NATIVE_OPERATION": "apply_recorded_decision through ordinary ExecutionEvent/append_event",
+    "A05_OUTPUTS": {
+      "action": "Native E2-DECIDE completion under accepted RecordedDecision",
+      "decision": "recorded_choice and record stored; history advances DECISION_RECORDED",
+      "event": "Ordinary ExecutionEvent containing RecordedDecision when appended",
+      "forbidden": "No root/slot satisfaction, fabricated proof, downstream execution, general or production authority",
+      "grant": "ALLOW materializer makes only qualification-scoped E2-GRANT available for native USE evaluation",
+      "knowledge": "Existing admitted choice-evidence knowledge is consumed; no invented E2-K-DECIDE"
+    },
+    "A05_POSTCONDITION": "Decision history recorded; bounded authority evaluated by native predicate; no root/slot automatically satisfied",
+    "A05_PRECONDITIONS": [
+      "Ready admitted DecisionDossier/checklist",
+      "E2-DECIDE independently actionable and DECISION_READY",
+      "Predefined exact qualification-only option",
+      "Independently authenticated/pinned choice record",
+      "Current native DECIDE authority predicate",
+      "Accepted decision-choice:E2-DECIDE knowledge matching record provenance",
+      "Exact native current expected_snapshot and scope"
+    ],
+    "A05_PURPOSE": "Synthetic bounded decision/grant",
+    "A05_TYPE": "ARCHITECT_CONTRACT_DECISION; synthetic NON_EFFECTING qualification operation",
+    "ACTION_ID": "E2-DECIDE",
+    "CANONICAL_CASE": {
+      "CASE_ID": "E2-A05",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Decision history recorded; bounded authority evaluated by native predicate; no root/slot automatically satisfied",
+      "INITIAL_STATE": "Ready human decision with predefined qualification-only choices and independently pinned record",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "apply_recorded_decision through append_event; exact permitted record",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Synthetic bounded decision/grant",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "EARLIEST_DEFINITION": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "pointer": "",
+      "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    "OWNING_PACKAGE": "E2-P02",
+    "native_action_definition": {
+      "$type": "Action",
+      "accepted_inventory": [],
+      "effect": {
+        "$enum": "EffectClass",
+        "value": "NON_EFFECTING"
+      },
+      "evidence": [],
+      "id": {
+        "$type": "ActionId",
+        "value": "E2-DECIDE"
+      },
+      "operation": {
+        "$enum": "OperationClass",
+        "value": "ARCHITECT_CONTRACT_DECISION"
+      },
+      "pass_model_complete": true,
+      "prerequisites": [
+        {
+          "$type": "Gate",
+          "kind": {
+            "$enum": "GateKind",
+            "value": "ACTION_COMPLETED"
+          },
+          "target": {
+            "$type": "ActionId",
+            "value": "E2-PREPARE"
+          }
+        }
+      ],
+      "source": {
+        "$type": "Provenance",
+        "excerpt": "{\"action\":\"E2-DECIDE\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+        },
+        "method": "E2-PC01-WHOLE-MODEL-1",
+        "path": "E2-DECIDE.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/"
+      }
+    }
+  },
+  "RECORDED_DECISION_MODEL": {
+    "AUTHENTICATION_EVIDENCE": {
+      "choice_knowledge": {
+        "$type": "KnowledgeRecord",
+        "evidence": [],
+        "id": {
+          "$type": "KnowledgeId",
+          "value": "decision-choice:E2-DECIDE"
+        },
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+          "path": "qualification://E2-P02-human-decision",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/choice"
+        },
+        "state": {
+          "$enum": "KnowledgeState",
+          "value": "KNOWN_COMPLETE"
+        },
+        "statement": "ALLOW_QUALIFICATION_MAPPING",
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        }
+      },
+      "content_identity": "raw-file-sha256:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+      "payload": {
+        "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+        "issuer": "ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "option": "ALLOW_QUALIFICATION_MAPPING",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "sequence": 1,
+        "subject": "E2-DECIDE",
+        "trust_root": "d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+        "path": "qualification://E2-P02-human-decision",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/choice"
+      },
+      "record": {
+        "$type": "GraphEntity",
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "consumed": false,
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "generation": "E2-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "e2-choice-record",
+          "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "DECIDE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+          "path": "qualification://E2-P02-human-decision",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/choice"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "retained_authentication_result": "PASS from immutable ALLOW Retry 1 report"
+    },
+    "AUTHORITY_EFFECT": {
+      "DECIDE_predicate": {
+        "$type": "Predicate",
+        "action": null,
+        "condition": null,
+        "entity": {
+          "$type": "EntityId",
+          "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "expected": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "id": {
+          "$type": "PredicateId",
+          "value": "E2-CHOICE-AUTHORITY:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "kind": {
+          "$enum": "PredicateKind",
+          "value": "AUTHORITY"
+        },
+        "knowledge": null,
+        "operands": [],
+        "other": null,
+        "permission": {
+          "$enum": "AuthorityClass",
+          "value": "DECIDE"
+        }
+      },
+      "USE_grant": {
+        "$type": "GraphEntity",
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "consumed": false,
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "generation": "E2-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-GRANT"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "e2-grant",
+          "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "USE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"authority\": \"E2-GRANT\", \"choice\": \"6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411\", \"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"permission\": \"USE\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"subject\": \"E2-REENTER\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "method": "E2-T03-QUALIFICATION-GRANT-1",
+          "path": "qualification://E2-P02-human-decision",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/grant"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "USE_predicate": {
+        "$type": "Predicate",
+        "action": null,
+        "condition": null,
+        "entity": {
+          "$type": "EntityId",
+          "value": "E2-GRANT"
+        },
+        "expected": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb"
+        },
+        "id": {
+          "$type": "PredicateId",
+          "value": "E2-USE-AUTHORITY"
+        },
+        "kind": {
+          "$enum": "PredicateKind",
+          "value": "AUTHORITY"
+        },
+        "knowledge": null,
+        "operands": [],
+        "other": null,
+        "permission": {
+          "$enum": "AuthorityClass",
+          "value": "USE"
+        }
+      },
+      "core_apply_recorded_decision_issues_grant": false,
+      "grant_event_identity": "NOT_RECOVERED; not a field required by RecordedDecision",
+      "grant_payload": {
+        "authority": "E2-GRANT",
+        "choice": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+        "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "permission": "USE",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "subject": "E2-REENTER"
+      },
+      "old_materializer_order": "authenticate choice -> prepare record/knowledge -> apply_recorded_decision -> materialize ALLOW USE grant -> Snapshot"
+    },
+    "CHOICE": "ALLOW_QUALIFICATION_MAPPING",
+    "DECISION_ID": {
+      "domain": "ActionId",
+      "value": "E2-DECIDE"
+    },
+    "GENERATION": "E2-GENERATION-1",
+    "ISSUER": "qualification-authority:ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a",
+    "LINEAGE": "E2-CANONICAL-BASELINE-1",
+    "OPTION": "ALLOW_QUALIFICATION_MAPPING",
+    "PROVENANCE": {
+      "$type": "Provenance",
+      "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+      },
+      "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+      "path": "qualification://E2-P02-human-decision",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "section": "/choice"
+    },
+    "SCOPE": "E2-QUALIFICATION-ONLY",
+    "SUBJECT": "E2-DECIDE",
+    "TRUST_ROOT": "raw-file-sha256:d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0",
+    "choice_sequence_is_not_ExecutionEvent_sequence": true,
+    "fields_not_inline_in_RecordedDecision": [
+      "issuer",
+      "trust_root",
+      "dossier",
+      "scope",
+      "lineage",
+      "provenance",
+      "grant"
+    ],
+    "identity_domains_distinct": true,
+    "native_relationship": "Those terms are immutably bound through exact record/predicate/knowledge, dossier, context and event parent/post Snapshots.",
+    "native_type": "RecordedDecision",
+    "old_report_recorded_decision_identity_is_not_event_id": true,
+    "record_authority_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "AUTHORITY_IDENTITY"
+      },
+      "namespace": "e2-choice-record",
+      "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+    },
+    "record_id": {
+      "domain": "EntityId",
+      "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+    },
+    "standalone_decision_result_identity": "NOT_EXPOSED"
+  },
+  "T03_mapping": {
+    "T03_equals_canonical_A05_occurrence": false,
+    "exact_operation": "T03 materialize_choice calls native core.apply_recorded_decision for E2-DECIDE using the five native fields.",
+    "persistence_scope": "Snapshot round trip; DecisionMaterialization.event is the RecordedDecision command, not an ExecutionEvent.",
+    "status": "SEMANTIC_CAPABILITY_MAPPING_PROVEN; NOT_AN_ORIGINAL_A05_EVENT_MAPPING",
+    "support": [
+      {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_SYNTHETIC_HUMAN_DECISION_PROTOCOL_1.json",
+        "pointer": "",
+        "raw_sha256": "d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0"
+      },
+      {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T03_RESULT.json",
+        "pointer": "",
+        "raw_sha256": "0e73b7b4e2d2da989c2ce347ebc0a894843bae47798dda7ad7a6004be5ef2a0c"
+      },
+      {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_RETRY_1_RESULT.json",
+        "pointer": "",
+        "raw_sha256": "ef158a4c06e7f1d626bb0ab348ddb8b1eee19c33111f754c7496932b0da106da"
+      },
+      {
+        "path": "adapter/planner/human_decision.py",
+        "pointer": "",
+        "raw_sha256": "ff44bb1c34f2c1ca143210940caa592ee9dc64719a09de7b9015d300f760f012"
+      },
+      {
+        "path": "adapter/tests/test_e2_t03_human_decision.py",
+        "pointer": "",
+        "raw_sha256": "9705e67922015dcc1fc88434e6176505c97dd383abe05cd89437dc0bc671767a"
+      }
+    ]
+  }
+}

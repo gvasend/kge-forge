@@ -1,0 +1,590 @@
+{
+  "A09_A13_EXECUTED": "NO",
+  "A09_READY": "NO",
+  "ATOMICITY": "PASS",
+  "COLD_RESTORE": "PASS",
+  "DETERMINISM": "PASS",
+  "E02_INGRESS_INTEGRATION": "PASS",
+  "E02_OPERAND_CONTRACT": {
+    "E02_fields": [
+      "attestation_id",
+      "attestor_authority",
+      "attestor",
+      "source_predicate",
+      "source_pin",
+      "native_entity",
+      "semantic_evidence",
+      "content",
+      "proposition",
+      "gate",
+      "scope",
+      "lineage",
+      "provenance"
+    ],
+    "P04_expectation_source": "qualification/E2_P04_CONTINUATION_INPUT_CLOSURE_1/evidence-binding.json and independently rehashed semantic-payload.json",
+    "attestation_type": "EvidenceBoundAttestation",
+    "binding_fields": [
+      "semantic_evidence_id",
+      "native_entity_id",
+      "content_id",
+      "proposition",
+      "source_pin",
+      "attestor",
+      "attestor_predicate",
+      "gate",
+      "scope",
+      "lineage",
+      "provenance"
+    ],
+    "binding_type": "SemanticNativeBinding",
+    "fields": [
+      "attestation",
+      "binding",
+      "expected_bundle",
+      "expected_snapshot",
+      "expected_parent_event"
+    ],
+    "identity": "Unchanged E02 planner-evidence-attestation-v1 identity. planner-evidence-command-v1 seals the complete typed operand, E01 binding, bundle/state/parent, payload and all admission fields.",
+    "precommit_binding_seal": "qualification/EVIDENCE_E07_1/p04-precommit-binding-seal.json",
+    "status": "PASS",
+    "trust_boundary": "Trusted bundle and qualified semantic fixture/contract are explicit caller trust anchors. No bool or caller claim that authentication passed is accepted. This is synthetic qualification authentication, not a new cryptographic signature scheme.",
+    "trusted_input": "Independent presealed E01 semantic/native binding chosen by the boundary owner, not extracted from submitted operand",
+    "type": "EvidenceAttestationOperand"
+  },
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "E2_FINISH_EXECUTED": "NO",
+  "E2_P04_READY": "NO",
+  "EVIDENCE_BINDING": "PASS",
+  "IDEMPOTENCE": "PASS",
+  "NEXT_PACKAGE": "P04-A09-RECEIPT-CONTROL-INVARIANT-CLOSURE",
+  "N_REAL_SATISFIED": "NO",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_A09_EXECUTION_PREFLIGHT": "FAIL: RECEIPT_CHANGED_CONTROL",
+  "P04_EXECUTION_READY": "NO",
+  "PERSISTENCE": "PASS",
+  "PREFLIGHT_EXECUTION_EQUIVALENCE": "PASS",
+  "PRE_STATE_BINDING": "PASS",
+  "PRODUCTION_EFFECT": "NO",
+  "REGRESSIONS": "PASS_AFFECTED_CURRENT_RUNTIME; preexisting expanded/legacy failures recorded separately",
+  "REMAINING_CONTINUATION_DAG": {
+    "A09_execution_guard": {
+      "dependency": "complete native Computation equality",
+      "failure": "RECEIPT_CHANGED_CONTROL",
+      "next_package": "P04-A09-RECEIPT-CONTROL-INVARIANT-CLOSURE",
+      "status": "RUNTIME_BLOCKED"
+    },
+    "A10_validation_contract": {
+      "before_use": "legitimate prospective installation, not a ValidationResult",
+      "offline_definition": "validation-proof-reentry-inputs.json",
+      "status": "RUNTIME_BLOCKED_AND_AUTHORITY_REQUIRED"
+    },
+    "A11_evidence_proof_and_exact_reentry": {
+      "before_use": "typed contract, source/validation identities and exact named reentry; no proof/reentry instance installed",
+      "offline_definition": "typed-proof-contracts-final-definitions.json",
+      "status": "RUNTIME_BLOCKED_AND_AUTHORITY_REQUIRED"
+    },
+    "A12_REENTER_result_inventory": {
+      "before_use": "accepted-result/output declaration installed before selecting/executing REENTER",
+      "offline_definition": "action-definitions.json",
+      "status": "RUNTIME_BLOCKED_AND_AUTHORITY_REQUIRED"
+    },
+    "A13_root_slot_and_finishing_result": {
+      "before_use": "independent root/slot definitions, proof contracts and FINISH inventory; no proof/ActionResult installation",
+      "offline_definition": "slot-root-finish-definitions.json",
+      "status": "RUNTIME_BLOCKED_AND_AUTHORITY_REQUIRED"
+    }
+  },
+  "REPLAY": "PASS",
+  "RESULT": "PARTIAL",
+  "SECURITY_NEGATIVES": "PASS",
+  "TRANSACTION_INTERFACE_GAP": "CLOSED: ordinary transaction consumes the typed E02 operand",
+  "TRANSIENT_BOUNDARY": "PASS",
+  "WORK_PACKAGE": "EVIDENCE-E07",
+  "atomic_ordering": [
+    "load/replay/verify trusted pinned pre-state and source files",
+    "compare exact independent presealed E01 binding",
+    "verify current bundle/snapshot/append head/parent",
+    "validate raw source additions",
+    "validate typed E02 operand, E01 binding, installed authority/predicate/currentness and complete EvidenceSourceAdmission",
+    "privately derive admitted Evidence and authentication association; append private ingress event",
+    "privately derive EVIDENCE_RECEIVED receipt and receipt event; no validation/observation/reentry",
+    "replay complete private bundle and enforce unchanged Computation",
+    "write/fsync immutable raw source and complete bundle/event artifacts",
+    "atomically publish HEAD, the sole canonical semantic commit boundary"
+  ],
+  "atomicity_qualification": {
+    "canonical_effect_on_failure": "NONE; trusted HEAD unchanged and no canonical Evidence/attestation/receipt/event",
+    "commit": "Full typed attestation witness in committed ingress event; ReceiptAdmission.attestation points to its exact identity; Evidence and receipt are in the same committed bundle.",
+    "failure_injection": [
+      "private ingress projection",
+      "private receipt projection",
+      "immutable publication",
+      "atomic HEAD replacement"
+    ],
+    "uncommitted_files": "Immutable orphan files may remain after interrupted publication; they are not a published canonical head or a committed admission. No partial bundle or standalone admitted attestation is made canonical."
+  },
+  "between_stage_installation": {
+    "allowed_domain": "Prospective P04 configuration under I01-I04 authority/currentness/event rules; never P03 history",
+    "effect": "Every canonical installation stales an uncommitted A09 operand; rematerialize against latest head. No authority for unrelated A10-A13 definitions was issued by E07.",
+    "timing": "Canonical matrix states prerequisites at their owning stage; it does not authorize later contracts to be retroactively treated as current. Prospective definitions may be installed before their stage only with complete typed support and applicable bounded authority. Continuation closure requires complete prospective inventories/oracles before declaring the full package ready."
+  },
+  "fresh_readers": {
+    "all_pass": true,
+    "comparisons": 72,
+    "readers": [
+      {
+        "checks": {
+          "bundle_identity": true,
+          "content_binding": true,
+          "event_parent": true,
+          "exact_recorded_operand": true,
+          "four_records": true,
+          "no_validation": true,
+          "one_attestation": true,
+          "one_evidence": true,
+          "one_receipt": true,
+          "precommit_prefix": true,
+          "prefix_has_no_evidence_or_attestation": true,
+          "received_stage": true,
+          "replay": true,
+          "scope_lineage": true,
+          "semantic_binding": true,
+          "source_pin": true,
+          "source_provenance": true,
+          "state_identity": true
+        },
+        "hash_seed": "0",
+        "no_new_attestation_decision": true,
+        "reader_pid": 4,
+        "writer_pid": 3
+      },
+      {
+        "checks": {
+          "bundle_identity": true,
+          "content_binding": true,
+          "event_parent": true,
+          "exact_recorded_operand": true,
+          "four_records": true,
+          "no_validation": true,
+          "one_attestation": true,
+          "one_evidence": true,
+          "one_receipt": true,
+          "precommit_prefix": true,
+          "prefix_has_no_evidence_or_attestation": true,
+          "received_stage": true,
+          "replay": true,
+          "scope_lineage": true,
+          "semantic_binding": true,
+          "source_pin": true,
+          "source_provenance": true,
+          "state_identity": true
+        },
+        "hash_seed": "1",
+        "no_new_attestation_decision": true,
+        "reader_pid": 5,
+        "writer_pid": 3
+      },
+      {
+        "checks": {
+          "bundle_identity": true,
+          "content_binding": true,
+          "event_parent": true,
+          "exact_recorded_operand": true,
+          "four_records": true,
+          "no_validation": true,
+          "one_attestation": true,
+          "one_evidence": true,
+          "one_receipt": true,
+          "precommit_prefix": true,
+          "prefix_has_no_evidence_or_attestation": true,
+          "received_stage": true,
+          "replay": true,
+          "scope_lineage": true,
+          "semantic_binding": true,
+          "source_pin": true,
+          "source_provenance": true,
+          "state_identity": true
+        },
+        "hash_seed": "7",
+        "no_new_attestation_decision": true,
+        "reader_pid": 6,
+        "writer_pid": 3
+      },
+      {
+        "checks": {
+          "bundle_identity": true,
+          "content_binding": true,
+          "event_parent": true,
+          "exact_recorded_operand": true,
+          "four_records": true,
+          "no_validation": true,
+          "one_attestation": true,
+          "one_evidence": true,
+          "one_receipt": true,
+          "precommit_prefix": true,
+          "prefix_has_no_evidence_or_attestation": true,
+          "received_stage": true,
+          "replay": true,
+          "scope_lineage": true,
+          "semantic_binding": true,
+          "source_pin": true,
+          "source_provenance": true,
+          "state_identity": true
+        },
+        "hash_seed": "101",
+        "no_new_attestation_decision": true,
+        "reader_pid": 7,
+        "writer_pid": 3
+      }
+    ]
+  },
+  "generic_acceptance": {
+    "affected_regressions": "PASS",
+    "atomicity": "PASS",
+    "binding": "PASS",
+    "cold_restore": "PASS",
+    "determinism": "PASS",
+    "idempotence": "PASS",
+    "negatives": "PASS",
+    "ordering": "PASS",
+    "persistence": "PASS",
+    "pre_state_parent": "PASS",
+    "preflight_execution_equivalence": "PASS",
+    "replay": "PASS",
+    "transient_boundary": "PASS",
+    "typed_operand": "PASS"
+  },
+  "generic_qualification": {
+    "Evidence_count": 1,
+    "admitted_attestation": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-attestation-v1",
+      "sha256": "1cff68548286bcc095aa48b302a81d181405165fc26a5c963eadba99a186f8c6"
+    },
+    "appended_event_count": 2,
+    "attestation_count": 1,
+    "bundle": "docs/plans/qualification/EVIDENCE_E07_1/generic-root/target/bundle-c29f6503de7f819e967ed461b2b50f57248a00cde79efa88752d25d14426e73a.json",
+    "bundle_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "c29f6503de7f819e967ed461b2b50f57248a00cde79efa88752d25d14426e73a"
+    },
+    "cold_restore": "PASS",
+    "command_key": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-command-v1",
+      "sha256": "0a65edd5ffb4b432e7239f25bc09f0890d514f05b9cce15f203ccfcafe5162a0"
+    },
+    "idempotence": "PASS",
+    "independent_reproduction": "PASS",
+    "ingress_event": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "34f09415037446a9f0f45ac284fec99fe728e5e296de341dc7b662497c33983d"
+    },
+    "isolation": "TEST/scope and TEST/lineage; never canonical P04",
+    "persisted_instance_location": "committed ingress event operand",
+    "persistence": "PASS",
+    "positive": "PASS",
+    "preflight_execution_equivalence": "PASS",
+    "proof_count": 0,
+    "receipt_count": 1,
+    "receipt_event": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "c9d73cf447ce34f288bd1b6b982b981fa4ac5dcfe6609bbb729c8de2cfa8e140"
+    },
+    "replay": "PASS",
+    "repo_root": "docs/plans/qualification/EVIDENCE_E07_1/generic-root",
+    "start_bundle": "docs/plans/qualification/EVIDENCE_E07_1/generic-root/initial/bundle-01a43e7154f2f2326794ea243e82da284713a23dc9bdb4a9cc8f7215d0f67d44.json",
+    "start_bundle_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "01a43e7154f2f2326794ea243e82da284713a23dc9bdb4a9cc8f7215d0f67d44"
+    },
+    "state_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "a2432a6adabfb60da7cf4b06fb3242aff335d7acf903d060146f4f905240be0c"
+    },
+    "validation_count": 0,
+    "writer_pid": 3
+  },
+  "git_diff_check": "PASS",
+  "interface_gap_trace": {
+    "current_signature": "admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root, *, expected_binding=None)",
+    "missing_reference": "EvidenceSourceAdmission had no Evidence-bound attestation operand",
+    "prior_execution_path": [
+      "codec.admit_external_evidence",
+      "codec._extend_private",
+      "core.apply_event",
+      "evidence.apply(snapshot, request)"
+    ],
+    "prior_operands": [
+      "trusted parent bundle",
+      "EvidenceSourceAdmission",
+      "raw source bytes",
+      "publication directory",
+      "source root"
+    ],
+    "prior_preflight": "evidence.apply(snapshot, request, evidence_attestation=typed E02 instance)",
+    "prior_signature": "admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root)",
+    "shared_precommit": "codec.preflight_external_evidence; both preflight and execution call the same projection"
+  },
+  "p04_counterexample": {
+    "call_path": [
+      "codec.preflight_external_evidence",
+      "codec._extend_private(EvidenceSourceAdmission)",
+      "core.apply_event",
+      "evidence.apply publishes derived statuses",
+      "codec._extend_private(EVIDENCE_RECEIVED)",
+      "core.apply_receipt",
+      "codec full Computation equality guard"
+    ],
+    "canonical_commit": false,
+    "classification": "PREEXISTING_RECEIPT_CONTROL_COMPARISON_AND_BLOCKED_STATUS_CACHE",
+    "differing_computation_fields": {
+      "blocked": {
+        "after": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "PRIOR_ATTEMPT_HOLD:BLOCKED"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "PRIOR_ATTEMPT_HOLD:BLOCKED"
+            ]
+          ]
+        ],
+        "before": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ]
+      }
+    },
+    "failure": "RECEIPT_CHANGED_CONTROL",
+    "initial_bundle": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+    },
+    "next_package": "P04-A09-RECEIPT-CONTROL-INVARIANT-CLOSURE",
+    "scope_decision": "Do not relax the complete-computation guard or alter Action/blocking semantics in E07",
+    "unchanged_actionable": true,
+    "unchanged_control": true
+  },
+  "p04_precommit": {
+    "A09_READY": "NO",
+    "P04_EXECUTION_READY": "NO",
+    "attestation_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-attestation-v1",
+      "sha256": "cb12477a6bf991930d8815249bf3e9e3e96e75738f3bf72c92b16c94889af740"
+    },
+    "binding_seal_sha256": "a841e2491f49fc99e8c914f92d987f8cd58bb2feeafeceba6b762d5f54f92141",
+    "canonical_commit": false,
+    "canonical_state_unchanged": true,
+    "command_key": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-command-v1",
+      "sha256": "3b5c56790f9468bbb9f6b14006aa6ae4b1e1aece3c849ef66b7f42e958e826fe"
+    },
+    "dependency_provenance": "PASS",
+    "dependency_provenance_cardinality": 4,
+    "execution_preflight": "RECEIPT_CHANGED_CONTROL",
+    "initial_bundle": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+    },
+    "initial_state": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "c5c85434ddfb69be7f327e9e8fd72d2c7270505cf4908ea4fd9b4918075c1591"
+    },
+    "next_failure": "RECEIPT_CHANGED_CONTROL",
+    "operand_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-e02-ingress-operand-v1",
+      "sha256": "24f31c7895fb5255e7275f2635af595dbcf7f90f5cf252fb4982fdf08c97db14"
+    },
+    "parent": "PASS",
+    "parent_event": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "549e41859f55cd3414d91b5ce97f023ab9e150f55ed01ae81a9a9dc5ef2f362c"
+    },
+    "private_projection_only": true,
+    "projection_event_types": [
+      "EvidenceSourceAdmission",
+      "EVIDENCE_RECEIVED"
+    ],
+    "reference_contract": "PASS",
+    "remaining_contracts": {
+      "A10_validation": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED",
+      "A11_reentry_and_typed_evidence_proof": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED",
+      "A12_REENTER_result_inventory": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED",
+      "A13_root_slot_and_finishing_result": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED"
+    },
+    "route": "PASS",
+    "transient_attestation_durable_before_commit": false
+  },
+  "preservation": {
+    "E1_artifacts_modified": [],
+    "E1_files_checked": 10967,
+    "canonical_A09_A13_committed": false,
+    "core_and_gates_unchanged": true,
+    "preexisting_runtime_files_changed_in_E07": [
+      "adapter/planner/authentication_installation.py",
+      "adapter/planner/codec.py",
+      "adapter/planner/evidence.py",
+      "adapter/planner/evidence_attestation.py",
+      "adapter/planner/evidence_materializer.py",
+      "adapter/planner/model.py"
+    ],
+    "prior_qualification_artifacts_modified": []
+  },
+  "regressions": {
+    "E07_tests": {
+      "log": "qualification/EVIDENCE_E07_1/generic-tests.log",
+      "pass": 6,
+      "run": 6
+    },
+    "I02_I04_T01_E01_E06_G01_G04_root_slot": {
+      "log": "qualification/EVIDENCE_E07_1/regression-tests.log",
+      "pass": 40,
+      "run": 40
+    },
+    "expanded_replay_resume": {
+      "baseline": "Exact pre-E07 SHA256 verification of all six changed runtime modules, isolated in-memory baseline reproduction; same failure",
+      "fail": 1,
+      "log": "qualification/EVIDENCE_E07_1/replay-resume-tests.log",
+      "pass": 72,
+      "preexisting_failure": "P04ReplayTests.test_x05_all_nine_checks_required_not_majority_vote",
+      "run": 73
+    },
+    "full_suite": "NOT_PASS; known frozen-E1 duplicate-import collection blocker preserved separately. Fresh pytest collection could not run because pytest is not installed in /usr/bin/python3. No dependencies or E1 artifacts changed.",
+    "legacy_Evidence_admission": {
+      "errors": 12,
+      "fail": 4,
+      "log": "qualification/EVIDENCE_E07_1/legacy-tests.log",
+      "pass": 4,
+      "run": 20,
+      "same_failing_test_set_as_pre_I04": true
+    }
+  },
+  "replay_contract": {
+    "historical_witness": "same recorded typed operand, no new E02 materialization or ATTEST decision",
+    "temporal_boundary": "pre-ingress prefix has no Evidence/attestation/receipt; post-commit has exactly one of each",
+    "test": "ea.materialize is patched to fail during cold restore/replay and every fresh-reader process",
+    "verification": "identity hashing, E01 binding, historical authority/currentness, pre-state/parent, sources and event/state identities"
+  },
+  "schema": "PLANNER-EVIDENCE-E07-QUALIFICATION-1",
+  "security_negatives": [
+    "missing typed attestation",
+    "wrong native Evidence",
+    "wrong semantic Evidence",
+    "wrong content",
+    "wrong attestor",
+    "wrong operating ATTEST authority",
+    "wrong source predicate",
+    "wrong source pin",
+    "wrong scope",
+    "wrong lineage",
+    "wrong provenance",
+    "wrong proposition",
+    "stale/pre-install bundle",
+    "stale/pre-install state",
+    "foreign/pre-install parent",
+    "whole candidate stale after canonical event",
+    "preflight/execution instance substitution",
+    "self-consistent operand substitution against independent E01 seal",
+    "boolean substituted for typed operand",
+    "missing trusted E01 binding",
+    "same command changed attestation identity"
+  ]
+}

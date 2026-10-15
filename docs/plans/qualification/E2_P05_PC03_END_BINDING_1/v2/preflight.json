@@ -1,0 +1,883 @@
+{
+  "PC03_END_INTERFACE": "PASS",
+  "manifest_identity": "qualification-PC03-END-manifest-v1:32f33b697deb41b9757653464f8a0116bb2f7a9cf77b03344dfd730966da98d9",
+  "native_mutating_calls": [],
+  "native_validation": {
+    "RESULT": "PASS",
+    "ResumeEligibility_not_replayed_or_persisted_as_permission": true,
+    "independent_boundary_checks": [
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/POST_A12_PRE_SUPPORT",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_POST_A12",
+        "name": "POST_A12_PRE_SUPPORT"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/POST_SUPPORT",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_SLOT_CONTRACT",
+        "name": "POST_SUPPORT"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/POST_SLOT_PROOF",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_POST_SLOT_PROOF",
+        "name": "POST_SLOT_PROOF"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/POST_ROOT_PROOF",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_POST_ROOT_PROOF",
+        "name": "POST_ROOT_PROOF"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/POST_ROOT_SATISFACTION",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_POST_ROOT_PROOF",
+        "name": "POST_ROOT_SATISFACTION"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/PRE_FINISH",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_POST_ROOT_PROOF",
+        "name": "PRE_FINISH"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/POST_FINISH",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_ISOLATED_P04_TARGET",
+        "name": "POST_FINISH"
+      },
+      {
+        "RESULT": "PASS",
+        "independent_oracle_source": {
+          "path": "docs/plans/qualification/FINISH_F02_1/boundary-oracles.json",
+          "pointer": "/oracles/P04_TARGET",
+          "raw_sha256": "0fb0a9dc1534a3b9a799cde427c474c3c59f49109d58127fdf4c57a1697c7ae3"
+        },
+        "model": "P04_ISOLATED_P04_TARGET",
+        "name": "P04_TARGET"
+      }
+    ],
+    "model_checks": [
+      {
+        "control": "RUNNABLE",
+        "definition_versions": [],
+        "model_id": "ORIGINAL_INITIAL_MODEL",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 0,
+        "physical_source_pins": "HISTORICAL_EMBEDDED_SCOPE"
+      },
+      {
+        "control": "RUNNABLE",
+        "definition_versions": [],
+        "model_id": "A03_QUALIFIED_POST_STATE",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 2,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "HUMAN_HANDOFF",
+        "definition_versions": [],
+        "model_id": "A04_QUALIFIED_POST_STATE",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 3,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "EXTERNAL_WAIT",
+        "definition_versions": [],
+        "model_id": "A06_QUALIFIED_POST_STATE",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:2818ca4f84eab845a31f6e09bf1cabc16e7e88186b4b2c8381d361095ff91788",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 2,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "EXTERNAL_WAIT",
+        "definition_versions": [],
+        "model_id": "P03_QUALIFIED_POST_STATE",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 2,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "EXTERNAL_WAIT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          }
+        ],
+        "model_id": "P04_FINAL_PREEXECUTION",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:7b5c786c3ded06d5306e69320262da0041fb7a58618248d839f2b4ff7b851e10",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 9,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "EXTERNAL_WAIT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          }
+        ],
+        "model_id": "P04_INSTALLED_SOURCE_CONFIGURATION",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:5732fe84b6a7ac5fff2706d7b537b8c4e657b7b5f3a4eb8860d15e7aa656a0a6",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 8,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "EXTERNAL_WAIT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          }
+        ],
+        "model_id": "P04_POST_A09",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:129dc87a6c7803896fc7effbfec36d8d6696139d710b62104aedbdcf99768d8e",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 11,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "EXTERNAL_WAIT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          }
+        ],
+        "model_id": "P04_POST_A10",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:28bdadb2c3715cac0b7c165a6379aa4da414de50ae7e1963bb4c1da11b72819a",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 12,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "RUNNABLE",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          }
+        ],
+        "model_id": "P04_POST_A11",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:904b972f62f45ef3b013214671ea59cf3f03f7e03be787000e0a16e631aabc73",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 14,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "PLAN_DEFECT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          }
+        ],
+        "model_id": "P04_POST_A12",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:0c5e7f523f698af18371b9a80f101cb129277c441683bd2cdcf44bf762443410",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 15,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "PLAN_DEFECT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:8e60c75e9923657527548a7d77284c202af9fb2d182d29d8d66ae863a4413275",
+            "sequence": 16,
+            "source_support_current": true,
+            "type": "SLOT_PROOF_CONTRACT_DEFINITION"
+          }
+        ],
+        "model_id": "P04_SLOT_CONTRACT",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:e5588de37b91c57122ced4dc6049073c2d7f8f15f2994fda1638d7f03d8b407f",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 16,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "PLAN_DEFECT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:8e60c75e9923657527548a7d77284c202af9fb2d182d29d8d66ae863a4413275",
+            "sequence": 16,
+            "source_support_current": true,
+            "type": "SLOT_PROOF_CONTRACT_DEFINITION"
+          }
+        ],
+        "model_id": "P04_POST_SLOT_PROOF",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:8e41c11255513323c63aad1aa476e800845f7fa40cd8976d608b216af683ea06",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 17,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "PLAN_DEFECT",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:aae9c5b2bd546a98bfc24b9a21253e12bc55f94806963aedcc1442444dc60ff9",
+            "sequence": 18,
+            "source_support_current": true,
+            "type": "ROOT_PROOF_CONTRACT_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:8e60c75e9923657527548a7d77284c202af9fb2d182d29d8d66ae863a4413275",
+            "sequence": 16,
+            "source_support_current": true,
+            "type": "SLOT_PROOF_CONTRACT_DEFINITION"
+          }
+        ],
+        "model_id": "P04_ROOT_CONTRACT",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:859c9afa463878a31825fb8c244a40643951718d8c010cd143d2357525c598ee",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 18,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "RUNNABLE",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:aae9c5b2bd546a98bfc24b9a21253e12bc55f94806963aedcc1442444dc60ff9",
+            "sequence": 18,
+            "source_support_current": true,
+            "type": "ROOT_PROOF_CONTRACT_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:8e60c75e9923657527548a7d77284c202af9fb2d182d29d8d66ae863a4413275",
+            "sequence": 16,
+            "source_support_current": true,
+            "type": "SLOT_PROOF_CONTRACT_DEFINITION"
+          }
+        ],
+        "model_id": "P04_POST_ROOT_PROOF",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 19,
+        "physical_source_pins": "PASS"
+      },
+      {
+        "control": "TERMINAL_SUCCESS",
+        "definition_versions": [
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3",
+            "sequence": 5,
+            "source_support_current": true,
+            "type": "EVIDENCE_INGRESS_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": false,
+            "definition": "planner-installable-definition-v1:1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970",
+            "sequence": 3,
+            "source_support_current": true,
+            "type": "EXTERNAL_RESOLUTION_CONTRACT"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59",
+            "sequence": 9,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca",
+            "sequence": 8,
+            "source_support_current": true,
+            "type": "ROOT_SLOT_CONFIGURATION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:aae9c5b2bd546a98bfc24b9a21253e12bc55f94806963aedcc1442444dc60ff9",
+            "sequence": 18,
+            "source_support_current": true,
+            "type": "ROOT_PROOF_CONTRACT_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:ec860977fe780fb78aec0de675e5e9cb2c338d0cbd9d8dfd166ec7aeea2ea744",
+            "sequence": 6,
+            "source_support_current": true,
+            "type": "VALIDATION_SUPPORT_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:4c7f4632ad618c92c7d77faed32f9f5478594b2e104e240d1d1ab444e6a61acb",
+            "sequence": 7,
+            "source_support_current": true,
+            "type": "ACTION_DEFINITION"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436",
+            "sequence": 4,
+            "source_support_current": true,
+            "type": "AUTHENTICATION_DEFINITION_SET"
+          },
+          {
+            "consumer_applicable_now": true,
+            "definition": "planner-installable-definition-v1:8e60c75e9923657527548a7d77284c202af9fb2d182d29d8d66ae863a4413275",
+            "sequence": 16,
+            "source_support_current": true,
+            "type": "SLOT_PROOF_CONTRACT_DEFINITION"
+          }
+        ],
+        "model_id": "P04_ISOLATED_P04_TARGET",
+        "native_model": "PASS",
+        "native_snapshot": "planner-snapshot-v1:046fdc270a0060503729151368a68672f76af122830b86e65d372e6bc5d7dea4",
+        "native_types": "PASS",
+        "no_native_mutation": true,
+        "ordered_event_count": 20,
+        "physical_source_pins": "PASS"
+      }
+    ],
+    "model_count": 16,
+    "native_mutating_calls": [],
+    "writer_derived_fidelity_comparators_not_lifecycle_oracles": true
+  },
+  "projection_identity": "qualification-PC03-END-projection-v1:a841d8c5ef3dc08e4ed40813cbba0f25d48fe76da710b14bb6bf79fa06b42ca2",
+  "terms": {
+    "CONSUMER": "PASS",
+    "CURRENTNESS": "PASS",
+    "INPUT_MANIFEST": "PASS",
+    "LINEAGE": "PASS",
+    "PROCESS": "PASS",
+    "PROJECTION": "PASS",
+    "PROVENANCE": "PASS",
+    "SCOPE": "PASS",
+    "SOURCE": "PASS"
+  }
+}

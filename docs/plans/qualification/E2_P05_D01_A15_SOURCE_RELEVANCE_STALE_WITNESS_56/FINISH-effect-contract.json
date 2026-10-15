@@ -1,0 +1,42 @@
+{
+  "FINISH_EXPECTED_CONTROL": "Conditional proof-source rows above; no full complete computation/reasons oracle",
+  "FINISH_EXPECTED_RESUME": "Frozen false; exact full result must be separately derived/verified",
+  "FINISH_HELD_OR_BLOCKED_RULE": [
+    "codec qualification loss and unavailable_support can hold unfinished work",
+    "typed_proofs.affected_actions/reevaluate propagates actual affected targets",
+    "core._actionability and gates.blockers enforce current definition/prerequisites"
+  ],
+  "FINISH_IDENTITY": {
+    "$type": "ActionId",
+    "value": "E2-FINISH"
+  },
+  "FINISH_OBSERVATION_METHOD": "Full transition report and independent restored computation/eligibility, not a substituted stale proof flag",
+  "FINISH_REQUIRED_SUPPORT": [
+    {
+      "$type": "Gate",
+      "kind": {
+        "$enum": "GateKind",
+        "value": "ACTION_COMPLETED"
+      },
+      "target": {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    },
+    {
+      "$type": "Gate",
+      "kind": {
+        "$enum": "GateKind",
+        "value": "CONDITION_SATISFIED"
+      },
+      "target": {
+        "$type": "ConditionId",
+        "value": "E2-ROOT"
+      }
+    }
+  ],
+  "FINISH_RESUME_PREDICATE": "core.resume_eligibility: native routes/events/policy/context plus actionable named actions and source verification; function not called (would replay)",
+  "FINISH_STARTING_CONTROL": "RUNNABLE; Action state ACTIONABLE",
+  "NO_DESCENDANT_SUBSTITUTION_FOR_ADMISSION": true,
+  "STATUS": "PARTIAL_CONDITIONAL_CONTRACT"
+}

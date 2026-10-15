@@ -1,0 +1,61 @@
+{
+  "COUNTING_NOT_APPLIED_TO_AUTHORITY": true,
+  "DEFINITIONS": {
+    "LOGICAL_BYTES": "Length of encoded intended records before write; excludes later retries/rewrites unless separately enumerated",
+    "PERSISTED_BYTES": "Bytes whose exact content and durability barriers plus independent reread are evidenced; no inference solely from write return",
+    "RETAINED_BYTES": "File content remaining at measurement end; omits overwritten/deleted prior writes and is not cumulative",
+    "SUBMITTED_BYTES": "Sum lengths of buffers passed to the defined API or syscall, including failed/partial/repeated submissions; API level must be specified",
+    "TRANSFERRED_BYTES": "Sum bytes reported successfully transferred by defined interface; not durable evidence"
+  },
+  "OPERATIONS": [
+    {
+      "APPLICABLE_MEASURES": [
+        "LOGICAL_BYTES"
+      ],
+      "NO_AUTOMATIC_EQUIVALENCE": true,
+      "OPERATION": "payload encode"
+    },
+    {
+      "APPLICABLE_MEASURES": [
+        "SUBMITTED_BYTES",
+        "TRANSFERRED_BYTES"
+      ],
+      "NO_AUTOMATIC_EQUIVALENCE": true,
+      "OPERATION": "payload pipe os.write"
+    },
+    {
+      "APPLICABLE_MEASURES": [
+        "LOGICAL_BYTES",
+        "SUBMITTED_BYTES",
+        "TRANSFERRED_BYTES"
+      ],
+      "NO_AUTOMATIC_EQUIVALENCE": true,
+      "OPERATION": "observer capture/write"
+    },
+    {
+      "APPLICABLE_MEASURES": [
+        "LOGICAL_BYTES",
+        "SUBMITTED_BYTES",
+        "TRANSFERRED_BYTES",
+        "PERSISTED_BYTES",
+        "RETAINED_BYTES"
+      ],
+      "NO_AUTOMATIC_EQUIVALENCE": true,
+      "OPERATION": "claim/outcome filesystem publication"
+    },
+    {
+      "APPLICABLE_MEASURES": [
+        "PERSISTED_BYTES"
+      ],
+      "NO_AUTOMATIC_EQUIVALENCE": true,
+      "OPERATION": "file/directory fsync and independent reread"
+    },
+    {
+      "APPLICABLE_MEASURES": [
+        "RETAINED_BYTES"
+      ],
+      "NO_AUTOMATIC_EQUIVALENCE": true,
+      "OPERATION": "cleanup/delete/truncate"
+    }
+  ]
+}

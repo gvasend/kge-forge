@@ -1,0 +1,13 @@
+{
+  "CORRECTION_TO_CLOSURE27": "Its concurrent conflict narrative omitted the existing is_symlink guard. Same pinned native source checks symlink and bytes in both initial-exists and FileExistsError branches. No code/old artifact changed.",
+  "DIRECTORY_FSYNC": "NOT_GUARANTEED",
+  "GENERAL_CRASH_DURABILITY": "NOT_GUARANTEED",
+  "HARD_LINK_PUBLICATION": "GUARANTEED_ON_NEW_SUCCESS; existing identical publication accepted",
+  "HEAD_UPDATED": "NOT_GUARANTEED_NOT_PERFORMED",
+  "NATIVE_IDENTITY_COMPUTED": "GUARANTEED_FROM_CANONICAL_BUNDLE_BYTES",
+  "NEW_FILE_FSYNC": "GUARANTEED_BEFORE_NEW_LINK; identical retry has no fresh fsync",
+  "PUBLISHED_BYTES_REVERIFIED_BY_WRITER": "REQUIRED_BY_THIS_HANDOFF_WRAPPER; not a stronger OS crash guarantee",
+  "SAVE_SUCCESS_EQUALS_WRITER_EXIT": "NO_SEPARATE_QUALIFICATION_OBLIGATIONS",
+  "SERIALIZED_BYTES_WRITTEN": "GUARANTEED_ON_NEW_SUCCESS; identical existing artifact reused",
+  "TARGET_VISIBLE": "GUARANTEED_NATIVE_NAMESPACE_PUBLICATION_AT_RETURN; later interference/crash not covered"
+}

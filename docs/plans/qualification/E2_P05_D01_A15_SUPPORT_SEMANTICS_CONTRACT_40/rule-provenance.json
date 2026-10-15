@@ -1,0 +1,225 @@
+[
+  {
+    "ASSURANCE_EFFECT": "Mandatory operands within one declared group; not every associated source globally mandatory",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/gates.py",
+      "raw_sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+    },
+    "DERIVATION": "Native typed operator semantics, not generic graph connectivity",
+    "IDENTITY_DOMAIN": "PredicateId / ProofState; group only with explicit native declaration",
+    "RULE_CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+    "RULE_ID": "S40-ALL",
+    "RULE_STATEMENT": "Declared ALL, DOSSIER_COMPLETE and RECEIPT_COMPLETE predicate operands are conjunctive; any DISPROVED yields DISPROVED, all PROVED yields PROVED, otherwise UNKNOWN; empty group UNKNOWN",
+    "SOURCE_LOCATION": "_evaluate_predicate lines 197-212"
+  },
+  {
+    "ASSURANCE_EFFECT": "One lost alternative is not individual mandatory loss when another remains admissible",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/gates.py",
+      "raw_sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+    },
+    "DERIVATION": "Typed alternative operator; unavailable only if every operand unavailable",
+    "IDENTITY_DOMAIN": "PredicateId / ProofState; explicit ANY declaration",
+    "RULE_CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+    "RULE_ID": "S40-ANY",
+    "RULE_STATEMENT": "ANY is alternative support: any PROVED yields PROVED, all DISPROVED yields DISPROVED, otherwise UNKNOWN; empty group UNKNOWN",
+    "SOURCE_LOCATION": "_evaluate_predicate lines 197-212 and unavailable_support lines 25-30"
+  },
+  {
+    "ASSURANCE_EFFECT": "Separates path-specific mandatory dependencies from alternative proof availability",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/typed_proofs.py",
+      "raw_sha256": "f3d95766cc21ec263ab7f6dc8679d821a8a16cdee5c5806de9e28cb34baf830b"
+    },
+    "DERIVATION": "Conjunction within proof path, alternative usable proofs across a target; respects installed contract/source/authority/context rules",
+    "IDENTITY_DOMAIN": "TypedProof/TypedProofContract IDs and native support fingerprint domain",
+    "RULE_CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+    "RULE_ID": "S40-PROOF-PATH",
+    "RULE_STATEMENT": "Each declared support/fingerprint/currentness condition is required for a usable proof instance; root/slot derived satisfied if any usable proof serves its target",
+    "SOURCE_LOCATION": "usable lines 60-99 and derive lines 102-109"
+  },
+  {
+    "ASSURANCE_EFFECT": "Current pin/physical bytes do not make an old inactive role current",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_INSTALLATION_I01_CONTRACT.md",
+      "raw_sha256": "fd457cba81b34d2e47f3385c0847fd438335285ad023fdab54d238b05ed410c6"
+    },
+    "DERIVATION": "Explicit contract; native installation.old_reference selects recorded activation sequence for exact subject, not unordered registry position",
+    "IDENTITY_DOMAIN": "Install definition/content/authority/pin/event identities remain separate",
+    "RULE_CLASSIFICATION": "EXPLICIT_AUTHORITATIVE",
+    "RULE_ID": "S40-ACTIVE",
+    "RULE_STATEMENT": "Installed currentness is installed AND active role AND valid historical event witness AND current INSTALL authority AND exact identity/context/role/source/provenance binding; replacement changes active binding at its actual event, not timestamp",
+    "SOURCE_LOCATION": "Currentness/replacement/history lines 66-81"
+  },
+  {
+    "ASSURANCE_EFFECT": "No old support resurrection by replacement failure or retained bytes",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_INSTALLATION_I01_CONTRACT.md",
+      "raw_sha256": "fd457cba81b34d2e47f3385c0847fd438335285ad023fdab54d238b05ed410c6"
+    },
+    "DERIVATION": "Explicit current/historical separation and no fallback; no CURRENT flag trusted",
+    "IDENTITY_DOMAIN": "Current role versus immutable historical event/source record",
+    "RULE_CLASSIFICATION": "EXPLICIT_AUTHORITATIVE",
+    "RULE_ID": "S40-WITHDRAW",
+    "RULE_STATEMENT": "Revocation/expiry, source/definition invalidation, context mismatch or generation supersession withdraw current usability; history stays auditable and invalidated replacement does not reactivate predecessor",
+    "SOURCE_LOCATION": "lines 81 and 95-99"
+  },
+  {
+    "ASSURANCE_EFFECT": "Declaration source additions are not blanket invalidation influence",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/FINISH_F02_1/support-resolution-contract.json",
+      "raw_sha256": "6564fdd8486162f896545b02cc5a4b30d23a568beafea2d668a7a8d897d1ce2c"
+    },
+    "DERIVATION": "Scoped operative-role rule, not blanket A15 owner selection",
+    "IDENTITY_DOMAIN": "Installed typed role and original EntityId/content dependency domains",
+    "RULE_CLASSIFICATION": "EXPLICIT_AUTHORITATIVE",
+    "RULE_ID": "S40-OPERATIVE",
+    "RULE_STATEMENT": "Only matching active installed configuration/contract role descriptors contribute bounded proof dependency normalization; include affected concrete contracts/targets and original dependency",
+    "SOURCE_LOCATION": "/invalidation_dependency_normalization"
+  },
+  {
+    "ASSURANCE_EFFECT": "Prevents treating forward reachability or reverse references as target-selection authority",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "DERIVATION": "Native conditional staleness logic, including ANY requiring all unavailable, separates seeded targets from effect propagation",
+    "IDENTITY_DOMAIN": "CONTENT_IDENTITY source seeds; typed record IDs for propagation",
+    "RULE_CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+    "RULE_ID": "S40-DIRECTION",
+    "RULE_STATEMENT": "Source/support loss propagates forward into consumers/dependents; reverse owner-to-source discovery requires a separately qualified necessity relation",
+    "SOURCE_LOCATION": "invalidate_sources lines 304-433"
+  },
+  {
+    "ASSURANCE_EFFECT": "No arbitrary unbounded traversal, no implicit cycle satisfaction or minimal cut",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/gates.py",
+      "raw_sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+    },
+    "DERIVATION": "Native finite set iteration; predicate recursion separately returns UNKNOWN/PREDICATE_CYCLE",
+    "IDENTITY_DOMAIN": "Native typed relation/member IDs",
+    "RULE_CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+    "RULE_ID": "S40-FIXPOINT",
+    "RULE_STATEMENT": "Native unavailability/reachability closure grows monotonically over finite declared records until stable; changed IDs are deduplicated; shared inputs may fan out; cycle structural validity remains separately checked",
+    "SOURCE_LOCATION": "unavailable_support lines 6-45"
+  },
+  {
+    "ASSURANCE_EFFECT": "Content alias duplicates cannot belong to separate allegedly disjoint singleton groups",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "DERIVATION": "Exact native source identity-kind check and set semantics",
+    "IDENTITY_DOMAIN": "Full kind/namespace/hash CONTENT_IDENTITY",
+    "RULE_CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+    "RULE_ID": "S40-CONTENT",
+    "RULE_STATEMENT": "SourceInvalidation requires exact CONTENT_IDENTITY targets; path identity, semantic authority and occurrence identity cannot substitute",
+    "SOURCE_LOCATION": "invalidate_sources lines 304-313"
+  },
+  {
+    "ASSURANCE_EFFECT": "Coverage obligation unchanged; no 14/45/49 source set adopted",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+    },
+    "DERIVATION": "Frozen responsibility preserved without projection preference",
+    "IDENTITY_DOMAIN": "Exact A15 snapshot and native source target domains",
+    "RULE_CLASSIFICATION": "EXPLICIT_AUTHORITATIVE",
+    "RULE_ID": "S40-FROZEN",
+    "RULE_STATEMENT": "A15 requires every disjoint required source in the exact restored accepted pre-state; this clause alone does not define owner, necessity, target closure or partition",
+    "SOURCE_LOCATION": "/cases/14"
+  },
+  {
+    "ASSURANCE_EFFECT": "No target/ownership adoption; qualification encoding feasibility only",
+    "AUTHORITATIVE_SOURCE": {
+      "AUTHORITY_STATUS": "Gap motivates proposal; does not authorize or establish this rule",
+      "path": "docs/plans/qualification/E2_P05_D01_A15_CONSUMER_ROOT_OWNERSHIP_CONTRACT_39/normative-definition-gap-report.json",
+      "raw_sha256": "ae4c742b21e1fb9bcf0a5dc5c5290c2b8dae32a288b5637ada3487ea0fe5755e"
+    },
+    "DERIVATION": "Narrow proposed metadata encoding consistent with recovered native operator/domain facts; exact A15 applicability unready",
+    "IDENTITY_DOMAIN": "Qualification group identity binds native operator/member IDs, context and source/role provenance; not native event/authority ID",
+    "RULE_CLASSIFICATION": "PROPOSED_NORMATIVE_ADDITION",
+    "RULE_ID": "S40-PROPOSED-TYPED-GROUP-ENCODING",
+    "RULE_STATEMENT": "ALL/ANY native truth tables; preserve exact AND within proof path versus ANY usable proof paths; fail closed for absent group declaration/owner/mapping",
+    "SOURCE_LOCATION": "/MINIMUM_NORMATIVE_ADDITIONS"
+  },
+  {
+    "ASSURANCE_EFFECT": "No target/ownership adoption; qualification encoding feasibility only",
+    "AUTHORITATIVE_SOURCE": {
+      "AUTHORITY_STATUS": "Gap motivates proposal; does not authorize or establish this rule",
+      "path": "docs/plans/qualification/E2_P05_D01_A15_CONSUMER_ROOT_OWNERSHIP_CONTRACT_39/normative-definition-gap-report.json",
+      "raw_sha256": "ae4c742b21e1fb9bcf0a5dc5c5290c2b8dae32a288b5637ada3487ea0fe5755e"
+    },
+    "DERIVATION": "Narrow proposed metadata encoding consistent with recovered native operator/domain facts; exact A15 applicability unready",
+    "IDENTITY_DOMAIN": "Content kind/namespace/hash; physical paths and graph position nonsemantic",
+    "RULE_CLASSIFICATION": "PROPOSED_NORMATIVE_ADDITION",
+    "RULE_ID": "S40-PROPOSED-CONTENT-PARTITION-ENCODING",
+    "RULE_STATEMENT": "Deduplicate content aliases; validate exact group membership and exhaustive/pairwise disjoint sets only under approved rule. No minimality/maximality inferred",
+    "SOURCE_LOCATION": "/MINIMUM_NORMATIVE_ADDITIONS"
+  },
+  {
+    "ASSURANCE_EFFECT": "Blocks qualified A15 support-edge and target membership",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_A15_REQUIRED_SUPPORT_SEMANTICS_RECOVERY_38/normative-gap-dossier.json",
+      "raw_sha256": "1e87cc01b5872e8ec3262c9f1f19483cd38bcc02afa696a670fcf38b8e2e5813"
+    },
+    "DERIVATION": "No complete owner/edge necessity/closure/partition term supplied by frozen A15; native effects do not fill normative scope",
+    "IDENTITY_DOMAIN": "Exact A15 native owner/source/group/context domains, not source-count labels",
+    "RULE_CLASSIFICATION": "UNRESOLVED",
+    "RULE_ID": "S40-GAP-1",
+    "RULE_STATEMENT": "Map exact A15 owning consumer/root roles to typed mandatory/alternative/native proof groups",
+    "SOURCE_LOCATION": "/MISSING_NORMATIVE_TERMS"
+  },
+  {
+    "ASSURANCE_EFFECT": "Blocks qualified A15 support-edge and target membership",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_A15_REQUIRED_SUPPORT_SEMANTICS_RECOVERY_38/normative-gap-dossier.json",
+      "raw_sha256": "1e87cc01b5872e8ec3262c9f1f19483cd38bcc02afa696a670fcf38b8e2e5813"
+    },
+    "DERIVATION": "No complete owner/edge necessity/closure/partition term supplied by frozen A15; native effects do not fill normative scope",
+    "IDENTITY_DOMAIN": "Exact A15 native owner/source/group/context domains, not source-count labels",
+    "RULE_CLASSIFICATION": "UNRESOLVED",
+    "RULE_ID": "S40-GAP-2",
+    "RULE_STATEMENT": "Define required-support necessity across alternative paths and shared sources: individual/group membership, not association",
+    "SOURCE_LOCATION": "/MISSING_NORMATIVE_TERMS"
+  },
+  {
+    "ASSURANCE_EFFECT": "Blocks qualified A15 support-edge and target membership",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_A15_REQUIRED_SUPPORT_SEMANTICS_RECOVERY_38/normative-gap-dossier.json",
+      "raw_sha256": "1e87cc01b5872e8ec3262c9f1f19483cd38bcc02afa696a670fcf38b8e2e5813"
+    },
+    "DERIVATION": "No complete owner/edge necessity/closure/partition term supplied by frozen A15; native effects do not fill normative scope",
+    "IDENTITY_DOMAIN": "Exact A15 native owner/source/group/context domains, not source-count labels",
+    "RULE_CLASSIFICATION": "UNRESOLVED",
+    "RULE_ID": "S40-GAP-3",
+    "RULE_STATEMENT": "Define qualified native edge-role/currentness/source dependency mapping for this recorded graph",
+    "SOURCE_LOCATION": "/MISSING_NORMATIVE_TERMS"
+  },
+  {
+    "ASSURANCE_EFFECT": "Blocks qualified A15 support-edge and target membership",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_A15_REQUIRED_SUPPORT_SEMANTICS_RECOVERY_38/normative-gap-dossier.json",
+      "raw_sha256": "1e87cc01b5872e8ec3262c9f1f19483cd38bcc02afa696a670fcf38b8e2e5813"
+    },
+    "DERIVATION": "No complete owner/edge necessity/closure/partition term supplied by frozen A15; native effects do not fill normative scope",
+    "IDENTITY_DOMAIN": "Exact A15 native owner/source/group/context domains, not source-count labels",
+    "RULE_CLASSIFICATION": "UNRESOLVED",
+    "RULE_ID": "S40-GAP-4",
+    "RULE_STATEMENT": "Define target closure (direct/transitive/group/all/minimal) separately from native affected-dependent closure",
+    "SOURCE_LOCATION": "/MISSING_NORMATIVE_TERMS"
+  },
+  {
+    "ASSURANCE_EFFECT": "Blocks qualified A15 support-edge and target membership",
+    "AUTHORITATIVE_SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_A15_REQUIRED_SUPPORT_SEMANTICS_RECOVERY_38/normative-gap-dossier.json",
+      "raw_sha256": "1e87cc01b5872e8ec3262c9f1f19483cd38bcc02afa696a670fcf38b8e2e5813"
+    },
+    "DERIVATION": "No complete owner/edge necessity/closure/partition term supplied by frozen A15; native effects do not fill normative scope",
+    "IDENTITY_DOMAIN": "Exact A15 native owner/source/group/context domains, not source-count labels",
+    "RULE_CLASSIFICATION": "UNRESOLVED",
+    "RULE_ID": "S40-GAP-5",
+    "RULE_STATEMENT": "Define exhaustive disjoint target partition and singleton/group/protected-set semantics in exact content identity domain",
+    "SOURCE_LOCATION": "/MISSING_NORMATIVE_TERMS"
+  }
+]

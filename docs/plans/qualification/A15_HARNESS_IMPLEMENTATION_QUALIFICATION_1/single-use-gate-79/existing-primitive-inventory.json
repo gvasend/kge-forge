@@ -1,0 +1,86 @@
+{
+  "COMPONENTS": [
+    {
+      "APPLICABILITY_TO_H77_02": "EXISTING_UNQUALIFIED_PRIMITIVE",
+      "AUTHORITY_SCOPE": "Existing component-specific native/documentary/adapter authority; none grants new H77-02 gate construction",
+      "COMPONENT_ID": "NATIVE_BUNDLE_PUBLISHER",
+      "CONCURRENCY_CONTRACT": "Atomic create prevents overwrite but identical-repeat success is not claim rejection",
+      "DURABILITY_CONTRACT": "No directory fsync in this primitive; no authority consumption or grant check",
+      "ENTRYPOINT": "_write_immutable / save_bundle",
+      "EXISTING_CAPABILITY": "File fsync, hard-link atomic no-overwrite publication; existing identical artifact returns success",
+      "QUALIFICATION_EVIDENCE": "A14 persistence evidence, not one-use launch evidence",
+      "SOURCE_PATH": "adapter/planner/codec.py",
+      "SOURCE_PIN": {
+        "PATH": "adapter/planner/codec.py",
+        "RAW_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+      }
+    },
+    {
+      "APPLICABILITY_TO_H77_02": "INAPPLICABLE_AS_GATE",
+      "AUTHORITY_SCOPE": "Existing component-specific native/documentary/adapter authority; none grants new H77-02 gate construction",
+      "COMPONENT_ID": "A15_PROTOCOL_PUBLICATION",
+      "CONCURRENCY_CONTRACT": "Existing target rejects; no stable grant key or launch admission",
+      "DURABILITY_CONTRACT": "File fsync; no directory fsync shown",
+      "ENTRYPOINT": "publish",
+      "EXISTING_CAPABILITY": "Synthetic immutable result and handoff publication",
+      "QUALIFICATION_EVIDENCE": "Package72 constructed source; zero fake tests",
+      "SOURCE_PATH": "adapter/qualification_a15/contracts.py",
+      "SOURCE_PIN": {
+        "PATH": "adapter/qualification_a15/contracts.py",
+        "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+      }
+    },
+    {
+      "APPLICABILITY_TO_H77_02": "INAPPLICABLE_TERMINATED_AND_WRONG_SCOPE",
+      "AUTHORITY_SCOPE": "Existing component-specific native/documentary/adapter authority; none grants new H77-02 gate construction",
+      "COMPONENT_ID": "STOPPED_CAMPAIGN_CONTROLLER",
+      "CONCURRENCY_CONTRACT": "Campaign counts are not per-issued-grant irreversible claims",
+      "DURABILITY_CONTRACT": "File fsync with flock; original stopped journal",
+      "ENTRYPOINT": "Campaign.account / launch_child",
+      "EXISTING_CAPABILITY": "Locked append-only campaign accounting and child observation",
+      "QUALIFICATION_EVIDENCE": "Package72 failed preflight and stopped ledger",
+      "SOURCE_PATH": "adapter/qualification_a15/supervisor.py",
+      "SOURCE_PIN": {
+        "PATH": "adapter/qualification_a15/supervisor.py",
+        "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+      }
+    },
+    {
+      "APPLICABILITY_TO_H77_02": "EXISTING_UNQUALIFIED_PRIMITIVE",
+      "AUTHORITY_SCOPE": "Existing component-specific native/documentary/adapter authority; none grants new H77-02 gate construction",
+      "COMPONENT_ID": "DOCUMENTARY_GRANT_PUBLISHER",
+      "CONCURRENCY_CONTRACT": "No-overwrite grant publication; no launch or consumption gate",
+      "DURABILITY_CONTRACT": "Local directory persistence barrier; no general host power-loss attestation",
+      "ENTRYPOINT": "publish",
+      "EXISTING_CAPABILITY": "Temp file fsync, hard-link publication, directory fsync and reread",
+      "QUALIFICATION_EVIDENCE": "Package71 persisted grant qualification",
+      "SOURCE_PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_GRANT_ISSUANCE_71/issue.py",
+      "SOURCE_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_GRANT_ISSUANCE_71/issue.py",
+        "RAW_SHA256": "60bcd9679f7139a94f3b5dc749e0ea7c1fbbe7aaf12ed70c218c59db1d007fd9"
+      }
+    },
+    {
+      "APPLICABILITY_TO_H77_02": "EXISTING_UNQUALIFIED_PRIMITIVE",
+      "AUTHORITY_SCOPE": "Existing component-specific native/documentary/adapter authority; none grants new H77-02 gate construction",
+      "COMPONENT_ID": "AUTHORITY_READER",
+      "CONCURRENCY_CONTRACT": "No claim operation",
+      "DURABILITY_CONTRACT": "Readonly content verification only",
+      "ENTRYPOINT": "verify_effective",
+      "EXISTING_CAPABILITY": "Reads exact immutable authority and subject evidence",
+      "QUALIFICATION_EVIDENCE": "Package71 read-only verification; current campaign applicability separate",
+      "SOURCE_PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_GRANT_ISSUANCE_71/verify.py",
+      "SOURCE_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_GRANT_ISSUANCE_71/verify.py",
+        "RAW_SHA256": "e5a232482d767110f9985eeccc56a78bcdbc026b6d42182fb06bfc18f1f107c5"
+      }
+    }
+  ],
+  "EXISTING_QUALIFIED_GATE": false,
+  "NOT_A_GLOBAL_NONEXISTENCE_PROOF": true,
+  "SEARCH_SCOPE": [
+    "adapter/planner",
+    "adapter/qualification_a15",
+    "qualification authority evidence Packages66,68,70,71,72,77,78"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "COMPARISON": "Exact type, all four fields, reason content/order and supporting identity list; reject extras/omissions",
+  "COMPLETE": true,
+  "CURRENTNESS_AUTHORITY_PROOF": {
+    "AFTER_QUERIES_PERFORMED": false,
+    "BEFORE_SNAPSHOT": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+    },
+    "READ_ONLY_BEFORE_QUERIES_ONLY": true,
+    "RECORDED_DECISION_VALID": true,
+    "WITNESSES": [
+      {
+        "proof": {
+          "qualification_type": "Proof",
+          "reasons": [],
+          "state": {
+            "$enum": "ProofState",
+            "value": "PROVED"
+          }
+        },
+        "requirement": {
+          "$type": "EvidenceId",
+          "value": "E2-EXTERNAL-REQUIREMENT"
+        }
+      }
+    ]
+  },
+  "EXPECTED": {
+    "$type": "ResumeEligibility",
+    "actions": [],
+    "allowed": false,
+    "reasons": [
+      "DECISION:E2-DECIDE:E2-REENTER:COMPLETED_OR_UNAVAILABLE",
+      "DECISION:E2-DECIDE:NAMED_REENTRY_NOT_ACTIONABLE",
+      "EXTERNAL:E2-GATE:E2-REENTER:COMPLETED_OR_UNAVAILABLE",
+      "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE"
+    ],
+    "supporting_identities": []
+  },
+  "FINISH_NOT_A_NAMED_ROUTE": true,
+  "FINISH_STATUS": "BLOCKED",
+  "GLOBAL_CONTROL": "PLAN_DEFECT",
+  "INDEPENDENT_DERIVATION": "resume_reference.py from wire predicates and receipt content; no replay",
+  "NAMED_ROUTE_ACTION": "E2-REENTER",
+  "NO_RESUME_ASSERTION": "No eligible named native route; FINISH is separately non-actionable. No invented FINISH-specific native reason.",
+  "VARIANT_ID": "PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL"
+}

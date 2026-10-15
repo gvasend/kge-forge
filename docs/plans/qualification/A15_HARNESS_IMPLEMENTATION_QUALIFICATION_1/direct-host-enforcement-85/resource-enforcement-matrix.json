@@ -1,0 +1,148 @@
+{
+  "CGROUP_V2_ASSUMED": false,
+  "CRITICAL_GAPS": [
+    "Non-escapable descendant pids policy and complete launcher/helper census",
+    "Independent hard wall watchdog including blocked I/O",
+    "Cumulative written-byte scope and qualified all-writer enforcement"
+  ],
+  "ENFORCEMENT_DESIGN_COMPLETE": false,
+  "LIMITS": {
+    "CHILD_AS": 1073741824,
+    "CHILD_CPU": 30,
+    "CHILD_FDS": 64,
+    "CHILD_FSIZE": 16777216,
+    "CHILD_WALL": 60,
+    "MAX_ACTUAL_PROCESS_SLOTS": 4,
+    "MAX_PAYLOAD_LAUNCHES": 128,
+    "RETRIES": 0,
+    "TOTAL_WALL": 600,
+    "TOTAL_WRITES": 67108864
+  },
+  "ROWS": [
+    {
+      "APPROVED_LIMIT": 1073741824,
+      "CONTROL_ID": "CHILD_AS",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "POSIX RLIMIT_AS soft=hard=1073741824",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "source implements resource.setrlimit; direct effect unverified",
+      "REQUIRED_PERMISSION": "ability to lower child address-space limit",
+      "VERIFICATION_METHOD": "Read exact limit; attempted allocation larger than address-space ceiling fails rather than uncontrolled allocation."
+    },
+    {
+      "APPROVED_LIMIT": 30,
+      "CONTROL_ID": "CHILD_CPU",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "POSIX RLIMIT_CPU soft=hard=30 for each payload, inherit to children",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "managed getrlimit reports capability interfaces, not direct enforceability",
+      "REQUIRED_PERMISSION": "unprivileged ability to lower own child limit",
+      "VERIFICATION_METHOD": "Read limit in confined child, burn bounded CPU; observer records SIGKILL/SIGXCPU boundary and wait status."
+    },
+    {
+      "APPROVED_LIMIT": 64,
+      "CONTROL_ID": "CHILD_FDS",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "POSIX RLIMIT_NOFILE soft=hard=64",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "managed initial limit1048576, not direct campaign proof",
+      "REQUIRED_PERMISSION": "ability to lower child descriptor limit",
+      "VERIFICATION_METHOD": "Read64 in child; opening additional permitted /dev/null descriptors produces EMFILE before descriptor64."
+    },
+    {
+      "APPROVED_LIMIT": 16777216,
+      "CONTROL_ID": "CHILD_FSIZE",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "POSIX RLIMIT_FSIZE soft=hard=16777216; output mount allowlist",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "unverified direct-host behavior",
+      "REQUIRED_PERMISSION": "child limit and exclusive disposable output path",
+      "VERIFICATION_METHOD": "Attempt file growth beyond16777216; confirm EFBIG/SIGXFSZ and final size <=16777216."
+    },
+    {
+      "APPROVED_LIMIT": 60,
+      "CONTROL_ID": "CHILD_WALL",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "Independent parent/external watchdog at60s, bounded owned process-tree termination",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "source has parent joins and timeouts; direct enforcement unverified",
+      "REQUIRED_PERMISSION": "owned PID/namespace identity and permission to terminate only campaign descendants; qualified watchdog",
+      "VERIFICATION_METHOD": "Run inert controlled sleeper under exact60s entry ceiling; independently observe termination; stalled I/O/parent must not evade watchdog."
+    },
+    {
+      "APPROVED_LIMIT": 4,
+      "CONTROL_ID": "MAX_ACTUAL_PROCESS_SLOTS",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "Dedicated existing delegated cgroup-v1 pids subtree; all workload descendants inherit non-escapable membership. Supervisor counters are additional evidence.",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "pids controller exists in managed view, selected session pids.max=max; managed mounts readonly; direct delegated subtree unknown",
+      "REQUIRED_PERMISSION": "cgroup ownership/delegation and permission to configure a bounded subtree; Package80 excludes cgroup changes",
+      "VERIFICATION_METHOD": "Inspect exact membership, task/role census and inherited pids limit; bounded excess-fork test rejects one additional child. pids.max=5 is only a candidate after proving one outer controller plus <=4 child roles and accounting namespace/launcher/helper threads. RLIMIT_NPROC per shared UID is not equivalent."
+    },
+    {
+      "APPROVED_LIMIT": 128,
+      "CONTROL_ID": "MAX_PAYLOAD_LAUNCHES",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "Immutable campaign/seed leases plus validated exclusive launch broker, shared pre-launch ledger, fixed52-launch source path; independently reconcile actual launches",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "Package84 source counts explicit seed/tracker/claimant launches, not evidence of OS policy enforcement",
+      "REQUIRED_PERMISSION": "exact qualified launcher and resource profile; no unapproved fork/exec path",
+      "VERIFICATION_METHOD": "Compare every actual launcher/descendant launch against reservation; submit129th authorization request without creating129th process and require rejection."
+    },
+    {
+      "APPROVED_LIMIT": 0,
+      "CONTROL_ID": "RETRIES",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "Irreversible campaign/seed claims; first-failure stop; no retry branch or extra activation",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "static source has no automatic retries; active evidence absent",
+      "REQUIRED_PERMISSION": "immutable private root and exact campaign grant",
+      "VERIFICATION_METHOD": "Duplicate activation and intentional failure must retain consumed campaign state and permit zero later launches."
+    },
+    {
+      "APPROVED_LIMIT": 600,
+      "CONTROL_ID": "TOTAL_WALL",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "Independent outer hard deadline600s covering setup, all descendants, stop/accounting and evidence publication; teardown budget included",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "shared monotonic source accounting exists; no proof against blocking fsync/uninterruptible I/O",
+      "REQUIRED_PERMISSION": "qualified host watchdog and permission to kill only owned campaign process tree",
+      "VERIFICATION_METHOD": "Verify monotonic budget, watchdog ownership, actual bounded stop and incomplete/unknown evidence on timeout; no600s+unbounded-cleanup allowance."
+    },
+    {
+      "APPROVED_LIMIT": 67108864,
+      "CONTROL_ID": "TOTAL_WRITES",
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "Filesystem confinement plus complete synchronous pre-write accounting for every approved writer and independent write-path reconciliation; qualified mediation if other writes possible",
+      "EXPECTED_EVIDENCE": "direct host input/profile pins; exact limit readback; parent/OS witness; first failure and immutable result",
+      "FAILURE_RULE": "unknown, mismatch, absent delegation or unsupported enforcement => no launch; any attempted test failure stops and never authorizes retry",
+      "LIMIT_SOURCE": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/issued-gate-construction-test-grant-e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738.json",
+      "OBSERVED_CAPABILITY": "source charges known write paths/ledger and prepays2MiB critical evidence; all-writer/cumulative coverage not independently established",
+      "REQUIRED_PERMISSION": "qualified exact writer/launcher/byte-enforcement path and output permissions",
+      "VERIFICATION_METHOD": "Reconcile requested/successful writes including overwritten/truncated/removed files, reports and redirected output. Reject before64MiB cumulative ceiling. Disk quota/live-file size and cgroup block I/O do not establish cumulative content bytes; byte-scope interpretation and enforcer are unbound."
+    }
+  ],
+  "SOURCE_GRANT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h77-02-gate-construction-test-issued-grant-v1",
+    "sha256": "e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738"
+  }
+}

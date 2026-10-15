@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 167, in _unwire
+    raise m.PlannerError('unknown or missing typed fields')
+adapter.planner.model.PlannerError: unknown or missing typed fields
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "adapter/tests/qualify_finish_f03.py", line 158, in <module>
+    {'generic':generic,'apply':apply,'lifecycle':lifecycle}.get(sys.argv[1],lambda:reader(sys.argv[2]))()
+  File "adapter/tests/qualify_finish_f03.py", line 58, in apply
+    a,req1=install(b,0,did,(binding,));z,req2=install(a,1,did)
+  File "adapter/tests/qualify_finish_f03.py", line 46, in install
+    after,ident,_=i.commit(b,r,store or O/('install-store-'+str(index)),R,**kw)
+  File "/home/gvasend/app/kge-forge/adapter/planner/installation.py", line 386, in commit
+    updated = c._extend_private(head,request)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 781, in _extend_private
+    after = apply_event(bundle.current,supplied).snapshot
+  File "/home/gvasend/app/kge-forge/adapter/planner/core.py", line 553, in apply_event
+    return apply(snapshot, supplied)
+  File "/home/gvasend/app/kge-forge/adapter/planner/installation.py", line 220, in apply
+    return proof_installation.apply(snapshot,request,d,route)
+  File "/home/gvasend/app/kge-forge/adapter/planner/proof_installation.py", line 201, in apply
+    _,_,_,slot,root,entities,_=configuration(request)
+  File "/home/gvasend/app/kge-forge/adapter/planner/proof_installation.py", line 124, in configuration
+    entities = tuple(c._unwire(x) for x in b['source_entity_definitions'])
+  File "/home/gvasend/app/kge-forge/adapter/planner/proof_installation.py", line 124, in <genexpr>
+    entities = tuple(c._unwire(x) for x in b['source_entity_definitions'])
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 172, in _unwire
+    raise m.PlannerError('invalid typed record: ' + str(exc)) from exc
+adapter.planner.model.PlannerError: invalid typed record: unknown or missing typed fields

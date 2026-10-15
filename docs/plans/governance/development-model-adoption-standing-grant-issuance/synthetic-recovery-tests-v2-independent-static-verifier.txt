@@ -1,0 +1,102 @@
+"""Independent static reader. Never imports target utility or executes tests."""
+import ast,copy,hashlib,json,pathlib,sys
+ROOT=pathlib.Path('/home/gvasend/app/kge-forge');D=ROOT/'docs/plans/governance/development-model-adoption-standing-grant-issuance';P='synthetic-recovery-tests-v2-'
+def raw(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canon(v):return json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def cid(ns,v):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canon(v)).hexdigest()}
+def read(n):
+ def unique(items):
+  d={}
+  for k,v in items:
+   assert k not in d;d[k]=v
+  return d
+ return json.loads((D/(P+n)).read_text(),object_pairs_hook=unique)
+def check_envelope(v):
+ k='GRANT_IDENTITY' if 'GRANT_IDENTITY' in v else 'IDENTITY';x=v[k];assert x==cid(x['namespace'],v.get('RECORD',v.get('CONTENT')))
+subject=read('subject.json');check_envelope(subject);s=subject['CONTENT']
+assert s['LIMITS']=={'SUITE_INVOCATIONS':1,'AUTOMATIC_RETRIES':0,'CPU_SECONDS':60,'AS_BYTES':536870912,'WALL_SECONDS':120,'NATIVE_TIMEOUT_SECONDS':119,'KILL_GRACE_SECONDS':1,'FD_LIMIT':128,'FILE_EXTENT_BYTES':65536,'STDOUT_BYTES':65536,'STDERR_BYTES':65536,'COMBINED_CAPTURE_BYTES':131072}
+assert len(s['ALLOWED_SOURCE_COPIES'])==3
+assert [pathlib.Path(p['path']).name for p in s['ALLOWED_SOURCE_COPIES']]==['recover.py','test_recover.py','recover_test_source.toml']
+for p in s['ALLOWED_SOURCE_COPIES']+list(s['EXECUTABLE_PINS'].values()):assert raw(p['path'])==p['raw_sha256']
+assert s['WORKING_DIRECTORY']=='/tmp/kge-forge-recovery-synthetic-once-20261014-v1'
+assert s['UID_GID']==[1000,1000] and s['UMASK']=='077'
+profile=s['PROFILE_NAME'];rules=s['PERMISSION_RULES']
+assert rules['permissions.'+profile+'.filesystem.:root']=='deny'
+assert rules['permissions.'+profile+'.filesystem.:minimal']=='read'
+assert rules['permissions.'+profile+'.filesystem.:workspace_roots']=={'.':'write'}
+assert rules['permissions.'+profile+'.network.enabled'] is False
+assert rules['approval_policy']=='never'
+for path in ['/home/gvasend/app/kge-forge','/home/gvasend/.codex','/home/gvasend/.aws','/home/gvasend/.ssh']:
+ assert rules['permissions.'+profile+'.filesystem.'+path]=='deny'
+assert s['ENVIRONMENT']['TMPDIR']==s['WORKING_DIRECTORY']+'/.scratch'
+assert s['EXACT_TEST_ARGV']==['/usr/bin/python3.8','-I','-B',s['WORKING_DIRECTORY']+'/test_recover.py']
+assert s['EXACT_RESOURCE_PAYLOAD'][:6]==['/usr/bin/prlimit','--cpu=60:60','--as=536870912:536870912','--nofile=128:128','--fsize=65536:65536','--']
+assert s['EXACT_RESOURCE_PAYLOAD'][6:11]==['/usr/bin/timeout','--signal=TERM','--kill-after=1s','119s','/bin/bash']
+assert 'set -C' in s['EXACT_RESOURCE_PAYLOAD'][-1]
+assert s['EXACT_RESOURCE_PAYLOAD'][-1].count('stdout.txt')==1 and s['EXACT_RESOURCE_PAYLOAD'][-1].count('stderr.txt')==1
+assert '--include-managed-config' in s['EXACT_SANDBOX_ARGV']
+assert any(x.endswith('.filesystem.":workspace_roots"."."="write"') for x in s['EXACT_SANDBOX_ARGV'])
+assert not any('={".":' in x for x in s['EXACT_SANDBOX_ARGV'])
+assert s['TEST_SUCCESS_NOT_AN_ENTRY_PREDICATE'] is True
+assert len(s['EXCLUSIONS'])>=16
+assert s['ALLOWED_SOURCE_COPIES'][2]['raw_sha256']=='b694333f4c108c8fea455f7e117cda1d003f3c915bb36d78ae7ec466022b47f8'
+t=ast.parse((ROOT/'test_recover.py').read_text(),feature_version=(3,8));assert sum(isinstance(n,ast.FunctionDef) and n.name.startswith('test_') for n in ast.walk(t))==19
+compile(t,'test_recover.py','exec')
+# Relevant source tests never call live adapter, source reader, CLI or authority bundle.
+for n in ast.walk(t):
+ if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute) and isinstance(n.func.value,ast.Name) and n.func.value.id=='r':assert n.func.attr not in ('main','read_source','authority_bundle','durable_consume_and_independently_verify','independent_consumption_reader')
+owner=read('owner-approval.json');check_envelope(owner)
+assert owner['CONTENT']['SUBJECT_IDENTITY']==subject['IDENTITY'] and owner['CONTENT']['EXECUTION_NOW_AUTHORIZED'] is False
+assert owner['CONTENT']['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+mode=sys.argv[1]
+name='issuance-candidate.json' if mode=='candidate' else 'issued-grant.json'
+grant=read(name)
+def validate(v):
+ check_envelope(v);r=v['RECORD']
+ assert r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+ assert r['APPROVED_SUBJECT_IDENTITY']==subject['IDENTITY']
+ assert r['APPROVED_CONTENT']==s
+ assert r['APPROVED_SUBJECT_PIN']['raw_sha256']==raw(D/(P+'subject.json'))
+ assert r['OWNER_DECISION_PIN']['raw_sha256']==raw(D/(P+'owner-approval.json'))
+ assert r['STATUS']=='ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE'
+ assert r['ENVIRONMENT_ADMITTED'] is False and r['SUITE_EXECUTED'] is False and r['REAL_ATTEMPT_UNCHANGED'] is True
+validate(grant)
+# Recompute mutated identities: reject semantic expansion rather than only stale hashes.
+mutations=[]
+def add(label,change):
+ v=copy.deepcopy(grant);change(v['RECORD']);v['GRANT_IDENTITY']=cid(v['GRANT_IDENTITY']['namespace'],v['RECORD']);mutations.append((label,v))
+add('wrong issuer',lambda r:r.update(ISSUER_ROLE='OTHER'))
+add('wrong subject',lambda r:r.update(APPROVED_SUBJECT_IDENTITY=cid('wrong',{})))
+add('wrong raw pin',lambda r:r['APPROVED_SUBJECT_PIN'].update(raw_sha256='0'*64))
+add('two invocations',lambda r:r['APPROVED_CONTENT']['LIMITS'].update(SUITE_INVOCATIONS=2))
+add('automatic retry',lambda r:r['APPROVED_CONTENT']['LIMITS'].update(AUTOMATIC_RETRIES=1))
+add('network enabled',lambda r:r['APPROVED_CONTENT']['PERMISSION_RULES'].update({'permissions.'+profile+'.network.enabled':True}))
+add('protected write',lambda r:r['APPROVED_CONTENT']['PERMISSION_RULES'].update({'permissions.'+profile+'.filesystem./home/gvasend/app/kge-forge':'write'}))
+add('broader cwd',lambda r:r['APPROVED_CONTENT'].update(WORKING_DIRECTORY='/tmp'))
+add('extra source',lambda r:r['APPROVED_CONTENT']['ALLOWED_SOURCE_COPIES'].append({'path':'/secret'}))
+add('changed argv',lambda r:r['APPROVED_CONTENT']['EXACT_TEST_ARGV'].append('--execute'))
+add('unbounded output',lambda r:r['APPROVED_CONTENT']['LIMITS'].update(STDOUT_BYTES=None))
+add('increased CPU',lambda r:r['APPROVED_CONTENT']['LIMITS'].update(CPU_SECONDS=61))
+add('increased memory',lambda r:r['APPROVED_CONTENT']['LIMITS'].update(AS_BYTES=1073741824))
+add('increased wall',lambda r:r['APPROVED_CONTENT']['LIMITS'].update(WALL_SECONDS=121))
+add('future success entry',lambda r:r['APPROVED_CONTENT'].update(TEST_SUCCESS_NOT_AN_ENTRY_PREDICATE=False))
+add('premature admission',lambda r:r.update(ENVIRONMENT_ADMITTED=True))
+add('premature execution',lambda r:r.update(SUITE_EXECUTED=True))
+add('real attempt consumption',lambda r:r.update(REAL_ATTEMPT_UNCHANGED=False))
+rejected=[]
+for label,v in mutations:
+ try:validate(v)
+ except (AssertionError,KeyError,TypeError,ValueError):rejected.append(label)
+ else:raise AssertionError('accepted negative '+label)
+for path,pin in read('preservation-before.json').items():assert raw(ROOT/path)==pin,path
+result={'SUBJECT_IDENTITY':subject['IDENTITY'],'GRANT_IDENTITY':grant['GRANT_IDENTITY'],'STAGE':mode,'NEGATIVE_DESIGNS':len(mutations),'NEGATIVE_EXECUTIONS_REJECTED':len(rejected),'NEGATIVE_LABELS':rejected,'PRESERVATION':'PASS','TEST_SUITE_EXECUTED':False,'ENVIRONMENT_ADMITTED':False}
+if mode=='effect':
+ effect=read('effectiveness-reference.json');check_envelope(effect)
+ assert effect['RECORD']['GRANT_IDENTITY']==grant['GRANT_IDENTITY']
+ assert effect['RECORD']['GRANT_PIN']['raw_sha256']==raw(D/(P+'issued-grant.json'))
+ assert effect['RECORD']['SUBJECT_IDENTITY']==subject['IDENTITY']
+ assert effect['RECORD']['STATUS']=='EFFECTIVE_ONE_OFF_SYNTHETIC_ONLY_SUBJECT_TO_FRESH_ENTRY'
+ assert effect['RECORD']['INVOCATION_LIMIT']==1 and effect['RECORD']['AUTOMATIC_RETRIES']==0
+ assert effect['RECORD']['ENVIRONMENT_ADMITTED'] is False
+ result['EFFECTIVENESS_IDENTITY']=effect['IDENTITY']
+print(json.dumps(result,sort_keys=True))

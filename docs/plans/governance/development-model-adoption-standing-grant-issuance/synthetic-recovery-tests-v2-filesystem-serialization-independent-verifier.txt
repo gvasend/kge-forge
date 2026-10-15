@@ -1,0 +1,104 @@
+"""Independent JSON and stdlib TOML reconstruction; no target import/launch."""
+import copy,hashlib,json,pathlib,sys,tomllib
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';B='synthetic-recovery-tests-v2-';L=B+'launch-correction-';P=B+'filesystem-serialization-'
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canon(x)).hexdigest()}
+def digest(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def read(n,prefix=B):
+ def pairs(items):
+  d={}
+  for k,v in items:assert k not in d;d[k]=v
+  return d
+ return json.loads((D/(prefix+n)).read_text(),object_pairs_hook=pairs)
+def check(x):
+ k='GRANT_IDENTITY' if 'GRANT_IDENTITY' in x else 'IDENTITY';i=x[k];assert i==cid(i['namespace'],x.get('RECORD',x.get('CONTENT')))
+s=read('corrected-subject.json',L);a=read('issued-amendment.json',L);e=read('effectiveness-reference.json',L);g=read('issued-grant.json');ge=read('effectiveness-reference.json');j=read('entry-filesystem-serialization-failure.json');newsubject=read('corrected-subject.json',P)
+for x in (s,a,e,g,ge,newsubject):check(x)
+assert s['IDENTITY']['sha256']=='961a0eebac6db4b57ca58f99e9a64390d04e799f824e8e79e88a54e8ec30f233'
+assert a['IDENTITY']['sha256']=='e16b566e6215f65b48294e2f84f046a0bbedd1def8e634974fd0431b63f7a570'
+assert e['IDENTITY']['sha256']=='85bb4977c95c724405089aa3a267c9f16a1d5d8af834fd9317f7f49762b6b3ee'
+assert g['GRANT_IDENTITY']['sha256']=='a034b2ecb8a48fb35dd77e686a2ac62f86e35da4578e27ad059f22a47fee36a5'
+assert e['RECORD']['AMENDMENT_IDENTITY']==a['IDENTITY'] and e['RECORD']['AMENDMENT_PIN']['raw_sha256']==digest(D/(L+'issued-amendment.json'))
+assert e['RECORD']['PARENT_GRANT_IDENTITY']==g['GRANT_IDENTITY']==ge['RECORD']['GRANT_IDENTITY']
+c=s['CONTENT'];old=c['EXACT_SANDBOX_ARGV'];new=newsubject['CONTENT']['EXACT_SANDBOX_ARGV'];profile=c['PROFILE_NAME'];prefix='permissions.'+profile+'.filesystem.'
+rest=copy.deepcopy(c);rest.pop('EXACT_SANDBOX_ARGV');rest2=copy.deepcopy(newsubject['CONTENT']);rest2.pop('EXACT_SANDBOX_ARGV');assert canon(rest)==canon(rest2)
+fs={k[len(prefix):]:v for k,v in c['PERMISSION_RULES'].items() if k.startswith(prefix)}
+value=j['PROPOSED_FS_TABLE_CONFIG_ARG'];parsed=tomllib.loads(value)
+assert parsed=={'permissions':{profile:{'filesystem':fs}}}
+expected=[];removed=[];i=0;inserted=False
+while i<len(old):
+ if old[i]=='--config' and old[i+1].startswith(prefix):
+  removed.append(old[i+1])
+  if not inserted:expected+=['--config',value];inserted=True
+  i+=2
+ else:expected.append(old[i]);i+=1
+assert new==expected==j['PROPOSED_ARGV_NOT_EFFECTIVE']
+assert new[1]=='sandbox' and new[2]=='--permission-profile'
+assert new[new.index('--')+1:]==old[old.index('--')+1:]==c['EXACT_RESOURCE_PAYLOAD']
+assert c['LIMITS']['SUITE_INVOCATIONS']==1 and c['LIMITS']['AUTOMATIC_RETRIES']==0
+for p in c['ALLOWED_SOURCE_COPIES']+list(c['EXECUTABLE_PINS'].values()):assert digest(p['path'])==p['raw_sha256']
+dec=read('owner-approval.json',P);check(dec);assert dec['CONTENT']['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+assert dec['CONTENT']['APPROVED_DIAGNOSTIC_PIN']['raw_sha256']==digest(D/(B+'entry-filesystem-serialization-failure.json'))
+assert dec['CONTENT']['CORRECTED_SUBJECT_IDENTITY']==newsubject['IDENTITY']
+acc=read('consumption-reconciliation.json',P);assert acc['RULE_VERBATIM']==c['ATTEMPT_POLICY']
+assert acc['OBSERVED_OPERATIONS']==j['READ_ONLY_RESOLUTION_ATTEMPTS'] and len(acc['OBSERVED_OPERATIONS'])==3
+assert acc['KNOWN_SUITE_CHARGES']==0 and acc['COUNTERS_RESET'] is False and acc['CHARGES_REFUNDED'] is False and acc['NEW_ATTEMPT_OR_ALLOCATION'] is False
+assert j['SUITE_INVOCATIONS_EXECUTED']==0 and j['SUITE_RESERVATION_CREATED'] is False
+cust=read('current-custodian-use-receipt.json');assert cust['DECLARATION_VERBATIM']=='Confirmed: unrevoked, unsuperseded, no invocation or reservation'
+assert acc['CUSTODIAN_RECEIPT_PIN']['raw_sha256']==digest(D/(B+'current-custodian-use-receipt.json'))
+mode=sys.argv[1];v=read('issuance-candidate.json' if mode=='candidate' else 'issued-amendment.json',P)
+def validate(v):
+ check(v);r=v['RECORD']
+ assert r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+ assert r['PARENT_GRANT_IDENTITY']==g['GRANT_IDENTITY'] and r['PARENT_GRANT_EFFECTIVENESS_IDENTITY']==ge['IDENTITY']
+ assert r['PREDECESSOR_AMENDMENT_IDENTITY']==a['IDENTITY'] and r['PREDECESSOR_EFFECTIVENESS_IDENTITY']==e['IDENTITY']
+ assert r['CORRECTED_SUBJECT_IDENTITY']==newsubject['IDENTITY']
+ assert r['EXACT_OLD_ARGV']==old and r['EXACT_CORRECTED_ARGV']==new
+ assert r['REMOVED_FS_CONFIG_VALUES']==removed and r['REPLACEMENT_FS_CONFIG_VALUE']==value
+ assert tomllib.loads(r['REPLACEMENT_FS_CONFIG_VALUE'])=={'permissions':{profile:{'filesystem':fs}}}
+ assert r['FILESYSTEM_RULES_UNCHANGED']==fs
+ assert r['LIMITS_UNCHANGED']==c['LIMITS'] and r['EXCLUSIONS_UNCHANGED']==c['EXCLUSIONS'] and r['ACCOUNTING_RULE']==c['ATTEMPT_POLICY']
+ assert r['CORRECTED_SUBJECT_PIN']['raw_sha256']==digest(D/(P+'corrected-subject.json'))
+ assert r['ACCOUNTING_PIN']['raw_sha256']==digest(D/(P+'consumption-reconciliation.json'))
+ assert r['STATUS']=='AMENDMENT_ISSUED_PENDING_SEPARATE_VERIFIED_EFFECTIVENESS'
+ assert all(r[k] is True for k in ('NO_COUNTER_RESET','NO_REFUND','NO_NEW_ALLOCATION','FRESH_ENTRY_REQUIRED'))
+ assert r['TESTS_EXECUTED'] is False
+validate(v)
+mut=[]
+def add(name,f):
+ x=copy.deepcopy(v);f(x['RECORD']);x['IDENTITY']=cid(x['IDENTITY']['namespace'],x['RECORD']);mut.append((name,x))
+add('wrong issuer',lambda r:r.update(ISSUER_ROLE='OTHER'))
+add('wrong parent grant',lambda r:r.update(PARENT_GRANT_IDENTITY=cid('wrong',{})))
+add('missing predecessor',lambda r:r.update(PREDECESSOR_AMENDMENT_IDENTITY=None))
+add('wrong corrected identity',lambda r:r.update(CORRECTED_SUBJECT_IDENTITY=cid('wrong',{})))
+add('changed filesystem semantics',lambda r:r['FILESYSTEM_RULES_UNCHANGED'].update({':root':'write'}))
+add('table relaxation',lambda r:r.update(REPLACEMENT_FS_CONFIG_VALUE=r['REPLACEMENT_FS_CONFIG_VALUE'].replace('"deny"','"write"',1)))
+add('rejected overrides retained',lambda r:r.update(EXACT_CORRECTED_ARGV=old))
+add('linux reintroduced',lambda r:r['EXACT_CORRECTED_ARGV'].insert(2,'linux'))
+add('changed CPU',lambda r:r['LIMITS_UNCHANGED'].update(CPU_SECONDS=61))
+add('additional suite',lambda r:r['LIMITS_UNCHANGED'].update(SUITE_INVOCATIONS=2))
+add('automatic retry',lambda r:r['LIMITS_UNCHANGED'].update(AUTOMATIC_RETRIES=1))
+add('changed profile',lambda r:r['EXACT_CORRECTED_ARGV'].__setitem__(r['EXACT_CORRECTED_ARGV'].index('--permission-profile')+1,'other'))
+add('network enabled',lambda r:r['EXACT_CORRECTED_ARGV'].__setitem__(r['EXACT_CORRECTED_ARGV'].index('permissions.'+profile+'.network.enabled=false'),'permissions.'+profile+'.network.enabled=true'))
+add('counter reset',lambda r:r.update(NO_COUNTER_RESET=False))
+add('historical refund',lambda r:r.update(NO_REFUND=False))
+add('new allocation',lambda r:r.update(NO_NEW_ALLOCATION=False))
+add('waived fresh entry',lambda r:r.update(FRESH_ENTRY_REQUIRED=False))
+add('execution during amendment',lambda r:r.update(TESTS_EXECUTED=True))
+add('removed exclusions',lambda r:r.update(EXCLUSIONS_UNCHANGED=[]))
+rejected=[]
+for name,x in mut:
+ try:validate(x)
+ except (AssertionError,TypeError,ValueError,KeyError):rejected.append(name)
+ else:raise AssertionError('accepted negative '+name)
+for path,h in read('preservation-before.json',P).items():assert digest(path)==h,path
+result={'STAGE':mode,'AMENDMENT_IDENTITY':v['IDENTITY'],'CORRECTED_SUBJECT_IDENTITY':newsubject['IDENTITY'],'PARENT_GRANT_IDENTITY':g['GRANT_IDENTITY'],'FILESYSTEM_TOML_INDEPENDENTLY_PARSED':True,'ALL_PERMISSION_SEMANTICS_AND_OTHER_BINDINGS_UNCHANGED':True,'HISTORICAL_DIAGNOSTIC_SUITE_CHARGES':0,'NO_RESET_REFUND_OR_NEW_ALLOCATION':True,'NEGATIVE_DESIGNS':len(mut),'NEGATIVE_EXECUTIONS_REJECTED':len(rejected),'LABELS':rejected,'HISTORICAL_PRESERVATION':'PASS','TESTS_EXECUTED':False,'ENTRY_READY':False}
+if mode=='effect':
+ effect=read('effectiveness-reference.json',P);check(effect);r=effect['RECORD']
+ assert r['AMENDMENT_IDENTITY']==v['IDENTITY'] and r['AMENDMENT_PIN']['raw_sha256']==digest(D/(P+'issued-amendment.json'))
+ assert r['PARENT_GRANT_IDENTITY']==g['GRANT_IDENTITY'] and r['PREDECESSOR_AMENDMENT_EFFECTIVENESS_IDENTITY']==e['IDENTITY']
+ assert r['CORRECTED_SUBJECT_IDENTITY']==newsubject['IDENTITY'] and r['STATUS']=='EFFECTIVE_FILESYSTEM_CLI_SERIALIZATION_ONLY_AMENDMENT'
+ assert all(r[k] is True for k in ('SAME_ORIGINAL_SUITE_AND_ACCOUNTING','NO_COUNTER_RESET','NO_REFUND','NO_NEW_ALLOCATION'))
+ assert r['ENTRY_READY'] is False and r['TESTS_EXECUTED'] is False
+ result['EFFECTIVENESS_IDENTITY']=effect['IDENTITY']
+print(json.dumps(result,sort_keys=True))

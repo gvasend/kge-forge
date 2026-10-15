@@ -1,0 +1,959 @@
+{
+  "CANDIDATE_SPECIFIC_BINDING_SEALED": false,
+  "EXPECTED_RECONSTRUCTION": "No event applications; validate exact selected policy/source/provenance/schema and retain exact checkpoint identity",
+  "FORBIDDEN_EXECUTION": [
+    "A14/D01",
+    "save/restore/commit",
+    "live import_e1",
+    "new Evidence/receipt/authority/INSTALL"
+  ],
+  "NATIVE_SCOPE_CONSTRAINTS": {
+    "FULL_FROZEN_E1_REPLAY": "Native requires P06; canonical E2 excludes import_e1, selecting P06 does not authorize this mode",
+    "PARTIAL_HISTORICAL_REPLAY": "Supported with P05/P06; local zero range entails source/policy/model/exact Snapshot validation",
+    "PARTIAL_SYNTHETIC_BUDGET_QUALIFICATION": "Native enum; no A14 budget-scope mapping established"
+  },
+  "POLICY_BOUND_FIELD": "Exact one candidate from current inventory must be selected first",
+  "REPLAY_RANGE": {
+    "CHECKPOINT": {
+      "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/corrected-prospective-snapshot.json",
+      "pointer": "",
+      "raw_sha256": "0c3efd163fc76a752bf4221c14d284fc75863cd9f587511b57313087f1c3fe89"
+    },
+    "EVENT_SET": [],
+    "FRAME_IDENTITY": "qualification-A14-checkpoint-frame-v1:5cd54f965ba1e8c48bd82ffaba1f63c479da3fd948665a6b32dd5d89f67c0326",
+    "GENERATION": "E2-GENERATION-1",
+    "LINEAGE": "E2-CANONICAL-BASELINE-1",
+    "PROVENANCE": {
+      "AUTHORIZATION_SUBJECT": "qualification-A14-history-frame-v1:bdaa73edeb7f5b25a969b6d03b4a83449f85d283ab0d86bbb91995f1123e43d7",
+      "NATIVE_SNAPSHOT_PROVENANCES": [
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-GENERATION-1\",\"id\":\"E2-PREPARE\",\"knowledge\":[\"E2-K-COLLECT\",\"E2-K-CHECK\"],\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"operation\":\"DECISION_INPUT_ACQUISITION\",\"output\":{\"id\":\"E2-K-PREPARE\",\"outcome\":\"PASS\",\"producer\":\"E2-PREPARE\",\"statement\":\"Bounded decision inputs prepared\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[\"E2-COLLECT\",\"E2-CHECK\"],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/declarations/2"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-CHECK\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-CHECK.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-CHECK\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-CHECK.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-CHECK\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-CHECK.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-COLLECT\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-COLLECT.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-COLLECT\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-COLLECT.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-COLLECT\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-COLLECT.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-DECIDE\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-DECIDE.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-FINISH\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-FINISH.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-FINISH\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-FINISH.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-PREPARE\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-PREPARE.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-PREPARE\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-PREPARE.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"action\":\"E2-PREPARE\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "method": "E2-PC01-WHOLE-MODEL-1",
+          "path": "E2-PREPARE.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "method": "E2-PC01-DEFINITION-1",
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/prospective_dossier"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"authority\": \"E2-GRANT\", \"choice\": \"6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411\", \"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"permission\": \"USE\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"subject\": \"E2-REENTER\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "method": "E2-T03-QUALIFICATION-GRANT-1",
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/grant"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"E2-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"E2-GENERATION-1\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"E2-REENTER\"}],\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"E2-REENTER\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"E2-EXTERNAL-REQUIREMENT\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"E2-QUALIFICATION-ONLY\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "resolution.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/choice"
+        },
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/choice"
+        }
+      ],
+      "SNAPSHOT_SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/corrected-prospective-snapshot.json",
+        "pointer": "",
+        "raw_sha256": "0c3efd163fc76a752bf4221c14d284fc75863cd9f587511b57313087f1c3fe89"
+      },
+      "SOURCE_SET_VALIDATION": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_RESOLUTION_MATERIALIZATION_21/complete-source-validation.json",
+        "raw_sha256": "738fe95ea353c985a79f04a920b2bf0953916806b19ec6c5204023a2b71131cf"
+      }
+    },
+    "REPLAY_END": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+    },
+    "REPLAY_START": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+    },
+    "SCOPE": "E2-QUALIFICATION-ONLY",
+    "SOURCE_SET": [
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+        },
+        "path": "E2-DECIDE.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+        },
+        "path": "E2-PREPARE.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+        },
+        "path": "E2-COLLECT.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+        },
+        "path": "E2-CHECK.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+        },
+        "path": "resolution.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+        },
+        "path": "E2-FINISH.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+        },
+        "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      },
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+        },
+        "path": "source.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      }
+    ]
+  },
+  "REPLAY_SCOPE_SELECTED": false,
+  "REPRESENTATION": "Future native PersistenceBundle.initial/current/events/sources/policy/policy_version/scope; exact native identity requires complete selected fields. Metadata preparation is not a bundle or candidate-specific replay binding.",
+  "SCOPE_BOUND_FIELD": "Native replay scope separately bound to selected policy and qualification assurance, not Snapshot scope string"
+}

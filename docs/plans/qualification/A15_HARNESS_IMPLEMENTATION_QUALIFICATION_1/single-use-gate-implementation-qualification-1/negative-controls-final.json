@@ -1,0 +1,86 @@
+{
+  "CONTROLS": [
+    {
+      "CONTROL": "Wrong grant identity accepted",
+      "COUNTEREXAMPLE": "ValueError: WRONG_GRANT_ACCEPTED",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Wrong approved subject",
+      "COUNTEREXAMPLE": "ValueError: WRONG_SUBJECT",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Wrong exact command",
+      "COUNTEREXAMPLE": "ValueError: WRONG_COMMAND",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Unstable process-based key",
+      "COUNTEREXAMPLE": "ValueError: UNSTABLE_KEY",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Duplicate claim accepted",
+      "COUNTEREXAMPLE": "ValueError: NON_ATOMIC_OR_DUPLICATE_CLAIM",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Missing file fsync",
+      "COUNTEREXAMPLE": "ValueError: MISSING_FILE_FSYNC",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Missing directory fsync",
+      "COUNTEREXAMPLE": "ValueError: MISSING_DIRECTORY_FSYNC",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Launch before durable verification",
+      "COUNTEREXAMPLE": "ValueError: LAUNCH_BEFORE_DURABLE_CONFIRMATION",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Stale lock treated as unused",
+      "COUNTEREXAMPLE": "ValueError: CONCURRENCY_LOCK",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Partial record admits recovery launch",
+      "COUNTEREXAMPLE": "ValueError: RETRY_PERMISSION_REOPENED",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Crash reopens permission",
+      "COUNTEREXAMPLE": "ValueError: RETRY_PERMISSION_REOPENED",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Automatic retry enabled",
+      "COUNTEREXAMPLE": "ValueError: RESOURCE_LIMITS",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Unrestricted subprocess argv",
+      "COUNTEREXAMPLE": "ValueError: FIXED_COMMAND_GUARD",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Unauthorized source path",
+      "COUNTEREXAMPLE": "ValueError: UNAUTHORIZED_SOURCE_PATH",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Actual H77 probe invocation in tests",
+      "COUNTEREXAMPLE": "ValueError: REAL_PROBE_IN_TESTS",
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Real A15 execution import",
+      "COUNTEREXAMPLE": "ValueError: A15_IMPORT",
+      "RESULT": "REJECTED"
+    }
+  ],
+  "QUALIFICATION_LIMIT": "In-memory source corruption only; no gate code imported or executed and no concurrency/crash behavior empirically demonstrated",
+  "RESULT": "16/16 PASS STATIC AST/SOURCE CONTROLS"
+}

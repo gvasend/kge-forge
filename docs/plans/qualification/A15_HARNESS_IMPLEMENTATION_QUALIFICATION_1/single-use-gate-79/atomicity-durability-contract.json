@@ -1,0 +1,40 @@
+{
+  "ADMINISTRATIVE_SCOPE": "Trusted qualification owner/launcher control; no promise against administrator deletion, filesystem rollback, malicious privileged actor or unauthorized bypass. Such events invalidate environment/authority and deny further launch",
+  "AUDIT": "Append-only separate claim/launch/outcome evidence pins; claim state remains consumed independent of audit availability",
+  "CONCURRENCY": [
+    "One atomic reservation winner",
+    "Other simultaneous/duplicate/process/restart/temp-path requests reject",
+    "Winner crash leaves reservation blocked; stale locks never reopen",
+    "Missing store after previously activated environment is integrity loss, not fresh authority"
+  ],
+  "DIRECT_HOST_ENTRY_VERIFIED": false,
+  "DURABILITY_LAYERS": [
+    "exclusive creation",
+    "complete write",
+    "file fsync",
+    "parent directory fsync",
+    "independent reread",
+    "validated actual filesystem crash-recovery semantics"
+  ],
+  "FAILURE_POLICY": "Unknown state, permission, fsync, verifier, resource, lifecycle or integrity fails closed; no launch/no retry",
+  "IMPLEMENTED": false,
+  "OPERATION": "CLAIM_ONCE(grant, subject, probe)",
+  "POWER_LOSS_ASSURANCE": "Not claimed. Launch blocked unless required filesystem ordering/persistence guarantee is independently evidenced. Controlled process-crash testing cannot prove power-loss behavior",
+  "QUALIFIED": false,
+  "REVOCATION": "Fresh authoritative owner epoch required, deny unknown revocation/expiry. Epoch serialization prevents a separate grant change racing claim/launch within governed protocol",
+  "SCHEMA": "H77-02-CLAIM-ONCE-CONTRACT-1",
+  "STABLE_STORE": "One dedicated local filesystem directory under host-capability-verification/h77-02-consumption, actual absolute host path/device/ownership pinned by future host profile. Not /tmp, not campaign-budget.jsonl",
+  "STEPS": [
+    "Read exact issued grant, separate effective reference, original subject and current authority lifecycle; reject absent/changed/revoked/expired/missing freshness",
+    "Verify exact command/environment/binary pins, resources, host profile, input/output and actual permissions without privilege acquisition",
+    "Take authority-owner serialized administrative epoch lock; revocation/update uses same protocol. Keep lock through claim and one launch handoff; unsupported lifecycle synchronization denies launch",
+    "Compute deterministic key. Resolve trusted pinned store via directory fd with no-follow checks and owner-only access; reject unqualified remote/overlay/replaceable/multiple-instance store",
+    "Use openat(dirfd,key.sha256+.claim.json,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW,0600), atomically creating permanent reservation. No exists-then-create admission",
+    "Existing pathname of any type, stale lock, partial, conflicting or malformed record means consumed/ambiguous: reject; no repair/reset/removal",
+    "Write complete canonical consumption record binding key/identities/state CONSUMED. Check exact write length; flush file/fsync(file), then fsync(store directory)",
+    "Trusted independent read-only verifier reopens by descriptor/no-follow, confirms exact identity/bytes/inode and barrier-success evidence; reread alone does not prove crash durability",
+    "Only this first claimant may receive one process-local nonserializable launch capability after barrier and verifier success. Recovery readers never mint capabilities from records",
+    "Recheck authoritative epoch under same lock and exact invocation; invalidate one-shot capability before spawn. Launch once or fail; release lock only after handoff. Never resubmit capability",
+    "Append separately exclusive identity-bearing audit outcomes. Error after claim cannot remove consumption. Record LAUNCHED only from actual process creation evidence, completion only from independent wait/exit evidence"
+  ]
+}

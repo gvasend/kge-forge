@@ -1,0 +1,37 @@
+{
+  "CLOSE_FDS": true,
+  "CWD": "/home/gvasend/app/kge-forge",
+  "ENTRYPOINT": "reader_entrypoint.run_reader(spec, supervisor_evidence, scope_verifier, guard_verifier)",
+  "ENTRYPOINT_SOURCE": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_COLD_READER_BINDING_CLOSURE_29/reader_entrypoint.py",
+    "raw_sha256": "c0faace1290e515df4d2eb6d4b9f7222e3b97cf4f746b0b894f383d2e2f80b2d"
+  },
+  "ENVIRONMENT_REQUIREMENTS": {
+    "LC_ALL": "C.UTF-8",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "One exact selected value per reader in 0,1,7,101; no random/default seed",
+    "PYTHONPATH": "/home/gvasend/app/kge-forge"
+  },
+  "EXECUTABLE": "/usr/bin/python3",
+  "HASH_SEEDS": [
+    0,
+    1,
+    7,
+    101
+  ],
+  "INPUT_CHANNEL": "Persisted reader spec/config + actual persisted handoff + independently trusted supervisor-observed guard evidence; native restore receives path, trusted expected identity, repo_root only",
+  "NO_WARM_STATE": [
+    "in-memory bundle",
+    "Snapshot object",
+    "decoded model",
+    "open descriptor",
+    "writer cache",
+    "Python object identity",
+    "writer-local temporary state"
+  ],
+  "OUTPUT_CHANNEL": "Structured JSON/captured stdout to supervisor/harness; no native input receives expected full Computation",
+  "PROCESS_OWNER": "Trusted future qualification supervisor/launcher; callback scope/guard verifiers supplied out-of-band by that application",
+  "PROCESS_START_MODEL": "Fresh executable interpreter subprocess after independently observed writer exit; no forked writer object graph",
+  "QUALIFICATION_PROCESS_NOT_LAUNCHED": true,
+  "READER_COUNT_RULE": "At least 3 readers per checkpoint/seed per recovered cold-reader obligation; no readers launched here"
+}

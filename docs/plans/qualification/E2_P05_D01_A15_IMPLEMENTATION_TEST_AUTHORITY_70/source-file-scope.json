@@ -1,0 +1,109 @@
+{
+  "COMPONENTS": [
+    {
+      "COMPONENT_ID": "SUPERVISOR_COMPONENT",
+      "PROPOSED_ENTRYPOINT": "run_supervisor",
+      "SOURCE_PATH": "adapter/qualification_a15/supervisor.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "WORKER_COMPONENT",
+      "PROPOSED_ENTRYPOINT": "run_worker",
+      "SOURCE_PATH": "adapter/qualification_a15/worker.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "PROCESS_LAUNCH_INTERFACE",
+      "PROPOSED_ENTRYPOINT": "launch_child",
+      "SOURCE_PATH": "adapter/qualification_a15/supervisor.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "CHECKPOINT_INPUT_VALIDATOR",
+      "PROPOSED_ENTRYPOINT": "validate_synthetic_input",
+      "SOURCE_PATH": "adapter/qualification_a15/contracts.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "RESULT_CAPTURE_INTERFACE",
+      "PROPOSED_ENTRYPOINT": "record_synthetic_result",
+      "SOURCE_PATH": "adapter/qualification_a15/worker.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "SAVE_PUBLICATION_INTERFACE",
+      "PROPOSED_ENTRYPOINT": "publish_synthetic_bundle",
+      "SOURCE_PATH": "adapter/qualification_a15/worker.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "WRITER_EXIT_OBSERVER",
+      "PROPOSED_ENTRYPOINT": "observe_child_exit",
+      "SOURCE_PATH": "adapter/qualification_a15/supervisor.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "HANDOFF_INTERFACE",
+      "PROPOSED_ENTRYPOINT": "validate_handoff",
+      "SOURCE_PATH": "adapter/qualification_a15/contracts.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "COLD_READER_INTERFACE",
+      "PROPOSED_ENTRYPOINT": "run_reader",
+      "SOURCE_PATH": "adapter/qualification_a15/reader.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "ORACLE_COMPARISON_INTERFACE",
+      "PROPOSED_ENTRYPOINT": "compare_complete_output",
+      "SOURCE_PATH": "adapter/qualification_a15/contracts.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    },
+    {
+      "COMPONENT_ID": "FAILURE_RETRY_CONTROLLER",
+      "PROPOSED_ENTRYPOINT": "fail_closed",
+      "SOURCE_PATH": "adapter/qualification_a15/supervisor.py",
+      "STATUS": "NEW_PROSPECTIVE_SYMBOL_NOT_IMPLEMENTED"
+    }
+  ],
+  "NEW_FILE_RULE": "Create only these six exact paths after effective implementation/test grant and verified owner-controlled write access; no symlink component, preexisting target or outside-path mutation. Existing directory creation limited to adapter/qualification_a15. Later edits remain confined to these six new files.",
+  "NO_EXISTING_RUNTIME_MODIFICATION": true,
+  "NO_SELECTED_V3_MODIFICATION": true,
+  "PERMITTED_SOURCE_FILES": [
+    "adapter/qualification_a15/__init__.py",
+    "adapter/qualification_a15/contracts.py",
+    "adapter/qualification_a15/supervisor.py",
+    "adapter/qualification_a15/worker.py",
+    "adapter/qualification_a15/reader.py",
+    "adapter/tests/test_qualification_a15_harness.py"
+  ],
+  "PRIOR_SUBJECT_PIN": {
+    "PATH": "docs/plans/qualification/E2_P05_D01_A15_EXECUTOR_ENVIRONMENT_QUALIFICATION_69/proposed-implementation-test-authority-subject.json",
+    "RAW_SHA256": "a2352feb13ef1bda4e0056ad166af1de819aa7dabec080849554236889250a7e"
+  },
+  "READ_ONLY_NATIVE_ENTRYPOINTS": [
+    {
+      "PATH": "adapter/planner/codec.py",
+      "SYMBOL": "record_result"
+    },
+    {
+      "PATH": "adapter/planner/codec.py",
+      "SYMBOL": "save_bundle"
+    },
+    {
+      "PATH": "adapter/planner/codec.py",
+      "SYMBOL": "restore"
+    },
+    {
+      "PATH": "adapter/planner/codec.py",
+      "SYMBOL": "bundle_bytes"
+    },
+    {
+      "PATH": "adapter/planner/core.py",
+      "SYMBOL": "apply_event"
+    }
+  ],
+  "SCHEMA_ID": "A15-IMPLEMENTATION-FILE-SCOPE-70-1",
+  "SOURCE_CONTENT_IDENTITIES": "To be independently sealed after construction before test launch; future artifacts, not identity inputs to this approval"
+}

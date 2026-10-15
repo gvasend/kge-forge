@@ -1,0 +1,58 @@
+{
+  "FINDINGS": [
+    {
+      "COUNTEREVIDENCE": "reserve segregation exists but is evaluated only after this guard",
+      "CURRENT_ASSURANCE": "independent source/AST observation; NOT active runtime demonstration",
+      "EXACT_GUARD_OR_OPERATION": "time.monotonic_ns() < budget['deadline_ns']",
+      "FAILURE_MODE": "critical=True cannot bypass unconditional deadline check",
+      "FINDING": "CRITICAL_WRITES_BLOCKED_AFTER_DEADLINE",
+      "FUNCTION": "charge",
+      "SOURCE_PATH": "adapter/qualification_bootstrap/systemd_pids_once.py",
+      "STATUS": "SUPPORTED_STATIC"
+    },
+    {
+      "COUNTEREVIDENCE": "proposed separate writer is not present",
+      "CURRENT_ASSURANCE": "independent source/AST observation; NOT active runtime demonstration",
+      "EXACT_GUARD_OR_OPERATION": "not budget['stopped']",
+      "FAILURE_MODE": "stopped ledger denies even critical publication",
+      "FINDING": "CRITICAL_WRITES_BLOCKED_AFTER_STOP",
+      "FUNCTION": "charge",
+      "SOURCE_PATH": "adapter/qualification_bootstrap/systemd_pids_once.py",
+      "STATUS": "SUPPORTED_STATIC"
+    },
+    {
+      "COUNTEREVIDENCE": "No unbounded file write acceptance:65,536 cap exists. Finding concerns mandatory causal input and evidence rejection, not record size accepted.",
+      "CURRENT_ASSURANCE": "independent source/AST observation; NOT active runtime demonstration",
+      "EXACT_GUARD_OR_OPERATION": "raw = canonical(value); require(len(raw) <= ORDINARY_RECORD_MAX_BYTES",
+      "FAILURE_MODE": "failure source fields/tracebacks unbounded before encoding; publication itself is bounded/rejected",
+      "FINDING": "FAILURE_RECORD_SIZE_UNBOUNDED",
+      "FUNCTION": "_publish",
+      "SOURCE_PATH": "adapter/qualification_bootstrap/systemd_pids_once.py",
+      "STATUS": "SUPPORTED_STATIC"
+    },
+    {
+      "COUNTEREVIDENCE": "fixed trusted source restricts launch sites; not evidence of hostile escape",
+      "CURRENT_ASSURANCE": "independent source/AST observation; NOT active runtime demonstration",
+      "EXACT_GUARD_OR_OPERATION": "start_new_session=True",
+      "FAILURE_MODE": "each Popen helper is a new session leader",
+      "FINDING": "HELPERS_CREATE_INDEPENDENT_SESSIONS",
+      "FUNCTION": "FixedHelperController.run",
+      "SOURCE_PATH": "adapter/tests/test_systemd_pids_bootstrap.py",
+      "STATUS": "SUPPORTED_STATIC"
+    },
+    {
+      "COUNTEREVIDENCE": "own helper group kill handles known members on responsive parent; no active exit evidence",
+      "CURRENT_ASSURANCE": "independent source/AST observation; NOT active runtime demonstration",
+      "EXACT_GUARD_OR_OPERATION": "os.killpg(child.pid, 9)",
+      "FAILURE_MODE": "only selected helper group is addressed; parent-group-only watchdog cannot contain all sessions",
+      "FINDING": "PARENT_PROCESS_GROUP_INCOMPLETE",
+      "FUNCTION": "FixedHelperController.run",
+      "SOURCE_PATH": "adapter/tests/test_systemd_pids_bootstrap.py",
+      "STATUS": "SUPPORTED_STATIC"
+    }
+  ],
+  "SOURCE_IDENTITIES": {
+    "adapter/qualification_bootstrap/systemd_pids_once.py": "492b2b219f55ed894da6b898043309481edf7a2e602196654c85c4ec7af32fb2",
+    "adapter/tests/test_systemd_pids_bootstrap.py": "a85882418fddeef2ee39ecd880aae698bfcbe5b09adf0f0a838a8b84e310d76e"
+  }
+}

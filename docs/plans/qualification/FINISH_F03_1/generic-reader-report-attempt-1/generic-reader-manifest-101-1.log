@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "adapter/tests/qualify_finish_f03.py", line 225, in <module>
+    else:{'generic':generic,'generic-checkpoint':generic_checkpoint,'apply':apply}.get(sys.argv[1],lambda:reader(sys.argv[2]))()
+  File "adapter/tests/qualify_finish_f03.py", line 225, in <lambda>
+    else:{'generic':generic,'generic-checkpoint':generic_checkpoint,'apply':apply}.get(sys.argv[1],lambda:reader(sys.argv[2]))()
+  File "adapter/tests/qualify_finish_f03.py", line 221, in reader
+    print(json.dumps({'pid':os.getpid(),'seed':os.environ.get('PYTHONHASHSEED'),'bundle':man['bundle_id'],'state':man['state_id'],'head':man['head'],'currentness':'PASS','replay':'PASS','control':core.recompute(b.current).control.value,'semantic':semantic}),flush=True)
+AttributeError: 'NoneType' object has no attribute 'value'

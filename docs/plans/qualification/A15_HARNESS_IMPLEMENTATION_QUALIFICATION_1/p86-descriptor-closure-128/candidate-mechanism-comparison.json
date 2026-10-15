@@ -1,0 +1,22 @@
+{
+  "CANDIDATES": [
+    {
+      "BENEFIT": "Existing API closes at child before first requested wrapper; no new general supervisor",
+      "ID": "CPython Popen",
+      "MISSING": "Exact existing caller source/configuration and independently supported built-in fork_exec semantics, startup safety and stdio endpoints",
+      "STATUS": "source-supported Python callsite, not qualified caller/native closure"
+    },
+    {
+      "EVIDENCE": "closefrom(lowfd) documented to close >=lowfd, ignores closing errors. Neither manual nor installed library is exact qualified launch callsite",
+      "ID": "closefrom/close_range",
+      "RISKS": "Calling only after some prior exec is too late; loop/CLOEXEC races and threads must be addressed; no kernel close_range capability inferred from version",
+      "STATUS": "libbsd closefrom manual inspected; no existing authenticated invocation/closure receipt"
+    },
+    {
+      "EVIDENCE": "127 bash flags/umask/resources do not close arbitrary descriptors; current tool execution is not grant or closure receipt",
+      "ID": "retained shell/Codex/native wrappers",
+      "STATUS": "No independently authenticated exact all-descriptor closure configuration supplied"
+    }
+  ],
+  "SELECTED_FOR_STATIC_ANALYSIS": "CPython Popen; no operational selection or grant"
+}

@@ -1,0 +1,309 @@
+{
+  "CONCURRENT_EVENTS": "Timeout/unknown may coexist with cleanup, capture, close, durability and audit errors; first cause immutable",
+  "MUTUAL_EXCLUSIVITY": "Definite rejected/confirmed service start and known/unknown final exit are alternative primary outcomes, not simultaneous totals",
+  "PRIMARY_COUNTS": {
+    "KNOWN_DEADLINE_CLASSES": [
+      "Service RuntimeMaxSec20",
+      "Stop TimeoutStopSec2",
+      "External observer total25"
+    ],
+    "NORMAL_VS_FAILURE": "Successful and definitely rejected service start alternatives; confirmed and unknown final exit alternatives. Primary error does not forbid concurrent later cleanup/audit errors.",
+    "PRIMARY_OUTCOME_BOUNDS_COMPLETE": false,
+    "PRIMARY_STATE_BOUNDS": [
+      {
+        "CONDITION": "Only one exact manager invocation; confirmed start incompatible with definite rejected start",
+        "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+        "OUTCOME": "SUCCESSFUL_SERVICE_START",
+        "PUBLICATION_COUNT_COMPLETENESS": false
+      },
+      {
+        "CONDITION": "Definite independent no-service rejection only; ambiguous creation belongs UNKNOWN",
+        "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+        "OUTCOME": "REJECTED_SERVICE_START",
+        "PUBLICATION_COUNT_COMPLETENESS": false
+      },
+      {
+        "CONDITION": "One terminal service identity verdict; subsequent observation failures may still occur",
+        "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+        "OUTCOME": "CONFIRMED_SERVICE_EXIT",
+        "PUBLICATION_COUNT_COMPLETENESS": false
+      },
+      {
+        "CONDITION": "One immutable primary cause; later stop/audit errors remain secondary",
+        "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+        "OUTCOME": "FIRST_CAUSAL_FAILURE",
+        "PUBLICATION_COUNT_COMPLETENESS": false
+      },
+      {
+        "CONDITION": "One primary unresolved outcome classification, not every later unknown witness",
+        "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+        "OUTCOME": "PRIMARY_UNKNOWN_OUTCOME",
+        "PUBLICATION_COUNT_COMPLETENESS": false
+      },
+      {
+        "CONDITION": "One final outcome state; does not justify one physical audit write",
+        "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+        "OUTCOME": "PRIMARY_FINALIZATION_STATE",
+        "PUBLICATION_COUNT_COMPLETENESS": false
+      }
+    ],
+    "TIMEOUT_GAP": "Several distinct deadline/cleanup observations can follow an earlier first failure. Exact timer/stop/query/finalization event handling is unsealed; one launch is not one timeout witness.",
+    "TIMEOUT_PUBLICATION_MAX_OCCURRENCES": null
+  },
+  "PUBLICATION_COUNTS_COMPLETE": false,
+  "RECOVERY": "Readonly reconcile, no consumed key deletion, no recovered/reusable launch token",
+  "RETAINED_MODEL": {
+    "AUDIT_PUBLICATION_OCCURRENCES": "State slot does not automatically bound physical/publication attempts or error witnesses; must derive exact implementation topology",
+    "CONSUMED_AUTHORITY_RESTORED": false,
+    "MAX_PROBE_ATTEMPTS": 1,
+    "PROSPECTIVE_NOT_EXECUTED": true,
+    "STATES": [
+      "GRANT_AUTHENTICATED",
+      "CLAIM_RESERVED",
+      "CONSUMPTION_DURABLE",
+      "CLAIM_INDEPENDENTLY_CONFIRMED",
+      "LAUNCH_PERMISSION_CONSUMED",
+      "LAUNCH_ATTEMPTED",
+      "SERVICE_STARTED",
+      "SERVICE_OBSERVED",
+      "SERVICE_EXITED",
+      "FINALIZED",
+      "FAILED",
+      "UNKNOWN"
+    ],
+    "TRANSITIONS": [
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "GRANT_AUTHENTICATED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "CLAIM_RESERVED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "CLAIM_RESERVED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "CONSUMPTION_DURABLE"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "CONSUMPTION_DURABLE",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "CLAIM_INDEPENDENTLY_CONFIRMED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "CLAIM_INDEPENDENTLY_CONFIRMED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "LAUNCH_PERMISSION_CONSUMED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "LAUNCH_PERMISSION_CONSUMED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "LAUNCH_ATTEMPTED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "LAUNCH_ATTEMPTED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "SERVICE_STARTED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "SERVICE_STARTED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "SERVICE_OBSERVED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "SERVICE_OBSERVED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "SERVICE_EXITED"
+      },
+      {
+        "CONDITION": "Exact verified precondition and original owner for next fixed step",
+        "EVIDENCE": "Required immutable independent state/cause/consumption witness",
+        "FAILURE_ROUTE": "FAILED or UNKNOWN; no reverse/relaunch",
+        "FROM": "SERVICE_EXITED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FINALIZED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "GRANT_AUTHENTICATED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "GRANT_AUTHENTICATED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "CLAIM_RESERVED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "CLAIM_RESERVED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "CONSUMPTION_DURABLE",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "CONSUMPTION_DURABLE",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "CLAIM_INDEPENDENTLY_CONFIRMED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "CLAIM_INDEPENDENTLY_CONFIRMED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "LAUNCH_PERMISSION_CONSUMED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "LAUNCH_PERMISSION_CONSUMED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "LAUNCH_ATTEMPTED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "LAUNCH_ATTEMPTED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "SERVICE_STARTED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "SERVICE_STARTED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "SERVICE_OBSERVED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "SERVICE_OBSERVED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "SERVICE_EXITED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FAILED"
+      },
+      {
+        "CONDITION": "Definite failure or ambiguous required observation",
+        "EVIDENCE": "First cause immutable, secondary evidence separate",
+        "FAILURE_ROUTE": "Bounded final audit only",
+        "FROM": "SERVICE_EXITED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "UNKNOWN"
+      },
+      {
+        "CONDITION": "Bounded independent audit outcome retains failed/incomplete result",
+        "EVIDENCE": "Final audit does not imply successful execution",
+        "FAILURE_ROUTE": "Missing/undurable audit leaves INCOMPLETE",
+        "FROM": "FAILED",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FINALIZED"
+      },
+      {
+        "CONDITION": "Bounded independent audit outcome retains failed/incomplete result",
+        "EVIDENCE": "Final audit does not imply successful execution",
+        "FAILURE_ROUTE": "Missing/undurable audit leaves INCOMPLETE",
+        "FROM": "UNKNOWN",
+        "MAX_PRIMARY_STATE_TRANSITIONS": 1,
+        "TO": "FINALIZED"
+      }
+    ]
+  }
+}

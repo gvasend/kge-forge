@@ -1,0 +1,73 @@
+{
+  "A14_BUNDLE_CONTRACT": "FAIL",
+  "A14_BUNDLE_IDENTITY": null,
+  "A14_BUNDLE_PREFLIGHT": "FAIL_UNSEALED_NATIVE_INPUT",
+  "BUNDLE_TYPE": {
+    "HISTORY_RULE": "Root = first retained event identity and head = last, when authoritative event history exists; absent history is unresolved, not guessed empty",
+    "IDENTITY_DOMAINS": {
+      "BUNDLE_NATIVE_COMPARISON_IDENTITY": "CONTENT_IDENTITY/planner-bundle-v1; sha256 of canonical complete bundle raw bytes",
+      "BUNDLE_SEMANTIC_IDENTITY": "No distinct native semantic-bundle ID field; immutable native content identity cannot be replaced by qualification manifest identity",
+      "LEDGER_ROOT_HEAD": "OccurrenceEvent identities in ordered events; no separate GenesisLedger identity in this bundle type",
+      "SNAPSHOT_IDENTITY": "CONTENT_IDENTITY/planner-snapshot-v1"
+    },
+    "NATIVE_SOURCE": {
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+    },
+    "NATIVE_TYPE": "adapter.planner.model.PersistenceBundle",
+    "NATIVE_VALIDATION_SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "POLICY_RULE": "External state requires P05/P06 policy under current code; no exact policy/version selected from an absent bundle",
+    "REQUIRED_MEMBERS": [
+      "initial Snapshot",
+      "ordered events (ExecutionEvent tuple)",
+      "current Snapshot",
+      "sources (ArtifactPin tuple)",
+      "policy (ArtifactPin)",
+      "policy_version",
+      "scope",
+      "dossier_materializations"
+    ],
+    "RESULT_MEMBERSHIP": "Existing typed event results only; A14 Computation is not a result member",
+    "SCOPE_RULE": "Snapshot EvaluationContext scope/lineage/generation distinct from PersistenceBundle replay scope. Native replay permits PARTIAL_HISTORICAL_REPLAY, FULL_FROZEN_E1_REPLAY, PARTIAL_SYNTHETIC_BUDGET_QUALIFICATION; no replay scope selected here.",
+    "SERIALIZATION_SCHEMA": "PLANNER-BUNDLE-1",
+    "SOURCE_INDEX_RULE": "Every initial/current provenance must have matching RAW source pin; unique (path,pointer,profile)",
+    "STATUS": "CONTRACT_RECOVERED_INPUT_BUNDLE_NOT_AVAILABLE"
+  },
+  "FIRST_REMAINING_BLOCKER": {
+    "CLASSIFICATION": "HISTORY_BINDING",
+    "DETAIL": "Exact replay-origin Snapshot and native ordered history ending at corrected A14 Snapshot are unsealed. A zero-event prospective checkpoint frame would need its own explicit construction/scope contract; original history cannot be invented or rehashed.",
+    "INDEPENDENT_BLOCKERS": [
+      "POLICY_BINDING: P05/P06 version unresolved",
+      "REPLAY_SCOPE: explicit runner scope not selected"
+    ]
+  },
+  "FULL_OUTPUT_ORACLES": "0/128",
+  "INITIAL_STATE_CONTRACT": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_BUNDLE_CONTRACT_CLOSURE_22/initial-state-contract.json",
+    "pointer": "",
+    "raw_sha256": "1f16ac93ea50e7d952b4c9116a57afa378915b39351e8034446f3a6952fd1f2f"
+  },
+  "ORDERED_HISTORY_CONTRACT": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_BUNDLE_CONTRACT_CLOSURE_22/ordered-history-contract.json",
+    "pointer": "",
+    "raw_sha256": "b9838125de930a8033aa77e4732c6183509d889e9cada96f18eb2bcdf6540fef"
+  },
+  "POLICY_CONTRACT": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_BUNDLE_CONTRACT_CLOSURE_22/policy-contract-and-candidates.json",
+    "pointer": "",
+    "raw_sha256": "3849e089a05f285b2dcc6fe082650ccdc479396c80d946c58644e7ecc27a52b1"
+  },
+  "REPLAY_SCOPE_CONTRACT": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_BUNDLE_CONTRACT_CLOSURE_22/replay-scope-contract.json",
+    "pointer": "",
+    "raw_sha256": "b1a540c6bd30ca60603515ee82a3342718b9e942e33314fd5a2f7f0306ba884c"
+  },
+  "SAVE_PREFLIGHT": "NOT_RUN",
+  "SAVE_PREFLIGHT_ELIGIBLE": false,
+  "WRITER_READER_PREFLIGHT": "NOT_RUN"
+}

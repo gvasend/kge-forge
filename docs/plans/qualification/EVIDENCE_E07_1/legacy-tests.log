@@ -1,0 +1,223 @@
+/usr/lib/python3.8/subprocess.py:946: ResourceWarning: subprocess 8 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+======================================================================
+ERROR: test_crash_before_head_leaves_parent (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 181, in test_crash_before_head_leaves_parent
+    with self.assertRaises(OSError):self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_idempotence_conflict_and_parent (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 119, in test_idempotence_conflict_and_parent
+    after,identity,noop=self.admit();self.assertFalse(noop)
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_invalidation_preserves_history_withdraws_support (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 139, in test_invalidation_preserves_history_withdraws_support
+    after,_,_=self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_no_standalone_or_backdated_admission (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 129, in test_no_standalone_or_backdated_admission
+    after,_,_=self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_payload_pin_and_deleted_source (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 174, in test_payload_pin_and_deleted_source
+    after,identity,_=self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_unknown_and_negative_claim_never_positive (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 166, in test_unknown_and_negative_claim_never_positive
+    received,_,_=c.admit_external_evidence(bundle,request,{request.entity.provenance.path:raw},root/'store',root)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_validation_and_reentry_separate (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 94, in test_validation_and_reentry_separate
+    after,_,_=self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_conflicting_claims_are_not_overwritten (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 198, in test_conflicting_claims_are_not_overwritten
+    received,_,_=c.admit_external_evidence(bundle,request,{request.entity.provenance.path:raw},root/'store',root)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_head_audit_and_claim_conflict (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 336, in test_head_audit_and_claim_conflict
+    received,_,_=self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_pinned_source_shaped_fixture (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 368, in test_pinned_source_shaped_fixture
+    after,identity,noop=c.admit_external_evidence(cold,request,{request.entity.provenance.path:fixture['new_evidence_utf8'].encode()},root/'store',root)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 787, in preflight_external_evidence
+    admitted = _extend_private(current,request)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 758, in _extend_private
+    after = apply_event(bundle.current,supplied).snapshot
+  File "/home/gvasend/app/kge-forge/adapter/planner/core.py", line 548, in apply_event
+    return apply(snapshot, supplied)
+  File "/home/gvasend/app/kge-forge/adapter/planner/evidence.py", line 117, in apply
+    raise m.PlannerError('FIELD_PROVENANCE')
+adapter.planner.model.PlannerError: FIELD_PROVENANCE
+
+======================================================================
+ERROR: test_replay_receipt_not_live_event_and_stale_attestor (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 207, in test_replay_receipt_not_live_event_and_stale_attestor
+    after,_,_=self.admit()
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_two_distinct_gates_serialize_against_new_parent (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 321, in test_two_distinct_gates_serialize_against_new_parent
+    received,_,_=c.admit_external_evidence(bundle,first,{first.entity.provenance.path:self.raw},self.store,self.root)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+FAIL: test_cold_live_receipt_cli_and_replay_once (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 82, in test_cold_live_receipt_cli_and_replay_once
+    self.assertEqual(run.returncode,0,run.stderr)
+AssertionError: 2 != 0 : RECEIPT_CHANGED_CONTROL
+
+
+======================================================================
+FAIL: test_hash_order_process_determinism (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 234, in test_hash_order_process_determinism
+    self.assertEqual(r.returncode,0,r.stderr);identities.append(r.stdout.strip())
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 7, in <module>
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+
+======================================================================
+FAIL: test_process_crash_each_persistence_boundary (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 293, in test_process_crash_each_persistence_boundary
+    self.assertEqual(dry.returncode,0,dry.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 14, in <module>
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 794, in preflight_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+
+======================================================================
+FAIL: test_two_process_writers_one_semantic_receipt (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 266, in test_two_process_writers_one_semantic_receipt
+    out,err=child.communicate();self.assertEqual(child.returncode,0,err);outputs.append(json.loads(out))
+AssertionError: 2 != 0 : RECEIPT_CHANGED_CONTROL
+
+
+----------------------------------------------------------------------
+Ran 20 tests in 13.284s
+
+FAILED (failures=4, errors=12)
+sys:1: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='UTF-8'>
+sys:1: ResourceWarning: unclosed file <_io.TextIOWrapper name=7 encoding='UTF-8'>

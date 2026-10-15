@@ -1,0 +1,487 @@
+{
+  "ACTIVE_TESTS_EXECUTED": 0,
+  "AGGREGATE_BUDGET": {
+    "CHILD_AS": 1073741824,
+    "CHILD_CPU": 30,
+    "CHILD_FDS": 64,
+    "CHILD_FSIZE": 16777216,
+    "CHILD_WALL": 60,
+    "MAX_ACTUAL_PROCESS_SLOTS": 4,
+    "MAX_PAYLOAD_LAUNCHES": 128,
+    "RETRIES": 0,
+    "TOTAL_WALL": 600,
+    "TOTAL_WRITES": 67108864
+  },
+  "NOTES": [
+    "These exact procedural obligations are static, not tested commands or passing evidence.",
+    "No proposed resource value is treated as a permission.",
+    "No gate, test module, actual H77 command, checkpoint or A15 oracle is an executable input.",
+    "Full namespace/network isolation and process-count verification requires permitted actual direct-host evidence."
+  ],
+  "PROCEDURE_COMPLETE": false,
+  "STEPS": [
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-01-NAMESPACE",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Use the pinned Bubblewrap prefix with an independently pinned inert metadata-only payload; parent captures host /proc/self/ns/{user,pid,net,ipc,uts} links and child returns its namespace links.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "All requested child namespace identities differ from the independently captured direct parent; no fallback",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "0f34fd3fa97864d4cce527beb51e1296c1e214145fc3db582698b35050ab9682"
+      },
+      "PERMITTED_SIDE_EFFECTS": "Namespace creation only, no host changes",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-02-NETWORK",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Within the exact new network namespace, inspect /proc/net/{dev,route,ipv6_route} and inherited descriptor/device allowlist; independently inspect namespace mapping and absence of host sockets/interfaces. Any additional active network reachability check needs explicit bounded local-only target approval.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "No host interface/routes/network descriptors; unqualified reachability claim forbidden",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "a72bbd130c8a2087df3efc88289ce4be6dbd13b7d982cdade10d95e37ca715e8"
+      },
+      "PERMITTED_SIDE_EFFECTS": "Namespace-local readonly metadata; no external packets",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-03-READONLY_INPUT",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Confined inert payload attempts exclusive create/overwrite against disposable readonly sentinel input, never against repository/history.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "EROFS/EACCES and original sentinel hash unchanged",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "971c7c1ebb590dbcf437d5e7bfb1d7c81fd1a16f92169da989c05807e109ca2a"
+      },
+      "PERMITTED_SIDE_EFFECTS": "Denied synthetic write attempt only",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-04-OUTPUT_CONFINEMENT",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Attempt exclusive create in assigned output subdirectory and denied creation at sandbox root/unmounted disposable outside paths; supervisor independently inventories changes.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Only assigned output succeeds; no host repository or unrelated path mutation",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "34ddd0d8666dc6dd2faa4b97fb244a3e776bae8425fec9474afa602f181e11fd"
+      },
+      "PERMITTED_SIDE_EFFECTS": "One <=4096byte synthetic file",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-05-SYMLINK_ESCAPE",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Create an owned synthetic symlink to disposable readonly/unmounted target, attempt bounded write, and compare inventories/target hash.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "No target escape write; first denial retained",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "9300f7f4d7c35d3dbb04f365228034179544e920222b8df91c5464ae833e736b"
+      },
+      "PERMITTED_SIDE_EFFECTS": "One symlink plus denied write",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-06-PROCESS_LIMIT",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Before testing, independently attest exact delegated pids subtree/membership and all controller/launcher/thread slots. Qualified launcher runs bounded inert fork loop that tries one child beyond remaining capacity.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Kernel EAGAIN at ceiling; whole descendant tree never exceeds approved4 live-child roles; launcher/namespace helpers included",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "9c00345662b291991660430d759eadf75b342af5d3e26a639ed11145a6fc7103"
+      },
+      "PERMITTED_SIDE_EFFECTS": "At most5 attempted child admissions; no unrelated process termination",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-07-CPU",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Qualified external launcher sets RLIMIT_CPU soft=hard30, reads limit back in inert child, executes bounded CPU loop; independent parent watches60s maximum.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Exact readback; bounded limit signal/wait outcome, no retry",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "fb6d0fabeb452eb72158a37643fa30eb73c74c17cbc24df6d7e3121b26c945da"
+      },
+      "PERMITTED_SIDE_EFFECTS": "CPU consumption <=30 child seconds plus bounded observer",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-08-ADDRESS_SPACE",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Qualified launcher sets RLIMIT_AS1073741824, verifies readback, and requests one allocation greater than that ceiling.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "MemoryError/ENOMEM; no successful over-ceiling allocation",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "49b89b6cc2bced9414516dc06549fb4b65b96df021fa0f74ad6085b57e4d9539"
+      },
+      "PERMITTED_SIDE_EFFECTS": "Bounded failed memory allocation",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-09-FILE_SIZE",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Qualified launcher sets RLIMIT_FSIZE16777216 and attempts growth to16777217 in an exclusive disposable file.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Final file <=16777216; EFBIG/SIGXFSZ independently observed",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "bc01082892e1842b6ba95e299643ba7fa6b804012557e3fada280805b067a9e2"
+      },
+      "PERMITTED_SIDE_EFFECTS": "At most16MiB written; retain limit-failure evidence",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-10-DESCRIPTORS",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Qualified launcher sets RLIMIT_NOFILE64; inert child opens /dev/null until EMFILE then closes only owned descriptors.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Exact64 readback; descriptors outside range never admitted",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "acda9d815ce507f66a0dc4a31ebe8b0e26de7edf73fc7b2dece0b20955fc31bd"
+      },
+      "PERMITTED_SIDE_EFFECTS": "At most64 owned descriptors",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-11-CHILD_WALL",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Qualified independent watchdog launches inert bounded sleeper; verifies ownership and terminates entire assigned descendant tree at60s maximum.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Independent exit and cleanup within approved ceiling; unknown outcome consumed",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "d1a83091c41b9aefc3dda5d25a186bf02fab77fc5cc7308d1277682aa59559fd"
+      },
+      "PERMITTED_SIDE_EFFECTS": "Owned sleeper and bounded termination only",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-12-CAMPAIGN_WALL",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Independently qualified outer watchdog establishes fixed600s absolute deadline covering setup/probes/termination/publication; verify failure path without moving deadline.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "At deadline no owned workload remains; missing report stays unknown/failure, no extra600s or retry",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "1f95a368062deca075d804010961e4fc1a186852d38728547ca4ab8c84b08fca"
+      },
+      "PERMITTED_SIDE_EFFECTS": "Bounded watchdog and only assigned processes",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-13-OUTPUT_BYTES",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Qualified all-writer enforcer reconciles successful/requested writes to exact definition, including overwrite/truncate/deletion and ledger/critical reports. Test an over-remaining-budget admission before actual writing; preserve all counters and independently compare writer observations.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Reject before cumulative67108864 ceiling; live-file quota or page-cache/block count alone rejected",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "ebb14b821ca29a96700618f8d8013bdc304b969449b60c8cbab6a55dfe870497"
+      },
+      "PERMITTED_SIDE_EFFECTS": "No payload write past shared remaining budget; reserve16MiB file-size test and all evidence within64MiB aggregate",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    },
+    {
+      "AUTHORITY_REQUIREMENT": "fresh explicit bounded host-control instrument plus actual resource permissions; Package80 alone not sufficient",
+      "COMMAND_QUALIFICATION": "UNBOUND qualified host-control launcher/payload and applicable permissions; prose procedure does not authorize execution",
+      "COMPLETENESS": "PARTIAL_UNTIL_LISTED_BINDINGS_SEALED",
+      "CONTROL_TEST_ID": "H85-14-EXIT",
+      "EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/future-authorized-verification/<approved-attempt>/<step>.json",
+      "EXACT_COMMAND_OR_PROCEDURE": "Independent controller captures inert child PID before launch completion, observes wait status itself, links exact identity and immutable handoff; completion never inferred from child report.",
+      "EXECUTABLE_BINDING": null,
+      "EXPECTED_RESULT": "Exactly one parent-observed terminal outcome; handoff alone insufficient",
+      "FAILURE_BEHAVIOR": "first unexpected failure stops sequence; preserve original and secondary evidence; no retry or new implicit campaign",
+      "INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h85-inert-input-spec-v1",
+        "sha256": "fdcf43b6b039d5cbe715a2c3bbea6773d746341985e889031e68a110bdbb936c"
+      },
+      "PERMITTED_SIDE_EFFECTS": "One inert process; no probe/harness invocation",
+      "RESOURCE_BUDGET": {
+        "CAMPAIGN_CEILINGS": {
+          "CHILD_AS": 1073741824,
+          "CHILD_CPU": 30,
+          "CHILD_FDS": 64,
+          "CHILD_FSIZE": 16777216,
+          "CHILD_WALL": 60,
+          "MAX_ACTUAL_PROCESS_SLOTS": 4,
+          "MAX_PAYLOAD_LAUNCHES": 128,
+          "RETRIES": 0,
+          "TOTAL_WALL": 600,
+          "TOTAL_WRITES": 67108864
+        },
+        "CHILD_LAUNCH_ALLOCATION": "finite presealed manifest; maximum128 inclusive launches,4 live child roles; actual wrapper census pending",
+        "TOTAL_WRITES_SHARED_NOT_PER_STEP": true
+      }
+    }
+  ],
+  "STEP_COUNT": 14
+}

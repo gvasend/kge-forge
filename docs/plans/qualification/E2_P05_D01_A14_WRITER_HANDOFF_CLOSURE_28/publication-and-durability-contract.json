@@ -1,0 +1,22 @@
+{
+  "ALLOWED_DURABILITY_CLAIM": "Native successful return acknowledges file data fsync-before-link for new publication and immutable normal-exit visibility; not arbitrary power-loss durability",
+  "CORRECT_CONFLICT_RULE": "Reject symlink or byte conflict in both initial-existing and concurrent-link-conflict branches",
+  "DIRECTORY_FSYNC_REQUIRED": false,
+  "DURABILITY_REQUIREMENT_SOURCE": "Canonical A14 save/terminate/fresh-restore is normal publication/visibility qualification; no crash/fault-recovery case is admitted by this package",
+  "GENERAL_CRASH_DURABILITY_CLAIMED": false,
+  "HEAD_REQUIRED_FOR_HANDOFF": false,
+  "PUBLISHED": "Exact content-addressed bundle-<native hash>.json",
+  "READER_SOURCE_ELIGIBILITY": "Exact save return observed, corresponding final target present/hash/native ID verified, handoff persisted, writer exit independently confirmed; temporary/static evidence/HEAD are excluded",
+  "RULES": {
+    "CONCURRENT_LINK_CONFLICT": "FileExistsError branch compares existing bytes; does not repeat symlink test from initial exists branch. No stronger race/no-alias guarantee asserted than implementation.",
+    "DURABILITY_LIMIT": "File fsync before link; no containing-directory fsync, no HEAD/manifest commit, no general power-loss durability guarantee. Successful return is normal publication/visibility contract, not atomic multi-file transaction.",
+    "EXISTING_CONFLICTING_TARGET": "Reject immutable output conflict; no overwrite",
+    "EXISTING_IDENTICAL_TARGET": "Initial exists branch requires nonsymlink and exact bytes, returns existing path without new fsync",
+    "INTERRUPTION": "Before link no final target publication guaranteed; temporary/orphan staging may exist. After link final file may remain even if later hook/cleanup prevents return. No rollback-all claim.",
+    "NATIVE_OPERATION": "_write_immutable: temporary file in target directory -> write/flush/fsync/close -> os.link atomic create-if-absent -> unlink temporary",
+    "PARTIAL_WRITE": "Temporary file is not final publication; final hard link is attempted only after flush/fsync/close. No syscall/failure injection run here.",
+    "RETRY": "Identical bytes reuse same content address; conflicting bytes rejected",
+    "SUCCESS": "Final content-addressed target matches full raw bytes; no overwritten prior evidence"
+  },
+  "TEMPORARY": "Native tempfile .planner-* in target directory; runtime-generated filename not guessed/persisted as handoff"
+}

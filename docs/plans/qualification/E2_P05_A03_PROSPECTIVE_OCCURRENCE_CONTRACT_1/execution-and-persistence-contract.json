@@ -1,0 +1,189 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "cold_restore": {
+    "END_mapping_restore": "Re-read pinned authorization and mapping manifest separately; recompute evidence binding from actual restored events. No native END object serialized.",
+    "checkpoints": [
+      "SEALED_START",
+      "POST_CHECK",
+      "POST_COLLECT"
+    ],
+    "checks": [
+      "Trusted exact raw BundleId",
+      "Exact immutable event bytes/identities and positions",
+      "Current/initial native state identities",
+      "Parent and source/policy audit",
+      "Exact admitted result/output/currentness",
+      "Recomputed full Computation/selection",
+      "Read-only END replacement mapping and historical UNPROVEN marker"
+    ],
+    "cold_readers_per_checkpoint_per_seed": 3,
+    "execute_now": false,
+    "forbid": "Reading writer-memory, saved control/permission labels as authority, or oracle data as Planner input",
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "total_minimum_reader_comparisons": 36,
+    "writer_termination": "Writer process must exit before independent readers start"
+  },
+  "determinism": {
+    "cold_readers_per_checkpoint_per_seed": 3,
+    "compare": [
+      "Canonical state/bundle/event bytes and native identities",
+      "Complete typed results/provenance",
+      "Full Computation, witnesses, reasons, selections",
+      "Rejections and exact END mapping semantics"
+    ],
+    "execute_now": false,
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "independent_writer_processes_per_seed": 3,
+    "membership_negatives": "Different source/output membership must remain different; duplicate native identifiers reject",
+    "no_runtime_entropy": "Writer labels, PID, time and output directories are report metadata only, never native identity fields",
+    "nonpermutable": [
+      "Causal event order CHECK -> COLLECT",
+      "sequence/parent links",
+      "ordered selector clauses",
+      "result-provider invocation order",
+      "non-set native fields"
+    ],
+    "object_key_permutations": true,
+    "unordered_fields": [
+      "Snapshot.actions/statuses/roots/predicates/goals/knowledge",
+      "PersistenceBundle.sources",
+      "Action.accepted_inventory and prerequisites where codec declares set semantics",
+      "SuppliedResult.knowledge"
+    ],
+    "unordered_presentations": [
+      "Original",
+      "Reversed",
+      "Rotated"
+    ]
+  },
+  "execution": {
+    "STOP_on": [
+      "Any definition/source/content/policy/runtime/input identity divergence",
+      "Wrong authority/scope/lineage/generation",
+      "Different selected Action/result/output/parent/pre/post/sequence",
+      "Extra event/install/authority or failure of N12/N13 mapping",
+      "Oracle used as input or post-hoc fixture/expected-answer changes",
+      "Any persistence/replay/negative/determinism mismatch"
+    ],
+    "entry": "Load exact native sealed start, not historical completed snapshots; verify every input/runtime/source/policy/capture pin and explicit empty head/ledger",
+    "failure_record": [
+      "FIRST_COUNTEREXAMPLE",
+      "EXPECTED",
+      "ACTUAL",
+      "STATE_ID",
+      "EVENT_ID",
+      "CLASSIFICATION"
+    ],
+    "native_API_limit": "Ordinary supplied-result transaction has no command-ID operand; current bundle/head lock, expected_snapshot and event chronology provide the native binding",
+    "no_live_repair": true,
+    "package": "E2-P05-A03-PROSPECTIVE-OCCURRENCE-EXECUTION-1",
+    "request_required_before_execution": "This contract package performs no execution; later execution instruction must invoke the sealed contract",
+    "retry": "Do not reexecute an already committed positive Action. Existing writer-main head or incomplete run requires stop/audit; independent reproductions use separate isolated output directories and the same sealed inputs.",
+    "sequence": [
+      "Read-only recompute/select twice; CHECK exact; canonical bytes/ledger/knowledge unchanged (N12 boundary)",
+      "Invoke bounded synthetic provider for CHECK using authored input declarations, not oracle files",
+      "Run native typed/current-selection/result validation; commit via ordinary codec.commit_event exactly once",
+      "Compare actual CHECK result/event/post-state with independently sealed oracle; persist checkpoint",
+      "Recompute current selection COLLECT; freshly provide and commit COLLECT exactly once, parent CHECK",
+      "Compare actual COLLECT result/event/post-state; PREPARE may be ready but must not execute",
+      "Persist final exact two-event qualification bundle and all event files; terminate writer",
+      "Run cold-reader, replay, independent-writer/permutation and isolated negative dimensions",
+      "Only on all PASS bind read-only authorized prospective A03 evidence into P05 with original history UNPROVEN",
+      "Recheck prior bindings and identify only next missing input A04; stop without P05/P06 execution"
+    ]
+  },
+  "occurrence": {
+    "PASS_requires_all": [
+      "Exact selected Action and current sealed pre-state",
+      "Fresh typed actual supplied result matches PC01 bounded oracle",
+      "Actual native commit/admission produces expected transition and event payload",
+      "Exact expected native event identity/parent/sequence and source/result binding",
+      "Membership in exact newly declared ordered ledger, one CHECK then one COLLECT event",
+      "No PREPARE/DECIDE/REENTER/FINISH event or extra authority/configuration",
+      "Durable native bundle/event/HEAD and independent cold restoration",
+      "Historical replay preserves exact new semantic occurrence",
+      "All sealed negative controls and determinism pass",
+      "Separate END authorized replacement mapping and historical UNPROVEN label remain exact"
+    ],
+    "not_sufficient": [
+      "Expected event hash",
+      "Definition/accepted inventory",
+      "Selection trace",
+      "Post-state alone",
+      "Result/report label",
+      "Retained historical PASS report"
+    ],
+    "original_historical_occurrence_result": "UNPROVEN even after future prospective PASS",
+    "status_now": "NOT_EXECUTED"
+  },
+  "persistence": {
+    "atomicity": "Only a consistent published head is canonical for this isolated qualification run; orphan files cannot establish an occurred result. Stop on partial/failed commit and report it.",
+    "boundaries": [
+      {
+        "boundary": "POST_CHECK",
+        "event_count": 1,
+        "head": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+        "native_bundle_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3",
+        "parent": null,
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/checkpoints/post-check",
+        "state_id": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+      },
+      {
+        "boundary": "POST_COLLECT",
+        "event_count": 2,
+        "head": "planner-event-v1:d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f",
+        "native_bundle_id": "planner-bundle-v1:b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39",
+        "parent": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/checkpoints/post-collect",
+        "state_id": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+      }
+    ],
+    "checkpoint_publication": "Save actual native bundle/event artifacts beside each checkpoint bundle via codec.save_bundle; duplicating immutable bytes is not another semantic event",
+    "commit": "codec.commit_event using actual freshly supplied result and exact current bundle. It verifies the current HEAD, saves complete native bundle/event files and atomically publishes HEAD. No manual status or knowledge changes.",
+    "future_output_root": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1",
+    "ledger_container_identity": "Native BundleId at each boundary plus /bundle/events; no standalone ordinary LedgerId is invented",
+    "ordinary_native_head_directory": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/native-head",
+    "preserve": [
+      "Initial/current snapshots",
+      "Complete typed SuppliedResults/KnowledgeRecords",
+      "Ordered ExecutionEvents",
+      "Parent/pre/post/sequence/content identities",
+      "Physical source and policy pins",
+      "Scope/lineage/generation/provenance",
+      "HEAD.previous and command=None audit semantics"
+    ],
+    "root": "CHECK event identity after first append; ordinary native event root, not GENESIS root commitment",
+    "start": {
+      "file": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/starting-bundle.json",
+      "native_restore": "codec.restore with exact expected start identity; empty events requires no event files",
+      "trusted_bundle_identity": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+    },
+    "write_now": false
+  },
+  "replay": {
+    "exactness": "Same typed results, KnowledgeRecords, parent chain, state/bundle/event identities, full recomputed native Computation; exactly two semantic events",
+    "execute_now": false,
+    "historical_limit": "Replay of this new lineage proves no original A03 occurrence, parent or historical P04 ancestry",
+    "native_function": "codec._replay of actual persisted ordinary bundle plus prefix validation",
+    "not_new_decision": "Consume recorded supplied results; do not reacquire outputs or call provider/executor as a new operation",
+    "sequence": [
+      "E2-CHECK actual SuppliedResult/event 1",
+      "E2-COLLECT actual SuppliedResult/event 2"
+    ],
+    "start_bundle_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+  },
+  "schema": "E2-P05-A03-PROSPECTIVE-EXECUTION-PLAN-1"
+}

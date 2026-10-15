@@ -1,0 +1,60 @@
+{
+  "COMPARISONS": [
+    {
+      "COMPARISON_RULE": "Exact /system.slice/<unit> pids membership, maximum8 and current1..8; independent manager/payload/hostPID agreement",
+      "CURRENT_COMPLETENESS": "Expected fields defined; exact observer/read/controller pinning incomplete",
+      "DOMAIN": "PIDS",
+      "EXPECTED_PROPERTIES": {
+        "TasksMax": 8
+      },
+      "KERNEL_OBSERVATIONS": [
+        "pids.max",
+        "pids.current"
+      ]
+    },
+    {
+      "COMPARISON_RULE": "Actual service memory controller path; finite byte-limit agreement, explicitly accounting page rounding and independently observed kernel representation; no RLIMIT_AS substitution",
+      "CURRENT_COMPLETENESS": "Expected fields defined; exact observer/read/controller pinning incomplete",
+      "DOMAIN": "MEMORY",
+      "EXPECTED_PROPERTIES": {
+        "MemoryMax": 67108864
+      },
+      "KERNEL_OBSERVATIONS": [
+        "memory.limit_in_bytes",
+        "memory.usage_in_bytes"
+      ]
+    },
+    {
+      "COMPARISON_RULE": "Exact service cpu/cpuacct paths; approved finite quota/period required for bounded configuration agreement. No value derived from LimitCPU. quota/period is bandwidth, not total CPU seconds",
+      "CURRENT_COMPLETENESS": "CPU expected quota/period unbound",
+      "DOMAIN": "CPU",
+      "EXPECTED_PROPERTIES": {
+        "CPUQuota": null,
+        "CPUQuotaPeriodSec": null
+      },
+      "KERNEL_OBSERVATIONS": [
+        "cpu.cfs_quota_us",
+        "cpu.cfs_period_us",
+        "cpuacct.usage"
+      ]
+    },
+    {
+      "COMPARISON_RULE": "Exact live properties and independent final exit/empty membership; unknown surviving/collected evidence never success",
+      "CURRENT_COMPLETENESS": "Expected fields defined; exact observer/read/controller pinning incomplete",
+      "DOMAIN": "TERMINATION",
+      "EXPECTED_PROPERTIES": {
+        "KillMode": "control-group",
+        "RuntimeMaxUSec": 20000000,
+        "TimeoutStopUSec": 2000000
+      },
+      "KERNEL_OBSERVATIONS": [
+        "actual task membership",
+        "process exits"
+      ]
+    }
+  ],
+  "CPU_LOAD_GENERATION_ALLOWED": false,
+  "EXTRA_TASK_CREATION_ALLOWED": false,
+  "INTENTIONAL_EXHAUSTION_ALLOWED": false,
+  "METADATA_AGREEMENT_PROVES": "Configured setting agreement only; not rejection/throttling, OOM or adversarial escape resistance"
+}

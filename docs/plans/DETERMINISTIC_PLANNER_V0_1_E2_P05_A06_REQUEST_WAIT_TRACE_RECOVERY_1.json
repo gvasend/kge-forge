@@ -1,0 +1,1588 @@
+{
+  "A06_EXECUTED_OR_REPRODUCED": "NO",
+  "A06_EXPECTED_EVENTS": [
+    {
+      "artifact": null,
+      "from": "EXTERNAL_EVIDENCE_REQUIRED",
+      "gate": "E2-GATE",
+      "result_type": "ExternalEvent",
+      "to": "EVIDENCE_REQUEST_READY"
+    },
+    {
+      "artifact": null,
+      "from": "EVIDENCE_REQUEST_READY",
+      "gate": "E2-GATE",
+      "result_type": "ExternalEvent",
+      "to": "WAITING_FOR_EXTERNAL_EVIDENCE"
+    }
+  ],
+  "A06_ID": "E2-A06",
+  "A06_INPUTS": {
+    "authoritative_pre_snapshot": {
+      "recovery": "MISSING; retained original Snapshots already contain WAITING_FOR_EXTERNAL_EVIDENCE",
+      "requirement": "Exact native Snapshot identity; request-ready pre-state must have E2-GATE at EXTERNAL_EVIDENCE_REQUIRED",
+      "type": "Snapshot"
+    },
+    "commands": [
+      {
+        "artifact": null,
+        "from": "EXTERNAL_EVIDENCE_REQUIRED",
+        "gate": "E2-GATE",
+        "result_type": "ExternalEvent",
+        "to": "EVIDENCE_REQUEST_READY"
+      },
+      {
+        "artifact": null,
+        "from": "EVIDENCE_REQUEST_READY",
+        "gate": "E2-GATE",
+        "result_type": "ExternalEvent",
+        "to": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      }
+    ],
+    "gate_and_requirement": {
+      "contract_complete": true,
+      "evidence_present": false,
+      "gate": "E2-GATE",
+      "gate_validation": "ACCEPTED",
+      "requirement": "E2-EXTERNAL-REQUIREMENT",
+      "rule_known": true
+    },
+    "request_contract": {
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "E2-GENERATION-1",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "tick": 0
+      },
+      "contract": {
+        "$type": "ExternalResolutionContract",
+        "gate": {
+          "$type": "GateId",
+          "value": "E2-GATE"
+        },
+        "gate_source": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+        },
+        "generation": "E2-GENERATION-1",
+        "held_actions": [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          }
+        ],
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "producers": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "TEST-rule-owner",
+            "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+          }
+        ],
+        "proposition": "Authenticated governing rule for target operation; no rule currently received",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+          },
+          "method": "QUALIFICATION_ONLY",
+          "path": "resolution.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "receipt_action": "TEST-RECEIVE",
+        "reentry": [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          }
+        ],
+        "request": "TEST-REQUEST",
+        "requirement": {
+          "$type": "EvidenceId",
+          "value": "E2-EXTERNAL-REQUIREMENT"
+        },
+        "requirement_source": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "source_class": "TEST-rule-owner governing-rule source",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CANONICAL_OBJECT_IDENTITY"
+          },
+          "namespace": "TEST-target",
+          "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "contract_native_source_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+      },
+      "exact_gate": "E2-GATE",
+      "exact_requirement": "E2-EXTERNAL-REQUIREMENT",
+      "held_actions": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "native_definition_present": true,
+      "native_occurrence_binding": "MISSING",
+      "producers": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "proposition": "Authenticated governing rule for target operation; no rule currently received",
+      "receipt_action": "TEST-RECEIVE",
+      "reentry": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "request_name": "TEST-REQUEST",
+      "request_name_is_not_event_identity": true,
+      "request_object_type": "ExternalResolutionContract",
+      "request_type": "str",
+      "rule_known": true,
+      "same_name_across_contexts_is_not_identity_equivalence": true,
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+        "pointer": "/snapshot/external_gates/0/resolution_contracts/0",
+        "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+      },
+      "source_binding_checks": {
+        "gate": true,
+        "gate_source": true,
+        "generation": true,
+        "held_actions": true,
+        "lineage": true,
+        "producers": true,
+        "proposition": true,
+        "receipt_action": true,
+        "reentry": true,
+        "requirement": true,
+        "requirement_source": true,
+        "scope": true,
+        "target": true
+      },
+      "target": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CANONICAL_OBJECT_IDENTITY"
+        },
+        "namespace": "TEST-target",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "separate_event_authority_operand": "NONE in this native path",
+    "snapshot_and_ledger_operands": [
+      "sequence",
+      "parent_snapshot",
+      "parent_event",
+      "result",
+      "after_snapshot",
+      "identity",
+      "resume_binding(optional)"
+    ],
+    "source_policy_context": "Exact native occurrence-time source/policy pins and scope/lineage/generation; retained state definitions do not recover missing occurrence-time Snapshot/ledger operands"
+  },
+  "A06_NATIVE_OPERATIONS": "core.apply_receipt through codec.record_result/append_event",
+  "A06_OUTPUTS": "Two admitted native events and updated gate stage/history/Snapshots/bundle; no ActionResult, Knowledge, Evidence, receipt, validation/support instance, proof or reentry eligibility is produced.",
+  "A06_POSTCONDITION": "EXTERNAL_WAIT; actionable=[]; human_ready=[]; receipt empty; evidence proof not PROVED; resume false",
+  "A06_PRECONDITIONS": "Reentry action held; known validation rule; evidence unavailable; exact route/producers/context bound",
+  "A06_PURPOSE": "External request and absence",
+  "ALTERNATE_NATIVE_EVIDENCE_OPTION_SUPPORTED": "NO; no complete native candidate found",
+  "ASSURANCE_MAPPING": {
+    "END": {
+      "global_full_END_gap_waived": false,
+      "required": "Actual A06 native stage pair and scoped ancestry, not a present request contract or EXTERNAL_WAIT label",
+      "result": "BLOCKED_MISSING_NATIVE_TRACE"
+    },
+    "N12": {
+      "checks": [
+        {
+          "status": "MISSING",
+          "term": "actual request-ready event"
+        },
+        {
+          "status": "MISSING",
+          "term": "actual waiting event with ordering/parent"
+        },
+        {
+          "status": "PASS_PRESERVATION",
+          "term": "no synthesized result/ledger/knowledge"
+        }
+      ],
+      "required": "Recorded native occurrence/application with actual ledger enrollment; request definition, selection or history/state labels cannot create a result/event.",
+      "result": "NOT_CLOSED_FOR_A06"
+    },
+    "N13": {
+      "checks": [
+        {
+          "status": "MISSING",
+          "term": "actual typed events distinct from prospective definitions"
+        },
+        {
+          "status": "MISSING",
+          "term": "event to exact request/gate/state binding"
+        },
+        {
+          "status": "PASS_STATE_ONLY",
+          "term": "absent receipt/proof and unchanged retained records"
+        }
+      ],
+      "inferred_from_N12": false,
+      "required": "Prospective request/route definition is not an actual request/wait event. No supplied declaration or wrong result may create receipt, accepted evidence/proof, Knowledge, root/slot satisfaction or resume.",
+      "result": "NOT_CLOSED_FOR_A06"
+    }
+  },
+  "CANDIDATE_TRACES": [
+    {
+      "acceptable_A06_native_trace": false,
+      "classification": "SNAPSHOT_ONLY",
+      "finding": "Initial, ready handoff and post-decision gates all already WAITING with empty history; post-decision native control EXTERNAL_WAIT and obligation UNKNOWN; no enclosing A06 occurrence.",
+      "id": "ORIGINAL_P02_STATE_CHAIN",
+      "native_state_identities": [
+        "planner-snapshot-v1:545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+        "planner-snapshot-v1:9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa",
+        "planner-snapshot-v1:8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+      ],
+      "request_wait_event_ids": [],
+      "sources": [
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json",
+          "pointer": "/snapshot",
+          "raw_sha256": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2"
+        },
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_AUTHORITATIVE_HANDOFF_SNAPSHOT_1.json",
+          "pointer": "/snapshot",
+          "raw_sha256": "9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa"
+        },
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+          "pointer": "/snapshot",
+          "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+        }
+      ]
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "classification": "REPORT_METADATA",
+      "finding": "PASS/EXTERNAL_WAIT chain and retained post-state reference, no request-ready/waiting payload, native event parent or ledger enrollment.",
+      "id": "P02_RETRY4_OWNER_REPORT",
+      "sources": [
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json",
+          "pointer": "/evidence_chain",
+          "raw_sha256": "1d885295981a90929bfa958a9324da711fb2ab7dfb5a386f099f34774f9c589f"
+        }
+      ]
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "bundle_identity": "planner-bundle-v1:d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859",
+      "classification": "QUALIFIED_NATIVE_TRACE",
+      "event_count": 2,
+      "finding": "Actual ActionReevaluation -> RecordedDecision history; waiting is an explicitly authored initial premise. Complete retained checkpoint ancestry does not cover A06.",
+      "head": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+      "id": "P03_QUALIFIED_CHECKPOINT",
+      "request_wait_event_ids": [],
+      "root": "planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+        "pointer": "/bundle",
+        "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+      }
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "bundle_identity": "planner-bundle-v1:3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2",
+      "classification": "CANONICAL_NATIVE_TRACE",
+      "event_count": 20,
+      "events": [
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0",
+          "index": 0,
+          "parent": null,
+          "post_state": "planner-snapshot-v1:c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8",
+          "pre_state": "planner-snapshot-v1:c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8",
+          "result_type": "ActionReevaluation",
+          "sequence": 1,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/0",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+          "index": 1,
+          "parent": "planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0",
+          "post_state": "planner-snapshot-v1:576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324",
+          "pre_state": "planner-snapshot-v1:c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8",
+          "result_type": "RecordedDecision",
+          "sequence": 2,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/1",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:a19b52ab601c6d3c7668b78c6e20cc87e54cfc317595e4da641fcbb7d107fb1e",
+          "index": 2,
+          "parent": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+          "post_state": "planner-snapshot-v1:99e47ad1e462c30cd33e2258e4c74ff670164fa7378e5a998e0f23b9256e4454",
+          "pre_state": "planner-snapshot-v1:576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324",
+          "result_type": "InstallDefinition",
+          "sequence": 3,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/2",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:a537ba9f5be1ef3d099ff178028847036e83406bd338e662f5b7680d4b90a3a0",
+          "index": 3,
+          "parent": "planner-event-v1:a19b52ab601c6d3c7668b78c6e20cc87e54cfc317595e4da641fcbb7d107fb1e",
+          "post_state": "planner-snapshot-v1:92e51d3a60bb02d807fdc7b340546b1fcd08a94a121a3effb6a4cc4e911484a6",
+          "pre_state": "planner-snapshot-v1:99e47ad1e462c30cd33e2258e4c74ff670164fa7378e5a998e0f23b9256e4454",
+          "result_type": "InstallDefinition",
+          "sequence": 4,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/3",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:549e41859f55cd3414d91b5ce97f023ab9e150f55ed01ae81a9a9dc5ef2f362c",
+          "index": 4,
+          "parent": "planner-event-v1:a537ba9f5be1ef3d099ff178028847036e83406bd338e662f5b7680d4b90a3a0",
+          "post_state": "planner-snapshot-v1:c5c85434ddfb69be7f327e9e8fd72d2c7270505cf4908ea4fd9b4918075c1591",
+          "pre_state": "planner-snapshot-v1:92e51d3a60bb02d807fdc7b340546b1fcd08a94a121a3effb6a4cc4e911484a6",
+          "result_type": "InstallDefinition",
+          "sequence": 5,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/4",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:c3f48f66c77527c886fe483868deedd101bccfd69000385732a9b545fd07ea24",
+          "index": 5,
+          "parent": "planner-event-v1:549e41859f55cd3414d91b5ce97f023ab9e150f55ed01ae81a9a9dc5ef2f362c",
+          "post_state": "planner-snapshot-v1:94adb7403d30b7843124c823e0304b4a0b1a38b49b602fa9db75d09a2729ecab",
+          "pre_state": "planner-snapshot-v1:c5c85434ddfb69be7f327e9e8fd72d2c7270505cf4908ea4fd9b4918075c1591",
+          "result_type": "InstallDefinition",
+          "sequence": 6,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/5",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:45cec78291bd025c2ad9b8d2853ee8a9cedd2f63b956321899bed6b7b3ab4da5",
+          "index": 6,
+          "parent": "planner-event-v1:c3f48f66c77527c886fe483868deedd101bccfd69000385732a9b545fd07ea24",
+          "post_state": "planner-snapshot-v1:023be7ec986722356f3871e7831e2cf2dd1ab1e8c45fb1f46103619557253513",
+          "pre_state": "planner-snapshot-v1:94adb7403d30b7843124c823e0304b4a0b1a38b49b602fa9db75d09a2729ecab",
+          "result_type": "InstallDefinition",
+          "sequence": 7,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/6",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:eea47d285116ec651541148eb6e9c982b71f39aa76bd45ad7541685bca306caa",
+          "index": 7,
+          "parent": "planner-event-v1:45cec78291bd025c2ad9b8d2853ee8a9cedd2f63b956321899bed6b7b3ab4da5",
+          "post_state": "planner-snapshot-v1:5732fe84b6a7ac5fff2706d7b537b8c4e657b7b5f3a4eb8860d15e7aa656a0a6",
+          "pre_state": "planner-snapshot-v1:023be7ec986722356f3871e7831e2cf2dd1ab1e8c45fb1f46103619557253513",
+          "result_type": "InstallDefinition",
+          "sequence": 8,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/7",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:ebb59520c283666b90bd18e8b2da52ca81e7c65dda45cb1c363ee908fe8f5eef",
+          "index": 8,
+          "parent": "planner-event-v1:eea47d285116ec651541148eb6e9c982b71f39aa76bd45ad7541685bca306caa",
+          "post_state": "planner-snapshot-v1:7b5c786c3ded06d5306e69320262da0041fb7a58618248d839f2b4ff7b851e10",
+          "pre_state": "planner-snapshot-v1:5732fe84b6a7ac5fff2706d7b537b8c4e657b7b5f3a4eb8860d15e7aa656a0a6",
+          "result_type": "InstallDefinition",
+          "sequence": 9,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/8",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": "E2-GATE",
+          "identity": "planner-event-v1:543ce17c7d06528ce4e8e2100cb1ae7958e9a38c669ba335447598a97d0735e7",
+          "index": 9,
+          "parent": "planner-event-v1:ebb59520c283666b90bd18e8b2da52ca81e7c65dda45cb1c363ee908fe8f5eef",
+          "post_state": "planner-snapshot-v1:03bdc26cbe1fe9b3054c92cf1bc5c105e6b41a290c88e7f00fb0c6400724a8b7",
+          "pre_state": "planner-snapshot-v1:7b5c786c3ded06d5306e69320262da0041fb7a58618248d839f2b4ff7b851e10",
+          "result_type": "EvidenceSourceAdmission",
+          "sequence": 10,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/9",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": "E2-GATE",
+          "identity": "planner-event-v1:6b3e1d568026ff1e4ab47334240130f00da4a3422d28ae8de02fdfa4ca356376",
+          "index": 10,
+          "parent": "planner-event-v1:543ce17c7d06528ce4e8e2100cb1ae7958e9a38c669ba335447598a97d0735e7",
+          "post_state": "planner-snapshot-v1:129dc87a6c7803896fc7effbfec36d8d6696139d710b62104aedbdcf99768d8e",
+          "pre_state": "planner-snapshot-v1:03bdc26cbe1fe9b3054c92cf1bc5c105e6b41a290c88e7f00fb0c6400724a8b7",
+          "result_type": "ExternalEvent",
+          "sequence": 11,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/10",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": "EVIDENCE_RECEIVED"
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:00194c7985630ce72a75b67792e390fec52d89e579ec1b0fafb65b3c810fae1b",
+          "index": 11,
+          "parent": "planner-event-v1:6b3e1d568026ff1e4ab47334240130f00da4a3422d28ae8de02fdfa4ca356376",
+          "post_state": "planner-snapshot-v1:28bdadb2c3715cac0b7c165a6379aa4da414de50ae7e1963bb4c1da11b72819a",
+          "pre_state": "planner-snapshot-v1:129dc87a6c7803896fc7effbfec36d8d6696139d710b62104aedbdcf99768d8e",
+          "result_type": "ValidationSupportAdmission",
+          "sequence": 12,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/11",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": "E2-GATE",
+          "identity": "planner-event-v1:78ef142541fd12e57a5c3a9a10a9c316a7260c0ab4607bf5209acc56090537fb",
+          "index": 12,
+          "parent": "planner-event-v1:00194c7985630ce72a75b67792e390fec52d89e579ec1b0fafb65b3c810fae1b",
+          "post_state": "planner-snapshot-v1:fedc7af9d68e88e960324749bbdf5db5e734b8648f2abe14e8ea1ac30085c3d6",
+          "pre_state": "planner-snapshot-v1:28bdadb2c3715cac0b7c165a6379aa4da414de50ae7e1963bb4c1da11b72819a",
+          "result_type": "ExternalEvent",
+          "sequence": 13,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/12",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": "DEPENDENT_ACTION_REENTRY"
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:26513443a6472b3d6469c63d7cf30b1dc879c562d649797698223f36e2281140",
+          "index": 13,
+          "parent": "planner-event-v1:78ef142541fd12e57a5c3a9a10a9c316a7260c0ab4607bf5209acc56090537fb",
+          "post_state": "planner-snapshot-v1:904b972f62f45ef3b013214671ea59cf3f03f7e03be787000e0a16e631aabc73",
+          "pre_state": "planner-snapshot-v1:fedc7af9d68e88e960324749bbdf5db5e734b8648f2abe14e8ea1ac30085c3d6",
+          "result_type": "DecisionReentry",
+          "sequence": 14,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/13",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:faa01cdbb77d46b0f13f07de2c81de81ecc09f87046043a6e5770c4b3bcc1a9e",
+          "index": 14,
+          "parent": "planner-event-v1:26513443a6472b3d6469c63d7cf30b1dc879c562d649797698223f36e2281140",
+          "post_state": "planner-snapshot-v1:0c5e7f523f698af18371b9a80f101cb129277c441683bd2cdcf44bf762443410",
+          "pre_state": "planner-snapshot-v1:904b972f62f45ef3b013214671ea59cf3f03f7e03be787000e0a16e631aabc73",
+          "result_type": "SuppliedResult",
+          "sequence": 15,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/14",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:e05218ea7564cd50cb9921df87f0c6ab39482b98ba00848e99233ee7d2dd79e3",
+          "index": 15,
+          "parent": "planner-event-v1:faa01cdbb77d46b0f13f07de2c81de81ecc09f87046043a6e5770c4b3bcc1a9e",
+          "post_state": "planner-snapshot-v1:e5588de37b91c57122ced4dc6049073c2d7f8f15f2994fda1638d7f03d8b407f",
+          "pre_state": "planner-snapshot-v1:0c5e7f523f698af18371b9a80f101cb129277c441683bd2cdcf44bf762443410",
+          "result_type": "InstallDefinition",
+          "sequence": 16,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/15",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:03d2a34f1ed94e542a2ee341a0e095ef3486f29f0fd1e6008fbdbf00a2effb5c",
+          "index": 16,
+          "parent": "planner-event-v1:e05218ea7564cd50cb9921df87f0c6ab39482b98ba00848e99233ee7d2dd79e3",
+          "post_state": "planner-snapshot-v1:8e41c11255513323c63aad1aa476e800845f7fa40cd8976d608b216af683ea06",
+          "pre_state": "planner-snapshot-v1:e5588de37b91c57122ced4dc6049073c2d7f8f15f2994fda1638d7f03d8b407f",
+          "result_type": "TypedProofAdmission",
+          "sequence": 17,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/16",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:14773dd4ba849bc2eb9e533e5e4680208bb1a77fb2bef6ba6388e56f392a7a80",
+          "index": 17,
+          "parent": "planner-event-v1:03d2a34f1ed94e542a2ee341a0e095ef3486f29f0fd1e6008fbdbf00a2effb5c",
+          "post_state": "planner-snapshot-v1:859c9afa463878a31825fb8c244a40643951718d8c010cd143d2357525c598ee",
+          "pre_state": "planner-snapshot-v1:8e41c11255513323c63aad1aa476e800845f7fa40cd8976d608b216af683ea06",
+          "result_type": "InstallDefinition",
+          "sequence": 18,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/17",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:88fb01def0514728ab17bc53f3885448725cd5a968ede91c8a0e52ea7c98fcc6",
+          "index": 18,
+          "parent": "planner-event-v1:14773dd4ba849bc2eb9e533e5e4680208bb1a77fb2bef6ba6388e56f392a7a80",
+          "post_state": "planner-snapshot-v1:ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586",
+          "pre_state": "planner-snapshot-v1:859c9afa463878a31825fb8c244a40643951718d8c010cd143d2357525c598ee",
+          "result_type": "TypedProofAdmission",
+          "sequence": 19,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/18",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        },
+        {
+          "checks": {
+            "command_pre_snapshot": true,
+            "event_identity": true,
+            "parent_event": true,
+            "position_sequence": true,
+            "pre_snapshot": true
+          },
+          "gate": null,
+          "identity": "planner-event-v1:1797a108353285b2458cc84129338b783d889cf788fead9276cb7f850dbe132e",
+          "index": 19,
+          "parent": "planner-event-v1:88fb01def0514728ab17bc53f3885448725cd5a968ede91c8a0e52ea7c98fcc6",
+          "post_state": "planner-snapshot-v1:046fdc270a0060503729151368a68672f76af122830b86e65d372e6bc5d7dea4",
+          "pre_state": "planner-snapshot-v1:ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586",
+          "result_type": "SuppliedResult",
+          "sequence": 20,
+          "source": {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/19",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          "stage": null
+        }
+      ],
+      "finding": "Exact canonical P03 prefix and A09-A13/configuration suffix; initial gate already waiting. Receipt and reentry events are later stages, not A06.",
+      "head": "planner-event-v1:1797a108353285b2458cc84129338b783d889cf788fead9276cb7f850dbe132e",
+      "id": "P04_CANONICAL_SUFFIX",
+      "request_wait_event_ids": [],
+      "root": "planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+        "pointer": "/bundle",
+        "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+      }
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "bundle_identity": "planner-bundle-v1:45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7",
+      "classification": "QUALIFIED_NATIVE_TRACE",
+      "event_count": 3,
+      "finding": "Native CHECK/COLLECT/PREPARE occurrence ancestry only; gate starts waiting and A05 has not been continued in this lineage.",
+      "head": "planner-event-v1:2c71adfce820b0fc997e7d1f872439e9ddb43170c95edbeafaf461a4065760f0",
+      "id": "A03_A04_PROSPECTIVE_LINEAGE",
+      "request_wait_event_ids": [],
+      "root": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_BUNDLE_1.json",
+        "pointer": "/bundle",
+        "raw_sha256": "45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7"
+      }
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "classification": "OTHER",
+      "finding": "A14 unknown-rule waiting is a different oracle; genesis/state checkpoints do not reconstruct pre-genesis transitions; their retained ledgers contain zero A06 events.",
+      "id": "GOVERNED_UNKNOWN_AND_GENESIS_CHECKPOINTS",
+      "sources": [
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_CHECKPOINT_BUNDLE_QUALIFICATION_1.json",
+          "pointer": "",
+          "raw_sha256": "f8470556168dca904e5aac1065d1cfabd8e0229aa7a7d27a899ce9764796a5c8"
+        },
+        {
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/revision-2-unknown-start.json",
+          "pointer": "",
+          "raw_sha256": "7a825c19a948ac1ea1f4863dd0d4f79a248436b700bcfe0f618b68c8b50168a0"
+        }
+      ]
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "classification": "QUALIFIED_NATIVE_TRACE",
+      "distinct_native_ExternalEvent_ids": 9,
+      "finding": "Existing generic E07/V02, R04/I05 and canonical P04 receipt/reentry histories; no request-ready/waiting event. A10 rejected-validation return to waiting has a different cause and supplies neither A06 event.",
+      "id": "QUALIFIED_EXTERNAL_SUFFIXES",
+      "source_inventory": {
+        "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/event-search.json",
+        "pointer": "/external_events",
+        "raw_sha256": "590693dfffdef38c5f8068fb20a8bf8819f519c0fa30358690959300a6d229b0"
+      },
+      "stages": {
+        "DEPENDENT_ACTION_REENTRY": 3,
+        "EVIDENCE_RECEIVED": 6
+      }
+    },
+    {
+      "acceptable_A06_native_trace": false,
+      "classification": "OTHER",
+      "finding": "waiting() calls the two native phases and test_k explicitly forbids inferring sending, evidence arrival or satisfaction. Source code/test PASS is not a retained run/event ledger; test not invoked.",
+      "id": "NATIVE_CAPABILITY_TEST_SOURCE",
+      "source": {
+        "path": "adapter/tests/test_planner_e1_replay.py",
+        "pointer": "",
+        "raw_sha256": "b8486f5bb91a75d2455f884e9055ebbcd3637a076bae4fe848d3d7fe0f9e7e33"
+      }
+    }
+  ],
+  "CANONICAL_HISTORY_SEARCH": "COMPLETE; original states/owner reports and canonical P04 ledger inspected; no A06 pair",
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "E2_A06_REQUEST_WAIT_EVENT_TRACE": "FAIL",
+  "E2_P04_RESULT": "PASS",
+  "E2_P05_READY": "YES",
+  "END_MAPPING": "BLOCKED_MISSING_NATIVE_TRACE",
+  "GIT_DIFF_CHECK": "PASS",
+  "LOSSLESS_RECOVERY": "NO",
+  "N12_MAPPING": "NOT_CLOSED_FOR_A06",
+  "N13_MAPPING": "NOT_CLOSED_FOR_A06",
+  "NEXT_PACKAGE": "E2-P05-A06-QUALIFICATION-SCOPE-DECISION; IF_AUTHORIZED_THEN_PROSPECTIVE_REQUEST_WAIT_CONTRACT",
+  "N_REAL_SATISFIED": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "ORIGINAL_A05_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "ORIGINAL_A06_HISTORICAL_TRACE": "UNPROVEN",
+  "OWNING_PACKAGE": "E2-P02",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P05_BOUND_STAGE_INPUTS": 12,
+  "P05_EXECUTED": "NO",
+  "P05_EXECUTION_READY": "NO",
+  "P05_REQUIRED_STAGE_INPUTS": 13,
+  "P06_EXECUTED": "NO",
+  "PERSISTENCE_SEARCH": {
+    "HEAD_representations": 173,
+    "all_structured_event_fields_searched_despite_format_limitations": true,
+    "bundle_representations": 590,
+    "genesis_representations": 4,
+    "limitation_details": [
+      {
+        "error": "unknown typed tag",
+        "source": {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1.json",
+          "pointer": "/TRANSACTION_OPERANDS/0",
+          "raw_sha256": "cebb370484843efb41e064a1df679e0f428331cf0d83b2c9ec38b30c10e88473"
+        }
+      },
+      {
+        "error": "unknown typed tag",
+        "source": {
+          "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/transaction-contract.json",
+          "pointer": "/public_operands/0",
+          "raw_sha256": "1049b79b2c8f8884c41de8f174a4238e0721176b7daf616b50bc29366134c84b"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/final/generic-accepted/independent-validation/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/final/generic-accepted/qualified-validation/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/final/generic-accepted/validation-store/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/final/generic-rejected/qualified-validation/bundle-be70e0d6841f89046b89748e73f2f9d9f380faa406fdd9286d8126b4745260d1.json",
+          "pointer": "/bundle",
+          "raw_sha256": "be70e0d6841f89046b89748e73f2f9d9f380faa406fdd9286d8126b4745260d1"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/generic-accepted/independent-validation/bundle-df0d177634d54f143b9f85a227faad91aa3ebcd3b2f607e21fdcbb3584f7c061.json",
+          "pointer": "/bundle",
+          "raw_sha256": "df0d177634d54f143b9f85a227faad91aa3ebcd3b2f607e21fdcbb3584f7c061"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/generic-accepted/qualified-validation/bundle-df0d177634d54f143b9f85a227faad91aa3ebcd3b2f607e21fdcbb3584f7c061.json",
+          "pointer": "/bundle",
+          "raw_sha256": "df0d177634d54f143b9f85a227faad91aa3ebcd3b2f607e21fdcbb3584f7c061"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/generic-accepted/validation-store/bundle-df0d177634d54f143b9f85a227faad91aa3ebcd3b2f607e21fdcbb3584f7c061.json",
+          "pointer": "/bundle",
+          "raw_sha256": "df0d177634d54f143b9f85a227faad91aa3ebcd3b2f607e21fdcbb3584f7c061"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/generic-rejected/qualified-validation/bundle-d1aa4ded65ac68bb3c3b1930cee6da665a113db0a1b84da375734a51ed72b7b8.json",
+          "pointer": "/bundle",
+          "raw_sha256": "d1aa4ded65ac68bb3c3b1930cee6da665a113db0a1b84da375734a51ed72b7b8"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-accepted/conflict-store/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-accepted/independent-validation/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-accepted/qualified-validation/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-accepted/validated.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-accepted/validation-store/bundle-76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25.json",
+          "pointer": "/bundle",
+          "raw_sha256": "76ec5435d088069f64f388275da7e78ba07886681866b8484531997c2b314c25"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-rejected/qualified-validation/bundle-be70e0d6841f89046b89748e73f2f9d9f380faa406fdd9286d8126b4745260d1.json",
+          "pointer": "/bundle",
+          "raw_sha256": "be70e0d6841f89046b89748e73f2f9d9f380faa406fdd9286d8126b4745260d1"
+        }
+      },
+      {
+        "error": "invalid typed record: invalid typed record: invalid typed record: wrong type: expected ValidationSupportOutcome",
+        "source": {
+          "path": "docs/plans/qualification/VALIDATION_V02_1/qualified/generic-rejected/validated.json",
+          "pointer": "/bundle",
+          "raw_sha256": "be70e0d6841f89046b89748e73f2f9d9f380faa406fdd9286d8126b4745260d1"
+        }
+      }
+    ],
+    "matching_request_wait_bundles": 0,
+    "pure_identity_decode_format_limitations": 17,
+    "result": "COMPLETE"
+  },
+  "PRIMARY_CLASSIFICATION": "IRRECOVERABLE_HISTORICAL_A06_TRACE_IN_RETAINED_ARTIFACTS",
+  "PRODUCTION_EFFECT": "NO",
+  "QUALIFICATION_SEARCH": "COMPLETE; generic/known-rule/unknown-rule/checkpoint/ingress/reentry and native capability-source histories inspected; no A06 pair",
+  "RECOVERY_PROCESS": "COMPLETE; original required native trace unavailable",
+  "REQUEST_BINDING": {
+    "context": {
+      "$type": "EvaluationContext",
+      "allowed_effects": [],
+      "generation": "E2-GENERATION-1",
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "tick": 0
+    },
+    "contract": {
+      "$type": "ExternalResolutionContract",
+      "gate": {
+        "$type": "GateId",
+        "value": "E2-GATE"
+      },
+      "gate_source": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+      },
+      "generation": "E2-GENERATION-1",
+      "held_actions": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "lineage": "E2-CANONICAL-BASELINE-1",
+      "producers": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "proposition": "Authenticated governing rule for target operation; no rule currently received",
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+        },
+        "method": "QUALIFICATION_ONLY",
+        "path": "resolution.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/"
+      },
+      "receipt_action": "TEST-RECEIVE",
+      "reentry": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "request": "TEST-REQUEST",
+      "requirement": {
+        "$type": "EvidenceId",
+        "value": "E2-EXTERNAL-REQUIREMENT"
+      },
+      "requirement_source": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+      },
+      "scope": "E2-QUALIFICATION-ONLY",
+      "source_class": "TEST-rule-owner governing-rule source",
+      "target": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CANONICAL_OBJECT_IDENTITY"
+        },
+        "namespace": "TEST-target",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      }
+    },
+    "contract_native_source_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+    },
+    "exact_gate": "E2-GATE",
+    "exact_requirement": "E2-EXTERNAL-REQUIREMENT",
+    "held_actions": [
+      {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    ],
+    "native_definition_present": true,
+    "native_occurrence_binding": "MISSING",
+    "producers": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "TEST-rule-owner",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ],
+    "proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "receipt_action": "TEST-RECEIVE",
+    "reentry": [
+      {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    ],
+    "request_name": "TEST-REQUEST",
+    "request_name_is_not_event_identity": true,
+    "request_object_type": "ExternalResolutionContract",
+    "request_type": "str",
+    "rule_known": true,
+    "same_name_across_contexts_is_not_identity_equivalence": true,
+    "source": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+      "pointer": "/snapshot/external_gates/0/resolution_contracts/0",
+      "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+    },
+    "source_binding_checks": {
+      "gate": true,
+      "gate_source": true,
+      "generation": true,
+      "held_actions": true,
+      "lineage": true,
+      "producers": true,
+      "proposition": true,
+      "receipt_action": true,
+      "reentry": true,
+      "requirement": true,
+      "requirement_source": true,
+      "scope": true,
+      "target": true
+    },
+    "target": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CANONICAL_OBJECT_IDENTITY"
+      },
+      "namespace": "TEST-target",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "RESULT": "BLOCKED",
+  "RUNTIME_MODIFIED": "NO",
+  "SCOPE_DECISION_READY": "YES",
+  "SCOPE_DECISION_REQUIRED": "YES",
+  "SCOPE_DECISION_SUBJECT_ID": "qualification-scope-subject-v1:037fab02c085551aa3a11e5d3b7e4224d21e1f5373db0528778989cf33851cf1",
+  "SCOPE_OPTIONS": [
+    {
+      "consequence": "Retain the original event requirement and 12/13 until an acceptable pre-existing native trace is supplied. No state-only acceptance or new execution.",
+      "option": "RETAIN_P05_A06_NATIVE_REQUEST_WAIT_REQUIREMENT",
+      "selected": false
+    },
+    {
+      "consequence": "Permit a separately contracted new known-rule, missing-evidence qualification experiment. Seal a legitimate new pre-request fixture/lineage, inputs and independent request-ready -> waiting event/ledger/result oracles before execution. Later native execution may close only the authorized A06 replacement term if END/N12/N13 assurance passes.",
+      "does_not_authorize": [
+        "Execution before a sealed applicable contract",
+        "Historical reconstruction",
+        "A05 decision reproduction/new human choice",
+        "Native grant issuance/operating authority",
+        "P05/P06 execution",
+        "Runtime repair",
+        "E1 change",
+        "Production effects"
+      ],
+      "option": "AUTHORIZE_PROSPECTIVE_P05_A06_REQUEST_WAIT_QUALIFICATION",
+      "requirements": [
+        "New prospective lineage distinct from original historical lineage; no rewind/retag of the P03/P04 or A03/A04 histories",
+        "Start gate must be EXTERNAL_EVIDENCE_REQUIRED; retained already-WAITING states cannot be resubmitted as legal request-ready pre-states",
+        "Known-rule A06 oracle, exact requirement/proposition/target/producers/receipt/reentry/held Actions and scoped provenance; A14 unknown-rule state is not a substitute",
+        "Exact sealed native start Snapshot/bundle/parent/ledger and independently authored post-event expectations in the later contract",
+        "Two actual native phase events with parent/pre/post bindings, ordered same-ledger enrollment and full source/policy/context pins",
+        "Native applicability and any separately required authority resolved; old grants cannot be retagged into a new context",
+        "Persist/terminate/fresh restore/replay/determinism and negative controls; no new evidence/proof/receipt/Knowledge/Action completion inferred from wait",
+        "Explicit A06-only END/N12/N13 mapping; original A06 trace UNPROVEN, no original event/parent/position identity substitution",
+        "Original A03/A04/A05 and P03 historical limits preserved; full original-prefix/END linkage not silently waived"
+      ],
+      "scope": "A06-only prospective qualification; not retrospective recovery or P05 execution",
+      "selected": false
+    }
+  ],
+  "SEARCH_SUMMARY": {
+    "HEAD_representations": 173,
+    "authorities_issued": 0,
+    "bundle_representations": 590,
+    "documents_parsed": 4215,
+    "embedded_JSON_decoded": 36,
+    "empty_files": 0,
+    "events_appended": 0,
+    "events_constructed": 0,
+    "gate_representations_distinct": 22,
+    "genesis_representations": 4,
+    "native_ExternalEvent_identities": 9,
+    "native_event_identities": 112,
+    "native_operations_or_replay": 0,
+    "parse_errors": 0,
+    "request_contract_representations_distinct": 13,
+    "request_wait_identity_bodies": 0,
+    "request_wait_native_command_representations": 0,
+    "request_wait_native_event_identities": 0,
+    "result": "PASS_SEARCH_COMPLETE",
+    "scope": "Retained non-E1 native structured, embedded JSON and matching text artifacts",
+    "structured_files_scanned": 4215,
+    "text_JSON_fragments_parsed": 375,
+    "text_artifacts_inspected": 425
+  },
+  "SELECTED_SCOPE_OPTION": "NONE",
+  "TRACE_ASSURANCE_PURPOSE": "Prove actual native preparation of the governed request then admission of the waiting stage, with exact causal/ledger/state/contract bindings. Does not prove an external network request was sent.",
+  "TRACE_CLASSIFICATION": "NO_NATIVE_TRACE",
+  "TRACE_CONTRACT": {
+    "canonical_case": {
+      "CASE_ID": "E2-A06",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "EXTERNAL_WAIT; actionable=[]; human_ready=[]; receipt empty; evidence proof not PROVED; resume false",
+      "INITIAL_STATE": "Reentry action held; known validation rule; evidence unavailable; exact route/producers/context bound",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Native request-ready then waiting events",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "External request and absence",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "control_distinction": "External stage must advance through actual events. Global control is computed independently; it can already be EXTERNAL_WAIT before request-ready if no internal/human work is ready.",
+    "control_must_numerically_change_between_stages": false,
+    "event_authority_operand": "NONE; native phase/type/pre-state/accepted complete gate checks apply. Qualification scope and downstream Action authority remain separate.",
+    "ledger_identity_domain": "Ordinary PersistenceBundle content identity plus /bundle/events; no separate LedgerId",
+    "native_command_fields": [
+      "gate",
+      "stage",
+      "expected_snapshot",
+      "artifact"
+    ],
+    "native_event_fields": [
+      "sequence",
+      "parent_snapshot",
+      "parent_event",
+      "result",
+      "after_snapshot",
+      "identity",
+      "resume_binding(optional)"
+    ],
+    "native_operation": "core.apply_receipt through codec.record_result/append_event",
+    "original_event_ids": [],
+    "original_event_parents_or_positions_recovered": false,
+    "outputs": "Two admitted native events and updated gate stage/history/Snapshots/bundle; no ActionResult, Knowledge, Evidence, receipt, validation/support instance, proof or reentry eligibility is produced.",
+    "owner": "E2-P02",
+    "request_identity_domain": "ExternalResolutionContract.request:str; no RequestId or standalone request-issued entity in this native path",
+    "request_is_network_issuance": false,
+    "required_input": "E2-A06.request_wait_event_trace",
+    "requirements": [
+      {
+        "mandatory": true,
+        "native_witness": "Native ExecutionEvent with result ExternalEvent(E2-GATE, EVIDENCE_REQUEST_READY, exact pre-Snapshot, artifact=None)",
+        "term": "request_ready_event"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Next native ExecutionEvent with result ExternalEvent(E2-GATE, WAITING_FOR_EXTERNAL_EVIDENCE, exact new pre-Snapshot, artifact=None)",
+        "term": "waiting_event"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Both planner-event-v1 identities match sequence, parent Snapshot, parent event, complete typed result and after Snapshot; optional native resume binding only if applicable",
+        "term": "event_identity_payload"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Request pre-state gate is EXTERNAL_EVIDENCE_REQUIRED; intermediate state is EVIDENCE_REQUEST_READY; final gate is WAITING_FOR_EXTERNAL_EVIDENCE; immutable Snapshot bindings exact",
+        "term": "pre_post_state"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Waiting parent_event is request-ready identity; waiting parent_snapshot and expected_snapshot equal request after_snapshot; original predecessor must be natively supported",
+        "term": "native_parent_order"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Both belong to the same authoritative native ledger; ordered indices n and n+1, sequences indices+1; root/head and predecessor/successor consistent",
+        "term": "ledger_membership_position"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Native gate and pre/post-Snapshots bind the exact requirement, proposition, target/producers, receipt/reentry/held Actions and any applicable resolution contract/source/context",
+        "term": "request_contract"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Exact E2-GATE ControlBoundary(EXTERNAL_EVIDENCE), E2-REENTER held, known rule and absent evidence; state transition established by admitted events",
+        "term": "wait_boundary"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Independently computed EXTERNAL_WAIT; no actionable/human-ready/selected Action, receipt empty, obligation not PROVED, resume false and REENTER unexecuted",
+        "term": "post_control_absence"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "Exact native scope/lineage/generation/currentness and source/policy pins at occurrence; no report chronology, state-only surrogate or foreign-lineage substitution",
+        "term": "scope_provenance"
+      },
+      {
+        "mandatory": true,
+        "native_witness": "P02 decision -> request-ready -> wait -> checkpoint ordering supported at the governing scope; separate full original-prefix correspondence remains required unless explicitly reconciled",
+        "term": "owner_prefix_ordering"
+      }
+    ],
+    "schema": "E2-P05-A06-REQUEST-WAIT-TRACE-CONTRACT-1",
+    "snapshot_can_replace_occurrence": false,
+    "source_support": [
+      {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+        "pointer": "",
+        "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+      },
+      {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+        "pointer": "/cases/5",
+        "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+      },
+      {
+        "path": "adapter/planner/model.py",
+        "pointer": "",
+        "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+      },
+      {
+        "path": "adapter/planner/core.py",
+        "pointer": "",
+        "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+      },
+      {
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+      }
+    ],
+    "steps": [
+      {
+        "artifact": null,
+        "from": "EXTERNAL_EVIDENCE_REQUIRED",
+        "gate": "E2-GATE",
+        "result_type": "ExternalEvent",
+        "to": "EVIDENCE_REQUEST_READY"
+      },
+      {
+        "artifact": null,
+        "from": "EVIDENCE_REQUEST_READY",
+        "gate": "E2-GATE",
+        "result_type": "ExternalEvent",
+        "to": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      }
+    ],
+    "structure": "ORDERED_TWO_EVENT_SEQUENCE_PLUS_IMMUTABLE_NATIVE_STATE_AND_LEDGER_BINDINGS"
+  },
+  "WAIT_BINDING": {
+    "boundary": [
+      {
+        "$type": "ControlBoundary",
+        "actions": [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          }
+        ],
+        "id": {
+          "$type": "GateId",
+          "value": "E2-GATE"
+        },
+        "kind": {
+          "$enum": "BoundaryKind",
+          "value": "EXTERNAL_EVIDENCE"
+        },
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"acquisition_contract_complete\":true,\"branch\":\"TEST-ROOT\",\"expected_producer\":\"TEST-rule-owner\",\"gate\":\"TEST-GATE\",\"lineage\":\"TEST/lineage\",\"missing_proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"positive_admission\":\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\",\"qualification_only\":true,\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[\"TEST-ACTION\"],\"requirement\":\"TEST-RULE\",\"schema\":\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\",\"scope\":\"TEST/scope\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "method": "SYNTHETIC_CONTRACT",
+          "path": "source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        }
+      }
+    ],
+    "gate": "E2-GATE",
+    "gate_history": [],
+    "initial_wait_is_not_event_admission": true,
+    "native_state_present": true,
+    "original_handoff_snapshot": "planner-snapshot-v1:9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa",
+    "original_initial_snapshot": "planner-snapshot-v1:545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2",
+    "original_post_decision_snapshot": "planner-snapshot-v1:8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf",
+    "stage": "WAITING_FOR_EXTERNAL_EVIDENCE",
+    "transition_occurrence": "MISSING",
+    "wait_query": {
+      "accepted_observation_present": false,
+      "actionable": [],
+      "control": "EXTERNAL_WAIT",
+      "defects": [],
+      "frontier": [
+        [
+          {
+            "$type": "GateId",
+            "value": "E2-GATE"
+          },
+          [
+            [
+              [
+                "ConditionId",
+                "E2-ROOT"
+              ],
+              [
+                [
+                  "ActionId",
+                  "E2-REENTER"
+                ]
+              ]
+            ]
+          ]
+        ]
+      ],
+      "human_ready": [],
+      "obligation_proof": {
+        "native_computed_type": "gates.Proof",
+        "reasons": [
+          "PROOF_RULE_KNOWN_EVIDENCE_MISSING"
+        ],
+        "state": "UNKNOWN"
+      },
+      "reentry_event_present_in_this_query": false,
+      "selected": null
+    }
+  },
+  "WORK_PACKAGE": "E2-P05-A06-REQUEST-WAIT-TRACE-RECOVERY",
+  "evidence": {
+    "P05-binding-frontier.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/P05-binding-frontier.json",
+      "pointer": "",
+      "raw_sha256": "18e28511db4060b8dbfd0c8229acd71430f950d56755dc6c431ef222c12109ed"
+    },
+    "authoritative-source-pins.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/authoritative-source-pins.json",
+      "pointer": "",
+      "raw_sha256": "65db1595e9a783d9bdf520275f56985a569f91c3d43d9e538bc8793f8e22bfda"
+    },
+    "candidate-and-losslessness-analysis.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/candidate-and-losslessness-analysis.json",
+      "pointer": "",
+      "raw_sha256": "9f4a8471d4b63496abf9006330711afda48b19b1badec862ef1094ddb8e2e29a"
+    },
+    "event-search.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/event-search.json",
+      "pointer": "",
+      "raw_sha256": "590693dfffdef38c5f8068fb20a8bf8819f519c0fa30358690959300a6d229b0"
+    },
+    "file-search-manifest.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/file-search-manifest.json",
+      "pointer": "",
+      "raw_sha256": "c29601d031b22cf78985a1d76ecf9068d7b972452bb04075a6d1990f48140657"
+    },
+    "native-record-search.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/native-record-search.json",
+      "pointer": "",
+      "raw_sha256": "f0327520bc6a81c2374f42bb1023fb180a1a61c0936639cca90b26bb66caa0df"
+    },
+    "native-state-and-ledger-inspection.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/native-state-and-ledger-inspection.json",
+      "pointer": "",
+      "raw_sha256": "b6ab825ad6c52aa545e9689a62abdb2e3f15936c9798d1ad76cdfdcba385df24"
+    },
+    "persistence-search.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/persistence-search.json",
+      "pointer": "",
+      "raw_sha256": "8ccef5a4241f706830f5708c236c96135195f2c76c8bffe9a6985dcfd271ab49"
+    },
+    "scope-applicability.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/scope-applicability.json",
+      "pointer": "",
+      "raw_sha256": "62f76e2dbc1fc68d50e1c500be2ca3fa9446762651372e4510c4c37823271c13"
+    },
+    "scope-decision-dossier.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/scope-decision-dossier.json",
+      "pointer": "",
+      "raw_sha256": "c0d776a60ae7ec18519e887abea7ae13d8b98130e02e3afc49ae2c13decdf55b"
+    },
+    "search-summary.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/search-summary.json",
+      "pointer": "",
+      "raw_sha256": "fb98d7b6723ee2c8c0bf1084bbd06beb500fd124967738a2d6843188043faf35"
+    },
+    "text-audit.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/text-audit.json",
+      "pointer": "",
+      "raw_sha256": "6fb2780c1f56e8e5c0e9ff74d0ad7a452f4a31670b4a31d3ab69eab6088d4896"
+    },
+    "trace-contract-and-assurance.json": {
+      "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/trace-contract-and-assurance.json",
+      "pointer": "",
+      "raw_sha256": "6882494b2607c9387364b1b574011729c3d744cfa0ab07c7b6679e4c561dd127"
+    }
+  },
+  "schema": "E2-P05-A06-REQUEST-WAIT-TRACE-RECOVERY-RESULT-1",
+  "verification": {
+    "path": "docs/plans/qualification/E2_P05_A06_REQUEST_WAIT_TRACE_RECOVERY_1/verification.json"
+  }
+}

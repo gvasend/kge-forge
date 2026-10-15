@@ -1,0 +1,26 @@
+# Nonexecuted profile template; instantiate exact workspace at futuregrant issuance.
+default_permissions = "kge-forge-class-a"
+approval_policy = "on-request"
+[permissions.kge-forge-class-a.filesystem]
+":root" = "deny"
+":minimal" = "read"
+":slash_tmp" = "deny"
+"/home/gvasend/app/kge-forge" = "deny"
+[permissions.kge-forge-class-a.filesystem.":workspace_roots"]
+"." = "write"
+"docs" = "read"
+"adapter/qualification_bootstrap" = "deny"
+"adapter/planner/__init__.py" = "read"
+"adapter/planner/core.py" = "read"
+"adapter/planner/gates.py" = "read"
+"adapter/planner/model.py" = "read"
+"adapter/planner/replay.py" = "read"
+"adapter/planner/selector.py" = "read"
+"adapter/tests/fixtures/planner_v0_1/E_P01.json" = "read"
+"adapter/tests/fixtures/planner_v0_1/sources.json" = "read"
+"adapter/tests/test_planner_resume.py" = "read"
+"docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md" = "read"
+"docs/experiments/E1/E1_RESUME_MANIFEST_1.json" = "read"
+"docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md" = "read"
+[permissions.kge-forge-class-a.network]
+enabled = false

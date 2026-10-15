@@ -1,0 +1,42 @@
+# Static document-only reconstruction; no shell parsing executable or target chain invoked.
+import pathlib,json,hashlib,copy,os,shlex
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-direct-shell-callsite-134'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'source-identity-authentication.json')
+for n,h in a['PINS'].items():assert raw(R/n)==h,n
+for n,x in a['NATIVE_PINS'].items():assert raw(pathlib.Path(n))==x['RAW_SHA256'],n
+p124=read(B/'p86-isolation-capability-124/exact-candidate-profile.json');p127=read(B/'p86-minimal-host-procedure-127/prospective-parent-procedure.json');assert digest(p124['CONTENT'])==p124['IDENTITY']['sha256'];assert digest(p127['CONTENT'])==p127['IDENTITY']['sha256']
+v=read(O/'sealed-vector-comparison.json');assert v['P124_ARGV']==p124['CONTENT']['ARGV'] and v['P127_ARGV']==p127['CONTENT']['ARGV'];assert v['P127_ARGV'][-len(v['P124_ARGV']):]==v['P124_ARGV']
+artifact=read(O/'command-artifact-classification.json');sh=O/'proposed-direct-shell-callsite.sh';assert raw(sh)==artifact['RAW_SHA256'];assert not sh.stat().st_mode&0o111;text=sh.read_text();assert all(line.startswith('#') for line in text.splitlines());assert text.startswith('# DO NOT EXECUTE — NOT AUTHORIZED');assert 'UNBOUND' in text;assert shlex.split(artifact['SOURCE_VECTOR_QUOTED'])==v['P127_ARGV']
+e=read(O/'environment-working-directory-contract.json');assert e['ENVIRONMENT_DESIRED_FROM127']==p127['CONTENT']['ENVIRONMENT'] and e['ENVIRONMENT_BOUND'] is False and e['PROPOSE_CD_REPOSITORY'] is False
+res=read(O/'collector-resource-exit-contract.json');assert res['COMBINED_STDOUT_STDERR_BYTES']==8658872 and res['FIXED_NORMAL_RECORD_BYTES']==5542 and res['CRITICAL_RESERVE_BYTES']==2336 and 8658872+5542+2336==res['TOTAL_PASSIVE_PROPOSED_BYTES'];assert res['ONE_ATTEMPT']==1 and res['AUTOMATIC_RETRIES']==0
+owner=read(O/'caller-descriptor-record.json')['OWNER_RECEIPT']['CONTENT'];assert owner['BIRTH_TUPLE']==['ubuntu01','7c592fd0-8c66-476f-ab0d-548882a9f53e',3235408,218282664]
+assert int(owner['FDS'][0]['FLAGS_OCTAL'],8)&0o4000==0 and int(owner['FDS'][-1]['FLAGS_OCTAL'],8)&0o2000000
+m=read(O/'entry-execution-matrix.json');old=read(B/'p86-direct-shell-launch-decision-133/entry-execution-matrix.json');assert len(m['ROWS'])==36 and m['ROWS']==old['ROWS']
+g=read(O/'dependency-graph.json');assert acyclic(g['EDGES'])
+f={'birth':owner['BIRTH_TUPLE'],'argv':v['P127_ARGV'],'quoted':artifact['SOURCE_VECTOR_QUOTED'],'nonblocking':False,'environment_claim':False,'fd_claim':False,'collector_claim':False,'status_claim':False,'cpu':60,'as':268435456,'fd':64,'wall':200,'aggregate_claim':False,'retry':0,'attempts':1,'history':True,'governance':True,'execution':False,'runnable_sh':False,'decision_ready':False,'options':[],'graph':g['EDGES']}
+def valid(x):
+ if x['birth']!=owner['BIRTH_TUPLE'] or x['argv']!=p127['CONTENT']['ARGV'] or x['quoted']!=artifact['SOURCE_VECTOR_QUOTED']:return False
+ if (x['cpu'],x['as'],x['fd'],x['wall'])!=(60,268435456,64,200) or x['retry']!=0 or x['attempts']!=1 or not x['history'] or not x['governance'] or x['options'] or not acyclic(x['graph']):return False
+ return not any(x[k] for k in ['nonblocking','environment_claim','fd_claim','collector_claim','status_claim','aggregate_claim','execution','runnable_sh','decision_ready'])
+assert valid(f)
+mut=[('wrong_caller_birth','birth',['ubuntu01','WRONG_BOOT',3235408,218282664]),('wrong_flag_nonblocking','nonblocking',True),('unbound_environment_accepted','environment_claim',True),('unsafe_inherited_fd_accepted','fd_claim',True),('unbounded_output_accepted','collector_claim',True),('lost_exit_status_accepted','status_claim',True),('invented_CPU_limit','cpu',61),('invented_AS_limit','as',268435457),('invented_FD_limit','fd',65),('invented_wall_limit','wall',201),('unverified_aggregate_qualified','aggregate_claim',True),('automatic_retry','retry',1),('extra_attempt','attempts',2),('historical_overwrite','history',False),('missing_effective_governance','governance',False),('premature_execution','execution',True),('unbound_sh_made_runnable','runnable_sh',True),('incomplete_decision_ready','decision_ready',True)]
+out=[]
+for name,k,val in mut:
+ x=copy.deepcopy(f);x[k]=val;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+for name,edit in [('changed_sealed_argv',lambda x:x['argv'].append('--changed')),('shell_expansion_changes_argv',lambda x:x.update(quoted=x['quoted']+' $(unapproved)')),('own_future_witness_cycle',lambda x:x['graph'].append(['ACTUAL_WITNESS_OUTPUT','QUALIFIED_LAUNCH_CONTEXT']))]:
+ x=copy.deepcopy(f);edit(x);assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+before=read(O/'preservation-before.json');assert all((R/n).is_file() and raw(R/n)==h for n,h in before.items())
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+s={'SOURCE_PINS_SHA256':digest(a['PINS']),'P124_IDENTITY':p124['IDENTITY'],'P127_IDENTITY':p127['IDENTITY'],'ARTIFACT_SHA256':raw(sh),'ENVIRONMENT_SHA256':digest(e),'RESOURCE_EXIT_SHA256':digest(res),'EVIDENCE_SHA256':digest(read(O/'evidence-publication-contract.json')),'DESCRIPTOR_SHA256':digest(read(O/'first-exec-descriptor-contract.json')),'RISK_SHA256':digest(read(O/'risk-reward-assessment.json')),'MATRIX_SHA256':digest(m),'GRAPH_SHA256':digest(g),'DECISION_READY':False,'OPTIONS':[],'PRESERVATION':'PASS','PRIOR_FILES':len(before),'NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

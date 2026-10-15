@@ -1,0 +1,1288 @@
+{
+  "actual_oracle_instance_sealed": false,
+  "gate_output_used": false,
+  "identity": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h77-02-gate-synthetic-oracle-spec-v1",
+    "sha256": "14460fc7d7e4078ea483298c3ca335b2b9550b4c84d029e6c651fcf284fe7427"
+  },
+  "remaining_gaps": [
+    "Exact per-operation participant and failure multiset closure, not only allowed-failure predicates",
+    "Inclusive tracker and timeout-stop lifecycle closure",
+    "Physical campaign instance and qualified PREPARE/RUN receipts not materialized (runtime rule supplied)",
+    "Complete controller-led entry/selection and aggregate independent witness validation need final static closure"
+  ],
+  "runtime_parameterization": "exact fixture/key/audit bytes derived from independently bound input nodes; no scheduling winner identity invented",
+  "schema": "H77-02-INDEPENDENT-ORACLES-83-1",
+  "source_independent": true,
+  "status": "PARTIAL",
+  "tests": {
+    "test_before_claim_failure_does_not_launch": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic before-claim fault",
+              "type": "RuntimeError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "synthetic before-claim fault",
+              "type": "RuntimeError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_concurrent_claimants_at_most_one": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 11,
+              "message": null,
+              "type": "BlockingIOError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_controlled_crash_points_remain_blocked": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "crash0": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "EMPTY",
+          "controlled_crash_point": "DURING_CLAIM",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash1": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim"
+            ],
+            "directory_confirmations": 0,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_FILE_FSYNC",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash2": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim"
+            ],
+            "directory_confirmations": 1,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_DIRECTORY_FSYNC",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash3": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim"
+            ],
+            "directory_confirmations": 1,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_CLAIM_BEFORE_LAUNCH",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash4": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt"
+            ],
+            "directory_confirmations": 3,
+            "file_confirmations": 3,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "DURING_LAUNCH",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash5": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt"
+            ],
+            "directory_confirmations": 3,
+            "file_confirmations": 3,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_LAUNCH_BEFORE_OBSERVATION",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash6": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt"
+            ],
+            "directory_confirmations": 3,
+            "file_confirmations": 3,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_COMPLETION_BEFORE_AUDIT",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 0,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_directory_fsync_failure_blocks_launch": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic directory fsync failure",
+              "type": "OSError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "unknown"
+            ],
+            "directory_confirmations": 0,
+            "file_confirmations": 2,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "OSError",
+          "fault_constraints": [
+            {
+              "message": "synthetic directory fsync failure",
+              "type": "OSError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_file_fsync_failure_blocks_launch": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic fsync failure",
+              "type": "OSError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "OSError",
+          "fault_constraints": [
+            {
+              "message": "synthetic fsync failure",
+              "type": "OSError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_first_and_duplicate_claim": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_independent_reread_failure_blocks_launch": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic reread failure",
+              "type": "GateError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "unknown"
+            ],
+            "directory_confirmations": 2,
+            "file_confirmations": 2,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "GateError",
+          "fault_constraints": [
+            {
+              "message": "synthetic reread failure",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_invalid_grant_pin": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "PIN_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "PIN_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BAD_GRANT_PIN"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_key_is_independently_reconstructed_and_stable": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 0,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_missing_permissions_and_wrong_subject": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "ENTRY_UNVERIFIED",
+              "type": "GateError"
+            },
+            {
+              "message": "PIN_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "PERMISSION_UNKNOWN",
+              "BAD_SUBJECT_PIN"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_no_real_launcher_reachable_in_synthetic_mode": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_partial_and_conflicting_records": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic partial write",
+              "type": "RuntimeError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "unknown"
+            ],
+            "directory_confirmations": 1,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "EMPTY",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "RuntimeError",
+          "fault_constraints": [
+            {
+              "message": "synthetic partial write",
+              "type": "RuntimeError"
+            }
+          ],
+          "recovery_constraints": [
+            {
+              "launch_permitted": false,
+              "retry_allowed": false,
+              "state": "OUTCOME_UNKNOWN"
+            }
+          ],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_post_consumption_failure_unknown_and_no_retry": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic callback failure",
+              "type": "RuntimeError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "unknown"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [
+            {
+              "errno": null,
+              "message": "synthetic callback failure",
+              "type": "RuntimeError"
+            }
+          ],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "RuntimeError",
+          "fault_constraints": [
+            {
+              "message": "synthetic callback failure",
+              "type": "RuntimeError"
+            }
+          ],
+          "recovery_constraints": [
+            {
+              "launch_permitted": false,
+              "retry_allowed": false,
+              "state": "CONSUMED"
+            }
+          ],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_process_restart_preserves_claim": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_resource_mismatch": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "RESOURCE_OR_PROFILE_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "RESOURCE_OR_PROFILE_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "CPU_MISMATCH"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_revoked_epoch": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": "REVOKED",
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_symlink_store_rejected": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 20,
+              "message": null,
+              "type": "NotADirectoryError"
+            },
+            {
+              "errno": 40,
+              "message": null,
+              "type": "OSError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "OSError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "SYMLINK_STORE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_wrong_command": {
+      "completeness": "PARTIAL_CONTROLLER_OBSERVATION_CLOSURE",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "COMMAND_OR_CONTEXT",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "COMMAND_OR_CONTEXT",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "WRONG_COMMAND"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    }
+  }
+}

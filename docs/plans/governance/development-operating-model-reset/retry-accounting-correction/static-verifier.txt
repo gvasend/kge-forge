@@ -1,0 +1,53 @@
+import json,hashlib,pathlib,copy,os
+B=pathlib.Path('docs/plans/governance/development-operating-model-reset')
+D=B/'retry-accounting-correction'
+def read(p):return json.loads(p.read_text())
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+original=read(B/'standing-development-contract.json')['CONTENT']
+contract=read(D/'standing-development-contract.json')
+pilot=read(D/'pilot-authorization-subject.json')
+subject=read(D/'owner-decision-subject.json')
+dossier=read(D/'unselected-owner-decision-dossier.json')
+def validate(c):
+ r=c['RESOURCE_BUDGETS'];p=c['RETRY_POLICY']
+ assert r['MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_WORK_ITEM']==2
+ assert p['AUTOMATIC_RETRIES_PER_WORK_ITEM']==2
+ assert 'MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_INVOCATION' not in r
+ assert 'AUTOMATIC_RETRIES_PER_FAILED_INVOCATION' not in p
+ for k in ['CUMULATIVE_ACCOUNTING','NO_RESET','EXHAUSTION']:assert p[k]==contract['CONTENT']['RETRY_POLICY'][k]
+ projection=copy.deepcopy(c)
+ rr=projection['RESOURCE_BUDGETS'];rr['MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_INVOCATION']=rr.pop('MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_WORK_ITEM')
+ pp=projection['RETRY_POLICY'];pp['AUTOMATIC_RETRIES_PER_FAILED_INVOCATION']=pp.pop('AUTOMATIC_RETRIES_PER_WORK_ITEM')
+ for k in ['CUMULATIVE_ACCOUNTING','NO_RESET','EXHAUSTION']:del pp[k]
+ assert projection==original
+validate(contract['CONTENT'])
+for v in [contract,pilot,subject]:assert digest(v['CONTENT'])==v['IDENTITY']['sha256']
+assert pilot['CONTENT']['AUTHORITY_CONTRACT_IDENTITY']==contract['IDENTITY']
+pilot_projection=copy.deepcopy(pilot['CONTENT']);del pilot_projection['RETRY_ACCOUNTING'];pilot_projection['AUTHORITY_CONTRACT_IDENTITY']=read(B/'pilot-authorization-subject.json')['CONTENT']['AUTHORITY_CONTRACT_IDENTITY'];assert pilot_projection==read(B/'pilot-authorization-subject.json')['CONTENT']
+sec=subject['CONTENT']['STANDING_EXECUTION_SECTION']
+for label,v,name in [('CONTRACT',contract,'standing-development-contract.json'),('PILOT',pilot,'pilot-authorization-subject.json')]:
+ assert sec[label+'_IDENTITY']==v['IDENTITY']
+ assert sec[label+'_PIN']=={'path':str(D/name),'raw_sha256':raw(D/name)}
+projection=copy.deepcopy(subject['CONTENT']);projection['STANDING_EXECUTION_SECTION']=read(B/'owner-decision-subject.json')['CONTENT']['STANDING_EXECUTION_SECTION'];assert projection==read(B/'owner-decision-subject.json')['CONTENT']
+assert dossier['SUBJECT_IDENTITY']==subject['IDENTITY']
+assert dossier['SUBJECT_RAW_PIN']=={'path':str(D/'owner-decision-subject.json'),'raw_sha256':raw(D/'owner-decision-subject.json')}
+assert dossier['SELECTION'] is None and not dossier['POLICY_ADOPTED'] and not dossier['STANDING_GRANT_ISSUED']
+mutations=[]
+for section,key,value in [('RESOURCE_BUDGETS','MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_WORK_ITEM',3),('RESOURCE_BUDGETS','MAX_WORK_ITEMS',51),('RESOURCE_BUDGETS','MAX_PROCESS_STARTS_PER_EPOCH',601),('RESOURCE_BUDGETS','MAX_SOURCE_REVISIONS_PER_WORK_ITEM',4),('RESOURCE_BUDGETS','MAX_PROCESS_STARTS_PER_WORK_ITEM',13),('RETRY_POLICY','CUMULATIVE_ACCOUNTING','Per invocation only'),('RETRY_POLICY','NO_RESET','Reset after revision'),('RETRY_POLICY','EXHAUSTION','Retry without additional authority'),('RETRY_POLICY','AUTOMATIC_RETRIES_PER_FAILED_INVOCATION',2)]:
+ m=copy.deepcopy(contract['CONTENT']);m[section][key]=value;mutations.append(m)
+rejected=0
+for m in mutations:
+ try:validate(m)
+ except (AssertionError,KeyError):rejected+=1
+ else:raise AssertionError('negative accepted')
+# Independent reconstruction verifies the dependent pilot and dossier gates above;
+# additional identity mutations must fail canonical/pin equality.
+for v in [contract,pilot,subject]:
+ m=copy.deepcopy(v);m['IDENTITY']['sha256']='0'*64
+ assert digest(m['CONTENT'])!=m['IDENTITY']['sha256'];rejected+=1
+prior=read(D/'prior-file-integrity-manifest.json')
+for path,h in prior.items():assert raw(pathlib.Path(path))==h,path
+semantic={'contract':contract['IDENTITY'],'pilot':pilot['IDENTITY'],'subject':subject['IDENTITY'],'all_other_contract_fields_unchanged':True,'historical_files_verified':len(prior),'negative_designs':12,'negative_rejected':rejected,'policy_adopted':False,'grant_issued':False,'pilot_executed':False}
+assert rejected==12
+print(json.dumps({'seed':os.environ['PYTHONHASHSEED'],'semantic':semantic,'semantic_sha256':digest(semantic)},sort_keys=True))

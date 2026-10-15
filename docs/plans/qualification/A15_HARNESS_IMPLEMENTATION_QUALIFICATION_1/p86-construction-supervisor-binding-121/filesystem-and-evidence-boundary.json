@@ -1,0 +1,16 @@
+{
+  "CURRENT_TECHNICAL_BOUNDARY": "Whole workspace and/tmp writable per supplied session contract; protected .git does not make old docs/source read-only",
+  "ENFORCEMENT": "Prospective requirements only; no new store, mount, host permission, wrapper or writable campaign created",
+  "EXACT_ALLOWLIST_CONFINEMENT_VERIFIED": false,
+  "PRIOR_FILE_HASH_COMPARISONS": "After-the-fact independent preservation verification; cannot prevent a transient destructive write or restore lost history",
+  "REQUIRED_RULES": {
+    "ATOMIC_REPLACEMENT": "Create exclusive bounded temp in approved private same-filesystem directory, fsync then approved replace only if previous expected state/seal matches; charge every immutable snapshot in full before any write",
+    "FAILURE_EVIDENCE": "Sole independent critical writer with protected reserve2336bytes; ordinary writers cannot access reserve; explicit INCOMPLETE on incomplete causal/undurable evidence",
+    "HARD_LINK": "Reject nlink other than1 or unmanaged alias before replace; reject existing unknown inode/owner",
+    "PATH_TRAVERSAL": "Resolve from held approved root descriptors; reject absolute/unapproved relative paths and dot-dot; no arbitrary supplied destination",
+    "RETENTION": "Keep immutable pre-entry seals, counters, failures and final audit; no cleanup refunds or retry reset",
+    "SYMLINK": "Reject every traversed symlink; descriptor no-follow and independent parent/device ownership checks",
+    "TEMP_AND_CACHES": "Explicit private allowance charged to evidence if content publication; no arbitrary /tmp/cache writes, PYTHONDONTWRITEBYTECODE and disabled target import/test collection; environment pin and kernel confinement still needed"
+  },
+  "SOURCE_OR_EVIDENCE_SIZE_CAP_IS_NOT_CUMULATIVE_CONTROL": true
+}

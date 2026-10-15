@@ -1,0 +1,71 @@
+{
+  "work_package": "EVIDENCE-E04",
+  "result": "PARTIAL",
+  "validation_capability": "PASS",
+  "proof_admission_capability": "PASS",
+  "reentry_evaluation_capability": "PASS",
+  "validation_id": "2c5ee9da239a4a1a1b92e9f41ca7902348c0e603ed8ab26f2df018d74e33a9b7",
+  "validation_result": "PASS",
+  "proof_id": "a6149bdb91418a77a24f2b0a94f272c5e22a67e9f1b2291806bedd83458f4ed2",
+  "proof_admission": "PASS",
+  "reentry_id": "d2a14f2e345981c03866c5461da6918fb44330a69f199d26833ddcc4e1d7237f",
+  "e2_reentry_eligible": true,
+  "e2_reenter": "SELECTED_BUT_NOT_EXECUTED",
+  "e2_reenter_status": "ACTIONABLE",
+  "e2_finish_before_reenter": "NON_ACTIONABLE",
+  "e2_finish_after_reenter": "NON_ACTIONABLE",
+  "e2_finish_status": "BLOCKED",
+  "lifecycle_separation": "PASS",
+  "invalid_transitions": "PASS",
+  "invalidation": "PASS (generic dependency invalidation; live source invalidation not applied)",
+  "persistence": "PASS (snapshot checkpoints)",
+  "cold_restore": {
+    "validated": true,
+    "proved": true,
+    "reentry_eligible": true
+  },
+  "replay": "PASS (checkpoint replay identity; no duplicate validation decision)",
+  "determinism": "PASS (canonical IDs)",
+  "regressions": "PASS targeted E2 T03: 6 passed; full suite blocked by frozen E1 duplicate imports",
+  "e2_post_receipt_bundle_id": "245c351668348744bb5d395dafe9e9660ccc9f3fcf89414614e211766d6c74d7",
+  "e2_validation_state": "ACCEPTED",
+  "e2_proof_state": "ACCEPTED",
+  "e2_reentry_state": "ELIGIBLE",
+  "post_receipt_evidence_received": true,
+  "actionability": {
+    "actionable": [
+      "E2-REENTER"
+    ],
+    "selected": "E2-REENTER",
+    "blocked": {
+      "E2-FINISH": [
+        "PRIOR_ATTEMPT_HOLD:BLOCKED"
+      ]
+    },
+    "control": "RUNNABLE"
+  },
+  "e2_reenter_execution": "PlannerError:no accepted bounded result contract",
+  "p03_target_state": "UNREACHED",
+  "p03_exit_predicate": false,
+  "e2_p03_result": "BLOCKED",
+  "e2_p04_ready": false,
+  "next_package": "EVIDENCE-E05 E2-REENTER accepted-result contract / P03 Action execution",
+  "other_p03_blockers": [
+    "E2-REENTER has no accepted bounded result contract"
+  ],
+  "negative_transitions": [
+    "ABSENT->VALIDATED rejected",
+    "RECEIVED->PROVED rejected",
+    "RECEIVED->REENTRY_ELIGIBLE rejected",
+    "VALIDATED->REENTRY_ELIGIBLE rejected",
+    "PROVED->REENTER_COMPLETED rejected",
+    "REENTRY_ELIGIBLE->FINISH rejected"
+  ],
+  "native_evidence_entity_id": "EVIDENCE:ca7dc4db2428cf62724b26abee3669af02742e6f50ac64bdf3ec40395b1f825d",
+  "receipt_id": "349335c1a9697b8e1b50044b5cb7522a8156e9422913a3f1e5facbbe61a3497e",
+  "e1_artifacts_modified": 0,
+  "production_effect": false,
+  "e2_finish_executed": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false
+}

@@ -1,0 +1,69 @@
+{
+  "COMMAND_ARGUMENT_VECTOR": [
+    "/usr/bin/systemd-run",
+    "--no-ask-password",
+    "--quiet",
+    "--wait",
+    "--collect",
+    "--pipe",
+    "--unit=kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "--slice=system.slice",
+    "--uid=1000",
+    "--gid=1000",
+    "--working-directory=/",
+    "--property=TasksAccounting=yes",
+    "--property=TasksMax=8",
+    "--property=MemoryAccounting=yes",
+    "--property=MemoryMax=67108864",
+    "--property=RuntimeMaxSec=20s",
+    "--property=TimeoutStopSec=2s",
+    "--property=KillMode=control-group",
+    "--property=SendSIGKILL=yes",
+    "--property=Restart=no",
+    "--property=NoNewPrivileges=yes",
+    "--property=PrivateNetwork=yes",
+    "--property=PrivateTmp=yes",
+    "--property=ProtectSystem=strict",
+    "--property=ProtectHome=yes",
+    "--property=ReadOnlyPaths=/sys/fs/cgroup",
+    "--property=RestrictAddressFamilies=AF_UNIX",
+    "--property=LimitCPU=5",
+    "--property=LimitAS=134217728",
+    "--property=LimitFSIZE=65536",
+    "--property=LimitNOFILE=32",
+    "--property=UMask=0077",
+    "/usr/bin/python3.8",
+    "-I",
+    "-B",
+    "-c",
+    "import os,json,pathlib,time,datetime,sys\nUNIT = 'kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service'\nMAX_OUTPUT = 65536\nwritten = 0\ndef emit(value):\n global written\n raw=(json.dumps(value,sort_keys=True,separators=(',',':'))+'\\n').encode()\n if len(raw)>8192 or written+len(raw)>MAX_OUTPUT: raise RuntimeError('OUTPUT_BOUND')\n offset=0\n while offset<len(raw):\n  n=os.write(1,raw[offset:])\n  if n<=0: raise RuntimeError('OUTPUT_WRITE')\n  offset+=n; written+=n\n\ndef snapshot(phase):\n if os.geteuid()!=1000 or os.getegid()!=1000: raise RuntimeError('NONROOT_IDENTITY_MISMATCH')\n entries={}\n for line in pathlib.Path('/proc/self/cgroup').read_text().splitlines():\n  unused,controllers,path=line.split(':',2)\n  for controller in controllers.split(','): entries[controller]=path\n pids=entries.get('pids'); manager=entries.get('name=systemd')\n if pids is None or manager is None: raise RuntimeError('MISSING_V1_CONTROLLER')\n if not pids.startswith('/') or '..' in pids.split('/'): raise RuntimeError('CGROUP_PATH')\n location=pathlib.Path('/sys/fs/cgroup/pids')/pids.lstrip('/')\n maximum=(location/'pids.max').read_text().strip()\n current=(location/'pids.current').read_text().strip()\n record={'schema':'H86-PIDS-METADATA-1','phase':phase,'service_unit':UNIT,\n 'SERVICE_PID':os.getpid(),'SERVICE_PIDS_CGROUP':pids,'SERVICE_SYSTEMD_CGROUP':manager,\n 'KERNEL_PIDS_MAX':maximum,'KERNEL_PIDS_CURRENT':current,\n 'SYSTEMD_TASKS_MAX':None,'OBSERVATION_TIME':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n 'EVIDENCE_PROVENANCE':'service readonly proc/sysfs observation; SYSTEMD_TASKS_MAX supplied only by independent manager query'}\n emit(record)\n if pids!='/system.slice/'+UNIT or maximum!='8' or not current.isdigit() or not 1<=int(current)<=8:\n  raise RuntimeError('SERVICE_SPECIFIC_PIDS_LIMIT_NOT_CONFIRMED')\ntry:\n snapshot('START')\n time.sleep(8)\n snapshot('BEFORE_EXIT')\nexcept BaseException as exc:\n try: emit({'schema':'H86-PIDS-ERROR-1','error_type':type(exc).__name__,'service_unit':UNIT,'retry_allowed':False})\n except BaseException: pass\n sys.exit(2)\n"
+  ],
+  "COMMAND_CONTENT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h86-retained-command-vector-v1",
+    "sha256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50"
+  },
+  "COMMAND_UNCHANGED": true,
+  "CONTRACT_RAW_PIN": {
+    "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-process-enforcement-86/transient-service-specification.json",
+    "sha256": "ed1d5ac9be069d1553f2940d64023cf9ce7d592c974fd1e029d73aa6e8e3430b"
+  },
+  "ENVIRONMENT": "Sealed argv specifies -I -B; manager service environment is not a complete explicit environment allowlist. Fresh direct runtime/stdlib/startup identity check required. No inferred extra setenv flags.",
+  "EXECUTABLE_PINS": {
+    "/bin/systemctl": "ec3c1aa59f5047dacfdd00a90504e02557032bf4016f0d28799d95792e9005b1",
+    "/usr/bin/python3.8": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+    "/usr/bin/systemd-run": "15c14831822016fd68ab3e2f265223463c46b4cf7fcc4595a91f09c5bbd950eb"
+  },
+  "EXECUTED": false,
+  "EXPECTED_OUTPUT": "Sealed START and BEFORE_EXIT H86-PIDS-METADATA-1 records; optional bounded error record; no memory or CPU kernel fields emitted",
+  "P110_COMPLETE_SCOPE_COVERED": false,
+  "PAYLOAD_RAW_SHA256": "4c593c86121c0c89460df8998f70f91a200508c9a54ed7f9ca93b75ad358e4e5",
+  "SERVICE_UNIT_NAME": "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+  "SERVICE_USER": {
+    "ACCOUNT_AUTHORIZATION_VERIFIED": false,
+    "GID": 1000,
+    "ROOT_EXECUTION_PERMITTED": false,
+    "UID": 1000
+  },
+  "WORKING_DIRECTORY": "/"
+}

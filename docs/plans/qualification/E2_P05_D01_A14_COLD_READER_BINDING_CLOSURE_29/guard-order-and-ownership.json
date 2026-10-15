@@ -1,0 +1,30 @@
+{
+  "CURRENT_FACTS": {
+    "PERSISTED_HANDOFF_AVAILABLE": false,
+    "PUBLISHED_TARGET_VERIFIED": false,
+    "SAVE_RETURNED_SUCCESSFULLY": false,
+    "WRITER_EXIT_OBSERVED_BY_SUPERVISOR": false
+  },
+  "GUARDS_SATISFIED_COUNT": 0,
+  "ORDER": [
+    "actual save return success",
+    "published target exact verification",
+    "persisted handoff availability",
+    "writer termination",
+    "supervisor wait/exit-code verification",
+    "independent reader launch"
+  ],
+  "OWNERSHIP": {
+    "PERSISTED_HANDOFF_AVAILABLE": "Qualification harness immutable metadata publication; supervisor/reader validate exact expected hash/content",
+    "PUBLISHED_TARGET_VERIFIED": "Writer-side byte/identity verifier, corroborated by trusted harness/supervisor and rechecked by reader",
+    "SAVE_RETURNED_SUCCESSFULLY": "Actual native save caller; trusted supervisor authenticates successful writer protocol",
+    "WRITER_EXIT_OBSERVED_BY_SUPERVISOR": "Parent/supervisor only, actual wait/returncode; writer cannot certify its future exit"
+  },
+  "RUNTIME_GUARDS": [
+    "SAVE_RETURNED_SUCCESSFULLY",
+    "PUBLISHED_TARGET_VERIFIED",
+    "PERSISTED_HANDOFF_AVAILABLE",
+    "WRITER_EXIT_OBSERVED_BY_SUPERVISOR"
+  ],
+  "TRUST_RULE": "Guard callbacks must authenticate actual supervisor observation. JSON booleans or writer-provided exit claims alone cannot create trusted runtime evidence."
+}

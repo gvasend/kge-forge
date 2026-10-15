@@ -1,0 +1,23 @@
+KGE-Forge — Project-Owner Risk-Adaptive Engineering Direction
+Status: OWNER-APPROVED ARCHITECTURAL DIRECTION; NOT YET ISSUED AS EFFECTIVE NORMATIVE AMENDMENT
+Owner decision
+The project owner agrees that KGE-Forge should use risk-adaptive engineering and qualification. The Planner should make governed decisions under uncertainty, balancing expected benefit, potential loss, reversibility, assurance cost, and resource constraints.
+Principles
+1. Authority and binding safety/security constraints remain mandatory.
+2. Resource budgets are finite authorized allocations, with evidence-informed estimates and reserve margins, not proofs that a task will finish.
+3. Failure is an expected engineering outcome; classify it as recoverable, terminal, or uncertain.
+4. Bounded retries and revisions may be authorized for reversible activities. They are not inferred for already-issued single-use or zero-retry grants.
+5. Qualification effort should be proportionate to risk, reversibility, and the expected value of additional assurance.
+6. Do not require future execution-produced results as prerequisites for authorization of the bounded activity that produces them; independently enforceable entry safety controls still apply.
+7. Stop on exhaustion or unknown consequential effects; obtain fresh authority before exceeding an allocation.
+Governance status
+This document records the owner's architectural decision in the current conversation. It is not a repository-issued charter amendment, grant, delegation, or execution authorization. Before normative effect, authenticate the applicable charter, prepare an exact scoped amendment if necessary, obtain the appropriate approval and follow the charter's issuance/effectiveness lifecycle.
+Recommended next action: Package 120
+1. Map each Package 119 construction prerequisite to its authoritative source and classify as binding, discretionary policy, or unsupported inherited assumption.
+2. Separate construction decision, fresh construction entry, inert-test entry, and real-probe entry.
+3. Propose a finite construction-only allocation for the two specified source paths: per-file/aggregate bytes, evidence bytes, wall/CPU/memory/FD bounds, work units, reserve margin, and explicitly bounded recoverable revisions. Label proposed values as policy allocations, not proven resource requirements.
+4. Define stop-on-exhaustion, checkpoint/review, no implicit restart, and no modification of existing Package 86 one-attempt or zero-retry rules.
+5. Prepare an exact, unselected construction-only authority dossier if the subject is complete. Keep real systemd launch disabled and preserve prior evidence.
+6. Do not construct, test, issue grants, or execute probes under Package 120 preparation alone.
+Preserved boundaries
+Package 86 command unchanged; Package 115 accounting amendment effective; 65,536-byte observer-publication ceiling unchanged; historical evidence and stopped campaigns preserved; no construction, inert qualification, systemd/sudo/Bubblewrap operation, H77-02 or A15 execution authorized by this record.

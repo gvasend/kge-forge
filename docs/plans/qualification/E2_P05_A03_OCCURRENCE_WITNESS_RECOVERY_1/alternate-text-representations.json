@@ -1,0 +1,474 @@
+{
+  "files": {
+    "adapter/planner/codec.py": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+    "adapter/planner/core.py": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+    "adapter/planner/genesis_bundle.py": "746696dd3a472e8336a515993b63a85486d0dde2f9b68b27aad2c39a9b996a37",
+    "adapter/planner/genesis_ledger.py": "3a59ace45bebf89580f8df054775c7229fd3b9712acddfe4730a38526bd57916",
+    "adapter/planner/model.py": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+    "adapter/planner/replay.py": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e",
+    "adapter/tests/collect_p03_prospective.py": "9650169116a489369223260a37b48b4dea840b16fc10a79c8678c44bd703ce0f",
+    "adapter/tests/counterexamples/c06_f03_candidate.py": "b07e6ffdb14c90bbc8023053676b070c3b7cd20a4f76994a1cc9a5b1309f396a",
+    "adapter/tests/define_validation_v01.py": "d37800eb96915c78dccc9e57b85a64f0858431f042df9defa22ea0e66fc8a6bb",
+    "adapter/tests/prepare_e2_p04_continuation.py": "9c672332be3267a4503d03766bb5419276e045c31b3dec452ad9b0315b9aa895",
+    "adapter/tests/prepare_p04_a10_a13_readiness.py": "4c61479349f80faf91c2019276c52212e3d454df0937fda936f55d8b0bf0de61",
+    "adapter/tests/qualify_finish_f03.py": "5d17ee4d036b97424165964950db3c0ff6db60a002c30461955ba2c45b3bd8d7",
+    "adapter/tests/qualify_finish_f03_checks.py": "b09dcdff4c40d60c94fd47af44074906b8ad70bcade540dda6430af12e9240d1",
+    "adapter/tests/qualify_p03_prospective.py": "ddfdf076983c6064559e6b5782393e1a099ad5d662e628b64e3f9f1ce1a2f3b4",
+    "adapter/tests/qualify_planner_e06.py": "836d8e94b6905d1c3c0579bfb5d75a633925f81b944a6c1bcb3f38d625dc2865",
+    "adapter/tests/qualify_planner_i05.py": "3b472314805a384728e7d84e46b31e7710f4315c84c7e389447f3af4a4310b38",
+    "adapter/tests/qualify_reentry_r06.py": "53a58bb6482b2a263ae898d011395920b39c1fe7a65d7a9623bc9f2cc4f87f96",
+    "adapter/tests/test_planner_c06a.py": "40d9f13fb001ec0163aba9a63c482ce2a7929dc147f605910a41d34cc5352a65",
+    "adapter/tests/test_planner_core.py": "5073c86f82b578eb3e610c06fa7e0887eb842124bc9bca622d28aa1f6b7f164f",
+    "adapter/tests/test_planner_e06_regressions.py": "3383229896942fb5254a694a0fd2f8508645fe42f7eef12c896b4a70220f920c",
+    "adapter/tests/test_planner_e1_replay.py": "b8486f5bb91a75d2455f884e9055ebbcd3637a076bae4fe848d3d7fe0f9e7e33",
+    "adapter/tests/test_planner_proof_installation.py": "ca82dab57e56845328e9ec09f7cfbc0d0cfd05668cd48484d25355ddb246251a",
+    "adapter/tests/trace_e2_p04_installation.py": "d875452e88d3877f01b5ba2707d752d654af421fcd55ab634ae630003e1aa712",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.md": "78737d02f24fcf02fd0485cb43af2bea391e8df2d26893db1a7dcdd957410be8",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1.md": "7205b900b4a8201032c630ef5702dce689f98d298a5db19c72f2469d38472d28",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_RESULT.md": "7a70d93a32eb5992a7375f37217b6f71ef6dd126dbd5dfcf1863fa8f43c1c7ee",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_RESULT.md": "2a764798eee14c3fc16c75c4d50f55eccd45345dbced800d4dc6957a5671849a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_2_RESULT.md": "f6c6c499f56b5732fca536002e8ed22ec39f98f77744be51c38589dca69e18c0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_MAINLINE_CHECKPOINT_REPRODUCTION_1.md": "c67df204986528b7ae20479865cca94413b48ad48e04bbf6d2a82a51028769af",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_A10_A13_READINESS_CLOSURE_1.md": "bc530f4dd4a8e56d442edd5c9788005ebd19055416e5b54ec27829744c426bb7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CONTINUATION_INPUT_CLOSURE_1.md": "ea7826ee0c31137414bcf40bd28fe242b28a7d8cfc9bc15e62afd439f0cabac0",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_END_INPUT_BINDING_1.md": "43657cc51076367d46dbeac65bbdc526bc963f2bef19c9b60c62c05ddf62f27e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T05_RESULT.md": "dcd601ab3d39f32a9af3c3f2b49d03c56e3f0aca04e4b88b0806da56b745fd64",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_GENESIS_G01_RESULT.md": "7ae950061820c62130ea7d7dde44eb92326843c8c0d92bdd0722142e19232727",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_GENESIS_G02_RESULT.md": "6cf87f0065ed34cb965b82809efa89b95b132453d54acb87b358e98795441be1",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_IMPLEMENTATION_PLAN.md": "e93b1ccfb91f538a47b4c0734492b3980e88df043674c93a3efb44e4ca5ce8fa",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_INSTALLATION_I01_CONTRACT.md": "fd457cba81b34d2e47f3385c0847fd438335285ad023fdab54d238b05ed410c6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_NATIVE_EVENT_GENESIS_IMPLEMENTATION_1_RESULT.md": "0098c85592e8f8dd18b6069d696886c792affcdf2db5d561a6460d412c699efd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.md": "d596339d8a9540ccb1a69926e80c2fb86593d04586ebd30cb52609c9ef8c7a88",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.md": "e5e919ee5c435cfd7d0020d9f0a9f8e2eeba14c0b49ca8fe5ba8816855e56f39",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_REENTRY_R01_A11_CONTRACT.md": "f31af0bbf9157974dc60a0b6ce0b75532996afc7d7a2ee0d92ede5d5b4844617",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_REENTRY_R03_A11_EVENT_CONTRACT.md": "c8365edd2c0cb132db9be729b716b155fd952ec6c6d5d845a1b53898de960517",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_REENTRY_R04_A11_QUALIFICATION_RESULT.md": "882f4a3f2cc8caf0f9c9b85a88d3d829783dbae55452c7f9862be440d06fe08a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_SNAPSHOT_EVENT_PERSISTENCE_RECONCILIATION_1.md": "9aaebe9376adfc29a2ae6834dc0f5dd9c64b625fdf1ea4b0ee9a393bc0498291",
+    "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/execute.py": "43f5c3db8c863c9b534035702225f7cccf409637eb9a876034f48d85e37e7f67",
+    "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/verify.py": "09034d0b42dd07fe3b806740ac6dd4fb59717c09474a33d4dc4d1c52e1b4b574",
+    "docs/plans/qualification/E2_P04_DEFERRED_INSTALLATION_RECONCILIATION_1/write_result.py": "d6df0b276b5a7154ed5b3b3bf5ed496761ce39e659c631a0b47d6a50790f26e2",
+    "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/bind_artifacts.py": "d71e6e7c1fdacb49e940ae97de674dabee94b82a588864fc6f1341c40e8b71c6"
+  },
+  "full_A03_ExecutionEvent_repr_line_candidates": [],
+  "limitation": "Text report labels/source constructor expressions are not native ledger membership. Candidate rows would require exact payload and authoritative enrollment.",
+  "matches": [
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 678,
+      "path": "adapter/planner/model.py",
+      "text": "class ExecutionEvent:\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 706,
+      "path": "adapter/planner/model.py",
+      "text": "    events: Tuple[ExecutionEvent, ...]\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 26,
+      "path": "adapter/planner/genesis_ledger.py",
+      "text": "    if not isinstance(event,m.ExecutionEvent): raise GenesisLedgerError('ORDINARY_EVENT_REQUIRED')\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 41,
+      "path": "adapter/planner/genesis_ledger.py",
+      "text": "        if not isinstance(e,m.ExecutionEvent) or e.parent_event != previous or e.sequence != i: raise GenesisLedgerError('BROKEN_ANCESTRY')\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 81,
+      "path": "adapter/planner/replay.py",
+      "text": "    return SuppliedResult(action_id, enum(ActionResult, value['result']),\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 266,
+      "path": "adapter/planner/core.py",
+      "text": "            after = _inventory(snapshot, action, m.SuppliedResult(action.id, m.ActionResult.PASS,\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 45,
+      "path": "adapter/planner/genesis_bundle.py",
+      "text": "       isinstance(bundle.ledger.events[-1], m.ExecutionEvent):\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 54,
+      "path": "adapter/planner/codec.py",
+      "text": "    m.ExecutionEvent: {\"resume_binding\"},\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 553,
+      "path": "adapter/planner/codec.py",
+      "text": "    m.validate_types(event, m.ExecutionEvent)\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 576,
+      "path": "adapter/planner/codec.py",
+      "text": "    event = m.ExecutionEvent(sequence, parent, parent_event, supplied, after_id,\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 785,
+      "path": "adapter/planner/codec.py",
+      "text": "    event = m.ExecutionEvent(sequence,parent,previous,supplied,after_id,\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 44,
+      "path": "adapter/tests/qualify_planner_i05.py",
+      "text": "  assert b.events[-1].result==m.SuppliedResult(action,m.ActionResult.PASS,a.accepted_inventory,c.snapshot_id(pre.current))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 108,
+      "path": "adapter/tests/qualify_planner_i05.py",
+      "text": " supplied=m.SuppliedResult(comp.selection.selected,action.accepted_result,action.accepted_inventory,c.snapshot_id(eligible.current))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 52,
+      "path": "adapter/tests/prepare_p04_a10_a13_readiness.py",
+      "text": "    union=get_args(get_type_hints(m.ExecutionEvent)['result'])\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 72,
+      "path": "adapter/tests/prepare_p04_a10_a13_readiness.py",
+      "text": "       'gaps':['Closed native persisted validation/proof/observation transaction contract absent','ValidationResult helper is outside ExecutionEvent operand union','E04 admit_proof starts RECEIVED again; cannot compose unchanged after canonical A09','Typed definition installation adapter absent','New bounded INSTALL authority absent']},\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 64,
+      "path": "adapter/tests/test_planner_e06_regressions.py",
+      "text": "        replayed = core.apply_result(corrected, m.SuppliedResult(action.id,m.ActionResult.PASS,inventory,c.snapshot_id(corrected))).snapshot\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 29,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.md",
+      "text": "The core's pure transition functions produce candidate snapshots, not durable commits. `record_result` constructs an ExecutionEvent; `append_event` validates lineage and returns a new immutable bundle. The CLI's `apply` delegates to these, then `save_bundle`. Importing a fresh fixture or frozen E1 constructs a different initial state; it does not extend the restored history.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 31,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.md",
+      "text": "Evidence: [model.ExecutionEvent](../../adapter/planner/model.py#L606), [core.apply_event](../../adapter/planner/core.py#L430), [core.apply_receipt](../../adapter/planner/core.py#L450), [codec.append_event](../../adapter/planner/codec.py#L454), [CLI](../../adapter/planner/__main__.py). No additional runtime server, streaming ingress or mutable Planner session interface is defined in this inspected Planner package. `replay.import_fixture` restricts replay case identifiers to A\u2013N; it must not be repurposed as a live E2 importer. Initial canonical construction may use native types as planned.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 71,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.md",
+      "text": "| expected_parent_event | last ExecutionEvent.identity or null for empty ledger |\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 175,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_POST_RESTORE_EVIDENCE_TRANSACTION_RECONCILIATION_1.md",
+      "text": "| model.py | Closed EvidenceSourceAdmission payload and typed ingress contract validation; explicit identities/provenance; extend ExecutionEvent union. No arbitrary patches or authority imports. |\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 102,
+      "path": "adapter/tests/trace_e2_p04_installation.py",
+      "text": "    event_types=get_args(m.ExecutionEvent.__annotations__['result'])\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 71,
+      "path": "adapter/tests/qualify_finish_f03_checks.py",
+      "text": " root=load('post-root-proof');fin=next(a for a in root.current.actions if a.id.value=='E2-FINISH');supplied=m.SuppliedResult(fin.id,fin.accepted_result,fin.accepted_inventory,c.snapshot_id(root.current))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 97,
+      "path": "adapter/tests/test_planner_proof_installation.py",
+      "text": "  before=c.record_result(b,m.SuppliedResult(a.id,m.ActionResult.PASS,a.accepted_inventory,c.snapshot_id(b.current)))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 111,
+      "path": "adapter/tests/qualify_planner_e06.py",
+      "text": "        event = m.ExecutionEvent(index, parent, parent_event, command, aid, c._event_identity(index, parent, parent_event, command, aid))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 84,
+      "path": "adapter/tests/define_validation_v01.py",
+      "text": "      'event_operand_type':'ValidationSupportAdmission (future ExecutionEvent union member; no loose Snapshot or helper ValidationResult as event)',\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 96,
+      "path": "adapter/tests/define_validation_v01.py",
+      "text": "        'create one ordinary ValidationSupportAdmission ExecutionEvent over complete post-state',\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 146,
+      "path": "adapter/tests/define_validation_v01.py",
+      "text": "      'persistence_replay':{'codec':'Versioned closed new types/optional default-empty state fields and ExecutionEvent union extension; preserve pre-V01 canonical bytes and identities when fields absent',\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 40,
+      "path": "adapter/tests/qualify_reentry_r06.py",
+      "text": "    operand = m.SuppliedResult(new.id, m.ActionResult.PASS, new.accepted_inventory,\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 157,
+      "path": "adapter/tests/qualify_finish_f03.py",
+      "text": " post=c.record_result(eligible,m.SuppliedResult(action.id,action.accepted_result,action.accepted_inventory,c.snapshot_id(eligible.current)))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 172,
+      "path": "adapter/tests/qualify_finish_f03.py",
+      "text": " supplied=m.SuppliedResult(fin.id,fin.accepted_result,fin.accepted_inventory,c.snapshot_id(root.current));target=c.record_result(root,supplied)\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 90,
+      "path": "adapter/tests/collect_p03_prospective.py",
+      "text": " expected_events=(m.ExecutionEvent(1,sid,None,startcommand,sid,first),m.ExecutionEvent(2,sid,first,secondcommand,c.snapshot_id(checkpoint),last))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 137,
+      "path": "adapter/tests/collect_p03_prospective.py",
+      "text": " report={'authorization_authentication':'PASS_EXPLICIT_USER_DECISION_TRUSTED_TRANSPORT','qualification_scope_authority':'PASS_BOUNDED_METADATA_SCOPE_AUTHORITY; DISTINCT_FROM_NATIVE_ACTION_PERMISSION','authority':manifest['authority'],'fixture_id':c._wire(q.identity((A/'revision-3-seal.json').read_bytes(),'planner-prospective-fixture-v1')),'source_pin_set_id':c._wire(q.identity(q.jbytes(sorted(oracle['pins'],key=c.canonical_bytes)),'planner-source-pin-set-v1')),'policy_pin_set_id':c._wire(q.identity(q.jbytes({'policy':oracle['policy'],'version':mainbundle.policy_version}),'planner-policy-pin-set-v1')),'qualification_contract_id':manifest['contract_pin']['identity'],'seal':str((A/'revision-3-seal.json').relative_to(ROOT)),'historical_correspondence':'UNPROVEN','historical_reconstruction':False,'qualification_type':'PROSPECTIVE_REPLACEMENT','checkpoint':{'state_id':c._wire(c.snapshot_id(mainbundle.current)),'bundle_id':c._wire(bid),'ledger_id':None,'ledger_id_reason':'Native PersistenceBundle has an ordered ExecutionEvent tuple, no separate LedgerId field; no report-created identity substituted','ledger_root':c._wire(first),'ledger_root_domain':'Actual first native ExecutionEvent identity; not a GenesisLedger.root','append_head':c._wire(last),'boundary':'Post-RecordedDecision known-rule EXTERNAL_WAIT before RECEIVED','actionable':[],'mainline_FINISH_non_actionable':True,'before_execution_oracle':str((A/'mainline-oracle.json').relative_to(ROOT)),'event_ancestry_expected_from_sealed_oracle':[c._wire(first),c._wire(last)],'algebraic_expected_bundle_identity':c._wire(expected_bundle_id),'resume_eligibility':q.serialize(core.resume_eligibility(mainbundle,ROOT))},'event_backed_start':'PASS_ACTUAL_NATIVE_REEVALUATION_EVENT_AND_FRESH_READER_BEFORE_CONTINUATION','pre_execution_orac"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 47,
+      "path": "adapter/tests/counterexamples/c06_f03_candidate.py",
+      "text": "            core.apply_result(self.ready, m.SuppliedResult(self.action, m.ActionResult.PASS, (),\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 133,
+      "path": "adapter/tests/test_planner_core.py",
+      "text": "            SuppliedResult(ActionId('S-BINDING'), ActionResult.PASS, (), root_state='SATISFIED')\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 143,
+      "path": "adapter/tests/test_planner_core.py",
+      "text": "            apply_result(report.snapshot, SuppliedResult(ActionId('S-CONTEXT'), ActionResult.PASS, ()))\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 8,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_GENESIS_G02_RESULT.md",
+      "text": "`append_child` uses the existing typed `ExecutionEvent` parent identity and sequence rules. The first ordinary child must parent the GenesisEvent; later children must parent the current head. Validation rejects missing/non-genesis first events, broken ancestry, wrong parent, sequence mismatch, multiple genesis events, head/root mismatch, and any history-boundary mutation. Root and head evolution are deterministic. Codec canonicalization, replay-from-genesis semantics, source-state binding through G01 validation, idempotence, fork controls, and negative cases qualify in generic fixtures; legacy ordinary event requirements remain unchanged.\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 99,
+      "path": "adapter/tests/qualify_p03_prospective.py",
+      "text": " contract={'schema':'P03-PROSPECTIVE-EXECUTION-CONTRACT-1','dossier':authority['dossier_raw_sha256'],'authority':c._wire(authpin.identity),'scope':SCOPE,'lineage':LINEAGE,'generation':GEN,'boundary':'After RecordedDecision; before EvidenceSourceAdmission/RECEIVED','history':'AUTHOR_DECLARED_INITIAL_PREMISES; PRE_GENESIS_HISTORY=NOT_REPRESENTED','ledger_start':'Actual native no-op ActionReevaluation of independent source witness establishes the first ExecutionEvent before mainline','historical_correspondence':'NOT_ESTABLISHED','historical_reconstruction':False,'known_rule':True,'checkpoint_control':'EXTERNAL_WAIT','checkpoint_actionable':[],'later_functional_target':'Unchanged E06 target is separate evidence; no receipt, REENTER or FINISH mainline event in this boundary suite','negative_cases':['wrong_source_binding','wrong_physical_source','wrong_source_contract','wrong_policy','wrong_policy_identity','wrong_authority','wrong_scope','wrong_lineage','missing_provenance','later_checkpoint','earlier_checkpoint','G04_checkpoint','unrelated_event_lineage','post_hoc_pin_creation','similar_different_pins'],'hashseeds':[0,1,7,101],'cold_readers_per_seed':3,'repeat_writers':2,'variants':['unknown A14','accepted support A15','typed support A15','unknown invalidation A16'],'all_variants_sealed_before_execution':True,'no_production_effect':True}\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 208,
+      "path": "adapter/tests/prepare_e2_p04_continuation.py",
+      "text": "        'ledger_note':'Native PersistenceBundle exposes ordered ExecutionEvents, not a separate LedgerId',\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 6,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_GENESIS_G01_RESULT.md",
+      "text": "Implemented the generic typed `GenesisEvent` representation in [model.py](../../adapter/planner/model.py) and its bounded validation/identity helper in [genesis_event.py](../../adapter/planner/genesis_event.py). The event is structurally distinct from ordinary `ExecutionEvent` records and carries source snapshot/state identities, a GENESIS authority identity, scope, lineage, provenance, and the explicit `NOT_REPRESENTED` pre-genesis history marker.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 62,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_RESULT.md",
+      "text": "Define the imported-history envelope as immutable record identity, ordinal, recorded kind, original plan/selector/record hash, optional action/outcome, result source pins, knowledge references and support dependencies. Kind is SELECTION_ATTEMPT or ACTION_ATTEMPT determined from recorded structure, never ordinal or filename. Preserve selection diagnostics as historical diagnostics. Subsequent native ExecutionEvents begin at a proved canonical migrated baseline; do not fabricate historical parent/after snapshot identities.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 6,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_NATIVE_EVENT_GENESIS_IMPLEMENTATION_1_RESULT.md",
+      "text": "The authorized E2 source snapshot (`c5494ac4...`) and authorization evidence (`dae1c7cf...`) are present, but the native runtime does not define a parentless `GENESIS` event or `begin_event_lineage`. `ExecutionEvent`/replay validation only supports the existing event union and requires ordinary parent ancestry. PersistenceBundle trust also requires a source-indexed event bundle; the E2 snapshot does not contain that ledger or its source pins.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 48,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.md",
+      "text": "- LEDGER_ROOT = first actual native ExecutionEvent `planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0`\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 50,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.md",
+      "text": "- LEDGER_ID = NOT_EXPOSED_BY_NATIVE_PERSISTENCEBUNDLE. This model contains an ordered event tuple rather than a separate LedgerId; no artificial report-created ID is substituted. The root above is the first ExecutionEvent identity, not a G04 GenesisLedger.root.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 59,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CONTINUATION_INPUT_CLOSURE_1.md",
+      "text": "| 6 | A10/A11 composed persistence contract unresolved | E04 validation/proof helpers return Snapshot/result records, not registered ordinary ExecutionEvent result types. Their prior bounded journals do not by themselves establish event-bearing replay from this prospective bundle. |\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 21,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_MAINLINE_CHECKPOINT_REPRODUCTION_1.md",
+      "text": "The exact last qualified transition is authenticated native RecordedDecision admission/application, yielding the choice record, E2-GRANT and DECISION_RECORDED stage. The [retry trace](DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_RETRY_1_TRACE.json) binds earlier HUMAN_HANDOFF `9b3d8e6a\u2026` to exact checkpoint `8d77f7f\u2026`. This is a historical transition trace, not a native ExecutionEvent ledger. The next transition that has **not** occurred is EvidenceSourceAdmission/RECEIVED. Validation, proof, reentry and REENTER result are beyond this boundary. There is no unsupported assertion that a new external request event occurred after the recorded decision.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 21,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_REENTRY_R01_A11_CONTRACT.md",
+      "text": "The native ExternalEvent supplies gate, stage and expected snapshot; its ExecutionEvent wrapper binds ordinary parent, sequence, pre/post-state and resume binding. Proof, ValidationResult and support are consumed through canonical state references, not new event operands. The requested new event with explicit Proof and eligibility objects therefore needs a separate complete contract if still desired. No retrospective proof admission or persisted permission is inferred.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 3,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_SNAPSHOT_EVENT_PERSISTENCE_RECONCILIATION_1.md",
+      "text": "The native `Snapshot` and `PersistenceBundle` are distinct models. A Snapshot serializes validated canonical state with `planner-snapshot-v1` identity, but carries no event ledger, append head, parent event, or causal ancestry. A PersistenceBundle serializes an initial Snapshot plus an ordered `ExecutionEvent` ledger and source/policy pins; its `planner-bundle-v1` identity and replay validation bind each event to the prior state and parent event.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 5,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_A10_A13_READINESS_CLOSURE_1.md",
+      "text": "The first dependency-ordered blocker is A10's missing composed native validation, Evidence-support and accepted-observation event contract. The prepared validation helper produces a Snapshot and ValidationResult, but ValidationResult is not an ExecutionEvent operand. A typed installation adapter and new bounded INSTALL authority are also required. The existing route and authentication grants cannot authorize these changes. Preparing correct offline bytes does not make them canonical.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 23,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_REENTRY_R04_A11_QUALIFICATION_RESULT.md",
+      "text": "Identical accepted ExecutionEvent resubmission is a semantic no-op with unchanged history/bundle. Conflicting bytes under that identity and fresh stale-parent/pre-state retries fail closed. Retry against the unchanged isolated parent after a noncommitting negative reproduces the original event. A newly submitted ExternalEvent after success is stale; it cannot duplicate the transition. This qualifies the exact native retry behavior, not a nonexistent ExternalEvent command-key transaction.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 134,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_IMPLEMENTATION_PLAN.md",
+      "text": "| Snapshot / ExecutionEvent | Snapshot is immutable graph + state + pinned evaluation context. Event includes sequence, prior snapshot identity, action/attempt, result/evidence references, acceptance checks and resulting snapshot identity; deterministic event identity |\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 6,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T05_RESULT.md",
+      "text": "The pre-implementation counterexample is confirmed: the authorized genesis contract and snapshot are present, but the native runtime has no parentless `GENESIS` event type or `begin_event_lineage` operation. `ExecutionEvent` accepts only ordinary result/decision/reentry/receipt/invalidation events, and PersistenceBundle validation requires an existing ordered event ancestry. Ordinary append therefore cannot represent a legitimate genesis and would fabricate a parent.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 33,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_END_INPUT_BINDING_1.md",
+      "text": "The first gap is established by the governing A03 operation, **record_result/append_event**, and its required event trace. The final [P02 retry 4 PASS](DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json) consumes the prefix retained in [retry 3](DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_3_RESULT.json). That prefix records `events_admitted = 0`. Its acquisition trace records Action/result/knowledge and before/after state identities, but not native ExecutionEvent operands, event identities or their parent chain. Searching the retained JSON artifacts under `docs/plans` for the exact five original prefix state identities found **43 matching artifacts and zero matching native ExecutionEvents**: [search evidence](qualification/E2_P05_END_INPUT_BINDING_1/P02-native-event-artifact-search.json). This is a retained-artifact gap, not proof that the reported operations never happened.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 34,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_2_RESULT.md",
+      "text": "4. The native `SuppliedResult(E2-PREPARE, PASS, ...)` is rejected with:\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 15,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_REENTRY_R03_A11_EVENT_CONTRACT.md",
+      "text": "Payload: ExternalEvent(gate=E2-GATE, stage=DEPENDENT_ACTION_REENTRY, expected_snapshot=exact current snapshot, artifact=None). codec.record_result wraps it in ExecutionEvent with sequence, exact pre-state, ordinary current parent event, resulting snapshot identity and resume_binding. The event identity is planner-event-v1 SHA256 over native canonical bytes of sequence, parent, parent_event, typed result, after, and resume_binding when present. The binding separately hashes exact policy pin/version and bundle.scope. No command key, Proof ID, authority or new provenance field is added. Scope/lineage/generation and existing provenance are bound through complete state and its native premises.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 31,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_INSTALLATION_I01_CONTRACT.md",
+      "text": "**Hash-cycle rule:** the installed record stores request_key, parent_event and activation_sequence, not its own activation event hash inside the hashed Snapshot. Replay joins that record to exactly one ledger event at that sequence with matching request/definition. The post-state is hashed first, then its ExecutionEvent identity. This proves activation at E without circular event-ID/post-state hashing.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 24,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_RESULT.md",
+      "text": "1. [ExecutionEvent](../../adapter/planner/model.py#L606) admits only `SuppliedResult`, `RecordedDecision`, `DecisionReentry`, `ExternalEvent`, `SourceInvalidation`.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 52,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_M01_CLOSURE_1.md",
+      "text": "The native model has ActionState.SELECTED but no PlanningHistoryRecord or SelectionHistory type. ExecutionEvent instead requires parent snapshot, after snapshot, event identity and replayable transition. Consequently the migration may retain the selection record as pinned historical provenance now; it must not falsely emit a native ExecutionEvent or SuppliedResult. Defining and admitting a passive canonical planning-history carrier is still M01-G03, not an existing implemented capability. No historical parent snapshots are fabricated.\n"
+    },
+    {
+      "classification": "TEXT_REPORT_OR_CONTRACT",
+      "line": 121,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E1_MIGRATION_IMPLEMENTATION_PLAN_1.md",
+      "text": "`ExecutionEvent` requires parent snapshot, after snapshot, parent event and event identity, and `codec._replay` verifies the chain. Do not fabricate these for legacy records lacking sufficient historical prestate.\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 110,
+      "path": "adapter/tests/test_planner_c06a.py",
+      "text": "            result=core.apply_result(restored, m.SuppliedResult(m.ActionId('FACT-BUDGET-APPLICABILITY'),m.ActionResult.PASS,\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 217,
+      "path": "adapter/tests/test_planner_c06a.py",
+      "text": "            supplied=m.SuppliedResult(action.id,m.ActionResult.PASS,action.accepted_inventory,c.snapshot_id(b.current))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 23,
+      "path": "adapter/tests/test_planner_e1_replay.py",
+      "text": "    return m.SuppliedResult(a.id, a.accepted_result, a.accepted_inventory, c.snapshot_id(state), a.prepared_dossier)\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 692,
+      "path": "adapter/tests/test_planner_e1_replay.py",
+      "text": "            core.apply_result(s,m.SuppliedResult(a.id,m.ActionResult.PASS,(),c.snapshot_id(s)))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 270,
+      "path": "docs/plans/qualification/E2_P04_DEFERRED_INSTALLATION_RECONCILIATION_1/write_result.py",
+      "text": "            \"event_type\": \"INSTALL_DEFINITION\", \"native_representation\": \"ExecutionEvent.result = InstallDefinition\",\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 101,
+      "path": "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/bind_artifacts.py",
+      "text": "         'required':'Actual PREPARE result event linked to the retained accepted dossier/handoff state; archive report/knowledge is not an ExecutionEvent.'},\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 182,
+      "path": "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/bind_artifacts.py",
+      "text": "            result['missing_part']='Native ExecutionEvent operand/identity/ancestry; reported result and archived KnowledgeRecord are present.'\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 199,
+      "path": "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/bind_artifacts.py",
+      "text": "            result['missing_part']='Original RecordedDecision ExecutionEvent; accepted decision and bounded authority are retained in archive Snapshot.'\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 196,
+      "path": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/verify.py",
+      "text": "    supplied = m.SuppliedResult(fin.id, fin.accepted_result, fin.accepted_inventory, c.snapshot_id(root.current))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 266,
+      "path": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/execute.py",
+      "text": "        supplied = m.SuppliedResult(action.id, action.accepted_result, action.accepted_inventory, c.snapshot_id(b.current))\n"
+    },
+    {
+      "classification": "SOURCE_CODE_OR_CONTRACT",
+      "line": 315,
+      "path": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/execute.py",
+      "text": "        supplied = m.SuppliedResult(action.id, action.accepted_result, action.accepted_inventory, c.snapshot_id(b.current))\n"
+    }
+  ],
+  "no_code_executed": true,
+  "no_event_reconstructed": true,
+  "pattern": "ExecutionEvent|PLANNER-EVENT-1|SuppliedResult\\(|SuppliedResult:E2-(CHECK|COLLECT)",
+  "search_kind": "TEXT_ALTERNATE_EVENT_REPRESENTATION_AND_SOURCE_QUERY"
+}

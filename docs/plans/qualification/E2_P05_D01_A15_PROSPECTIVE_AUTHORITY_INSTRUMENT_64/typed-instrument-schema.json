@@ -1,0 +1,455 @@
+{
+  "FIELD_ORDER": [
+    "INSTRUMENT_ID",
+    "INSTRUMENT_VERSION",
+    "INSTRUMENT_STATUS",
+    "ISSUER_IDENTITY",
+    "ISSUER_ROLE",
+    "ISSUER_AUTHORITY_EVIDENCE",
+    "AUTHORIZED_SUBJECT",
+    "NORMATIVE_SCOPE_MANDATE",
+    "EXECUTION_MANDATE",
+    "CAPTURE_PERSISTENCE_MANDATE",
+    "EFFECTIVE_BOUNDARY",
+    "SCOPE",
+    "LINEAGE",
+    "GENERATION",
+    "PROTECTED_IDENTITIES",
+    "FAILURE_RETRY_LIMITS",
+    "HISTORICAL_EXCLUSIONS",
+    "EVIDENCE_PINS",
+    "ADOPTION_REQUIREMENTS",
+    "ISSUANCE_REQUIREMENTS",
+    "REVOCATION_OR_EXPIRATION_RULE"
+  ],
+  "IDENTITY_TYPE": {
+    "additionalProperties": false,
+    "properties": {
+      "$type": {
+        "const": "ArtifactIdentity"
+      },
+      "kind": {
+        "additionalProperties": false,
+        "properties": {
+          "$enum": {
+            "const": "IdentityKind"
+          },
+          "value": {
+            "enum": [
+              "CONTENT_IDENTITY",
+              "AUTHORITY_IDENTITY",
+              "INSTANCE_IDENTITY",
+              "RELEASE_IDENTITY",
+              "CANONICAL_OBJECT_IDENTITY",
+              "WORKAUTHORIZATION_ID",
+              "BINDING_DIGEST"
+            ]
+          }
+        },
+        "required": [
+          "$enum",
+          "value"
+        ],
+        "type": "object"
+      },
+      "namespace": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "sha256": {
+        "pattern": "^[0-9a-f]{64}$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "$type",
+      "kind",
+      "namespace",
+      "sha256"
+    ],
+    "type": "object"
+  },
+  "INSTRUMENT_SCHEMA_COMPLETE": true,
+  "ISSUED_WRAPPER": "Separate future validated document/receipt, not instantiated here; must supply verified issuer/mandate/effective evidence before issued state",
+  "JSON_SCHEMA": {
+    "additionalProperties": false,
+    "allOf": [
+      {
+        "if": {
+          "properties": {
+            "INSTRUMENT_STATUS": {
+              "const": "PROPOSED_COMPLETE_NOT_ISSUED"
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "ISSUER_AUTHORITY_EVIDENCE": {
+              "properties": {
+                "ACTUAL_DESIGNATION_PIN": {
+                  "not": {
+                    "type": "null"
+                  }
+                },
+                "APPLICABLE_ISSUING_INSTRUMENT": {
+                  "not": {
+                    "type": "null"
+                  }
+                },
+                "DIRECT_OR_DELEGATED_POWER": {
+                  "not": {
+                    "type": "null"
+                  }
+                },
+                "VERIFIED": {
+                  "const": true
+                }
+              }
+            },
+            "ISSUER_IDENTITY": {
+              "not": {
+                "type": "null"
+              }
+            },
+            "ISSUER_ROLE": {
+              "minLength": 1,
+              "type": "string"
+            }
+          }
+        }
+      }
+    ],
+    "properties": {
+      "ADOPTION_REQUIREMENTS": {
+        "required": [
+          "NORMATIVE_SCOPE_APPROVAL",
+          "EXECUTION_APPROVAL",
+          "CAPTURE_APPROVAL",
+          "MANDATE_COMPOSITION",
+          "COMBINED_APPROVAL_ALREADY_PERMITTED",
+          "NORMATIVE_ADOPTED",
+          "EXECUTION_APPROVED",
+          "CAPTURE_APPROVED"
+        ],
+        "type": "object"
+      },
+      "AUTHORIZED_SUBJECT": {
+        "additionalProperties": false,
+        "properties": {
+          "$type": {
+            "const": "ArtifactIdentity"
+          },
+          "kind": {
+            "additionalProperties": false,
+            "properties": {
+              "$enum": {
+                "const": "IdentityKind"
+              },
+              "value": {
+                "enum": [
+                  "CONTENT_IDENTITY",
+                  "AUTHORITY_IDENTITY",
+                  "INSTANCE_IDENTITY",
+                  "RELEASE_IDENTITY",
+                  "CANONICAL_OBJECT_IDENTITY",
+                  "WORKAUTHORIZATION_ID",
+                  "BINDING_DIGEST"
+                ]
+              }
+            },
+            "required": [
+              "$enum",
+              "value"
+            ],
+            "type": "object"
+          },
+          "namespace": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          }
+        },
+        "required": [
+          "$type",
+          "kind",
+          "namespace",
+          "sha256"
+        ],
+        "type": "object"
+      },
+      "CAPTURE_PERSISTENCE_MANDATE": {
+        "required": [
+          "INPUT_HARNESS_IDENTITY",
+          "INPUT_HARNESS_PINS",
+          "SEQUENCE",
+          "LIMIT"
+        ],
+        "type": "object"
+      },
+      "EFFECTIVE_BOUNDARY": {
+        "required": [
+          "SUBJECT",
+          "CHECKPOINT",
+          "CHECKPOINT_BUNDLE",
+          "VARIANTS",
+          "ORACLE_IDENTITIES",
+          "STATIC_HARNESS_IDENTITY",
+          "OUTPUT_PATHS_AND_NATIVE_PUBLICATION_MANIFESTS",
+          "OPERATION_BUDGET",
+          "ACTIVATION"
+        ],
+        "type": "object"
+      },
+      "EVIDENCE_PINS": {
+        "minItems": 1,
+        "type": "array"
+      },
+      "EXECUTION_MANDATE": {
+        "required": [
+          "PERMISSION_REQUIRED",
+          "AUTHORITY_ISSUED",
+          "SUPERVISORS",
+          "WRITERS",
+          "COLD_READERS",
+          "INITIAL_RESTORE_CALLS",
+          "RECORD_RESULT_CALLS",
+          "SAVE_BUNDLE_CALLS",
+          "RETRY_LIMIT",
+          "ALLOWED_WRITE_TARGETS",
+          "EXCLUDED"
+        ],
+        "type": "object"
+      },
+      "FAILURE_RETRY_LIMITS": {
+        "required": [
+          "MAX_RETRIES",
+          "INITIAL_OPERATION_LIMITS",
+          "FAILURE_MATRIX",
+          "RESPONSE"
+        ],
+        "type": "object"
+      },
+      "GENERATION": {
+        "const": "E2-P03-PROSPECTIVE-GENERATION-1"
+      },
+      "HISTORICAL_EXCLUSIONS": {
+        "type": "object"
+      },
+      "INSTRUMENT_ID": {
+        "const": "A15-BOUNDED-PROSPECTIVE-QUALIFICATION-AUTHORITY-INSTRUMENT-PROPOSAL-1"
+      },
+      "INSTRUMENT_STATUS": {
+        "enum": [
+          "PROPOSED_INCOMPLETE_NOT_ISSUED",
+          "PROPOSED_COMPLETE_NOT_ISSUED"
+        ]
+      },
+      "INSTRUMENT_VERSION": {
+        "const": 1
+      },
+      "ISSUANCE_REQUIREMENTS": {
+        "required": [
+          "PREREQUISITES",
+          "ISSUER_EVIDENCE_MUST_BE_EXTERNAL_TO_THIS_DRAFT",
+          "ACTUAL_ISSUANCE_RECORD_REQUIRED",
+          "ISSUED"
+        ],
+        "type": "object"
+      },
+      "ISSUER_AUTHORITY_EVIDENCE": {
+        "required": [
+          "VERIFIED",
+          "APPLICABLE_ISSUING_INSTRUMENT",
+          "ACTUAL_DESIGNATION_PIN",
+          "DIRECT_OR_DELEGATED_POWER"
+        ],
+        "type": "object"
+      },
+      "ISSUER_IDENTITY": {
+        "anyOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "$type": {
+                "const": "ArtifactIdentity"
+              },
+              "kind": {
+                "additionalProperties": false,
+                "properties": {
+                  "$enum": {
+                    "const": "IdentityKind"
+                  },
+                  "value": {
+                    "enum": [
+                      "CONTENT_IDENTITY",
+                      "AUTHORITY_IDENTITY",
+                      "INSTANCE_IDENTITY",
+                      "RELEASE_IDENTITY",
+                      "CANONICAL_OBJECT_IDENTITY",
+                      "WORKAUTHORIZATION_ID",
+                      "BINDING_DIGEST"
+                    ]
+                  }
+                },
+                "required": [
+                  "$enum",
+                  "value"
+                ],
+                "type": "object"
+              },
+              "namespace": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "$type",
+              "kind",
+              "namespace",
+              "sha256"
+            ],
+            "type": "object"
+          },
+          {
+            "minLength": 1,
+            "type": "string"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "ISSUER_ROLE": {
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "LINEAGE": {
+        "const": "E2-P03-PROSPECTIVE-QUALIFICATION-1"
+      },
+      "NORMATIVE_SCOPE_MANDATE": {
+        "required": [
+          "PROPOSED_BOUNDARY",
+          "OWNER_SOURCE_UNIVERSE",
+          "REQUIREDNESS_RULE",
+          "DISJOINT_PARTITION",
+          "PROTECTION_POLICY",
+          "AUTHORITY_REQUIREMENT"
+        ],
+        "type": "object"
+      },
+      "PROTECTED_IDENTITIES": {
+        "properties": {
+          "DIRECT_PROTECTED_CONTENT_IDENTITIES": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "$type": {
+                  "const": "ArtifactIdentity"
+                },
+                "kind": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "$enum": {
+                      "const": "IdentityKind"
+                    },
+                    "value": {
+                      "enum": [
+                        "CONTENT_IDENTITY",
+                        "AUTHORITY_IDENTITY",
+                        "INSTANCE_IDENTITY",
+                        "RELEASE_IDENTITY",
+                        "CANONICAL_OBJECT_IDENTITY",
+                        "WORKAUTHORIZATION_ID",
+                        "BINDING_DIGEST"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "$enum",
+                    "value"
+                  ],
+                  "type": "object"
+                },
+                "namespace": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "$type",
+                "kind",
+                "namespace",
+                "sha256"
+              ],
+              "type": "object"
+            },
+            "minItems": 1,
+            "type": "array"
+          }
+        },
+        "required": [
+          "DIRECT_PROTECTED_CONTENT_IDENTITIES",
+          "PROTECTED_OBJECTS",
+          "POLICY_PIN",
+          "EXACT_FRAME_ORACLES"
+        ],
+        "type": "object"
+      },
+      "REVOCATION_OR_EXPIRATION_RULE": {
+        "required": [
+          "STATUS",
+          "BEFORE_EACH_ACTIVATION",
+          "CANCEL_TRIGGERS",
+          "ACTUAL_REVOCATION_OR_EXPIRATION_AUTHORITY",
+          "CLOCK_OR_TIME_WINDOW_INVENTED"
+        ],
+        "type": "object"
+      },
+      "SCOPE": {
+        "const": "E2-QUALIFICATION-ONLY"
+      }
+    },
+    "required": [
+      "INSTRUMENT_ID",
+      "INSTRUMENT_VERSION",
+      "INSTRUMENT_STATUS",
+      "ISSUER_IDENTITY",
+      "ISSUER_ROLE",
+      "ISSUER_AUTHORITY_EVIDENCE",
+      "AUTHORIZED_SUBJECT",
+      "NORMATIVE_SCOPE_MANDATE",
+      "EXECUTION_MANDATE",
+      "CAPTURE_PERSISTENCE_MANDATE",
+      "EFFECTIVE_BOUNDARY",
+      "SCOPE",
+      "LINEAGE",
+      "GENERATION",
+      "PROTECTED_IDENTITIES",
+      "FAILURE_RETRY_LIMITS",
+      "HISTORICAL_EXCLUSIONS",
+      "EVIDENCE_PINS",
+      "ADOPTION_REQUIREMENTS",
+      "ISSUANCE_REQUIREMENTS",
+      "REVOCATION_OR_EXPIRATION_RULE"
+    ],
+    "type": "object"
+  },
+  "NATIVE_SCHEMA_MODIFIED": false,
+  "REPRESENTATION": "Qualification JSON using existing ArtifactIdentity/context/native operation references where compatible; not native authority installation or an extension to AuthorityClass",
+  "SCHEMA_ID": "A15-PROSPECTIVE-AUTHORITY-INSTRUMENT-DRAFT-SCHEMA-1",
+  "SCHEMA_VERSION": 1,
+  "UNBOUND_RULE": "Null issuer/role and unverified issuer evidence permitted only as explicitly incomplete draft; cannot pass issuance gate. No incomplete selectable instrument."
+}

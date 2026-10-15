@@ -1,0 +1,51 @@
+{
+  "ASSURANCE": "acyclic strategy only; missing authority/evidence blocks implementation instead of introducing circular trust",
+  "CRITICAL_EVIDENCE_AUTHORITY_DEPENDS_ON_FAILURE_EVIDENCE": false,
+  "DEPENDENCY_GRAPH_ACYCLIC": true,
+  "EDGES": [
+    {
+      "from": "BOOTSTRAP_INERT_QUALIFICATION",
+      "to": "CRITICAL_EVIDENCE"
+    },
+    {
+      "from": "BOOTSTRAP_INERT_QUALIFICATION",
+      "to": "WHOLE_WORKLOAD_WATCHDOG"
+    },
+    {
+      "from": "CRITICAL_EVIDENCE",
+      "to": "PROSPECTIVE_EVIDENCE_AUTHORITY"
+    },
+    {
+      "from": "CRITICAL_EVIDENCE",
+      "to": "BOUNDED_CAUSAL_SCHEMA"
+    },
+    {
+      "from": "WHOLE_WORKLOAD_WATCHDOG",
+      "to": "PROCESS_BOUNDARY"
+    },
+    {
+      "from": "WHOLE_WORKLOAD_WATCHDOG",
+      "to": "INDEPENDENT_WATCHDOG_TRUST_ROOT"
+    },
+    {
+      "from": "PROCESS_BOUNDARY",
+      "to": "INDEPENDENT_OS_AUTHORITY_AND_EVIDENCE"
+    },
+    {
+      "from": "HOST_PIDS_PROBE",
+      "to": "BOOTSTRAP_INERT_QUALIFICATION"
+    },
+    {
+      "from": "H77_02_GATE",
+      "to": "HOST_PIDS_PROBE"
+    },
+    {
+      "from": "A15_QUALIFICATION",
+      "to": "H77_02_GATE"
+    }
+  ],
+  "EDGE_DIRECTION": "requires",
+  "INERT_QUALIFICATION_DEPENDS_ON_FUTURE_HOST_PROBE": false,
+  "QUALIFIED_INDEPENDENT_TRUST_ROOT_FOUND": false,
+  "WATCHDOG_QUALIFICATION_DEPENDS_ON_ITS_OWN_OUTPUT": false
+}

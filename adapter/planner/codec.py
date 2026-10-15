@@ -17,11 +17,15 @@ TYPES = {name: cls for name, cls in vars(m).items()
          if isinstance(cls, type) and cls.__module__ == m.__name__ and
          (is_dataclass(cls) or issubclass(cls, Enum))}
 SET_FIELDS = {
+    m.InstallDefinition: {'source_additions'},
     m.EvidenceSourceAdmission: {"requirements", "source_additions", "field_provenance"},
     m.EvidenceIngressContract: {"requirements"},
     m.SourceInvalidation: {'changed'},
+    m.ProofDependencyChange: {'dependencies'},
+    m.ActionReevaluation: {'dependencies'},
+    m.ReevaluationRecord: {'dependencies'},
     m.BudgetProofMatrix: {'evidence'},
-    m.Snapshot: {'budget_matrices', 'actions', 'statuses', 'roots', 'slots', 'knowledge', 'assertions', 'entities', 'predicates', 'information', 'decisions', 'evidence_requirements', 'external_gates', 'receipt_admissions', 'boundaries', 'goals', 'validation_instances'},
+    m.Snapshot: {'budget_matrices', 'actions', 'statuses', 'roots', 'slots', 'knowledge', 'assertions', 'entities', 'predicates', 'information', 'decisions', 'evidence_requirements', 'external_gates', 'receipt_admissions', 'boundaries', 'goals', 'validation_instances', 'proof_contracts', 'typed_proofs'},
     m.Action: {'prerequisites', 'accepted_inventory', 'evidence', 'requirements'},
     m.RootCondition: {'evidence'}, m.ValueSlot: {'evidence', 'requirements', 'root_requirements'},
     m.KnowledgeRecord: {'evidence'}, m.GraphAssertion: {'depends_on'},
@@ -33,7 +37,8 @@ SET_FIELDS = {
     m.EvaluationContext: {'allowed_effects'}, m.InformationModel: {'alternatives', 'partitions'},
     m.Decision: {'depends_on', 'interferes_with', 'downstream'},
     m.DecisionDossier: {'alternatives', 'checks', 'required_facts', 'deferred_downstream_facts'},
-    m.SuppliedResult: {'knowledge'}, m.PersistenceBundle: {'sources'},
+    m.SuppliedResult: {'knowledge'}, m.PersistenceBundle: {'sources', 'dossier_materializations'},
+    m.DossierMaterializationBinding: {'source_additions'},
 }
 
 
@@ -45,19 +50,38 @@ SET_FIELDS = {
 # Its absent default preserves existing bytes and never qualifies an old unknown gate.
 # Only these explicitly versioned additions may be absent.
 P03_FIELDS = {
-    m.ReceiptAdmission: {"dependencies"},
+    m.ReceiptAdmission: {"dependencies", "attestation"},
     m.ExternalGate: {"resolution_contracts"},
     m.ExecutionEvent: {"resume_binding"},
     m.Predicate: {'obligation', 'unavailable', 'required_outcome'},
     m.KnowledgeRecord: {'producer', 'outcome'},
-    m.Snapshot: {'budget_matrices', 'entities', 'predicates', 'context', 'information', 'decisions', 'evidence_requirements', 'external_gates', 'receipt_admissions', 'receipt_observations', 'boundaries', 'goals', 'validation_instances'},
-    m.Action: {'requirements', 'authority', 'stage', 'cost', 'cost_unit', 'pass_model_complete', 'accepted_result', 'prepared_dossier', 'qualification'},
+    m.Snapshot: {'budget_matrices', 'entities', 'predicates', 'context', 'information', 'decisions', 'evidence_requirements', 'external_gates', 'receipt_admissions', 'receipt_observations', 'boundaries', 'goals', 'validation_instances', 'proof_contracts', 'typed_proofs', 'reevaluations'},
+    m.Action: {'requirements', 'authority', 'stage', 'cost', 'cost_unit', 'pass_model_complete', 'accepted_result', 'prepared_dossier', 'qualification', 'blocked_terminal'},
+    m.ActionStatus: {'terminal_failure'},
+    m.TypedProofContract: {'validation'},
+    m.TypedProof: {'validation'},
     m.RootCondition: {'predicate'},
     m.SuppliedResult: {'expected_snapshot', 'dossier'},
     m.ValueSlot: {'value', 'requirements', 'root_requirements'},
+    m.PersistenceBundle: {'dossier_materializations'},
     m.GraphAssertion: {'relation', 'subject', 'object', 'ordering_justification'},
     m.GraphEntity: {'decision', 'choice'},
 }
+SET_FIELDS[m.Snapshot].add('installed_definitions')
+P03_FIELDS[m.Snapshot].add('installed_definitions')
+SET_FIELDS[m.Snapshot].add('ingress_contracts')
+P03_FIELDS[m.Snapshot].add('ingress_contracts')
+P03_FIELDS[m.EvidenceSourceAdmission] = {'attestation_operand'}
+P03_FIELDS[m.InstallDefinition] = {'authority_bindings'}
+SET_FIELDS[m.InstallDefinition].add('authority_bindings')
+P03_FIELDS[m.InstallDefinition].add('definition_sources')
+SET_FIELDS[m.InstallDefinition].add('definition_sources')
+for name in ('validation_contracts','validation_support_contracts','validation_transaction_contracts','validation_results','validation_support_records'):
+    SET_FIELDS[m.Snapshot].add(name)
+    P03_FIELDS[m.Snapshot].add(name)
+for cls in (m.ValidationAssessment,m.ValidationResultRecord,m.ValidationSupportRecord):
+    SET_FIELDS[cls]={'input_identities'}
+SET_FIELDS[m.ValidationSupportRecord].add('requirements')
 
 
 def parse_json(data, allow_floats=False):
@@ -302,12 +326,21 @@ def invalidate_sources(snapshot, changed):
     stale_knowledge = {k.id for k in snapshot.knowledge if knowledge(k).validation is m.ValidationState.STALE}
     stale_roots = {r.id for r in snapshot.roots if affected(r) or r.state is m.ConditionState.STALE}
     stale_obligations={r.id for r in snapshot.evidence_requirements if r.provenance.identity in changed}
+    from .installation import descriptor, support_ids
+    for record in snapshot.installed_definitions:
+        d,native=descriptor(record.request.definition)
+        if d['definition_type']=='AUTHENTICATION_DEFINITION_SET' and (record.validation is m.ValidationState.STALE or support_ids(record.request).intersection(changed)):
+            stale_entities.update((native['authority'].id,native['attestor'].id))
     for admission in snapshot.receipt_admissions:
         auth=next(p for p in snapshot.predicates if p.id==admission.authentication)
         if admission.artifact in stale_entities or auth.entity in stale_entities or admission.provenance.identity in changed or any(p.identity in changed for p in admission.dependencies):
             if any(p.identity in changed for p in admission.dependencies):
                 stale_entities.add(admission.artifact)
             stale_obligations.update(c.requirement for c in admission.claims)
+    for result in snapshot.validation_results:
+        if changed.intersection(result.input_identities):
+            stale_entities.add(result.evidence)
+            stale_obligations.update(c.requirement for a in snapshot.receipt_admissions if a.artifact==result.evidence for c in a.claims)
     stale_predicates = {p.id for p in snapshot.predicates if p.obligation in stale_obligations}
     while True:
         new_predicates = stale_predicates | {p.id for p in snapshot.predicates if
@@ -321,6 +354,10 @@ def invalidate_sources(snapshot, changed):
         stale_predicates, stale_roots = new_predicates, new_roots
     held = {a.id for a in snapshot.actions if affected(a) or a.source.identity in changed or
             any(affected(k) or k.provenance.identity in changed for k in a.accepted_inventory)}
+    held.update(m.ActionId(descriptor(x.request.definition)[0]['subject']['action'])
+        for x in snapshot.installed_definitions
+        if descriptor(x.request.definition)[0]['definition_type'] == 'ACTION_DEFINITION' and
+        (x.validation is m.ValidationState.STALE or support_ids(x.request).intersection(changed)))
     held.update(a.id for a in snapshot.actions if stale_predicates.intersection(a.requirements) or
                 a.authority in stale_predicates)
     def stale_dossier(dossier):
@@ -347,10 +384,17 @@ def invalidate_sources(snapshot, changed):
     stale_external={g.id for g in snapshot.external_gates if g.provenance.identity in changed or
         any(c.provenance.identity in changed for c in g.resolution_contracts) or any(
         r.provenance.identity in changed for r in snapshot.evidence_requirements if r.id in g.requirements)}
+    from .installation import descriptor, support_ids
+    stale_external.update(m.GateId(descriptor(x.request.definition)[0]['subject']['gate'])
+        for x in snapshot.installed_definitions if 'gate' in descriptor(x.request.definition)[0]['subject'] and
+        (x.validation is m.ValidationState.STALE or support_ids(x.request).intersection(changed)))
     for gate in snapshot.external_gates:
         if gate.id in stale_external or any(o.gate==gate.id and o.artifact in stale_entities for o in snapshot.receipt_observations):
             held.update(gate.reentry+gate.held_actions)
     invalidated = replace(snapshot,
+        installed_definitions=tuple(replace(x,validation=m.ValidationState.STALE) if support_ids(x.request).intersection(changed) else x for x in snapshot.installed_definitions),
+        proof_contracts=tuple(replace(p, validation=m.ValidationState.STALE) if p.provenance.identity in changed else p for p in snapshot.proof_contracts),
+        typed_proofs=tuple(replace(p, validation=m.ValidationState.STALE) if p.provenance.identity in changed else p for p in snapshot.typed_proofs),
         external_gates=tuple(replace(g,validation=m.ValidationState.STALE) if g.id in stale_external else g for g in snapshot.external_gates),
         decisions=tuple(decision_states),
         entities=tuple(replace(e, validation=m.ValidationState.STALE) if e.id in stale_entities else e
@@ -365,7 +409,7 @@ def invalidate_sources(snapshot, changed):
         knowledge=tuple(knowledge(k) for k in snapshot.knowledge),
         actions=tuple(replace(a, qualification=m.ValidationState.STALE if a.id in held else a.qualification, prepared_dossier=stale_dossier(a.prepared_dossier), accepted_inventory=tuple(knowledge(k) for k in a.accepted_inventory))
                       for a in snapshot.actions),
-        statuses=tuple(replace(s, state=m.ActionState.WAITING) if s.id in held and s.state is not m.ActionState.COMPLETED else s
+        statuses=tuple(replace(s, state=m.ActionState.WAITING) if s.id in held and s.state is not m.ActionState.COMPLETED and not s.terminal_failure else s
                        for s in snapshot.statuses),
         validation_instances=tuple(
             replace(v, result=m.ValidationOutcome.STALE, currentness=m.ValidationState.STALE)
@@ -383,7 +427,7 @@ def invalidate_sources(snapshot, changed):
         slots=tuple(replace(v, state=m.SlotState.STALE) if v.id in unavailable else v for v in invalidated.slots),
         knowledge=tuple(replace(k, validation=m.ValidationState.STALE) if k.id in unavailable else k for k in invalidated.knowledge),
         statuses=tuple(replace(s, state=m.ActionState.WAITING) if s.id in unavailable and
-            s.state is not m.ActionState.COMPLETED else s for s in invalidated.statuses))
+            s.state is not m.ActionState.COMPLETED and not s.terminal_failure else s for s in invalidated.statuses))
 
 
 def resume_binding(bundle):
@@ -401,7 +445,7 @@ def _event_identity(sequence, parent, parent_event, result, after, resume_bindin
     return _identity(canonical_bytes(body), 'planner-event-v1')
 
 
-def _replay(bundle):
+def _replay(bundle, *, snapshot_resolver=None, _limit=None):
     m.validate_types(bundle, m.PersistenceBundle)
     from .selector import validate_policy
     validate_policy(bundle.policy, bundle.policy_version)
@@ -413,6 +457,8 @@ def _replay(bundle):
         raise m.PlannerError('full import requires P06 policy')
     m.validate_model(bundle.initial)
     m.validate_model(bundle.current)
+    if bundle.initial.installed_definitions or bundle.initial.ingress_contracts or bundle.initial.validation_contracts or bundle.initial.validation_results or bundle.initial.validation_support_records:
+        raise m.PlannerError('installation history requires its event-bearing prefix')
     if bundle.policy_version == 'E1-SELECTION-1-P01-SUBSET':
         for state in (bundle.initial, bundle.current):
             if state.entities or state.predicates or state.context or state.information or any(
@@ -434,6 +480,13 @@ def _replay(bundle):
     for pin in bundle.sources + (bundle.policy,):
         validate_pin(pin)
     m.unique(bundle.sources, lambda p: (p.path, p.pointer, p.profile))
+    m.unique(bundle.dossier_materializations, lambda b: b.event_identity)
+    event_ids = {e.identity for e in bundle.events}
+    if any(b.event_identity not in event_ids for b in bundle.dossier_materializations):
+        raise m.PlannerError('DOSSIER_ORPHAN_BINDING')
+    bindings = {b.event_identity: b for b in bundle.dossier_materializations}
+    if _limit is not None and (type(_limit) is not int or not 0 <= _limit <= len(bundle.events)):
+        raise m.PlannerError('invalid ledger prefix length')
     # Every provenance source must be pinned in the bundle, not just named in state.
     raw_sources = {(p.path, p.identity) for p in bundle.sources if p.profile is m.HashProfile.RAW}
     for snapshot in (bundle.initial, bundle.current):
@@ -442,27 +495,35 @@ def _replay(bundle):
         provenances += [e.provenance for e in snapshot.entities] + [i.provenance for i in snapshot.information]
         provenances += [k.provenance for a in snapshot.actions for k in a.accepted_inventory]
         provenances += decision_provenances(snapshot) + external_provenances(snapshot)
+        provenances += [p.provenance for p in snapshot.proof_contracts + snapshot.typed_proofs + snapshot.reevaluations]
         if any((p.path, p.identity) not in raw_sources for p in provenances):
             raise m.PlannerError('missing provenance source pin')
-    admissions = [e.result for e in bundle.events if type(e.result) is m.EvidenceSourceAdmission]
+    from . import installation
+    admissions = [e.result for e in bundle.events if type(e.result) in (m.EvidenceSourceAdmission,m.InstallDefinition)]
     additions = tuple(p for a in admissions for p in a.source_additions)
+    additions += tuple(p for b in bundle.dossier_materializations for p in b.source_additions)
     m.unique(additions, lambda p: (p.path,p.pointer,p.profile))
     if any(p not in bundle.sources for p in additions):
         raise m.PlannerError('SOURCE_ADDITIONS_MISSING')
     prefix_sources = tuple(p for p in bundle.sources if p not in additions)
-    if admissions:
+    if admissions or bindings:
         _check_snapshot_pins(bundle.initial, prefix_sources)
     state, parent_event = bundle.initial, None
     for sequence, event in enumerate(bundle.events, 1):
+        if _limit is not None and sequence > _limit:
+            break
         if event.sequence != sequence or event.parent_snapshot != snapshot_id(state) or \
                 event.parent_event != parent_event:
             raise m.PlannerError('ledger sequence/parent mismatch')
         if event.identity != _event_identity(sequence, event.parent_snapshot,
                                              parent_event, event.result, event.after_snapshot, event.resume_binding):
             raise m.PlannerError('event identity mismatch')
+        prior_ids = {e.identity for e in bundle.events[:sequence-1]}
+        prefix_bindings = tuple(b for b in bundle.dossier_materializations if b.event_identity in prior_ids)
         if type(event.result) is m.EvidenceSourceAdmission:
             a = event.result
-            prefix = replace(bundle, events=bundle.events[:sequence-1], current=state, sources=prefix_sources)
+            prefix = replace(bundle, events=bundle.events[:sequence-1], current=state, sources=prefix_sources,
+                             dossier_materializations=prefix_bindings)
             expected = _identity(_bundle_bytes_admitted(prefix), 'planner-bundle-v1')
             if a.expected_bundle != expected or a.expected_parent_event != parent_event:
                 raise m.PlannerError('ADMISSION_PREFIX_MISMATCH')
@@ -483,19 +544,41 @@ def _replay(bundle):
             if type(follow) is not m.ExternalEvent or follow.stage is not m.ExternalStage.EVIDENCE_RECEIVED or follow.gate != a.gate or follow.artifact != a.entity.id:
                 raise m.PlannerError('ADMISSION_RECEIPT_PAIR')
             prefix_sources += a.source_additions
-        state = apply_event(state, event.result).snapshot
-        if admissions:
+        if type(event.result) is m.InstallDefinition:
+            prefix = replace(bundle, events=bundle.events[:sequence-1], current=state, sources=prefix_sources,
+                             dossier_materializations=prefix_bindings)
+            installation.validate_prefix(prefix,event.result)
+            prefix_sources += event.result.source_additions
+        if type(event.result) is m.ValidationSupportAdmission:
+            from . import validation_transaction as validation
+            prefix = replace(bundle,events=bundle.events[:sequence-1],current=state,sources=prefix_sources,
+                             dossier_materializations=prefix_bindings)
+            validation.validate_prefix(prefix,event.result)
+        if event.identity in bindings:
+            from .dossier_transaction import historical_projection
+            binding = bindings[event.identity]
+            prefix = replace(bundle, events=bundle.events[:sequence-1], current=state, sources=prefix_sources,
+                             dossier_materializations=prefix_bindings)
+            state = historical_projection(prefix, binding, event, snapshot_resolver)
+            prefix_sources += binding.source_additions
+        else:
+            state = apply_event(state, event.result).snapshot
+        if admissions or bindings:
             _check_snapshot_pins(state, prefix_sources)
+        if bindings and any((v.provenance.path, v.provenance.identity) not in
+                {(p.path, p.identity) for p in prefix_sources if p.profile is m.HashProfile.RAW}
+                for v in state.validation_instances):
+            raise m.PlannerError('DOSSIER_VALIDATION_SOURCE_NOT_AVAILABLE')
         if event.after_snapshot != snapshot_id(state):
             raise m.PlannerError('event outcome mismatch')
         parent_event = event.identity
-    if snapshot_id(state) != snapshot_id(bundle.current):
+    if (_limit is None or _limit == len(bundle.events)) and snapshot_id(state) != snapshot_id(bundle.current):
         raise m.PlannerError('ledger/current state mismatch')
     return state
 
 
-def append_event(bundle, event):
-    _replay(bundle)
+def append_event(bundle, event, *, snapshot_resolver=None):
+    _replay(bundle, snapshot_resolver=snapshot_resolver)
     m.validate_types(event, m.ExecutionEvent)
     for existing in bundle.events:
         if existing.identity == event.identity:
@@ -504,12 +587,14 @@ def append_event(bundle, event):
             return bundle
     after = apply_event(bundle.current, event.result).snapshot
     updated = replace(bundle, events=bundle.events + (event,), current=after)
-    _replay(updated)
+    _replay(updated, snapshot_resolver=snapshot_resolver)
     return updated
 
 
-def record_result(bundle, supplied):
-    _replay(bundle)
+def record_result(bundle, supplied, *, snapshot_resolver=None):
+    if type(supplied) in (m.InstallDefinition,m.ValidationSupportAdmission):
+        raise m.PlannerError('installation requires trusted authority transaction')
+    _replay(bundle, snapshot_resolver=snapshot_resolver)
     after = apply_event(bundle.current, supplied).snapshot
     sequence = len(bundle.events) + 1
     parent = snapshot_id(bundle.current)
@@ -519,20 +604,20 @@ def record_result(bundle, supplied):
         (type(supplied) is m.ExternalEvent and supplied.stage is m.ExternalStage.DEPENDENT_ACTION_REENTRY)) else None
     event = m.ExecutionEvent(sequence, parent, parent_event, supplied, after_id,
         _event_identity(sequence, parent, parent_event, supplied, after_id, binding), binding)
-    return append_event(bundle, event)
+    return append_event(bundle, event, snapshot_resolver=snapshot_resolver)
 
 
 def _bundle_bytes_admitted(bundle):
     return canonical_bytes({'schema': 'PLANNER-BUNDLE-1', 'bundle': _wire(bundle)})
 
 
-def bundle_bytes(bundle):
-    _replay(bundle)
+def bundle_bytes(bundle, *, snapshot_resolver=None):
+    _replay(bundle, snapshot_resolver=snapshot_resolver)
     return _bundle_bytes_admitted(bundle)
 
 
-def bundle_id(bundle):
-    return _identity(bundle_bytes(bundle), 'planner-bundle-v1')
+def bundle_id(bundle, *, snapshot_resolver=None):
+    return _identity(bundle_bytes(bundle, snapshot_resolver=snapshot_resolver), 'planner-bundle-v1')
 
 
 def _verify_sources(bundle, root):
@@ -563,8 +648,34 @@ def _write_immutable(directory, name, raw):
     return target
 
 
-def save_bundle(bundle, output_dir, repo_root):
-    raw = bundle_bytes(bundle)
+def _snapshot_resolver(output_dir):
+    """Load only immutable native Snapshot objects, never latest-state fallback."""
+    directory = Path(output_dir).absolute()
+    if directory.resolve() != directory:
+        raise m.PlannerError('symlinked snapshot archive')
+    def resolve(identity):
+        m.validate_types(identity, m.ArtifactIdentity)
+        if identity.kind is not m.IdentityKind.CONTENT_IDENTITY or identity.namespace != 'planner-snapshot-v1':
+            raise m.PlannerError('DOSSIER_ARCHIVE_IDENTITY_DOMAIN')
+        path = directory / ('snapshot-' + identity.sha256 + '.json')
+        if path.is_symlink() or not path.is_file():
+            raise m.PlannerError('DOSSIER_ARCHIVE_MISSING')
+        try:
+            raw = path.read_bytes()
+        except OSError as exc:
+            raise m.PlannerError('DOSSIER_ARCHIVE_UNAVAILABLE') from exc
+        snapshot = decode_snapshot(raw)
+        if snapshot_bytes(snapshot) != raw or snapshot_id(snapshot) != identity:
+            raise m.PlannerError('DOSSIER_ARCHIVE_IDENTITY')
+        return snapshot
+    return resolve
+
+
+snapshot_resolver = _snapshot_resolver
+
+
+def save_bundle(bundle, output_dir, repo_root, *, snapshot_resolver=None, failure_hook=None):
+    raw = bundle_bytes(bundle, snapshot_resolver=snapshot_resolver)
     _verify_sources(bundle, repo_root)
     directory = Path(output_dir).absolute()
     if directory.resolve() != directory:
@@ -574,10 +685,21 @@ def save_bundle(bundle, output_dir, repo_root):
     if any(directory == frozen or frozen in directory.parents for frozen in frozen_roots):
         raise m.PlannerError('E1 is read-only')
     directory.mkdir(parents=True, exist_ok=True)
+    if bundle.dossier_materializations:
+        from .dossier_transaction import archive_objects
+        for snapshot in archive_objects(bundle, snapshot_resolver):
+            _write_immutable(directory, 'snapshot-' + snapshot_id(snapshot).sha256 + '.json', snapshot_bytes(snapshot))
+        if failure_hook:
+            failure_hook('after_archive_stage')
     for event in bundle.events:
         _write_immutable(directory, 'event-' + event.identity.sha256 + '.json', canonical_bytes(_wire(event)))
+    if failure_hook:
+        failure_hook('after_event_stage')
     identity = _identity(raw, 'planner-bundle-v1')
-    return _write_immutable(directory, 'bundle-' + identity.sha256 + '.json', raw), identity
+    path = _write_immutable(directory, 'bundle-' + identity.sha256 + '.json', raw)
+    if failure_hook:
+        failure_hook('after_bundle_stage')
+    return path, identity
 
 
 def restore(path, expected_identity, repo_root):
@@ -595,7 +717,7 @@ def restore(path, expected_identity, repo_root):
     if type(value) is not dict or set(value) != {'schema', 'bundle'} or value['schema'] != 'PLANNER-BUNDLE-1':
         raise m.PlannerError('unknown bundle schema')
     bundle = _unwire(value['bundle'])
-    if bundle_bytes(bundle) != raw:
+    if bundle_bytes(bundle, snapshot_resolver=snapshot_resolver(path.parent)) != raw:
         raise m.PlannerError('noncanonical bundle')
     _verify_sources(bundle, repo_root)
     # Verify immutable ledger artifacts too, not only the embedded copy.
@@ -617,7 +739,9 @@ def decision_provenances(snapshot):
 
 
 def external_provenances(snapshot):
-    return [p for a in snapshot.receipt_admissions for p in a.dependencies] + [c.provenance for g in snapshot.external_gates for c in g.resolution_contracts] + [item.provenance for seq in (snapshot.evidence_requirements,snapshot.external_gates,
+    from .installation import provenances
+    validation_sources = [x.provenance for x in snapshot.validation_results + snapshot.validation_support_records]
+    return validation_sources + provenances(snapshot) + [p for a in snapshot.receipt_admissions for p in a.dependencies] + [c.provenance for g in snapshot.external_gates for c in g.resolution_contracts] + [item.provenance for seq in (snapshot.evidence_requirements,snapshot.external_gates,
             snapshot.receipt_admissions,snapshot.boundaries,snapshot.goals) for item in seq]
 
 
@@ -655,9 +779,12 @@ def _transaction_directory(output_dir, repo_root):
     return directory
 
 
-def _publish_head(directory, bundle, previous, command, repo_root):
-    path, identity = save_bundle(bundle, directory, repo_root)
+def _publish_head(directory, bundle, previous, command, repo_root, *, snapshot_resolver=None, failure_hook=None):
+    path, identity = save_bundle(bundle, directory, repo_root, snapshot_resolver=snapshot_resolver,
+                                 failure_hook=failure_hook)
     _fsync_directory(directory)
+    if failure_hook:
+        failure_hook('after_files_fsync')
     raw = canonical_bytes({'schema':'PLANNER-HEAD-1', 'bundle':_wire(identity),
                            'previous':_wire(previous), 'command':_wire(command)})
     fd, temporary = tempfile.mkstemp(prefix='.head-',dir=str(directory))
@@ -665,8 +792,12 @@ def _publish_head(directory, bundle, previous, command, repo_root):
         with os.fdopen(fd,'wb') as stream:
             stream.write(raw); stream.flush(); os.fsync(stream.fileno())
         _verify_sources(bundle, repo_root)
+        if failure_hook:
+            failure_hook('before_head_replace')
         os.replace(temporary, str(directory/'HEAD.json'))
         _fsync_directory(directory)
+        if failure_hook:
+            failure_hook('after_head_replace')
     finally:
         if os.path.exists(temporary):
             os.unlink(temporary)
@@ -694,8 +825,13 @@ def _read_head(directory, fallback, repo_root):
     if count >= 2 and type(bundle.events[-2].result) is m.EvidenceSourceAdmission:
         prior_count = count-2
         command = bundle.events[-2].result.command_key
-    prefix = _prefix_bundle(bundle,prior_count)
-    if _unwire(value['previous']) != bundle_id(prefix) or _unwire(value['command']) != command:
+    if type(bundle.events[-1].result) is m.InstallDefinition:
+        command = bundle.events[-1].result.command_key
+    if type(bundle.events[-1].result) is m.ValidationSupportAdmission:
+        command = bundle.events[-1].result.command.command_key
+    resolver = snapshot_resolver(directory)
+    prefix = _prefix_bundle(bundle,prior_count,snapshot_resolver=resolver)
+    if _unwire(value['previous']) != bundle_id(prefix,snapshot_resolver=resolver) or _unwire(value['command']) != command:
         raise m.PlannerError('HEAD_AUDIT_MISMATCH')
     return bundle
 
@@ -725,7 +861,38 @@ def _extend_private(bundle, supplied):
     return replace(bundle,events=bundle.events+(event,),current=after)
 
 
-def admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root):
+def preflight_external_evidence(bundle, request, source_bytes, repo_root, *, expected_binding=None):
+    """Execution-equivalent private projection; never publishes sources or HEAD."""
+    m.validate_types(request,m.EvidenceSourceAdmission)
+    from .evidence_transaction import trusted_binding
+    trusted_binding(request,expected_binding)
+    _replay(bundle); _verify_sources(bundle,repo_root)
+    if request.expected_bundle != bundle_id(bundle):
+        raise m.PlannerError('PARENT_MISMATCH')
+    current = bundle
+    if request.expected_parent_event != (current.events[-1].identity if current.events else None):
+        raise m.PlannerError('PARENT_MISMATCH')
+    if type(source_bytes) is not dict or set(source_bytes) != {p.path for p in request.source_additions}:
+        raise m.PlannerError('SOURCE_BYTES_SET')
+    for pin in request.source_additions:
+        validate_pin(pin)
+        raw = source_bytes[pin.path]
+        if type(raw) is not bytes or pin.profile is not m.HashProfile.RAW or _identity(raw,'raw-file-sha256') != pin.identity:
+            raise m.PlannerError('SOURCE_CONTENT_PIN')
+        if raw.decode('utf-8') != request.entity.provenance.excerpt:
+            raise m.PlannerError('SOURCE_BYTES_PROVENANCE')
+    from .evidence_transaction import receipt_oracle, check_receipt_postcondition
+    expected_post = receipt_oracle(current.current,request)
+    admitted = _extend_private(current,request)
+    receipt = m.ExternalEvent(request.gate,m.ExternalStage.EVIDENCE_RECEIVED,snapshot_id(admitted.current),request.entity.id)
+    updated = _extend_private(admitted,receipt)
+    updated = replace(updated,sources=current.sources+request.source_additions)
+    _replay(updated)
+    check_receipt_postcondition(expected_post,updated.current)
+    return updated
+
+
+def admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root, *, expected_binding=None):
     """Commit a new source admission + receipt, or return an exact committed retry.
 
     bundle is the caller's trusted parent, not an arbitrary discovered head. The
@@ -733,6 +900,8 @@ def admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root
     No validation or reentry event is synthesized here.
     """
     m.validate_types(request,m.EvidenceSourceAdmission)
+    from .evidence_transaction import trusted_binding
+    trusted_binding(request,expected_binding)
     _replay(bundle); _verify_sources(bundle,repo_root)
     directory = _transaction_directory(output_dir,repo_root)
     with _transaction_lock(directory):
@@ -748,33 +917,16 @@ def admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root
                 if request.expected_bundle != bundle_id(bundle):
                     raise m.PlannerError('RETRY_PARENT_MISMATCH')
                 original_events = current.events[:index+2]
-                later = {p for e in current.events[index+2:] if type(e.result) is m.EvidenceSourceAdmission for p in e.result.source_additions}
+                later = {p for e in current.events[index+2:] if type(e.result) in (m.EvidenceSourceAdmission,m.InstallDefinition) for p in e.result.source_additions}
                 state = current.initial
                 for old_event in original_events:
                     state = apply_event(state,old_event.result).snapshot
                 original = replace(current,events=original_events,current=state,sources=tuple(p for p in current.sources if p not in later))
                 return current,bundle_id(original),True
-        if bundle_id(current) != bundle_id(bundle) or request.expected_bundle != bundle_id(current):
+        if bundle_id(current) != bundle_id(bundle):
             raise m.PlannerError('PARENT_MISMATCH')
-        if request.expected_parent_event != (current.events[-1].identity if current.events else None):
-            raise m.PlannerError('PARENT_MISMATCH')
-        if type(source_bytes) is not dict or set(source_bytes) != {p.path for p in request.source_additions}:
-            raise m.PlannerError('SOURCE_BYTES_SET')
-        for pin in request.source_additions:
-            validate_pin(pin)
-            raw = source_bytes[pin.path]
-            if type(raw) is not bytes or pin.profile is not m.HashProfile.RAW or _identity(raw,'raw-file-sha256') != pin.identity:
-                raise m.PlannerError('SOURCE_CONTENT_PIN')
-            if raw.decode('utf-8') != request.entity.provenance.excerpt:
-                raise m.PlannerError('SOURCE_BYTES_PROVENANCE')
-        admitted = _extend_private(current,request)
-        receipt = m.ExternalEvent(request.gate,m.ExternalStage.EVIDENCE_RECEIVED,snapshot_id(admitted.current),request.entity.id)
-        updated = _extend_private(admitted,receipt)
-        updated = replace(updated,sources=current.sources+request.source_additions)
-        _replay(updated)
-        from .core import recompute
-        if recompute(current.current) != recompute(updated.current):
-            raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+        updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+                                             expected_binding=expected_binding)
         # Validate everything before creating source files. Orphan immutable files
         # after a crash are not visible to a committed canonical head.
         for pin in request.source_additions:
@@ -787,22 +939,32 @@ def admit_external_evidence(bundle, request, source_bytes, output_dir, repo_root
         return updated,identity,False
 
 
-def commit_event(bundle, supplied, output_dir, repo_root):
+def commit_event(bundle, supplied, output_dir, repo_root, *, snapshot_resolver=None):
     """Durable later validation/reentry/invalidation under the same head lock."""
     directory = _transaction_directory(output_dir,repo_root)
     with _transaction_lock(directory):
         current = _read_head(directory,bundle,repo_root)
-        if bundle_id(current) != bundle_id(bundle):
+        resolver = _snapshot_resolver(directory) if (directory/'HEAD.json').exists() else snapshot_resolver
+        if bundle_id(current,snapshot_resolver=resolver) != bundle_id(bundle,snapshot_resolver=resolver):
             raise m.PlannerError('PARENT_MISMATCH')
         _verify_sources(current,repo_root)
-        updated = record_result(current,supplied)
-        identity = _publish_head(directory,updated,bundle_id(current),None,repo_root)
+        updated = record_result(current,supplied,snapshot_resolver=resolver)
+        identity = _publish_head(directory,updated,bundle_id(current,snapshot_resolver=resolver),None,repo_root,
+                                 snapshot_resolver=resolver)
         return updated,identity
 
 
-def _prefix_bundle(bundle, count):
-    state = bundle.initial
-    for event in bundle.events[:count]:
-        state = apply_event(state,event.result).snapshot
-    later = {p for e in bundle.events[count:] if type(e.result) is m.EvidenceSourceAdmission for p in e.result.source_additions}
-    return replace(bundle,events=bundle.events[:count],current=state,sources=tuple(p for p in bundle.sources if p not in later))
+def _prefix_bundle(bundle, count, *, snapshot_resolver=None):
+    if bundle.dossier_materializations:
+        state = _replay(bundle,snapshot_resolver=snapshot_resolver,_limit=count)
+    else:
+        if type(count) is not int or not 0 <= count <= len(bundle.events):
+            raise m.PlannerError('invalid ledger prefix length')
+        state = bundle.initial
+        for event in bundle.events[:count]:
+            state = apply_event(state,event.result).snapshot
+    later = {p for e in bundle.events[count:] if type(e.result) in (m.EvidenceSourceAdmission,m.InstallDefinition) for p in e.result.source_additions}
+    included = {e.identity for e in bundle.events[:count]}
+    later.update(p for b in bundle.dossier_materializations if b.event_identity not in included for p in b.source_additions)
+    return replace(bundle,events=bundle.events[:count],current=state,sources=tuple(p for p in bundle.sources if p not in later),
+                   dossier_materializations=tuple(b for b in bundle.dossier_materializations if b.event_identity in included))

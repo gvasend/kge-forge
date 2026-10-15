@@ -1,0 +1,80 @@
+{
+  "APPROVAL_EVIDENCE": null,
+  "CONTENT": {
+    "CONTRACT_PINS": [
+      {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/static-harness-contract.json",
+        "RAW_SHA256": "0bf290c46f0266a9450cdd95df2be9b90f127c36fc1d2a9fb3a9b22be822290d"
+      },
+      {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+        "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+      },
+      {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/resume-comparison-schema.json",
+        "RAW_SHA256": "ec21b5989f717d18c50b34193a4670d5ded1d4d0cd34234c562e697aece123c7"
+      }
+    ],
+    "EXCLUDED": [
+      "actual A15 variants or their native restore/apply/record/save/replay",
+      "native runtime or selected V3 modification",
+      "new baseline or fixture pins",
+      "frozen or historical evidence rewrite",
+      "E1",
+      "A14 rerun",
+      "production/external/government permissions",
+      "execution/capture grants",
+      "unbounded retries"
+    ],
+    "ISSUED_GRANT": null,
+    "PERMITTED_SOURCE_FILES": [
+      "adapter/qualification_a15/__init__.py",
+      "adapter/qualification_a15/contracts.py",
+      "adapter/qualification_a15/supervisor.py",
+      "adapter/qualification_a15/worker.py",
+      "adapter/qualification_a15/reader.py",
+      "adapter/tests/test_qualification_a15_harness.py"
+    ],
+    "PERMITTED_TESTS": [
+      "python3 -m unittest adapter.tests.test_qualification_a15_harness"
+    ],
+    "PRESERVED_SUBJECT": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "qualification-A15-technical-preparation-subject-v1",
+      "sha256": "befe07aacc6b4c4e203488bce731f265a0520cf145174dca33dbfb4e68b43e9b"
+    },
+    "PURPOSE": "New isolated qualification-only supervisor/worker/reader adapter; preserve native/V3 code and frozen artifacts",
+    "REQUIRED_APPROVAL": "Explicit project-owner bounded construction/testing approval within actual source/test resource control. Charter qualification governance and Package68 normative grant alone do not establish this implementation permission; do not expand to general engineering governance. Confirm actor/resource rights and concrete process limits before issuance.",
+    "RESOURCE_BOUNDARY": {
+      "INPUTS": "Allowlisted new sources, immutable static contract pins, stdlib and interpreter",
+      "NETWORK": "DENY; no sockets or external systems",
+      "PROCESSES": "Synthetic isolated test workers/readers only; bounded lifecycle/fault injection in test namespace",
+      "RESOURCE_LIMITS": "Must be bounded by actual future test permission/profile before issuance; no unlimited process creation",
+      "WRITES": "Only six new source files, future test evidence namespace and private synthetic scratch"
+    },
+    "SCHEMA_ID": "A15-BOUNDED-IMPLEMENTATION-TEST-SUBJECT-1",
+    "SOURCE_FILE_STATUS": "All six NEW; exact content identities unavailable until construction/qualification",
+    "STATUS": "PROPOSED_UNISSUED",
+    "TEST_BACKEND": "Injected fake only; deny imports/calls to adapter.planner execution/persistence entrypoints; assert denylist access and zero native effects",
+    "TEST_EVIDENCE_OUTPUT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/ only; absent, not created",
+    "TEST_FIXTURE_BOUNDARY": "TemporaryDirectory under /tmp/kge-a15-harness-test-* only; dedicated invented SYNTHETIC-HARNESS-TEST identity namespace; no retained checkpoint, raw variant source, native runtime call or real oracle data in effecting tests"
+  },
+  "CONTENT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-A15-implementation-test-subject-v1",
+    "sha256": "a79d190bc8ac5668da13107eba275084392e6814873bfdc3b7178e2adbded6c5"
+  },
+  "ISSUANCE_READY": false,
+  "UNBOUND_PREREQUISITES": [
+    "explicit applicable implementation/test owner approval",
+    "actual future actor/test launcher permission and fixed resource limits"
+  ]
+}

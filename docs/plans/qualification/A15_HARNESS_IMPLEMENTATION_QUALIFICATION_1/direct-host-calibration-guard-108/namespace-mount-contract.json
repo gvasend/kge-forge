@@ -1,0 +1,63 @@
+{
+  "BINARY_IDENTITY_CANDIDATE": {
+    "GID": 65534,
+    "MODE": "0o755",
+    "PATH": "/usr/bin/bwrap",
+    "PROVENANCE": "Codex read-only file metadata; not direct-host execution permission",
+    "RESOLVED_PATH": "/usr/bin/bwrap",
+    "SHA256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987",
+    "UID": 65534
+  },
+  "BINARY_PIN_PROVENANCE": "Codex file hash; direct-host equality remains required",
+  "CURRENT_QUALIFICATION": "PROPOSED_NOT_QUALIFIED",
+  "EXACT_OPTION_PREFIX": [
+    "/usr/bin/bwrap",
+    "--unshare-user",
+    "--unshare-pid",
+    "--unshare-net",
+    "--unshare-ipc",
+    "--unshare-uts",
+    "--cap-drop",
+    "ALL",
+    "--die-with-parent",
+    "--ro-bind",
+    "/usr",
+    "/usr",
+    "--ro-bind",
+    "/bin",
+    "/bin",
+    "--ro-bind",
+    "/lib",
+    "/lib",
+    "--ro-bind",
+    "/lib64",
+    "/lib64",
+    "--proc",
+    "/proc",
+    "--dev",
+    "/dev"
+  ],
+  "FORBIDDEN_ACCESS": [
+    "Real authority stores",
+    "Package72 stopped journal",
+    "A15 execution inputs"
+  ],
+  "FULL_ARGUMENT_VECTOR": null,
+  "INPUT_RESTRICTION": "Broad system library trees require disclosure and dependency closure; never bind repository root, home, real authority, stopped journal or A15 inputs",
+  "MOUNT_NAMESPACE": "Bubblewrap mount layout candidate; exact full layout must be verified, not inferred from previous launch",
+  "NETWORK": "Unshared network namespace, no host network sockets inherited; denial and FD closure require checks",
+  "NO_COMMAND_SUBSTITUTION": true,
+  "NO_TMPFS_BYPASS": "No unconstrained tmpfs writable area proposed. Output cap must cover every writable producer/interface.",
+  "PID_INIT": "Default Bubblewrap reaper candidate; do not use --as-pid-1 without separate qualification",
+  "READ_ONLY_MOUNTS": [
+    "/usr",
+    "/bin",
+    "/lib",
+    "/lib64"
+  ],
+  "ROOT_READONLY_RULE": "No writable host aliases; verify complete generated mount layout",
+  "SCHEMA_STATUS": "INCOMPLETE: no authorized guard/controller executable, disposable host path or complete argv",
+  "SYMLINK_POLICY": "Descriptor-based root validation; reject symlink and traversal; exact implementation absent",
+  "WORKING_DIRECTORY": "/work after exact bind approval",
+  "WRITABLE_MOUNTS": "One separately sealed disposable host directory bound at /work; no path yet authorized. Minimal proc/dev must be independently assessed as writable interfaces, not ignored."
+}

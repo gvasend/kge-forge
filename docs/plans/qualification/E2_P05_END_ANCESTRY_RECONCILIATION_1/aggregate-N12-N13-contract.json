@@ -1,0 +1,236 @@
+{
+  "N12": {
+    "CURRENT_RESULT": "PRESERVATION_CONTRACT_COMPLETE; AGGREGATE_ACCEPTANCE_NOT_AUTHORIZED",
+    "N13_inferred_from_N12": false,
+    "P05_global_case_executed": false,
+    "canonical_case": {
+      "CASE_ID": "E2-N12",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "No native result accepted; ledger/knowledge not fabricated",
+      "INITIAL_STATE": "Selected action with no supplied result",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Attempt to use selection record as execution/completion",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Selection/history conflation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "canonical_requirement": {
+      "line": 383,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "pointer": "",
+      "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    "composition_preserves_negative_assurance_if_exact_policy_selected": true,
+    "full_original_native_handoff_assurance_preserved": false,
+    "original_historical_gaps_remain_unproven": true,
+    "terms": [
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "A01/A02 declarations/selections have no accepted result-event claim",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-A01",
+          "E2-A02"
+        ],
+        "term": "READ_ONLY_NOT_EXECUTED"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Every lifecycle result claim selects immutable admitted native event/result; A03/A04/A05/A06/P04 actual bodies/parents/positions pinned",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-A03",
+          "E2-A04",
+          "E2-A05",
+          "E2-A06",
+          "P04_CANONICAL_TAIL"
+        ],
+        "term": "ACTUAL_EFFECT_EVENT_REQUIRED"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Graph ID and semantic edges are documentary; none becomes a native event/root/parent or producer instance",
+        "structural_check": "PASS",
+        "subjects": [
+          "ALL_EDGES"
+        ],
+        "term": "NO_COMPOSITE_EVENT_FABRICATION"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "P03 initially completed CHECK/COLLECT/PREPARE and WAITING premises do not prove original execution; A05 grant pre-exists",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-A05",
+          "E2-A07",
+          "E2-A08"
+        ],
+        "term": "NO_PREMISE_TO_OCCURRENCE_PROMOTION"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Native parent/pre/post/sequence proven inside each retained segment; cross-segment order is a declared accepted assurance relation only if aggregate scope selected",
+        "structural_check": "PASS",
+        "subjects": [
+          "ALL_NATIVE_SEGMENTS"
+        ],
+        "term": "WITHIN_SEGMENT_ORDER_EXACT"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "No aggregate acceptance from the conjunction of local PASS flags without this exact new scope decision",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-END"
+        ],
+        "term": "AGGREGATE_SCOPE_GUARD"
+      }
+    ]
+  },
+  "N13": {
+    "CURRENT_RESULT": "PRESERVATION_CONTRACT_COMPLETE; AGGREGATE_ACCEPTANCE_NOT_AUTHORIZED",
+    "N13_inferred_from_N12": false,
+    "P05_global_case_executed": false,
+    "canonical_case": {
+      "CASE_ID": "E2-N13",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Reject wrong event/result; knowledge/root/slot unchanged",
+      "INITIAL_STATE": "Admitted Action definition",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Present its output declaration as actual supplied result",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Prospective/actual conflation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "canonical_requirement": {
+      "line": 397,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "pointer": "",
+      "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    "composition_preserves_negative_assurance_if_exact_policy_selected": true,
+    "full_original_native_handoff_assurance_preserved": false,
+    "original_historical_gaps_remain_unproven": true,
+    "terms": [
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Canonical definitions, expected oracle objects and actual supplied native results retain separate identities/roles",
+        "structural_check": "PASS",
+        "subjects": [
+          "ALL_STAGES"
+        ],
+        "term": "DEFINITION_RESULT_SEPARATION"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Knowledge/result claims selected from actual native event/state in their own source context; common names do not equate different records",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-A03",
+          "E2-A04",
+          "P04_CANONICAL_TAIL"
+        ],
+        "term": "EXACT_OUTPUT_PROVENANCE"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Semantic scope edge cannot be passed to Planner as evidence, authority, prerequisite, receipt or proof",
+        "structural_check": "PASS",
+        "subjects": [
+          "ALL_CROSS_SEGMENT_EDGES"
+        ],
+        "term": "NO_FOREIGN_LINEAGE_NATIVE_SUBSTITUTION"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "P04 actual Proof/C03/results/root-slot proofs retain exact native inputs and authority; A05 grants not inferred issued; A06 produces no later effects",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-A05",
+          "E2-A06",
+          "P04_CANONICAL_TAIL"
+        ],
+        "term": "INDEPENDENT_PROOF_AND_AUTHORITY"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Original four historical gaps and P03 correspondence remain UNPROVEN; no native identity alias",
+        "structural_check": "PASS",
+        "subjects": [
+          "ALL_HISTORICAL_TERMS"
+        ],
+        "term": "HISTORICAL_LABELS_PRESERVED"
+      },
+      {
+        "aggregate_acceptance": "PENDING_EXACT_AGGREGATE_SCOPE_DECISION",
+        "evidence": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "required_assurance": "Global P05 N13 and N12 tests remain required; static graph composition does not execute or pass them",
+        "structural_check": "PASS",
+        "subjects": [
+          "E2-N12",
+          "E2-N13"
+        ],
+        "term": "NO_GLOBAL_NEGATIVE_PASS_BY_LOCAL_MAPPING"
+      }
+    ]
+  }
+}

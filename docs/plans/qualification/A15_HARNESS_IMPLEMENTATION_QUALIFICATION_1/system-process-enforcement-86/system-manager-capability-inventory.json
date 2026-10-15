@@ -1,0 +1,69 @@
+{
+  "INSTALLED_BINARY_VERSION_VERIFIED": "245 (245.4-4ubuntu3.24)",
+  "LIVE_SYSTEM_MANAGER_VERSION": null,
+  "ROWS": [
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "FIELD": "SYSTEMD_SYSTEM_MANAGER_VERSION",
+      "PROVENANCE": "systemd-run --version; live245 retained as user supplied",
+      "VALUE": "245 binary metadata; live manager version unavailable"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "FIELD": "SYSTEMD_SYSTEM_MANAGER_STATUS",
+      "PROVENANCE": "systemctl show denied: Operation not permitted in managed context",
+      "VALUE": null
+    },
+    {
+      "CLASSIFICATION": "VERIFIED",
+      "FIELD": "CGROUP_PIDS_CONTROLLER",
+      "PROVENANCE": "Package85 managed mount inventory; direct profile remains unverified",
+      "VALUE": "mounted/sys/fs/cgroup/pids in managed view; direct system-unit membership unknown"
+    },
+    {
+      "CLASSIFICATION": "VERIFIED",
+      "FIELD": "SYSTEM_UNIT_TASKS_MAX_SUPPORT",
+      "PROVENANCE": "native-documentation-evidence.json; actual service kernel value unverified",
+      "VALUE": "TasksMax controls pids.max per installed documentation"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "FIELD": "SYSTEM_UNIT_CONTROL_GROUP_RULE",
+      "PROVENANCE": "do not substitute name=systemd path for pids path",
+      "VALUE": "proposed explicit system.slice/<unique unit>; actual value must be crosschecked per controller"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "FIELD": "SYSTEM_SERVICE_USER_CONFIGURATION",
+      "PROVENANCE": "current managed actor UID/GID1000 does not grant system-service authority",
+      "VALUE": "proposed numeric nonroot UID/GID1000; actual account authorization must be confirmed"
+    },
+    {
+      "CLASSIFICATION": "VERIFIED",
+      "FIELD": "SYSTEM_SERVICE_SECURITY_PROPERTIES",
+      "PROVENANCE": "installed systemd.exec/resource-control metadata",
+      "VALUE": "documented system-level resource/security properties; runtime effect unverified"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "FIELD": "ADMINISTRATIVE_PERMISSION_REQUIREMENTS",
+      "PROVENANCE": "no sudo invoked, no policy/config changes",
+      "VALUE": "system manager authorization via actual root/delegated management/Polkit role; no permission inferred"
+    },
+    {
+      "CLASSIFICATION": "VERIFIED",
+      "FIELD": "SYSTEMD_RUN_EXECUTABLE_IDENTITY",
+      "PROVENANCE": "current readonly shared-binary hash; must match direct entry",
+      "VALUE": "15c14831822016fd68ab3e2f265223463c46b4cf7fcc4595a91f09c5bbd950eb"
+    },
+    {
+      "CLASSIFICATION": "USER_SUPPLIED",
+      "FIELD": "HOST_RESOURCE_PROFILE",
+      "PROVENANCE": "retained user observations; Codex context not substituted",
+      "VALUE": "ubuntu01/Ubuntu20.04.6/kernel5.4.0-216/systemd245/v1 declared; no complete direct-host attestation"
+    }
+  ],
+  "SYSTEM_LEVEL_PROFILE_COMPLETE": false,
+  "SYSTEM_LEVEL_RUNTIME_ENFORCEMENT_PROVEN": false,
+  "USER_LEVEL_TASKSMAX8_PROVEN": false
+}

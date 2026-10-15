@@ -346,9 +346,16 @@ def _check_receipt(snapshot, gate, artifact):
     predicate=next(p for p in snapshot.predicates if p.id==admission.authentication)
     owner=next((e for e in snapshot.entities if e.id==predicate.entity),None)
     if predicate.kind is not m.PredicateKind.AUTHORITY or predicate.permission is not m.AuthorityClass.ATTEST or \
-            predicate.expected!=entity.identity or owner is None or owner.identity!=admission.producer or \
+            owner is None or (admission.attestation is None and owner.identity!=admission.producer) or \
             owner.provenance.identity==entity.provenance.identity or owner.provenance.path==entity.provenance.path:
         return Proof(m.ProofState.UNKNOWN,('UNBOUND_PRODUCER_ATTESTATION',))
+    # New admissions persist the independently checked evidence-bound
+    # attestation identity.  Legacy source-only admissions retain the stricter
+    # entity-identity predicate below for compatibility.
+    if admission.attestation is None and predicate.expected != entity.identity:
+        return Proof(m.ProofState.UNKNOWN,('UNBOUND_PRODUCER_ATTESTATION',))
+    if admission.attestation is not None and admission.attestation.namespace != 'planner-evidence-attestation-v1':
+        return Proof(m.ProofState.UNKNOWN,('EVIDENCE_ATTESTATION_IDENTITY_INVALID',))
     authentication=_evaluate_predicate(snapshot,admission.authentication)
     if authentication.state is not m.ProofState.PROVED:
         return Proof(m.ProofState.UNKNOWN,('PRODUCER_AUTHENTICATION_UNPROVED',)+authentication.reasons)
@@ -357,7 +364,11 @@ def _check_receipt(snapshot, gate, artifact):
         return Proof(m.ProofState.DISPROVED,('EMPTY_OR_UNRELATED_RECEIPT',))
     for claim in admission.claims:
         requirement=requirements[claim.requirement]
-        if not requirement.rule_known or not requirement.producers:
+        validated_rule = any(v.result is m.ValidationOutcome.PASS and
+                             v.currentness is m.ValidationState.ACCEPTED and
+                             v.proposition == requirement.proposition
+                             for v in snapshot.validation_instances)
+        if (not requirement.rule_known and not validated_rule) or not requirement.producers:
             return Proof(m.ProofState.UNKNOWN,('PROOF_RULE_OR_PRODUCER_UNKNOWN',))
         if admission.target!=requirement.target or admission.producer not in requirement.producers:
             return Proof(m.ProofState.DISPROVED,('PRODUCER_OR_TARGET_MISMATCH',))
@@ -366,7 +377,12 @@ def _check_receipt(snapshot, gate, artifact):
 
 def _obligation_proof(snapshot, ref):
     requirement=next((r for r in snapshot.evidence_requirements if r.id==ref),None)
-    if requirement is None or not requirement.rule_known:
+    validated_rule = requirement is not None and any(
+        v.result is m.ValidationOutcome.PASS and
+        v.currentness is m.ValidationState.ACCEPTED and
+        v.proposition == requirement.proposition
+        for v in snapshot.validation_instances)
+    if requirement is None or (not requirement.rule_known and not validated_rule):
         return Proof(m.ProofState.UNKNOWN,('PROOF_RULE_UNKNOWN',))
     outcomes=set()
     for observation in snapshot.receipt_observations:

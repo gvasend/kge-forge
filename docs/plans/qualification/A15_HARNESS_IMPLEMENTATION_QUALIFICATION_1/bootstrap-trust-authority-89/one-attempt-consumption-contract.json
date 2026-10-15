@@ -1,0 +1,41 @@
+{
+  "ACTUAL_GRANT_KEY": null,
+  "AUTOMATIC_RETRIES": 0,
+  "CANONICAL_ENCODING": "sorted compact UTF8 JSON, ensure_ascii=False, reject nonfinite values",
+  "CONSUMPTION_INFERRED_FROM_COMPLETION": false,
+  "CRASH_REOPENS_AUTHORITY": false,
+  "DUPLICATE_CLAIM_ALLOWED": false,
+  "KEY_DOMAIN": "qualification-h87-system-probe-consumption-key-v1",
+  "KEY_INPUTS": [
+    "ISSUED_GRANT_IDENTITY",
+    "APPROVED_PROBE_SUBJECT_IDENTITY",
+    "RETAINED_PACKAGE86_SUBJECT_IDENTITY",
+    "EXACT_COMMAND_IDENTITY",
+    "QUALIFIED_EXECUTION_CONTEXT_IDENTITY",
+    "AUTHORIZED_ATTEMPT_NUMBER=1"
+  ],
+  "MAX_LAUNCH_ATTEMPTS": 1,
+  "POWER_LOSS_DURABILITY_CLAIMED": false,
+  "QUALIFICATION_STATUS": "DESIGN_COMPLETE_IMPLEMENTATION_AND_BEHAVIOR_UNQUALIFIED",
+  "REQUIRED_ORDER": [
+    "exact effective/current authority and unchanged command/resources/context validation",
+    "stable six-input key derivation",
+    "atomic permanent reservation",
+    "complete bounded consumption record",
+    "file fsync",
+    "directory fsync",
+    "independent readonly exact-byte/inode/identity confirmation",
+    "fresh epoch verification under serialized same-inode lock",
+    "only original winner has nonserializable capability; invalidate it before one handoff",
+    "independent audit/exit evidence; never repair/reopen"
+  ],
+  "STATE_MACHINE": [
+    "UNCLAIMED",
+    "RESERVED_AMBIGUOUS",
+    "CONSUMED_VERIFIED",
+    "ATTEMPTED",
+    "COMPLETED_OR_FAILED_OR_UNKNOWN"
+  ],
+  "STORE_OR_EPOCH_CHANGE": "integrity/authority loss, not fresh permission",
+  "UNKNOWN_OUTCOME_REOPENS_AUTHORITY": false
+}

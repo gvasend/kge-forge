@@ -1,0 +1,281 @@
+{
+  "A04_COMPATIBILITY_GATE_COUNT": 97,
+  "A04_COMPATIBILITY_LAYER": "READ_ONLY_TYPED_REPRESENTATION_AND_SEAL_PREFLIGHT",
+  "A04_DURABLE_TRANSACTION_COMPATIBILITY": "PASS",
+  "A04_EVENT_COMPARISON_IDENTITY": "planner-event-v1:2c71adfce820b0fc997e7d1f872439e9ddb43170c95edbeafaf461a4065760f0",
+  "A04_FUTURE_BUNDLE_COMPARISON_ONLY": "planner-bundle-v1:45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7",
+  "A04_SNAPSHOT_COMPARISON_IDENTITY": "planner-snapshot-v1:38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4",
+  "ACTUAL_IO_REPLACE_FAILURE": "PASS",
+  "ATOMICITY": "PASS",
+  "ATOMICITY_LIMIT": "One local writer lock; exactly-once durable semantic occurrence, not exactly-once callback invocation across precommit crash.",
+  "ATOMIC_COMMIT_BOUNDARY": "Existing PLANNER-HEAD-1 atomic publication; staged orphans before HEAD are not admitted occurrence.",
+  "AUTHORITATIVE_CONTRACT": {
+    "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1.json",
+    "raw_sha256": "cebb370484843efb41e064a1df679e0f428331cf0d83b2c9ec38b30c10e88473"
+  },
+  "AUTHORITY_ISSUED": "NO",
+  "BUNDLE_COMPARISON_IDENTITY": {
+    "generic_identity": "planner-bundle-v1:2d4cf2f419f67ab85f5de344dd742ee18e3a2743bf4a0b8440eee80e13c68406",
+    "semantics": "EXACT_NATIVE_BUNDLE_HASH_COVERS_DEFAULT_OMITTED_BINDING"
+  },
+  "CAPABILITY_GATES": {
+    "atomicity": "PASS",
+    "bundle_construction": "PASS",
+    "cold_restore": "PASS",
+    "determinism": "PASS",
+    "event_construction": "PASS",
+    "failure_injection": "PASS",
+    "historical_replay": "PASS",
+    "idempotence": "PASS",
+    "identity_ordering": "PASS",
+    "ledger_append": "PASS",
+    "negatives": "PASS",
+    "post_snapshot": "PASS",
+    "result_application": "PASS",
+    "validation_binding": "PASS"
+  },
+  "COLD_RESTORE": "PASS",
+  "DEFINITIONS_INSTALLED": "NO",
+  "DETERMINISM": "PASS",
+  "DURABLE_ADMISSION_CAPABILITY": "PASS",
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "EVENT_COMPARISON_IDENTITY": {
+    "generic_identity": "planner-event-v1:ddc44c096a2931654b63248b5339fe381923001f0bc6407e1be32da47215cbaa",
+    "semantics": "UNCHANGED_NATIVE_ALGORITHM"
+  },
+  "EVENT_CONSTRUCTION": "PASS",
+  "EVENT_PAYLOAD_CHANGED": "NO",
+  "EXECUTION_INPUTS": [
+    "trusted native pre-bundle/expected bundle identity",
+    "trusted registered bounded NON_EFFECTING producer/ActionId",
+    "pinned source artifact bytes",
+    "native pre-state Action/result/T02 contracts",
+    "Snapshot/context/source/policy/authority references",
+    "exact parent/event ordinal",
+    "independent postcondition",
+    "repository/store roots"
+  ],
+  "FAILURE_HOOKS": [
+    "after_producer",
+    "after_validations",
+    "after_result_application",
+    "after_snapshot",
+    "after_event_binding",
+    "after_source_stage",
+    "after_archive_stage",
+    "after_event_stage",
+    "after_bundle_stage",
+    "after_files_fsync",
+    "before_head_replace",
+    "after_head_replace"
+  ],
+  "FAILURE_INJECTION": "PASS",
+  "GIT_DIFF_CHECK": "PASS",
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "HISTORICAL_REPLAY": "PASS",
+  "IDEMPOTENCE": "PASS",
+  "IDENTITY_CYCLE": "NO",
+  "IMPLEMENTATION_LAYER": "GENERIC_SELECTED_DECISION_INPUT_ACQUISITION_DOSSIER_RESULT_INTEGRATION",
+  "INVALIDATION": "PASS; current members stale while original event/archive/outcomes remain historical and auditable.",
+  "KILLED_WRITER_RECOVERY": [
+    {
+      "killed_writer_exit": 73,
+      "observed": "COMPLETE_OLD",
+      "result": "PASS",
+      "retry": "CLEAN_COMMIT",
+      "stage": "after_archive_stage"
+    },
+    {
+      "killed_writer_exit": 73,
+      "observed": "COMPLETE_OLD",
+      "result": "PASS",
+      "retry": "CLEAN_COMMIT",
+      "stage": "after_files_fsync"
+    },
+    {
+      "killed_writer_exit": 73,
+      "observed": "COMPLETE_OLD",
+      "result": "PASS",
+      "retry": "CLEAN_COMMIT",
+      "stage": "before_head_replace"
+    },
+    {
+      "killed_writer_exit": 73,
+      "observed": "COMPLETE_NEW",
+      "result": "PASS",
+      "retry": "EXACT_NOOP",
+      "stage": "after_head_replace"
+    }
+  ],
+  "LEDGER_APPEND": "PASS",
+  "LIVE_PRODUCER_TRUST_BOUNDARY": "Application registration is explicit and not data/wire authority; no serialized callable/oracle result can bypass it.",
+  "NEGATIVE_SUITE": "PASS",
+  "NEW_NATIVE_METADATA": "DossierMaterializationBinding(event_identity, expected_bundle, source_additions) in default-omitted PersistenceBundle.dossier_materializations.",
+  "NEXT_PACKAGE": "E2-P05-A04-PROSPECTIVE-ANCESTRY-QUALIFICATION-EXECUTION-1",
+  "N_REAL_SATISFIED": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P05_BINDING_APPLIED": "NO",
+  "P05_BOUND_STAGE_INPUTS": 10,
+  "P05_EXECUTED": "NO",
+  "P05_EXECUTION_READY": "NO",
+  "P05_NEXT_MISSING_INPUT": "E2-A04.prepare_result_event_ancestry",
+  "P06_EXECUTED": "NO",
+  "PERSISTENCE_BUNDLE": "PASS",
+  "POST_SNAPSHOT": "PASS",
+  "PRESERVATION": {
+    "E1_ARTIFACTS_MODIFIED": 0,
+    "baseline_files": 15333,
+    "changed_prior_files": [
+      "adapter/planner/codec.py",
+      "adapter/planner/model.py"
+    ],
+    "frozen_E1_files": 10677,
+    "frozen_E1_inventory_unchanged": true,
+    "git_diff_check": "PASS",
+    "prior_plan_artifacts_modified": 0,
+    "result": "PASS",
+    "runtime_files": [
+      {
+        "path": "adapter/planner/codec.py",
+        "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+      },
+      {
+        "path": "adapter/planner/dossier_transaction.py",
+        "raw_sha256": "073eca6c6a2245e2ff8a057cac364be27a19bf19f8ce3ec60d1d02fe67ba4609"
+      },
+      {
+        "path": "adapter/planner/model.py",
+        "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+      }
+    ],
+    "unchanged_prior_files": 15331
+  },
+  "PRODUCTION_EFFECT": "NO",
+  "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "PROSPECTIVE_A04_EXECUTED": "NO",
+  "PROSPECTIVE_A04_EXECUTION_READY": "YES",
+  "QUALIFICATION_COUNTS": {
+    "additional_new_test_runs": 3,
+    "cold_readers": 13,
+    "generic_test_runs": 20,
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "independent_generic_writers": 13,
+    "killed_writers": 4,
+    "native_durable_negative_cases": 23,
+    "new_test_methods_passed": 23,
+    "qualification_history_label_negatives": 5,
+    "sealed_negative_contract_cases_covered": 24,
+    "unordered_presentations": [
+      "original",
+      "reverse",
+      "rotate"
+    ]
+  },
+  "READINESS_OVERLAY": "D01 supersedes only the missing generic capability/readiness blocker. Prior sealed contracts/oracles/reports remain immutable.",
+  "REGRESSIONS": {
+    "additional_passed": 29,
+    "additional_tests": 29,
+    "affected_current_passed": 124,
+    "affected_current_tests": 128,
+    "baseline_passed": 271,
+    "baseline_runtime_loading": "Parent loaded before D01 edits; legacy child processes may observe default-omitted additive fields. Same failures reproduced in final affected run.",
+    "broad_baseline_tests": 275,
+    "duplicate_imported_TestCase_counts": "Counts are unittest execution counts, including imported TestCase repetitions; no claim of unique baseline/current selectors.",
+    "new_failures": [],
+    "pre_existing_failures": [
+      "test_planner_e1_replay.P04ReplayTests.test_x05_all_nine_checks_required_not_majority_vote",
+      "test_planner_evidence_admission.AdditionalAdmissionTests.test_conflicting_claims_are_not_overwritten",
+      "test_planner_evidence_admission.AdditionalAdmissionTests.test_pinned_source_shaped_fixture",
+      "test_planner_evidence_admission.AdmissionTests.test_validation_and_reentry_separate"
+    ],
+    "result": "PASS_WITH_UNCHANGED_PRE_EXISTING_FAILURES",
+    "runtime_repair_of_pre_existing_failures": false
+  },
+  "REPLAY_IDEMPOTENCE": "PASS",
+  "REPLAY_NEW_OCCURRENCES": 0,
+  "REPLAY_OPERATION_INVOCATIONS": 0,
+  "REPLAY_VALIDATORS_RERUN": false,
+  "RESULT": "PASS",
+  "RESULT_APPLICATION": "PASS",
+  "RETRY_EFFECT_CHECK": "Prepared retry compares complete result, original archived Snapshot/typed tuple/source effect; stale/conflicting prefix fails.",
+  "RETRY_WITH_DESCENDANTS": "PASS; returns original transaction identity and current verified head, preserving descendants.",
+  "REUSED_NATIVE_CAPABILITIES": [
+    "core.admit_dossier_materialization (T02)",
+    "native selected Action/result admission",
+    "unchanged Snapshot/SuppliedResult/ExecutionEvent codecs and comparison identities",
+    "source/policy pins",
+    "local transaction lock/immutable writes/fsync/atomic HEAD",
+    "historical ordinary event projection"
+  ],
+  "RUNTIME_MODIFIED": "YES_AUTHORIZED_GENERIC_IMPLEMENTATION",
+  "SNAPSHOT_COMPARISON_IDENTITY": {
+    "generic_identity": "planner-snapshot-v1:3ef49429f0c9540188eb3c1ba68441e508840be1515483c2b1d1bf53e37c603e",
+    "semantics": "UNCHANGED_NATIVE_CODEC"
+  },
+  "SNAPSHOT_SCHEMA_CHANGED": "NO",
+  "TRANSIENT_PREPARED_CONTEXT": "Frozen origin-checked actual effect; commit checks exact original bundle/prefix under lock.",
+  "VALIDATION_BINDING": "PASS",
+  "VALIDATION_BINDING_MODEL": "Original immutable after_snapshot + unique PredicateId/dossier selector; ordered pre-Snapshot/source inputs and complete native member values.",
+  "WORK_PACKAGE": "DURABLE-ADMISSION-D01",
+  "evidence": {
+    "A04-compatibility": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/A04-compatibility.json",
+      "raw_sha256": "e974780b10ed0a885b3761d5a63934bcdb026a532c90c19fc4fadbd476b52a1b"
+    },
+    "final-runtime-process-check": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/final-runtime-process-check.json",
+      "raw_sha256": "9d75aa4ee11b719b4a955482c878050df4be39d84fa95f9c4d83d5c616e5929f"
+    },
+    "generic-extra-tests": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/generic-extra-tests.json",
+      "raw_sha256": "74f8f0c2bfeeca60a3c889bf2d66cbdbde65707a77d8a6778ff3e66536ab61dc"
+    },
+    "generic-tests": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/generic-tests.json",
+      "raw_sha256": "32e2803382262d2427cf497f0bc64f531c48b28175b7dfeb12248472913cdb63"
+    },
+    "generic-transaction-trace": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/generic-transaction-trace.json",
+      "raw_sha256": "54df29763745dfc231bf2cd2db80a92fd2d1b42e3e17bb9a24e1b3c6035854ec"
+    },
+    "identity-qualification": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/identity-qualification.json",
+      "raw_sha256": "0cfe563471b7fd26e405544616b93c2b4b8f8bf2155bb1ac3eeb372bf4b548a9"
+    },
+    "negative-qualification": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/negative-qualification.json",
+      "raw_sha256": "147fd7fa0526d3a1d75410cc5e005277b3920c83322fe8dda964bf2a6f1339e5"
+    },
+    "preservation": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/preservation.json",
+      "raw_sha256": "535c40b20d0ae8e622e6e77af77096eef4d2044fb448c9a6c609888c6a29c94f"
+    },
+    "process-qualification": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/process-qualification.json",
+      "raw_sha256": "5037e0d19aa267d248fd697714a7cce68b70faa0a327fbdf48a25dd5617da702"
+    },
+    "regression-baseline": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/regression-baseline.json",
+      "raw_sha256": "0139cc1914b56428a33f6a7e1a9f06f8d7498a8cf9611435c2fcc03630c91aef"
+    },
+    "regression-comparison": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/regression-comparison.json",
+      "raw_sha256": "f2deee061773a9d139eaaa05e0039c617a5a16ec433081c089ae6300701078d6"
+    },
+    "regression-current": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/regression-current.json",
+      "raw_sha256": "6e9d2eb86a98cb83d1af282e80299599c979e9584b5cbbc3db7ed7f9683c9ffa"
+    },
+    "regression-extra": {
+      "path": "docs/plans/qualification/DURABLE_ADMISSION_D01/regression-extra.json",
+      "raw_sha256": "0db03eaa2aa09b3478eeff6132053795a8bb3449becdc85f055ab81c5e0d1303"
+    }
+  }
+}

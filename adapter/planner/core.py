@@ -43,6 +43,11 @@ def project(snapshot):
         for edge in metadata.symmetric_difference(represented):
             defects.append('PREREQUISITE_METADATA_MISMATCH:' + edge[0].value + '->' + edge[1].value)
     edges = metadata | declared | {(ref, d.action) for d in snapshot.decisions for ref in d.depends_on}
+    if snapshot.proof_contracts:
+        nodes.update(k.id for k in snapshot.knowledge)
+        edges.update((k.producer, k.id) for k in snapshot.knowledge if k.producer is not None)
+        edges.update((ref, contract.target) for contract in snapshot.proof_contracts
+                     for ref in contract.supports + (contract.authority,))
     remaining = set(nodes)
     order = []
     while remaining:
@@ -99,6 +104,8 @@ def evaluate_satisfaction(snapshot):
     snapshot = replace(snapshot,
         roots=tuple(replace(r, state=m.ConditionState.STALE) if r.id in unavailable else r for r in snapshot.roots),
         slots=tuple(replace(v, state=m.SlotState.STALE) if v.id in unavailable else v for v in snapshot.slots))
+    from .typed_proofs import derive
+    snapshot = derive(snapshot)
     state = replace(snapshot, roots=tuple(replace(r, state=m.ConditionState.UNRESOLVED)
         if r.predicate is not None and r.state is not m.ConditionState.STALE else r for r in snapshot.roots))
     for _ in range(len(state.roots) + 1):
@@ -187,11 +194,21 @@ class TransitionReport:
     computation: Computation
 
 
-def _actionability(snapshot):
+def _actionability(snapshot, affected=None):
     previous = {s.id: s.state for s in snapshot.statuses}
     statuses, blocked, actionable = [], [], []
     for action in sorted(snapshot.actions, key=lambda a: a.id.value):
         state = previous[action.id]
+        from .action_installation import action_current
+        if state is not m.ActionState.COMPLETED and not action_current(snapshot, action):
+            statuses.append(m.ActionStatus(action.id, m.ActionState.BLOCKED, next(s.terminal_failure for s in snapshot.statuses if s.id == action.id)))
+            blocked.append((action.id, ('ACTION_DEFINITION_NOT_CURRENT',)))
+            continue
+        if affected is not None and action.id not in affected:
+            statuses.append(next(s for s in snapshot.statuses if s.id == action.id))
+            if state is m.ActionState.ACTIONABLE:
+                actionable.append(action)
+            continue
         if state in (m.ActionState.COMPLETED, m.ActionState.BLOCKED, m.ActionState.WAITING):
             if state is not m.ActionState.COMPLETED:
                 blocked.append((action.id, ('PRIOR_ATTEMPT_HOLD:' + state.value,)))
@@ -203,11 +220,14 @@ def _actionability(snapshot):
             else:
                 state = m.ActionState.ACTIONABLE
                 actionable.append(action)
-        statuses.append(m.ActionStatus(action.id, state))
+        statuses.append(m.ActionStatus(action.id, state, next(s.terminal_failure for s in snapshot.statuses if s.id == action.id)))
     return tuple(statuses), tuple(blocked), tuple(actionable)
 
 
 def _inventory(snapshot, action, supplied):
+    from .action_installation import action_current
+    if not action_current(snapshot, action):
+        raise m.PlannerError('ACTION_DEFINITION_NOT_CURRENT')
     if action.operation in (m.OperationClass.ARCHITECT_AUTHORITY, m.OperationClass.ARCHITECT_CONTRACT_DECISION,
                             m.OperationClass.GOVERNED_OPERATION, m.OperationClass.IMPLEMENTATION_REPAIR,
                             m.OperationClass.VALIDATOR_IMPLEMENTATION):
@@ -219,11 +239,14 @@ def _inventory(snapshot, action, supplied):
             raise m.PlannerError('conflicting accepted knowledge')
         existing[record.id] = record
     outcome_state = m.ActionState.COMPLETED if supplied.result is m.ActionResult.PASS else m.ActionState.BLOCKED
-    statuses = tuple(sorted((m.ActionStatus(s.id, outcome_state)
+    statuses = tuple(sorted((m.ActionStatus(s.id, outcome_state, supplied.result is not m.ActionResult.PASS)
                              if s.id == action.id else s for s in snapshot.statuses), key=lambda s: s.id.value))
     updated = replace(snapshot, statuses=statuses,
         knowledge=tuple(sorted(existing.values(), key=lambda k: k.id.value)))
     updated = _decision_result(updated, action, supplied)
+    if updated.proof_contracts or any(not a.blocked_terminal for a in updated.actions):
+        from .typed_proofs import reevaluate
+        updated = reevaluate(snapshot, updated, (action.id,) + tuple(k.id for k in supplied.knowledge), action.source)
     # Decision preparation changes knowledge/readiness only. It cannot promote domain proofs.
     return updated if any(action.id in (d.semantic_action, d.input_action) for d in snapshot.decisions) else evaluate_satisfaction(updated)
 
@@ -522,6 +545,15 @@ def apply_decision_reentry(snapshot, supplied):
 
 
 def apply_event(snapshot, supplied):
+    if type(supplied) is m.ValidationSupportAdmission:
+        from .validation_transaction import apply
+        return apply(snapshot, supplied)
+    if type(supplied) is m.InstallDefinition:
+        from .installation import apply
+        return apply(snapshot, supplied)
+    if type(supplied) in (m.TypedProofAdmission, m.ProofDependencyChange, m.ActionReevaluation):
+        from .typed_proofs import apply
+        return apply(snapshot, supplied)
     if type(supplied) is m.EvidenceSourceAdmission:
         from .evidence import apply
         return apply(snapshot, supplied)
@@ -532,6 +564,10 @@ def apply_event(snapshot, supplied):
     if type(supplied) is m.DecisionReentry:
         return apply_decision_reentry(snapshot, supplied)
     if type(supplied) is m.ExternalEvent:
+        if supplied.stage is m.ExternalStage.EVIDENCE_VALIDATED:
+            from .validation_transaction import registered
+            if registered(snapshot,supplied.gate):
+                raise m.PlannerError('VALIDATION_TRANSACTION_REQUIRED')
         return apply_receipt(snapshot,supplied)
     if type(supplied) is m.SourceInvalidation:
         from .codec import snapshot_id, invalidate_sources
@@ -539,6 +575,10 @@ def apply_event(snapshot, supplied):
         if supplied.expected_snapshot != snapshot_id(snapshot):
             raise m.PlannerError('source invalidation pre-state mismatch')
         updated = invalidate_sources(snapshot,supplied.changed)
+        if snapshot.proof_contracts or any(not a.blocked_terminal for a in snapshot.actions):
+            from .typed_proofs import reevaluate
+            provenance = min(snapshot.proof_contracts, key=lambda c: c.id.sha256).provenance if snapshot.proof_contracts else min(snapshot.actions, key=lambda a: a.id.value).source
+            updated = reevaluate(snapshot, updated, supplied.changed, provenance)
         return TransitionReport(updated,(),recompute(updated))
     raise m.PlannerError('unsupported event')
 

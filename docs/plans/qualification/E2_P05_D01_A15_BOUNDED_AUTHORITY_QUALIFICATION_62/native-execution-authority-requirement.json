@@ -1,0 +1,197 @@
+{
+  "ALLOWED_WRITE_TARGETS": [
+    {
+      "EXIT_EVIDENCE": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/supervisor-writer-exit.json",
+      "HANDOFF": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/qualification-handoff.json",
+      "NAMESPACE": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL",
+      "READER_EVIDENCE": [
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/reader-0.json",
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/reader-1.json",
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/reader-7.json",
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/reader-101.json"
+      ],
+      "SAVE_TARGET": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL/bundle-744cf8638403bcc24ff93b120afb9a025525431a2061efcd5cd895efb0085efe.json",
+      "VARIANT_ID": "PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL"
+    },
+    {
+      "EXIT_EVIDENCE": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/supervisor-writer-exit.json",
+      "HANDOFF": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/qualification-handoff.json",
+      "NAMESPACE": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL",
+      "READER_EVIDENCE": [
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/reader-0.json",
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/reader-1.json",
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/reader-7.json",
+        "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/reader-101.json"
+      ],
+      "SAVE_TARGET": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME/PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL/bundle-6bd2744afff2f9d79ed6e84d5f017809e6dad7a8a5eabd71e1705a693ed8c600.json",
+      "VARIANT_ID": "PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL"
+    }
+  ],
+  "AUTHORITY_ISSUED": false,
+  "COLD_READERS": 8,
+  "COLD_RESTORE_CALLS": 8,
+  "DIRECT_APPLY_EVENT_CALLS": 0,
+  "EXCLUDED": [
+    "Original historical A15 execution",
+    "Historical invalidation occurrence recovery",
+    "Closure of 19 unresolved historical owner classifications",
+    "Reconstruction of every historical graph association",
+    "A16 qualification",
+    "D01 complete-matrix qualification",
+    "P05 execution readiness",
+    "E1 modification",
+    "Production effects",
+    "A14 persistence rerun or transfer of its grant",
+    "New baseline or source/event/parent repinning",
+    "Changes to native ALL/ANY, ranking, frozen acceptance or selected V3 dispatch",
+    "New variant or wildcard source/owner/target selection",
+    "Unsealed supervisor/worker executable activation"
+  ],
+  "EXECUTABLE_GATE": "Static specification is not installed executable. No unsealed supervisor/worker implementation receives execution permission; qualify exact implementation/invocation before any effect.",
+  "FAILURE_RULES": [
+    {
+      "FAILURE": "WRONG_CHECKPOINT_IDENTITY",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "INVALID_SOURCE_PIN",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "WRONG_INVALIDATION_IDENTITY",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "UNEXPECTED_AFTER_STATE",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "RESUME_REASON_MISMATCH",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "CAPTURE_FAILURE",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "SAVE_FAILURE",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "CONFLICTING_OUTPUT_TARGET",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "WRITER_TERMINATION_FAILURE",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "MISSING_HANDOFF",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "COLD_READER_MISMATCH",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    },
+    {
+      "FAILURE": "PROTECTED_STATE_VIOLATION",
+      "NATIVE_IDEMPOTENCE_IS_NOT_RETRY_AUTHORITY": true,
+      "RESPONSE": "FAIL_CLOSED_STOP_NO_PASS_NO_READER_ELIGIBILITY",
+      "RETRIES_AUTHORIZED_IN_PROPOSED_INITIAL_SCOPE": 0,
+      "RETRY_ALLOWED": false,
+      "RETRY_START": "NONE under this initial subject. A separately prepared/approved exact retry subject may only use original immutable checkpoint; existing failed/staged evidence retained."
+    }
+  ],
+  "FULL_COMPARISON_DOMAINS": [
+    "STARTING_STATE",
+    "SOURCE_INVALIDATION",
+    "PROOF_VALIDATION",
+    "PROOF_USABILITY",
+    "TARGET_SATISFACTION",
+    "DEPENDENT_ADMISSION_STALE",
+    "FINISH_HELD_OR_BLOCKED",
+    "FINISH_CONTROL",
+    "FINISH_NO_RESUME",
+    "RESUME_REASONS",
+    "ORDERED_TRACE",
+    "CAPTURE",
+    "PERSISTENCE",
+    "RESTORE",
+    "PROTECTED_STATE"
+  ],
+  "HASH_SEEDS": [
+    0,
+    1,
+    7,
+    101
+  ],
+  "INITIAL_RESTORE_CALLS": 2,
+  "NATIVE_INTERFACES": {
+    "CONTENT_IDENTITY": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "f194f41dfabf32a202139e86bd4a3c99dde55f7e51b5eb39be414562b91e0de3"
+    },
+    "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/native-interface-inventory.json",
+    "RAW_SHA256": "f194f41dfabf32a202139e86bd4a3c99dde55f7e51b5eb39be414562b91e0de3"
+  },
+  "NORMATIVE_PREREQUISITE": "Separate scope adoption; preparation/design not adopted",
+  "OPERATION_LIMIT": "Only two exact descriptors and sealed output/evidence schemas; no wildcard native operation permission. Audit read-only, no automatic operand promotion.",
+  "ORDER": "initial native restore/complete before comparison; record_result -> complete updated-bundle capture -> save_bundle -> exact publication/handoff -> supervisor observed successful writer exit -> fresh cold-reader restore/complete comparison -> read-only operand audit",
+  "PERMISSION_REQUIRED": true,
+  "PERSISTENCE_ASSURANCE": "File fsync-before-immutable-hard-link publication; no HEAD update, directory fsync guarantee or general crash durability",
+  "RECORD_RESULT_CALLS": 2,
+  "RETRY_LIMIT": 0,
+  "SAVE_BUNDLE_CALLS": 2,
+  "SOURCE_INVALIDATION_APPLICATION": "Internal application exactly once per record_result at caller level; native replay may reevaluate immutable history. No separate pre-apply invocation.",
+  "SUPERVISORS": 1,
+  "WRITERS": 2
+}

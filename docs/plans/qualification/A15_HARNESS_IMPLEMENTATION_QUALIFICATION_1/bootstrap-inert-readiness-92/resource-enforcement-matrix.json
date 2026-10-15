@@ -1,0 +1,120 @@
+{
+  "CONTROLS": [
+    {
+      "APPROVED_VALUE": 0,
+      "ENFORCEMENT_MECHANISM": "one durable exclusive campaign claim; no cleanup/refund/restart retry; ambiguous consumption never restores permission",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "AUTOMATIC_RETRIES",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 30,
+      "ENFORCEMENT_MECHANISM": "independent outer watchdog at absolute activation +30s including stop/publication; cannot rely solely on checks made by process under test",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CAMPAIGN_WALL_SECONDS",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 1048576,
+      "ENFORCEMENT_MECHANISM": "precharge all writes and rewrites plus critical evidence reserve; exclusive output paths; bounded stderr/stdout capture; reconcile independent observer and private ledger",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CAMPAIGN_WRITTEN_BYTES",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 134217728,
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_AS, exact readback",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CHILD_ADDRESS_SPACE_BYTES",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 5,
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_CPU, exact readback before callbacks",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CHILD_CPU_SECONDS",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 32,
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_NOFILE; close inherited unnecessary descriptors; readback",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CHILD_FDS",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 65536,
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_FSIZE for helper regular outputs, no pipe substitution",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CHILD_FILE_BYTES",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 10,
+      "ENFORCEMENT_MECHANISM": "parent wait with per-child absolute launch deadline and independent watchdog; current source-relative sequential waiting requires closure",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "CHILD_WALL_SECONDS",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 16,
+      "ENFORCEMENT_MECHANISM": "monotonic attempt counter; consume even Popen failure; successful campaign exactly10 fixed helpers; no restart of campaign counter",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "MAX_CHILD_LAUNCHES",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    },
+    {
+      "APPROVED_VALUE": 2,
+      "ENFORCEMENT_MECHANISM": "trusted fixed-source two-child batches; reserve before spawning; no arbitrary code/fork API; parent lifecycle observer. Not hostile-code kernel pids confinement.",
+      "FAILURE_RULE": "deny launch, preserve consumed/unknown authority and original failure; no weakening or retry",
+      "LIMIT_ID": "MAX_LIVE_CHILDREN",
+      "OBSERVED_CAPABILITY": "source mechanism present where specified; no active enforcement observed",
+      "QUALIFIED": false,
+      "REQUIRED_PERMISSION": "nonroot POSIX filesystem/process/resource permissions; no sudo or cgroup management",
+      "TEST_ENTRY_PREDICATE": "fresh independent exact limit/enforcement and observer receipt before any coordinator operation"
+    }
+  ],
+  "ENFORCEMENT_VERIFIED": false,
+  "EXACT_ISSUED_GRANT_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CAMPAIGN_WALL_SECONDS": 30,
+    "CAMPAIGN_WRITTEN_BYTES": 1048576,
+    "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+    "CHILD_CPU_SECONDS": 5,
+    "CHILD_FDS": 32,
+    "CHILD_FILE_BYTES": 65536,
+    "CHILD_WALL_SECONDS": 10,
+    "MAX_CHILD_LAUNCHES": 16,
+    "MAX_LIVE_CHILDREN": 2
+  },
+  "INERT_TRUST_SCOPE": "approved trusted fixed-program/non-hostile helpers, not general descendant-process security confinement",
+  "PROFILE_SPECIFIED": true,
+  "SYSTEM_LEVEL_TASKSMAX_DEPENDENCY": false
+}

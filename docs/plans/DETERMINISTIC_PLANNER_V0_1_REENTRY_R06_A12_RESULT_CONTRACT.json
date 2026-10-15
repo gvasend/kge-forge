@@ -1,0 +1,318 @@
+{
+  "A09_A12_EXECUTED": "NO",
+  "A09_READY": "YES (R05; no state change)",
+  "A10_READY": "YES (R05; no state change)",
+  "A11_READY": "YES (R05; no state change)",
+  "A12_NATIVE_PATH_QUALIFIED": "NOT_QUALIFIED: stop at authority/adapter boundary",
+  "A12_OWNERSHIP": {
+    "A13_boundary": "Accepted current E2-K-REENTER and completed REENTER; A13 owns independent root/slot proof recomputation and selected finishing result. No FINISH completion/readiness inferred from result alone.",
+    "action": "E2-REENTER",
+    "completion_rule": "core.apply_result/_inventory validates selection, pre-state and exact bounded result then derives COMPLETED and admits knowledge; codec.record_result preserves event ancestry",
+    "executor_note": "Canonical A12 explicitly uses supplied permitted result. Offline result-gate operands below are not actual executor results or lifecycle admissions.",
+    "expected_result": "PASS with exactly E2-K-REENTER",
+    "inputs": [
+      "Current canonical state/bundle/parent",
+      "Fresh native Computation",
+      "Exact selected Action",
+      "Typed actual SuppliedResult bound to expected snapshot"
+    ],
+    "operation": "recompute -> deterministic select -> supplied permitted result -> append_event",
+    "output": {
+      "id": "E2-K-REENTER",
+      "outcome": "PASS",
+      "producer": "E2-REENTER",
+      "statement": "Bounded reentry mapping produced",
+      "type": "KnowledgeRecord"
+    },
+    "postcondition": "New event/state identity, REENTER COMPLETED, E2-K-REENTER current, downstream FINISH evaluated; independent domain proof predicates still required",
+    "precondition": "A11 accepted applicable external and decision reentry events, freshly recomputed obligation Proof/C03, exact pins/currentness and named E2-REENTER selected"
+  },
+  "A12_POSTCONDITION": "DEFINED_NOT_EXECUTED",
+  "A12_READY": "NO",
+  "A13_BOUNDARY": "Accepted current E2-K-REENTER and completed REENTER; A13 owns independent root/slot proof recomputation and selected finishing result. No FINISH completion/readiness inferred from result alone.",
+  "A13_FIRST_BLOCKER": "NOT_RECOVERED: A12 not ready; no downstream redesign",
+  "A13_INITIAL_ORACLE": "Accepted current E2-K-REENTER and completed REENTER; A13 owns independent root/slot proof recomputation and selected finishing result. No FINISH completion/readiness inferred from result alone.",
+  "ACTION_COMPLETED_E2_REENTER": "FALSE in canonical state",
+  "ACTUAL_RESULT": "NOT_CREATED",
+  "AUTHORITATIVE_REENTER_RESULT": {
+    "accepted_result": "PASS",
+    "authority": [
+      "E2-USE-AUTHORITY"
+    ],
+    "cost": null,
+    "cost_unit": "",
+    "effect": "NON_EFFECTING",
+    "evidence": [],
+    "executor": "QUALIFICATION_DETERMINISTIC",
+    "external": [
+      "E2-EXTERNAL-REQUIREMENT"
+    ],
+    "generation": "E2-GENERATION-1",
+    "id": "E2-REENTER",
+    "knowledge": [
+      "E2-K-COLLECT",
+      "E2-K-CHECK"
+    ],
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "operation": "DETERMINISTIC_MAPPING",
+    "output": {
+      "id": "E2-K-REENTER",
+      "outcome": "PASS",
+      "producer": "E2-REENTER",
+      "statement": "Bounded reentry mapping produced",
+      "type": "KnowledgeRecord"
+    },
+    "pass_model_complete": true,
+    "prerequisites": [
+      "E2-DECIDE"
+    ],
+    "qualification": "ACCEPTED",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "stage": "DEFAULT",
+    "tick": 0,
+    "valid_until": 100
+  },
+  "BROAD_REGRESSION_STATUS": "NOT_RUN; pre-existing frozen-E1 collection blocker recorded separately",
+  "COLD_RESTORE": "Canonical input restored by qualification process; post-A12 NOT_RUN",
+  "CORRECTED_ACCEPTED_INVENTORY": [
+    {
+      "$type": "KnowledgeRecord",
+      "evidence": [],
+      "id": {
+        "$type": "KnowledgeId",
+        "value": "E2-K-REENTER"
+      },
+      "outcome": {
+        "$enum": "ActionResult",
+        "value": "PASS"
+      },
+      "producer": {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"authored_initial_premise\":true,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"historical_reconstruction\":false,\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"qualification_type\":\"PROSPECTIVE_REPLACEMENT\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\",\"template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"acquisition_contract_complete\\\":true,\\\"branch\\\":\\\"TEST-ROOT\\\",\\\"expected_producer\\\":\\\"TEST-rule-owner\\\",\\\"gate\\\":\\\"TEST-GATE\\\",\\\"lineage\\\":\\\"TEST/lineage\\\",\\\"missing_proposition\\\":\\\"Authenticated governing rule for target operation; no rule currently received\\\",\\\"positive_admission\\\":\\\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\\\",\\\"qualification_only\\\":true,\\\"receipt_action\\\":\\\"TEST-RECEIVE\\\",\\\"reentry\\\":[\\\"TEST-ACTION\\\"],\\\"requirement\\\":\\\"TEST-RULE\\\",\\\"schema\\\":\\\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\\\",\\\"scope\\\":\\\"TEST/scope\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"method\":\"SYNTHETIC_CONTRACT\",\"path\":\"source.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"}}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+        },
+        "method": "PROSPECTIVE_AUTHORED_INPUT",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/"
+      },
+      "state": {
+        "$enum": "KnowledgeState",
+        "value": "KNOWN_COMPLETE"
+      },
+      "statement": "Bounded reentry mapping produced",
+      "validation": {
+        "$enum": "ValidationState",
+        "value": "ACCEPTED"
+      }
+    }
+  ],
+  "DECISION": {
+    "allowed_frame_change": [
+      "accepted_inventory",
+      "pass_model_complete"
+    ],
+    "authority_class": "INSTALL",
+    "authorize_consequence": "Permit only this prospective definition replacement after generic adapter qualification. Advance canonical installation event/head, preserve history, rematerialize candidates. Does not permit A09-A12 execution.",
+    "consumer": "O01/model.Action/gates.validate_result/core.apply_result",
+    "context": {
+      "$type": "EvaluationContext",
+      "allowed_effects": [],
+      "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+      "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "tick": 0
+    },
+    "decline_consequence": "No change; A12_READY and P04_EXECUTION_READY remain NO.",
+    "exclusions": [
+      "Action execution",
+      "ActionResult creation",
+      "Action completion",
+      "new operating authority",
+      "route/authentication/A10 changes",
+      "other Actions",
+      "N-REAL",
+      "P03 scope changes"
+    ],
+    "expected_bundle": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "1b69d962865c23fa43b3ec362af096e39d72bbfc4dee2252d1e0d4914d487054"
+    },
+    "expected_parent": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "c3f48f66c77527c886fe483868deedd101bccfd69000385732a9b545fd07ea24"
+    },
+    "expected_state": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "94adb7403d30b7843124c823e0304b4a0b1a38b49b602fa9db75d09a2729ecab"
+    },
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "issuer_required": "authenticated human qualification/configuration authority",
+    "old_body": {
+      "domain": "canonical native Action wire bytes/raw-file-sha256",
+      "sha256": "f31992ff595d1dffb72caa3813be781e7d7d645933a2a75071e463a38d9a919c"
+    },
+    "operation": "REPLACE",
+    "options": [
+      "AUTHORIZE_P04_A12_REENTER_RESULT_INSTALLATION",
+      "DECLINE_P04_A12_REENTER_RESULT_INSTALLATION"
+    ],
+    "replacement_body": {
+      "domain": "canonical native Action wire bytes/raw-file-sha256",
+      "sha256": "d38334f14e44c8c0067f6098bf3acb2d38a878f0b5203956433851b62855c798"
+    },
+    "selected_option": "NONE",
+    "source_declaration_sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121",
+    "subject": "Replace only E2-REENTER accepted-result definition; implement and qualify required generic Action definition adapter before application",
+    "validity": "exact pinned prefix; context tick within 0..100; one semantic replacement; invalidated source/authority fails closed"
+  },
+  "E05_RESULT_CONTRACT_REUSABLE": "YES: semantics/materializer reused; historical Action/output instances not reused",
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "E2_FINISH_EXECUTED": "NO",
+  "E2_K_REENTER": "ABSENT in canonical state",
+  "E2_P04_READY": "NO",
+  "E2_REENTER_EXECUTION": "NOT_RUN",
+  "INSTALLATION_CLASSIFICATION": "NEW_AUTHORITY_REQUIRED; prospective REPLACE; generic Action typed adapter required",
+  "INSTALLATION_DECISION_READY": "YES: exact offline bodies/content pins and bounded adapter requirements sealed; no grant issued",
+  "INSTALL_AUTHORITY": "NONE_APPLICABLE: route REPLACE, authentication INSTALL and A10 INSTALL grants are bounded to other definition sets",
+  "LOSS_POINT": {
+    "classification": "ACTION_MATERIALIZER_NOT_APPLIED",
+    "details": "Constructor clones held Action and changes ID/operation/prerequisites/requirements; it never materializes REENTER output or pass_model_complete. P03 author_template prospectively repins this earlier handoff template; subsequent route/authentication/A10 adapters preserve Actions. E05 corrected snapshot is a distinct development instance, not canonical P04 input.",
+    "native_constructor": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_WHOLE_MODEL_ORACLE.py:88"
+  },
+  "NEGATIVE_LIMITATION": "SuppliedResult has no standalone scope/lineage fields. Output provenance is compared exactly; execution additionally pins expected snapshot. No invented fields or direct lineage rejection claim.",
+  "NEGATIVE_SUITE": [
+    {
+      "name": "wrong outcome",
+      "native_reason": "result differs from bounded outcome contract",
+      "result": "PASS"
+    },
+    {
+      "name": "missing output",
+      "native_reason": "inventory result does not meet its exact evidence contract",
+      "result": "PASS"
+    },
+    {
+      "name": "extra output",
+      "native_reason": "inventory result does not meet its exact evidence contract",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong knowledge",
+      "native_reason": "inventory result does not meet its exact evidence contract",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong Action",
+      "native_reason": "result differs from bounded outcome contract",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong output scope",
+      "native_reason": "inventory result does not meet its exact evidence contract",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong output provenance/lineage source",
+      "native_reason": "inventory result does not meet its exact evidence contract",
+      "result": "PASS"
+    },
+    {
+      "name": "prospective Action definition substituted for result",
+      "native_reason": "wrong type: expected SuppliedResult",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong declaration producer",
+      "native_reason": "output producer/type differs from Action",
+      "result": "PASS"
+    },
+    {
+      "name": "wrong declaration outcome",
+      "native_reason": "output outcome differs from Action result contract",
+      "result": "PASS"
+    }
+  ],
+  "NEW_AUTHORITY_DECISION_REQUIRED": "YES",
+  "NEXT_PACKAGE": "Bounded P04 A12 result-definition installation decision; if authorized, implement/qualify generic Action replacement adapter and apply exact set",
+  "N_REAL_SATISFIED": "NO",
+  "O01": "Existing authoritative source profile PASS (6 Actions/78 fields); corrected current-lineage profile/installation qualification NOT_RUN",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_EXECUTION_READY": "NO",
+  "P04_REENTER_ACCEPTED_INVENTORY_BEFORE": [],
+  "PERSISTENCE": "Canonical input native restore PASS; prospective Action canonical-wire round trip PASS; post-A12 persistence NOT_RUN",
+  "PRESERVATION": {
+    "checked_files": 2273,
+    "existing_artifacts_unchanged": true,
+    "git_diff_check": "PASS"
+  },
+  "PRODUCTION_EFFECT": "NO",
+  "PROSPECTIVE_CHANGED_FIELDS": [
+    "accepted_inventory",
+    "pass_model_complete"
+  ],
+  "REPLAY": "Input bundle native trust/replay PASS; replacement and A12 replay NOT_RUN",
+  "RESULT": "PARTIAL",
+  "RESULT_ADMISSION": "NOT_RUN; offline gates.validate_result positive PASS",
+  "RUNTIME_MODIFIED": "NO",
+  "SELECTED_OPTION": "NONE",
+  "TARGETED_REGRESSIONS": "PASS: 19 installation/authentication tests; offline model/result-gate qualification with 10 negative controls; source O01 oracle PASS",
+  "TYPED_ADAPTER_CONTRACT": {
+    "baseline_role": "Resolve existing baseline canonical Action by logical ID and exact old content pin; no invented prior installed-definition record",
+    "currentness": "Exact active definition content, installation witness, source pins, valid authority, context and generation; invalidation withdraws applicability without erasing history",
+    "future_A09": "After installation all prior-parent candidates stale; rematerialize final A09 and rerun complete precommit; reseal downstream oracles from final prefix",
+    "history": "Before event old Action; after event new Action; no retroactive change",
+    "idempotence": "Exact request/envelope replay no duplicate replacement; conflicting bytes/command fail closed",
+    "input": "Canonical old Action + authored declaration + exact new native Action body + bounded INSTALL/REPLACE grant + current event-bearing prefix",
+    "qualification": [
+      "Positive generic Action replacement",
+      "Unauthorized replacement and wrong old/new body/type/authority/scope/lineage/generation/parent",
+      "Failure injection with no partial definition/event/head",
+      "Stale pre-install result/admission candidates",
+      "Persistence/cold restore/replay with exact historical boundary",
+      "No ActionResult, completion or actual knowledge created by installation"
+    ],
+    "role": "Generic Action definition replacement, not E2-specific result admission",
+    "status": "REQUIRED_NOT_IMPLEMENTED_OR_AUTHORIZED",
+    "transaction": "One ordinary-parent INSTALL_DEFINITION REPLACE event plus activated Action definition/installed-record/source additions committed atomically; no lifecycle result",
+    "validation": [
+      "Require exact old Action body/content and logical ActionId at pinned prefix",
+      "Reject completed/executed Action replacement unless separately authorized; require pending unexecuted target",
+      "Materialize authored inventory using E05; validate whole model and current-lineage O01 profile before commit",
+      "Permit only accepted_inventory and pass_model_complete frame differences for this grant",
+      "Preserve source provenance, prerequisites, effect, operation, authority, predicates, statuses, actual knowledge and all unrelated state",
+      "Do not treat Action.source metadata wrapper as new canonical definition body; separately pin exact replacement wire body and source declaration",
+      "Require exact scope/lineage/generation/consumer, valid authority and installation support provenance"
+    ]
+  },
+  "WHOLE_MODEL": "PASS: offline prospective model.validate_model, not installed canonical state",
+  "WORK_PACKAGE": "REENTRY-R06",
+  "evidence_path": "docs/plans/qualification/REENTRY_R06_1/qualification-evidence.json"
+}

@@ -1,0 +1,189 @@
+{
+  "controls": [
+    {
+      "case": "wrong_P03_event",
+      "expected_rejection": "EVENT_ID_EXACT",
+      "id": 1,
+      "mutation_path": "event_id",
+      "value": "planner-event-v1:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "case": "wrong_choice_identity",
+      "expected_rejection": "CHOICE_IDENTITY_EXACT",
+      "id": 2,
+      "mutation_path": "choice_identity",
+      "value": "raw-file-sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "case": "wrong_decision_context",
+      "expected_rejection": "DECISION_CONTEXT_EXACT",
+      "id": 3,
+      "mutation_path": "context/generation",
+      "value": "FOREIGN-GENERATION"
+    },
+    {
+      "case": "wrong_parent",
+      "expected_rejection": "PARENT_EVENT_EXACT",
+      "id": 4,
+      "mutation_path": "parent_event_id",
+      "value": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+    },
+    {
+      "case": "wrong_ledger",
+      "expected_rejection": "LEDGER_MEMBERSHIP_EXACT",
+      "id": 5,
+      "mutation_path": "ledger_bundle_id",
+      "value": "planner-bundle-v1:45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7"
+    },
+    {
+      "case": "wrong_ledger_position",
+      "expected_rejection": "LEDGER_POSITION_EXACT",
+      "id": 6,
+      "mutation_path": "ledger_position",
+      "value": 1
+    },
+    {
+      "case": "wrong_scope",
+      "expected_rejection": "DECISION_CONTEXT_EXACT",
+      "id": 7,
+      "mutation_path": "context/scope",
+      "value": "PRODUCTION"
+    },
+    {
+      "case": "wrong_lineage",
+      "expected_rejection": "DECISION_CONTEXT_EXACT",
+      "id": 8,
+      "mutation_path": "context/lineage",
+      "value": "E2-CANONICAL-BASELINE-1"
+    },
+    {
+      "case": "wrong_provenance",
+      "expected_rejection": "CHOICE_PROVENANCE_EXACT",
+      "id": 9,
+      "mutation_path": "choice_source_pin/identity/sha256",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "case": "report_substituted_for_event",
+      "expected_rejection": "NATIVE_EVENT_REQUIRED",
+      "id": 10,
+      "mutation_path": "witness_kind",
+      "value": "REPORT_METADATA"
+    },
+    {
+      "case": "Snapshot_substituted_for_ancestry",
+      "expected_rejection": "NATIVE_EVENT_REQUIRED",
+      "id": 11,
+      "mutation_path": "witness_kind",
+      "value": "SNAPSHOT_ONLY"
+    },
+    {
+      "case": "different_P03_decision_event",
+      "expected_rejection": "EVENT_SOURCE_EXACT",
+      "id": 12,
+      "mutation_path": "event_source/pointer",
+      "value": "/bundle/events/0"
+    },
+    {
+      "case": "alternate_labeled_original_A05",
+      "expected_rejection": "NO_HISTORICAL_ALIAS",
+      "id": 13,
+      "mutation_path": "P03_EVENT_IS_ORIGINAL_A05_EVENT",
+      "value": "YES"
+    },
+    {
+      "case": "new_A05_identity_fabricated",
+      "expected_rejection": "NO_NEW_A05_IDENTITY",
+      "id": 14,
+      "mutation_path": "new_A05_event_id",
+      "value": "planner-event-v1:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    },
+    {
+      "case": "preexisting_grant_limitation_removed",
+      "expected_rejection": "PREEXISTING_GRANT_LIMITATION",
+      "id": 15,
+      "mutation_path": "grant_preexisting",
+      "value": false
+    },
+    {
+      "case": "original_prefix_gap_closed",
+      "expected_rejection": "ORIGINAL_PREFIX_STILL_OPEN",
+      "id": 16,
+      "mutation_path": "original_prefix_gap_closed",
+      "value": true
+    },
+    {
+      "case": "A06_gap_closed",
+      "expected_rejection": "A06_STILL_OPEN",
+      "id": 17,
+      "mutation_path": "A06_gap_closed",
+      "value": true
+    },
+    {
+      "case": "N12_assumed",
+      "expected_rejection": "N12_INDEPENDENT_MAPPING_REQUIRED",
+      "id": 18,
+      "mutation_path": "N12_mode",
+      "value": "ASSUMED"
+    },
+    {
+      "case": "N13_assumed_from_N12",
+      "expected_rejection": "N13_INDEPENDENT_MAPPING_REQUIRED",
+      "id": 19,
+      "mutation_path": "N13_mode",
+      "value": "FROM_N12"
+    },
+    {
+      "case": "wrong_scope_subject",
+      "expected_rejection": "SCOPE_SUBJECT_EXACT",
+      "id": 20,
+      "mutation_path": "scope_subject",
+      "value": "qualification-scope-subject-v1:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "case": "wrong_dossier_hash",
+      "expected_rejection": "DOSSIER_HASH_EXACT",
+      "id": 21,
+      "mutation_path": "dossier_raw_sha256",
+      "value": "0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    {
+      "case": "scope_used_as_DECIDE_authority",
+      "expected_rejection": "QUALIFICATION_SCOPE_ONLY",
+      "id": 22,
+      "mutation_path": "scope_type",
+      "value": "DECIDE"
+    },
+    {
+      "case": "original_event_identity_aliased",
+      "expected_rejection": "NO_HISTORICAL_ALIAS",
+      "id": 23,
+      "mutation_path": "original_A05_event_id",
+      "value": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+    },
+    {
+      "case": "grant_issuance_claimed",
+      "expected_rejection": "PREEXISTING_GRANT_LIMITATION",
+      "id": 24,
+      "mutation_path": "grant_issuance_proven",
+      "value": true
+    },
+    {
+      "case": "N13_terms_omitted",
+      "expected_rejection": "N13_INDEPENDENT_MAPPING_REQUIRED",
+      "id": 25,
+      "mutation_path": "N13_required_terms",
+      "value": []
+    },
+    {
+      "case": "full_END_gap_waived",
+      "expected_rejection": "ORIGINAL_PREFIX_STILL_OPEN",
+      "id": 26,
+      "mutation_path": "full_END_original_ancestry_waived",
+      "value": true
+    }
+  ],
+  "domain": "Read-only qualification mapping gates, not new native admission/execution",
+  "schema": "E2-P05-A05-ALTERNATE-NEGATIVE-PLAN-1",
+  "sealed_before_qualification": true
+}

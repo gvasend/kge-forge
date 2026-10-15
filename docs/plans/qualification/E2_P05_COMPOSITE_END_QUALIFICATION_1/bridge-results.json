@@ -1,0 +1,779 @@
+{
+  "RESULT": "PASS",
+  "bridges": [
+    {
+      "ASSURANCE_PRESERVED": {
+        "actual_results": [
+          "PASS",
+          "PASS"
+        ],
+        "actual_selected_acquisition_result": "E2-CHECK",
+        "original_selection_is_read_only": "NOT_APPLICABLE; read-only selection",
+        "outputs": [
+          [
+            "E2-K-CHECK"
+          ],
+          [
+            "E2-K-COLLECT"
+          ]
+        ],
+        "source_selected_Action": "E2-CHECK"
+      },
+      "BRIDGE_ID": "qualification-END-edge-v1:e2d20d94c60bfa5059f66af82c4b5841a3210ca20ce1a1af621c8cc3cb06a089",
+      "HISTORICAL_EXCLUSION": "No native same-state/parent/output-production connection between these component histories is proven",
+      "RESULT": "PASS",
+      "SCOPE_AUTHORITY": "qualification-END-scope-authentication-v1:7aa2aca4557a1b151ff2493ebe22aff2ea8351b468370d78ebf69b18aaf2ad97",
+      "SOURCE": "E2-A02",
+      "SOURCE_LINEAGE": "E2-CANONICAL-BASELINE-1",
+      "TARGET": "E2-A03",
+      "TARGET_LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET_REQUIREMENT": "Selected acquisition action with independently specified output contract",
+      "classification": "SEMANTIC_ACCEPTANCE_EDGE",
+      "native_handoff_proven": false,
+      "scope_subject": "qualification-scope-subject-v1:12b2e68bea4d28c8da2cd35e15b9cb704b153288df40360ed0dc33e414402256",
+      "sealed_definition": {
+        "aggregate_semantic_acceptance_if_selected": "SEMANTIC_ACCEPTANCE_EDGE_ONLY_UNDER_NEW_EXACT_AGGREGATE_SCOPE; cross-component post/pre identity equality is not claimed",
+        "classification": "UNPROVEN",
+        "current_status": "NO_SINGLE_NATIVE_HANDOFF_CURRENT_SCOPE",
+        "edge_id": "qualification-END-edge-v1:e2d20d94c60bfa5059f66af82c4b5841a3210ca20ce1a1af621c8cc3cb06a089",
+        "evidence": [
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INPUT_VALIDATION.json",
+            "pointer": "/initial_selection",
+            "raw_sha256": "ec6c6c5aebe0cea133de95e11773f0742fe4a79997a13ca05cf6c7367811f7fd"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_3_RESULT.json",
+            "pointer": "/trace/0",
+            "raw_sha256": "5e348f4da6d5baa3b3525e93f14e323ebc24e13f2c2a737958327efb4a0df5fc"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json",
+            "pointer": "",
+            "raw_sha256": "1d885295981a90929bfa958a9324da711fb2ab7dfb5a386f099f34774f9c589f"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A03_PROSPECTIVE_OCCURRENCE_RESULT_1.json",
+            "pointer": "",
+            "raw_sha256": "132220594cb622942348303aae5b2292c711f2b9496c3c4d81fa0ff4164e6d78"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/END-acceptance-mapping.json",
+            "pointer": "",
+            "raw_sha256": "2233603059d969c8af0a39b25b0960746f0c8a35e05fcf75ea8dad6cb233a041"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A03_PROSPECTIVE_OCCURRENCE_BUNDLE_1.json",
+            "pointer": "",
+            "raw_sha256": "b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39"
+          }
+        ],
+        "native_parent_asserted": false,
+        "relationship": "LIFECYCLE_STATE_INPUT",
+        "required_assurance": "Selected acquisition action with independently specified output contract",
+        "source": "E2-A02",
+        "target": "E2-A03"
+      }
+    },
+    {
+      "ASSURANCE_PRESERVED": {
+        "cross_dossier_identity_equality_claimed": false,
+        "source_PREPARE_event": "planner-event-v1:2c71adfce820b0fc997e7d1f872439e9ddb43170c95edbeafaf461a4065760f0",
+        "source_actual_dossier": {
+          "$type": "DecisionDossier",
+          "alternatives": [
+            "ALLOW_QUALIFICATION_MAPPING",
+            "DECLINE"
+          ],
+          "authority_excluded": "No production, general authority, real E1 authority or proof satisfaction",
+          "authority_granted_if_approved": "Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.",
+          "checks": [
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "ASSUMPTIONS_CONSEQUENCES"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-ASSUMPTIONS_CONSEQUENCES"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "AUTHORITY_BOUNDARY"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-AUTHORITY_BOUNDARY"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "CONCRETE_ALTERNATIVES"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-CONCRETE_ALTERNATIVES"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "DECISION_FACTS_COMPLETE"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-DECISION_FACTS_COMPLETE"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "DOWNSTREAM_QUALIFICATION"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-DOWNSTREAM_QUALIFICATION"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "INDEPENDENT_VALIDATION"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-INDEPENDENT_VALIDATION"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "NO_INVENTED_FACTS"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-NO_INVENTED_FACTS"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "QUESTION_SCOPE"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-QUESTION_SCOPE"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            },
+            {
+              "$type": "DecisionCheck",
+              "kind": {
+                "$enum": "DossierCheck",
+                "value": "SOURCE_PROVENANCE"
+              },
+              "predicate": {
+                "$type": "PredicateId",
+                "value": "E2-CHECK-SOURCE_PROVENANCE"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+                },
+                "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/dossier_declaration"
+              }
+            }
+          ],
+          "decision": {
+            "$type": "ActionId",
+            "value": "E2-DECIDE"
+          },
+          "deferred_downstream_facts": [
+            "External evidence applicability is not asserted by this decision"
+          ],
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+            },
+            "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+            "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+            "scope": "E2-QUALIFICATION-ONLY",
+            "section": "/dossier_declaration"
+          },
+          "question": "Permit this qualification-only bounded mapping after independently valid evidence?",
+          "required_facts": [
+            {
+              "$type": "PredicateId",
+              "value": "E2-KP-CHECK"
+            },
+            {
+              "$type": "PredicateId",
+              "value": "E2-KP-COLLECT"
+            }
+          ],
+          "scope": "E2-QUALIFICATION-ONLY",
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        },
+        "source_validation_count": 6,
+        "target_actual_decision": {
+          "$type": "RecordedDecision",
+          "authority": {
+            "$type": "PredicateId",
+            "value": "E2-PROSPECTIVE-CHOICE-AUTHORITY"
+          },
+          "choice": "ALLOW_QUALIFICATION_MAPPING",
+          "decision": {
+            "$type": "ActionId",
+            "value": "E2-DECIDE"
+          },
+          "expected_snapshot": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8"
+          },
+          "record": {
+            "$type": "EntityId",
+            "value": "E2-PROSPECTIVE-CHOICE"
+          }
+        },
+        "target_existing_choice": "raw-file-sha256:daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf",
+        "target_qualified_issuer_dossier_context": {
+          "DECIDE_proof_after": "PROVED",
+          "DECIDE_proof_before": "PROVED",
+          "USE_proof_after": "PROVED",
+          "USE_proof_before": "PROVED",
+          "choice_evidence_identity": "raw-file-sha256:daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf",
+          "choice_scope_trust_root": {
+            "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+            "pointer": "",
+            "raw_sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+          },
+          "choice_source": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf"
+            },
+            "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/choice-evidence.json",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "choice_source_payload": {
+            "decision": "E2-DECIDE",
+            "dossier": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-dossier-sha256",
+              "sha256": "53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1"
+            },
+            "issuer": "authenticated human user of this session",
+            "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+            "option": "ALLOW_QUALIFICATION_MAPPING",
+            "scope": "E2-QUALIFICATION-ONLY",
+            "scope_authority": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+            },
+            "sequence": 1
+          },
+          "currentness_domain": "Exact retained qualification boundary; no new execution permission generated",
+          "grant_issuance_occurrence_proven": false,
+          "grant_source": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "966a23b17e754fa28b5de64d979c56a91f75677a8b1d49628bc30dfa9f8e5f67"
+            },
+            "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/grant-source.json",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "grant_source_payload": {
+            "choice": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf"
+            },
+            "dossier": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-dossier-sha256",
+              "sha256": "53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1"
+            },
+            "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+            "permission": "USE",
+            "qualification_only": true,
+            "scope": "E2-QUALIFICATION-ONLY",
+            "subject": "E2-REENTER"
+          },
+          "grant_was_already_present": true,
+          "issuer": "authenticated human user of this session",
+          "native_RecordDecision_id": "NOT_EXPOSED; use actual enclosing event /result selector",
+          "native_dossier_identity": "planner-dossier-sha256:53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1",
+          "native_dossier_provenance_identity": "raw-file-sha256:ba2ac22de8be26c3380955f2c36e77c1317ad6d81d788451325c6721cf9c8fb4",
+          "native_grant_AuthorityIdentity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "prospective-use-authority-v1",
+            "sha256": "e80b77439d6dc8d2cdadd65e137de13444283a517aa55136ff72ad8e80d20bf2"
+          },
+          "native_grant_EntityId": "E2-GRANT",
+          "native_record_predicate": "E2-PROSPECTIVE-CHOICE-AUTHORITY",
+          "native_result_reference": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728#/result",
+          "original_T03_issuer_trust_root_envelope_preserved": false,
+          "record_AuthorityIdentity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "AUTHORITY_IDENTITY"
+            },
+            "namespace": "prospective-choice-authority-v1",
+            "sha256": "7669a3d7db260e0141ea539e4a31f87df3100460af646d1d4d7026895cf04a1c"
+          },
+          "record_EntityId": "E2-PROSPECTIVE-CHOICE",
+          "status": "PASS"
+        }
+      },
+      "BRIDGE_ID": "qualification-END-edge-v1:79e37b09898f870505a2fca2e67784ca53dcc971d7f9b500af666182e54866a3",
+      "HISTORICAL_EXCLUSION": "No native same-state/parent/output-production connection between these component histories is proven",
+      "RESULT": "PASS",
+      "SCOPE_AUTHORITY": "qualification-END-scope-authentication-v1:7aa2aca4557a1b151ff2493ebe22aff2ea8351b468370d78ebf69b18aaf2ad97",
+      "SOURCE": "E2-A04",
+      "SOURCE_LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET": "E2-A05",
+      "TARGET_LINEAGE": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET_REQUIREMENT": "Ready human decision with predefined qualification-only choices and independently pinned record",
+      "classification": "SEMANTIC_ACCEPTANCE_EDGE",
+      "native_handoff_proven": false,
+      "scope_subject": "qualification-scope-subject-v1:12b2e68bea4d28c8da2cd35e15b9cb704b153288df40360ed0dc33e414402256",
+      "sealed_definition": {
+        "aggregate_semantic_acceptance_if_selected": "SEMANTIC_ACCEPTANCE_EDGE_ONLY_UNDER_NEW_EXACT_AGGREGATE_SCOPE; cross-component post/pre identity equality is not claimed",
+        "classification": "UNPROVEN",
+        "current_status": "NO_SINGLE_NATIVE_HANDOFF_CURRENT_SCOPE",
+        "edge_id": "qualification-END-edge-v1:79e37b09898f870505a2fca2e67784ca53dcc971d7f9b500af666182e54866a3",
+        "evidence": [
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_RESULT_1.json",
+            "pointer": "",
+            "raw_sha256": "5f6b4158a50f8b6783bc862d722b7de179f9a59f3b6c3630453f43d80114e8d2"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/END-replacement-mapping.json",
+            "pointer": "",
+            "raw_sha256": "0400d970c618b930429f06f9bc124fa7e879d7ee4e532bb726a76510a551191d"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_BUNDLE_1.json",
+            "pointer": "",
+            "raw_sha256": "45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A05_ALTERNATE_NATIVE_EVIDENCE_RESULT_1.json",
+            "pointer": "",
+            "raw_sha256": "435a790ac3a13536342d397ea79283060b41695787639c63103c357a7d009d77"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_A05_ALTERNATE_NATIVE_EVIDENCE_1/END-acceptance-mapping.json",
+            "pointer": "",
+            "raw_sha256": "0bd459af57f019024143ba767c2304e51d142487debc70eac1d14ef8412b2057"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+            "pointer": "/bundle/events/1",
+            "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/1",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          }
+        ],
+        "native_parent_asserted": false,
+        "relationship": "LIFECYCLE_STATE_INPUT",
+        "required_assurance": "Ready human decision with predefined qualification-only choices and independently pinned record",
+        "source": "E2-A04",
+        "target": "E2-A05"
+      }
+    },
+    {
+      "ASSURANCE_PRESERVED": {
+        "A05_grant_retaged_or_propagated_to_A06": false,
+        "actual_retained_decision": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+        "held_actions": [
+          "E2-REENTER"
+        ],
+        "known_rule": true,
+        "pending": null,
+        "target_context": {
+          "$type": "EvaluationContext",
+          "allowed_effects": [],
+          "generation": "E2-P05-A06-PROSPECTIVE-GENERATION-1",
+          "lineage": "E2-P05-A06-PROSPECTIVE-QUALIFICATION-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "tick": 0
+        },
+        "target_gate": "E2-GATE",
+        "target_receipts": 0,
+        "target_request": "TEST-REQUEST",
+        "target_start_stage": "EXTERNAL_EVIDENCE_REQUIRED"
+      },
+      "BRIDGE_ID": "qualification-END-edge-v1:9df0e0cbb7d9a053e3334f69280724cd3712101b7d74f125e3523cad6cfc4e45",
+      "HISTORICAL_EXCLUSION": "No native same-state/parent/output-production connection between these component histories is proven",
+      "RESULT": "PASS",
+      "SCOPE_AUTHORITY": "qualification-END-scope-authentication-v1:7aa2aca4557a1b151ff2493ebe22aff2ea8351b468370d78ebf69b18aaf2ad97",
+      "SOURCE": "E2-A05",
+      "SOURCE_LINEAGE": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET": "E2-A06",
+      "TARGET_LINEAGE": "E2-P05-A06-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET_REQUIREMENT": "Reentry action held; known validation rule; evidence unavailable; exact route/producers/context bound",
+      "classification": "SEMANTIC_ACCEPTANCE_EDGE",
+      "native_handoff_proven": false,
+      "scope_subject": "qualification-scope-subject-v1:12b2e68bea4d28c8da2cd35e15b9cb704b153288df40360ed0dc33e414402256",
+      "sealed_definition": {
+        "aggregate_semantic_acceptance_if_selected": "SEMANTIC_ACCEPTANCE_EDGE_ONLY_UNDER_NEW_EXACT_AGGREGATE_SCOPE; cross-component post/pre identity equality is not claimed",
+        "classification": "UNPROVEN",
+        "current_status": "NO_SINGLE_NATIVE_HANDOFF_CURRENT_SCOPE",
+        "edge_id": "qualification-END-edge-v1:9df0e0cbb7d9a053e3334f69280724cd3712101b7d74f125e3523cad6cfc4e45",
+        "evidence": [
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A05_ALTERNATE_NATIVE_EVIDENCE_RESULT_1.json",
+            "pointer": "",
+            "raw_sha256": "435a790ac3a13536342d397ea79283060b41695787639c63103c357a7d009d77"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_A05_ALTERNATE_NATIVE_EVIDENCE_1/END-acceptance-mapping.json",
+            "pointer": "",
+            "raw_sha256": "0bd459af57f019024143ba767c2304e51d142487debc70eac1d14ef8412b2057"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+            "pointer": "/bundle/events/1",
+            "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+            "pointer": "/bundle/events/1",
+            "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_RESULT_1.json",
+            "pointer": "",
+            "raw_sha256": "ffab16dbc1aa32e044c74fd6d0e41bc889da5f4285f0d87cc3b23563a29f8ca5"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_EXECUTION_1/END-N12-N13-mapping-result.json",
+            "pointer": "",
+            "raw_sha256": "9ceb2d50af992f8ab0972997cb2afa60b202e0a21ec6f83cce7d22e478b87753"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_BUNDLE_1.json",
+            "pointer": "",
+            "raw_sha256": "4b02354c3c71cf3057f63c84b720924cd231f3cb356f47f87678f232a0014fdb"
+          }
+        ],
+        "native_parent_asserted": false,
+        "relationship": "LIFECYCLE_STATE_INPUT",
+        "required_assurance": "Reentry action held; known validation rule; evidence unavailable; exact route/producers/context bound",
+        "source": "E2-A05",
+        "target": "E2-A06"
+      }
+    },
+    {
+      "ASSURANCE_PRESERVED": {
+        "source_gate": "E2-GATE",
+        "source_receipts": 0,
+        "source_stage": "WAITING_FOR_EXTERNAL_EVIDENCE",
+        "source_wait_trace": [
+          "EVIDENCE_REQUEST_READY",
+          "WAITING_FOR_EXTERNAL_EVIDENCE"
+        ],
+        "target_checkpoint": {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+          "pointer": "",
+          "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+        },
+        "target_fidelity_qualification": {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.json",
+          "pointer": "",
+          "raw_sha256": "2efaeb92a770cd68d94ee2c053167fb129b4283fe1577a3d9d3197a50117fb9e"
+        },
+        "target_gate": "E2-GATE",
+        "target_receipts": 0,
+        "target_stage": "WAITING_FOR_EXTERNAL_EVIDENCE",
+        "target_wait_occurrence_inferred_from_Snapshot": false
+      },
+      "BRIDGE_ID": "qualification-END-edge-v1:ebcbc8ccbb3f8806aef8f04aac0d45cea8b17cef0ff4610bb3ee99e090ad1176",
+      "HISTORICAL_EXCLUSION": "No native same-state/parent/output-production connection between these component histories is proven",
+      "RESULT": "PASS",
+      "SCOPE_AUTHORITY": "qualification-END-scope-authentication-v1:7aa2aca4557a1b151ff2493ebe22aff2ea8351b468370d78ebf69b18aaf2ad97",
+      "SOURCE": "E2-A06",
+      "SOURCE_LINEAGE": "E2-P05-A06-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET": "E2-A07",
+      "TARGET_LINEAGE": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "TARGET_REQUIREMENT": "E2-A06 checkpoint",
+      "classification": "SEMANTIC_ACCEPTANCE_EDGE",
+      "native_handoff_proven": false,
+      "scope_subject": "qualification-scope-subject-v1:12b2e68bea4d28c8da2cd35e15b9cb704b153288df40360ed0dc33e414402256",
+      "sealed_definition": {
+        "aggregate_semantic_acceptance_if_selected": "SEMANTIC_ACCEPTANCE_EDGE_ONLY_UNDER_NEW_EXACT_AGGREGATE_SCOPE; cross-component post/pre identity equality is not claimed",
+        "classification": "UNPROVEN",
+        "current_status": "NO_SINGLE_NATIVE_HANDOFF_CURRENT_SCOPE",
+        "edge_id": "qualification-END-edge-v1:ebcbc8ccbb3f8806aef8f04aac0d45cea8b17cef0ff4610bb3ee99e090ad1176",
+        "evidence": [
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_RESULT_1.json",
+            "pointer": "",
+            "raw_sha256": "ffab16dbc1aa32e044c74fd6d0e41bc889da5f4285f0d87cc3b23563a29f8ca5"
+          },
+          {
+            "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_EXECUTION_1/END-N12-N13-mapping-result.json",
+            "pointer": "",
+            "raw_sha256": "9ceb2d50af992f8ab0972997cb2afa60b202e0a21ec6f83cce7d22e478b87753"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_BUNDLE_1.json",
+            "pointer": "",
+            "raw_sha256": "4b02354c3c71cf3057f63c84b720924cd231f3cb356f47f87678f232a0014fdb"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.json",
+            "pointer": "/p03_original_case_evaluation",
+            "raw_sha256": "2efaeb92a770cd68d94ee2c053167fb129b4283fe1577a3d9d3197a50117fb9e"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+            "pointer": "",
+            "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+          },
+          {
+            "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+            "pointer": "",
+            "raw_sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+          },
+          {
+            "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-contract.json",
+            "pointer": "",
+            "raw_sha256": "3e34062b2106d2efa070138f46b5057bd2f094d9bdcc0f0d7ba142f25fa65e9d"
+          },
+          {
+            "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+            "pointer": "",
+            "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+          }
+        ],
+        "native_parent_asserted": false,
+        "relationship": "LIFECYCLE_STATE_INPUT",
+        "required_assurance": "E2-A06 checkpoint",
+        "source": "E2-A06",
+        "target": "E2-A07"
+      }
+    }
+  ],
+  "count": 4
+}

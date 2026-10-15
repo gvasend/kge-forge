@@ -1,0 +1,267 @@
+{
+  "validation": {
+    "status": "PROSPECTIVE_INPUT_DEFINITION_ONLY",
+    "native_evidence": {
+      "$type": "EntityId",
+      "value": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685"
+    },
+    "semantic_evidence": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "p04-semantic-evidence-v1",
+      "sha256": "16ca198426ed66e06cc15e1095a853ed36405f8c3ed7a3f70c4f6a41a3c266c4"
+    },
+    "content": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "p04-semantic-content-v1",
+      "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+    },
+    "predicate": "E2-PROOF",
+    "proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "source_pin": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "AUTHORITY_IDENTITY"
+      },
+      "namespace": "TEST-rule-owner",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "input_oracle": "Require received\u2014not validated\u2014native entity; exact producer/target/gate/claims/payload/content/provenance/context/currentness; independent authentic source.",
+    "future_validation_result_id": "MUST_BE_NATIVE_DERIVED_AT_VALIDATION; NOT_CREATED",
+    "persisted_operation_status": "MISSING_COMPOSED_NATIVE_VALIDATION_EVENT_CONTRACT: helper returns Snapshot/ValidationResult, which is absent from closed ExecutionEvent union; no snapshot replacement allowed"
+  },
+  "evidence_proof": {
+    "status": "PROSPECTIVE_TYPED_EVIDENCE_PROOF_INPUT_SPECIFICATION",
+    "proof_type": "Evidence proof (distinct from SLOT_PROOF/ROOT_PROOF)",
+    "target_requirement": "E2-EXTERNAL-REQUIREMENT",
+    "native_evidence": {
+      "$type": "EntityId",
+      "value": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685"
+    },
+    "semantic_evidence": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "p04-semantic-evidence-v1",
+      "sha256": "16ca198426ed66e06cc15e1095a853ed36405f8c3ed7a3f70c4f6a41a3c266c4"
+    },
+    "content": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "p04-semantic-content-v1",
+      "sha256": "679e739058c73b20a367e7a0a6f37a90818671cc5011727d7293e17e3ecc2d4d"
+    },
+    "validation_result_reference": "Future admitted PASS ValidationResult identity, not an arbitrary ID",
+    "source_pin": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "AUTHORITY_IDENTITY"
+      },
+      "namespace": "TEST-rule-owner",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "precondition": "Received -> actual independent validation -> typed proof; no receipt-to-proof skip",
+    "persisted_compound_operation_contract": "UNRESOLVED; E04 helper is available but Snapshot/result journal is not automatically the ordinary native PersistenceBundle event union"
+  },
+  "reentry": {
+    "status": "PROSPECTIVE_CONTRACT_INPUTS_PREPARED_NOT_INSTALLED",
+    "named_action": "E2-REENTER",
+    "gate": "E2-GATE",
+    "prerequisites": [
+      "accepted validated/proved Evidence",
+      "accepted DEPENDENT_ACTION_REENTRY event with exact policy/context resume binding",
+      "native decision reentry where required",
+      "current E2-USE-AUTHORITY",
+      "C03 returns only E2-REENTER"
+    ],
+    "existing_use_grant": {
+      "$type": "GraphEntity",
+      "id": {
+        "$type": "EntityId",
+        "value": "E2-GRANT"
+      },
+      "kind": {
+        "$enum": "EntityKind",
+        "value": "AUTHORITY"
+      },
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "prospective-use-authority-v1",
+        "sha256": "e80b77439d6dc8d2cdadd65e137de13444283a517aa55136ff72ad8e80d20bf2"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/grant-source.json",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "966a23b17e754fa28b5de64d979c56a91f75677a8b1d49628bc30dfa9f8e5f67"
+        },
+        "section": "/",
+        "excerpt": "{\"choice\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf\"},\"dossier\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-dossier-sha256\",\"sha256\":\"53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1\"},\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"permission\":\"USE\",\"qualification_only\":true,\"scope\":\"E2-QUALIFICATION-ONLY\",\"subject\":\"E2-REENTER\"}",
+        "method": "PROSPECTIVE_AUTHORED_INPUT",
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "scope": "E2-QUALIFICATION-ONLY",
+      "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+      "valid_until": 100,
+      "produced": true,
+      "validated": true,
+      "validation": {
+        "$enum": "ValidationState",
+        "value": "ACCEPTED"
+      },
+      "permissions": [
+        {
+          "$enum": "AuthorityClass",
+          "value": "USE"
+        }
+      ],
+      "target": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-dossier-sha256",
+        "sha256": "53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1"
+      },
+      "consumed": false,
+      "validator": null,
+      "decision": {
+        "$type": "ActionId",
+        "value": "E2-DECIDE"
+      },
+      "choice": "ALLOW_QUALIFICATION_MAPPING"
+    },
+    "action": {
+      "$type": "Action",
+      "accepted_inventory": [
+        {
+          "$type": "KnowledgeRecord",
+          "evidence": [],
+          "id": {
+            "$type": "KnowledgeId",
+            "value": "E2-K-REENTER"
+          },
+          "outcome": {
+            "$enum": "ActionResult",
+            "value": "PASS"
+          },
+          "producer": {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"authored_initial_premise\":true,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"historical_reconstruction\":false,\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"qualification_type\":\"PROSPECTIVE_REPLACEMENT\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\",\"template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"acquisition_contract_complete\\\":true,\\\"branch\\\":\\\"TEST-ROOT\\\",\\\"expected_producer\\\":\\\"TEST-rule-owner\\\",\\\"gate\\\":\\\"TEST-GATE\\\",\\\"lineage\\\":\\\"TEST/lineage\\\",\\\"missing_proposition\\\":\\\"Authenticated governing rule for target operation; no rule currently received\\\",\\\"positive_admission\\\":\\\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\\\",\\\"qualification_only\\\":true,\\\"receipt_action\\\":\\\"TEST-RECEIVE\\\",\\\"reentry\\\":[\\\"TEST-ACTION\\\"],\\\"requirement\\\":\\\"TEST-RULE\\\",\\\"schema\\\":\\\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\\\",\\\"scope\\\":\\\"TEST/scope\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"method\":\"SYNTHETIC_CONTRACT\",\"path\":\"source.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"}}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+            },
+            "method": "PROSPECTIVE_AUTHORED_INPUT",
+            "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json",
+            "scope": "E2-QUALIFICATION-ONLY",
+            "section": "/"
+          },
+          "state": {
+            "$enum": "KnowledgeState",
+            "value": "KNOWN_COMPLETE"
+          },
+          "statement": "Bounded reentry mapping produced",
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        }
+      ],
+      "effect": {
+        "$enum": "EffectClass",
+        "value": "NON_EFFECTING"
+      },
+      "evidence": [],
+      "id": {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      },
+      "operation": {
+        "$enum": "OperationClass",
+        "value": "DETERMINISTIC_MAPPING"
+      },
+      "pass_model_complete": true,
+      "prerequisites": [
+        {
+          "$type": "Gate",
+          "kind": {
+            "$enum": "GateKind",
+            "value": "ACTION_COMPLETED"
+          },
+          "target": {
+            "$type": "ActionId",
+            "value": "E2-DECIDE"
+          }
+        }
+      ],
+      "requirements": [
+        {
+          "$type": "PredicateId",
+          "value": "E2-PROOF"
+        }
+      ],
+      "source": {
+        "$type": "Provenance",
+        "excerpt": "{\"authored_initial_premise\":true,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"historical_reconstruction\":false,\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"qualification_type\":\"PROSPECTIVE_REPLACEMENT\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\",\"template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"acquisition_contract_complete\\\":true,\\\"branch\\\":\\\"TEST-ROOT\\\",\\\"expected_producer\\\":\\\"TEST-rule-owner\\\",\\\"gate\\\":\\\"TEST-GATE\\\",\\\"lineage\\\":\\\"TEST/lineage\\\",\\\"missing_proposition\\\":\\\"Authenticated governing rule for target operation; no rule currently received\\\",\\\"positive_admission\\\":\\\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\\\",\\\"qualification_only\\\":true,\\\"receipt_action\\\":\\\"TEST-RECEIVE\\\",\\\"reentry\\\":[\\\"TEST-ACTION\\\"],\\\"requirement\\\":\\\"TEST-RULE\\\",\\\"schema\\\":\\\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\\\",\\\"scope\\\":\\\"TEST/scope\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"method\":\"SYNTHETIC_CONTRACT\",\"path\":\"source.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"}}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+        },
+        "method": "PROSPECTIVE_AUTHORED_INPUT",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/"
+      }
+    },
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "actual_result_created": false,
+    "native_definition_installation": "MISSING"
+  }
+}

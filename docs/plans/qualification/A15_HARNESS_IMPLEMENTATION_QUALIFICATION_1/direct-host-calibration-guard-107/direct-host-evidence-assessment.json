@@ -1,0 +1,46 @@
+{
+  "CONCLUSION": "Historical user-supplied successful user/PID/network namespace creation supports candidate feasibility only. No independent reproduction, freshness, direct Python raw hash, limit snapshot, cgroup delegation or qualified watchdog is supplied.",
+  "CONTEXTS": [
+    "DIRECT_UBUNTU01_SHELL: historical user supplied",
+    "CODEX_SANDBOX: current metadata only",
+    "USER_SUPPLIED_HOST_EVIDENCE: authenticated retained record, not host attestation",
+    "INDEPENDENTLY_REPRODUCED_EVIDENCE: no active host checks in this package"
+  ],
+  "DIRECT_EVIDENCE_PIN": {
+    "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-76/direct-host-probe-evidence.json",
+    "sha256": "c92df9c5b266e02aa033263e9469902ab8ae389ec940f4975a7e7fcfcee53211"
+  },
+  "DIRECT_HOST_PROFILE_COMPLETE": false,
+  "PROFILE_PIN": {
+    "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/direct-host-profile.json",
+    "sha256": "47b748b9cbd66770fd2bfb5a2b6c2146bca7e93d31ae692db3b0c4768558429d"
+  },
+  "RETAINED_USER_SUPPLIED_OBSERVATION": {
+    "ASSURANCE_LIMITATION": "Authenticates captured user declaration, not independent reproduction. Success supports requested user/PID/network namespaces and shown bind/child security setup only; no complete row filesystem/network denial/descendant/resource/permission/lifecycle qualification.",
+    "BUBBLEWRAP_VERSION": "0.4.0",
+    "COMMAND": "bwrap \\\n  --unshare-user \\\n  --unshare-pid \\\n  --unshare-net \\\n  --proc /proc \\\n  --dev /dev \\\n  --ro-bind /usr /usr \\\n  --ro-bind /bin /bin \\\n  --ro-bind /lib /lib \\\n  --ro-bind /lib64 /lib64 \\\n  --tmpfs /tmp \\\n  --chdir /tmp \\\n  /bin/sh -c 'echo BWRAP_OK; id; cat /proc/self/status | grep -E \"NoNewPrivs|Seccomp\"'",
+    "DECLARED_PARENT_SECURITY": {
+      "CapEff": 0,
+      "NoNewPrivs": 0,
+      "Seccomp": 0
+    },
+    "ENVIRONMENT_BOUNDARY": "Direct shell on named host; not Codex tool execution environment",
+    "HOST_ATTESTATION_IDENTITY": null,
+    "HOST_NAME": "ubuntu01",
+    "HOST_QUALIFIED": false,
+    "INDEPENDENT_REPRODUCTION_PERFORMED": false,
+    "KERNEL_VERSION": "5.4.0-216-generic",
+    "OBSERVATION_TIME_IF_AVAILABLE": null,
+    "OBSERVED_OUTPUT": "BWRAP_OK\nuid=1000 gid=1000 groups=1000,65534\nNoNewPrivs:     1\nSeccomp:        0",
+    "OPERATING_SYSTEM": "Ubuntu 20.04.6 LTS",
+    "PROBE_STATUS": "PASS_USER_SUPPLIED",
+    "SOURCE_PROVENANCE": {
+      "EXTERNAL_SIGNATURE_OR_ATTESTATION": null,
+      "KIND": "CURRENT_USER_SUPPLIED_HOST_CAPABILITY_OBSERVATION",
+      "PROJECT_OWNER_SUPPLIED": true
+    },
+    "USER_CONTEXT": "Direct Linux shell outside Codex-managed execution context; output identifies UID/GID1000 and supplementary group65534",
+    "USER_NAMESPACE_CONFIGURATION": "Enabled, as supplied; exact sysctl snapshot not supplied",
+    "USER_SUPPLIED_COMMAND_HASH": null
+  }
+}

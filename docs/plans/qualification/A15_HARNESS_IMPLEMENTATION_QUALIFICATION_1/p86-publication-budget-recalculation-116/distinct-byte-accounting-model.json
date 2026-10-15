@@ -1,0 +1,17 @@
+{
+  "BINDING_MEASURES": {
+    "OBSERVER_EVIDENCE": "Effective115 logical admitted publication charges",
+    "SERVICE_OUTPUT": "Original successful stream-transfer/capture rule"
+  },
+  "DURABILITY_IS_SEPARATE_QUALIFICATION": true,
+  "MEASURES": {
+    "API_SUBMITTED_BYTES": "Buffer length per write call, including partial resubmissions; telemetry distinct, not binding observer charge",
+    "DURABLY_PERSISTED_BYTES": "Actual content with required barrier and independent reread; no inferred persistence from charge/return",
+    "LOGICAL_BYTES": "Encoded accepted artifact/chunk length before publication, includes raw/canonical record headers and envelopes",
+    "OBSERVER_PUBLICATION_CHARGES": "Full logical admission precharge once per artifact/chunk; failed writes retain charge; new copy/republication charged again; all scoped producers cumulatively<=65536",
+    "RETAINED_FILE_BYTES": "End file content; not cumulative or a refund basis",
+    "STREAM_TRANSFERRED_BYTES": "Successful service stdout/stderr transfer/capture under original distinct65536 aggregate stream rules"
+  },
+  "NORMAL_ADMISSION_RULE": "normal precharges <=65536-R and total all producer precharges<=65536; R must be independently derived before activation",
+  "NO_RESET": "Shared grant ledger across instances/restarts; no deletion/overwrite refund"
+}

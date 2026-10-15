@@ -1,0 +1,250 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "cases": [
+    {
+      "case": "WRONG_A04_INPUT",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N01",
+      "mutation": "Change current CHECK/COLLECT input/content",
+      "oracle": "Input contract/pre-state",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_PREPARE_RESULT",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N02",
+      "mutation": "FAIL or non-native result for sealed positive command",
+      "oracle": "Exact typed PASS",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_OUTPUT",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N03",
+      "mutation": "Missing/extra/wrong producer/content E2-K-PREPARE",
+      "oracle": "Exact bounded native inventory",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_PARENT",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N04",
+      "mutation": "Use any parent other than retained COLLECT head",
+      "oracle": "Parent equality",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_PRE_STATE",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N05",
+      "mutation": "Use another snapshot identity",
+      "oracle": "Pre-state equality",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_EVENT_PAYLOAD",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N06",
+      "mutation": "Omit/tamper dossier/validation/result operand",
+      "oracle": "Complete typed operand equality and native identity",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_LEDGER",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N07",
+      "mutation": "Present event in a foreign bundle/ledger",
+      "oracle": "Exact start-prefix and ledger enrollment",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_APPEND_POSITION",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N08",
+      "mutation": "Place at another index/sequence",
+      "oracle": "Index2/sequence3",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_PREDECESSOR",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N09",
+      "mutation": "Parent not enrolled immediately before A04",
+      "oracle": "Native predecessor link",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_SUCCESSOR_IF_PRESENTED",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N10",
+      "mutation": "Present descendant with different parent/pre-state",
+      "oracle": "Conditional index3/sequence4 continuity",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_AUTHORITY",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N11",
+      "mutation": "Use foreign scope grant or pretend PREPARE issued decision/USE authority",
+      "oracle": "Scope authorization exact; no new grant/state effect",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_SCOPE",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N12",
+      "mutation": "Use a production/foreign qualification scope",
+      "oracle": "Context/source/validation exact scope",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_LINEAGE",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N13",
+      "mutation": "Substitute original or foreign lineage",
+      "oracle": "Exact prospective context",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "WRONG_PROVENANCE",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N14",
+      "mutation": "Tamper source identity/path/section/excerpt",
+      "oracle": "Raw pins and exact native provenance",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "FOREIGN_EVENT",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N15",
+      "mutation": "Use another experiment event with matching status",
+      "oracle": "Native event/result/parent and source binding",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "SNAPSHOT_AS_ANCESTRY",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N16",
+      "mutation": "Present completed snapshot without enrolled A04 event",
+      "oracle": "Occurrence+ancestry independently required",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "REPORT_AS_ANCESTRY",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N17",
+      "mutation": "Present report chronology/result summary as event",
+      "oracle": "Retained native identity fields required",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "OCCURRENCE_WITHOUT_PARENT_PROOF",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N18",
+      "mutation": "Present event without parent enrollment",
+      "oracle": "Root-to-A04 native prefix continuity",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "PROSPECTIVE_LABELED_HISTORICAL",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N19",
+      "mutation": "Claim original ancestry recovered",
+      "oracle": "Immutable historical labels",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "PROSPECTIVE_AS_ORIGINAL_IDENTITY",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N20",
+      "mutation": "Alias new event/parent to original missing IDs",
+      "oracle": "Separate original/prospective bindings",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "SELECTION_AS_COMPLETION_N12",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N21",
+      "mutation": "No actual supplied result; selection/history only",
+      "oracle": "No completion/knowledge/event/head change",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "DECLARATION_AS_RESULT_N13",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N22",
+      "mutation": "Supply Action/output declaration or oracle file as actual result",
+      "oracle": "Reject non-result and no root/slot/knowledge/head change",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "MISSING_OR_INVALID_INDEPENDENT_VALIDATION",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N23",
+      "mutation": "Omit/duplicate/fail/stale a required instance or supply validation Boolean",
+      "oracle": "Six unique exact typed PASS/current dossier-bound validations",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    },
+    {
+      "case": "EVENT_WITHOUT_ATOMIC_NATIVE_ADMISSION",
+      "durable_effect_rule": "Any rejected command leaves its exact pre-state/head unchanged; evidence tampering must fail witness/mapping checks and never mutate the successful lineage.",
+      "expected": "FAIL_CLOSED",
+      "id": "A04-PROSPECTIVE-N24",
+      "mutation": "Handcraft event after direct state reset/admission",
+      "oracle": "Native persisted operation and replay proof required",
+      "status": "SEALED_NOT_RUN",
+      "writer_isolation": true
+    }
+  ],
+  "count": 24,
+  "schema": "A04-PROSPECTIVE-SEALED-NEGATIVES-1"
+}

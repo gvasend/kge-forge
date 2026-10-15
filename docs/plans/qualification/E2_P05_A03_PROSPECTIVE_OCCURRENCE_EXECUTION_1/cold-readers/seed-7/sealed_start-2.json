@@ -1,0 +1,219 @@
+{
+  "END_mapping_labels": "SEPARATE_UNPROVEN_ORIGINAL",
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "PID": 23,
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "actual_result_transactions_executed": 0,
+  "boundary": {
+    "append_head": null,
+    "boundary": "SEALED_START",
+    "bundle": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/starting-bundle.json",
+      "raw_sha256": "1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+    },
+    "bundle_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a",
+    "computation": {
+      "actionable": [
+        "E2-CHECK",
+        "E2-COLLECT"
+      ],
+      "control": "RUNNABLE",
+      "defects": [],
+      "full_computation": {
+        "actionable": [
+          {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          }
+        ],
+        "blocked": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            [
+              "ACTION_COMPLETED:E2-PREPARE",
+              "DECISION_NOT_READY"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            [
+              "ACTION_COMPLETED:E2-CHECK",
+              "ACTION_COMPLETED:E2-COLLECT"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "ACTION_COMPLETED:E2-DECIDE",
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ],
+        "branches": [
+          [
+            {
+              "$type": "ConditionId",
+              "value": "E2-ROOT"
+            },
+            {
+              "type": "BranchState",
+              "value": "RUNNABLE_INTERNAL"
+            }
+          ]
+        ],
+        "control": {
+          "type": "ControlState",
+          "value": "RUNNABLE"
+        },
+        "defects": [],
+        "frontier": [],
+        "human_batches": [],
+        "human_routing": {
+          "type": "HumanRouting",
+          "value": "RUNNABLE"
+        },
+        "selection": {
+          "criterion": 3,
+          "selected": {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          "steps": [
+            "CRITERION_1_TIED",
+            "CRITERION_2_NOT_DECISIVE",
+            "CRITERION_3_CLASS"
+          ],
+          "type": "SelectionTrace"
+        },
+        "statuses": [
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          }
+        ],
+        "type": "Computation",
+        "unresolved_roots": 1,
+        "unresolved_slots": 0
+      },
+      "selected": "E2-CHECK"
+    },
+    "context": {
+      "$type": "EvaluationContext",
+      "allowed_effects": [],
+      "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+      "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "tick": 0
+    },
+    "event_count": 0,
+    "ledger_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+    "ledger_root": null,
+    "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+    "state_id": "planner-snapshot-v1:0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff"
+  },
+  "checkpoint": "SEALED_START",
+  "hash_seed": "7",
+  "historical_original_proven": false,
+  "native_authorities_issued": 0,
+  "reader_number": "2",
+  "replay_prefix_checks": [
+    {
+      "bundle_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a",
+      "event_count": 0,
+      "result": "PASS"
+    }
+  ],
+  "replay_provider_invocations": 0,
+  "result": "PASS",
+  "writer_memory_used": false,
+  "writer_process_already_terminated": true
+}

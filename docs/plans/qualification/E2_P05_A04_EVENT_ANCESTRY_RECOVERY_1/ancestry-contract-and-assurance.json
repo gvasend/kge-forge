@@ -1,0 +1,214 @@
+{
+  "assurance": {
+    "END": {
+      "assurance": "Actual native preparation occurred on a coherent canonical path from acquisition into dossier readiness, before recorded decision; sources/oracles remain independent.",
+      "requirement": {
+        "declaration": {
+          "CASE_ID": "E2-END",
+          "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+          "EXPECTED_STATE": "All stage-specific independent oracles pass; real post-reentry event and updated state; no legacy importer or E1 execution",
+          "INITIAL_STATE": "Only independently authored canonical E2 contracts and source bytes",
+          "NEGATIVE_INVARIANTS": "Expected oracle files excluded from execution inputs; no planner output becomes its own oracle.",
+          "OPERATION": "A01-A13 across real writer termination and fresh reader then repeat under D01",
+          "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+          "PURPOSE": "End-to-end canonical lifecycle",
+          "status": "PLANNED_NOT_EXECUTED"
+        },
+        "source": {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+          "pointer": "/cases/33",
+          "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+        }
+      }
+    },
+    "N12": {
+      "assurance": "PREPARE selection/readiness is not proof of actual execution/result/event admission; no ledger or knowledge fabrication.",
+      "requirement": {
+        "declaration": {
+          "CASE_ID": "E2-N12",
+          "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+          "EXPECTED_STATE": "No native result accepted; ledger/knowledge not fabricated",
+          "INITIAL_STATE": "Selected action with no supplied result",
+          "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+          "OPERATION": "Attempt to use selection record as execution/completion",
+          "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+          "PURPOSE": "Selection/history conflation",
+          "status": "PLANNED_NOT_EXECUTED"
+        },
+        "source": {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+          "pointer": "/cases/27",
+          "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+        }
+      }
+    },
+    "N12_N13_new_execution_or_suite_PASS_claim": false,
+    "N13": {
+      "assurance": "Prospective accepted_inventory/prepared_dossier declarations cannot substitute for an actual supplied result and admitted occurrence.",
+      "requirement": {
+        "declaration": {
+          "CASE_ID": "E2-N13",
+          "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+          "EXPECTED_STATE": "Reject wrong event/result; knowledge/root/slot unchanged",
+          "INITIAL_STATE": "Admitted Action definition",
+          "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+          "OPERATION": "Present its output declaration as actual supplied result",
+          "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+          "PURPOSE": "Prospective/actual conflation",
+          "status": "PLANNED_NOT_EXECUTED"
+        },
+        "source": {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+          "pointer": "/cases/28",
+          "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+        }
+      }
+    },
+    "ancestry_beyond_occurrence": "An event identity/payload alone does not prove enrollment in the canonical ledger, its predecessor state, ordering or linkage to the accepted handoff.",
+    "lost_assurance": [
+      "Exact original PREPARE admission payload and event identity",
+      "Native parent and append position/membership",
+      "Coherent event-to-accepted-handoff before/after link and original prefix-to-descendant ordering"
+    ],
+    "preserved_assurance": [
+      "Authoritative P02 PASS and semantic dossier/readiness qualification",
+      "Typed accepted KnowledgeRecord/dossier/validation state in retained authoritative snapshots",
+      "Authorized prospective A03 assurance only; original A03 historical occurrence remains unproven"
+    ]
+  },
+  "authoritative_basis": [
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "pointer": "/cases/3",
+      "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "pointer": "/cases/33",
+      "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "pointer": "",
+      "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/stop-and-readiness.json",
+      "pointer": "",
+      "raw_sha256": "5537d2c70ee94d08abeea68f0e84618ed0cb09567ec39f389ecad4a45afa2640"
+    }
+  ],
+  "binding_requirement": "Actual PREPARE result event linked to retained accepted dossier/handoff state; archive report/knowledge is not an ExecutionEvent.",
+  "fields": [
+    {
+      "field": "A04_EVENT_ID",
+      "native_rule": "ExecutionEvent.identity: planner-event-v1 content identity; verify full retained event bytes.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "EVENT_TYPE",
+      "native_rule": "ExecutionEvent carrying actual PREPARE result/admission; PASS enum or report label is not an event type.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "EVENT_PAYLOAD",
+      "native_rule": "Retained actual typed admission operand, including actual result, exact knowledge and dossier bindings; no guessed materialization inputs.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "PARENT_EVENT_ID",
+      "native_rule": "ExecutionEvent.parent_event; predecessor identity in the retained ledger, not report chronology or a new A03 identity.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "PARENT_STATE",
+      "native_rule": "Predecessor.after_snapshot equals ExecutionEvent.parent_snapshot; not a separate field.",
+      "requirement": "REQUIRED_RELATION"
+    },
+    {
+      "field": "PRE_STATE_ID",
+      "native_rule": "ExecutionEvent.parent_snapshot; exact state with applicable current PREPARE inputs.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "POST_STATE_ID",
+      "native_rule": "ExecutionEvent.after_snapshot; coherently linked accepted dossier/decision-readiness state.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "LEDGER_ID",
+      "native_rule": "Exact event-bearing PersistenceBundle identity plus /bundle/events, or existing native GenesisLedger ID if actually applicable; ordinary bundles have no separate LedgerId.",
+      "requirement": "REQUIRED_DOMAIN_CORRECT"
+    },
+    {
+      "field": "LEDGER_ROOT",
+      "native_rule": "First native event identity; do not invent GENESIS or a root from report sequence.",
+      "requirement": "REQUIRED_DERIVED_FROM_RETAINED_LEDGER"
+    },
+    {
+      "field": "LEDGER_POSITION",
+      "native_rule": "ExecutionEvent.sequence and exact /bundle/events index agree. Report sequence=3 is not native membership.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "APPEND_PREDECESSOR",
+      "native_rule": "Previous retained event equals parent_event; canonical Action history connects the actual acquisition prefix.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "APPEND_SUCCESSOR",
+      "native_rule": "If descendant history is supplied, next.parent_event=event.identity and next.parent_snapshot=event.after_snapshot. No successor required at a retained head.",
+      "requirement": "CONDITIONAL"
+    },
+    {
+      "field": "ROOT_HEAD_RELATIONSHIP",
+      "native_rule": "Actual native ledger root-to-A04-to-retained-head continuity; preserve event order.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "RESULT_BINDING",
+      "native_rule": "Event binds actual SuppliedResult/action/outcome/expected_snapshot or exact native admission operand; there is no standalone ActionResult record ID on SuppliedResult.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "OUTPUT_BINDING",
+      "native_rule": "Exact E2-K-PREPARE KnowledgeRecord bytes and dossier binding; KnowledgeId/content/dossier/event identities remain separate domains.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "SCOPE",
+      "native_rule": "E2-QUALIFICATION-ONLY from native Snapshot.context and payload/provenance, not a fabricated event field.",
+      "requirement": "REQUIRED_CONTEXT_BINDING"
+    },
+    {
+      "field": "LINEAGE",
+      "native_rule": "Original E2-CANONICAL-BASELINE-1 or an independently acceptable authoritative boundary; no prospective-lineage splice.",
+      "requirement": "REQUIRED_CONTEXT_BINDING"
+    },
+    {
+      "field": "GENERATION",
+      "native_rule": "E2-GENERATION-1 for original retained context; generation from canonical context/provenance.",
+      "requirement": "REQUIRED_CONTEXT_BINDING"
+    },
+    {
+      "field": "PROVENANCE",
+      "native_rule": "Exact source/content/provenance of Action, actual output, dossier and admitted validations, coherently pinned by retained state/bundle.",
+      "requirement": "REQUIRED"
+    },
+    {
+      "field": "COMMAND_ID",
+      "native_rule": "SuppliedResult and ExecutionEvent have no command ID; inspect HEAD.command if retained, do not invent one.",
+      "requirement": "NOT_A_NATIVE_MANDATORY_FIELD"
+    },
+    {
+      "field": "POST_HANDOFF_LINK",
+      "native_rule": "Native occurrence/state trace connects actual PREPARE result to accepted dossier/handoff; equal control or name alone is insufficient.",
+      "requirement": "REQUIRED"
+    }
+  ],
+  "identity_formula": "codec._event_identity hashes canonical(sequence,parent_snapshot,parent_event,result,after_snapshot[,resume_binding]) in planner-event-v1.",
+  "input": "E2-A04.prepare_result_event_ancestry",
+  "no_lossless_hash_without_all_identity_fields": true,
+  "occurrence_and_ancestry_are_distinct": true,
+  "scope_rule": "Canonical history or already explicitly accepted replacement evidence only. T02 capability qualification alone and snapshot-only handoff cannot satisfy native ancestry."
+}

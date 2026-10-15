@@ -1,0 +1,78 @@
+{
+  "ANY_UNKNOWN_DENIES_LAUNCH": true,
+  "EXECUTION_READY": false,
+  "GOVERNING_ACTIVATION_RULE_PIN": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/charter-content.json",
+  "PREDICATES": [
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "HOST_IDENTITY",
+      "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+      "REQUIRED": "UBUNTU01",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "DIRECT_HOST_CONTEXT",
+      "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+      "REQUIRED": "VERIFIED",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "SYSTEM_MANAGER_AVAILABLE",
+      "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+      "REQUIRED": "YES",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "SUDO_PERMISSION",
+      "PROOF_RULE": "Actual direct-host permission for exact retained argv/unit/properties; owner attestation is not sudo evidence. No privilege acquisition here. Any elevation envelope needs its own explicit exact identity/permission binding; retained argv is unchanged.",
+      "REQUIRED": "VERIFIED_FOR_EXACT_OPERATION",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "APPROVED_BINARY_IDENTITIES",
+      "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+      "REQUIRED": "EXACT",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "APPROVED_RESOURCE_LIMITS",
+      "PROOF_RULE": "Verify capability to enforce the bounded service profile before launch; service-specific pids.max is the intended observation, not assumed prior PASS or permission to stress excess tasks.",
+      "REQUIRED": "ENFORCEABLE",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "SERVICE_USER",
+      "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+      "REQUIRED": "UID1000_GID1000",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "OUTPUT_BOUNDARY",
+      "PROOF_RULE": "Exact independently supplied direct-host/pin/permission evidence; unknown or mismatch fails closed.",
+      "REQUIRED": "EXACT",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "UNVERIFIED",
+      "PREDICATE": "ONE_ATTEMPT_AVAILABLE",
+      "PROOF_RULE": "Independent qualified permanent key claim, exact applicable grant, current unrevoked epoch, durable reread and crash/concurrency proof; no existing/partial/unknown record can admit launch.",
+      "REQUIRED": "YES",
+      "RESULT": "BLOCK_EXECUTION"
+    },
+    {
+      "CURRENT": "NOT_ISSUED",
+      "PREDICATE": "ISSUED_PROBE_GRANT",
+      "PROOF_RULE": "Only future persisted independently verified explicit grant, not owner declaration/charter/static test.",
+      "REQUIRED": "EFFECTIVE",
+      "RESULT": "BLOCK_EXECUTION"
+    }
+  ],
+  "RULE": "QUALIFICATION_EXECUTION_AUTHORITY.ACTIVATION_PRECONDITIONS separates authority decision from activation resource checks; it does not waive qualified executable/one-use requirements."
+}

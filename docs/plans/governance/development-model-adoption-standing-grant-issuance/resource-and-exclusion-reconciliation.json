@@ -1,0 +1,102 @@
+{
+  "ALLOCATIONS_ARE_NOT_COMPLETION_GUARANTEES": true,
+  "CONDITIONAL_ON_ACTUAL_RESOURCE_PERMISSIONS": true,
+  "CONTRACT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "kge-forge-standing-class-a-development-contract-v1",
+    "sha256": "9cb324e73debf51b0cddde0bceae6f59be10c51a21ea2dd92fcb822c7e0b7ab0"
+  },
+  "CONTRACT_PIN": {
+    "path": "docs/plans/governance/development-operating-model-reset/retry-accounting-correction/standing-development-contract.json",
+    "raw_sha256": "2d968334813d8e37ab87e25d44920487167df860c83df22ee97bfc39dea12199"
+  },
+  "EFFECTIVE_AT_UTC": "2026-10-13T15:39:31.843106+00:00",
+  "EXACT_EPOCH_ALLOCATIONS": {
+    "AS_BYTES_PER_PROCESS": 536870912,
+    "AUTHORIZATION_VALIDITY_DAYS": 30,
+    "BUDGET_TYPE": "PROPOSED_AUTHORIZED_RISK_ALLOCATION; not proven completion maximum or already enforced grant",
+    "CPU_SECONDS_PER_PROCESS": 60,
+    "DERIVATIONS": [
+      "600starts=50workitems*12boundedtest/build/debugstarts including retries.",
+      "CPU conservative work charge=600*2processes*60s=72000s(20h);20% additional4h reserve for bounded cancellation/control/evidence;24h total.",
+      "125s maximum native timeout+grace*600=75000s nominal wall;90000s allocation adds20% margin, not proof of termination.",
+      "512MiB each trusted2process topology gives1GiB conservative workloadmemory envelope; perprocesskernelcap, not globalhostcap.",
+      "32MiB workevidence+8MiB protectedreserve=40MiB; expected shortstdlibreports ~4KiB/run ~2.4MiB/600, deliberately ample margin. No promise worstcase600full1MiB streams fit; reservations/exhaustion stop earlier if necessary.",
+      "1GiB workingoccupancy/128MiB cumulative sourcebytes/256KiB sourcefile caps are explicit policy allocations for smallPythonengineering; estimates from305529-byte13filepilot baseline, not inferred authority."
+    ],
+    "ENFORCEMENT": "Host sandbox protectspaths/network; kernelprlimit controls CPU/AS/FD/fileextent; native timeout controls trustedworkload. Cumulative counters/reservations/checkpoints tracked by normal granted devledger/actor, not a new general supervisor. Workspacesize/filecount aggregate is trustedprofile accounting/monitoring, not claimed kernelhardquota. Before each run reserve worst admitted footprint; unknown/unsafe outputs stop.",
+    "EXHAUSTION": "Stop before exceeding any fixed epoch/pilot pool. No daily reset, environment-restart reset, duplicateworkitem or delete/refund loophole. Fresh explicit additional allocation/epoch required; verified unused reservation release is not a budget reset.",
+    "MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_WORK_ITEM": 2,
+    "MAX_CANDIDATE_SOURCE_FILE_BYTES": 262144,
+    "MAX_CUMULATIVE_WORKER_WALL_SECONDS": 90000,
+    "MAX_EDITED_FILES_PER_WORK_ITEM": 16,
+    "MAX_FILE_EXTENT_BYTES": 1048576,
+    "MAX_PROCESS_STARTS_PER_EPOCH": 600,
+    "MAX_PROCESS_STARTS_PER_WORK_ITEM": 12,
+    "MAX_PROFILE_LIVE_PROCESSES": 2,
+    "MAX_PROFILE_THREADS": 2,
+    "MAX_SOURCE_REVISIONS_PER_WORK_ITEM": 3,
+    "MAX_SOURCE_WRITE_CHARGE_BYTES": 134217728,
+    "MAX_TRUSTED_PROFILE_OUTPUT_FILES_PER_START": 16,
+    "MAX_WORKSPACE_OCCUPANCY_BYTES": 1073741824,
+    "MAX_WORK_ITEMS": 50,
+    "MEASURES": "Process starts include test retries and diagnostics; source overwrite bytes charged cumulatively; deletes do not refund charges. Evidence logical artifact bytes and file extent distinct from API submitted/transferred/durable bytes; no P115 budget borrowing. CPU conservatively precharged perprofile knownprocess ceiling; unknownexit keepsfullreservation.",
+    "NOFILE_PER_PROCESS": 128,
+    "NORMAL_EVIDENCE_ALLOCATION_BYTES": 33554432,
+    "PROFILE_KIND": "Trusted Pythonworker plus native timeoutwatchdog; projectcode may not fork/startthreads in this profile. Topology control is static/command admission, not hostile-code kernelprocesscontainment.",
+    "PROTECTED_CONTROL_EVIDENCE_CPU_RESERVE_SECONDS": 14400,
+    "PROTECTED_EVIDENCE_RESERVE_BYTES": 8388608,
+    "RESERVE_ACCESS": "Only bounded cancellation, last status/evidence and shutdown; no new development/teststart from reserve.",
+    "TERMINATION_GRACE_SECONDS": 5,
+    "TOTAL_CPU_ALLOCATION_SECONDS": 86400,
+    "TOTAL_EVIDENCE_ALLOCATION_BYTES": 41943040,
+    "WORKER_TIMEOUT_SECONDS": 120,
+    "WORK_CPU_ALLOCATION_SECONDS": 72000
+  },
+  "EXACT_PILOT_SUBALLOCATIONS": {
+    "MAX_ACTIVE_PILOT_WALL_SECONDS": 14400,
+    "MAX_PILOT_CPU_ALLOCATION_SECONDS": 1800,
+    "MAX_PILOT_EVIDENCE_BYTES": 16777216,
+    "MAX_PILOT_SOURCE_WRITE_CHARGE_BYTES": 2097152,
+    "MAX_PLANNED_FAULT_INJECTIONS": 1,
+    "MAX_RECOVERABLE_AUTOMATIC_RETRIES": 2,
+    "MAX_SOURCE_REVISIONS": 3,
+    "MAX_TEST_DEBUG_PROCESS_STARTS": 12,
+    "PARENT_ALLOCATION_RULE": "Pilot reservesoneworkitem andsubsetofparentepoch pools. No doublegrant/reset/refund or additional600starts; charges countedonce inbothnestedlimits.",
+    "PILOT_CPU_CONTROL_RESERVE_SECONDS": 360,
+    "PROTECTED_PILOT_EVIDENCE_RESERVE_BYTES": 4194304,
+    "TOTAL_PILOT_EVIDENCE_BYTES": 20971520
+  },
+  "EXACT_RETRY_POLICY": {
+    "ASSERTION_FAILURE": "Diagnose/codeorfixture revision; no automatic rerununchanged as PASS search. Expectedfaultfixture neverautoretried.",
+    "AUTOMATIC_RETRIES_PER_WORK_ITEM": 2,
+    "CLEANUP": "Owned devscratch only within budgets; no protected/historicalpath deletion. Preserve meaningful failurelogs before cleanup.",
+    "CUMULATIVE_ACCOUNTING": "Maximum two automatic retries cumulatively across every invocation and source revision of the same work item. Reserve and charge each retry before its process start against this work-item counter and all applicable process-start, CPU, wall, storage and evidence allocations.",
+    "ELIGIBLE": "Knownrecoverable transientdevprocess failure afterconfirmedstop and confinedscratch effects; eachretry getsnewrunID andconsumesstart/CPU/wall/bytes fromsameepoch/taskpool.",
+    "EXHAUSTION": "Stop automatic retries once two have been charged. Any additional retry requires explicit additional authorization; it cannot enlarge other budgets implicitly.",
+    "NO_CREATION_CALLS_RESTORED_IN138": true,
+    "NO_RESET": "A new invocation, revision, process, environment restart or renamed continuation does not reset the work-item retry counter. Failed or unknown launched retries remain charged; no automatic refund or reset.",
+    "REVISIONS_PER_WORK_ITEM": 3,
+    "UNKNOWN_CONSEQUENTIAL_EFFECTS": "Stop, preservepartialstatus, classify/reconcileeffects; noauto recovery/elevation orcounterreset."
+  },
+  "EXCLUSIONS": [
+    "Production",
+    "Protected authoritative promotion",
+    "Credential access",
+    "Network access",
+    "Privilege escalation",
+    "Package124 passive check",
+    "Package86 real probe",
+    "H77-02",
+    "A15",
+    "Existing-grant mutation or consumption/reset"
+  ],
+  "EXPIRES_NO_LATER_THAN_UTC": "2026-11-12T15:39:31.843106+00:00",
+  "GRANT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "kge-forge-conditional-class-a-standing-development-issued-grant-v1",
+    "sha256": "ba0d3f8d90a446f8baaf3113345d9c358b109f84bda5ccc26d21678974a1469c"
+  },
+  "RESOURCE_ALLOCATIONS_CONSUMED": false,
+  "RESULT": "PASS"
+}

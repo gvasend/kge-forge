@@ -1,0 +1,92 @@
+"""Independent documentary parser; no target imports or subprocess launches."""
+import copy,hashlib,json,pathlib,sys
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';B='synthetic-recovery-tests-v2-';P=B+'launch-correction-'
+def digest(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canon(x)).hexdigest()}
+def read(n,prefix=B):
+ def unique(items):
+  d={}
+  for k,v in items:assert k not in d;d[k]=v
+  return d
+ return json.loads((D/(prefix+n)).read_text(),object_pairs_hook=unique)
+def check(v):
+ k='GRANT_IDENTITY' if 'GRANT_IDENTITY' in v else 'IDENTITY';i=v[k];assert i==cid(i['namespace'],v.get('CONTENT',v.get('RECORD')))
+s=read('subject.json');g=read('issued-grant.json');e=read('effectiveness-reference.json');j=read('entry-adjudication-launcher-mismatch.json')
+for x in (s,g,e):check(x)
+assert s['IDENTITY']['sha256']=='1eacbb1d976be0302989ec4a3fd72e27362ec5253cb9bfd6f017d64a3c295523'
+assert g['GRANT_IDENTITY']['sha256']=='a034b2ecb8a48fb35dd77e686a2ac62f86e35da4578e27ad059f22a47fee36a5'
+assert e['RECORD']['GRANT_IDENTITY']==g['GRANT_IDENTITY'] and g['RECORD']['APPROVED_CONTENT']==s['CONTENT']
+assert e['RECORD']['GRANT_PIN']['raw_sha256']==digest(D/(B+'issued-grant.json'))
+corrected=read('corrected-subject.json',P);check(corrected)
+old=s['CONTENT']['EXACT_SANDBOX_ARGV'];assert old[1:3]==['sandbox','linux'];new=old[:2]+old[3:]
+assert corrected['CONTENT']['EXACT_SANDBOX_ARGV']==new==j['CORRECTED_ARGV_PROPOSAL_ONLY']
+rest1=copy.deepcopy(s['CONTENT']);rest2=copy.deepcopy(corrected['CONTENT'])
+rest1.pop('EXACT_SANDBOX_ARGV');rest2.pop('EXACT_SANDBOX_ARGV');assert canon(rest1)==canon(rest2)
+for p in corrected['CONTENT']['ALLOWED_SOURCE_COPIES']+list(corrected['CONTENT']['EXECUTABLE_PINS'].values()):assert digest(p['path'])==p['raw_sha256']
+assert corrected['CONTENT']['LIMITS']['SUITE_INVOCATIONS']==1 and corrected['CONTENT']['LIMITS']['AUTOMATIC_RETRIES']==0
+assert corrected['CONTENT']['ATTEMPT_POLICY']==s['CONTENT']['ATTEMPT_POLICY']
+a=read('owner-approval.json',P);check(a)
+assert a['CONTENT']['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+assert a['CONTENT']['APPROVED_DIAGNOSTIC_PIN']['raw_sha256']==digest(D/(B+'entry-adjudication-launcher-mismatch.json'))
+assert a['CONTENT']['CORRECTED_SUBJECT_IDENTITY']==corrected['IDENTITY']
+account=read('consumption-reconciliation.json',P)
+assert account['RULE_VERBATIM']==s['CONTENT']['ATTEMPT_POLICY']
+assert account['OBSERVED_OPERATION']['ARGV']==old[:3]+['--help']
+assert account['OBSERVED_OPERATION']['TEST_SUITE_INVOKED'] is False
+assert j['SUITE_INVOCATIONS_EXECUTED']==0 and j['SUITE_RESERVATION_CREATED'] is False
+assert account['KNOWN_SUITE_CHARGES_FOR_THIS_QUERY']==0
+assert account['CHARGES_REFUNDED'] is False and account['COUNTERS_RESET'] is False
+assert account['NEW_SUITE_ALLOWANCE_CREATED'] is False
+assert account['CURRENT_COMPLETE_USE_STATE'].startswith('UNVERIFIED')
+mode=sys.argv[1];name='issuance-candidate.json' if mode=='candidate' else 'issued-amendment.json'
+v=read(name,P)
+def validate(v):
+ check(v);r=v['RECORD'];assert r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+ assert r['PARENT_GRANT_IDENTITY']==g['GRANT_IDENTITY'] and r['PARENT_EFFECTIVENESS_IDENTITY']==e['IDENTITY']
+ assert r['ORIGINAL_SUBJECT_IDENTITY']==s['IDENTITY'] and r['CORRECTED_SUBJECT_IDENTITY']==corrected['IDENTITY']
+ assert r['PATCH']=={'JSON_POINTER':'/CONTENT/EXACT_SANDBOX_ARGV/2','OPERATION':'REMOVE','OLD_VALUE':'linux'}
+ assert r['EXACT_CORRECTED_ARGV']==new
+ assert r['CORRECTED_SUBJECT_PIN']['raw_sha256']==digest(D/(P+'corrected-subject.json'))
+ assert r['OWNER_APPROVAL_PIN']['raw_sha256']==digest(D/(P+'owner-approval.json'))
+ assert r['ACCOUNTING_RECONCILIATION_PIN']['raw_sha256']==digest(D/(P+'consumption-reconciliation.json'))
+ assert r['STATUS']=='AMENDMENT_ISSUED_PENDING_SEPARATE_VERIFIED_EFFECTIVENESS'
+ assert r['FRESH_ENTRY_REQUIRED'] is True and r['TESTS_EXECUTED'] is False and r['COUNTERS_RESET'] is False
+ assert r['EXCLUSIONS_PRESERVED']==s['CONTENT']['EXCLUSIONS']
+validate(v)
+mutations=[]
+def add(label,f):
+ x=copy.deepcopy(v);f(x['RECORD']);x['IDENTITY']=cid(x['IDENTITY']['namespace'],x['RECORD']);mutations.append((label,x))
+add('wrong issuer',lambda r:r.update(ISSUER_ROLE='OTHER'))
+add('different parent grant',lambda r:r.update(PARENT_GRANT_IDENTITY=cid('wrong',{})))
+add('different parent effectiveness',lambda r:r.update(PARENT_EFFECTIVENESS_IDENTITY=cid('wrong',{})))
+add('wrong corrected identity',lambda r:r.update(CORRECTED_SUBJECT_IDENTITY=cid('wrong',{})))
+add('remove different token',lambda r:r['PATCH'].update(JSON_POINTER='/CONTENT/EXACT_SANDBOX_ARGV/3'))
+add('unsupported linux retained',lambda r:r.update(EXACT_CORRECTED_ARGV=old))
+add('extra argument removed',lambda r:r.update(EXACT_CORRECTED_ARGV=new[:-1]))
+add('different executable',lambda r:r['EXACT_CORRECTED_ARGV'].__setitem__(0,'/bin/sh'))
+add('altered resources',lambda r:r['EXACT_CORRECTED_ARGV'].__setitem__(r['EXACT_CORRECTED_ARGV'].index('--cpu=60:60'),'--cpu=61:61'))
+add('altered profile',lambda r:r['EXACT_CORRECTED_ARGV'].__setitem__(r['EXACT_CORRECTED_ARGV'].index('--permission-profile')+1,'other'))
+add('changed corrected pin',lambda r:r['CORRECTED_SUBJECT_PIN'].update(raw_sha256='0'*64))
+add('accounting reset',lambda r:r.update(COUNTERS_RESET=True))
+add('execution during amendment',lambda r:r.update(TESTS_EXECUTED=True))
+add('waived fresh entry',lambda r:r.update(FRESH_ENTRY_REQUIRED=False))
+add('removed exclusions',lambda r:r.update(EXCLUSIONS_PRESERVED=[]))
+rejected=[]
+for label,x in mutations:
+ try:validate(x)
+ except (AssertionError,ValueError,TypeError,KeyError):rejected.append(label)
+ else:raise AssertionError('accepted negative '+label)
+for p,h in read('preservation-before.json',P).items():assert digest(p)==h,p
+result={'STAGE':mode,'ORIGINAL_GRANT_IDENTITY':g['GRANT_IDENTITY'],'CORRECTED_SUBJECT_IDENTITY':corrected['IDENTITY'],'AMENDMENT_IDENTITY':v['IDENTITY'],'ONLY_REMOVAL_AT_ORIGINAL_INDEX_2':True,'ALL_OTHER_CONTENT_UNCHANGED':True,'HISTORICAL_QUERY_SUITE_CHARGE':0,'COMPLETE_CURRENT_USE_STATE':'UNVERIFIED','NO_REFUND_OR_RESET':True,'NEGATIVE_DESIGNS':len(mutations),'NEGATIVE_EXECUTIONS_REJECTED':len(rejected),'LABELS':rejected,'HISTORICAL_PRESERVATION':'PASS','TESTS_EXECUTED':False,'ENTRY_READY':False}
+if mode=='effect':
+ f=read('effectiveness-reference.json',P);check(f);r=f['RECORD']
+ assert r['AMENDMENT_IDENTITY']==v['IDENTITY'] and r['PARENT_GRANT_IDENTITY']==g['GRANT_IDENTITY']
+ assert r['CORRECTED_SUBJECT_IDENTITY']==corrected['IDENTITY']
+ assert r['AMENDMENT_PIN']['raw_sha256']==digest(D/(P+'issued-amendment.json'))
+ assert r['STATUS']=='EFFECTIVE_PROSPECTIVE_ONE_TOKEN_LAUNCH_BINDING_AMENDMENT'
+ assert r['SAME_ORIGINAL_ATTEMPT_AND_ACCOUNTING'] is True
+ assert r['COUNTERS_RESET'] is False and r['NEW_SUITE_ALLOWANCE_CREATED'] is False
+ assert r['ENTRY_READY'] is False and r['TESTS_EXECUTED'] is False
+ result['EFFECTIVENESS_IDENTITY']=f['IDENTITY']
+print(json.dumps(result,sort_keys=True))

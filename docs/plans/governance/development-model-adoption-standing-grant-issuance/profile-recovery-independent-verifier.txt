@@ -1,0 +1,74 @@
+import copy,hashlib,json,os,pathlib,sys
+D=pathlib.Path('docs/plans/governance/development-model-adoption-standing-grant-issuance')
+def read(p):return json.loads(pathlib.Path(p).read_text())
+def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def raw(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def checkpin(x):assert raw(x['path'])==x['raw_sha256']
+s=read(D/'profile-installation-recovery-subject.json');dos=read(D/'profile-installation-recovery-unselected-owner-dossier.json');approval=read(D/'profile-recovery-owner-approval.json');candidate=read(D/'profile-recovery-issuance-candidate.json')
+assert digest(s['CONTENT'])==s['IDENTITY']['sha256']=='053746137f0a34133cf2a3fb1859bfb318f386c373a3c4c497518a9f0c32cc23'
+assert dos['SUBJECT_IDENTITY']==s['IDENTITY'];checkpin(dos['SUBJECT_RAW_PIN'])
+assert digest(approval['CONTENT'])==approval['IDENTITY']['sha256']
+assert approval['CONTENT']['OPTION']=='AUTHORIZE_ONE_EMPTY_CLASS_A_PROFILE_INSTALLATION_RECOVERY' and approval['CONTENT']['OPTION'] in dos['OPTIONS']
+assert approval['CONTENT']['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and approval['CONTENT']['SUBJECT_IDENTITY']==s['IDENTITY']
+checkpin(approval['CONTENT']['SUBJECT_PIN']);checkpin(s['CONTENT']['SOURCE_PIN'])
+assert pathlib.Path(s['CONTENT']['SOURCE_PIN']['path']).stat().st_size==s['CONTENT']['SOURCE_BYTES']==1091
+policy=read(D/'policy-effectiveness-reference.json');standing=read(D/'issued-standing-development-grant.json');se=read(D/'standing-grant-effectiveness-reference.json')
+for v,key in [(policy,'IDENTITY'),(standing,'GRANT_IDENTITY'),(se,'IDENTITY')]:assert digest(v['RECORD'])==v[key]['sha256']
+assert s['CONTENT']['RELATED_GRANTS_UNCHANGED']['POLICY_EFFECTIVENESS']==policy['IDENTITY'] and s['CONTENT']['RELATED_GRANTS_UNCHANGED']['STANDING_GRANT']==standing['GRANT_IDENTITY'] and s['CONTENT']['RELATED_GRANTS_UNCHANGED']['STANDING_EFFECTIVENESS']==se['IDENTITY']
+assert s['CONTENT']['RELATED_GRANTS_UNCHANGED']['LIMITS']==standing['RECORD']['ALLOCATION']
+for p,h in read(D/'profile-recovery-issuance-preservation-before.json').items():assert raw(p)==h,p
+prev='0'*64
+lessons=read('docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json')
+for ev in lessons['EVENTS']:
+ assert ev['PREVIOUS_EVENT_HASH']==prev and digest({k:v for k,v in ev.items() if k!='EVENT_HASH'})==ev['EVENT_HASH'];prev=ev['EVENT_HASH']
+assert 'LL-11' in json.dumps(lessons) and 'LL-12' in json.dumps(lessons)
+def valid_grant(x):
+ assert x['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and x['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY']
+ for key in ['APPROVED_CONTENT','ALLOCATION','EXPECTED_ENTRY_PRECONDITION','SOURCE_PIN','SOURCE_ABSOLUTE_PATH','DESTINATION_EXACT_PATH','EXACT_OPERATOR_FACILITY','PROCEDURE','FAILURE_POLICY','HISTORICAL_ACCOUNTING','RELATED_GRANTS_UNCHANGED','EXCLUSIONS']:
+  source_key={'APPROVED_CONTENT':None,'ALLOCATION':'FINITE_SCOPE','EXPECTED_ENTRY_PRECONDITION':'EXPECTED_PRECONDITION','EXACT_OPERATOR_FACILITY':'EXISTING_OPERATOR_FACILITY'}.get(key,key)
+  assert x[key]==(s['CONTENT'] if source_key is None else s['CONTENT'][source_key]),key
+ for key in ['APPROVED_SUBJECT_PIN','OWNER_APPROVAL_PIN','CHARTER_REFERENCE_PIN','ENGINEERING_POLICY_EFFECTIVENESS_PIN','STANDING_GRANT_PIN','STANDING_EFFECTIVENESS_PIN','CURRENT_RETAINED_CONFLICT_REVIEW_PIN']:checkpin(x[key])
+ ch=read(x['CHARTER_REFERENCE_PIN']['path']);cp=ch['CHARTER_CONTENT_PIN'];assert raw(cp['PATH'])==cp['RAW_SHA256'];assert ch['CHARTER_EFFECTIVE'] and 'General engineering governance authority' in ch['EXCLUSIONS']
+ assert x['CHARTER_UNCHANGED'] is True
+ assert x['PERMANENT_DUPLICATE_ANCHOR']=={'issuer_role':'KGE-FORGE-PROJECT-OWNER','approved_subject_identity':s['IDENTITY'],'scope':'ONE_EMPTY_PROFILE_INPLACE_RECOVERY'}
+ assert x['SINGLE_ATTEMPT_IDENTITY']['sha256']==digest({'subject_identity':s['IDENTITY'],'attempt_ordinal':1})
+ assert x['CONSUMPTION_RULE']==candidate['RECORD']['CONSUMPTION_RULE'] and 'before first content write' in x['CONSUMPTION_RULE']
+ assert x['STATUS']=='ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE'
+ for key in ['RECOVERY_ATTEMPT_CONSUMED_BY_ISSUANCE','HOST_RECOVERY_EXECUTED','PROFILE_ACTIVATED','ENVIRONMENT_ADMITTED','PILOT_EXECUTED']:assert x[key] is False
+ assert x['REVOCATION_SUPERSESSION']==candidate['RECORD']['REVOCATION_SUPERSESSION'] and x['EFFECTIVENESS_RULE']==candidate['RECORD']['EFFECTIVENESS_RULE']
+ assert x['EXTERNAL_HOST_REVOCATION_USAGE']==candidate['RECORD']['EXTERNAL_HOST_REVOCATION_USAGE']
+mode=sys.argv[1]
+v=read(D/({'candidate':'profile-recovery-issuance-candidate.json','issuance':'issued-profile-installation-recovery-grant.json','effectiveness':'profile-recovery-effectiveness-reference.json'}[mode]))
+key='IDENTITY' if mode=='effectiveness' else 'GRANT_IDENTITY';assert digest(v['RECORD'])==v[key]['sha256']
+mutations=[]
+def add(path,value,record):
+ m=copy.deepcopy(record);dest=m
+ for k in path[:-1]:dest=dest[k]
+ dest[path[-1]]=value;mutations.append((path,m))
+if mode!='effectiveness':
+ valid_grant(v['RECORD']);assert v==candidate
+ if mode=='issuance':
+  rc=read(D/'profile-recovery-issuance-publication-receipt.json');checkpin(rc['PIN']);assert all(rc[k] for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC','REREAD_BYTES_MATCH'])
+  pv=read(D/'profile-recovery-candidate-four-seed.json');assert pv['RESULT']=='PASS' and len({a['semantic_sha256'] for a in pv['RESULTS']})==1
+ for p,value in [(['ISSUER_ROLE'],'UNAUTHORIZED'),(['APPROVED_SUBJECT_IDENTITY','sha256'],'0'*64),(['APPROVED_SUBJECT_PIN','raw_sha256'],'0'*64),(['SOURCE_PIN','raw_sha256'],'0'*64),(['SOURCE_ABSOLUTE_PATH'],'/tmp/substitute'),(['DESTINATION_EXACT_PATH'],'/home/gvasend/.codex/config.toml'),(['ALLOCATION','RECOVERY_ATTEMPTS'],2),(['ALLOCATION','AUTOMATIC_RETRIES'],1),(['ALLOCATION','MAX_SUCCESSFUL_CONTENT_BYTES'],1092),(['ALLOCATION','DELETIONS'],1),(['ALLOCATION','PROFILE_ACTIVATIONS'],1),(['EXPECTED_ENTRY_PRECONDITION','UID'],0),(['EXPECTED_ENTRY_PRECONDITION','MODE'],'0644'),(['EXPECTED_ENTRY_PRECONDITION','SIZE_BYTES'],1),(['EXPECTED_ENTRY_PRECONDITION','SYMLINK'],True),(['EXPECTED_ENTRY_PRECONDITION','HARD_LINK_COUNT'],2),(['PROCEDURE'],['cat source > destination']),(['CONSUMPTION_RULE'],'Write before consumption'),(['HISTORICAL_ACCOUNTING'],'Original attempt reset'),(['HOST_RECOVERY_EXECUTED'],True),(['PROFILE_ACTIVATED'],True),(['EXCLUSIONS'],[]),(['STATUS'],'EFFECTIVE'),(['REVOCATION_SUPERSESSION'],'Ignore revocation'),(['RELATED_GRANTS_UNCHANGED','LIMITS','MAX_PROCESS_STARTS_PER_EPOCH'],601)]:add(p,value,v['RECORD'])
+ validate=valid_grant
+else:
+ issued=read(D/'issued-profile-installation-recovery-grant.json');valid_grant(issued['RECORD'])
+ def validate(x):
+  assert x['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and x['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and x['GRANT_IDENTITY']==issued['GRANT_IDENTITY']
+  assert x['ALLOCATION']==s['CONTENT']['FINITE_SCOPE'] and x['EXCLUSIONS']==s['CONTENT']['EXCLUSIONS']
+  for k in ['GRANT_PIN','SUBJECT_PIN','ISSUANCE_VERIFICATION_PIN','CONFLICT_RECHECK_PIN','PRESERVATION_RECHECK_PIN']:checkpin(x[k])
+  verification=read(x['ISSUANCE_VERIFICATION_PIN']['path']);assert verification['RESULT']=='PASS' and len(verification['RESULTS'])==4 and len({a['semantic_sha256'] for a in verification['RESULTS']})==1
+  assert x['STATUS']=='EFFECTIVE_RECOVERY_ONLY_SUBJECT_TO_FRESH_ENTRY' and x['NO_BACKDATING'] is True and x['FRESH_ENTRY_REQUIRED'] is True
+  for k in ['HOST_RECOVERY_EXECUTED','PROFILE_ACTIVATED','ENVIRONMENT_ADMITTED','PILOT_EXECUTED','RECOVERY_ATTEMPT_CONSUMED_BY_ISSUANCE']:assert x[k] is False
+ validate(v['RECORD'])
+ rc=read(D/'profile-recovery-effectiveness-publication-receipt.json');checkpin(rc['PIN']);assert all(rc[k] for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC','REREAD_BYTES_MATCH'])
+ for p,value in [(['ISSUER_ROLE'],'UNAUTHORIZED'),(['APPROVED_SUBJECT_IDENTITY','sha256'],'0'*64),(['GRANT_IDENTITY','sha256'],'0'*64),(['GRANT_PIN','raw_sha256'],'0'*64),(['ISSUANCE_VERIFICATION_PIN','raw_sha256'],'0'*64),(['ALLOCATION','RECOVERY_ATTEMPTS'],2),(['ALLOCATION','AUTOMATIC_RETRIES'],1),(['EXCLUSIONS'],[]),(['NO_BACKDATING'],False),(['FRESH_ENTRY_REQUIRED'],False),(['HOST_RECOVERY_EXECUTED'],True),(['PROFILE_ACTIVATED'],True),(['ENVIRONMENT_ADMITTED'],True),(['RECOVERY_ATTEMPT_CONSUMED_BY_ISSUANCE'],True),(['STATUS'],'UNCONDITIONAL_EXECUTION')]:add(p,value,v['RECORD'])
+rejected=0
+for path,m in mutations:
+ try:validate(m)
+ except (AssertionError,KeyError):rejected+=1
+ else:raise AssertionError('accepted mutation: '+str(path))
+assert rejected==len(mutations)
+semantic={'stage':mode,'subject':s['IDENTITY'],'identity':v[key],'negative_designs':len(mutations),'negative_rejected':rejected,'preservation':'PASS','recovery_executed':False,'profile_activated':False,'fresh_inode_required_not_supplied':True}
+print(json.dumps({'seed':os.environ['PYTHONHASHSEED'],'semantic':semantic,'semantic_sha256':digest(semantic)},sort_keys=True))

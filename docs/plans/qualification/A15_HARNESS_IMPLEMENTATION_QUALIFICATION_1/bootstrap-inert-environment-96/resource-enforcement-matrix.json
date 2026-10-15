@@ -1,0 +1,148 @@
+{
+  "APPROVED_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CAMPAIGN_WALL_SECONDS": 30,
+    "CAMPAIGN_WRITTEN_BYTES": 1048576,
+    "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+    "CHILD_CPU_SECONDS": 5,
+    "CHILD_FDS": 32,
+    "CHILD_FILE_BYTES": 65536,
+    "CHILD_WALL_SECONDS": 10,
+    "MAX_CHILD_LAUNCHES": 16,
+    "MAX_LIVE_CHILDREN": 2
+  },
+  "CONTROLS": [
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 0,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "fixed zero retry paths plus permanent campaign/consumption claims; no cleanup resets",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "AUTOMATIC_RETRIES",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 30,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "independent qualified external watchdog including setup/stop/publication; in-file checks alone insufficient",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CAMPAIGN_WALL_SECONDS",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 1048576,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "locked precharge ledger for ALL preparation/write attempts/overwrites/streams/ledger/evidence; independent critical reserve proof",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CAMPAIGN_WRITTEN_BYTES",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 134217728,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_AS=134217728 preexec/readback",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CHILD_ADDRESS_SPACE_BYTES",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 5,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_CPU=5 in helper preexec, independent preflight readback",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CHILD_CPU_SECONDS",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 32,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_NOFILE=32 preexec/readback",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CHILD_FDS",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 65536,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "hard/soft RLIMIT_FSIZE=65536 and bounded per-stream reservation/read",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CHILD_FILE_BYTES",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 10,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "parent absolute min(launch+10,campaign+30) wait then group kill/wait; independent watchdog required for parent blockage",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "CHILD_WALL_SECONDS",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 16,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "reserve/count before each fixed Popen; never refund; expected10 helpers; max16",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "MAX_CHILD_LAUNCHES",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    },
+    {
+      "ACTUAL_HOST_EVIDENCE": "source implementation only; campaign control not exercised",
+      "APPROVED_CEILING": 2,
+      "CURRENT_STATUS": "UNQUALIFIED",
+      "ENFORCEMENT_MECHANISM": "fixed trusted controller admits at most2 known helpers; no untrusted descendant API; not kernel hostile-tree confinement",
+      "ENFORCEMENT_OWNER": "qualified parent/observer plus Linux for rlimits",
+      "FAILURE_RULE": "missing/unsupported denies campaign; unchanged limits",
+      "REQUIRED_PERMISSION": "nonroot lower hard/soft limits, own private store; no elevation; independent watcher permission must be pinned",
+      "RESOURCE_ID": "MAX_LIVE_CHILDREN",
+      "VERIFICATION_PROCEDURE": "independent pinned preflight readback, fixed spawn-site/exit mapping, deadline stop observation and exact cumulative write envelope; retain receipt"
+    }
+  ],
+  "FUTURE_PIDS_PROBE_REQUIRED": false,
+  "LIMIT_SOURCE": {
+    "identity": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "qualification-h90-bootstrap-construction-inert-issued-grant-v1",
+      "sha256": "38120e22ad910456ccc4096d59b619fa79efcd6903d3d769c9524495c8c88165"
+    },
+    "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/bootstrap-grant-issuance-90/effective-bootstrap-construction-grant-reference.json",
+    "raw_sha256": "a35dde8513784cb9dc6c9976a63d6244358ca57ce7b5bf09877bf0caae2bc141",
+    "verified_issuance_pins": 9
+  },
+  "PACKAGE_94_RESTRICTIONS": "unchanged ceilings; root input exception is not output/file-size enlargement",
+  "RESOURCE_ENFORCEMENT_VERIFIED": false,
+  "WRITE_ENVELOPE": {
+    "CRITICAL_ENVELOPE_BYTES": null,
+    "CRITICAL_RESERVE_BYTES": null,
+    "MISSING": "quantify fixture/epoch/proof preparation, ledger rewrites, all audit/failure records and accounting loops within remaining120236; independently bound critical reserve/envelope. This arithmetic is not a complete write plan.",
+    "helper_reservations": 655360,
+    "max_root_input": 207444,
+    "parent_stream_reservation": 65536,
+    "remaining_before_other_writes": 120236
+  }
+}

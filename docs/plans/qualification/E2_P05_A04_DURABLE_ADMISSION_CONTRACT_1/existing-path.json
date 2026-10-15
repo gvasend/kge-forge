@@ -1,0 +1,216 @@
+{
+  "T02_atomicity_limit": "Immutable state admission only; no event/ledger/source enrollment/HEAD publication",
+  "T02_replay_claim_limit": "Prior T02 encode/decode is Snapshot retention, not event-bearing dossier transaction replay",
+  "existing_sequence": [
+    {
+      "contract": "SuppliedResult plus separate Tuple[ValidationInstance,...]; expected_snapshot binds native pre-state",
+      "exists": true,
+      "step": "typed inputs"
+    },
+    {
+      "contract": "Future fresh bounded producer reads authored source and Action contract, evaluates six rules; no expected oracle input",
+      "exists": "SEALED_SOURCE_RULES; NO_DURABLE_EXECUTOR_INTEGRATION",
+      "step": "bounded producer and independent checks"
+    },
+    {
+      "call": "core.admit_dossier_materialization(snapshot, supplied, validation_instances)",
+      "exists": true,
+      "step": "state admission/result application"
+    },
+    {
+      "contract": "One TransitionReport after model and readiness checks; no persisted event",
+      "exists": true,
+      "step": "private immutable post-state"
+    },
+    {
+      "call": "Snapshot is the returned immutable state; codec.snapshot_bytes / snapshot_id",
+      "exists": true,
+      "step": "Snapshot construction/hash/encoding"
+    },
+    {
+      "call": "record_result -> apply_event -> apply_result, not T02",
+      "exists": "GENERIC_PRIMITIVE_ONLY",
+      "step": "ordinary event construction/append"
+    },
+    {
+      "call": "commit_event -> record_result -> _publish_head -> save_bundle -> bundle_bytes -> _replay",
+      "exists": "GENERIC_PRIMITIVE_ONLY",
+      "step": "bundle/immutable files/HEAD publication"
+    },
+    {
+      "contract": "No historical Snapshot resolver or dossier-event branch",
+      "exists": false,
+      "step": "T02 durable replay integration"
+    }
+  ],
+  "existing_snapshot_is_state": "No separate mutable post-state entity is needed. The returned Snapshot is encoded and hashed as PLANNER-SNAPSHOT-1.",
+  "gaps": [
+    {
+      "category": "RESULT_APPLICATION",
+      "gap": "Integrate existing T02 admission into durable PREPARE path; do not use ordinary apply_result for fresh dossier"
+    },
+    {
+      "category": "POST_SNAPSHOT_CREATION",
+      "gap": "Existing hash/codec sufficient; retain canonical historical Snapshot body as immutable archive object"
+    },
+    {
+      "category": "EVENT_APPEND",
+      "gap": "Compose unchanged ExecutionEvent from T02 post-state rather than ordinary dispatcher"
+    },
+    {
+      "category": "EVENT_TO_POST_SNAPSHOT_BINDING",
+      "gap": "after_snapshot already supplies identity; implement resolver and historical outcome checks"
+    },
+    {
+      "category": "PERSISTENCE_BUNDLE_COMMIT",
+      "gap": "Atomic source-pin boundary, minimal bundle binding, archive files and existing HEAD protocol"
+    },
+    {
+      "category": "REPLAY",
+      "gap": "Resolve historical Snapshot, extract original typed outcomes, verify pure T02 projection and prefix sources"
+    },
+    {
+      "category": "OTHER",
+      "gap": "Durable semantic retry/conflict detection before producer invocation; state no-op is insufficient"
+    }
+  ],
+  "locations": [
+    {
+      "end_line": 335,
+      "line": 320,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "apply_result"
+    },
+    {
+      "end_line": 428,
+      "line": 338,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "admit_dossier_materialization"
+    },
+    {
+      "end_line": 583,
+      "line": 547,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "apply_event"
+    },
+    {
+      "end_line": 180,
+      "line": 178,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "snapshot_bytes"
+    },
+    {
+      "end_line": 184,
+      "line": 183,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "snapshot_id"
+    },
+    {
+      "end_line": 443,
+      "line": 438,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_event_identity"
+    },
+    {
+      "end_line": 548,
+      "line": 446,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_replay"
+    },
+    {
+      "end_line": 578,
+      "line": 565,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "record_result"
+    },
+    {
+      "end_line": 636,
+      "line": 622,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "save_bundle"
+    },
+    {
+      "end_line": 663,
+      "line": 639,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "restore"
+    },
+    {
+      "end_line": 731,
+      "line": 716,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_publish_head"
+    },
+    {
+      "end_line": 762,
+      "line": 734,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_read_head"
+    },
+    {
+      "end_line": 886,
+      "line": 881,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_prefix_bundle"
+    },
+    {
+      "end_line": 878,
+      "line": 868,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "commit_event"
+    },
+    {
+      "end_line": 194,
+      "line": 182,
+      "path": "adapter/planner/validation_transaction.py",
+      "pointer": "",
+      "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+      "symbol": "apply"
+    },
+    {
+      "end_line": 211,
+      "line": 196,
+      "path": "adapter/planner/validation_transaction.py",
+      "pointer": "",
+      "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+      "symbol": "commit"
+    }
+  ],
+  "ordinary_failure_before_append": "validate_result rejects fresh dossier when Action.prepared_dossier is None; SuppliedResult carries no validation tuple",
+  "state_effects": [
+    "PREPARE completed",
+    "actual bounded E2-K-PREPARE admitted",
+    "Action.prepared_dossier set",
+    "Decision.dossier and native stage/history advanced to DECISION_READY",
+    "six ValidationInstances admitted",
+    "native decision Action readiness recomputed; no human choice/authority issued"
+  ]
+}

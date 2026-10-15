@@ -1,0 +1,11 @@
+{
+  "CALLSITE_AUTHENTICATED": false,
+  "CLASS": "INERT_COMMENT_ONLY_NON_RUNNABLE",
+  "COMPLETE_CALLSITE": false,
+  "EXECUTABLE_BITS_SET": false,
+  "NO_SHELL_SYNTAX_CHECK_OR_SOURCE_INVOCATION": true,
+  "PATH": "proposed-direct-shell-callsite.sh",
+  "QUOTED_VECTOR_RAW_SHA256": "5997d3f61304336742f51b5765cf1a6e5e252ea10579f6c782ca952d9573b154",
+  "RAW_SHA256": "c0dca32dc1a84bf12af3e70a328f7484a1f757e3326b7ee0bb1eb469cf905093",
+  "SOURCE_VECTOR_QUOTED": "/usr/bin/prlimit --cpu=60:60 --as=268435456:268435456 --nofile=64:64 -- /bin/bash --noprofile --norc -c 'umask 077\n\"$@\"\nresult=$?\nprintf \"P127_PARENT_EXIT=%s\\n\" \"$result\" >&2\nexit \"$result\"\n' P127_FIXED_PARENT /usr/bin/timeout --signal=KILL 200s /usr/bin/bwrap --unshare-user --uid 1000 --gid 1000 --unshare-pid --unshare-net --unshare-ipc --unshare-uts --cap-drop ALL --die-with-parent --dir /bin --dir /lib --dir /lib/x86_64-linux-gnu --dir /lib64 --dir /dev --dir /proc --dir /work --ro-bind /bin/findmnt /bin/findmnt --ro-bind /lib/x86_64-linux-gnu/ld-2.31.so /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 --ro-bind /lib/x86_64-linux-gnu/libblkid.so.1.1.0 /lib/x86_64-linux-gnu/libblkid.so.1 --ro-bind /lib/x86_64-linux-gnu/libc-2.31.so /lib/x86_64-linux-gnu/libc.so.6 --ro-bind /lib/x86_64-linux-gnu/libdl-2.31.so /lib/x86_64-linux-gnu/libdl.so.2 --ro-bind /lib/x86_64-linux-gnu/libmount.so.1.1.0 /lib/x86_64-linux-gnu/libmount.so.1 --ro-bind /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0 /lib/x86_64-linux-gnu/libpcre2-8.so.0 --ro-bind /lib/x86_64-linux-gnu/libpthread-2.31.so /lib/x86_64-linux-gnu/libpthread.so.0 --ro-bind /lib/x86_64-linux-gnu/libselinux.so.1 /lib/x86_64-linux-gnu/libselinux.so.1 --ro-bind /lib/x86_64-linux-gnu/libsmartcols.so.1.1.0 /lib/x86_64-linux-gnu/libsmartcols.so.1 --ro-bind /lib/x86_64-linux-gnu/libudev.so.1.6.17 /lib/x86_64-linux-gnu/libudev.so.1 --ro-bind /lib/x86_64-linux-gnu/ld-2.31.so /lib64/ld-linux-x86-64.so.2 --proc /proc --remount-ro /proc --tmpfs /work --remount-ro / --chdir /work --setenv PATH /bin --setenv LC_ALL C --setenv LANG C -- /bin/findmnt --json --output TARGET,SOURCE,FSTYPE,OPTIONS"
+}

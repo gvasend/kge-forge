@@ -1,0 +1,22 @@
+{
+  "APPLY_NOT_SEPARATELY_EXECUTED": "record_result internally applies; standalone apply_event result is not an occurrence",
+  "DERIVATION_RULE": "Authoritative native semantics + sealed pre-state/descriptor/scope; not future case output or runner result",
+  "NATIVE_CAPTURE_SEQUENCE": [
+    "record_result",
+    "save_bundle",
+    "restore"
+  ],
+  "PERSISTENCE_LIMITS": "Each immutable file fsync-before-hard-link publication; conflicting existing/symlink targets reject. Event/archive files may be staged before bundle file; no multi-file atomic commit, no HEAD or directory-fsync guarantee from save_bundle. Reader eligibility only after successful complete save and exact publication verification.",
+  "READY": false,
+  "REQUIRED_EXPECTATIONS": {
+    "cold_restore": "Exact candidate-specific independent values missing",
+    "control": "Exact candidate-specific independent values missing",
+    "native_capture": "Exact candidate-specific independent values missing",
+    "ordered_trace": "Exact candidate-specific independent values missing",
+    "persistence": "Exact candidate-specific independent values missing",
+    "proof": "Exact candidate-specific independent values missing",
+    "resume": "Exact candidate-specific independent values missing",
+    "state": "Exact candidate-specific independent values missing"
+  },
+  "RUNTIME_STEPS": "Only later authorized package executes save/append/restore/cold processes; static analysis here does none"
+}

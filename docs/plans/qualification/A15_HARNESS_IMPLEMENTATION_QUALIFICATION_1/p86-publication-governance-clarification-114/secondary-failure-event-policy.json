@@ -1,0 +1,18 @@
+{
+  "CHANGE_CLASSIFICATION": "NORMATIVE_AMENDMENT_REQUIRED",
+  "EVENT_COUNT_FROM_ONE_ATTEMPT": false,
+  "FIRST_CAUSE_REPLACEMENT": false,
+  "IN_SAME_PUBLICATION_DOMAIN": true,
+  "NUMERIC_MAXIMUM": null,
+  "OPERATIONS": [
+    "Service stop/wait/membership check",
+    "Observer pipe/FD close and timeout accounting",
+    "Claim store/read/barrier failure",
+    "Evidence encode/write/fsync/reread",
+    "Final audit publication",
+    "Monotonic deadline stop/finalization"
+  ],
+  "POLICY": "Independently derive exact operation/handle/concurrency event counts before active entry; include all simultaneously feasible secondaries in reserve. Mutually exclusive primary outcomes are not summed as concurrent.",
+  "REPEATED_WRITES": "Every new record/republication charges full logical length again; suffix continuation of same admitted artifact is not a new record. No automatic probe retry or new audit campaign.",
+  "UNEXPECTED_OR_OVERFLOW": "Additional unmodelled/missing secondary witness makes outcome INCOMPLETE; record bounded overflow via reserved slot if possible. Never claim complete errors from truncated/unverifiable exception text."
+}

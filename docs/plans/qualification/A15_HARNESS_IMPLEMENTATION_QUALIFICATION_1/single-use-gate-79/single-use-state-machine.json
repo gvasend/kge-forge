@@ -1,0 +1,59 @@
+{
+  "ALLOWED_TRANSITIONS": [
+    [
+      "APPROVED",
+      "ISSUED"
+    ],
+    [
+      "ISSUED",
+      "EFFECTIVE"
+    ],
+    [
+      "EFFECTIVE",
+      "CONSUMED"
+    ],
+    [
+      "CONSUMED",
+      "LAUNCHED"
+    ],
+    [
+      "CONSUMED",
+      "LAUNCH_FAILED"
+    ],
+    [
+      "CONSUMED",
+      "OUTCOME_UNKNOWN"
+    ],
+    [
+      "LAUNCHED",
+      "COMPLETED"
+    ],
+    [
+      "LAUNCHED",
+      "FAILED"
+    ],
+    [
+      "LAUNCHED",
+      "OUTCOME_UNKNOWN"
+    ]
+  ],
+  "ATTEMPT_CURRENT_STATE": "NONE",
+  "CLAIMING_SENTINEL": "Atomic reservation is a blocking tombstone; until durable confirmed it is ambiguous and no launcher may proceed",
+  "CONSUMPTION_DOES_NOT_PROVE_LAUNCH": true,
+  "CONSUMPTION_IRREVERSIBLE": true,
+  "GRANT_CURRENT_STATE": "OWNER_APPROVED_NOT_ISSUED",
+  "INDEPENDENT_OBSERVATION": "Launch/completion evidence separate from irreversible claim; missing result means unknown, not unused",
+  "NO_RETRY": true,
+  "STATES": [
+    "APPROVED",
+    "ISSUED",
+    "EFFECTIVE",
+    "CONSUMED",
+    "LAUNCHED",
+    "COMPLETED",
+    "FAILED",
+    "LAUNCH_FAILED",
+    "OUTCOME_UNKNOWN"
+  ],
+  "TERMINAL_OUTCOMES_DO_NOT_REOPEN": true
+}

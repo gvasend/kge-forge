@@ -1,0 +1,313 @@
+"""Synthetic gate qualification cases; not executed during Package81.
+
+Every active suite entry requires an independently sealed campaign/environment
+manifest. The assertions test gate semantics; fixture entry-check booleans are
+synthetic protocol data, never proof of actual host permissions or durability.
+"""
+import copy
+import hashlib
+import json
+import multiprocessing
+import os
+import pathlib
+import tempfile
+import unittest
+import uuid
+from unittest import mock
+
+from adapter.qualification_h77_02_gate import gate
+
+ROOT = pathlib.Path(__file__).resolve().parents[2]
+EVIDENCE = ROOT / 'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1'
+GRANT80_SHA = 'e6728a8ecea41ce083e722326270885469d229e335a61c5ddc30d54b37cbd738'
+SUBJECT79_SHA = '9c6ccc426dc2acb4126d85006ea6fb6f830b8c21bbfbfcdf8003058e146c9354'
+SOURCE_PATHS = ['adapter/qualification_h77_02_gate/__init__.py',
+                'adapter/qualification_h77_02_gate/gate.py',
+                'adapter/tests/test_h77_02_launch_gate.py']
+
+
+def require_test_entry():
+    name = os.environ.get('KGE_H77_GATE_SYNTHETIC_TEST_ENTRY')
+    gate.require(name is not None, 'NO_AUTHORIZED_SYNTHETIC_TEST_ENTRY')
+    path = pathlib.Path(name)
+    boundary = EVIDENCE / 'single-use-gate-implementation-qualification-1'
+    gate.require(path.is_absolute() and boundary in path.parents and
+                 path.resolve() == path and path.is_file(), 'TEST_ENTRY_PATH')
+    fd = gate.open_directory(path.parent)
+    try:
+        raw, unused = gate.read_at(fd, path.name)
+    finally:
+        os.close(fd)
+    manifest = gate.decode(raw)
+    fields = {'schema', 'effective_grant_sha', 'approved_subject_sha', 'source_hashes',
+              'campaign_identity', 'fixture_manifest_pin', 'independent_oracle_pin',
+              'controller_qualification_pin', 'environment_qualification_pin',
+              'permissions_qualification_pin', 'entry_predicates', 'resource_limits',
+              'no_real_invocation', 'no_automatic_retries'}
+    gate.require(set(manifest) == fields and manifest['schema'] ==
+                 'H77-02-GATE-ACTIVE-SYNTHETIC-ENTRY-1', 'TEST_ENTRY_SCHEMA')
+    gate.require(manifest['effective_grant_sha'] == GRANT80_SHA and
+                 manifest['approved_subject_sha'] == SUBJECT79_SHA, 'TEST_ENTRY_AUTHORITY')
+    refpath = EVIDENCE / 'gate-construction-grant-80/effective-gate-construction-grant-reference.json'
+    ref = json.loads(refpath.read_text())
+    gate.require(ref['GRANT_EFFECTIVE'] is True and ref['GRANT_IDENTITY']['sha256'] ==
+                 GRANT80_SHA, 'CONSTRUCTION_GRANT_NOT_EFFECTIVE')
+    grantpin = ref['GRANT_RECORD_PIN']
+    rawgrant = (ROOT / grantpin['PATH']).read_bytes()
+    gate.require(hashlib.sha256(rawgrant).hexdigest() == grantpin['RAW_SHA256'], 'GRANT_PIN')
+    grantdoc = gate.decode(rawgrant)
+    gate.require(gate.identity(grantdoc['RECORD'], grantdoc['GRANT_IDENTITY']['namespace']) ==
+                 grantdoc['GRANT_IDENTITY'], 'ISSUED_GRANT_IDENTITY')
+    gate.require(set(manifest['source_hashes']) == set(SOURCE_PATHS) and
+                 all(hashlib.sha256((ROOT / f).read_bytes()).hexdigest() == h
+                     for f, h in manifest['source_hashes'].items()), 'TEST_SOURCE_IDENTITY')
+    predicates = {'grant_effective', 'grant_current_and_unrevoked', 'test_phase_authorized',
+                  'fixtures_synthetic', 'executable_verified', 'environment_verified',
+                  'resource_limits_enforceable', 'paths_authorized', 'campaign_authority_valid',
+                  'independent_observer_verified'}
+    gate.require(set(manifest['entry_predicates']) == predicates and
+                 all(v is True for v in manifest['entry_predicates'].values()), 'TEST_PREDICATE_UNKNOWN')
+    for label in ['fixture_manifest_pin', 'independent_oracle_pin',
+                  'controller_qualification_pin', 'environment_qualification_pin',
+                  'permissions_qualification_pin']:
+        document = gate.read_pin(manifest[label])
+        gate.require(document.get('result') == 'PASS' and document.get('campaign_identity') ==
+                     manifest['campaign_identity'], 'UNQUALIFIED_TEST_RECEIPT')
+    gate.check_identity(manifest['campaign_identity'])
+    gate.require(manifest['no_real_invocation'] is True and
+                 manifest['no_automatic_retries'] is True and
+                 manifest['resource_limits'] == grantdoc['RECORD']['RESOURCE_LIMITS'],
+                 'TEST_SCOPE_OR_LIMITS')
+    # Such receipts require separate independent qualification and revocation,
+    # environment/confinement freshness checks; this suite never generates them.
+    return manifest
+
+
+def write_fixture(path, value):
+    fd = os.open(str(path), os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, 'wb') as stream:
+        stream.write(gate.canonical(value))
+    return {'path': str(path), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest()}
+
+
+def make_fixture(root):
+    store, auth = root / 'store', root / 'authority'
+    store.mkdir(mode=0o700); auth.mkdir(mode=0o700)
+    checks = {k: True for k in gate.ENTRY_CHECKS}
+    subjectbody = {'purpose': 'DISPOSABLE_INERT_GATE_SYNTHETIC_ONLY'}
+    subject = {'CONTENT': subjectbody, 'IDENTITY': gate.identity(subjectbody,
+               'qualification-h77-02-gate-synthetic-subject-v1'), 'APPROVAL': None, 'ISSUED': False}
+    subjectpin = write_fixture(auth / 'subject.json', subject)
+    info = store.stat()
+    profile = {'schema': 'H77-02-QUALIFIED-ENTRY-PROFILE-1', 'mode': 'SYNTHETIC',
+               'host': 'SYNTHETIC_DISPOSABLE_HOST', 'store_path': str(store),
+               'store_device': info.st_dev, 'store_inode': info.st_ino,
+               'launch_working_directory': str(root),
+               'resource_limits': dict(gate.REAL_LIMITS), 'entry_checks': checks}
+    profileid = gate.identity(profile, 'qualification-h77-02-gate-synthetic-profile-v1')
+    command = {'operation': 'INERT_CALLBACK', 'argv': []}
+    body = {'schema': 'H77-02-NORMALIZED-ISSUED-AUTHORITY-1', 'status': 'ISSUED',
+            'subject_identity': subject['IDENTITY'], 'probe_identity': gate.identity(
+                {'operation': 'INERT'}, 'qualification-h77-02-gate-synthetic-probe-v1'),
+            'command_identity': gate.identity(command, 'qualification-h77-02-command-contract-v1'),
+            'context_identity': profileid, 'issuer_role': gate.ISSUER,
+            'charter_identity': gate.identity({'synthetic': True},
+                'qualification-h77-02-gate-synthetic-charter-v1'),
+            'resource_limits': dict(gate.REAL_LIMITS), 'single_probe_limit': 1,
+            'automatic_retries': 0, 'store_path': str(store), 'epoch_name': 'epoch.json'}
+    grant = {'content': body, 'identity': gate.identity(body,
+             'qualification-h77-02-gate-synthetic-grant-v1')}
+    effective = {'schema': 'H77-02-NORMALIZED-EFFECTIVE-AUTHORITY-1',
+                 'grant_identity': grant['identity'], 'subject_identity': subject['IDENTITY'],
+                 'effective': True}
+    epoch = {'schema': 'H77-02-AUTHORITY-EPOCH-1', 'grant_identity': grant['identity'],
+             'epoch': 1, 'status': 'EFFECTIVE', 'expiration_checked': True,
+             'freshness_verified': True}
+    write_fixture(store / 'epoch.json', epoch)
+    return {'schema': gate.SCHEMA, 'mode': 'SYNTHETIC',
+            'grant_pin': write_fixture(auth / 'grant.json', grant),
+            'effective_pin': write_fixture(auth / 'effective.json', effective),
+            'subject_pin': subjectpin, 'profile_pin': write_fixture(auth / 'profile.json', profile),
+            'store_path': str(store), 'epoch_name': 'epoch.json',
+            'epoch_identity': gate.identity(epoch, 'qualification-h77-02-authority-epoch-v1'),
+            'command': command, 'resource_limits': dict(gate.REAL_LIMITS),
+            'execution_context': {'profile_identity': profileid,
+                                  'host': 'SYNTHETIC_DISPOSABLE_HOST', 'mode': 'SYNTHETIC'},
+            'entry_checks': checks, 'authorized_attempt_number': 1}
+
+
+def inert():
+    return {'inert_callback_only': True}
+
+
+def claimant(entry, result_path, crash_stage=None):
+    def hook(stage):
+        if stage == crash_stage:
+            os._exit(77)  # Only the owned disposable claimant process.
+    try:
+        result = gate.claim_and_launch(entry, synthetic_callback=inert, stage_hook=hook)
+        value = {'accepted': True, 'result': result}
+    except BaseException as exc:
+        value = {'accepted': False, 'error_type': type(exc).__name__}
+    write_fixture(pathlib.Path(result_path), value)
+
+
+class GateSyntheticTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.entry_authorization = require_test_entry()
+
+    def setUp(self):
+        self.root = pathlib.Path('/tmp') / ('kge-h77-02-gate-synthetic-' + uuid.uuid4().hex)
+        self.root.mkdir(mode=0o700)
+        self.entry = make_fixture(self.root)
+        self.context = multiprocessing.get_context('spawn')
+
+    # Preserve claim stores as qualification evidence, not cleanup/reset of a
+    # real consumption namespace. Any later synthetic cleanup is controller-owned.
+    def run_child(self, entry, name, crash_stage=None):
+        child = self.context.Process(target=claimant,
+                   args=(entry, str(self.root / name), crash_stage))
+        child.start(); child.join(timeout=10)
+        if child.is_alive():
+            child.terminate(); child.join(timeout=5)
+            self.fail('Owned claimant timeout; no automatic retry')
+        return child.exitcode
+
+    def test_first_and_duplicate_claim(self):
+        result = gate.claim_and_launch(self.entry, synthetic_callback=inert)
+        self.assertTrue(result['consumed']); self.assertFalse(result['retry_allowed'])
+        with self.assertRaises(FileExistsError):
+            gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_key_is_independently_reconstructed_and_stable(self):
+        doc = json.loads(pathlib.Path(self.entry['grant_pin']['path']).read_text())
+        g = doc['content']
+        fields, key = gate.consumption_key(doc['identity'], g['subject_identity'],
+                       g['probe_identity'], g['command_identity'], self.entry['execution_context'])
+        expected = {'schema': 'H77-02-CONSUMPTION-KEY-1',
+                    'issued_grant_identity': doc['identity'], 'approved_subject_identity': g['subject_identity'],
+                    'probe_identity': g['probe_identity'], 'command_identity': g['command_identity'],
+                    'execution_context': self.entry['execution_context'], 'authorized_attempt_number': 1}
+        encoded = json.dumps(expected, sort_keys=True, separators=(',', ':'),
+                             ensure_ascii=False, allow_nan=False).encode('utf-8')
+        self.assertEqual(fields, expected)
+        self.assertEqual(key['sha256'], hashlib.sha256(encoded).hexdigest())
+        reordered = dict(reversed(list(self.entry['execution_context'].items())))
+        self.assertEqual(key, gate.consumption_key(doc['identity'], g['subject_identity'],
+                         g['probe_identity'], g['command_identity'], reordered)[1])
+
+    def test_concurrent_claimants_at_most_one(self):
+        children = [self.context.Process(target=claimant,
+                    args=(self.entry, str(self.root / ('result%d.json' % i)))) for i in range(2)]
+        for child in children: child.start()
+        for child in children:
+            child.join(timeout=10)
+            if child.is_alive():
+                child.terminate(); child.join(timeout=5); self.fail('Concurrent claimant timeout')
+        results = [json.loads((self.root / ('result%d.json' % i)).read_text()) for i in range(2)]
+        self.assertEqual(sum(r['accepted'] for r in results), 1)
+
+    def test_process_restart_preserves_claim(self):
+        self.assertEqual(self.run_child(self.entry, 'first.json'), 0)
+        self.assertEqual(self.run_child(self.entry, 'restart.json'), 0)
+        self.assertFalse(json.loads((self.root / 'restart.json').read_text())['accepted'])
+
+    def test_controlled_crash_points_remain_blocked(self):
+        for i, point in enumerate(['DURING_CLAIM', 'AFTER_FILE_FSYNC', 'AFTER_DIRECTORY_FSYNC',
+                'AFTER_CLAIM_BEFORE_LAUNCH', 'DURING_LAUNCH',
+                'AFTER_LAUNCH_BEFORE_OBSERVATION', 'AFTER_COMPLETION_BEFORE_AUDIT']):
+            row = self.root / ('crash%d' % i); row.mkdir(mode=0o700)
+            entry = make_fixture(row)
+            self.assertEqual(self.run_child(entry, 'crash-result%d.json' % i, point), 77)
+            with self.assertRaises(FileExistsError):
+                gate.claim_and_launch(entry, synthetic_callback=inert)
+
+    def test_before_claim_failure_does_not_launch(self):
+        seen = []
+        def hook(stage):
+            if stage == 'BEFORE_CLAIM': raise RuntimeError('synthetic before-claim fault')
+        with self.assertRaises(RuntimeError):
+            gate.claim_and_launch(self.entry, synthetic_callback=lambda: seen.append(1), stage_hook=hook)
+        self.assertEqual(seen, [])
+
+    def test_invalid_grant_pin(self):
+        self.entry['grant_pin']['sha256'] = '0' * 64
+        with self.assertRaises(gate.GateError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_wrong_command(self):
+        self.entry['command']['argv'] = ['/bin/false']
+        with self.assertRaises(gate.GateError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_revoked_epoch(self):
+        path = pathlib.Path(self.entry['store_path']) / self.entry['epoch_name']
+        value = json.loads(path.read_text()); value['status'] = 'REVOKED'
+        path.write_bytes(gate.canonical(value))
+        with self.assertRaises(gate.GateError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_resource_mismatch(self):
+        self.entry['resource_limits'] = dict(gate.REAL_LIMITS, CHILD_CPU=31)
+        with self.assertRaises(gate.GateError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_partial_and_conflicting_records(self):
+        def fault(stage):
+            if stage == 'DURING_CLAIM': raise RuntimeError('synthetic partial write')
+        with self.assertRaises(RuntimeError):
+            gate.claim_and_launch(self.entry, synthetic_callback=inert, stage_hook=fault)
+        claims = list(pathlib.Path(self.entry['store_path']).glob('*.claim.json'))
+        self.assertEqual(len(claims), 1); self.assertEqual(claims[0].read_bytes(), b'')
+        with self.assertRaises(FileExistsError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+        recovery = gate.recover(self.entry['store_path'], claims[0].name.split('.')[0])
+        self.assertEqual(recovery['state'], 'OUTCOME_UNKNOWN'); self.assertFalse(recovery['launch_permitted'])
+
+    def test_file_fsync_failure_blocks_launch(self):
+        seen = []
+        with mock.patch.object(gate.os, 'fsync', side_effect=OSError('synthetic fsync failure')):
+            with self.assertRaises(OSError):
+                gate.claim_and_launch(self.entry, synthetic_callback=lambda: seen.append(1))
+        self.assertEqual(seen, [])
+        with self.assertRaises(FileExistsError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_directory_fsync_failure_blocks_launch(self):
+        original = gate.os.fsync
+        def failure(fd):
+            if os.fstat(fd).st_ino == pathlib.Path(self.entry['store_path']).stat().st_ino:
+                raise OSError('synthetic directory fsync failure')
+            return original(fd)
+        with mock.patch.object(gate.os, 'fsync', side_effect=failure):
+            with self.assertRaises(OSError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+        with self.assertRaises(FileExistsError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_independent_reread_failure_blocks_launch(self):
+        seen = []
+        with mock.patch.object(gate, 'verify_consumption_record', side_effect=gate.GateError('synthetic reread failure')):
+            with self.assertRaises(gate.GateError):
+                gate.claim_and_launch(self.entry, synthetic_callback=lambda: seen.append(1))
+        self.assertEqual(seen, [])
+        with self.assertRaises(FileExistsError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+    def test_post_consumption_failure_unknown_and_no_retry(self):
+        def failure(): raise RuntimeError('synthetic callback failure')
+        with self.assertRaises(RuntimeError): gate.claim_and_launch(self.entry, synthetic_callback=failure)
+        with self.assertRaises(FileExistsError): gate.claim_and_launch(self.entry, synthetic_callback=inert)
+        claim = next(pathlib.Path(self.entry['store_path']).glob('*.claim.json'))
+        self.assertFalse(gate.recover(self.entry['store_path'], claim.name.split('.')[0])['retry_allowed'])
+
+    def test_missing_permissions_and_wrong_subject(self):
+        bad = copy.deepcopy(self.entry); bad['entry_checks']['permissions_verified'] = False
+        with self.assertRaises(gate.GateError): gate.claim_and_launch(bad, synthetic_callback=inert)
+        bad = copy.deepcopy(self.entry); bad['subject_pin']['sha256'] = '0' * 64
+        with self.assertRaises(gate.GateError): gate.claim_and_launch(bad, synthetic_callback=inert)
+
+    def test_symlink_store_rejected(self):
+        link = self.root / 'store-link'; link.symlink_to(self.entry['store_path'], target_is_directory=True)
+        bad = copy.deepcopy(self.entry); bad['store_path'] = str(link)
+        with self.assertRaises(OSError): gate.claim_and_launch(bad, synthetic_callback=inert)
+
+    def test_no_real_launcher_reachable_in_synthetic_mode(self):
+        with mock.patch.object(gate.subprocess, 'Popen', side_effect=AssertionError('real launcher forbidden')):
+            gate.claim_and_launch(self.entry, synthetic_callback=inert)
+
+
+if __name__ == '__main__':
+    unittest.main()

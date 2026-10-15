@@ -1,0 +1,42 @@
+# Metadata reconstruction only; no launch route or prospective reader commands executed.
+import pathlib,json,hashlib,copy,os
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-caller-evidence-decision-131'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'authentication-index.json')
+for n,h in a['PINS'].items():assert raw(R/n)==h,n
+assert not a['PACKAGE130_SEARCH']['MATCHES']
+profile=read(B/'p86-isolation-capability-124/exact-candidate-profile.json');parent=read(B/'p86-minimal-host-procedure-127/prospective-parent-procedure.json');assert digest(profile['CONTENT'])==profile['IDENTITY']['sha256'];assert digest(parent['CONTENT'])==parent['IDENTITY']['sha256']
+c=read(O/'caller-evidence-matrix.json');assert c['PRECISE_PROPOSED_CHILD_ARGV']==parent['CONTENT']['ARGV'] and c['P124_UNCHANGED_ARGV']==profile['CONTENT']['ARGV']
+m=read(O/'entry-execution-matrix.json');old=read(B/'p86-descriptor-closure-128/entry-execution-matrix.json');assert len(m['ROWS'])==36;assert [(r['REQUIREMENT_ID'],r['PHASE']) for r in m['ROWS']]==[(r['REQUIREMENT_ID'],r['PHASE']) for r in old['ROWS']]
+receipt=read(O/'smallest-gap-and-receipt-specification.json');r=copy.deepcopy(receipt);h=r.pop('TEMPLATE_CONTENT_SHA256');assert digest(r)==h
+for n,x in receipt['EXISTING_EXECUTABLE_PINS'].items():assert raw(pathlib.Path(n))==x['RAW_SHA256']
+assert receipt['STATUS']=='PROSPECTIVE_READ_ONLY_RECEIPT_TEMPLATE_NOT_EXECUTED'
+g=read(O/'dependency-graph.json');assert acyclic(g['EDGES'])
+policy=read(O/'control-authority-matrix.json');assert any(r.get('AUTHORITY_CLASS')=='PROSPECTIVE_DESIGN' for r in policy['ROWS'])
+e=read(O/'bounded-output-resource-assessment.json');assert e['ONE_ATTEMPT']==1 and e['AUTOMATIC_RETRIES']==0
+facts={'caller_verified':False,'argv':parent['CONTENT']['ARGV'],'protected_fd':False,'permission_verified':False,'collector_qualified':False,'tree_kill_verified':False,'attempts':1,'retry':0,'publication_omitted':False,'design_called_charter':False,'binding_waived':False,'future_witness_entry':False,'history_unchanged':True,'authority_issued':False,'self_proc_is_future_caller':False,'snapshot_proves_inheritance':False,'package130_assumed':False,'decision_ready':False,'scope':['P124_STATIC'],'options':[],'graph':g['EDGES']}
+def valid(x):
+ if x['argv']!=parent['CONTENT']['ARGV'] or x['attempts']!=1 or x['retry']!=0 or x['options'] or x['scope']!=['P124_STATIC'] or not acyclic(x['graph']):return False
+ if not x['history_unchanged']:return False
+ return not any(x[k] for k in ['caller_verified','protected_fd','permission_verified','collector_qualified','tree_kill_verified','publication_omitted','design_called_charter','binding_waived','future_witness_entry','authority_issued','self_proc_is_future_caller','snapshot_proves_inheritance','package130_assumed','decision_ready'])
+assert valid(facts)
+mut=[('wrong_unqualified_caller_accepted','caller_verified',True),('protected_inherited_writable_fd','protected_fd',True),('unknown_permission_verified','permission_verified',True),('unbounded_pipe_collector_qualified','collector_qualified',True),('timeout_called_whole_tree_kill','tree_kill_verified',True),('duplicate_attempt','attempts',2),('unauthorized_retry','retry',1),('publication_omitted','publication_omitted',True),('prospective_design_charter_rule','design_called_charter',True),('risk_acceptance_waiver','binding_waived',True),('own_future_witness_entry','future_witness_entry',True),('history_modified','history_unchanged',False),('premature_authority','authority_issued',True),('unrelated_self_proc_proof','self_proc_is_future_caller',True),('snapshot_is_future_inheritance','snapshot_proves_inheritance',True),('package130_assumed_issued','package130_assumed',True),('incomplete_subject_ready','decision_ready',True),('real_P86_permission','scope',['P124_STATIC','P86']),('H77_permission','scope',['P124_STATIC','H77-02']),('A15_permission','scope',['P124_STATIC','A15'])]
+out=[]
+for name,k,v in mut:
+ x=copy.deepcopy(facts);x[k]=v;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(facts);x['argv'].append('--wrong');assert not valid(x);out.append({'DESIGN':'wrong_argv','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(facts);x['graph'].append(['ACTUAL_WITNESS_RESULT','CALLER_QUALIFICATION']);assert not valid(x);out.append({'DESIGN':'own_result_cycle','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+before=read(O/'preservation-before.json');assert all((R/n).is_file() and raw(R/n)==h for n,h in before.items())
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+s={'SOURCE_PINS_SHA256':digest(a['PINS']),'P124_IDENTITY':profile['IDENTITY'],'P127_IDENTITY':parent['IDENTITY'],'PACKAGE130_FOUND':False,'MATRIX_SHA256':digest(m),'CALLER_SHA256':digest(c),'RECEIPT_TEMPLATE_SHA256':receipt['TEMPLATE_CONTENT_SHA256'],'GOVERNANCE_CLASS_SHA256':digest(policy),'GRAPH_SHA256':digest(g),'GRAPH_ACYCLIC':True,'DECISION_READY':False,'DECISION_OPTIONS':[],'PRESERVATION':'PASS','PRIOR_FILES':len(before),'NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

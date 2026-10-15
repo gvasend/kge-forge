@@ -1,0 +1,153 @@
+{
+  "HEAD_MUTATION": false,
+  "NATIVE_EVENT_ALLOWLIST": [
+    "SourceInvalidation with sealed synthetic expected_snapshot/changed identities only"
+  ],
+  "NATIVE_INTERFACE_ALLOWLIST": [
+    "adapter.planner.codec.record_result",
+    "adapter.planner.codec.save_bundle",
+    "adapter.planner.codec.restore",
+    "adapter.planner.codec.bundle_bytes",
+    "adapter.planner.codec.bundle_id",
+    "adapter.planner.codec.snapshot_id",
+    "adapter.planner.core.recompute",
+    "adapter.planner.core.resume_eligibility",
+    "adapter.planner.core.evaluate_satisfaction",
+    "adapter.planner.typed_proofs.usable"
+  ],
+  "NATIVE_SEQUENCE": [
+    "record_result",
+    "save_bundle",
+    "restore"
+  ],
+  "NO_REAL_A15_VARIANT_EXECUTION": true,
+  "NO_TESTS_RUN_PACKAGE70": true,
+  "OTHER_EXISTING_TEST_SUITES_ALLOWED": false,
+  "PERMITTED_PARENT_INVOCATION": [
+    "/usr/bin/python3",
+    "-m",
+    "unittest",
+    "adapter.tests.test_qualification_a15_harness"
+  ],
+  "SCHEMA_ID": "A15-PERMITTED-SYNTHETIC-TESTS-70-1",
+  "SEPARATE_APPLY_EVENT_CALL": false,
+  "TESTS": [
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Fresh own child with exact synthetic input seal; independent wait and per-case output namespace",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Worker process creation",
+      "TEST_ID": "T70-PROCESS"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Wrong identity/pin/scope/provenance or denied real identity rejected before native dispatch",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Checkpoint input validation",
+      "TEST_ID": "T70-INPUT"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Allow only synthetic SourceInvalidation; record_result owns one application; reject TransitionReport input/double apply/wildcard",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Native invocation dispatch",
+      "TEST_ID": "T70-DISPATCH"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "synthetic-native",
+      "EXPECTED_BEHAVIOR": "Updated native bundle and appended event/parent, complete DTO and query comparison",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Result capture",
+      "TEST_ID": "T70-CAPTURE"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "synthetic-native",
+      "EXPECTED_BEHAVIOR": "Canonical independent expected bytes/identity; field omission/order corruption rejects",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Bundle serialization",
+      "TEST_ID": "T70-SERIALIZE"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "synthetic-native",
+      "EXPECTED_BEHAVIOR": "save_bundle to row-owned synthetic namespace; conflict/symlink/save fault fails; no HEAD",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Immutable publication",
+      "TEST_ID": "T70-PUBLISH"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake process protocol",
+      "EXPECTED_BEHAVIOR": "Supervisor own-child wait, status zero; missing/nonzero/timeout exit rejects; worker statement never exit evidence",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Writer termination",
+      "TEST_ID": "T70-EXIT"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Exact manifest hashes/bindings after save success; missing/wrong handoff rejects before reader",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Persisted handoff",
+      "TEST_ID": "T70-HANDOFF"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "synthetic-native",
+      "EXPECTED_BEHAVIOR": "Separate interpreter launched after independently verified publication and writer exit; restore with exact independent expected identity and pins",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Fresh-reader restoration",
+      "TEST_ID": "T70-READER"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "synthetic-native",
+      "EXPECTED_BEHAVIOR": "Compare entire exposed native output/bytes and query fields; wrong resume reasons/order/protection or omitted output rejects",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Complete expected-output comparison",
+      "TEST_ID": "T70-COMPARE"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Two independent immutable starts; distinct rows/handoffs/readers, no warm-state or variant output reuse",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Variant isolation",
+      "TEST_ID": "T70-ISOLATION"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Inject each sealed failure, retain failed evidence, never automatic retry or partial-state restart",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Failure and retry handling",
+      "TEST_ID": "T70-FAILURE"
+    },
+    {
+      "ACTUAL_TEST_EXECUTED": false,
+      "AUTHORITY_REQUIREMENT": "Effective exact implementation/test grant plus phase-specific entry predicate PASS",
+      "BACKEND": "fake and synthetic-native",
+      "EXPECTED_BEHAVIOR": "Static and future test fixture/full-output semantic comparison under seeds 0,1,7,101; independent expectations, not run-derived oracle",
+      "FUTURE_ENTRYPOINT": "adapter.tests.test_qualification_a15_harness",
+      "PURPOSE": "Deterministic reconstruction",
+      "TEST_ID": "T70-DETERMINISM"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "FD255_CLOEXEC": "Present in owner-supplied flags, normally closes onexec; not universal future table proof",
+  "FLAG_DECODE": {
+    "COMPLETE_TABLE_AT_FUTURE_LAUNCH": "UNVERIFIED; redirections, pipelines or later execs can create/replace descriptors",
+    "DECODED_FLAGS": [
+      {
+        "ACCESS_MODE": "O_RDWR",
+        "FD": 0,
+        "FLAGS_OWNER_SUPPLIED": "02002",
+        "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+        "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+        "O_APPEND": true,
+        "O_CLOEXEC": false,
+        "O_NONBLOCK": false,
+        "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+      },
+      {
+        "ACCESS_MODE": "O_RDWR",
+        "FD": 1,
+        "FLAGS_OWNER_SUPPLIED": "02002",
+        "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+        "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+        "O_APPEND": true,
+        "O_CLOEXEC": false,
+        "O_NONBLOCK": false,
+        "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+      },
+      {
+        "ACCESS_MODE": "O_RDWR",
+        "FD": 2,
+        "FLAGS_OWNER_SUPPLIED": "02002",
+        "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+        "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+        "O_APPEND": true,
+        "O_CLOEXEC": false,
+        "O_NONBLOCK": false,
+        "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+      },
+      {
+        "ACCESS_MODE": "O_RDWR",
+        "FD": 255,
+        "FLAGS_OWNER_SUPPLIED": "02002002",
+        "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+        "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+        "O_APPEND": true,
+        "O_CLOEXEC": true,
+        "O_NONBLOCK": false,
+        "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+      }
+    ],
+    "DISCREPANCY": "02002 = O_RDWR|O_APPEND; O_NONBLOCK(04000) not set. 02002002 adds O_CLOEXEC. Preserve owner wording separately rather than silently modify raw flags.",
+    "FD0_TO2": "Reported terminal /dev/pts/1 and O_RDWR; not the proposed null stdin/qualified bounded capture endpoints",
+    "FD255": "CLOEXEC bit present in supplied flags, normally closes at successful exec; not a future table guarantee",
+    "FIRST_EXEC": "Nominated Bash already-running operator shell -> prospective127 prlimit; actual shell callsite not supplied. Bash FD255 internal descriptor is not assumed to protect every other handle.",
+    "INTERPRETER_CAVEAT": "If later route adds Python, startup is a new earlier boundary; Popen close_fds not retroactive",
+    "NORMAL_INHERITANCE": "Absent close-on-exec/explicit closure, standard streams can cross exec. No universal close-all from shell flags or snapshot. Shell-created pipe/dup lifetime needs exact callsite.",
+    "NO_PYTHON_INTRODUCED": true,
+    "POLICY_QUALIFIED": false,
+    "PROTECTED_WRITABLE_FD_OBSERVED": "NO_IN_SUPPLIED_SNAPSHOT",
+    "SMALLEST_PENDING_CONTROL": "Actual Bash callsite with explicit stdin/output/descriptor policy and independently supported no protected mutable inheritance before prlimit"
+  },
+  "LIVE_REVERIFIED": false,
+  "NO_SHELL_INSPECTION_PERFORMED": true,
+  "OWNER_RECEIPT": {
+    "CONTENT": {
+      "ACTUAL_HOST_EXECUTABLE_RAW_PIN_VERIFIED": false,
+      "ACTUAL_RAW_PROC_RECORDS_PRESENT": false,
+      "AS_LIMIT_SOFT_HARD": [
+        "unlimited",
+        "unlimited"
+      ],
+      "BIRTH_TUPLE": [
+        "ubuntu01",
+        "7c592fd0-8c66-476f-ab0d-548882a9f53e",
+        3235408,
+        218282664
+      ],
+      "BOOT_ID": "7c592fd0-8c66-476f-ab0d-548882a9f53e",
+      "CALLER_NOMINATED": true,
+      "CAP_BND": "0000003fffffffff",
+      "CAP_EFF": "0000000000000000",
+      "COMMAND": "-bash",
+      "CPU_LIMIT_SOFT_HARD": [
+        "unlimited",
+        "unlimited"
+      ],
+      "FDS": [
+        {
+          "FD": 0,
+          "FLAGS_OCTAL": "02002",
+          "OWNER_MEANING": "Terminal, read/write, nonblocking",
+          "TARGET": "/dev/pts/1"
+        },
+        {
+          "FD": 1,
+          "FLAGS_OCTAL": "02002",
+          "OWNER_MEANING": "Terminal, read/write, nonblocking",
+          "TARGET": "/dev/pts/1"
+        },
+        {
+          "FD": 2,
+          "FLAGS_OCTAL": "02002",
+          "OWNER_MEANING": "Terminal, read/write, nonblocking",
+          "TARGET": "/dev/pts/1"
+        },
+        {
+          "FD": 255,
+          "FLAGS_OCTAL": "02002002",
+          "OWNER_MEANING": "Same, plus close-on-exec",
+          "TARGET": "/dev/pts/1"
+        }
+      ],
+      "GID": 1000,
+      "HOST": "ubuntu01",
+      "LIVE_FRESHNESS_VERIFIED": false,
+      "NAMESPACE": "qualification-p133-owner-supplied-bash-caller-receipt-v1",
+      "NOFILE_SOFT_HARD": [
+        1024,
+        1048576
+      ],
+      "NO_NEW_PRIVS": 0,
+      "NPROC_REPORTED": 160375,
+      "NPROC_SOFT_HARD_NOT_SEPARATELY_GIVEN": true,
+      "PID": 3235408,
+      "PPID": 3235407,
+      "PROTECTED_WRITABLE_FD": "NO_IN_SUPPLIED_SNAPSHOT",
+      "PROVENANCE": "OWNER_SUPPLIED / NOT_INDEPENDENTLY_RECAPTURED",
+      "SECCOMP": 0,
+      "SHELL": "/bin/bash",
+      "START_TIME_TICKS": 218282664,
+      "TEMPORAL_SCOPE": "POINT_IN_TIME; collection timestamp not supplied; no future live guarantee",
+      "UID": 1000
+    },
+    "IDENTITY": {
+      "namespace": "qualification-p133-owner-supplied-bash-caller-receipt-v1",
+      "sha256": "c0825109a998d88b1b057351c289dca5a95f207f9ba38d78f7ce5ce4d93fb701"
+    },
+    "IDENTITY_MEANING": "Canonical identity of separately recorded supplied observations, not host recapture/proof of approval"
+  },
+  "STANDARD_FDS": "Owner terminal streams, not desirednull/boundedcapture"
+}

@@ -1,0 +1,19 @@
+{
+  "AUTHORITY_GAPS_RETAINED": [
+    "A62-ISSUER-DESIGNATION",
+    "A62-AUTHORITY-VERSION",
+    "A62-ADOPTION-EXECUTION-BOUNDARY"
+  ],
+  "CANONICAL_IDENTITY_RULE": "Sorted compact UTF-8 JSON; metadata preparation identity excludes own identity, issuer/version placeholders and future grant receipt",
+  "CONSTRUCTION_PATH": "prepare.py: authenticates original sealed evidence; compiles bounded technical subject and separately marks unresolved authority fields",
+  "DECISION_OPTIONS": [],
+  "DECISION_READINESS_RECONSTRUCTED": false,
+  "FUTURE_GRANT_NOT_REQUIRED_BEFORE_PROPOSAL": true,
+  "INDEPENDENT_PATH": "independent_reader.py: original capsule provenance -> native checkpoint/ledger/pins -> exact Package61 variant/oracle/capture records -> canonical component identities -> technical manifest reconstruction; authority gate checked against retained schema and missing designation",
+  "LESSON_PREFIX_VERIFIED": true,
+  "NATIVE_READERS_RESTORE_REPLAY_OR_CAPTURE_EXECUTED": 0,
+  "NEGATIVE_SUITE": "20 corruptions of independently reconstructed records; not native fault injection",
+  "NO_EFFECT_ENTRYPOINT_CALLS_IN_STATIC_SCRIPTS": true,
+  "REPRODUCTION": "PYTHONDONTWRITEBYTECODE=1 PYTHONHASHSEED=<0|1|7|101> python3 <evidence-directory>/independent_reader.py",
+  "STATIC_READERS_EXECUTED": 4
+}

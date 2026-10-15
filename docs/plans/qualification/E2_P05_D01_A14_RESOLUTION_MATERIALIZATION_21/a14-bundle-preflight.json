@@ -1,0 +1,48 @@
+{
+  "BUNDLE_CONTRACT": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_HANDOFF_CLOSURE_5/bundle-contract.json",
+    "raw_sha256": "ef116c293df89dd63bebc20f02357b94de03aadf2aadfe9a84ef62b7fa07c620"
+  },
+  "CHECKS": {
+    "BUNDLE_NATIVE_TYPE_AND_IDENTITY": "NO_EXACT_INPUT_AVAILABLE",
+    "CURRENT_CORRECTED_SNAPSHOT": "PASS",
+    "CURRENT_SCOPE_LINEAGE_PROVENANCE": "PASS",
+    "CURRENT_SNAPSHOT_PHYSICAL_SOURCE_SET": "PASS_10_OF_10",
+    "INITIAL_SNAPSHOT": "UNSEALED",
+    "LEDGER_ROOT_HEAD": "UNSEALED_HISTORY_NOT_SELECTED",
+    "ORDERED_HISTORY": "UNSEALED",
+    "POLICY_PIN_AND_VERSION": "UNSEALED",
+    "REPLAY_SCOPE": "UNSEALED"
+  },
+  "FIRST_NON_SOURCE_BLOCKER": {
+    "CLASSIFICATION": "BUNDLE_CONTRACT",
+    "MISSING_TERMS": [
+      "Exact native PersistenceBundle or sealed deterministic construction rule for corrected prospective A14 boundary",
+      "Authoritative initial Snapshot and ordered event history; cannot assume empty history",
+      "Exact applicable policy ArtifactPin and policy_version",
+      "Explicit replay bundle scope distinct from Snapshot context scope",
+      "Ledger root/head from legitimate ordered history where required",
+      "Complete dossier materialization/archive requirements where historical event results require them"
+    ],
+    "REASON": "Current A14 input is a corrected source-complete Snapshot, not an authoritative native PersistenceBundle. No exact initial/history/policy/replay-scope binding or sealed pure construction rule is selected.",
+    "REPAIRED": false,
+    "SOURCE_BYTES_BLOCKER_CLOSED": true
+  },
+  "NOTE": "Old source contradiction is superseded only for current corrected Snapshot. Old candidate Snapshot/history claims and genesis-bundle identity remain unchanged and cannot substitute for a complete native bundle.",
+  "NO_EMPTY_HISTORY_OR_POLICY_DEFAULT_ASSUMED": true,
+  "NO_NATIVE_BUNDLE_CONSTRUCTED": true,
+  "PREVIOUS_SOURCE_INVENTORY": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_HANDOFF_CLOSURE_5/bundle-source-inventory.json",
+    "raw_sha256": "967739cc8134d3d6c4cac6900294c17b7dc18d1f0d83ac76f218a8f74503c39b"
+  },
+  "SNAPSHOT_IDENTITY": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+  },
+  "STATUS": "FAIL"
+}

@@ -1,0 +1,83 @@
+# Independent documentary reconstruction; never imports or executes the proposed shell script.
+import pathlib,json,hashlib,copy,os,shlex
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-direct-file-capture-decision-135';A=B/'p86-risk-adaptive-blocker-adjudication'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'input-authentication.json')
+for n,h in a['CURRENT_RAW_PINS'].items():assert raw(R/n)==h,n
+for n,h in a['HISTORICAL_REGISTER_PINS'].items():assert raw(A/('historical-'+pathlib.Path(n).name))==h
+for n,x in a['NATIVE_PINS'].items():assert raw(pathlib.Path(n))==x['RAW_SHA256'],n
+reg=read(R/'docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json');prev='0'*64
+for e in reg['EVENTS']:
+ x=dict(e);h=x.pop('EVENT_HASH');assert x['PREVIOUS_EVENT_HASH']==prev and hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()==h;prev=h
+assert prev=='76f87581bcbd67d7ffecc8d1c9f8b92d7e5b35e23681b372083a120cafaedcdc'
+p124=read(B/'p86-isolation-capability-124/exact-candidate-profile.json');p127=read(B/'p86-minimal-host-procedure-127/prospective-parent-procedure.json');assert digest(p124['CONTENT'])==p124['IDENTITY']['sha256'];assert digest(p127['CONTENT'])==p127['IDENTITY']['sha256']
+c=read(O/'callsite-contract.json');sh=O/'proposed-direct-file-capture-callsite.sh';text=sh.read_text();assert raw(sh)==c['CALLSITE_RAW_SHA256'] and not sh.stat().st_mode&0o111
+assert text.startswith('# DO NOT EXECUTE — NOT AUTHORIZED')
+assert 'UNBOUND' not in text and 'eval ' not in text
+wt=shlex.split(c['WORKER_TEXT'],comments=True);needle=p127['CONTENT']['ARGV'];starts=[i for i in range(len(wt)) if wt[i:i+len(needle)]==needle];assert len(starts)==1
+assert needle[-len(p124['CONTENT']['ARGV']):]==p124['CONTENT']['ARGV']
+outer=shlex.split(text,comments=True);prefix=c['OUTER_COMMAND_PREFIX'];assert any(outer[i:i+len(prefix)]==prefix for i in range(len(outer)))
+assert prefix[0:2]==['/usr/bin/env','-i'] and prefix[6]=='/usr/bin/prlimit' and prefix[7:10]==needle[1:4]
+assert '--fsize=4329436:4329436' in prefix and '--signal=KILL' in prefix and '200s' in prefix
+assert text.index('ulimit -S -f 4227')<text.index('printf ')<text.index('/usr/bin/env')
+assert text.index('set -C')<text.index('printf ')
+assert 'cd -- /' in text and 'umask 077' in text
+assert '"$prefix.stdout.bin" 2> "$prefix.stderr.bin"' in text and '< /dev/null' in text
+assert 'outer_status=$?' in text and 'inner_status=$?' in c['WORKER_TEXT']
+assert 268435456//1024==262144 and 4329436//1024==4227 and 4227*1024==4328448
+syntax=read(O/'static-syntax-verification.json');assert len(syntax)==2 and all(x['RETURN_CODE']==0 and '-n' in x['ARGV'] for x in syntax)
+assert syntax[0]['SOURCE_SHA256']==raw(sh) and syntax[1]['SOURCE_SHA256']==hashlib.sha256(c['WORKER_TEXT'].encode()).hexdigest()
+matrix=read(O/'entry-execution-scope-matrix.json');oldmatrix=read(A/'entry-execution-review.json');assert len(matrix['ROWS'])==36 and matrix['ROWS']==oldmatrix['ROWS']
+# Independently format the constant printf templates as data, not executing shell.
+ledger=read(O/'publication-size-ledger.json');schemas=ledger['SCHEMAS_MAXIMAL_INSTANCES'];assert 'guard_sha256' not in schemas['GUARD']
+assert ledger['MAX_RECORD_BYTES_INCLUDING_LF']=={k:len(canon(v))+1 for k,v in schemas.items()}
+assert ledger['NORMAL_CONTROL_MAX_BYTES']==1669 and ledger['MAX_RECORD_BYTES_INCLUDING_LF']['OBSERVER']==327
+assert 8658872+5542+2336==8666750 and 2*4329436==8658872
+formats=[]
+for tokens in [outer,wt]:
+ for i,t in enumerate(tokens):
+  if t=='printf' and i+1<len(tokens) and '"schema":' in tokens[i+1]:formats.append(tokens[i+1])
+assert len(formats)==4
+fixture={'grant_identity_sha256':'a'*64,'guard_sha256':'c'*64,'subject_sha256':'b'*64}
+for fmt in formats:
+ if 'P135-CONSUMPTION-1' in fmt:k='CLAIM';args=(fixture['grant_identity_sha256'],fixture['guard_sha256'],fixture['subject_sha256'])
+ elif 'P135-LAUNCH-1' in fmt:k='LAUNCH';args=(fixture['grant_identity_sha256'],fixture['guard_sha256'],fixture['subject_sha256'])
+ elif 'P135-RESULT-1' in fmt:k='RESULT';args=('INCOMPLETE',fixture['grant_identity_sha256'],fixture['guard_sha256'],255,4329436,4329436,fixture['subject_sha256'])
+ elif 'P135-OUTER-OBSERVER-1' in fmt:k='OBSERVER';args=(fixture['grant_identity_sha256'],fixture['guard_sha256'],255,fixture['subject_sha256'])
+ else:raise AssertionError('unknownschema')
+ rendered=fmt%args;expected=dict(schemas[k],**fixture);assert rendered.encode()==canon(expected)+b'\n',k
+ assert len(rendered.encode())<=ledger['MAX_RECORD_BYTES_INCLUDING_LF'][k]
+w=read(O/'prospective-authorization-subject.json');assert digest(w['CONTENT'])==w['IDENTITY']['sha256'];assert w['IDENTITY']['namespace']=='qualification-p135-direct-file-capture-check-subject-v1'
+assert w['CONTENT']['CALLSITE_SOURCE_PIN']['raw_sha256']==raw(sh)
+d=read(O/'unselected-owner-decision-dossier.json');assert d['SUBJECT_IDENTITY']==w['IDENTITY'] and d['SUBJECT_RAW_PIN']['raw_sha256']==raw(O/'prospective-authorization-subject.json')
+assert d['SELECTION'] is None and d['OWNER_DECISION_READY'] is True and d['AUTHORITY_EFFECTIVE'] is False and d['EXECUTION_ENTRY_READY'] is False and d['WITNESS_QUALIFIED'] is False
+assert d['OPTIONS']==['AUTHORIZE_SINGLE_P124_DIRECT_SHELL_PASSIVE_CHECK','DECLINE_SINGLE_P124_DIRECT_SHELL_PASSIVE_CHECK']
+phase=read(O/'decision-entry-outcome-matrix.json');assert phase['OWNER_DECISION_READY'] is True and not any(phase[x] for x in ['AUTHORITY_EFFECTIVE','EXECUTION_ENTRY_READY','WITNESS_QUALIFIED'])
+# Prospective graph separates preparation from live satisfaction; no future witness root.
+edges=[['EFFECTIVE_CHARTER','EXACT_SUBJECT'],['SEALED_VECTORS_STATIC_NATIVE_BASIS','EXACT_SUBJECT'],['FINITE_CAPTURE_ASSURANCE_CONTRACT','EXACT_SUBJECT'],['EXACT_SUBJECT','OWNER_SELECTION'],['OWNER_SELECTION','ISSUANCE_VERIFICATION_EFFECTIVENESS'],['ISSUANCE_VERIFICATION_EFFECTIVENESS','FRESH_ENTRY_GUARD'],['ACTUAL_PERMISSION_CALLER_CONTEXT','FRESH_ENTRY_GUARD'],['FRESH_ENTRY_GUARD','DURABLE_CONSUMPTION'],['DURABLE_CONSUMPTION','ONE_CHECK'],['ONE_CHECK','ACTUAL_OUTPUT_EXIT'],['ACTUAL_OUTPUT_EXIT','POST_QUALIFICATION']];assert acyclic(edges)
+f={'caller':'ubuntu01:Bash:3235408:7c592fd0-8c66-476f-ab0d-548882a9f53e:218282664','argv':needle,'cwd':'/','cap':4329436,'stdout':'stdout.bin','stderr':'stderr.bin','noclobber':True,'envclear':True,'runtime_verified':False,'attempts':1,'retry':0,'effectiveness':False,'entry_ready':False,'executed':False,'observed_write_is_fsync':False,'fsize_is_cumulative':False,'AS_is_aggregate':False,'timeout_is_treeproof':False,'ownfuture_entry':False,'guard_selfhash':False,'options':d['OPTIONS'],'selection':None,'graph':edges}
+def valid(x):
+ if x['caller']!=f['caller'] or x['argv']!=needle or x['cwd']!='/' or x['cap']!=4329436 or x['stdout']!='stdout.bin' or x['stderr']!='stderr.bin' or not x['noclobber'] or not x['envclear'] or x['attempts']!=1 or x['retry']!=0:return False
+ if x['options']!=d['OPTIONS'] or x['selection'] is not None or not acyclic(x['graph']):return False
+ return not any(x[k] for k in ['runtime_verified','effectiveness','entry_ready','executed','observed_write_is_fsync','fsize_is_cumulative','AS_is_aggregate','timeout_is_treeproof','ownfuture_entry','guard_selfhash'])
+assert valid(f)
+mut=[('wrongcaller','caller','Codex'),('changedcwd','cwd','/home/gvasend/app/kge-forge'),('missingoutputcap','cap',None),('swappedstdout','stdout','stderr.bin'),('swappedstderr','stderr','stdout.bin'),('outputoverwrite','noclobber',False),('unlimitedenvinheritance','envclear',False),('unqualifiedcontrols_verified','runtime_verified',True),('duplicateattempt','attempts',2),('automaticretry','retry',1),('unissued_effectiveness','effectiveness',True),('entry_without_effectiveness','entry_ready',True),('prematureexecution','executed',True),('observer_write_claimed_fsync','observed_write_is_fsync',True),('fsize_claimed_cumulative','fsize_is_cumulative',True),('AS_claimed_aggregate','AS_is_aggregate',True),('timeout_claimed_treeproof','timeout_is_treeproof',True),('futurewitness_entryproof','ownfuture_entry',True),('guard_selfreferential_hash','guard_selfhash',True),('option_selected','selection',d['OPTIONS'][0])]
+out=[]
+for name,k,v in mut:
+ x=copy.deepcopy(f);x[k]=v;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(f);x['argv'].append('--altered');assert not valid(x);out.append({'DESIGN':'alteredsealedargv','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(f);x['graph'].append(['ACTUAL_OUTPUT_EXIT','EXACT_SUBJECT']);assert not valid(x);out.append({'DESIGN':'ownoutcome_cycle','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+before=read(O/'preservation-before.json');assert all((R/n).is_file() and raw(R/n)==h for n,h in before.items())
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+s={'INPUT_SHA256':digest(a),'P124_IDENTITY':p124['IDENTITY'],'P127_IDENTITY':p127['IDENTITY'],'SUBJECT_IDENTITY':w['IDENTITY'],'SCRIPT_SHA256':raw(sh),'SCHEMA_SHA256':digest(ledger),'SYNTAX_SHA256':digest(syntax),'PHASE_MATRIX_SHA256':digest(matrix),'OWNER_READY':True,'AUTHORITY_EFFECTIVE':False,'ENTRY_READY':False,'WITNESS_QUALIFIED':False,'OPTIONS':d['OPTIONS'],'GRAPH_ACYCLIC':True,'GRAPH':edges,'LESSONS_HEAD':prev,'PRIOR_FILES':len(before),'PRESERVATION':'PASS','NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

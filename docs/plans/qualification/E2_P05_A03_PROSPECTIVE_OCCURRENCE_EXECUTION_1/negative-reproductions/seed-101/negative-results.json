@@ -1,0 +1,653 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "N12_MAPPING": "PASS",
+  "N13_MAPPING": "PASS",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "P05_cases_executed": false,
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "cases": [
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "result is not for the currently selected action",
+          "rejected": true,
+          "variant": "wrong selected Action"
+        },
+        {
+          "layer": "INPUT_SEPARATION",
+          "reason": "PROVIDER_ALLOWLIST",
+          "rejected": true,
+          "variant": "oracle instead of allowlisted input"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; current selection/result-source contract exact",
+      "id": "A03-PROSPECTIVE-N01",
+      "name": "wrong_A03_input",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native result admission / sealed input guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "result differs from bounded outcome contract",
+          "rejected": true,
+          "variant": "FAIL instead of PASS"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; result differs from bounded outcome contract",
+      "id": "A03-PROSPECTIVE-N02",
+      "name": "wrong_result",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native gates.validate_result"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "inventory result does not meet its exact evidence contract",
+          "rejected": true,
+          "variant": "missing"
+        },
+        {
+          "reason": "inventory result does not meet its exact evidence contract",
+          "rejected": true,
+          "variant": "wrong ID"
+        },
+        {
+          "reason": "inventory result does not meet its exact evidence contract",
+          "rejected": true,
+          "variant": "wrong producer"
+        },
+        {
+          "reason": "inventory result does not meet its exact evidence contract",
+          "rejected": true,
+          "variant": "extra"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; exact inventory and unique KnowledgeIds required",
+      "id": "A03-PROSPECTIVE-N03",
+      "name": "wrong_output",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native gates.validate_result"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "parent at sequence 1"
+        },
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "parent at sequence 2"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; expected native parent continuity",
+      "id": "A03-PROSPECTIVE-N04",
+      "name": "wrong_parent",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native ledger replay / sealed event oracle"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "supplied result pre-state mismatch",
+          "rejected": true,
+          "variant": "foreign expected_snapshot"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; supplied result pre-state mismatch",
+      "id": "A03-PROSPECTIVE-N05",
+      "name": "wrong_pre_state",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native core.apply_result"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "event identity mismatch",
+          "rejected": true,
+          "variant": "retain trusted event ID with altered payload"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; event identity or admitted transition mismatch",
+      "id": "A03-PROSPECTIVE-N06",
+      "name": "wrong_event_payload",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native event identity/replay / sealed oracle"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "move events to foreign initial ledger"
+        },
+        {
+          "reason": "missing provenance source pin",
+          "rejected": true,
+          "variant": "foreign sealed start coordinate"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; start bundle/events lineage coordinate differs",
+      "id": "A03-PROSPECTIVE-N07",
+      "name": "wrong_ledger",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native bundle trust / sealed ledger coordinate"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "skip sequence"
+        },
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "reverse chronology"
+        },
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "duplicate semantic event"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; exact two-event chronology and sequence",
+      "id": "A03-PROSPECTIVE-N08",
+      "name": "wrong_append_position",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native event replay / sealed event oracle"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "EXACT_SCOPE_DECISION_REQUIRED",
+          "rejected": true,
+          "variant": "GENESIS replaces selected scope"
+        },
+        {
+          "reason": "UNAUTHORIZED_OPERATING_AUTHORITY_SUBSTITUTION",
+          "rejected": true,
+          "variant": "add operating grant to CHECK"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; no native operating authority is required or authorized for this fixture",
+      "id": "A03-PROSPECTIVE-N09",
+      "name": "wrong_authority",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Authenticated scope/fixture boundary"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "EXACT_PROSPECTIVE_CONTEXT_REQUIRED",
+          "rejected": true,
+          "variant": "change scope"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; exact source/state/capture scope",
+      "id": "A03-PROSPECTIVE-N10",
+      "name": "wrong_scope",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Sealed start/context guard and native provenance"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "EXACT_PROSPECTIVE_CONTEXT_REQUIRED",
+          "rejected": true,
+          "variant": "change lineage"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; prospective lineage identity exact",
+      "id": "A03-PROSPECTIVE-N11",
+      "name": "wrong_lineage",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Sealed start/context guard and native bundle identity"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "EXACT_PROSPECTIVE_CONTEXT_REQUIRED",
+          "rejected": true,
+          "variant": "change generation"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; exact prospective generation",
+      "id": "A03-PROSPECTIVE-N12",
+      "name": "wrong_generation",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Sealed start/source guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "inventory result does not meet its exact evidence contract",
+          "rejected": true,
+          "variant": "KnowledgeRecord provenance changed"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; exact result/source binding or raw pin mismatch",
+      "id": "A03-PROSPECTIVE-N13",
+      "name": "wrong_provenance",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native result inventory / physical pins"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "ledger sequence/parent mismatch",
+          "rejected": true,
+          "variant": "same named Action foreign event"
+        },
+        {
+          "reason": "PROSPECTIVE_CONTEXT_REQUIRED:lineage",
+          "rejected": true,
+          "variant": "foreign mapping lineage"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; correct name does not establish identity/membership",
+      "id": "A03-PROSPECTIVE-N14",
+      "name": "foreign_event",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native ledger identity/parent replay / mapping guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "NATIVE_OCCURRED_TRANSACTION_REQUIRED",
+          "rejected": true,
+          "variant": "oracle descriptor without writer/head"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; oracle is not an occurred event, no occurrence PASS",
+      "id": "A03-PROSPECTIVE-N15",
+      "name": "event_without_actual_A03_admission",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Occurrence evidence admission"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "NATIVE_OCCURRED_TRANSACTION_REQUIRED",
+          "rejected": true,
+          "variant": "Snapshot only"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; SnapshotId is not event identity or native occurrence",
+      "id": "A03-PROSPECTIVE-N16",
+      "name": "snapshot_as_occurrence",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "END prospective mapping guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "NATIVE_OCCURRED_TRANSACTION_REQUIRED",
+          "rejected": true,
+          "variant": "PASS report only"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; no typed ledger event payload/membership",
+      "id": "A03-PROSPECTIVE-N17",
+      "name": "report_as_occurrence",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "END prospective mapping guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "HISTORICAL_LABEL_SEPARATION_REQUIRED:ORIGINAL_HISTORICAL_OCCURRENCE",
+          "rejected": true,
+          "variant": "historical PROVEN claim"
+        },
+        {
+          "reason": "HISTORICAL_LABEL_SEPARATION_REQUIRED:HISTORICAL_RECONSTRUCTION",
+          "rejected": true,
+          "variant": "historical reconstruction claim"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; original remains UNPROVEN",
+      "id": "A03-PROSPECTIVE-N18",
+      "name": "prospective_labeled_historical",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "END qualification labeling guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "ORIGINAL_EVENT_IDENTITY_SUBSTITUTION_FORBIDDEN",
+          "rejected": true,
+          "variant": "put replacement IDs in original slot"
+        },
+        {
+          "reason": "ORIGINAL_EVENT_IDENTITY_SUBSTITUTION_FORBIDDEN",
+          "rejected": true,
+          "variant": "splice history"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; separate replacement binding only",
+      "id": "A03-PROSPECTIVE-N19",
+      "name": "prospective_bound_as_original_identity",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "END identity-domain guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "unsupported event",
+          "rejected": true,
+          "variant": "SelectionTrace as result"
+        },
+        {
+          "reason": "NATIVE_OCCURRED_TRANSACTION_REQUIRED",
+          "rejected": true,
+          "variant": "selection as occurrence"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; exact start bytes/ledger/knowledge unchanged",
+      "id": "A03-PROSPECTIVE-N20",
+      "name": "selection_as_execution_N12",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native typed boundary and occurrence guard"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "unsupported event",
+          "rejected": true,
+          "variant": "Action declaration as result"
+        },
+        {
+          "reason": "unsupported event",
+          "rejected": true,
+          "variant": "KnowledgeRecord as result"
+        },
+        {
+          "reason": "unsupported event",
+          "rejected": true,
+          "variant": "source output declaration as result"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT wrong event/result; knowledge/root/slot/ledger unchanged",
+      "id": "A03-PROSPECTIVE-N21",
+      "name": "output_declaration_as_result_N13",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native typed SuppliedResult boundary"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "layer": "INPUT_SEPARATION",
+          "reason": "PROVIDER_ALLOWLIST",
+          "rejected": true,
+          "variant": "oracle provider path"
+        },
+        {
+          "reason": "unsupported event",
+          "rejected": true,
+          "variant": "expected event as result"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT; allowlisted authored input provider and native admission evidence required",
+      "id": "A03-PROSPECTIVE-N22",
+      "name": "oracle_loaded_as_operand",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Comparison-only input separation"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "duplicate identifier",
+          "rejected": true,
+          "variant": "duplicate identical KnowledgeId"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT duplicate identifier; unordered fields are not multisets",
+      "id": "A03-PROSPECTIVE-N23",
+      "name": "duplicate_KnowledgeId",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native unique/supplied-result validation"
+    },
+    {
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "attempts": [
+        {
+          "reason": "PARENT_MISMATCH",
+          "rejected": true,
+          "variant": "resubmit start operand against committed head"
+        }
+      ],
+      "durable_partial_state": false,
+      "expected": "REJECT stale pre-state/parent; no third semantic event",
+      "id": "A03-PROSPECTIVE-N24",
+      "name": "repeat_committed_command",
+      "native_result_events_added": 0,
+      "original_state_unchanged": true,
+      "positive_lineage_modified": false,
+      "result": "PASS",
+      "sealed_layer": "Native codec.commit_event current parent guard"
+    }
+  ],
+  "count": 24,
+  "native_authorities_issued": 0,
+  "native_result_events_added": 0,
+  "positive_lineage_unchanged": true,
+  "result": "PASS",
+  "sealed_P05_16_negatives_changed": false,
+  "variants_rejected": 40
+}

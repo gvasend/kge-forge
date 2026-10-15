@@ -1,0 +1,1571 @@
+{
+  "A04_EXECUTED": "NO",
+  "ATOMICITY_MODEL": "SINGLE_SEMANTIC_COMMIT_OF_EVENT_PLUS_TYPED_STATE_AND_SOURCE_PINS_NOT_ONE_REQUIRED_PAYLOAD",
+  "AUTHORIZATION_SUBJECT": "qualification-scope-subject-v1:4b57d7fc27d1c0b63deaece9d0be47c72e8e6d7b40e7a54ea7a56d6a641c85ac",
+  "CLASSIFICATION_COMPONENTS": [
+    "DOSSIER_OVERCONSTRAINED_EVENT_PAYLOAD",
+    "MISSING_ATOMIC_TRANSACTION_CAPABILITY"
+  ],
+  "COMPUTED_FIELDS": [
+    "Proof views for fact/check predicates",
+    "DecisionReadiness",
+    "Planner Computation/selection/control"
+  ],
+  "CONTRACT_REVISION_APPLIED": "YES_AS_VERSIONED_OVERLAY",
+  "CONTRACT_REVISION_REQUIRED": "YES",
+  "DOSSIER_VALIDATIONS": [
+    {
+      "ACTUAL_INSTANCE_ADMITTED": false,
+      "CONSUMER": "gates._evaluate_predicate -> decision_readiness -> T02 admission/Planner Computation",
+      "CURRENT_NATIVE_STATE_FIELD": "Snapshot.validation_instances member selected by this PredicateId",
+      "CURRENT_PROPOSED_EVENT_FIELD": "Old required-event-operands.validation_instances[0]; descriptor only, not an existing native event field",
+      "EXPECTED_NATIVE_VALUE": {
+        "$type": "ValidationInstance",
+        "currentness": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-AUTHORITY_BOUNDARY"
+        },
+        "proposition": "AUTHORITY_BOUNDARY",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          },
+          "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/dossier_declaration"
+        },
+        "result": {
+          "$enum": "ValidationOutcome",
+          "value": "PASS"
+        },
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "GENERATION_BINDING": "Snapshot.context and exact pre-state identity; ValidationInstance has no generation field",
+      "IMMUTABLE_MEMBER_BINDING": {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-AUTHORITY_BOUNDARY"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      "INPUTS": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        }
+      ],
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "PROPOSITION": "AUTHORITY_BOUNDARY",
+      "PROVENANCE": {
+        "$type": "Provenance",
+        "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/dossier_declaration"
+      },
+      "REPRESENTATION_CLASSIFICATION": "SEPARATE_NATIVE_ENTITY",
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "raw_sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+      },
+      "SUBJECT": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+      "TYPE": "ValidationInstance",
+      "VALIDATION_ID": "E2-CHECK-AUTHORITY_BOUNDARY",
+      "VALIDATION_ID_DOMAIN": "Native PredicateId selector, not a standalone ValidationInstance content ID",
+      "VALUE": {
+        "currentness": "ACCEPTED",
+        "result": "PASS"
+      },
+      "WHY_REQUIRED": "USE for E2 mapping only is prospective; independent grant still required; no production, E1 or proof authority is issued.",
+      "classification_note": "Requested storage-category label: separately typed state record, not GraphEntity/EntityId or separately indexed object",
+      "live_validator_recomputation_required_on_restore": false
+    },
+    {
+      "ACTUAL_INSTANCE_ADMITTED": false,
+      "CONSUMER": "gates._evaluate_predicate -> decision_readiness -> T02 admission/Planner Computation",
+      "CURRENT_NATIVE_STATE_FIELD": "Snapshot.validation_instances member selected by this PredicateId",
+      "CURRENT_PROPOSED_EVENT_FIELD": "Old required-event-operands.validation_instances[1]; descriptor only, not an existing native event field",
+      "EXPECTED_NATIVE_VALUE": {
+        "$type": "ValidationInstance",
+        "currentness": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-CONCRETE_ALTERNATIVES"
+        },
+        "proposition": "CONCRETE_ALTERNATIVES",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          },
+          "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/dossier_declaration"
+        },
+        "result": {
+          "$enum": "ValidationOutcome",
+          "value": "PASS"
+        },
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "GENERATION_BINDING": "Snapshot.context and exact pre-state identity; ValidationInstance has no generation field",
+      "IMMUTABLE_MEMBER_BINDING": {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-CONCRETE_ALTERNATIVES"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      "INPUTS": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        }
+      ],
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "PROPOSITION": "CONCRETE_ALTERNATIVES",
+      "PROVENANCE": {
+        "$type": "Provenance",
+        "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/dossier_declaration"
+      },
+      "REPRESENTATION_CLASSIFICATION": "SEPARATE_NATIVE_ENTITY",
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "raw_sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+      },
+      "SUBJECT": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+      "TYPE": "ValidationInstance",
+      "VALIDATION_ID": "E2-CHECK-CONCRETE_ALTERNATIVES",
+      "VALIDATION_ID_DOMAIN": "Native PredicateId selector, not a standalone ValidationInstance content ID",
+      "VALUE": {
+        "currentness": "ACCEPTED",
+        "result": "PASS"
+      },
+      "WHY_REQUIRED": "Alternatives equal ALLOW_QUALIFICATION_MAPPING and DECLINE; no empty or added option.",
+      "classification_note": "Requested storage-category label: separately typed state record, not GraphEntity/EntityId or separately indexed object",
+      "live_validator_recomputation_required_on_restore": false
+    },
+    {
+      "ACTUAL_INSTANCE_ADMITTED": false,
+      "CONSUMER": "gates._evaluate_predicate -> decision_readiness -> T02 admission/Planner Computation",
+      "CURRENT_NATIVE_STATE_FIELD": "Snapshot.validation_instances member selected by this PredicateId",
+      "CURRENT_PROPOSED_EVENT_FIELD": "Old required-event-operands.validation_instances[2]; descriptor only, not an existing native event field",
+      "EXPECTED_NATIVE_VALUE": {
+        "$type": "ValidationInstance",
+        "currentness": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-DECISION_FACTS_COMPLETE"
+        },
+        "proposition": "DECISION_FACTS_COMPLETE",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          },
+          "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/dossier_declaration"
+        },
+        "result": {
+          "$enum": "ValidationOutcome",
+          "value": "PASS"
+        },
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "GENERATION_BINDING": "Snapshot.context and exact pre-state identity; ValidationInstance has no generation field",
+      "IMMUTABLE_MEMBER_BINDING": {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-DECISION_FACTS_COMPLETE"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      "INPUTS": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        }
+      ],
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "PROPOSITION": "DECISION_FACTS_COMPLETE",
+      "PROVENANCE": {
+        "$type": "Provenance",
+        "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/dossier_declaration"
+      },
+      "REPRESENTATION_CLASSIFICATION": "SEPARATE_NATIVE_ENTITY",
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "raw_sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+      },
+      "SUBJECT": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+      "TYPE": "ValidationInstance",
+      "VALIDATION_ID": "E2-CHECK-DECISION_FACTS_COMPLETE",
+      "VALIDATION_ID_DOMAIN": "Native PredicateId selector, not a standalone ValidationInstance content ID",
+      "VALUE": {
+        "currentness": "ACCEPTED",
+        "result": "PASS"
+      },
+      "WHY_REQUIRED": "Both declared fact predicates refer to accepted CHECK/COLLECT outputs with completed producers in the sealed pre-state.",
+      "classification_note": "Requested storage-category label: separately typed state record, not GraphEntity/EntityId or separately indexed object",
+      "live_validator_recomputation_required_on_restore": false
+    },
+    {
+      "ACTUAL_INSTANCE_ADMITTED": false,
+      "CONSUMER": "gates._evaluate_predicate -> decision_readiness -> T02 admission/Planner Computation",
+      "CURRENT_NATIVE_STATE_FIELD": "Snapshot.validation_instances member selected by this PredicateId",
+      "CURRENT_PROPOSED_EVENT_FIELD": "Old required-event-operands.validation_instances[3]; descriptor only, not an existing native event field",
+      "EXPECTED_NATIVE_VALUE": {
+        "$type": "ValidationInstance",
+        "currentness": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-INDEPENDENT_VALIDATION"
+        },
+        "proposition": "INDEPENDENT_VALIDATION",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          },
+          "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/dossier_declaration"
+        },
+        "result": {
+          "$enum": "ValidationOutcome",
+          "value": "PASS"
+        },
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "GENERATION_BINDING": "Snapshot.context and exact pre-state identity; ValidationInstance has no generation field",
+      "IMMUTABLE_MEMBER_BINDING": {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-INDEPENDENT_VALIDATION"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      "INPUTS": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        }
+      ],
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "PROPOSITION": "INDEPENDENT_VALIDATION",
+      "PROVENANCE": {
+        "$type": "Provenance",
+        "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/dossier_declaration"
+      },
+      "REPRESENTATION_CLASSIFICATION": "SEPARATE_NATIVE_ENTITY",
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "raw_sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+      },
+      "SUBJECT": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+      "TYPE": "ValidationInstance",
+      "VALIDATION_ID": "E2-CHECK-INDEPENDENT_VALIDATION",
+      "VALIDATION_ID_DOMAIN": "Native PredicateId selector, not a standalone ValidationInstance content ID",
+      "VALUE": {
+        "currentness": "ACCEPTED",
+        "result": "PASS"
+      },
+      "WHY_REQUIRED": "All other checks are evaluated from source/current inputs independently of producer result and oracle files; typed bindings/currentness are exact.",
+      "classification_note": "Requested storage-category label: separately typed state record, not GraphEntity/EntityId or separately indexed object",
+      "live_validator_recomputation_required_on_restore": false
+    },
+    {
+      "ACTUAL_INSTANCE_ADMITTED": false,
+      "CONSUMER": "gates._evaluate_predicate -> decision_readiness -> T02 admission/Planner Computation",
+      "CURRENT_NATIVE_STATE_FIELD": "Snapshot.validation_instances member selected by this PredicateId",
+      "CURRENT_PROPOSED_EVENT_FIELD": "Old required-event-operands.validation_instances[4]; descriptor only, not an existing native event field",
+      "EXPECTED_NATIVE_VALUE": {
+        "$type": "ValidationInstance",
+        "currentness": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-QUESTION_SCOPE"
+        },
+        "proposition": "QUESTION_SCOPE",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          },
+          "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/dossier_declaration"
+        },
+        "result": {
+          "$enum": "ValidationOutcome",
+          "value": "PASS"
+        },
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "GENERATION_BINDING": "Snapshot.context and exact pre-state identity; ValidationInstance has no generation field",
+      "IMMUTABLE_MEMBER_BINDING": {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-QUESTION_SCOPE"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      "INPUTS": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        }
+      ],
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "PROPOSITION": "QUESTION_SCOPE",
+      "PROVENANCE": {
+        "$type": "Provenance",
+        "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/dossier_declaration"
+      },
+      "REPRESENTATION_CLASSIFICATION": "SEPARATE_NATIVE_ENTITY",
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "raw_sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+      },
+      "SUBJECT": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+      "TYPE": "ValidationInstance",
+      "VALIDATION_ID": "E2-CHECK-QUESTION_SCOPE",
+      "VALIDATION_ID_DOMAIN": "Native PredicateId selector, not a standalone ValidationInstance content ID",
+      "VALUE": {
+        "currentness": "ACCEPTED",
+        "result": "PASS"
+      },
+      "WHY_REQUIRED": "Question and scope equal the sealed qualification-only source, with no additional subject.",
+      "classification_note": "Requested storage-category label: separately typed state record, not GraphEntity/EntityId or separately indexed object",
+      "live_validator_recomputation_required_on_restore": false
+    },
+    {
+      "ACTUAL_INSTANCE_ADMITTED": false,
+      "CONSUMER": "gates._evaluate_predicate -> decision_readiness -> T02 admission/Planner Computation",
+      "CURRENT_NATIVE_STATE_FIELD": "Snapshot.validation_instances member selected by this PredicateId",
+      "CURRENT_PROPOSED_EVENT_FIELD": "Old required-event-operands.validation_instances[5]; descriptor only, not an existing native event field",
+      "EXPECTED_NATIVE_VALUE": {
+        "$type": "ValidationInstance",
+        "currentness": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-SOURCE_PROVENANCE"
+        },
+        "proposition": "SOURCE_PROVENANCE",
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          },
+          "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/dossier_declaration"
+        },
+        "result": {
+          "$enum": "ValidationOutcome",
+          "value": "PASS"
+        },
+        "scope": "E2-QUALIFICATION-ONLY"
+      },
+      "GENERATION_BINDING": "Snapshot.context and exact pre-state identity; ValidationInstance has no generation field",
+      "IMMUTABLE_MEMBER_BINDING": {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-SOURCE_PROVENANCE"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      "INPUTS": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        }
+      ],
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "PROPOSITION": "SOURCE_PROVENANCE",
+      "PROVENANCE": {
+        "$type": "Provenance",
+        "excerpt": "{\"alternatives\":[\"ALLOW_QUALIFICATION_MAPPING\",\"DECLINE\"],\"authority_excluded\":\"No production, general authority, real E1 authority or proof satisfaction\",\"authority_granted_if_approved\":\"Prospective permission USE for the E2 mapping target only; an independent applicable synthetic grant is still required.\",\"checks\":[\"QUESTION_SCOPE\",\"SOURCE_PROVENANCE\",\"CONCRETE_ALTERNATIVES\",\"ASSUMPTIONS_CONSEQUENCES\",\"AUTHORITY_BOUNDARY\",\"DOWNSTREAM_QUALIFICATION\",\"NO_INVENTED_FACTS\",\"DECISION_FACTS_COMPLETE\",\"INDEPENDENT_VALIDATION\"],\"decision\":\"E2-DECIDE\",\"deferred_downstream_facts\":[\"External evidence applicability is not asserted by this decision\"],\"question\":\"Permit this qualification-only bounded mapping after independently valid evidence?\",\"required_facts\":[\"E2-KP-COLLECT\",\"E2-KP-CHECK\"],\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "method": "PROSPECTIVE_A04_AUTHORED_DOSSIER_DEFINITION",
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/dossier_declaration"
+      },
+      "REPRESENTATION_CLASSIFICATION": "SEPARATE_NATIVE_ENTITY",
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "SOURCE": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "raw_sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+      },
+      "SUBJECT": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+      "TYPE": "ValidationInstance",
+      "VALIDATION_ID": "E2-CHECK-SOURCE_PROVENANCE",
+      "VALIDATION_ID_DOMAIN": "Native PredicateId selector, not a standalone ValidationInstance content ID",
+      "VALUE": {
+        "currentness": "ACCEPTED",
+        "result": "PASS"
+      },
+      "WHY_REQUIRED": "Raw source identity/path/section/excerpt match; CHECK/COLLECT native records and predecessor event bindings remain exact.",
+      "classification_note": "Requested storage-category label: separately typed state record, not GraphEntity/EntityId or separately indexed object",
+      "live_validator_recomputation_required_on_restore": false
+    }
+  ],
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "EVENT_REQUIRED_FIELDS": [
+    "sequence",
+    "parent_snapshot",
+    "parent_event",
+    "result",
+    "after_snapshot",
+    "identity"
+  ],
+  "EXPECTED_EVENT_IS_OCCURRED": false,
+  "EXPECTED_REPRESENTATIONAL_EVENT_ID": "planner-event-v1:2c71adfce820b0fc997e7d1f872439e9ddb43170c95edbeafaf461a4065760f0",
+  "FIRST_REMAINING_BLOCKER": "GENERIC_DURABLE_DOSSIER_MATERIALIZATION_AND_HISTORICAL_REPLAY_OPERAND_INTEGRATION",
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "MINIMUM_CORRECTION": {
+    "contract": {
+      "CONTRACT_REVISION_APPLIED": "YES_AS_THIS_OVERLAY",
+      "CONTRACT_REVISION_REQUIRED": "YES",
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+      "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "PROSPECTIVE_A04_EXECUTION_READY": "NO",
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "base_contract": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1.json",
+        "pointer": "",
+        "raw_sha256": "b2921094b80d67dc87367592cbb79dfa1441d1f13298758f2a2c2097c749d248"
+      },
+      "base_markdown": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1.md",
+        "pointer": "",
+        "raw_sha256": "e48ecbbd0508b69095b20e57f4d5bc7a06c18e12d035ee3830961e9973bee223"
+      },
+      "preserved_terms": [
+        "Exact human scope subject",
+        "Exact start/native Action/inputs/source content",
+        "Exact bounded result and validation values",
+        "Exact post-state/dossier identities",
+        "24 negative assurance expectations",
+        "Parent/index/root/head rules",
+        "Original historical UNPROVEN labels",
+        "A04-only END replacement mapping",
+        "N12/N13, persistence/replay/determinism requirements",
+        "No runtime or A04 execution"
+      ],
+      "prior_sealed_files_modified": false,
+      "remaining_blocker": "Missing durable T02 materialization/ledger/source enrollment and historical replay operand integration, not inability to serialize typed Snapshot members",
+      "replacement_event_representation_oracle": {
+        "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/oracles/composite-representation.json",
+        "pointer": "",
+        "raw_sha256": "43bdb6799f32c6361f7a773994540f147b45891d31557dac135d65ddd2d86d76"
+      },
+      "revised_requirement": "Remove mandatory inline validation_instances/source_additions in the A04 event payload. Require native typed values and source pins to be atomically admitted and immutably correlated through event/result/dossier/post-Snapshot/bundle/parent/ledger.",
+      "revision_type": "VERSIONED_REPRESENTATION_AND_ORACLE_OVERLAY",
+      "superseded_terms": [
+        "Old required-event-operands as a mandatory serialized event.result shape",
+        "Event identity unavailability solely because validation values are not inline",
+        "Missing validation-reference field alone as an execution blocker"
+      ]
+    },
+    "generic_capability": {
+      "complete_native_operation_contract_already_established": false,
+      "durable_contract": "Atomically publish complete native event/result/output/dossier/validation state/source pins/post-bundle under the trusted current HEAD. No partial accepted occurrence or validation set can be exposed as P05 occurrence evidence.",
+      "failure_atomicity": [
+        "No successful event with missing/failed/misbound validation",
+        "No completed PREPARE/knowledge/dossier without its required occurrence event",
+        "No validation tuple treated as proof of occurrence on its own",
+        "No head advancement or partial provenance on failure"
+      ],
+      "idempotence": "Same admitted semantic operation must preserve exactly one event/state effect; conflicting result/tuple/content or stale parent fails closed. Existing state-level T02 no-op does not establish durable exactly-once behavior.",
+      "identity_contract": "Native event identity binds supported full result plus immutable before/after Snapshot identities and parent/sequence. Exact ValidationInstance values must be reachable under after_snapshot and subject/input native bindings.",
+      "implementation_in_this_package": false,
+      "operation": "GENERIC_PERSISTED_DOSSIER_MATERIALIZATION",
+      "preflight_execution_equivalence": "Same canonical result, tuple and source content validated and consumed; no substitution between stages.",
+      "replay_operand_contract": "Retain all original typed evaluation outcomes in a deterministically recoverable native representation for each historical materialization. Resolve content by immutable native identity, verify subject/parent/pre-state/input/source, and reproduce exact T02 state effects. Never use latest mutable state or writer memory as historical operand.",
+      "required": true,
+      "required_qualification": [
+        "Complete native operation/replay representation contract before implementation",
+        "Positive state+event+ledger/source correlation",
+        "Old 24 negatives",
+        "Failure injection before native HEAD publication",
+        "Idempotence/conflict",
+        "Cold readers/replay from exact retained start",
+        "Historical detached operand retention if chosen",
+        "Seeds0,1,7,101 and native unordered presentations"
+      ],
+      "semantic_input_contract": [
+        "Trusted exact pre-bundle/state/head/context",
+        "Actual bounded SuppliedResult including dossier",
+        "Six independently evaluated typed ValidationInstances with exact subject/input/source/currentness",
+        "Sealed raw source additions and provenance"
+      ],
+      "serialization_constraint": "An inline typed materialization operand is one possible future implementation; a lossless native detached/reference operand is another only with an explicit codec/archive resolver contract. Neither is currently registered for A04. No storage layout is invented or implemented here.",
+      "source_contract": "Bind new raw source pins at the same historical event boundary, preserve exact prefix-source inventory, and verify ValidationInstance/dossier provenance on cold restore/replay.",
+      "unchanged_semantics": "Invoke existing T02 admission for selected decision-input Action; no validation Boolean, new authority, human choice or extra Action execution."
+    }
+  },
+  "N12_MAPPING": {
+    "composite": "Require actual supplied result + native admitted event + enrolled parent/ledger + complete typed post-state; selection alone has none of these",
+    "mapping": "PRESERVED",
+    "original": "Selection/history cannot fabricate completion/knowledge/event",
+    "runtime_negative_qualification": "NOT_RUN"
+  },
+  "N13_MAPPING": {
+    "composite": "Require fresh actual producer result and independently evaluated validations admitted in the native transaction; declaration/oracle/snapshot alone cannot establish occurrence",
+    "mapping": "PRESERVED",
+    "original": "Output declaration is not an actual result",
+    "runtime_negative_qualification": "NOT_RUN"
+  },
+  "NATIVE_CORRELATION": {
+    "A_inline_values_required_by_P05": "NO",
+    "B_dedicated_validation_object_refs_already_native": "NO; no standalone ValidationInstance ID or validation-ref field",
+    "B_transitive_snapshot_reference_already_native": "YES; after_snapshot binds all typed Snapshot members",
+    "C_complete_A04_durable_transaction_already_native": "NO",
+    "C_transaction_atomicity_required": "YES",
+    "D_exact_native_composite_representation": "YES; existing types suffice for value/hash representation, not current operation/replay admission",
+    "HISTORICAL_RECONSTRUCTION": "NO",
+    "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+    "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+    "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+    "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+    "actual_A04_transaction_available": false,
+    "bundle_and_HEAD": "Trusted post-bundle identity binds initial/events/current/source index/policy. Native HEAD.previous binds exact prior bundle; enrollment/sequence/parent links required separately.",
+    "event_result": "event.result is full SuppliedResult; Action/outcome/knowledge/dossier are inside its native canonical body",
+    "generation_scope_lineage": "Verify immutable pre/post Snapshot.context and each validation scope/lineage; source/provenance binds same experiment.",
+    "lossless_membership": "Given verified post-Snapshot bytes, every ValidationInstance field is retained and recoverable; it is not inferred from readiness or status.",
+    "native_command_id": "NONE for ordinary SuppliedResult; HEAD.command=None. No required command identity is invented.",
+    "new_validation_identity_namespace": false,
+    "no_report_pointer_as_identity": true,
+    "parent_correlation": {
+      "event.parent_event": "planner-event-v1:d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f",
+      "event.parent_snapshot": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f",
+      "result.expected_snapshot": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+    },
+    "post_state_identity": "planner-snapshot-v1:38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4",
+    "post_state_members": "Hash exact PLANNER-SNAPSHOT-1 bytes, then select unique typed members by PredicateId; each must bind the same dossier/body and exact input state/source.",
+    "representation": "ExecutionEvent + inline SuppliedResult/dossier + immutable post-Snapshot ValidationInstances + source-pinned PersistenceBundle",
+    "result_dossier_identity": "planner-dossier-sha256:d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b",
+    "support_provenance": "Keep complete typed record provenance and exact raw source pins; an unchecked path or a report label is insufficient."
+  },
+  "NATIVE_EVENT_SCHEMA": {
+    "A04_payload_branch": "SuppliedResult",
+    "dedicated_validation_reference_field": false,
+    "envelope_role": "Existing native ExecutionEvent; no dedicated historical PREPARE tag",
+    "existing_transitive_reference": "after_snapshot -> complete immutable Snapshot, including validation_instances",
+    "extra_scope_lineage_command_or_validation_fields_allowed": false,
+    "fields": [
+      {
+        "field": "sequence",
+        "type": "<class 'int'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "parent_snapshot",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "parent_event",
+        "type": "typing.Union[adapter.planner.model.ArtifactIdentity, NoneType]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "result",
+        "type": "typing.Union[adapter.planner.model.SuppliedResult, adapter.planner.model.RecordedDecision, adapter.planner.model.DecisionReentry, adapter.planner.model.ExternalEvent, adapter.planner.model.SourceInvalidation, adapter.planner.model.EvidenceSourceAdmission, adapter.planner.model.TypedProofAdmission, adapter.planner.model.ProofDependencyChange, adapter.planner.model.ActionReevaluation, adapter.planner.model.InstallDefinition, adapter.planner.model.ValidationSupportAdmission]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "after_snapshot",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "identity",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "default": null,
+        "field": "resume_binding",
+        "type": "typing.Union[adapter.planner.model.ArtifactIdentity, NoneType]",
+        "wire_optional_default": true
+      }
+    ],
+    "generic_reference_extension_allowed": false,
+    "inline_validation_instances": false,
+    "native_type": "ExecutionEvent",
+    "payload_field": "result",
+    "reference_domains": {
+      "after_snapshot": "planner-snapshot-v1",
+      "identity": "planner-event-v1",
+      "parent_event": "planner-event-v1",
+      "parent_snapshot": "planner-snapshot-v1"
+    },
+    "result_variants": [
+      "SuppliedResult",
+      "RecordedDecision",
+      "DecisionReentry",
+      "ExternalEvent",
+      "SourceInvalidation",
+      "EvidenceSourceAdmission",
+      "TypedProofAdmission",
+      "ProofDependencyChange",
+      "ActionReevaluation",
+      "InstallDefinition",
+      "ValidationSupportAdmission"
+    ],
+    "unknown_fields_rejected": true,
+    "unordered_fields": []
+  },
+  "NATIVE_RESULT_SCHEMA": {
+    "decision_checks": "DecisionDossier.checks stores typed check metadata/PredicateId references, not the evaluated outcomes",
+    "direct_event_reference": "ExecutionEvent.result stores the full typed SuppliedResult value, not a separate result ID",
+    "dossier_validation_flag": "Dossier currentness only; cannot substitute for the six independently evaluated records",
+    "fields": [
+      {
+        "field": "action",
+        "type": "<class 'adapter.planner.model.ActionId'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "result",
+        "type": "<enum 'ActionResult'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "knowledge",
+        "type": "typing.Tuple[adapter.planner.model.KnowledgeRecord, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "default": null,
+        "field": "expected_snapshot",
+        "type": "typing.Union[adapter.planner.model.ArtifactIdentity, NoneType]",
+        "wire_optional_default": true
+      },
+      {
+        "default": null,
+        "field": "dossier",
+        "type": "typing.Union[adapter.planner.model.DecisionDossier, NoneType]",
+        "wire_optional_default": true
+      }
+    ],
+    "native_type": "SuppliedResult",
+    "result_meaning": "Actual bounded producer outcome/knowledge and optional prepared dossier",
+    "standalone_ActionResult_entity_or_identity": false,
+    "unknown_fields_rejected": true,
+    "unordered_fields": [
+      "knowledge"
+    ],
+    "validations": "ValidationInstances are a separate T02 argument; not fields of SuppliedResult or DecisionDossier"
+  },
+  "NATIVE_VALIDATION_REPRESENTATION": {
+    "GraphEntity": false,
+    "computed_fields_not_serialized_as_instances": [
+      "Proof views returned by _evaluate_predicate",
+      "Readiness/Computation"
+    ],
+    "fields": [
+      {
+        "field": "predicate",
+        "type": "<class 'adapter.planner.model.PredicateId'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "proposition",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "dossier",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "inputs",
+        "type": "typing.Tuple[adapter.planner.model.ArtifactIdentity, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "result",
+        "type": "<enum 'ValidationOutcome'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "scope",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "lineage",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "currentness",
+        "type": "<enum 'ValidationState'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "provenance",
+        "type": "<class 'adapter.planner.model.Provenance'>",
+        "wire_optional_default": false
+      }
+    ],
+    "immutable_member_binding": "(event.after_snapshot, ValidationInstance.predicate, ValidationInstance.dossier) plus full canonical native member value",
+    "native_storage": "Snapshot.validation_instances: Tuple[ValidationInstance,...]",
+    "native_type": "ValidationInstance",
+    "record_currentness": "Persisted ValidationOutcome/currentness/provenance, subject to native invalidation",
+    "restore_validation_outcome": "Retain original typed evaluation result; do not replace with a new independent validation decision",
+    "standalone_native_identity": false,
+    "unique_native_selector": "PredicateId is unique within a Snapshot; dossier ArtifactIdentity must also match",
+    "unknown_fields_rejected": true,
+    "unordered_fields": []
+  },
+  "NEXT_PACKAGE": "GENERIC-PERSISTED-DOSSIER-MATERIALIZATION-TRANSACTION-CONTRACT",
+  "NOT_ESTABLISHED": [
+    "EVENT_SCHEMA_DEFECT",
+    "MISSING_TYPED_REFERENCE_CAPABILITY",
+    "ACCEPTANCE_CONTRACT_INCOMPLETE"
+  ],
+  "N_REAL_SATISFIED": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P05_ANCESTRY_ASSURANCE": {
+    "END_representation": "Read-only experiment acceptance witness graph, not a native aggregate Action",
+    "HISTORICAL_RECONSTRUCTION": "NO",
+    "N12": {
+      "composite": "Require actual supplied result + native admitted event + enrolled parent/ledger + complete typed post-state; selection alone has none of these",
+      "mapping": "PRESERVED",
+      "original": "Selection/history cannot fabricate completion/knowledge/event",
+      "runtime_negative_qualification": "NOT_RUN"
+    },
+    "N13": {
+      "composite": "Require fresh actual producer result and independently evaluated validations admitted in the native transaction; declaration/oracle/snapshot alone cannot establish occurrence",
+      "mapping": "PRESERVED",
+      "original": "Output declaration is not an actual result",
+      "runtime_negative_qualification": "NOT_RUN"
+    },
+    "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+    "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+    "P05_BOUND_STAGE_INPUTS": 10,
+    "P05_input": {
+      "EXPECTED_CURRENTNESS": "At owning stage, and at current consumer for reusable support; historical occurrence is not ongoing eligibility.",
+      "EXPECTED_IDENTITY": {
+        "identity_domain": "planner-event-v1",
+        "no_surrogate": "Snapshot/KnowledgeId/result label cannot replace an event identity",
+        "status": "EXACT_ORIGINAL_NATIVE_LIFECYCLE_EVENT_WITNESS_REQUIRED_BUT_NOT_RECOVERED"
+      },
+      "EXPECTED_PROVENANCE": "Exact authoritative native records/source pins and owning result, ordinary event ancestry for lifecycle occurrence; no qualification-instance substitution",
+      "EXPECTED_SOURCE": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json",
+      "EXPECTED_VALUE_RESULT": "Human decision becomes ready only with complete dossier/checks; authority requirement alone did not make it ready",
+      "slot": "E2-A04"
+    },
+    "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+    "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+    "actual_occurrence_and_transaction_commit_still_required": true,
+    "binding_closed_here": false,
+    "event_ancestry_requirement_retained": true,
+    "historical_scope": "Original A04 ancestry remains UNPROVEN. A future admitted composite may close only the authorized prospective A04 replacement term.",
+    "no_inline_validation_mandate_in_authoritative_plan_matrix_or_P05": true,
+    "old_24_negative_controls": "Unchanged; event payload tampering means actual supported payload/reference/body association tampering, not absence of a nonexistent inline field",
+    "state_only_evidence_accepted": false,
+    "terms": [
+      {
+        "assurance_preserved": true,
+        "event_field_required": true,
+        "minimum_witness": "Actual native ExecutionEvent, enrolled once in the exact continued ledger",
+        "native_location": "Event + ledger",
+        "term": "event occurrence"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": true,
+        "minimum_witness": "Existing full SuppliedResult/action/PASS/knowledge/dossier in ExecutionEvent.result",
+        "native_location": "Inline result value",
+        "term": "payload/result"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": true,
+        "minimum_witness": "parent_event and parent_snapshot; result.expected_snapshot; enrolled predecessor continuity",
+        "native_location": "Event identity fields + native predecessor",
+        "term": "parent/pre-state"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": true,
+        "minimum_witness": "sequence3/index2 and exact CHECK->COLLECT->PREPARE membership; root/head",
+        "native_location": "Event sequence + bundle.events",
+        "term": "ledger position"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": false,
+        "minimum_witness": "Six exact typed Snapshot records linked by after_snapshot and dossier/predicate/input binding",
+        "native_location": "Separate native Snapshot state",
+        "term": "typed validation outcomes"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": true,
+        "minimum_witness": "Exact E2-K-PREPARE in actual result and post-Snapshot knowledge; producer/provenance equality",
+        "native_location": "Inline result plus separate typed KnowledgeRecord state",
+        "term": "output"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": true,
+        "minimum_witness": "after_snapshot equals recomputed/verified canonical native Snapshot identity",
+        "native_location": "Event identity reference + full native Snapshot",
+        "term": "post-state"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": false,
+        "minimum_witness": "Exact record values and source pins, with source enrollment at same semantic transaction",
+        "native_location": "Native result/state provenance + bundle.sources",
+        "term": "source/provenance"
+      },
+      {
+        "assurance_preserved": true,
+        "event_field_required": false,
+        "minimum_witness": "DECISION_READY/HUMAN_HANDOFF recomputed over admitted typed inputs",
+        "native_location": "Computed read-only oracle",
+        "term": "control/readiness"
+      }
+    ]
+  },
+  "P05_BOUND_STAGE_INPUTS": 10,
+  "P05_EXECUTED": "NO",
+  "P05_EXECUTION_READY": "NO",
+  "P05_NEXT_MISSING_INPUT": "E2-A04.prepare_result_event_ancestry",
+  "P06_EXECUTED": "NO",
+  "PRIMARY_CLASSIFICATION": "COMBINED",
+  "PRODUCTION_EFFECT": "NO",
+  "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "PROSPECTIVE_A04_EXECUTION_READY": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "REPLAY_CORRELATION": "PersistenceBundle retains initial/events/current, not a separately addressable after-Snapshot object per event. Event.after_snapshot is a hash, not an object lookup implementation. Current _replay requires apply_event to regenerate each exact after_snapshot.",
+  "RESULT": "PASS",
+  "RUNTIME_CAPABILITY_REQUIRED": "YES",
+  "RUNTIME_IMPLEMENTATION_PERFORMED": "NO",
+  "RUNTIME_MODIFIED": "NO",
+  "SELECTED_OPTION": "AUTHORIZE_PROSPECTIVE_P05_A04_ANCESTRY_QUALIFICATION",
+  "SEPARATELY_BOUND_FIELDS": [
+    "Snapshot.validation_instances",
+    "Snapshot.actions[].prepared_dossier",
+    "Snapshot.decisions[].dossier/history",
+    "Snapshot.knowledge",
+    "Snapshot.context",
+    "PersistenceBundle.sources/policy/current/events"
+  ],
+  "TRANSACTION_BOUNDARY": {
+    "A04_integration_gap": "No event dispatcher calls T02 with its validation tuple. SuppliedResult has no such operand. Current replay reads only event.result, not post/current state as historical operand.",
+    "HEAD_correlation_gap": "Existing SuppliedResult HEAD.command=None and _prefix_bundle replays only supported event results; a report transaction ID cannot supply missing historical operands.",
+    "T02_report_limit": "T02 runtime_transaction.atomic=true and encode_decode replay PASS refer to state materialization/typed Snapshot retention. No append-only parallel store is claimed; this does not establish complete event-bearing transaction replay.",
+    "durable_visibility": "Canonical transaction is published at trusted HEAD, not at first immutable file write; crash-created orphan files do not establish acceptance",
+    "existing_durable_boundary": "codec.commit_event takes trusted current head under local lock, record_result/apply_event computes post-state, save_bundle validates/replays and writes immutable event/bundle artifacts, then _publish_head atomically replaces HEAD",
+    "implementation_qualified_for_A04_durable_transaction": false,
+    "locations": [
+      {
+        "end_line": 428,
+        "line": 338,
+        "path": "adapter/planner/core.py",
+        "pointer": "",
+        "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+        "symbol": "admit_dossier_materialization"
+      },
+      {
+        "end_line": 583,
+        "line": 547,
+        "path": "adapter/planner/core.py",
+        "pointer": "",
+        "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+        "symbol": "apply_event"
+      },
+      {
+        "end_line": 135,
+        "line": 122,
+        "path": "adapter/planner/gates.py",
+        "pointer": "",
+        "raw_sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f",
+        "symbol": "validate_result"
+      },
+      {
+        "end_line": 548,
+        "line": 446,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_replay"
+      },
+      {
+        "end_line": 578,
+        "line": 565,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "record_result"
+      },
+      {
+        "end_line": 636,
+        "line": 622,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "save_bundle"
+      },
+      {
+        "end_line": 663,
+        "line": 639,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "restore"
+      },
+      {
+        "end_line": 731,
+        "line": 716,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_publish_head"
+      },
+      {
+        "end_line": 762,
+        "line": 734,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_read_head"
+      },
+      {
+        "end_line": 878,
+        "line": 868,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "commit_event"
+      },
+      {
+        "end_line": 886,
+        "line": 881,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_prefix_bundle"
+      },
+      {
+        "end_line": 194,
+        "line": 182,
+        "path": "adapter/planner/validation_transaction.py",
+        "pointer": "",
+        "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+        "symbol": "apply"
+      },
+      {
+        "end_line": 211,
+        "line": 196,
+        "path": "adapter/planner/validation_transaction.py",
+        "pointer": "",
+        "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+        "symbol": "commit"
+      }
+    ],
+    "one_payload_requirement": false,
+    "ordinary_path_fails_for_sealed_start": "Action.prepared_dossier=None; ordinary validate_result compares supplied dossier with None. It also cannot introduce independent typed instances through the result field.",
+    "other_native_validation_transaction": "ValidationSupportAdmission is specialized to Evidence/receipt/validation-contract/support A10. It has typed outcomes and command identity but does not implement dossier/check admission; reuse as A04 would change semantics.",
+    "replay_gap": "PersistenceBundle retains initial/events/current, not a separately addressable after-Snapshot object per event. Event.after_snapshot is a hash, not an object lookup implementation. Current _replay requires apply_event to regenerate each exact after_snapshot.",
+    "source_gap": "Sealed new dossier source is offline. Per-event source-addition/prefix/retry handling recognizes other typed admissions, not T02 materialization.",
+    "state_atomicity_supported": "T02 returns one immutable TransitionReport only after accepted result/dossier/six checks; failure has no partial returned state",
+    "state_effects": [
+      "PREPARE completion",
+      "E2-K-PREPARE knowledge",
+      "Action.prepared_dossier",
+      "Decision.dossier/history/readiness",
+      "Snapshot.validation_instances"
+    ]
+  },
+  "WORK_PACKAGE": "E2-P05-A04-EVENT-VALIDATION-RECONCILIATION",
+  "evidence": {
+    "P05-N12-N13-assurance.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/P05-N12-N13-assurance.json",
+      "pointer": "",
+      "raw_sha256": "4c25cc25767c25922d8eb53c4a867ba0f1b50085fc718e638c3009aa437afe97"
+    },
+    "contract-revision-overlay.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/contract-revision-overlay.json",
+      "pointer": "",
+      "raw_sha256": "08bf80574b9ac492dbc664589b5f90651644f86082ef5c0bf36ed661eee3b366"
+    },
+    "dossier-validation-inventory.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/dossier-validation-inventory.json",
+      "pointer": "",
+      "raw_sha256": "d40cf02d7f4f03832abc5fc345654c8568ff5fe7ea9ee8318c96383a374436b0"
+    },
+    "minimum-generic-capability.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/minimum-generic-capability.json",
+      "pointer": "",
+      "raw_sha256": "7c903cbf51f7603b037ead6cd8e48241967fdfb0819ce912b3c23f06c9addc56"
+    },
+    "native-correlation.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/native-correlation.json",
+      "pointer": "",
+      "raw_sha256": "9b2a08e39e4a9a424413d248acc40ced12d664d635ccf6cff9fc96b40fb89a24"
+    },
+    "native-schemas.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/native-schemas.json",
+      "pointer": "",
+      "raw_sha256": "3d435d554454378437f4db040051e43325db8fe3547e9f81758730d162bc810b"
+    },
+    "oracles/composite-representation.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/oracles/composite-representation.json",
+      "pointer": "",
+      "raw_sha256": "43bdb6799f32c6361f7a773994540f147b45891d31557dac135d65ddd2d86d76"
+    },
+    "reconcile.py": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/reconcile.py",
+      "pointer": "",
+      "raw_sha256": "96724951dae21e8bf009c6d9bd346b652e46461f8d3bcc1cf82d62ee2f2fe82a"
+    },
+    "source-pins.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/source-pins.json",
+      "pointer": "",
+      "raw_sha256": "d9264d707e74d3a86afe0f1795798357e8913e2c21dcefea196904ab390d9525"
+    },
+    "static-representation-probes.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/static-representation-probes.json",
+      "pointer": "",
+      "raw_sha256": "2c1c7043f092f6844d62f3d9f777f6923a446aa5cebea7c0db97143820c50e2b"
+    },
+    "transaction-and-replay-gap.json": {
+      "path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/transaction-and-replay-gap.json",
+      "pointer": "",
+      "raw_sha256": "d277c0cf379fee8a53db5af66d24047991c781b2149339543e9e2412e9893cb3"
+    }
+  },
+  "schema": "E2-P05-A04-EVENT-VALIDATION-RECONCILIATION-1",
+  "verification_path": "docs/plans/qualification/E2_P05_A04_EVENT_VALIDATION_RECONCILIATION_1/verification.json"
+}

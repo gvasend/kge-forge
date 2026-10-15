@@ -1,0 +1,97 @@
+{
+  "APPROVED_LIMITS_PIN": {
+    "PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_AUTHORITY_70/environment-resource-permission-contract.json",
+    "RAW_SHA256": "c074b5f239917ddb14f6251bef87d0fa52e503c4b58d633d2e87bd2412cd7164"
+  },
+  "CONFINEMENT_REQUIREMENTS": [
+    "OS readonly input/writable assigned row confinement",
+    "OS external-network denial/private network setup permission",
+    "independent process isolation and termination observation",
+    "complete full-output/oracle comparisons",
+    "no automatic retries or actual A15 use"
+  ],
+  "NETWORK_DISABLED_REQUIREMENT_WEAKENED": false,
+  "ROWS": [
+    {
+      "CEILING": 4,
+      "CONTROL": "MAX_LIVE_CHILDREN",
+      "ENFORCER": "Trusted accounting plus OS containment/independently verified closed role/descendant bound",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Observe entire authorised process tree, reserve before launch and fail at cap",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 128,
+      "CONTROL": "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN",
+      "ENFORCER": "Single immutable campaign admission ledger and trusted supervisor",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Audit all direct/indirect launches across seeds; no counter reset",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 60,
+      "CONTROL": "MAX_CHILD_WALL_SECONDS",
+      "ENFORCER": "Monotonic supervisor deadline and owned process termination",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Verify independent timeout/exit handling under separately approved metadata qualification",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 30,
+      "CONTROL": "CHILD_CPU_SECONDS",
+      "ENFORCER": "Kernel inherited hard/soft RLIMIT_CPU or qualified stronger equivalent",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Actual child-limit observations and independent enforcement evidence",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 1073741824,
+      "CONTROL": "CHILD_ADDRESS_SPACE_BYTES",
+      "ENFORCER": "Kernel RLIMIT_AS or qualified stronger equivalent",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Actual inherited bounds; physical VM RAM alone does not prove per-child address-space cap",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 16777216,
+      "CONTROL": "CHILD_FILE_BYTES",
+      "ENFORCER": "Kernel RLIMIT_FSIZE or qualified stronger equivalent",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Exact child bound and allowed output namespace",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 64,
+      "CONTROL": "CHILD_OPEN_FILE_DESCRIPTORS",
+      "ENFORCER": "Kernel RLIMIT_NOFILE and descriptor inheritance control",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Verify hard/soft caps and close unapproved inherited FDs",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 600,
+      "CONTROL": "MAX_CAMPAIGN_WALL_SECONDS",
+      "ENFORCER": "Trusted single campaign monotonic clock",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Verify cross-process/cross-seed cumulative budget",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 67108864,
+      "CONTROL": "MAX_CAMPAIGN_WRITTEN_BYTES",
+      "ENFORCER": "Trusted cumulative write accounting/quota and independent filesystem audit",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "Include evidence and staged/publication writes; final directory size alone is insufficient",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    },
+    {
+      "CEILING": 0,
+      "CONTROL": "AUTOMATIC_RETRIES",
+      "ENFORCER": "Grant/launcher fail-closed control",
+      "INDEPENDENT_EVIDENCE_REQUIRED": "No implicit repeat, fallback or new campaign after genuine stop",
+      "PATH_A_ENFORCEMENT": "UNVERIFIED",
+      "PATH_B_ENFORCEMENT": "UNVERIFIED"
+    }
+  ],
+  "UNKNOWN_RESOURCE_CONTROL_ACCEPTED": false
+}

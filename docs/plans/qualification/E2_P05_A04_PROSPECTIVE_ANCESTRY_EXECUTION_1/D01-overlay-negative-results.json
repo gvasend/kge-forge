@@ -1,0 +1,275 @@
+{
+  "durable_case_count": 24,
+  "durable_cases": [
+    {
+      "case": "wrong PrepareResult",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject before T02/HEAD",
+      "id": "DA01",
+      "result": "PASS",
+      "test": "test_wrong_native_result_and_output_inventory",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "result not actually executed",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject live API bypass; replay verifier is read-only",
+      "id": "DA02",
+      "result": "PASS",
+      "test": "test_no_raw_or_boolean_live_execution_context",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong pre-state",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject stale/misbound context",
+      "id": "DA03",
+      "result": "PASS",
+      "test": "test_wrong_source_and_pre_bundle",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong parent",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject before append",
+      "id": "DA04",
+      "result": "PASS",
+      "test": "test_wrong_event_parent_position_payload_and_identity",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong post-Snapshot",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject hash/model/whole-state comparison",
+      "id": "DA05",
+      "result": "PASS",
+      "test": "test_archive_missing_wrong_and_no_latest_snapshot_fallback",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "tampered post-state",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject complete T02 projection equality",
+      "id": "DA06",
+      "result": "PASS",
+      "test": "test_rehashed_tampered_state_still_fails_historical_projection",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong event",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject native event identity and binding check",
+      "id": "DA07",
+      "result": "PASS",
+      "test": "test_wrong_event_parent_position_payload_and_identity",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong ledger",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject occurrence mapping",
+      "id": "DA08",
+      "result": "PASS",
+      "test": "test_trusted_ledger_head_and_source_tampering",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong append head",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject exact prefix intent",
+      "id": "DA09",
+      "result": "PASS",
+      "test": "test_foreign_append_head_stops_before_operation",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "validation bound to different Snapshot",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject immutable binding",
+      "id": "DA10",
+      "result": "PASS",
+      "test": "test_validation_subject_inputs_membership_and_currentness",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "missing validation binding",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject complete tuple/reference closure",
+      "id": "DA11",
+      "result": "PASS",
+      "test": "test_binding_missing_tampered_duplicate_orphan_and_extra_source",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "event without result",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject schema or replay effect",
+      "id": "DA12",
+      "result": "PASS",
+      "test": "test_partial_result_event_bundle_and_orphan_files_are_not_head",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "result without event",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject P05 occurrence assurance",
+      "id": "DA13",
+      "result": "PASS",
+      "test": "test_partial_result_event_bundle_and_orphan_files_are_not_head",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "duplicate retry",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "No duplicate durable effect; reject second append and return historical no-op",
+      "id": "DA14",
+      "result": "PASS",
+      "test": "test_exact_retry_before_producer_and_after_descendants",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "conflicting retry",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject effect conflict",
+      "id": "DA15",
+      "result": "PASS",
+      "test": "test_conflicting_validation_retry_and_physical_closure",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "replay creating second occurrence",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject; verify-only replay",
+      "id": "DA16",
+      "result": "PASS",
+      "test": "test_replay_is_read_only_and_cannot_create_second_occurrence",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "source substitution",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject source validation",
+      "id": "DA17",
+      "result": "PASS",
+      "test": "test_trusted_ledger_head_and_source_tampering",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "source boundary drift",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject expected pre-bundle/source equality",
+      "id": "DA18",
+      "result": "PASS",
+      "test": "test_binding_missing_tampered_duplicate_orphan_and_extra_source",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "archive missing after descendant invalidation",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject restore/replay; history cannot be inferred",
+      "id": "DA19",
+      "result": "PASS",
+      "test": "test_missing_historical_archive_after_invalidation",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "orphan archive accepted as occurrence",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject graph binding",
+      "id": "DA20",
+      "result": "PASS",
+      "test": "test_partial_result_event_bundle_and_orphan_files_are_not_head",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "binding tampering",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject trusted bundle hash or semantic binding",
+      "id": "DA21",
+      "result": "PASS",
+      "test": "test_binding_missing_tampered_duplicate_orphan_and_extra_source",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "duplicate binding/member",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject uniqueness",
+      "id": "DA22",
+      "result": "PASS",
+      "test": "test_validation_subject_inputs_membership_and_currentness",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "ordered input reversal",
+      "current_runtime_evidence": "D01-current-runtime-tests.json",
+      "current_runtime_result": "PASS",
+      "expected": "Reject sealed ordered input contract; R05 does not declare this tuple unordered",
+      "id": "DA23",
+      "result": "PASS",
+      "test": "test_validation_subject_inputs_membership_and_currentness",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "historical relabeling",
+      "current_runtime_evidence": "qualification_checks.validate_witness",
+      "current_runtime_result": "PASS",
+      "expected": "Reject authorized replacement labeling",
+      "id": "DA24",
+      "result": "PASS",
+      "test": "historical_label_negatives",
+      "test_layer": "QUALIFICATION_OVERLAY_VALIDATOR"
+    }
+  ],
+  "historical_label_checks": [
+    {
+      "field": "QUALIFICATION_TYPE",
+      "rejection": "HISTORICAL_LABEL_SEPARATION_REQUIRED:QUALIFICATION_TYPE",
+      "result": "PASS"
+    },
+    {
+      "field": "ORIGINAL_A04_HISTORICAL_ANCESTRY",
+      "rejection": "HISTORICAL_LABEL_SEPARATION_REQUIRED:ORIGINAL_A04_HISTORICAL_ANCESTRY",
+      "result": "PASS"
+    },
+    {
+      "field": "ORIGINAL_A03_HISTORICAL_OCCURRENCE",
+      "rejection": "HISTORICAL_LABEL_SEPARATION_REQUIRED:ORIGINAL_A03_HISTORICAL_OCCURRENCE",
+      "result": "PASS"
+    },
+    {
+      "field": "HISTORICAL_RECONSTRUCTION",
+      "rejection": "HISTORICAL_LABEL_SEPARATION_REQUIRED:HISTORICAL_RECONSTRUCTION",
+      "result": "PASS"
+    },
+    {
+      "field": "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT",
+      "rejection": "HISTORICAL_LABEL_SEPARATION_REQUIRED:PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT",
+      "result": "PASS"
+    }
+  ],
+  "native_generic_cases": 23,
+  "primary_A04_unchanged": true,
+  "result": "PASS"
+}

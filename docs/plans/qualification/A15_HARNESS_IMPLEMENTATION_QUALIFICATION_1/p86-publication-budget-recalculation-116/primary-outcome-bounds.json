@@ -1,0 +1,49 @@
+{
+  "KNOWN_DEADLINE_CLASSES": [
+    "Service RuntimeMaxSec20",
+    "Stop TimeoutStopSec2",
+    "External observer total25"
+  ],
+  "NORMAL_VS_FAILURE": "Successful and definitely rejected service start alternatives; confirmed and unknown final exit alternatives. Primary error does not forbid concurrent later cleanup/audit errors.",
+  "PRIMARY_OUTCOME_BOUNDS_COMPLETE": false,
+  "PRIMARY_STATE_BOUNDS": [
+    {
+      "CONDITION": "Only one exact manager invocation; confirmed start incompatible with definite rejected start",
+      "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+      "OUTCOME": "SUCCESSFUL_SERVICE_START",
+      "PUBLICATION_COUNT_COMPLETENESS": false
+    },
+    {
+      "CONDITION": "Definite independent no-service rejection only; ambiguous creation belongs UNKNOWN",
+      "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+      "OUTCOME": "REJECTED_SERVICE_START",
+      "PUBLICATION_COUNT_COMPLETENESS": false
+    },
+    {
+      "CONDITION": "One terminal service identity verdict; subsequent observation failures may still occur",
+      "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+      "OUTCOME": "CONFIRMED_SERVICE_EXIT",
+      "PUBLICATION_COUNT_COMPLETENESS": false
+    },
+    {
+      "CONDITION": "One immutable primary cause; later stop/audit errors remain secondary",
+      "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+      "OUTCOME": "FIRST_CAUSAL_FAILURE",
+      "PUBLICATION_COUNT_COMPLETENESS": false
+    },
+    {
+      "CONDITION": "One primary unresolved outcome classification, not every later unknown witness",
+      "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+      "OUTCOME": "PRIMARY_UNKNOWN_OUTCOME",
+      "PUBLICATION_COUNT_COMPLETENESS": false
+    },
+    {
+      "CONDITION": "One final outcome state; does not justify one physical audit write",
+      "MAX_PRIMARY_LIFECYCLE_OCCURRENCES": 1,
+      "OUTCOME": "PRIMARY_FINALIZATION_STATE",
+      "PUBLICATION_COUNT_COMPLETENESS": false
+    }
+  ],
+  "TIMEOUT_GAP": "Several distinct deadline/cleanup observations can follow an earlier first failure. Exact timer/stop/query/finalization event handling is unsealed; one launch is not one timeout witness.",
+  "TIMEOUT_PUBLICATION_MAX_OCCURRENCES": null
+}

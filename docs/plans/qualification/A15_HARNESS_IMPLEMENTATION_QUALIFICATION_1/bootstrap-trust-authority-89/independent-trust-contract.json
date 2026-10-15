@@ -1,0 +1,53 @@
+{
+  "ASSUMPTIONS": [
+    "trusted administrator/operator does not delete/rollback the store, forge receipts or bypass the coordinator; detected violation invalidates environment and denies launch",
+    "ordinary same-kernel process crashes/restarts tested; no general power-loss guarantee",
+    "all spawned programs are the two approved files under pinned interpreter; no unapproved or data-selected imports, evaluated fixture code, shell or alternate executable",
+    "all writes belong to one accounted root; no arbitrary stdin/fixture operation dispatch or network API"
+  ],
+  "BASELINE": "trusted fixed pinned code, sealed synthetic inputs, explicit nonroot owner-controlled local POSIX filesystem, independently reviewed controller and bounded preflight; no untrusted-program containment assertion",
+  "CONSTRUCTED_OR_ACTIVE_QUALIFICATION_PASSED": false,
+  "DOCUMENTARY_ROOTS": [
+    "EFFECTIVE_AUTHORITY_VERIFICATION",
+    "EXACT_COMMAND_IDENTITY"
+  ],
+  "GOVERNANCE_ROOT": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "kge-forge-qualification-governance-charter-v1",
+    "sha256": "d26962c58f17281173e965433dae63a941e078115f3dcc30e2a3512fa21812b8"
+  },
+  "INDEPENDENT_ENTRY_CHECKS": [
+    "actual context/interpreter/stdlib source hash matches approved profile",
+    "owned local nonsymlink store/root permissions and fd/device/inode, no historical or real consumption data",
+    "resource limits applied/read back in bounded preflight child, parent wall/byte/launch accounting reviewed; unsupported enforcement denies test",
+    "basic exclusive creation/file+dir fsync/readback preflight succeeds before target API tests; failures preserved, no retries",
+    "controller source/fixtures/expected outputs independently statically verified; no requirement target coordinator already behaviorally qualified"
+  ],
+  "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY",
+  "LIFECYCLE": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "kge-forge-charter-lifecycle-record-v1",
+    "sha256": "a27516baa0ab7f34a36a1130490b6cfa38c508975ca337e0824c8eac33715cbb"
+  },
+  "NOT_PREREQUISITES": [
+    "H77_GATE_ACTIVE_QUALIFICATION",
+    "HOST_RESOURCE_ENFORCEMENT_QUALIFICATION",
+    "Package86 future pids result",
+    "unissued actual probe grant",
+    "Package72 campaign"
+  ],
+  "NO_WEAKENED_ORIGINAL_CONTRACT": true,
+  "POLICY_APPROVAL_CONSEQUENCE": "explicitly adopts this new narrow inert-only assurance scope if selected and validly issued; original H77/A15 acceptance and strong host controls remain unchanged",
+  "REAL_PROBE_BOUNDARY": "later separate grant/admin/context/store/bridge qualification required; construction/inert grant cannot enable real execution",
+  "SOURCE_IMPORT_BOUNDARY": "standard library plus the one exact new coordinator module and existing empty adapter namespace; no original gate/Planner runtime/issuance-script imports",
+  "STATUS": "PROPOSED_FOR_EXPLICIT_ADOPTION",
+  "VERSION": "BOOTSTRAP-TRUST-1"
+}

@@ -1,0 +1,155 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "POST_A04_BUNDLE_ID": "planner-bundle-v1:45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7",
+  "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "event": "planner-event-v1:2c71adfce820b0fc997e7d1f872439e9ddb43170c95edbeafaf461a4065760f0",
+  "full_computation": {
+    "$type": "Computation",
+    "actionable": [
+      {
+        "$type": "ActionId",
+        "value": "E2-DECIDE"
+      }
+    ],
+    "blocked": [
+      [
+        {
+          "$type": "ActionId",
+          "value": "E2-FINISH"
+        },
+        [
+          "ACTION_COMPLETED:E2-REENTER"
+        ]
+      ],
+      [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        },
+        [
+          "ACTION_COMPLETED:E2-DECIDE",
+          "DECISION_REENTRY_REQUIRED",
+          "EXTERNAL_GATE:E2-GATE",
+          "PREDICATE:E2-PROOF:UNKNOWN"
+        ]
+      ]
+    ],
+    "branches": [
+      [
+        {
+          "$type": "ConditionId",
+          "value": "E2-ROOT"
+        },
+        {
+          "$enum": "BranchState",
+          "value": "HUMAN_DECISION_REQUIRED"
+        }
+      ]
+    ],
+    "control": {
+      "$enum": "ControlState",
+      "value": "HUMAN_HANDOFF"
+    },
+    "defects": [],
+    "frontier": [],
+    "human_batches": [
+      [
+        {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        }
+      ]
+    ],
+    "human_routing": {
+      "$enum": "HumanRouting",
+      "value": "HUMAN_HANDOFF"
+    },
+    "selection": null,
+    "statuses": [
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-CHECK"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        },
+        "terminal_failure": false
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-COLLECT"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        },
+        "terminal_failure": false
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "ACTIONABLE"
+        },
+        "terminal_failure": false
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-FINISH"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "BLOCKED"
+        },
+        "terminal_failure": false
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-PREPARE"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        },
+        "terminal_failure": false
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "BLOCKED"
+        },
+        "terminal_failure": false
+      }
+    ],
+    "unresolved_roots": 1,
+    "unresolved_slots": 0
+  },
+  "hash_seed": "7",
+  "live_operation_invocations": 0,
+  "new_occurrences": 0,
+  "replays": 3,
+  "result": "PASS",
+  "state": "planner-snapshot-v1:38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4",
+  "validators_rerun": false
+}

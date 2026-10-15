@@ -1,0 +1,9 @@
+{
+  "BOUND": "One initial writer attempt and one explicitly bounded identical writer retry per row; three required successful readers per seed plus at most one fresh retry for each failed reader slot; otherwise stop",
+  "NO_DUPLICATE_SEMANTIC_EXECUTION": true,
+  "SEMANTIC_OPERATION_COUNT": "Zero lifecycle events/Actions on all successful or failed attempts",
+  "after_writer_failure": "Re-establish full authorized writer-success/publication/handoff/exit chain; file presence alone cannot resume guards",
+  "before_successful_save": "Same exact native candidate/row target only; no assumed predecessor success",
+  "identical_published_retry": "Native accepts exact nonsymlink same bytes/content address; no extra semantic event or changed policy; no fresh fsync promised on reuse",
+  "reader_restore_failure": "Fresh reader retry only after re-verifying G1-G4 and exact persisted references; no source/identity repair or warm state; record every failed attempt"
+}

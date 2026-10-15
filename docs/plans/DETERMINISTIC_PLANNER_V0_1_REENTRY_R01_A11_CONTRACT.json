@@ -1,0 +1,368 @@
+{
+  "A09_EXECUTED": "NO",
+  "A09_READY": "YES",
+  "A10_EXECUTED": "NO",
+  "A10_READY": "YES",
+  "A11_COMPOSED_TRANSACTION": {
+    "atomicity": "each existing append_event is atomic; canonical artifacts do not require a single combined Proof+Eligibility event or atomic commit across separate reentry events",
+    "canonical_sequence": [
+      "verify actual validated/current support",
+      "evaluate exact native requirement Proof",
+      "append ordinary ExternalEvent DEPENDENT_ACTION_REENTRY",
+      "append separately required DecisionReentry if applicable",
+      "evaluate C03 on resulting bundle with source_root",
+      "require only named E2-REENTER eligibility before A12"
+    ],
+    "failure": "proof failure blocks native reentry append; valid proof plus failed C03 may retain accepted history but A11 exit false; never persist allowed=true as authority",
+    "intermediate_state": "valid proof with C03 false is permitted and is precisely post-A10/pre-A11; failed C03 must not authorize A12",
+    "outputs": [
+      "native reentry event/state/bundle",
+      "derived Proof",
+      "derived ResumeEligibility",
+      "independent A11 exit evaluation"
+    ],
+    "proof_admission": "no extra canonical proof admission event required; derived proof can be PROVED at A10 while resume false"
+  },
+  "A11_EVENT_CONTRACT": {
+    "native": "ExternalEvent(gate=E2-GATE, stage=DEPENDENT_ACTION_REENTRY, expected_snapshot=current snapshot, artifact=None)",
+    "new_composite_event": "not defined by canonical contract; cannot claim already supported",
+    "proof/result_operands": "not explicit native event operands; proof dependencies read from admitted state; C03 output derived from post-event bundle",
+    "wrapper": "ExecutionEvent binds sequence, ordinary parent event/pre-state, after-state and exact resume_binding"
+  },
+  "A11_EXECUTED": "NO",
+  "A11_EXIT_PREDICATE": [
+    "validated/current support",
+    "every gate requirement PROVED",
+    "accepted named native reentry ancestry",
+    "C03 allowed with exactly intended named Action",
+    "all source/policy/context/other prerequisites current",
+    "no A12 execution or premature completion"
+  ],
+  "A11_IMPLEMENTATION_READY": "NO for requested new persisted composite; existing canonical path available but exact P04 qualification pending",
+  "A11_POSITIVE_POSTCONDITION": {
+    "A12_execution": "NOT_PERFORMED",
+    "FINISH_completed": false,
+    "REENTER_completed": false,
+    "control": "native recompute; requires named Action actionable; exact full P04 oracle still needs positive qualification",
+    "named_eligibility": [
+      "E2-REENTER"
+    ],
+    "proof": "PROVED derived typed result",
+    "received": true,
+    "root_slot_instances": "ABSENT",
+    "support": "CURRENT",
+    "validation": "ACCEPTED"
+  },
+  "A11_PROOF_CONTRACT": {
+    "authority": "existing authenticated receipt/producer/operating ATTEST and Action authority checks; no new proof authority implied",
+    "bindings": [
+      "semantic Evidence ID",
+      "native admitted Evidence entity",
+      "content",
+      "receipt admission/accepted observation",
+      "actual V02 ValidationResult",
+      "actual V02 support record",
+      "source pin",
+      "scope",
+      "lineage",
+      "generation",
+      "provenance"
+    ],
+    "expected_outcome": "PROVED for exact requirement claim",
+    "permitted_producers": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "TEST-rule-owner",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ],
+    "persisted_basis": "A09 receipt and A10 immutable validation/support records and accepted observation; proof query recomputed",
+    "proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "representation": "native gates.Proof(state: ProofState, reasons: tuple); requirement-qualified derived result, not persisted Proof instance",
+    "requirement_id": "E2-EXTERNAL-REQUIREMENT",
+    "rule": "known requirement rule (or accepted matching validation rule); current accepted receipt independently checked; exactly one outcome among claims for this requirement; conflicting/missing outcomes -> UNKNOWN",
+    "support": "actual V02 accepted result/current support, not prospective instances",
+    "target": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CANONICAL_OBJECT_IDENTITY"
+      },
+      "namespace": "TEST-target",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  },
+  "A11_READY": "NO",
+  "A12_BOUNDARY": {
+    "assumptions": [
+      "A11 exit passed",
+      "accepted reentry event persisted",
+      "named E2-REENTER currently eligible",
+      "validation/support/proof basis/source/policy current"
+    ],
+    "not_assumptions": [
+      "REENTER already completed",
+      "result inventory automatically complete",
+      "proof sufficient without C03"
+    ],
+    "recompute": "required ordinary currentness/readiness recomputation; not new historical proof decision"
+  },
+  "A12_EXECUTED": "NO",
+  "C03_CONTRACT": {
+    "authority": "ordinary named Action/recorded decision/current operating authorities; INSTALL does not grant them",
+    "decision_route": "DecisionReentry is separate if current recorded decision requires DOWNSTREAM_REEVALUATION; cannot omit or fold into external event silently",
+    "gate": "E2-GATE",
+    "named_actions": [
+      "E2-REENTER"
+    ],
+    "no_general_permission": true,
+    "predicate_id": "no standalone persisted PredicateId for C03; native resume_eligibility function",
+    "requirements": [
+      "DEPENDENT_ACTION_REENTRY stage",
+      "qualified complete receipt contract",
+      "every requirement PROVED",
+      "accepted native reentry event",
+      "event.resume_binding equals current codec.resume_binding",
+      "evaluation context present",
+      "named Action in core.recompute.actionable",
+      "no blocking external/decision route affecting named Action",
+      "source_root supplied",
+      "every source and policy pin independently loads"
+    ],
+    "subject": "E2-REENTER",
+    "type": "derived current non-effecting resume proof; conjunction over native reentry route/event, obligation proofs, Action prerequisites, context/policy binding and independently loaded source bytes"
+  },
+  "CANONICAL_A11_OWNERSHIP": "typed obligation proof checks + named C03 eligibility; no REENTER execution",
+  "CANONICAL_A12_INITIAL": "named Action already eligible under E2-A11; A12 recomputes current readiness before deterministic select/result",
+  "CURRENTNESS": "derive from actual replayed current state, source bytes, exact policy/context and every prerequisite; cached positive report never grants future permission",
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "ELIGIBILITY_RESULT_MODEL": {
+    "cold_restore": "replay persisted basis then recompute current eligibility with source_root",
+    "determinism": "native sorted Actions/reasons/supporting identities; exact bundle/event/policy/source references",
+    "fields": [
+      "allowed",
+      "actions",
+      "reasons",
+      "supporting_identities"
+    ],
+    "identity": "no native ArtifactIdentity on ResumeEligibility; optional report digest hashes canonical typed output plus bundle/state/resume binding in report-only domain; never execution permission",
+    "native_type": "ResumeEligibility",
+    "persisted_permission": "PROHIBITED",
+    "provenance": "supporting event identities, event parent snapshots, resume binding and independently verified source/policy identities"
+  },
+  "INSTALLATION_ADAPTER": "NO_NEW_ADAPTER_REQUIRED for existing canonical queries/events; new persisted composite set CONTRACT_MISSING, not authorized",
+  "INSTALLATION_ORDER": "no new native A11 installation identified; do not install duplicate existing gate/requirement; any additional composite set needs separately sealed semantics",
+  "INSTALL_AUTHORITY": {
+    "bounded_template": [
+      "exact definition/content set",
+      "operation verified against canonical roles",
+      "scope",
+      "lineage",
+      "generation",
+      "consumer",
+      "current bundle/state/parent",
+      "issuer/validity/provenance"
+    ],
+    "content_ids": "UNASSIGNED: no canonically required new set identified",
+    "prior_grants": "inapplicable to new A11 definitions",
+    "status": "NOT_ISSUED_NOT_DECISION_READY"
+  },
+  "INVALIDATION": "Evidence/validation/support/proof/source/authority loss or context/generation/contract change removes proof and/or C03 eligibility; history retained; native computation never permanently trusts prior allowed result",
+  "NAMED_REENTRY_CONTRACT": {
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "id": "E2-GATE / E2-REENTER",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "source": {
+      "$type": "Provenance",
+      "excerpt": "{\"authored_initial_premise\":true,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"historical_reconstruction\":false,\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"qualification_type\":\"PROSPECTIVE_REPLACEMENT\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\",\"template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"acquisition_contract_complete\\\":true,\\\"branch\\\":\\\"TEST-ROOT\\\",\\\"expected_producer\\\":\\\"TEST-rule-owner\\\",\\\"gate\\\":\\\"TEST-GATE\\\",\\\"lineage\\\":\\\"TEST/lineage\\\",\\\"missing_proposition\\\":\\\"Authenticated governing rule for target operation; no rule currently received\\\",\\\"positive_admission\\\":\\\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\\\",\\\"qualification_only\\\":true,\\\"receipt_action\\\":\\\"TEST-RECEIVE\\\",\\\"reentry\\\":[\\\"TEST-ACTION\\\"],\\\"requirement\\\":\\\"TEST-RULE\\\",\\\"schema\\\":\\\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\\\",\\\"scope\\\":\\\"TEST/scope\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"method\":\"SYNTHETIC_CONTRACT\",\"path\":\"source.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"}}",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+      },
+      "method": "PROSPECTIVE_AUTHORED_INPUT",
+      "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "section": "/"
+    },
+    "target": "E2-REENTER"
+  },
+  "NEGATIVE_SUITE": [
+    "proof without accepted validation",
+    "proof without current support",
+    "wrong proposition",
+    "wrong semantic/native Evidence",
+    "wrong ValidationResult",
+    "wrong support",
+    "wrong content/receipt/source",
+    "wrong operating authority",
+    "wrong named reentry",
+    "wrong C03 route",
+    "wrong scope/lineage/generation",
+    "stale contract",
+    "valid proof assumed to imply eligibility",
+    "eligibility without PROVED obligations",
+    "eligibility installed prospectively",
+    "Proof instance installed prospectively",
+    "A11 executes A12",
+    "A11 completes REENTER",
+    "A11 creates root/slot Proof",
+    "missing source_root",
+    "changed source/policy pin",
+    "missing accepted reentry event",
+    "changed resume binding",
+    "named Action blocked by another prerequisite",
+    "foreign/stale parent"
+  ],
+  "NEXT_PACKAGE": "qualify exact native A11 reentry/C03 path and required decision route on isolated P04-compatible simulation; separately specify any requested new persisted composite records",
+  "N_REAL_SATISFIED": "NO",
+  "P01_ELEMENT_CLASSIFICATION": {
+    "CANONICALLY_SUPPORTED": [
+      "typed scoped proposition, never generic TRUE",
+      "distinct Evidence identity domains",
+      "accepted validation/current support and authenticated source dependencies",
+      "proof distinct from eligibility/Action execution",
+      "dependency invalidation and historical audit",
+      "current parent and ordinary canonical event",
+      "determinism, fail-closed checking, replay of persisted basis"
+    ],
+    "COMPATIBLE_BUT_NOT_REQUIRED": [
+      "new EvidenceProof ArtifactIdentity",
+      "report-only proof/eligibility digest",
+      "extra proof admission event",
+      "atomic combined Proof+Eligibility transaction"
+    ],
+    "CONFLICTING": [
+      "reentry false until A12",
+      "persisted permission Boolean",
+      "new proof-only A11 replacing named reentry"
+    ],
+    "UNDERSPECIFIED": [
+      "new persisted EvidenceProof model/event",
+      "exact new definition-set content IDs",
+      "combined-event rejection/partial-commit policy",
+      "new typed installation adapter for that set"
+    ]
+  },
+  "P01_PROOF_SEMANTICS_REJECTED": [
+    "reentry false until A12",
+    "persisted permission Boolean",
+    "new proof-only A11 replacing named reentry"
+  ],
+  "P01_PROOF_SEMANTICS_REUSED": [
+    "typed scoped proposition, never generic TRUE",
+    "distinct Evidence identity domains",
+    "accepted validation/current support and authenticated source dependencies",
+    "proof distinct from eligibility/Action execution",
+    "dependency invalidation and historical audit",
+    "current parent and ordinary canonical event",
+    "determinism, fail-closed checking, replay of persisted basis"
+  ],
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_A11_INSTALLATION_DECISION_READY": "NO",
+  "P04_A11_INSTALLATION_DECISION_REQUIRED": "NO for existing native path; YES conditionally for any newly specified definition set",
+  "P04_EXECUTION_READY": "NO",
+  "PERSISTENCE_CONTRACT": "save native reentry event/bundle and complete A09/A10 basis; restore exact records/source/policy/context/ledger; recompute Proof and C03, never persist permission Boolean",
+  "PRODUCTION_EFFECT": "NO",
+  "PROOF_CREATED": "NO",
+  "PROSPECTIVE_DEFINITIONS": {
+    "A11 event definition": "ALREADY_AVAILABLE ExternalEvent/DecisionReentry; not new installed definition",
+    "C03 contract": "ALREADY_AVAILABLE_NATIVE_FUNCTION; exact P04 positive qualification pending",
+    "Proof / eligibility instances": "LIFECYCLE_RESULT_NOT_PROSPECTIVE_DEFINITION",
+    "authority references": "existing operating references must independently pass; no new grant or installation created",
+    "eligibility result definition": "ALREADY_AVAILABLE ResumeEligibility; lifecycle query output, NOT_INSTALLABLE_PERMISSION",
+    "named reentry definition": "ALREADY_CURRENT: E2-GATE.reentry=(E2-REENTER)",
+    "proof admission definition": "NOT_REQUIRED for derived native Proof; CONTRACT_MISSING if separate persisted EvidenceProof demanded",
+    "proof proposition / requirement": "ALREADY_CURRENT: E2-EXTERNAL-REQUIREMENT",
+    "proof rule": "ALREADY_CURRENT native rule_known requirement and installed V02 validation/support definitions"
+  },
+  "REENTRY_ELIGIBILITY_CREATED": "NO",
+  "REPLAY_CONTRACT": "reproduce historical reentry events and recorded A10 results without new validation/epistemic decision; query Proof/C03 on replayed state; before reentry proof may be PROVED but C03 false",
+  "RESULT": "PARTIAL",
+  "RUNTIME_MODIFIED": "NO",
+  "SELECTED_OPTION": "NONE",
+  "WORK_PACKAGE": "REENTRY-R01",
+  "human_options": [
+    {
+      "effect": "only a subsequently complete sealed definition set, configuration only; no proof/eligibility instance or A12 execution",
+      "option": "AUTHORIZE_P04_A11_REENTRY_INSTALLATION",
+      "status": "NOT_DECISION_READY"
+    },
+    {
+      "effect": "no new installation; existing canonical semantics unchanged; readiness unqualified",
+      "option": "DECLINE_P04_A11_REENTRY_INSTALLATION"
+    }
+  ],
+  "sources": [
+    {
+      "first_line": 131,
+      "last_line": 171,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    {
+      "first_line": 40,
+      "last_line": 51,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md",
+      "sha256": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd"
+    },
+    {
+      "first_line": 9,
+      "last_line": 11,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_VALIDATION_V01_A10_CONTRACT.md",
+      "sha256": "2470c7a436db2810fc3ef41406e55d08d5aab0f4ad218646c013011aab7a5234"
+    },
+    {
+      "first_line": 7,
+      "last_line": 7,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_VALIDATION_V02_RESULT.md",
+      "sha256": "c5067f7dbf4bf00fd34e52d92a2051e4424bb8ba49e73f95fbcb2681d4164f87"
+    },
+    {
+      "first_line": 590,
+      "last_line": 627,
+      "path": "adapter/planner/core.py",
+      "sha256": "8756f1f5018abb8ab33aec689a6f3316c53c9c11cc45d99e457cc074a7f43ba9"
+    },
+    {
+      "first_line": 720,
+      "last_line": 798,
+      "path": "adapter/planner/core.py",
+      "sha256": "8756f1f5018abb8ab33aec689a6f3316c53c9c11cc45d99e457cc074a7f43ba9"
+    },
+    {
+      "first_line": 378,
+      "last_line": 401,
+      "path": "adapter/planner/gates.py",
+      "sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+    },
+    {
+      "first_line": 1218,
+      "last_line": 1225,
+      "path": "adapter/planner/model.py",
+      "sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759"
+    }
+  ],
+  "verification": {
+    "bundle_identity": "1b69d962865c23fa43b3ec362af096e39d72bbfc4dee2252d1e0d4914d487054",
+    "git_diff_check": "PASS",
+    "native_replay": "PASS",
+    "native_restore": "PASS",
+    "preservation": {
+      "changed": [],
+      "protected_files": 12748,
+      "result": "PASS"
+    },
+    "tests": "not run: contract-only; no capability PASS asserted"
+  }
+}

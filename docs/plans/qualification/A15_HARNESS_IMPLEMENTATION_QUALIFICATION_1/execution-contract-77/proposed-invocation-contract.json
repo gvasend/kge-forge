@@ -1,0 +1,88 @@
+{
+  "AUTHORITY_REFERENCE": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "qualification-A15-implementation-test-issued-grant-v1",
+    "sha256": "25395fb3c06be58a8c538c618b9e50b9d118aa415d0843968254d3f8e83dd8fa"
+  },
+  "BLOCKERS": [
+    "actual direct interpreter/dependency closure",
+    "physical manifest/binding/scratch/output paths and canonical hashes",
+    "fresh authority and non-stopped journal relationship",
+    "fault/lifecycle and independent observer bindings"
+  ],
+  "CONFINEMENT_PROFILE": "source _sandbox_command plus proposed host specification; not verified",
+  "ENVIRONMENT": {
+    "LC_ALL": "C.UTF-8",
+    "PATH": "/usr/bin:/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "exact 0,1,7,101 test schedule",
+    "PYTHONPATH": "/home/gvasend/app/kge-forge"
+  },
+  "FRESH_AUTHORITY_IDENTITY": null,
+  "FULL_EXECUTABLE_INVOCATION_COMPLETE": false,
+  "INPUT_PATHS": "Exact new immutable manifest and Package76 fixtures/oracles; physical files unbound",
+  "INTERPRETER_IDENTITY": null,
+  "OUTPUT_PATHS": null,
+  "RESOURCE_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  },
+  "ROLES": {
+    "READER": {
+      "ARGV": [
+        "/usr/bin/python3",
+        "-m",
+        "adapter.qualification_a15.reader",
+        "<reader-binding-path>",
+        "<approved-scratch>",
+        "<sha256-canonical-binding>"
+      ],
+      "CWD": "/code within sandbox",
+      "EXPECTED_EXIT": "0 exact READER_RESULT;2 ProtocolError; signal/uncaught error independently observed",
+      "MAIN_ARGUMENT_COUNT": 3
+    },
+    "SUPERVISOR": {
+      "ARGV": [
+        "/usr/bin/python3",
+        "-m",
+        "adapter.qualification_a15.supervisor",
+        "<canonical-manifest-path>",
+        "<sha256-canonical-manifest>"
+      ],
+      "CWD": "direct trusted controller workspace, not a proof of test profile",
+      "EXPECTED_EXIT": "0 only full semantic success;2 caught ProtocolError/OSError; uncaught exceptions may exit1; full fault qualifier unresolved",
+      "MAIN_ARGUMENT_COUNT": 2
+    },
+    "WORKER": {
+      "ARGV": [
+        "/usr/bin/python3",
+        "-m",
+        "adapter.qualification_a15.worker",
+        "<request-path>.binding",
+        "<approved-scratch>",
+        "<sha256-canonical-binding>"
+      ],
+      "CWD": "/code within sandbox",
+      "EXPECTED_EXIT": "0 with exact WORKER_RESULT;2 ProtocolError; signal/uncaught error independently observed",
+      "MAIN_ARGUMENT_COUNT": 3
+    }
+  },
+  "SOURCE_MANIFEST_PIN": {
+    "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/execution-contract-77/executable-source-manifest.json",
+    "RAW_SHA256": "c214356cefb089754e6138e9176f9701eaaf679d673673e6f50de930b89be85e"
+  }
+}

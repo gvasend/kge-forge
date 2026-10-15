@@ -1,0 +1,9 @@
+{
+  "exit_code": 1,
+  "mode": "read",
+  "ordering": "reverse",
+  "reader": 1,
+  "seed": 0,
+  "stderr": "Traceback (most recent call last):\n  File \"adapter/tests/qualify_reentry_r04.py\", line 196, in <module>\n    {'write':write,'read':reader,'reproduce':reproduce,'reproduce_capture':reproduce_capture,'supplement':supplement}[sys.argv[1]]()\n  File \"adapter/tests/qualify_reentry_r04.py\", line 156, in reader\n    actual=read(R/entry['path'],entry['identity'],sys.argv[2]=='reverse' if len(sys.argv)>2 else False)\n  File \"adapter/tests/qualify_reentry_r04.py\", line 50, in read\n    reordered=permute(b);assert c.bundle_bytes(b)==c.bundle_bytes(reordered);b=reordered\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 582, in bundle_bytes\n    _replay(bundle)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 453, in _replay\n    m.validate_model(bundle.current)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/model.py\", line 633, in validate_model\n    validate_records(snapshot)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/validation_transaction.py\", line 227, in validate_records\n    i.require(inst is not None and inst.result is m.ValidationOutcome.PASS and inst.currentness is m.ValidationState.ACCEPTED and inst.inputs==r.input_identities and inst.dossier==r.provenance.identity,'VALIDATION_PROJECTION_REQUIRED')\n  File \"/home/gvasend/app/kge-forge/adapter/planner/installation.py\", line 20, in require\n    raise m.PlannerError(reason)\nadapter.planner.model.PlannerError: VALIDATION_PROJECTION_REQUIRED\n",
+  "stdout": ""
+}

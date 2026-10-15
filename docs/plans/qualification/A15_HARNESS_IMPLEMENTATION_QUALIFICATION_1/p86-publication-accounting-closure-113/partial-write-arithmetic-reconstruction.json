@@ -1,0 +1,23 @@
+{
+  "ALL_AUTHORITATIVE_ACCOUNTING_COMPLETE": false,
+  "API_LEVEL_ACCOUNTING_COMPLETE": true,
+  "BYTES_PERSISTED": null,
+  "CONSERVATIVE_BOUND_IS_EXACT_DEFICIT": false,
+  "CONSERVATIVE_BOUND_IS_OBSERVED_USAGE": false,
+  "ERROR_POLICY": "Outer except attempts one bounded error emit then exits2; if error emit fails it is swallowed, causing missing evidence rather than successful reconstruction",
+  "FORMULA": "Per record N+(N-1)+...+1=N(N+1)/2; every successful call advances at least1; zero/error ends emit. Three admitted records provide conservative maximum, not exact attainable data size.",
+  "INTERRUPTED_WRITE_POLICY": "No explicit payload InterruptedError retry. Python/runtime syscall restart behavior is outside source API-call arithmetic and requires separate domain definition if counted.",
+  "MAX_EMIT_CALLS": 3,
+  "MAX_LOGICAL_BYTES": 24576,
+  "MAX_RECORD_BYTES": 8192,
+  "MAX_SUBMITTED_BYTES_PYTHON_API": 100675584,
+  "MAX_TRANSFERRED_BYTES": 24576,
+  "MAX_WRITE_CALLS": 24576,
+  "MAX_WRITE_CALLS_PER_EMIT": 8192,
+  "RETAINED112_PIN": {
+    "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/p86-launcher-observer-closure-112/payload-partial-write-accounting.json",
+    "sha256": "5bef7150ac739a94ab96ad256fcf64b07b74d9082017e599a4800c993a31d92b"
+  },
+  "RETRY_POLICY": "Positive short-write suffix continuation within same emit only; no service/probe relaunch retry authorized",
+  "ZERO_PROGRESS_POLICY": "n<=0 raises OUTPUT_WRITE; no loop retry for zero progress"
+}

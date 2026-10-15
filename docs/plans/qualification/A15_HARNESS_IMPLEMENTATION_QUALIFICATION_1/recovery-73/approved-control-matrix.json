@@ -1,0 +1,131 @@
+{
+  "APPROVED_ENVIRONMENT_PIN": {
+    "PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_AUTHORITY_70/environment-resource-permission-contract.json",
+    "RAW_SHA256": "c074b5f239917ddb14f6251bef87d0fa52e503c4b58d633d2e87bd2412cd7164"
+  },
+  "CONFINEMENT_PREDICATE": {
+    "APPLIES": "Before any native synthetic call",
+    "EXACT_RULE": "Independent launcher confines inputs to readonly exact pinned code/runtime libraries, only the new test module, immutable synthetic fixtures/oracles and copied native policy. Real checkpoint, 19 ledgers, Package59 real inputs, real oracles and runtime output path are not mounted/readable by the native test child. Scratch output row is the only writable fixture resource. Network namespace isolated with no external interfaces/routes, inherited descriptors closed, environment allowlisted, no host privilege escalation. Verify actual namespace/mount/access properties from a trusted bounded metadata preflight after approval; unknown mechanism/usability denies native testing.",
+    "PREDICATE_ID": "EP70-CONFINEMENT",
+    "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+  },
+  "CONTROL_MATRIX": [
+    {
+      "CONTROL_ID": "PROCESS_ISOLATION",
+      "ENFORCER": "OS namespaces or independently qualified equivalent + controlled launcher",
+      "MANDATORY_BEHAVIOR": "Fresh worker/reader contexts and distinct state; independent own-child wait",
+      "NON_SUBSTITUTION_RULE": "Not established by a process name or schema"
+    },
+    {
+      "CONTROL_ID": "FILESYSTEM_BOUNDARY",
+      "ENFORCER": "OS mount/access confinement + launcher allowlist + exact path validation",
+      "MANDATORY_BEHAVIOR": "Readonly code/fixtures/oracles/policy, only assigned output row writable, real inputs not exposed",
+      "NON_SUBSTITUTION_RULE": "Python path checks alone do not enforce filesystem isolation"
+    },
+    {
+      "CONTROL_ID": "NETWORK_BOUNDARY",
+      "ENFORCER": "OS private network namespace or independently qualified equally strong deny mechanism",
+      "MANDATORY_BEHAVIOR": "No external interfaces/routes/access; local namespace setup must itself be authorised",
+      "NON_SUBSTITUTION_RULE": "Never remove --unshare-net or use host network to pass"
+    },
+    {
+      "CONTROL_ID": "LIVE_AND_TOTAL_CHILDREN",
+      "ENFORCER": "Trusted supervisor accounting + OS containment where needed + independently checked closed roles",
+      "MANDATORY_BEHAVIOR": "4 live children, 128 launches per campaign",
+      "NON_SUBSTITUTION_RULE": "Direct-child reservations are not proof of arbitrary descendant confinement"
+    },
+    {
+      "CONTROL_ID": "CPU_MEMORY_FILES_FDS",
+      "ENFORCER": "Kernel rlimits + launcher inheritance + independent observation",
+      "MANDATORY_BEHAVIOR": "30 CPU seconds, 1GiB address space, 16MiB file, 64 FDs",
+      "NON_SUBSTITUTION_RULE": "Unsupported limits deny entry"
+    },
+    {
+      "CONTROL_ID": "WALL_AND_CAMPAIGN",
+      "ENFORCER": "Supervisor/controller monotonic deadlines, owned process-group cleanup and immutable budget audit",
+      "MANDATORY_BEHAVIOR": "60s child, 600s campaign, 64MiB written bytes, zero retries",
+      "NON_SUBSTITUTION_RULE": "Record/measure all writes and processes; no budget reset"
+    },
+    {
+      "CONTROL_ID": "TERMINATION_AND_HANDOFF",
+      "ENFORCER": "Independent supervisor own-child wait + exact publication/handoff verification",
+      "MANDATORY_BEHAVIOR": "Readers only after successful writer exit and exact output verification",
+      "NON_SUBSTITUTION_RULE": "Handoff/worker success cannot establish exit"
+    },
+    {
+      "CONTROL_ID": "AUDIT_AND_FAILURE",
+      "ENFORCER": "Trusted external controller + protected append-only evidence",
+      "MANDATORY_BEHAVIOR": "Fail closed, preserve first counterexample and immutable starting input; no automatic retry",
+      "NON_SUBSTITUTION_RULE": "No qualification from self report"
+    }
+  ],
+  "P61_PROCESS_CONTRACT_PIN": {
+    "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+    "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+  },
+  "P70_PHASE_GUARDS": {
+    "CONSTRUCTION": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-AUDIT"
+    ],
+    "FAKE_PROTOCOL_TEST": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-CODE-SEAL",
+      "EP70-CONFINEMENT",
+      "EP70-LIMITS",
+      "EP70-PROCESS",
+      "EP70-AUDIT"
+    ],
+    "FINAL_SEAL": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-CODE-SEAL",
+      "EP70-CONFINEMENT",
+      "EP70-LIMITS",
+      "EP70-PHASE",
+      "EP70-FIXTURE",
+      "EP70-PROCESS",
+      "EP70-NATIVE-SCOPE",
+      "EP70-AUDIT"
+    ],
+    "NATIVE_SYNTHETIC_TEST": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-CODE-SEAL",
+      "EP70-CONFINEMENT",
+      "EP70-LIMITS",
+      "EP70-PHASE",
+      "EP70-FIXTURE",
+      "EP70-PROCESS",
+      "EP70-NATIVE-SCOPE",
+      "EP70-AUDIT"
+    ],
+    "TRUSTED_METADATA_PREFLIGHT": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-LIMITS",
+      "EP70-AUDIT"
+    ]
+  },
+  "RESOURCE_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  }
+}

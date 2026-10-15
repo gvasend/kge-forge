@@ -1,0 +1,61 @@
+{
+  "APPROVAL_EVIDENCE": null,
+  "CURRENT_LIFECYCLE_STATE": "DRAFT",
+  "EFFECTIVE_EVIDENCE": null,
+  "EVENT_REQUIRED_FIELDS": [
+    "charter_content_identity",
+    "charter_version",
+    "from_state",
+    "to_state",
+    "actor_identity_or_authorized_role",
+    "actor_authority_evidence",
+    "decision_evidence_identity",
+    "effective_boundary",
+    "predecessor_lifecycle_record_identity",
+    "historical_exclusions"
+  ],
+  "INITIAL_STATE": "DRAFT",
+  "MULTI_TRANSITION_DECISION": "One authenticated owner decision may expressly acknowledge review, approve and make effective; create three ordered records referencing the same decision and distinct predecessor links. No selection or record is created now.",
+  "ORDER_RULE": "Append-only explicit transitions; no skipped state, implicit transitive approval, backdating or proposal-as-authority. DRAFT is recorded under the preparation request; all later transitions require explicit authority evidence.",
+  "SCHEMA_ID": "KGE-FORGE-QUALIFICATION-CHARTER-LIFECYCLE-1",
+  "STATES": [
+    "DRAFT",
+    "REVIEWED",
+    "APPROVED",
+    "EFFECTIVE",
+    "SUPERSEDED",
+    "REVOKED"
+  ],
+  "TRANSITIONS": [
+    {
+      "ACTOR": "Project owner or separately explicitly designated charter reviewer",
+      "EVIDENCE": "Exact charter digest/version, reviewer identity or role designation, independent qualification report pin, explicit review acknowledgement; preparation/test PASS alone is not a transition",
+      "FROM": "DRAFT",
+      "TO": "REVIEWED"
+    },
+    {
+      "ACTOR": "Project owner acting under the initiating declaration",
+      "EVIDENCE": "Authenticated explicit charter approval of exact digest/version, scope and exclusions; no inferred selection",
+      "FROM": "REVIEWED",
+      "TO": "APPROVED"
+    },
+    {
+      "ACTOR": "Project owner",
+      "EVIDENCE": "Explicit effective/adoption boundary for same approved digest/version; record distinct ordered transition even if one decision expressly includes approval and activation",
+      "FROM": "APPROVED",
+      "TO": "EFFECTIVE"
+    },
+    {
+      "ACTOR": "Project owner",
+      "EVIDENCE": "Explicit successor version/digest approved and made effective, predecessor reference and effective boundary; preserve old charter/grants/evidence unchanged",
+      "FROM": "EFFECTIVE",
+      "TO": "SUPERSEDED"
+    },
+    {
+      "ACTOR": "Project owner",
+      "EVIDENCE": "Explicit revocation record naming charter digest/version, boundary and dependent-grant disposition; do not rewrite historical validity",
+      "FROM": "EFFECTIVE",
+      "TO": "REVOKED"
+    }
+  ]
+}

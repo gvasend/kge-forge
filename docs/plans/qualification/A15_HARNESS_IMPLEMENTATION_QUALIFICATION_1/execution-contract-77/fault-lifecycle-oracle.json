@@ -1,0 +1,747 @@
+{
+  "ADAPTER_OUTPUT_USED_AS_ORACLE": false,
+  "FAILED_NATIVE_RESULT_FIELDS_INVENTED": false,
+  "FAULTS": [
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=WORKER_LAUNCH_FAILED); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "No child PID/child-exit event exists when launch fails"
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "WORKER_LAUNCH_FAILED"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_NEW_FILES"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": "ProtocolError",
+        "API_EXCEPTION_TYPE": "ProtocolError",
+        "CLASSIFICATION": "EXACT",
+        "CLI_EXIT": 2,
+        "CLI_STDERR": "ProtocolError\n",
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-LAUNCH-FAILURE",
+      "FAULT_INJECTION_POINT": "Inject OSError at subprocess.Popen after valid fresh reservation",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=WORKER_TIMEOUT); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "Own child process group SIGKILL, reaped; timeout=true; returncode -9 if that kill is the terminating event"
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "WORKER_TIMEOUT"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_NEW_FILES"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": "ProtocolError",
+        "API_EXCEPTION_TYPE": "ProtocolError",
+        "CLASSIFICATION": "EXACT",
+        "CLI_EXIT": 2,
+        "CLI_STDERR": "ProtocolError\n",
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-WORKER-TIMEOUT",
+      "FAULT_INJECTION_POINT": "TIMEOUT fake binding; worker sleeps61; fixed60s parent deadline",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=CHILD_NONZERO_EXIT); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "Worker CLI stderr EXPECTED_FAKE_WORKER_FAILURE newline and exit2; parent observes nonzero"
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "CHILD_NONZERO_EXIT"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_NEW_FILES"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": "ProtocolError",
+        "API_EXCEPTION_TYPE": "ProtocolError",
+        "CLASSIFICATION": "EXACT",
+        "CLI_EXIT": 2,
+        "CLI_STDERR": "ProtocolError\n",
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-WORKER-NONZERO-EXIT",
+      "FAULT_INJECTION_POINT": "NONZERO fake binding after validated synthetic input",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=HANDOFF_BINDING_MISMATCH); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "Writer exit0 observed before handoff binding fails"
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "HANDOFF_BINDING_MISMATCH"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "CORRUPTED_HASH_HANDOFF"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "EXACT_POSITIVE_PUBLICATION"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": "ProtocolError",
+        "API_EXCEPTION_TYPE": "ProtocolError",
+        "CLASSIFICATION": "EXACT",
+        "CLI_EXIT": 2,
+        "CLI_STDERR": "ProtocolError\n",
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "Existing exact worker-result schema with corrupted-handoff ID, not positive oracle ID"
+      },
+      "FAULT_ID": "F77-INVALID-HANDOFF",
+      "FAULT_INJECTION_POINT": "BAD_HANDOFF fake binding, publication bytes correct but handoff hash zero",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=CHILD_NONZERO_EXIT); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "Worker stderr IMMUTABLE_OUTPUT_CONFLICT newline, exit2; no overwrite"
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "CHILD_NONZERO_EXIT"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "CONFLICT_BYTES_REMAIN_UNCHANGED"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": "ProtocolError",
+        "API_EXCEPTION_TYPE": "ProtocolError",
+        "CLASSIFICATION": "EXACT",
+        "CLI_EXIT": 2,
+        "CLI_STDERR": "ProtocolError\n",
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-PUBLICATION-CONFLICT",
+      "FAULT_INJECTION_POINT": "Manifest-sealed preexisting conflicting published-output.json in own synthetic row",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=UNDETERMINED); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "No READER_MISMATCH fault in current binding enum. Changing expected before writer comparison fails earlier at COMPLETE_OUTPUT_MISMATCH; readonly input fault injection point not bound."
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "UNDETERMINED"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "UNDETERMINED"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "UNDETERMINED"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "UNDETERMINED"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": null,
+        "API_EXCEPTION_TYPE": null,
+        "CLASSIFICATION": "UNDETERMINED",
+        "CLI_EXIT": null,
+        "CLI_STDERR": null,
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-READER-MISMATCH",
+      "FAULT_INJECTION_POINT": "Approved reader-stage synthetic fault must corrupt comparison after successful writer comparison",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=UNDETERMINED); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "Aggregate category has multiple source/kernel outcomes. release/fail_closed accounting may mask root resource error and suppress first-counterexample audit."
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "UNDETERMINED"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "UNDETERMINED"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "UNDETERMINED"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "VALUE": "UNDETERMINED"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": null,
+        "API_EXCEPTION_TYPE": null,
+        "CLASSIFICATION": "UNDETERMINED",
+        "CLI_EXIT": null,
+        "CLI_STDERR": null,
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-RESOURCE-EXHAUSTION",
+      "FAULT_INJECTION_POINT": "Must specify one concrete CPU/AS/file/FD/live/total/byte/wall exhaustion case",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=WRONG_FIELD_SET); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "DETERMINISTICALLY_DERIVED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "No source first-counterexample audit at pre-try validation boundary; CLI error exit2"
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "WRONG_FIELD_SET"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_NEW_FILES"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": "WRONG_FIELD_SET",
+        "API_EXCEPTION_TYPE": "ProtocolError",
+        "CLASSIFICATION": "EXACT",
+        "CLI_EXIT": 2,
+        "CLI_STDERR": "WRONG_FIELD_SET\n",
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-INVALID-INPUT",
+      "FAULT_INJECTION_POINT": "Unknown top-level supervisor-request field, before try boundary",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=UNDETERMINED); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "Choose exactly OUTSIDE_SCRATCH or SYMLINK_PATH injection; current generic protected path also lacks approved resource/path/effect binding."
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "UNDETERMINED"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_NEW_FILES"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": null,
+        "API_EXCEPTION_TYPE": null,
+        "CLASSIFICATION": "UNDETERMINED",
+        "CLI_EXIT": null,
+        "CLI_STDERR": null,
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-PROTECTED-PATH",
+      "FAULT_INJECTION_POINT": "Binding output escapes declared scratch or uses symlink ancestor",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    },
+    {
+      "COMPLETENESS": "INCOMPLETE mandatory audit/first-counterexample/injection bindings",
+      "DERIVATION_RULE": "Static control flow and exact error constants, conditional on independently permitted fresh context; no adapter execution",
+      "EXPECTED_AUDIT_EVIDENCE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "REQUIRED": "Independently observed first counterexample, own-child lifecycle where applicable, retained immutable input and partial publication",
+        "SOURCE_LIMIT": "Healthy fresh accounting may emit first_counterexample(failure=ProtocolError,detail=UNDETERMINED); account(stop/release) errors can override it; pre-try invalid input emits none."
+      },
+      "EXPECTED_EXIT_OBSERVATION": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "PID_TIME_VALUES": "Observed independently at future execution; never invented",
+        "RULE": "No retry API/schema. Unknown-field gives WRONG_FIELD_SET pre-try; stopped ledger may first give GLOBAL_CAMPAIGN_WALL_LIMIT before GLOBAL_CAMPAIGN_STOPPED. Exact boundary/mode unbound."
+      },
+      "EXPECTED_FIRST_COUNTEREXAMPLE": {
+        "CLASSIFICATION": "UNDETERMINED",
+        "DEPENDENCY": "Exact fault/CLI boundary and fresh journal/resource accounting state + qualified independent audit observer",
+        "INTENDED_DETAIL": "UNDETERMINED"
+      },
+      "EXPECTED_HANDOFF_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NONE"
+      },
+      "EXPECTED_PUBLICATION_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_NEW_FILES"
+      },
+      "EXPECTED_READER_STATE": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": "NO_READERS"
+      },
+      "EXPECTED_RETRY_COUNT": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": 0
+      },
+      "EXPECTED_SUPERVISOR_RESULT": {
+        "API_EXCEPTION_MESSAGE": null,
+        "API_EXCEPTION_TYPE": null,
+        "CLASSIFICATION": "UNDETERMINED",
+        "CLI_EXIT": null,
+        "CLI_STDERR": null,
+        "EXPLANATION": "Current SUPERVISOR_RESULT schema represents success only; failure is exception/CLI exit, not an invented failed native record",
+        "PROTOCOL_RECORD": null
+      },
+      "EXPECTED_WORKER_RESULT_IF_ANY": {
+        "CLASSIFICATION": "EXACT",
+        "VALUE": null
+      },
+      "FAULT_ID": "F77-UNAUTHORIZED-RETRY",
+      "FAULT_INJECTION_POINT": "Unknown retry field in supervisor request OR stopped-campaign accounting",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "adapter/qualification_a15/supervisor.py",
+          "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+        },
+        {
+          "PATH": "adapter/qualification_a15/worker.py",
+          "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+        },
+        {
+          "PATH": "adapter/qualification_a15/contracts.py",
+          "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+        },
+        {
+          "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/failure-retry-matrix.json",
+          "RAW_SHA256": "d91fc7f689a8fc27df472589970fe98fd88a35e8c225b5d90112e3ef00743d82"
+        }
+      ],
+      "OBSERVED_RESULT": false,
+      "SYNTHETIC_INPUT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-a15-fake-fixture-content-v1",
+        "sha256": "99ab8847adbe2f26f74b9a5056597f31736012f529fd7c919f20db5a9dc914c8"
+      }
+    }
+  ],
+  "FAULT_ORACLE_COMPLETE": false
+}

@@ -1,0 +1,23 @@
+{
+  "snapshot_model":{"purpose":"canonical state serialization/cold restore","identity":"planner-snapshot-v1 SHA-256","events":"none","append":"none","trust":"model validation and provenance"},
+  "persistence_bundle_model":{"purpose":"append-only event persistence/replay","identity":"planner-bundle-v1","events":"ExecutionEvent ledger","append":"supported through codec commit/admit paths","trust":"validated ledger ancestry, source pins, parent/state identities"},
+  "snapshot_to_bundle_supported":false,"bundle_to_snapshot_supported":true,
+  "t01_event_ancestry_requirement":["append ordering","causal parent","pre-state binding","idempotence","replay","fork/conflict detection","provenance"],
+  "e2_persistence_history":{"P01":"SNAPSHOT_ONLY","P02":"SNAPSHOT_ONLY","T02":"SNAPSHOT_ONLY","HUMAN_HANDOFF":"SNAPSHOT_ONLY","T03":"SNAPSHOT_ONLY","T04":"SNAPSHOT_ONLY","P03_GATE":"SNAPSHOT_ONLY"},
+  "first_ancestry_loss":"EVENT_ANCESTRY_NEVER_ESTABLISHED",
+  "event_ancestry_never_established":true,
+  "t01_e2_compatibility":"INCOMPLETE",
+  "retrospective_ancestry_allowed":false,
+  "forward_event_genesis_supported":false,
+  "genesis_authority_required":true,
+  "minimum_reexecution_point":"REEXECUTE_E2_PREFIX_WITH_EVENT_PERSISTENCE (at least from P02 post-decision checkpoint)",
+  "runtime_capability_classification":"NEW_RUNTIME_CAPABILITY_REQUIRED",
+  "classification":"COMBINED",
+  "prior_semantic_qualification_preserved":["P01 model/action qualification","P02 selection/dossier/handoff/EXTERNAL_WAIT semantics","T02 typed validation/dossier admission","T03 decision capture semantics","T04 isolated ATTEST chain"],
+  "prior_ancestry_qualification_invalidated":["P03 T01-B parent-event claims","any claim that T04 snapshot is appendable evidence-ingress parent"],
+  "minimum_forward_path":"EVENT_GENESIS_CONTRACT then EVENT_PERSISTENCE_RUNTIME_CAPABILITY or reexecute prefix with event persistence",
+  "next_package":"EVENT_GENESIS_CONTRACT",
+  "next_package_ready":false,
+  "t01_b_result":"BLOCKED","t01_admission_bundle_retry_allowed":false,"e2_p03_retry_allowed":false,"e2_p04_ready":false,
+  "external_evidence_admitted":false,"e1_artifacts_modified":0,"production_effect":false
+}

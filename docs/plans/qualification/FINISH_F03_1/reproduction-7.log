@@ -1,0 +1,11 @@
+A09_A12_ISOLATED_PASS
+Traceback (most recent call last):
+  File "adapter/tests/qualify_finish_f03.py", line 232, in <module>
+    assert all(i.current(b,r) for r in b.current.installed_definitions if typ(r) in pi.TYPES or typ(r)=='ACTION_DEFINITION')
+  File "adapter/tests/qualify_finish_f03.py", line 178, in lifecycle
+    manifest=save(target,target_path)
+  File "adapter/tests/qualify_finish_f03.py", line 28, in semantic_view
+    if isinstance(value,(tuple,list)):return [computation_wire(v) for v in value]
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 148, in _wire
+    raise m.PlannerError('unsupported typed value')
+adapter.planner.model.PlannerError: unsupported typed value

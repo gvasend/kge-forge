@@ -1,0 +1,76 @@
+{
+  "CGROUP_MEMBERSHIP_RAW": "12:cpuset:/\n11:hugetlb:/\n10:freezer:/\n9:devices:/user.slice\n8:pids:/user.slice/user-1000.slice/session-3496.scope\n7:perf_event:/\n6:memory:/user.slice/user-1000.slice/session-3496.scope\n5:cpu,cpuacct:/user.slice\n4:rdma:/\n3:net_cls,net_prio:/\n2:blkio:/user.slice\n1:name=systemd:/user.slice/user-1000.slice/session-3496.scope\n0::/user.slice/user-1000.slice/session-3496.scope\n",
+  "CGROUP_MOUNTS": [
+    "3183 3182 0:30 / /sys/fs/cgroup/unified ro,nosuid,nodev,noexec,relatime master:10 - cgroup2 cgroup2 rw,nsdelegate",
+    "3184 3182 0:31 / /sys/fs/cgroup/systemd ro,nosuid,nodev,noexec,relatime master:11 - cgroup cgroup rw,xattr,name=systemd",
+    "3185 3182 0:34 / /sys/fs/cgroup/blkio ro,nosuid,nodev,noexec,relatime master:15 - cgroup cgroup rw,blkio",
+    "3186 3182 0:35 / /sys/fs/cgroup/net_cls,net_prio ro,nosuid,nodev,noexec,relatime master:16 - cgroup cgroup rw,net_cls,net_prio",
+    "3187 3182 0:36 / /sys/fs/cgroup/rdma ro,nosuid,nodev,noexec,relatime master:17 - cgroup cgroup rw,rdma",
+    "3188 3182 0:37 / /sys/fs/cgroup/cpu,cpuacct ro,nosuid,nodev,noexec,relatime master:18 - cgroup cgroup rw,cpu,cpuacct",
+    "3189 3182 0:38 / /sys/fs/cgroup/memory ro,nosuid,nodev,noexec,relatime master:19 - cgroup cgroup rw,memory",
+    "3190 3182 0:39 / /sys/fs/cgroup/perf_event ro,nosuid,nodev,noexec,relatime master:20 - cgroup cgroup rw,perf_event",
+    "3191 3182 0:40 / /sys/fs/cgroup/pids ro,nosuid,nodev,noexec,relatime master:21 - cgroup cgroup rw,pids",
+    "3192 3182 0:41 / /sys/fs/cgroup/devices ro,nosuid,nodev,noexec,relatime master:22 - cgroup cgroup rw,devices",
+    "3193 3182 0:42 / /sys/fs/cgroup/freezer ro,nosuid,nodev,noexec,relatime master:23 - cgroup cgroup rw,freezer",
+    "3194 3182 0:43 / /sys/fs/cgroup/hugetlb ro,nosuid,nodev,noexec,relatime master:24 - cgroup cgroup rw,hugetlb",
+    "3195 3182 0:44 / /sys/fs/cgroup/cpuset ro,nosuid,nodev,noexec,relatime master:25 - cgroup cgroup rw,cpuset"
+  ],
+  "CONFIG_FILES_IN_REPO": {
+    "dot_agents": [],
+    "dot_codex": []
+  },
+  "CONTROLLER_LIMIT_FILES": [
+    {
+      "MODE": "0o644",
+      "PATH": "/sys/fs/cgroup/pids/user.slice/user-1000.slice/session-3496.scope/pids.max",
+      "PROVENANCE": "Codex namespace file view; no write/delegation trial",
+      "UID": 65534,
+      "VALUE": "max"
+    },
+    {
+      "MODE": "0o644",
+      "PATH": "/sys/fs/cgroup/memory/user.slice/user-1000.slice/session-3496.scope/memory.limit_in_bytes",
+      "PROVENANCE": "Codex namespace file view; no write/delegation trial",
+      "UID": 65534,
+      "VALUE": "9223372036854771712"
+    },
+    {
+      "MODE": "0o644",
+      "PATH": "/sys/fs/cgroup/cpu,cpuacct/user.slice/cpu.cfs_quota_us",
+      "PROVENANCE": "Codex namespace file view; no write/delegation trial",
+      "UID": 65534,
+      "VALUE": "-1"
+    },
+    {
+      "MODE": "0o644",
+      "PATH": "/sys/fs/cgroup/cpu,cpuacct/user.slice/cpu.cfs_period_us",
+      "PROVENANCE": "Codex namespace file view; no write/delegation trial",
+      "UID": 65534,
+      "VALUE": "100000"
+    }
+  ],
+  "CWD": "/home/gvasend/app/kge-forge",
+  "DIRECT_HOST_PERMISSION_INFERRED": false,
+  "EXECUTABLE": "/usr/bin/python3.8",
+  "EXECUTABLE_SHA256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+  "GID": 1000,
+  "LIMITS_RAW": "Limit                     Soft Limit           Hard Limit           Units     \nMax cpu time              unlimited            unlimited            seconds   \nMax file size             unlimited            unlimited            bytes     \nMax data size             unlimited            unlimited            bytes     \nMax stack size            8388608              unlimited            bytes     \nMax core file size        0                    unlimited            bytes     \nMax resident set          unlimited            unlimited            bytes     \nMax processes             160375               160375               processes \nMax open files            1048576              1048576              files     \nMax locked memory         67108864             67108864             bytes     \nMax address space         unlimited            unlimited            bytes     \nMax file locks            unlimited            unlimited            locks     \nMax pending signals       160375               160375               signals   \nMax msgqueue size         819200               819200               bytes     \nMax nice priority         0                    0                    \nMax realtime priority     0                    0                    \nMax realtime timeout      unlimited            unlimited            us        \n",
+  "PROVENANCE": "Read-only proc/filesystem observation of current Codex tool metadata process; not direct ubuntu01 host shell",
+  "SECURITY_FIELDS": [
+    "Uid:\t1000\t1000\t1000\t1000",
+    "Gid:\t1000\t1000\t1000\t1000",
+    "Threads:\t1",
+    "CapEff:\t0000000000000000",
+    "NoNewPrivs:\t1",
+    "Seccomp:\t2"
+  ],
+  "UID": 1000,
+  "metadata_parent": {
+    "EXECUTABLE": "/home/gvasend/.codex/packages/app-server-daemon/releases/0.162.1-x86_64-unknown-linux-musl/bin/codex",
+    "RAW_SHA256": "628e35487d888a28f0427fc37501da529dd3d81fcbad7a2c3421c1e8670d92e1"
+  },
+  "namespace_init": {
+    "EXECUTABLE": "/home/gvasend/.codex/packages/app-server-daemon/releases/0.162.1-x86_64-unknown-linux-musl/bin/codex",
+    "RAW_SHA256": "628e35487d888a28f0427fc37501da529dd3d81fcbad7a2c3421c1e8670d92e1"
+  }
+}

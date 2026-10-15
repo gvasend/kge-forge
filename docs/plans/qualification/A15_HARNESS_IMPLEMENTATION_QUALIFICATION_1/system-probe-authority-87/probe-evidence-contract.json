@@ -1,0 +1,58 @@
+{
+  "CLEANUP_RULE": {
+    "EXACT_ALLOWED_STOP_ARGV": [
+      "/bin/systemctl",
+      "--no-ask-password",
+      "stop",
+      "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service"
+    ],
+    "EXACT_UNLOAD_CHECK_ARGV": [
+      "/bin/systemctl",
+      "--no-ask-password",
+      "--no-pager",
+      "show",
+      "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+      "--property=LoadState",
+      "--property=ActiveState"
+    ],
+    "ID": "CLEANUP",
+    "PROCEDURE": "stop only this exact unit if still active or observer cap/deadline fails; within25s budget. Verify no active tasks, no persistent unit, no /run/systemd/transient/<unit>; collect or empty/remove cgroup state read-only. Never reset attempt receipt. Cleanup error secondary to first failure; no relaunch."
+  },
+  "DOES_NOT_PROVE": [
+    "excess-task rejection",
+    "full H77 synthetic campaign qualification",
+    "cumulative-byte enforcement",
+    "A15 acceptance"
+  ],
+  "FIELD_BINDINGS": {
+    "KERNEL_PIDS_CURRENT": "observed integer1..8; retained raw value/time",
+    "KERNEL_PIDS_MAX": "8",
+    "OBSERVATION_PROVENANCE": "raw service snapshots plus independent manager/kernel/parent captures with actual times",
+    "SERVICE_EXIT_STATUS": "independent manager/parent outcome; no success inferred from collection or service self-report",
+    "SERVICE_PIDS_CGROUP": "/system.slice/kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "SERVICE_PROCESS_ID": "payload SERVICE_PID independently matches manager MainPID and host /proc/<PID>/cgroup",
+    "SERVICE_SYSTEMD_CGROUP": "separately captured own name=systemd path, never used as pids substitute",
+    "SYSTEMD_SERVICE_IDENTITY": "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "SYSTEMD_TASKS_MAX": 8
+  },
+  "MATCH_PROVES": "configured service-specific limit only",
+  "NO_PROBE_EXECUTED": true,
+  "ONE_SERVICE_ONLY": true,
+  "OUTPUT_BOUNDARY": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-process-enforcement-86/future-authorized-observation/kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service/",
+  "RAW_FRAMING": {
+    "PAYLOAD_EXECUTED_TO_DERIVE_FRAMING": false,
+    "RULE": "Decode complete raw JSON records using the exact source-defined separator; preserve raw bytes and timestamps.",
+    "SUFFIX_UTF8_HEX": "0a"
+  },
+  "REQUIRED_FIELDS": [
+    "SYSTEMD_SERVICE_IDENTITY",
+    "SERVICE_PROCESS_ID",
+    "SERVICE_PIDS_CGROUP",
+    "SERVICE_SYSTEMD_CGROUP",
+    "SYSTEMD_TASKS_MAX",
+    "KERNEL_PIDS_MAX",
+    "KERNEL_PIDS_CURRENT",
+    "SERVICE_EXIT_STATUS",
+    "OBSERVATION_PROVENANCE"
+  ]
+}

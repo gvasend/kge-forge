@@ -1,0 +1,191 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "N12": {
+    "RESULT": "PASS",
+    "actual_phase_events": [
+      "planner-event-v1:9bf3989eb23751878e26de543c1d92fd5dd12ccc4acc0cb13307ec1c1044f1b5",
+      "planner-event-v1:e48d97753ad6a5e2f9b263dc210ff6e92d3c207b94eb39393e1ea3e3d40caaa1"
+    ],
+    "canonical_assurance": "Selection/history alone cannot establish execution/result; no ledger or Knowledge is fabricated",
+    "declarations_or_reports_not_occurrences": true,
+    "global_P05_case_executed": false,
+    "independent_terms": [
+      {
+        "RESULT": "PASS",
+        "id": "snapshot_substituted_for_trace",
+        "native_or_acceptance_evidence": {
+          "boundary": "native occurrence type oracle",
+          "exception_type": "Divergence",
+          "reason": {
+            "ACTUAL": "Snapshot",
+            "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+            "EVENT_ID": null,
+            "EXPECTED": "PersistenceBundle",
+            "FIRST_COUNTEREXAMPLE": "native trace type",
+            "STATE_ID": null
+          },
+          "rejected": true
+        }
+      },
+      {
+        "RESULT": "PASS",
+        "id": "report_substituted_for_trace",
+        "native_or_acceptance_evidence": {
+          "boundary": "native occurrence type oracle",
+          "exception_type": "Divergence",
+          "reason": {
+            "ACTUAL": "dict",
+            "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+            "EVENT_ID": null,
+            "EXPECTED": "PersistenceBundle",
+            "FIRST_COUNTEREXAMPLE": "native trace type",
+            "STATE_ID": null
+          },
+          "rejected": true
+        }
+      },
+      {
+        "RESULT": "PASS",
+        "id": "request_without_wait",
+        "native_or_acceptance_evidence": {
+          "boundary": "complete two-event occurrence oracle",
+          "exception_type": "Divergence",
+          "intermediate_native_state_legal": true,
+          "reason": {
+            "ACTUAL": 1,
+            "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+            "EVENT_ID": null,
+            "EXPECTED": 2,
+            "FIRST_COUNTEREXAMPLE": "exact event count",
+            "STATE_ID": null
+          },
+          "rejected": true
+        }
+      },
+      {
+        "RESULT": "PASS",
+        "id": "oracle_used_as_operation_input",
+        "native_or_acceptance_evidence": {
+          "boundary": "sealed writer input allowlist; comparison event never submitted",
+          "exception_type": "Divergence",
+          "reason": {
+            "ACTUAL": "COMPARISON_ORACLE",
+            "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+            "EVENT_ID": null,
+            "EXPECTED": "ACTUAL_RESTORED_STATE_COMMAND",
+            "FIRST_COUNTEREXAMPLE": "writer native operand origin",
+            "STATE_ID": null
+          },
+          "rejected": true
+        }
+      }
+    ],
+    "no_ActionResult_Knowledge_root_slot_effect": true,
+    "original_historical_assurance": "UNPROVEN"
+  },
+  "N12_MAPPING": "PASS",
+  "N13": {
+    "RESULT": "PASS",
+    "actual_phase_events": [
+      "planner-event-v1:9bf3989eb23751878e26de543c1d92fd5dd12ccc4acc0cb13307ec1c1044f1b5",
+      "planner-event-v1:e48d97753ad6a5e2f9b263dc210ff6e92d3c207b94eb39393e1ea3e3d40caaa1"
+    ],
+    "canonical_assurance": "A prospective output/Action definition is not an actual supplied result; wrong event/result cannot create Knowledge/root/slot effects",
+    "declarations_or_reports_not_occurrences": true,
+    "global_P05_case_executed": false,
+    "independent_terms": [
+      {
+        "RESULT": "PASS",
+        "id": "wrong_event_type",
+        "native_or_acceptance_evidence": {
+          "boundary": "native commit_event/apply_receipt",
+          "exception_type": "PlannerError",
+          "reason": "result is not for the currently selected action",
+          "rejected": true
+        }
+      },
+      {
+        "RESULT": "PASS",
+        "id": "wrong_request_binding",
+        "native_or_acceptance_evidence": {
+          "boundary": "sealed request source/context",
+          "exception_type": "Divergence",
+          "reason": {
+            "ACTUAL": "8e5b63eaa2b173c3975ca58da25e6163a6da9239fffe8dae0f55ac1ca7291cba",
+            "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+            "EVENT_ID": null,
+            "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+            "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+            "STATE_ID": "planner-snapshot-v1:8e5b63eaa2b173c3975ca58da25e6163a6da9239fffe8dae0f55ac1ca7291cba"
+          },
+          "rejected": true
+        }
+      },
+      {
+        "RESULT": "PASS",
+        "id": "later_evidence_transition",
+        "native_or_acceptance_evidence": {
+          "boundary": "native absent-evidence receipt admission",
+          "exception_type": "PlannerError",
+          "reason": "receipt requires admitted concrete bytes",
+          "rejected": true
+        }
+      },
+      {
+        "RESULT": "PASS",
+        "id": "prospective_identity_substituted_original",
+        "native_or_acceptance_evidence": {
+          "boundary": "sealed historical/END scope mapping guard",
+          "exception_type": "Divergence",
+          "reason": {
+            "ACTUAL": [
+              "planner-event-v1:9bf3989eb23751878e26de543c1d92fd5dd12ccc4acc0cb13307ec1c1044f1b5",
+              "planner-event-v1:e48d97753ad6a5e2f9b263dc210ff6e92d3c207b94eb39393e1ea3e3d40caaa1"
+            ],
+            "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+            "EVENT_ID": null,
+            "EXPECTED": null,
+            "FIRST_COUNTEREXAMPLE": "no original identity alias",
+            "STATE_ID": null
+          },
+          "rejected": true
+        }
+      }
+    ],
+    "no_ActionResult_Knowledge_root_slot_effect": true,
+    "original_historical_assurance": "UNPROVEN"
+  },
+  "N13_MAPPING": "PASS",
+  "ORIGINAL_A06_HISTORICAL_REQUEST_WAIT_TRACE": "UNPROVEN",
+  "PROSPECTIVE_A06_TRACE_IS_ORIGINAL_TRACE": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "RESULT": "PASS",
+  "actual_native_event_ids": [
+    "planner-event-v1:9bf3989eb23751878e26de543c1d92fd5dd12ccc4acc0cb13307ec1c1044f1b5",
+    "planner-event-v1:e48d97753ad6a5e2f9b263dc210ff6e92d3c207b94eb39393e1ea3e3d40caaa1"
+  ],
+  "actual_native_witness": {
+    "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_EXECUTION_1/actual-native-witness.json",
+    "pointer": "",
+    "raw_sha256": "0bdb6d0d56482b83f01778ae24995c126098bedf923e845c7e849c9287018589"
+  },
+  "classification": "AUTHORIZED_PROSPECTIVE_REPLACEMENT",
+  "full_original_END_ancestry_waived": false,
+  "governing_contract": {
+    "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1.json",
+    "pointer": "",
+    "raw_sha256": "2346b2b574a665be862c1460fd343a12e959a216f40a354a1f89188af02f2700"
+  },
+  "governing_mapping": {
+    "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/END-N12-N13-mapping.json",
+    "pointer": "",
+    "raw_sha256": "de1ebe08613c112113ebd3c12a842078aeddbcb7b232a049a4cd3dd8cfa9e95b"
+  },
+  "historical_identity_alias": false,
+  "input": "E2-A06.request_wait_event_trace",
+  "no_new_qualification_scope_or_grant": true,
+  "only_A06_binding_closed": true,
+  "original_event_ids": null,
+  "original_parent_ids": null,
+  "selected_option": "AUTHORIZE_PROSPECTIVE_P05_A06_REQUEST_WAIT_QUALIFICATION"
+}

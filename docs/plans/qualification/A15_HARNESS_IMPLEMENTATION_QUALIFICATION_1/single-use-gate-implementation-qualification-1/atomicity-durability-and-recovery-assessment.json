@@ -1,0 +1,35 @@
+{
+  "AUDIT": "Distinct consumption/attempt/actual-created-process/observation/failure records. Preauthority failures return exceptions for qualified controller audit; no unauthorized store writes. Process creation error is LAUNCH_FAILED, missing observation is OUTCOME_UNKNOWN. Inert callback is marked synthetic, not a historical probe event",
+  "CONCURRENCY": "Nonblocking owner epoch lock covers validation/claim/launch, plus exclusive permanent identity-keyed file; no stale-lock cleanup",
+  "CONCURRENCY_CRASH_BEHAVIOR_TESTED": false,
+  "CRASH_HOOKS": [
+    "BEFORE_CLAIM",
+    "DURING_CLAIM",
+    "AFTER_FILE_FSYNC",
+    "AFTER_DIRECTORY_FSYNC",
+    "AFTER_CLAIM_BEFORE_LAUNCH",
+    "DURING_LAUNCH",
+    "AFTER_LAUNCH_BEFORE_OBSERVATION",
+    "AFTER_COMPLETION_BEFORE_AUDIT"
+  ],
+  "DURABILITY": "Complete write loop; file fsync; directory fsync; separate readonly identity/byte/inode verifier before callback/launch",
+  "EXCLUSIVE_RESERVATION": "O_CREAT|O_EXCL|O_NOFOLLOW using qualified store directory descriptor; duplicate identical record is never success",
+  "HOST_DURABILITY_VERIFIED": false,
+  "POWER_LOSS_DURABILITY_CLAIMED": false,
+  "PRODUCTION_LIMITATION": "Real entry explicitly disabled by QUALIFIED_REAL_AUTHORITY_BINDING=None. Gate-local normalized receipt schemas are prototypes; not mappings from actual issued H77 records. Qualified actual authority-reader/profile integration remains missing",
+  "RECOVERY": "Readonly: consumed or unknown with launch_permitted=False and retry_allowed=False; absent record does not itself restore permission",
+  "RESERVATION_AMBIGUITY": "Reservation observer marks potential consumption at atomic create, before write or barriers; errors never delete or recreate token",
+  "RESULT": "PASS_STATIC_CORE_PARTIAL_REAL_AUTHORITY_INTEGRATION",
+  "SOURCE_REVIEW_REPAIRS": [
+    "Frozen canonical copy of caller entry before validation",
+    "Exact integer types for limits, attempt, epoch and retry policy",
+    "Reservation marker applied immediately after exclusive create",
+    "Bound parent launch CWD through profile without leaking host-directory descriptors into child",
+    "Static reviewer strengthened to inspect every launch/retry permission return after a mutation exposed a reviewer coverage gap"
+  ],
+  "SOURCE_SHA256": {
+    "adapter/qualification_h77_02_gate/__init__.py": "59031ec4d8b935b54349707b2d95d1aed16a14b3e26add3d536c0953def2876f",
+    "adapter/qualification_h77_02_gate/gate.py": "e304e19f32bd74c11118eb096ed83982ff85f8019cedc5174375db265502607c",
+    "adapter/tests/test_h77_02_launch_gate.py": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+  }
+}

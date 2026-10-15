@@ -1,0 +1,1631 @@
+{
+  "HEAD_publications": [
+    {
+      "after": "E2-CHECK",
+      "head": {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3"
+        },
+        "command": null,
+        "previous": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+        },
+        "schema": "PLANNER-HEAD-1"
+      }
+    },
+    {
+      "after": "E2-COLLECT",
+      "head": {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39"
+        },
+        "command": null,
+        "previous": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3"
+        },
+        "schema": "PLANNER-HEAD-1"
+      }
+    }
+  ],
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "N12_checks": [
+    {
+      "actionable": [
+        "E2-CHECK",
+        "E2-COLLECT"
+      ],
+      "control": "RUNNABLE",
+      "defects": [],
+      "full_computation": {
+        "actionable": [
+          {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          }
+        ],
+        "blocked": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            [
+              "ACTION_COMPLETED:E2-PREPARE",
+              "DECISION_NOT_READY"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            [
+              "ACTION_COMPLETED:E2-CHECK",
+              "ACTION_COMPLETED:E2-COLLECT"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "ACTION_COMPLETED:E2-DECIDE",
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ],
+        "branches": [
+          [
+            {
+              "$type": "ConditionId",
+              "value": "E2-ROOT"
+            },
+            {
+              "type": "BranchState",
+              "value": "RUNNABLE_INTERNAL"
+            }
+          ]
+        ],
+        "control": {
+          "type": "ControlState",
+          "value": "RUNNABLE"
+        },
+        "defects": [],
+        "frontier": [],
+        "human_batches": [],
+        "human_routing": {
+          "type": "HumanRouting",
+          "value": "RUNNABLE"
+        },
+        "selection": {
+          "criterion": 3,
+          "selected": {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          "steps": [
+            "CRITERION_1_TIED",
+            "CRITERION_2_NOT_DECISIVE",
+            "CRITERION_3_CLASS"
+          ],
+          "type": "SelectionTrace"
+        },
+        "statuses": [
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          }
+        ],
+        "type": "Computation",
+        "unresolved_roots": 1,
+        "unresolved_slots": 0
+      },
+      "selected": "E2-CHECK"
+    },
+    {
+      "actionable": [
+        "E2-CHECK",
+        "E2-COLLECT"
+      ],
+      "control": "RUNNABLE",
+      "defects": [],
+      "full_computation": {
+        "actionable": [
+          {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          }
+        ],
+        "blocked": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            [
+              "ACTION_COMPLETED:E2-PREPARE",
+              "DECISION_NOT_READY"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            [
+              "ACTION_COMPLETED:E2-CHECK",
+              "ACTION_COMPLETED:E2-COLLECT"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "ACTION_COMPLETED:E2-DECIDE",
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ],
+        "branches": [
+          [
+            {
+              "$type": "ConditionId",
+              "value": "E2-ROOT"
+            },
+            {
+              "type": "BranchState",
+              "value": "RUNNABLE_INTERNAL"
+            }
+          ]
+        ],
+        "control": {
+          "type": "ControlState",
+          "value": "RUNNABLE"
+        },
+        "defects": [],
+        "frontier": [],
+        "human_batches": [],
+        "human_routing": {
+          "type": "HumanRouting",
+          "value": "RUNNABLE"
+        },
+        "selection": {
+          "criterion": 3,
+          "selected": {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          "steps": [
+            "CRITERION_1_TIED",
+            "CRITERION_2_NOT_DECISIVE",
+            "CRITERION_3_CLASS"
+          ],
+          "type": "SelectionTrace"
+        },
+        "statuses": [
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          }
+        ],
+        "type": "Computation",
+        "unresolved_roots": 1,
+        "unresolved_slots": 0
+      },
+      "selected": "E2-CHECK"
+    }
+  ],
+  "N12_read_only": "PASS",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "PID": 47,
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "boundaries": [
+    {
+      "append_head": null,
+      "boundary": "SEALED_START",
+      "bundle": {
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/starting-bundle.json",
+        "raw_sha256": "1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+      },
+      "bundle_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a",
+      "computation": {
+        "actionable": [
+          "E2-CHECK",
+          "E2-COLLECT"
+        ],
+        "control": "RUNNABLE",
+        "defects": [],
+        "full_computation": {
+          "actionable": [
+            {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            }
+          ],
+          "blocked": [
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              [
+                "ACTION_COMPLETED:E2-PREPARE",
+                "DECISION_NOT_READY"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              [
+                "ACTION_COMPLETED:E2-CHECK",
+                "ACTION_COMPLETED:E2-COLLECT"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "ACTION_COMPLETED:E2-DECIDE",
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "$type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "RUNNABLE_INTERNAL"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 3,
+            "selected": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "steps": [
+              "CRITERION_1_TIED",
+              "CRITERION_2_NOT_DECISIVE",
+              "CRITERION_3_CLASS"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "ACTIONABLE"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "ACTIONABLE"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "selected": "E2-CHECK"
+      },
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "tick": 0
+      },
+      "event_count": 0,
+      "ledger_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+      "ledger_root": null,
+      "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+      "state_id": "planner-snapshot-v1:0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff"
+    },
+    {
+      "append_head": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+      "boundary": "POST_CHECK",
+      "bundle": {
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/reproductions/seed-7/writer-2/checkpoints/post-check/bundle-dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3.json",
+        "raw_sha256": "dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3"
+      },
+      "bundle_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3",
+      "computation": {
+        "actionable": [
+          "E2-COLLECT"
+        ],
+        "control": "RUNNABLE",
+        "defects": [],
+        "full_computation": {
+          "actionable": [
+            {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            }
+          ],
+          "blocked": [
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              [
+                "ACTION_COMPLETED:E2-PREPARE",
+                "DECISION_NOT_READY"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              [
+                "ACTION_COMPLETED:E2-COLLECT"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "ACTION_COMPLETED:E2-DECIDE",
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "$type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "RUNNABLE_INTERNAL"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "COMPLETED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "ACTIONABLE"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "selected": "E2-COLLECT"
+      },
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "tick": 0
+      },
+      "event_count": 1,
+      "ledger_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3#/bundle/events",
+      "ledger_root": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+      "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+      "state_id": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+    },
+    {
+      "append_head": "planner-event-v1:d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f",
+      "boundary": "POST_COLLECT",
+      "bundle": {
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/reproductions/seed-7/writer-2/checkpoints/post-collect/bundle-b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39.json",
+        "raw_sha256": "b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39"
+      },
+      "bundle_id": "planner-bundle-v1:b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39",
+      "computation": {
+        "actionable": [
+          "E2-PREPARE"
+        ],
+        "control": "RUNNABLE",
+        "defects": [],
+        "full_computation": {
+          "actionable": [
+            {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            }
+          ],
+          "blocked": [
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              [
+                "ACTION_COMPLETED:E2-PREPARE",
+                "DECISION_NOT_READY"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "$type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "ACTION_COMPLETED:E2-DECIDE",
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "$type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "RUNNABLE_INTERNAL"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "COMPLETED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "COMPLETED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "ACTIONABLE"
+              }
+            },
+            {
+              "$type": "ActionStatus",
+              "id": {
+                "$type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "$enum": "ActionState",
+                "value": "BLOCKED"
+              }
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "selected": "E2-PREPARE"
+      },
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "tick": 0
+      },
+      "event_count": 2,
+      "ledger_id": "planner-bundle-v1:b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39#/bundle/events",
+      "ledger_root": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+      "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+      "state_id": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+    }
+  ],
+  "canonical_P04_modified": false,
+  "commit_event_calls": 2,
+  "events": [
+    {
+      "EVENT_ID": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+      "EVENT_PAYLOAD": {
+        "$type": "SuppliedResult",
+        "action": {
+          "$type": "ActionId",
+          "value": "E2-CHECK"
+        },
+        "expected_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff"
+        },
+        "knowledge": [
+          {
+            "$type": "KnowledgeRecord",
+            "evidence": [],
+            "id": {
+              "$type": "KnowledgeId",
+              "value": "E2-K-CHECK"
+            },
+            "outcome": {
+              "$enum": "ActionResult",
+              "value": "PASS"
+            },
+            "producer": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "provenance": {
+              "$type": "Provenance",
+              "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-CHECK\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"DETERMINISTIC_VALIDATION\",\"output\":{\"id\":\"E2-K-CHECK\",\"outcome\":\"PASS\",\"producer\":\"E2-CHECK\",\"statement\":\"Synthetic independent check passed\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-CHECK\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-CHECK.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "f68df4916e9e2f96fc249d986d0786ee527ee789e06ed9dc94a46cc88dfd8f20"
+              },
+              "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+              "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-02.json",
+              "scope": "E2-QUALIFICATION-ONLY",
+              "section": "/"
+            },
+            "state": {
+              "$enum": "KnowledgeState",
+              "value": "KNOWN_COMPLETE"
+            },
+            "statement": "Synthetic independent check passed",
+            "validation": {
+              "$enum": "ValidationState",
+              "value": "ACCEPTED"
+            }
+          }
+        ],
+        "result": {
+          "$enum": "ActionResult",
+          "value": "PASS"
+        }
+      },
+      "EVENT_TYPE": "ExecutionEvent",
+      "GENERATION": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "LEDGER_ID": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3#/bundle/events",
+      "LEDGER_POSITION": 1,
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "OUTPUT_BINDINGS": [
+        {
+          "$type": "KnowledgeRecord",
+          "evidence": [],
+          "id": {
+            "$type": "KnowledgeId",
+            "value": "E2-K-CHECK"
+          },
+          "outcome": {
+            "$enum": "ActionResult",
+            "value": "PASS"
+          },
+          "producer": {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-CHECK\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"DETERMINISTIC_VALIDATION\",\"output\":{\"id\":\"E2-K-CHECK\",\"outcome\":\"PASS\",\"producer\":\"E2-CHECK\",\"statement\":\"Synthetic independent check passed\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-CHECK\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-CHECK.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "f68df4916e9e2f96fc249d986d0786ee527ee789e06ed9dc94a46cc88dfd8f20"
+            },
+            "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+            "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-02.json",
+            "scope": "E2-QUALIFICATION-ONLY",
+            "section": "/"
+          },
+          "state": {
+            "$enum": "KnowledgeState",
+            "value": "KNOWN_COMPLETE"
+          },
+          "statement": "Synthetic independent check passed",
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        }
+      ],
+      "PARENT_EVENT_ID": null,
+      "POST_STATE_ID": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133",
+      "PRE_STATE_ID": "planner-snapshot-v1:0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "PROVENANCE": [
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-CHECK\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"DETERMINISTIC_VALIDATION\",\"output\":{\"id\":\"E2-K-CHECK\",\"outcome\":\"PASS\",\"producer\":\"E2-CHECK\",\"statement\":\"Synthetic independent check passed\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-CHECK\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-CHECK.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f68df4916e9e2f96fc249d986d0786ee527ee789e06ed9dc94a46cc88dfd8f20"
+          },
+          "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-02.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        }
+      ],
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "RESULT_BINDINGS": {
+        "$type": "SuppliedResult",
+        "action": {
+          "$type": "ActionId",
+          "value": "E2-CHECK"
+        },
+        "expected_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff"
+        },
+        "knowledge": [
+          {
+            "$type": "KnowledgeRecord",
+            "evidence": [],
+            "id": {
+              "$type": "KnowledgeId",
+              "value": "E2-K-CHECK"
+            },
+            "outcome": {
+              "$enum": "ActionResult",
+              "value": "PASS"
+            },
+            "producer": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "provenance": {
+              "$type": "Provenance",
+              "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-CHECK\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"DETERMINISTIC_VALIDATION\",\"output\":{\"id\":\"E2-K-CHECK\",\"outcome\":\"PASS\",\"producer\":\"E2-CHECK\",\"statement\":\"Synthetic independent check passed\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-CHECK\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-CHECK.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "f68df4916e9e2f96fc249d986d0786ee527ee789e06ed9dc94a46cc88dfd8f20"
+              },
+              "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+              "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-02.json",
+              "scope": "E2-QUALIFICATION-ONLY",
+              "section": "/"
+            },
+            "state": {
+              "$enum": "KnowledgeState",
+              "value": "KNOWN_COMPLETE"
+            },
+            "statement": "Synthetic independent check passed",
+            "validation": {
+              "$enum": "ValidationState",
+              "value": "ACCEPTED"
+            }
+          }
+        ],
+        "result": {
+          "$enum": "ActionResult",
+          "value": "PASS"
+        }
+      },
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "actual_native_transaction": true,
+      "admission": "codec.commit_event",
+      "durable_event_file": {
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/reproductions/seed-7/writer-2/native-head/event-db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c.json",
+        "raw_sha256": "49fcd2d0c8a339e01b4ac8e808a1ebc5bd17e0e82a61c7dc6ee80f093e70b066"
+      },
+      "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+      "native_event": {
+        "$type": "ExecutionEvent",
+        "after_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c"
+        },
+        "parent_event": null,
+        "parent_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff"
+        },
+        "result": {
+          "$type": "SuppliedResult",
+          "action": {
+            "$type": "ActionId",
+            "value": "E2-CHECK"
+          },
+          "expected_snapshot": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff"
+          },
+          "knowledge": [
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "E2-K-CHECK"
+              },
+              "outcome": {
+                "$enum": "ActionResult",
+                "value": "PASS"
+              },
+              "producer": {
+                "$type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-CHECK\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"DETERMINISTIC_VALIDATION\",\"output\":{\"id\":\"E2-K-CHECK\",\"outcome\":\"PASS\",\"producer\":\"E2-CHECK\",\"statement\":\"Synthetic independent check passed\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-CHECK\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-CHECK.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "f68df4916e9e2f96fc249d986d0786ee527ee789e06ed9dc94a46cc88dfd8f20"
+                },
+                "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-02.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_COMPLETE"
+              },
+              "statement": "Synthetic independent check passed",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            }
+          ],
+          "result": {
+            "$enum": "ActionResult",
+            "value": "PASS"
+          }
+        },
+        "sequence": 1
+      },
+      "no_external_world_executor_claim": true,
+      "provider_invocation": {
+        "ActionId": "E2-CHECK",
+        "copied_saved_actual_result": false,
+        "expected_pre_state": "planner-snapshot-v1:0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff",
+        "external_world_execution_claim": false,
+        "kind": "Fresh bounded synthetic SuppliedResult",
+        "native_operating_authority": null,
+        "oracle_files_read_by_provider": [],
+        "provider_files_read": [
+          "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/bounded-result-producer.json",
+          "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-02.json"
+        ]
+      }
+    },
+    {
+      "EVENT_ID": "planner-event-v1:d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f",
+      "EVENT_PAYLOAD": {
+        "$type": "SuppliedResult",
+        "action": {
+          "$type": "ActionId",
+          "value": "E2-COLLECT"
+        },
+        "expected_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+        },
+        "knowledge": [
+          {
+            "$type": "KnowledgeRecord",
+            "evidence": [],
+            "id": {
+              "$type": "KnowledgeId",
+              "value": "E2-K-COLLECT"
+            },
+            "outcome": {
+              "$enum": "ActionResult",
+              "value": "PASS"
+            },
+            "producer": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "provenance": {
+              "$type": "Provenance",
+              "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-COLLECT\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"SOURCE_ACQUISITION\",\"output\":{\"id\":\"E2-K-COLLECT\",\"outcome\":\"PASS\",\"producer\":\"E2-COLLECT\",\"statement\":\"Synthetic inventory collected\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-COLLECT\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-COLLECT.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "288821039325666d791e7e51a7e9dde6674f726e5ed3d3a301db43336fa3390a"
+              },
+              "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+              "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-03.json",
+              "scope": "E2-QUALIFICATION-ONLY",
+              "section": "/"
+            },
+            "state": {
+              "$enum": "KnowledgeState",
+              "value": "KNOWN_COMPLETE"
+            },
+            "statement": "Synthetic inventory collected",
+            "validation": {
+              "$enum": "ValidationState",
+              "value": "ACCEPTED"
+            }
+          }
+        ],
+        "result": {
+          "$enum": "ActionResult",
+          "value": "PASS"
+        }
+      },
+      "EVENT_TYPE": "ExecutionEvent",
+      "GENERATION": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+      "HISTORICAL_RECONSTRUCTION": "NO",
+      "LEDGER_ID": "planner-bundle-v1:b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39#/bundle/events",
+      "LEDGER_POSITION": 2,
+      "LINEAGE": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+      "OUTPUT_BINDINGS": [
+        {
+          "$type": "KnowledgeRecord",
+          "evidence": [],
+          "id": {
+            "$type": "KnowledgeId",
+            "value": "E2-K-COLLECT"
+          },
+          "outcome": {
+            "$enum": "ActionResult",
+            "value": "PASS"
+          },
+          "producer": {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          },
+          "provenance": {
+            "$type": "Provenance",
+            "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-COLLECT\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"SOURCE_ACQUISITION\",\"output\":{\"id\":\"E2-K-COLLECT\",\"outcome\":\"PASS\",\"producer\":\"E2-COLLECT\",\"statement\":\"Synthetic inventory collected\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-COLLECT\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-COLLECT.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "288821039325666d791e7e51a7e9dde6674f726e5ed3d3a301db43336fa3390a"
+            },
+            "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+            "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-03.json",
+            "scope": "E2-QUALIFICATION-ONLY",
+            "section": "/"
+          },
+          "state": {
+            "$enum": "KnowledgeState",
+            "value": "KNOWN_COMPLETE"
+          },
+          "statement": "Synthetic inventory collected",
+          "validation": {
+            "$enum": "ValidationState",
+            "value": "ACCEPTED"
+          }
+        }
+      ],
+      "PARENT_EVENT_ID": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+      "POST_STATE_ID": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f",
+      "PRE_STATE_ID": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133",
+      "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+      "PROVENANCE": [
+        {
+          "$type": "Provenance",
+          "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-COLLECT\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"SOURCE_ACQUISITION\",\"output\":{\"id\":\"E2-K-COLLECT\",\"outcome\":\"PASS\",\"producer\":\"E2-COLLECT\",\"statement\":\"Synthetic inventory collected\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-COLLECT\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-COLLECT.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "288821039325666d791e7e51a7e9dde6674f726e5ed3d3a301db43336fa3390a"
+          },
+          "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+          "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-03.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        }
+      ],
+      "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+      "RESULT_BINDINGS": {
+        "$type": "SuppliedResult",
+        "action": {
+          "$type": "ActionId",
+          "value": "E2-COLLECT"
+        },
+        "expected_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+        },
+        "knowledge": [
+          {
+            "$type": "KnowledgeRecord",
+            "evidence": [],
+            "id": {
+              "$type": "KnowledgeId",
+              "value": "E2-K-COLLECT"
+            },
+            "outcome": {
+              "$enum": "ActionResult",
+              "value": "PASS"
+            },
+            "producer": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "provenance": {
+              "$type": "Provenance",
+              "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-COLLECT\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"SOURCE_ACQUISITION\",\"output\":{\"id\":\"E2-K-COLLECT\",\"outcome\":\"PASS\",\"producer\":\"E2-COLLECT\",\"statement\":\"Synthetic inventory collected\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-COLLECT\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-COLLECT.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "288821039325666d791e7e51a7e9dde6674f726e5ed3d3a301db43336fa3390a"
+              },
+              "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+              "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-03.json",
+              "scope": "E2-QUALIFICATION-ONLY",
+              "section": "/"
+            },
+            "state": {
+              "$enum": "KnowledgeState",
+              "value": "KNOWN_COMPLETE"
+            },
+            "statement": "Synthetic inventory collected",
+            "validation": {
+              "$enum": "ValidationState",
+              "value": "ACCEPTED"
+            }
+          }
+        ],
+        "result": {
+          "$enum": "ActionResult",
+          "value": "PASS"
+        }
+      },
+      "SCOPE": "E2-QUALIFICATION-ONLY",
+      "actual_native_transaction": true,
+      "admission": "codec.commit_event",
+      "durable_event_file": {
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/reproductions/seed-7/writer-2/native-head/event-d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f.json",
+        "raw_sha256": "62b14022905401106ac2bbea0f304a8ea528ca4bcde0a73a5458a5e24f146a68"
+      },
+      "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+      "native_event": {
+        "$type": "ExecutionEvent",
+        "after_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f"
+        },
+        "parent_event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c"
+        },
+        "parent_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+        },
+        "result": {
+          "$type": "SuppliedResult",
+          "action": {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          },
+          "expected_snapshot": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+          },
+          "knowledge": [
+            {
+              "$type": "KnowledgeRecord",
+              "evidence": [],
+              "id": {
+                "$type": "KnowledgeId",
+                "value": "E2-K-COLLECT"
+              },
+              "outcome": {
+                "$enum": "ActionResult",
+                "value": "PASS"
+              },
+              "producer": {
+                "$type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "provenance": {
+                "$type": "Provenance",
+                "excerpt": "{\"HISTORICAL_RECONSTRUCTION\":\"NO\",\"ORIGINAL_HISTORICAL_OCCURRENCE\":\"UNPROVEN\",\"PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT\":\"NO\",\"QUALIFICATION_TYPE\":\"PROSPECTIVE_REPLACEMENT\",\"action_declarations\":[{\"accepted_result\":\"PASS\",\"authority\":[],\"cost\":null,\"cost_unit\":\"\",\"effect\":\"NON_EFFECTING\",\"evidence\":[],\"executor\":\"QUALIFICATION_DETERMINISTIC\",\"external\":[],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"id\":\"E2-COLLECT\",\"knowledge\":[],\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"operation\":\"SOURCE_ACQUISITION\",\"output\":{\"id\":\"E2-K-COLLECT\",\"outcome\":\"PASS\",\"producer\":\"E2-COLLECT\",\"statement\":\"Synthetic inventory collected\",\"type\":\"KnowledgeRecord\"},\"pass_model_complete\":true,\"prerequisites\":[],\"qualification\":\"ACCEPTED\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"stage\":\"DEFAULT\",\"tick\":0,\"valid_until\":100}],\"generation\":\"E2-P05-A03-PROSPECTIVE-GENERATION-1\",\"governing_PC01\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json\",\"pointer\":\"\",\"raw_sha256\":\"d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121\"},\"historical_occurrence_asserted\":false,\"lineage\":\"E2-P05-A03-PROSPECTIVE-QUALIFICATION-1\",\"nonoperative_template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"action\\\":\\\"E2-COLLECT\\\",\\\"lineage\\\":\\\"E2-CANONICAL-BASELINE-1\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617\"},\"method\":\"E2-PC01-WHOLE-MODEL-1\",\"path\":\"E2-COLLECT.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"production_effect\":false,\"qualification_only\":true,\"role\":\"Authored initial definition; no result or occurrence asserted\",\"schema\":\"E2-P05-A03-PROSPECTIVE-DEFINITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION\",\"template_snapshot\":{\"path\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json\",\"pointer\":\"\",\"raw_sha256\":\"545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2\"}}",
+                "identity": {
+                  "$type": "ArtifactIdentity",
+                  "kind": {
+                    "$enum": "IdentityKind",
+                    "value": "CONTENT_IDENTITY"
+                  },
+                  "namespace": "raw-file-sha256",
+                  "sha256": "288821039325666d791e7e51a7e9dde6674f726e5ed3d3a301db43336fa3390a"
+                },
+                "method": "PROSPECTIVE_A03_AUTHORED_DEFINITION",
+                "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-03.json",
+                "scope": "E2-QUALIFICATION-ONLY",
+                "section": "/"
+              },
+              "state": {
+                "$enum": "KnowledgeState",
+                "value": "KNOWN_COMPLETE"
+              },
+              "statement": "Synthetic inventory collected",
+              "validation": {
+                "$enum": "ValidationState",
+                "value": "ACCEPTED"
+              }
+            }
+          ],
+          "result": {
+            "$enum": "ActionResult",
+            "value": "PASS"
+          }
+        },
+        "sequence": 2
+      },
+      "no_external_world_executor_claim": true,
+      "provider_invocation": {
+        "ActionId": "E2-COLLECT",
+        "copied_saved_actual_result": false,
+        "expected_pre_state": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133",
+        "external_world_execution_claim": false,
+        "kind": "Fresh bounded synthetic SuppliedResult",
+        "native_operating_authority": null,
+        "oracle_files_read_by_provider": [],
+        "provider_files_read": [
+          "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/bounded-result-producer.json",
+          "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/sources/definition-03.json"
+        ]
+      }
+    }
+  ],
+  "hash_seed": "7",
+  "kind": "Actual new native A03 result transactions",
+  "native_authorities_issued": 0,
+  "overall_occurrence_verdict": "PENDING_READER_REPLAY_NEGATIVES",
+  "presentation": "Reversed",
+  "provider_invocations": 2,
+  "result": "PASS",
+  "writer": "reproductions/seed-7/writer-2"
+}

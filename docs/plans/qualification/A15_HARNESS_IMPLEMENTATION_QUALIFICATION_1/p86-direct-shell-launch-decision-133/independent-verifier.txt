@@ -1,0 +1,48 @@
+# Static documentary reconstruction; no nominated shell/native witness invoked.
+import pathlib,json,hashlib,copy,os,shlex,re
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-direct-shell-launch-decision-133'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'source-authentication.json')
+for n,h in a['PINS'].items():assert raw(R/n)==h,n
+for n,h in a['LINUX_FLAG_HEADER_PINS'].items():assert raw(pathlib.Path(n))==h,n
+header=pathlib.Path('/usr/include/x86_64-linux-gnu/bits/fcntl-linux.h').read_text()
+constants={}
+for name in ['O_RDWR','O_APPEND','O_NONBLOCK','__O_CLOEXEC']:
+ mat=re.search(r'^#\s*define\s+'+name+r'\s+(0[0-7]+)\b',header,re.M);assert mat,name;constants[name]=int(mat.group(1),8)
+assert constants=={'O_RDWR':2,'O_APPEND':0o2000,'O_NONBLOCK':0o4000,'__O_CLOEXEC':0o2000000}
+w=read(O/'owner-supplied-caller-receipt.json');r=w['CONTENT'];assert digest(r)==w['IDENTITY']['sha256'];birth=['ubuntu01','7c592fd0-8c66-476f-ab0d-548882a9f53e',3235408,218282664];assert r['BIRTH_TUPLE']==birth
+assert r['PPID']==3235407 and r['UID']==1000 and r['GID']==1000 and r['CAP_EFF']=='0000000000000000' and r['NO_NEW_PRIVS']==0 and r['SECCOMP']==0
+expectedfds=[{'FD':n,'TARGET':'/dev/pts/1','FLAGS_OCTAL':'02002','OWNER_MEANING':'Terminal, read/write, nonblocking'} for n in [0,1,2]]+[{'FD':255,'TARGET':'/dev/pts/1','FLAGS_OCTAL':'02002002','OWNER_MEANING':'Same, plus close-on-exec'}];assert r['FDS']==expectedfds
+fd=read(O/'descriptor-inheritance-assessment.json')
+for x,f in zip(fd['DECODED_FLAGS'],expectedfds):
+ value=int(f['FLAGS_OCTAL'],8);assert x['O_APPEND']==bool(value&constants['O_APPEND']);assert x['O_NONBLOCK']==bool(value&constants['O_NONBLOCK']) is False;assert x['O_CLOEXEC']==bool(value&constants['__O_CLOEXEC'])
+assert fd['DECODED_FLAGS'][-1]['O_CLOEXEC'] is True
+p124=read(B/'p86-isolation-capability-124/exact-candidate-profile.json');p127=read(B/'p86-minimal-host-procedure-127/prospective-parent-procedure.json');assert digest(p124['CONTENT'])==p124['IDENTITY']['sha256'];assert digest(p127['CONTENT'])==p127['IDENTITY']['sha256']
+c=read(O/'launch-callsite-assessment.json');assert c['P127_FULL_ARGV']==p127['CONTENT']['ARGV'] and c['P124_FULL_ARGV']==p124['CONTENT']['ARGV'];assert shlex.split(c['PROSPECTIVE_COMMAND_TEXT'])==p127['CONTENT']['ARGV'];assert hashlib.sha256(c['PROSPECTIVE_COMMAND_TEXT'].encode()).hexdigest()==c['PROSPECTIVE_COMMAND_TEXT_RAW_SHA256'];assert c['CALLSITE_AUTHENTICATED'] is False
+m=read(O/'entry-execution-matrix.json');old=read(B/'p86-direct-shell-caller-132/entry-execution-matrix.json');assert len(m['ROWS'])==36 and m['ROWS']==old['ROWS']
+g=read(O/'dependency-graph.json');assert acyclic(g['EDGES'])
+facts={'birth':birth,'birth_reread':birth,'fds':expectedfds,'nonblocking':False,'first_exec_closure_claim':False,'unexpected_protected_fd':False,'argv':p127['CONTENT']['ARGV'],'binary_pin_verified':False,'pipe_bounded':False,'unknown_exit_success':False,'timeout_verified':False,'aggregate_verified':False,'retry':0,'attempts':1,'sudo':False,'systemd':False,'future_output_entry':False,'live_freshness':False,'callsite_authenticated':False,'owner_receipt_independently_recaptured':False,'decision_ready':False,'authority':False,'graph':g['EDGES'],'options':[]}
+def valid(x):
+ if x['birth']!=birth or x['birth_reread']!=birth or x['fds']!=expectedfds or x['argv']!=p127['CONTENT']['ARGV'] or x['retry']!=0 or x['attempts']!=1 or x['options'] or not acyclic(x['graph']):return False
+ return not any(x[k] for k in ['nonblocking','first_exec_closure_claim','unexpected_protected_fd','binary_pin_verified','pipe_bounded','unknown_exit_success','timeout_verified','aggregate_verified','sudo','systemd','future_output_entry','live_freshness','callsite_authenticated','owner_receipt_independently_recaptured','decision_ready','authority'])
+assert valid(facts)
+mut=[('PID_reuse','birth_reread',['ubuntu01',birth[1],3235408,218282665]),('boot_changed','birth_reread',['ubuntu01','OTHER_BOOT',3235408,218282664]),('startticks_changed','birth_reread',['ubuntu01',birth[1],3235408,333]),('omitted_first_exec_closure_accepted','first_exec_closure_claim',True),('unexpected_protected_inherited_fd','unexpected_protected_fd',True),('wrong_executable_pin_claimed_verified','binary_pin_verified',True),('unbounded_pipe_accepted','pipe_bounded',True),('unknown_exit_success','unknown_exit_success',True),('missing_timeout_accepted','timeout_verified',True),('unverified_aggregate_qualified','aggregate_verified',True),('automatic_retry','retry',1),('extra_attempt','attempts',2),('unauthorized_sudo','sudo',True),('unauthorized_systemd','systemd',True),('future_output_before_entry','future_output_entry',True),('snapshot_live_freshness','live_freshness',True),('proposal_called_actual_callsite','callsite_authenticated',True),('owner_receipt_called_recaptured','owner_receipt_independently_recaptured',True),('incomplete_decision_ready','decision_ready',True),('authority_from_instruction','authority',True),('02002_called_nonblocking','nonblocking',True)]
+out=[]
+for name,k,v in mut:
+ x=copy.deepcopy(facts);x[k]=v;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+for name,edit in [('forged_FD_target',lambda x:x['fds'][0].update(TARGET='/protected/store')),('forged_FD_flags',lambda x:x['fds'][3].update(FLAGS_OCTAL='02002')),('changed_witness_argv',lambda x:x['argv'].append('--changed')),('own_result_cycle',lambda x:x['graph'].append(['ACTUAL_WITNESS_OUTPUT','CALLER_QUALIFICATION']))]:
+ x=copy.deepcopy(facts);edit(x);assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+before=read(O/'preservation-before.json');assert all((R/n).is_file() and raw(R/n)==h for n,h in before.items())
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+s={'SOURCE_PINS_SHA256':digest(a['PINS']),'P124_IDENTITY':p124['IDENTITY'],'P127_IDENTITY':p127['IDENTITY'],'OWNER_RECEIPT_IDENTITY':w['IDENTITY'],'FD_DECODE_SHA256':digest(fd),'CALLSITE_SHA256':digest(c),'MATRIX_SHA256':digest(m),'RISK_SHA256':digest(read(O/'risk-action-inaction-comparison.json')),'RESOURCE_SHA256':digest(read(O/'resource-permission-matrix.json')),'OBSERVER_SHA256':digest(read(O/'bounded-observer-assessment.json')),'GRAPH_SHA256':digest(g),'DECISION_READY':False,'OPTIONS':[],'PRESERVATION':'PASS','PRIOR_FILES':len(before),'NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

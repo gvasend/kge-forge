@@ -1,0 +1,56 @@
+{
+  "CASES": [
+    {
+      "DURABLE_CONSUMPTION_STATE": "NONE only when exclusive create is definitively not reached",
+      "EXPECTED_AUDIT_EVIDENCE": "Validation rejection and no-claim evidence",
+      "FAILURE_ID": "FAIL_BEFORE_CLAIM",
+      "LAUNCH_PERMITTED": "NO",
+      "RECOVERY_RULE": "No launch; a denied request is not probe consumption. No automatic retry; only continued authorized first attempt after independently proven no claim",
+      "RETRY_PERMITTED": false
+    },
+    {
+      "DURABLE_CONSUMPTION_STATE": "AMBIGUOUS_RESERVED_OR_CONSUMED",
+      "EXPECTED_AUDIT_EVIDENCE": "File/barrier failure evidence, uncertain outcome if missing",
+      "FAILURE_ID": "FAIL_DURING_CLAIM",
+      "LAUNCH_PERMITTED": "NO",
+      "RECOVERY_RULE": "Any created or uncertain token permanently denies all later launches. No clean-up reset",
+      "RETRY_PERMITTED": false
+    },
+    {
+      "DURABLE_CONSUMPTION_STATE": "CONSUMED",
+      "EXPECTED_AUDIT_EVIDENCE": "Durable claim plus absent/failed launch observation",
+      "FAILURE_ID": "FAIL_AFTER_CLAIM_BEFORE_LAUNCH",
+      "LAUNCH_PERMITTED": "NO",
+      "RECOVERY_RULE": "No launch after claimant death; recovery cannot mint capability",
+      "RETRY_PERMITTED": false
+    },
+    {
+      "DURABLE_CONSUMPTION_STATE": "CONSUMED",
+      "EXPECTED_AUDIT_EVIDENCE": "Launch failure or unknown outcome record",
+      "FAILURE_ID": "FAIL_DURING_LAUNCH",
+      "LAUNCH_PERMITTED": "NO",
+      "RECOVERY_RULE": "Launch error or uncertain spawn remains permanently consumed",
+      "RETRY_PERMITTED": false
+    },
+    {
+      "DURABLE_CONSUMPTION_STATE": "CONSUMED",
+      "EXPECTED_AUDIT_EVIDENCE": "Claim plus any process evidence; missing observation recorded unknown",
+      "FAILURE_ID": "FAIL_AFTER_LAUNCH_BEFORE_OBSERVATION",
+      "LAUNCH_PERMITTED": "NO",
+      "RECOVERY_RULE": "Unknown outcome; do not infer completion and never relaunch",
+      "RETRY_PERMITTED": false
+    },
+    {
+      "DURABLE_CONSUMPTION_STATE": "CONSUMED",
+      "EXPECTED_AUDIT_EVIDENCE": "Claim remains; completion unknown until corroborated",
+      "FAILURE_ID": "FAIL_AFTER_COMPLETION_BEFORE_AUDIT",
+      "LAUNCH_PERMITTED": "NO",
+      "RECOVERY_RULE": "Recovered readonly independent observation may add completion audit; cannot authorize launch",
+      "RETRY_PERMITTED": false
+    }
+  ],
+  "CONCURRENT_WINNERS_MAX": 1,
+  "CONTROLLED_CRASH_NOT_POWER_LOSS_PROOF": true,
+  "DUPLICATE_PATH_SAME_KEY": true,
+  "RESTART_WINNERS_AFTER_RESERVATION": 0
+}

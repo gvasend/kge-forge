@@ -1,0 +1,36 @@
+{
+  "CHECK": "No actionable named route can authorize resume if LIVE_NAMED_ACTIONS is empty; full resume report requires native replay/source validation later",
+  "EXISTING_ROUTES": [
+    {
+      "ID": {
+        "$type": "GateId",
+        "value": "E2-GATE"
+      },
+      "LIVE_NAMED_ACTIONS": [],
+      "NAMED_ACTIONS": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "TYPE": "EXTERNAL"
+    },
+    {
+      "ID": {
+        "$type": "ActionId",
+        "value": "E2-DECIDE"
+      },
+      "LIVE_NAMED_ACTIONS": [],
+      "NAMED_ACTIONS": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "TYPE": "DECISION"
+    }
+  ],
+  "NATIVE_RESUME_OPERATION_EXECUTED": false,
+  "POST_INVALIDATION_RESUME_EXPECTATION": "UNSEALED; do not claim causal no-resume from an already-denied start condition",
+  "PRESTATE_NECESSARY_CONDITION_DENIES_ALL_ROUTES": true
+}

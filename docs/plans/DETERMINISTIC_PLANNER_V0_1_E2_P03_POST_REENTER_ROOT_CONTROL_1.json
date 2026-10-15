@@ -1,0 +1,105 @@
+{
+  "classification": [
+    "FIXTURE_UNDERSPECIFICATION",
+    "ROOT_BINDING_OMISSION",
+    "SLOT_BINDING_OMISSION"
+  ],
+  "cold_restore": "PASS",
+  "control_trace": {
+    "actionability": "NO",
+    "blocked": [
+      [
+        "E2-FINISH",
+        [
+          "PRIOR_ATTEMPT_HOLD:BLOCKED"
+        ]
+      ]
+    ],
+    "candidate_actions": [
+      "E2-FINISH"
+    ],
+    "control": "PLAN_DEFECT",
+    "defects": [
+      "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+    ],
+    "prerequisite_evaluation": {
+      "ACTION_COMPLETED(E2-REENTER)": "PASS",
+      "root_proof": "FAIL",
+      "slot_proof": "FAIL"
+    },
+    "selection": null
+  },
+  "correction_applied": false,
+  "e1_artifacts_modified": 0,
+  "e2_finish_after_correction": "NOT_EVALUATED",
+  "e2_finish_executed": false,
+  "e2_k_reenter_actual": {
+    "outcome": "PASS",
+    "producer": "E2-REENTER",
+    "state": "KNOWN_COMPLETE",
+    "statement": "Bounded reentry mapping produced"
+  },
+  "e2_k_reenter_current": true,
+  "e2_k_reenter_declared": {
+    "id": "E2-K-REENTER",
+    "outcome": "PASS",
+    "producer": "E2-REENTER"
+  },
+  "e2_k_reenter_materialized": true,
+  "e2_p03_result": "BLOCKED",
+  "e2_p04_ready": false,
+  "e2_reenter_completed": true,
+  "finish_actual_actionable": "NO",
+  "finish_expected_actionable": "NO",
+  "finish_prerequisites": {
+    "ACTION_COMPLETED(E2-REENTER)": {
+      "actual": true,
+      "satisfied": true,
+      "source": "native Action status",
+      "type": "ACTION_COMPLETED"
+    },
+    "independent_root_proof": {
+      "actual": "UNRESOLVED / predicate absent",
+      "satisfied": false,
+      "source": "canonical acceptance matrix",
+      "subject": "E2-ROOT",
+      "type": "ROOT_PROOF"
+    },
+    "independent_slot_proof": {
+      "actual": "SLOT ABSENT",
+      "satisfied": false,
+      "source": "canonical acceptance matrix",
+      "subject": "E2-SLOT",
+      "type": "SLOT_PROOF"
+    }
+  },
+  "first_unsatisfied_finish_condition": "independent root proof E2-ROOT (with slot proof E2-SLOT also absent)",
+  "full_suite_status": "BLOCKED_BY_PREEXISTING_FROZEN_E1_DUPLICATE_IMPORT",
+  "minimum_correction": "Close authoritative E2-ROOT and E2-SLOT proof contracts and materialize their typed predicates/bindings; do not change E2-FINISH prerequisites.",
+  "next_package": "E2 root/slot proof-contract and binding closure",
+  "p03_exit_predicate": false,
+  "persistence": "PASS_TARGET_SNAPSHOT",
+  "production_effect": false,
+  "replay": "PASS_SEMANTIC_TARGET",
+  "requalification": "NOT_APPLICABLE_DIAGNOSTIC_ONLY",
+  "result": "PASS",
+  "root_recomputation": "PASS_EXECUTED; retained UNRESOLVED because no predicate/binding exists",
+  "root_state": {
+    "actual": "UNRESOLVED",
+    "id": "E2-ROOT",
+    "inputs": [],
+    "predicate": null,
+    "required": "SATISFIED",
+    "satisfied": false
+  },
+  "slot_state": {
+    "actual": "ABSENT",
+    "id": "E2-SLOT",
+    "inputs": [],
+    "required": "RESOLVED",
+    "satisfied": false
+  },
+  "target_snapshot_identity": "df74cd4e6582bbd5e472cec6893221d462b5652630943bc187e775fc7bfd267f",
+  "targeted_regressions": "PASS_DIAGNOSTIC",
+  "work_package": "E2-P03-POST-REENTER-ROOT-CONTROL"
+}

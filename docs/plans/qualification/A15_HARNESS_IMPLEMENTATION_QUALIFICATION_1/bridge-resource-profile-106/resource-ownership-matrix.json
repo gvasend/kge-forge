@@ -1,0 +1,86 @@
+[
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "whole campaign",
+    "MAX_INSTANCES": 1,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "supervisory controller",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "registered monitor and critical records"
+  },
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "sequential twelve-case schedule",
+    "MAX_INSTANCES": 1,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "case controller",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "registered case and claim records"
+  },
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "concurrent case only",
+    "MAX_INSTANCES": 2,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "concurrent claimants",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "registered claim and callback records"
+  },
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "crash case; exits 77",
+    "MAX_INSTANCES": 1,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "crash helper",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "durable claim before actual process exit"
+  },
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "after crash helper exit",
+    "MAX_INSTANCES": 1,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "recovery helper",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "readonly recovery and registered observation"
+  },
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "logical role owned by supervisory controller",
+    "MAX_INSTANCES": 0,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "critical evidence writer",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "protected 32694-byte reserve"
+  },
+  {
+    "CPU_REQUIREMENT": null,
+    "EVIDENCE_SOURCE": "Package105 prospective topology",
+    "EXEMPT_FROM_LIMITS": false,
+    "FD_REQUIREMENT": null,
+    "LIFETIME": "includes final controller exit observation",
+    "MAX_INSTANCES": null,
+    "MEMORY_REQUIREMENT": null,
+    "OWNER": "external independent execution facility",
+    "TERMINATION_OWNER": "Separately qualified independent execution facility; not established",
+    "WRITE_REQUIREMENT": "must use registered slots or trigger budget recomputation"
+  }
+]

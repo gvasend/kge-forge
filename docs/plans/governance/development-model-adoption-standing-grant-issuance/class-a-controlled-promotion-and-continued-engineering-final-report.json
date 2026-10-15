@@ -1,0 +1,167 @@
+{
+  "AUTHORITY_CURRENT_STATE": "Existing owner knowledge-limited declaration plus retained-record revocation rechecks and sequential host ledger; no global absence claim",
+  "BACKLOG_BASIS": {
+    "PATH": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P02_RESULT.md",
+    "REQUIREMENT": "P02 strict parsing/canonicalization rejects nonfinite planner JSON values; E1 embedded profile preserves supported finite floats. Acceptance matrix requires strict input/hash-domain behavior. Larger D01/A15 priority/exclusions preserved.",
+    "SHA256": "673bc8676a47a1b9aae1201f375f96596eb5e07a111bfee1193aae74c9fea143"
+  },
+  "CANDIDATE_MANIFEST": {
+    "adapter/planner/__init__.py": {
+      "bytes": 230,
+      "sha256": "25c834058e64b6606d1689177ed1a875ee421275d97d5d3a98d7378ac5a4ab64"
+    },
+    "adapter/planner/codec.py": {
+      "bytes": 54599,
+      "sha256": "ab2b9a25dbfb7ca7405134aad384b174baad3c28dca39706cbe66f8b7bc947c4"
+    },
+    "adapter/planner/core.py": {
+      "bytes": 47404,
+      "sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+    },
+    "adapter/planner/gates.py": {
+      "bytes": 28602,
+      "sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+    },
+    "adapter/planner/model.py": {
+      "bytes": 56855,
+      "sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+    },
+    "adapter/planner/replay.py": {
+      "bytes": 27390,
+      "sha256": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e"
+    },
+    "adapter/planner/selector.py": {
+      "bytes": 8469,
+      "sha256": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f"
+    },
+    "adapter/tests/fixtures/planner_v0_1/E_P01.json": {
+      "bytes": 3409,
+      "sha256": "35ab19e124fed6358ba94364830c4f876f99149e84d57696832e308f5efc7ace"
+    },
+    "adapter/tests/fixtures/planner_v0_1/sources.json": {
+      "bytes": 847,
+      "sha256": "44b28287ca77f7b9378c0ae5624e0283afd9c2bcae49bc63c3814957da38731e"
+    },
+    "adapter/tests/test_development_codec_pilot.py": {
+      "bytes": 3223,
+      "sha256": "d2d5670c91016eece48eb5211e6df03c7ff845e72deac4b1c67429ac889148c5"
+    },
+    "adapter/tests/test_planner_resume.py": {
+      "bytes": 41884,
+      "sha256": "1cb8c21cbea075fd2bb6b74894a27b1f274d0f8c0aed4f34b4bc5d948da6bbf6"
+    },
+    "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md": {
+      "bytes": 8344,
+      "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+    },
+    "docs/experiments/E1/E1_RESUME_MANIFEST_1.json": {
+      "bytes": 18316,
+      "sha256": "4e378b197c0d7394226a8036bde6f75564c9b74d9112625f609886c9cee545ac"
+    },
+    "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_S_BINDING_1_RESULT.md": {
+      "bytes": 9360,
+      "sha256": "829ecbd2bba6cbf4cb0c45c8886f80097c754db11d607a296840714569f465b7"
+    }
+  },
+  "CLASS_A_ELIGIBILITY": "PASS_P02_STRICT_JSON_EXISTING_ACCEPTANCE_REQUIREMENT; stdlib pure codec/test edits within admitted two writable paths; no new inputs or permission changes",
+  "CURRENT_STANDING_BUDGET": {
+    "CURRENT_ITEM_AUTOMATIC_RETRIES_REMAINING": 2,
+    "CURRENT_ITEM_AUTOMATIC_RETRIES_USED": 0,
+    "CURRENT_ITEM_REVISIONS_REMAINING": 1,
+    "CURRENT_ITEM_REVISIONS_USED": 2,
+    "CURRENT_ITEM_STARTS_REMAINING": 10,
+    "CURRENT_ITEM_STARTS_USED": 2,
+    "EPOCH_START": "2026-10-13T15:39:31.843106+00:00",
+    "EXPIRES": "2026-11-12T15:39:31.843106+00:00",
+    "NORMAL_EVIDENCE_BYTES_REMAINING_AFTER_RESERVATIONS": 14680064,
+    "NO_RESETS_OR_REFUNDS": true,
+    "PER_INVOCATION_TIMEOUT_SECONDS": 120,
+    "PER_PROCESS_AS_BYTES": 536870912,
+    "PER_PROCESS_CPU_SECONDS": 60,
+    "PER_PROCESS_FSIZE_BYTES": 1048576,
+    "PER_PROCESS_NOFILE": 128,
+    "PILOT_STARTS_REMAINING_UNCHANGED": 7,
+    "PILOT_STARTS_USED_UNCHANGED": 5,
+    "PROCESS_STARTS_REMAINING": 591,
+    "PROCESS_STARTS_USED": 9,
+    "SOURCE_WRITE_BYTES_REMAINING": 133797328,
+    "TERMINATION_GRACE_SECONDS": 5,
+    "WORKER_WALL_SECONDS_REMAINING_AFTER_RESERVATIONS": 88875,
+    "WORK_CPU_SECONDS_REMAINING_AFTER_RESERVATIONS": 70920,
+    "WORK_ITEMS_REMAINING": 47,
+    "WORK_ITEMS_USED": 3
+  },
+  "ENGINEERING_WORK_EXECUTED": true,
+  "FUNCTIONAL_CHANGE": "Add local finite_float parser rejecting exponent overflow before embedded value canonicalization; no new dependency; source-path correction preserved",
+  "GIT_DIFF_CHECK": "PASS",
+  "HISTORICAL_PRESERVATION": "PASS_prior_authority/source hashes, pilot failure/audit corrections and original frozen sourcepath candidate preserved",
+  "INDEPENDENT_PROMOTION_REVIEW": "ACCEPT_CANDIDATE",
+  "INDEPENDENT_REVIEW_METHOD": "Separate documentary reconstruction against frozen baseline, complete exact diff, source contract and observed pre/post public/private regression outcomes; not a second human reviewer and not tests alone",
+  "NEXT_ACTION": "Owner may select the exact frozen source-path promotion subject for separate issuance/effectiveness. Development remains independent; continue in-scope ClassA work under this ledger, or review finite-float candidate separately.",
+  "NEXT_PLANNER_WORK_ITEM": "P02_STRICT_JSON_FINITE_EMBEDDED_NUMBER_1",
+  "PROCESS_STARTS_CONSUMED": 2,
+  "PRODUCTION_EFFECT": false,
+  "PRODUCTIVITY_METRICS": {
+    "AUTOMATIC_RETRIES_THIS_ITEM": 0,
+    "BLOCKER_ESCALATIONS": 0,
+    "COMPLETED_WORK_ITEMS_INCLUDING_PILOT": 3,
+    "GOVERNANCE_AND_ADMISSION_TIME": "NOT_SEPARATELY_INSTRUMENTED; per-invocation platform approval latency distinct from owner governance",
+    "HISTORICAL_COMPARISON": "Qualitative only: two routine fixes each used two starts under one unchanged standing grant; earlier synthetic runs required separate issuance/amendments. No comparable timed governance-overhead series retained.",
+    "IMPLEMENTATION_TIME": "NOT_SEPARATELY_INSTRUMENTED",
+    "MEAN_TIME_DEFECT_DISCOVERY_TO_VERIFIED_CORRECTION_SECONDS_THIS_ITEM": 7453.783413,
+    "MEAN_TIME_TO_RECOVERY_SECONDS_TWO_ROUTINE_ITEMS": 3887.439999,
+    "NEW_EXECUTION_GRANTS_ISSUED": 0,
+    "NEW_PERMISSION_PROFILES": 0,
+    "PEAK_MEASURED_LAUNCHER_TREE_RSS_KIB": 54244,
+    "PROCESS_STARTS_PER_COMPLETED_ROUTINE_WORK_ITEM": 2.0,
+    "PROMOTION_REVIEW_ACTIVE_LATENCY": "NOT_SEPARATELY_INSTRUMENTED",
+    "PROMOTION_REVIEW_COMPLETED_UTC": "2026-10-15T16:24:07.133593+00:00",
+    "RECOVERY_SAMPLE_COUNT_ROUTINE": 2,
+    "REVISIONS_THIS_ITEM": 2,
+    "ROUTINE_FUNCTIONAL_WORK_ITEMS_COMPLETED_CUMULATIVE": 2,
+    "TEST_METHODS_PASSED_THIS_ITEM": 18,
+    "TEST_METHOD_EXECUTIONS_THIS_ITEM": 20,
+    "TEST_PROCESS_TREE_CPU_SECONDS": 0.7491889999999999,
+    "TEST_PROCESS_TREE_WALL_SECONDS": 0.8966951044276357,
+    "UNITTEST_REPORTED_SECONDS": 0.019,
+    "WORK_ITEMS_COMPLETED_THIS_UNIT": 1
+  },
+  "PROMOTION_AUTHORITY_EFFECTIVE": false,
+  "PROMOTION_CANDIDATE_SHA256": "254d7309d80f313fc429c1931fd875c4ab23a7ff5cd9c9050672ddfc381b6e4e",
+  "PROMOTION_DECISION_READY": true,
+  "PROMOTION_EXECUTED": false,
+  "PROMOTION_SEPARATION": "Promotion dossier freezes source-path-only candidate. Current disposable candidate additionally contains finite-float change and must never be substituted for that approved subject. Finite-float change remains unpromoted and requires its own review/inclusion decision.",
+  "PROMOTION_SUBJECT_IDENTITY": {
+    "namespace": "class-a-source-path-promotion-subject-v1",
+    "sha256": "605d539a251a596748cf549b11bed4222150ef47fe10a98d1fbcbba240004269"
+  },
+  "PROTECTED_PROMOTION_EXECUTED": false,
+  "RESULT": "PASS",
+  "RETRIES_CONSUMED": 0,
+  "REVISIONS_CONSUMED": 2,
+  "SOURCE_PATH_CANDIDATE_AUTHENTICATED": true,
+  "TEST_RESULTS": {
+    "FINAL_ERRORS": 0,
+    "FINAL_FAILED": 0,
+    "FINAL_PASSED": 15,
+    "FINAL_TESTS": 15,
+    "INITIAL_ERRORS": 1,
+    "INITIAL_NONPASSING_METHODS": 2,
+    "INITIAL_PASSED_METHODS": 3,
+    "INITIAL_ROOT_CAUSE": "float parser accepts exponent overflow as infinity; embedded pin canonicalization subsequently leaks ValueError",
+    "INITIAL_SUBTEST_ASSERTION_FAILURES": 3,
+    "INITIAL_TEST_METHODS": 5,
+    "TOTAL_ERRORED_METHOD_EXECUTIONS": 1,
+    "TOTAL_FAILED_METHOD_EXECUTIONS": 1,
+    "TOTAL_PASSED_METHOD_EXECUTIONS": 18,
+    "TOTAL_TEST_METHOD_EXECUTIONS": 20
+  },
+  "WORK_ITEM_ACCEPTANCE_CRITERIA": [
+    "Exponent overflow rejected by parse_json(allow_floats=True) with typed PlannerError",
+    "Public pinned embedded-JSON read rejects exponent overflow with typed PlannerError",
+    "Supported finite positive/negative floats and embedded finite-value pin remain compatible",
+    "NaN/Infinity named constants remain rejected",
+    "Existing codec/pointer/sourcepath regressions remain passing",
+    "No protected promotion or forbidden effect"
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "AFTER_QUERIES_CALLED": false,
+  "BEFORE_SNAPSHOT": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+  },
+  "EXPECTED_BEFORE_COMPUTATION": {
+    "actionable": [
+      {
+        "$type": "ActionId",
+        "value": "E2-FINISH"
+      }
+    ],
+    "blocked": [],
+    "branches": [
+      [
+        {
+          "$type": "ConditionId",
+          "value": "E2-ROOT"
+        },
+        {
+          "$enum": "BranchState",
+          "value": "TERMINAL_SUCCESS"
+        }
+      ]
+    ],
+    "control": {
+      "$enum": "ControlState",
+      "value": "RUNNABLE"
+    },
+    "defects": [],
+    "frontier": [],
+    "human_batches": [],
+    "human_routing": {
+      "$enum": "HumanRouting",
+      "value": "RUNNABLE"
+    },
+    "qualification_type": "Computation",
+    "selection": {
+      "criterion": 0,
+      "qualification_type": "SelectionTrace",
+      "selected": {
+        "$type": "ActionId",
+        "value": "E2-FINISH"
+      },
+      "steps": [
+        "SINGLETON"
+      ]
+    },
+    "statuses": [
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-CHECK"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        }
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-COLLECT"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        }
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        }
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-FINISH"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "ACTIONABLE"
+        }
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-PREPARE"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        }
+      },
+      {
+        "$type": "ActionStatus",
+        "id": {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        },
+        "state": {
+          "$enum": "ActionState",
+          "value": "COMPLETED"
+        }
+      }
+    ],
+    "unresolved_roots": 0,
+    "unresolved_slots": 0
+  },
+  "EXPECTED_BEFORE_TYPED_PROOF_USABILITY": [
+    {
+      "proof": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-TypedProof-v1",
+        "sha256": "07a9656600dd8fa9ba547047eb2203f7a273c1f33636edc81048d28d307bf646"
+      },
+      "usable": true
+    },
+    {
+      "proof": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-TypedProof-v1",
+        "sha256": "c0bc73616be1d5b4e65ceb6a6dca986982762ddf9cbf6fd30041085d860c00f7"
+      },
+      "usable": true
+    }
+  ],
+  "FUTURE_STARTING_COMPARISON": "Immediately after initial native restore, compare full bundle/current Snapshot and this complete recomputation/usability list before record_result",
+  "INITIAL_RESTORE_EXECUTED": false,
+  "NATIVE_EFFECTS": 0
+}

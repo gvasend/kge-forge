@@ -1,0 +1,96 @@
+{
+  "CASES": [
+    {
+      "CASE": "BEFORE_CONSUMPTION",
+      "CONSUMPTION_STATE": "UNCONSUMED_ONLY_IF_INDEPENDENTLY_PROVEN_NO_CLAIM",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "BEFORE_CONSUMPTION",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "DURING_RESERVATION",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "DURING_RESERVATION",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "AFTER_DURABLE_CONSUMPTION",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "AFTER_DURABLE_CONSUMPTION",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "BEFORE_SYSTEMD_INVOCATION",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "BEFORE_SYSTEMD_INVOCATION",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "DURING_SYSTEMD_INVOCATION",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "DURING_SYSTEMD_INVOCATION",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "AFTER_LAUNCH_BEFORE_OBSERVATION",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "AFTER_LAUNCH_BEFORE_OBSERVATION",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "DURING_STOP",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "DURING_STOP",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "AFTER_EXIT_BEFORE_AUDIT",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "AFTER_EXIT_BEFORE_AUDIT",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    },
+    {
+      "CASE": "UNKNOWN_SERVICE_STATE",
+      "CONSUMPTION_STATE": "CONSUMED_OR_OUTCOME_UNKNOWN_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "claimorpartialanchor whenpresent;separatehandoff/exit/unknownreceipt onlywithqualifiedwriter",
+      "FIRST_CAUSAL_FAILURE": "UNKNOWN_SERVICE_STATE",
+      "LAUNCH_PERMISSION": false,
+      "RECOVERY_RULE": "readonlyreconciliation;beforeclaimfailure doesnot itselfconsume,but noautomaticretryorrestoredlaunchpermission;newexecution mustsatisfyfresh explicitentry",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "stop/wait/accounting/audit failures retained separately;neverreplacefirst"
+    }
+  ],
+  "NO_CONSUMPTION_INFERRED_FROM_COMPLETION": true,
+  "NO_CRASH_REOPENS": true
+}

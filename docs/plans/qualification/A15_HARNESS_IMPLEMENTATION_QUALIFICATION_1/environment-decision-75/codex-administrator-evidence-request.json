@@ -1,0 +1,81 @@
+{
+  "BASELINE_POLICY_PIN": {
+    "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/outer-policy-74/outer-launch-context.json",
+    "RAW_SHA256": "cbda7db5b1c81fa25dce4b905f8ae2d407eec76d465fef0465ee6aa4892a342f"
+  },
+  "CONTROL_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  },
+  "EXCLUSIONS": [
+    "no socket retry or confinement test",
+    "no policy exception assumed",
+    "no security configuration change",
+    "no credentials requested",
+    "no campaign authority issued"
+  ],
+  "NO_REPLY_STATUS": "Path A remains UNDETERMINED; do not initiate further speculative same-host recovery",
+  "QUESTIONS": [
+    {
+      "QUESTION": "Effective profile identity/version and exact applicability to the Package72 launch",
+      "QUESTION_ID": "A75-01",
+      "REQUIRED_ANSWER_TYPE": "Versioned profile/configuration and assignment provenance"
+    },
+    {
+      "QUESTION": "Applicable seccomp, syscall/socket family and network/user/mount/PID namespace rules",
+      "QUESTION_ID": "A75-02",
+      "REQUIRED_ANSWER_TYPE": "Exact effective filter or authoritative source explaining socket(AF_NETLINK=16,type=0x80003,NETLINK_ROUTE=0)"
+    },
+    {
+      "QUESTION": "Relevant NETLINK_ROUTE denial evidence, if retained",
+      "QUESTION_ID": "A75-03",
+      "REQUIRED_ANSWER_TYPE": "Correlated denial/audit record or explicit unavailable status; no reproduction requested"
+    },
+    {
+      "QUESTION": "Whether nested Bubblewrap confinement is supported in an approved context",
+      "QUESTION_ID": "A75-04",
+      "REQUIRED_ANSWER_TYPE": "Authoritative support/permission statement, prerequisites and profile identity; not an inferred exception"
+    },
+    {
+      "QUESTION": "Which approved context preserves the complete confinement contract",
+      "QUESTION_ID": "A75-05",
+      "REQUIRED_ANSWER_TYPE": "Exact readonly inputs/writable row/deny external network/independent lifecycle/resource-control definition"
+    },
+    {
+      "QUESTION": "Permitted process creation and namespace operations",
+      "QUESTION_ID": "A75-06",
+      "REQUIRED_ANSWER_TYPE": "Actual permission boundary, allowed context/actor/operations and limitations"
+    },
+    {
+      "QUESTION": "How each Package70 resource ceiling is enforceable",
+      "QUESTION_ID": "A75-07",
+      "REQUIRED_ANSWER_TYPE": "Control-by-control enforcement evidence, including descendants/campaign budgets and unsupported features"
+    },
+    {
+      "QUESTION": "Who is empowered to attest or approve this policy",
+      "QUESTION_ID": "A75-08",
+      "REQUIRED_ANSWER_TYPE": "Named authorised role/person/organization, delegation/ownership evidence and effective scope"
+    },
+    {
+      "QUESTION": "Approval process for a compatible profile",
+      "QUESTION_ID": "A75-09",
+      "REQUIRED_ANSWER_TYPE": "Versioned approval/adoption requirements; no change, exception or campaign permission assumed"
+    }
+  ],
+  "RECIPIENT_ROLE": "Authorised administrator/operator of Codex app-server managed launch profiles; exact owner still unverified",
+  "RECORDED_FAILURE_PIN": {
+    "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/resource-enforcement-assessment.json",
+    "RAW_SHA256": "904d00ef3c0c35ee9d5f6eb260ff34a98757f242ae55380c334bf55dfd29148b"
+  },
+  "REQUEST_STATUS": "PREPARED_NOT_SENT"
+}

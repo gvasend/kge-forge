@@ -1,0 +1,109 @@
+{
+  "EXACT_PATHS": [
+    "/var/tmp/kge-forge",
+    "/var/tmp/kge-forge/p124-direct-file-capture-135"
+  ],
+  "I3_EVIDENCE_COMPLETE": false,
+  "NO_ABSENCE_AS_UNUSED_ATTEMPT_PROOF": true,
+  "REQUIRED_RESULT_OWNER_MODE": "1000:1000 and0700",
+  "ROWS": [
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/usr/bin/stat",
+        "--format=%n:%d:%i:%f:%u:%g:%h",
+        "--",
+        "/",
+        "/var",
+        "/var/tmp"
+      ],
+      "OLD_139_EVIDENCE": "I1matchingowner-snapshot available; attributionunknown",
+      "QUALIFICATION": "Actual /,/var,/var/tmp device/inode/type/mode/UIDGID, safeancestors; exactsame approved vector.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I1"
+    },
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/bin/ls",
+        "-ld",
+        "--",
+        "/var/tmp/kge-forge",
+        "/var/tmp/kge-forge/p124-direct-file-capture-135"
+      ],
+      "OLD_139_EVIDENCE": "Nonmatchingmissingparentstat supports oldabsenceonly; notnewI2",
+      "QUALIFICATION": "Both exacttargets absent ifqualifiedparent/readpermission support expectedENOENT; errors/aliases not absence.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I2"
+    },
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/usr/bin/stat",
+        "--file-system",
+        "--format=%T:%i:%S:%a",
+        "--",
+        "/var/tmp"
+      ],
+      "OLD_139_EVIDENCE": "I3notprovided",
+      "QUALIFICATION": "Actual filesystemtype/identity/blocksize/freeblocks for /var/tmp; device64768 alone notsubstitute.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I3"
+    },
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/usr/bin/stat",
+        "--format=%n:%d:%i:%f:%u:%g:%h",
+        "--",
+        "/var/tmp/kge-forge"
+      ],
+      "OLD_139_EVIDENCE": "Requiresfutureseparatelyauthorized138creation; notinitialinspectionentrypredicate",
+      "QUALIFICATION": "First directory actual path/type/owner1000:1000/mode0700 after independentlyauthorizedC1; before C2.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I4"
+    },
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/usr/bin/stat",
+        "--format=%n:%d:%i:%f:%u:%g:%h",
+        "--",
+        "/var/tmp/kge-forge",
+        "/var/tmp/kge-forge/p124-direct-file-capture-135"
+      ],
+      "OLD_139_EVIDENCE": "Requiresfutureseparatelyauthorized138creation; notinitialinspectionentrypredicate",
+      "QUALIFICATION": "Both directory identities/owner/mode after separatelyauthorizedC2; noatomicpair claim.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I5"
+    },
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/bin/ls",
+        "-la",
+        "--",
+        "/var/tmp/kge-forge",
+        "/var/tmp/kge-forge/p124-direct-file-capture-135"
+      ],
+      "OLD_139_EVIDENCE": "Requiresfutureseparatelyauthorized138creation; notinitialinspectionentrypredicate",
+      "QUALIFICATION": "Both actual emptydirectories, no extraartifacts, partialunknownnotPASS.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I6"
+    },
+    {
+      "CURRENT_141_RESULT": null,
+      "EXACT_ARGV": [
+        "/usr/bin/stat",
+        "--file-system",
+        "--format=%T:%i:%S:%a",
+        "--",
+        "/var/tmp/kge-forge/p124-direct-file-capture-135"
+      ],
+      "OLD_139_EVIDENCE": "Requiresfutureseparatelyauthorized138creation; notinitialinspectionentrypredicate",
+      "QUALIFICATION": "Actual final filesystem/capacityidentity after separatelyauthorizedC2; no generaldurability claim.",
+      "STATUS": "NOT_EXECUTED_OR_NOT_SUPPLIED",
+      "VECTOR_ID": "I7"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "authority_issued": false,
+  "authority_record": {
+    "issuer": "Architect/qualification authority",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "permitted_operation": "define and admit E2-SLOT, SLOT_PROOF, E2-ROOT, ROOT_PROOF and their bindings",
+    "prohibited": [
+      "production semantics",
+      "real-world proof",
+      "E1 authority",
+      "general root/slot satisfaction"
+    ],
+    "scope": "E2-QUALIFICATION-ONLY",
+    "subject": "E2 root/slot synthetic qualification fixture"
+  },
+  "authority_scope": "E2-QUALIFICATION-ONLY",
+  "authority_type": "existing DECIDE/qualification-authority decision mechanism, bounded fixture-admission operation",
+  "decision_subject": "Authorize bounded E2 root/slot proof fixture semantics",
+  "e1_artifacts_modified": 0,
+  "e2_finish_executed": false,
+  "e2_p03_result": "BLOCKED",
+  "e2_p04_ready": false,
+  "e2_pc02_fixture_decision_ready": true,
+  "e2_pc02_fixture_decision_required": true,
+  "e2_root_contract": {
+    "currentness": "current slot/proof/root sources",
+    "expected_value": "E2-SLOT SATISFIED",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "predicate": "E2-ROOT-PROPOSITION",
+    "provenance": "new qualification-fixture provenance required",
+    "required_slots": [
+      "E2-SLOT"
+    ],
+    "root_id": "E2-ROOT",
+    "root_type": "RootCondition",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "subject": "E2-SLOT",
+    "support_type": "typed ROOT_PROOF plus satisfied slot"
+  },
+  "e2_slot_contract": {
+    "currentness": "source/proof/knowledge current",
+    "expected_value": "E2-K-REENTER:PASS/current",
+    "knowledge_input": "E2-K-REENTER",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "predicate": "E2-SLOT-PROPOSITION",
+    "provenance": "new qualification-fixture provenance required",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "slot_id": "E2-SLOT",
+    "slot_type": "QUALIFICATION_VALUE_SLOT",
+    "subject": "E2-K-REENTER",
+    "support_type": "typed SLOT_PROOF plus current KnowledgeRecord"
+  },
+  "finish_relationship": "existing E2-FINISH prerequisite ACTION_COMPLETED(E2-REENTER) remains unchanged; fixture root/slot support must make E2-ROOT available to the existing finish readiness path",
+  "invalidation": "E2-K-REENTER invalidation => SLOT_PROOF unusable => slot unsatisfied => ROOT_PROOF unusable => root unresolved => FINISH non-actionable",
+  "materialization_plan": [
+    "materialize typed slot/proof/root definitions",
+    "requalify six-Action model",
+    "invalidate affected snapshots",
+    "reconstruct P03 through E2-REENTER",
+    "admit SLOT_PROOF",
+    "admit ROOT_PROOF",
+    "recompute root/control",
+    "evaluate P03 exit"
+  ],
+  "negative_oracles": [
+    "knowledge without SLOT_PROOF",
+    "wrong/stale knowledge",
+    "wrong slot proposition",
+    "wrong SLOT_PROOF",
+    "wrong scope/lineage",
+    "slot without ROOT_PROOF",
+    "wrong root proposition",
+    "wrong/stale ROOT_PROOF",
+    "unrelated slot proof",
+    "root with unsatisfied slot",
+    "FINISH before root satisfaction"
+  ],
+  "next_package": "E2-PC02-A authorized root/slot fixture issuance",
+  "next_package_ready": true,
+  "options": [
+    "AUTHORIZE_E2_ROOT_SLOT_FIXTURE",
+    "DECLINE_E2_ROOT_SLOT_FIXTURE"
+  ],
+  "positive_oracle": [
+    "E2-K-REENTER current",
+    "SLOT_PROOF admitted",
+    "E2-SLOT satisfied",
+    "independent ROOT_PROOF admitted",
+    "E2-ROOT satisfied",
+    "E2-FINISH actionable",
+    "E2-FINISH unexecuted"
+  ],
+  "production_effect": false,
+  "result": "PASS",
+  "root_proof_admitted": false,
+  "root_proof_contract": {
+    "admission_rule": "typed ROOT_PROOF, exact slot/root/proposition/scope/lineage match; independent admission required",
+    "currentness": "current slot and proof sources",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "proof_type": "E2-ROOT-PROOF-v1",
+    "proposition": "E2-ROOT-PROPOSITION",
+    "provenance": "qualification-fixture authority record",
+    "satisfied_slot_input": "E2-SLOT SATISFIED",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "support": "independent root proof source, distinct from SLOT_PROOF",
+    "target_root": "E2-ROOT"
+  },
+  "root_proposition": {
+    "id": "E2-ROOT-PROPOSITION",
+    "production": false,
+    "statement": "The independently admitted E2-SLOT proof establishes the bounded post-reentry qualification root.",
+    "type": "synthetic independent root proposition"
+  },
+  "root_satisfaction": "satisfied E2-SLOT plus accepted independent ROOT_PROOF => E2-ROOT SATISFIED; slot alone is insufficient",
+  "runtime_modified": false,
+  "selected_option": "NONE",
+  "slot_proof_admitted": false,
+  "slot_proof_contract": {
+    "admission_rule": "typed proof, exact knowledge/source/value/scope/lineage match; independent admission required",
+    "currentness": "current accepted knowledge and proof source",
+    "knowledge_input": "E2-K-REENTER",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "proof_type": "E2-SLOT-PROOF-v1",
+    "proposition": "E2-SLOT-PROPOSITION",
+    "provenance": "qualification-fixture authority record",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "source": "E2-REENTER accepted-result contract and current result provenance",
+    "target_slot": "E2-SLOT"
+  },
+  "slot_proposition": {
+    "id": "E2-SLOT-PROPOSITION",
+    "production": false,
+    "statement": "The current accepted E2-REENTER result supplies the bounded qualification value required by E2-SLOT.",
+    "type": "synthetic typed qualification proposition"
+  },
+  "slot_satisfaction": "accepted current SLOT_PROOF plus exact current E2-K-REENTER => E2-SLOT SATISFIED; knowledge alone is insufficient",
+  "work_package": "E2-PC02-ROOT-SLOT-FIXTURE-AUTHORITY"
+}

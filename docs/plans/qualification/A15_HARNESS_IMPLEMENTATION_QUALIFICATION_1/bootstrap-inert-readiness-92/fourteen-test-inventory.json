@@ -1,0 +1,422 @@
+[
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "no claim; no callback; exact rejection",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "9513bd917e29762f2a03545b03135d15ffa9e1c5d79d44fcb2a835c8fbad2d20"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "28ac9fdcc4cbf6df1fc48fc82ee426c5d1f748df7239584d0a9b881350930bdf"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:169",
+    "TEST_ID": "B89-COMMAND_REJECTION",
+    "TEST_PURPOSE": "wrong canonical argv identity"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "no claim; no callback; exact rejection",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "507de54401568d51e7ec4574ad3e0593e9f924ebb37a248adb282d6b155efbe6"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "a055bf27100500b8891c7f4471fdad437e4f960a5abae770e14aa1ba5d7cd22a"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:172",
+    "TEST_ID": "B89-GRANT_REJECTION",
+    "TEST_PURPOSE": "wrong synthetic effective-grant identity/currentness"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "one full claim; barriers/independent confirmation; one inert callback",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "66abf7f41deb562729212f0191234ddfabb6853d475a77da6a46f7a4c4f5aefd"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "946f36fbba4394e4e48b69a759306fc25eae7049b03d3a777f04e2ce599e4337"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:175",
+    "TEST_ID": "B89-FIRST_CONSUMPTION",
+    "TEST_PURPOSE": "valid synthetic disposable grant"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "reject even identical record; callback total1",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "b832e36193a00f0e1e8928f59e5e8b9c8c1b0fb1583f01c15ed5109983314088"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "4d0dfd7f2d009c9e3ce1fe1e15491c9925bff542392d72d53a02323e7bf4f217"
+    },
+    "PROCESS_EFFECTS": "restart helper",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:178",
+    "TEST_ID": "B89-DUPLICATE_CONSUMPTION",
+    "TEST_PURPOSE": "same grant/key second request"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "<=1 successful claim and <=1 inert callback; losing identity not predetermined",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "30f1900c778c4a3aa3270f02db9aaaac47d0603d15b71408350bea0acc6a1b05"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "ebf5294fe30c53addbc73a35342c04eacb4d94f9f1998d23f80fbd6bc2708258"
+    },
+    "PROCESS_EFFECTS": "two fixed helpers",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:186",
+    "TEST_ID": "B89-CONCURRENT_CLAIMS",
+    "TEST_PURPOSE": "two fixed helper actors same key"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "ambiguous retained; callback0; recover denies",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "734d2d6820d4aaa6b167ad65f8c4a39aca077a3120b14a43efe3d702275ebb4f"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "fe55f83e705565e83d4e7076786c4f64b1974089a18a3be6f7c7c5c34aaa5983"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:209",
+    "TEST_ID": "B89-PARTIAL_RECORD",
+    "TEST_PURPOSE": "predeclared partial reservation/write fault"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "consumed remains; recovery denies callback",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "55f2e63eb2a0567b82ccfa3fba60f857c445e0d7e8f01e24f98c3eb398bd41a0"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "87c22685a564ce0b291bec6d348b6c2cd3c9728b6e14de4cea81e44ba33b5bab"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:212",
+    "TEST_ID": "B89-CRASH_BEFORE_LAUNCH",
+    "TEST_PURPOSE": "controlled helper exits after verified claim before callback"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "partial/consumed/unknown never reopens; independent parent exit witness",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "021cf4961ebab63bce87038c2ef2398a2e403822321a0e328a8472105e58a670"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "010c05adfddbadb47f74b4ca16aaa1fd80313bb2bd839129d3bfaeb32923aa6a"
+    },
+    "PROCESS_EFFECTS": "six fixed crash helpers",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:215",
+    "TEST_ID": "B89-CRASH_AFTER_CONSUMPTION",
+    "TEST_PURPOSE": "one helper per six declared crash transition points"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "claim retained; first exception retained; no retry",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "4262bdb44da0cd531e8e6e35ca3ae71a71e9e180daaf70413f6b2e8b919cff7a"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "3c0a930954165d528d71389854d07dbd6698e990dc1cdb9317b1f67068ff63df"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:225",
+    "TEST_ID": "B89-LAUNCH_FAILURE",
+    "TEST_PURPOSE": "inert callback raises fixed exception"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "claim remains consumed/unknown; no resubmission",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "af8bf61a539230af3dfbc7ad03920e8834442d517b8405847e12c388aa9137ab"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "43279184b9e96749bd0c731694d9f9aa7bc4184525f3c8410e90aa489bec06f6"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:228",
+    "TEST_ID": "B89-UNKNOWN_COMPLETION",
+    "TEST_PURPOSE": "missing/injected outcome observation"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "original error/available outcome preserved; permission remains consumed",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "c6b2ac89106f71581da98fa6e01f10e0107864e60c88b331336a4025f8eccce5"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "bcd761cb5b3e26ff762152750520a92e2e5c531808e08344625593a93b933346"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:231",
+    "TEST_ID": "B89-AUDIT_FAILURE",
+    "TEST_PURPOSE": "fixed exclusive audit/write/barrier failure"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "deny before callback; never assume fresh authority",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "5afd19dd21780ea647e7e27391a2be6cb2fc52bc5393d18b8c41fb81a07e7c60"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "d9b8498c726e883e38baf66973820e5d3ecbea7f18b50b37de327a8d0930fce7"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:234",
+    "TEST_ID": "B89-REVOCATION",
+    "TEST_PURPOSE": "synthetic epoch revoked/expired/stale or changed inode"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "no callback; rejection exact",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "3064e8b6c951c024dccc5166b33cfb954774e44a39fc7e51f7d3d34c287a92b5"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "5ef54cbb3ef9992a6a7c6a861484cfae7150bdfcfd0f0c2e44ef922f14b9db6e"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:237",
+    "TEST_ID": "B89-RESOURCE_MISMATCH",
+    "TEST_PURPOSE": "synthetic grant resources differ from sealed limits"
+  },
+  {
+    "CURRENT_READINESS": "BLOCKED_NO_CAMPAIGN_ENTRY",
+    "EXPECTED_RESULT": "zero additional callbacks; no reset cleanup",
+    "FIXTURE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-fixture-v1",
+      "sha256": "efa718867c361a0cb35e4d3bbbc1ca8b154f3af76671fd94cad0a851d7470f32"
+    },
+    "ORACLE_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "bootstrap-inert-case-oracle-v1",
+      "sha256": "3575fec7121e4723f2f8a10d2697a0929a49bb9d02821bbb91a3a6e0bcf9aa67"
+    },
+    "PROCESS_EFFECTS": "parent inert operation",
+    "RESOURCE_REQUIREMENTS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CAMPAIGN_WALL_SECONDS": 30,
+      "CAMPAIGN_WRITTEN_BYTES": 1048576,
+      "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+      "CHILD_CPU_SECONDS": 5,
+      "CHILD_FDS": 32,
+      "CHILD_FILE_BYTES": 65536,
+      "CHILD_WALL_SECONDS": 10,
+      "MAX_CHILD_LAUNCHES": 16,
+      "MAX_LIVE_CHILDREN": 2
+    },
+    "SOURCE_LOCATION": "adapter/tests/test_systemd_pids_bootstrap.py:240",
+    "TEST_ID": "B89-ZERO_RETRIES",
+    "TEST_PURPOSE": "failure/duplicate/recovery request"
+  }
+]

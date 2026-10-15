@@ -1,0 +1,693 @@
+{
+  "AMBIGUITY": "Event range is unique, but scope enum/assurance mapping is a separate Bundle field. Historical checkpoint mode is plausible; schema contains other accepted scope enums with different assurance. No rule in selected frame picks the exact enum or imports budget/full-E1 scope. Need explicit bounded A14 scope binding, not convenience/default.",
+  "AUTHORIZATION_SUBJECT_EXCLUSION": "No policy/version or replay-scope selection was embedded in Reconciliation23 subject",
+  "CANDIDATES": [
+    {
+      "ASSURANCE_APPLICABILITY": "Checkpoint-range historical projection; empty owned interval does not claim ancestral historical occurrence",
+      "END": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      },
+      "EVENT_SET": [],
+      "EXPECTED_RECONSTRUCTION": "Source/policy/schema/model/provenance validation followed by zero event applications and exact current Snapshot equality",
+      "FORBIDDEN_EXECUTION": [
+        "live A14/D01/P05/P06 actions",
+        "fresh receipt/authority or INSTALL",
+        "save/commit",
+        "mutation/invalidation case execution"
+      ],
+      "NATIVE_SCHEMA_COMPATIBILITY": "Allowed with P05 or P06",
+      "POLICY": "Exact reviewed compatible version still required; P05/P06 unselected",
+      "SCOPE": "PARTIAL_HISTORICAL_REPLAY",
+      "SELECTION_STATUS": "PLAUSIBLE_GENERIC_DEFAULT_NOT_EXPLICITLY_SEALED",
+      "SNAPSHOT": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/corrected-prospective-snapshot.json",
+        "pointer": "",
+        "raw_sha256": "0c3efd163fc76a752bf4221c14d284fc75863cd9f587511b57313087f1c3fe89"
+      },
+      "SOURCE_PINS": [
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+          },
+          "path": "E2-DECIDE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "path": "E2-PREPARE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "path": "E2-COLLECT.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "path": "E2-CHECK.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+          },
+          "path": "resolution.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+          },
+          "path": "E2-FINISH.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "path": "source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      ],
+      "START": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      }
+    },
+    {
+      "ASSURANCE_APPLICABILITY": "OTHER/WRONG_ASSURANCE_SCOPE: full frozen E1 import not owned by qualification-only frame",
+      "END": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      },
+      "EVENT_SET": [],
+      "EXPECTED_RECONSTRUCTION": "Source/policy/schema/model/provenance validation followed by zero event applications and exact current Snapshot equality",
+      "FORBIDDEN_EXECUTION": [
+        "live A14/D01/P05/P06 actions",
+        "fresh receipt/authority or INSTALL",
+        "save/commit",
+        "mutation/invalidation case execution"
+      ],
+      "NATIVE_SCHEMA_COMPATIBILITY": "Native requires P06",
+      "POLICY": "Exact reviewed compatible version still required; P05/P06 unselected",
+      "SCOPE": "FULL_FROZEN_E1_REPLAY",
+      "SELECTION_STATUS": "NOT_ELIGIBLE_UNDER_CURRENT_FRAME_AUTHORITY",
+      "SNAPSHOT": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/corrected-prospective-snapshot.json",
+        "pointer": "",
+        "raw_sha256": "0c3efd163fc76a752bf4221c14d284fc75863cd9f587511b57313087f1c3fe89"
+      },
+      "SOURCE_PINS": [
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+          },
+          "path": "E2-DECIDE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "path": "E2-PREPARE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "path": "E2-COLLECT.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "path": "E2-CHECK.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+          },
+          "path": "resolution.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+          },
+          "path": "E2-FINISH.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "path": "source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      ],
+      "START": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      }
+    },
+    {
+      "ASSURANCE_APPLICABILITY": "OTHER_EXPERIMENT: no recovered D01/A14 budget-scope mapping; schema admission alone cannot supply it",
+      "END": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      },
+      "EVENT_SET": [],
+      "EXPECTED_RECONSTRUCTION": "Source/policy/schema/model/provenance validation followed by zero event applications and exact current Snapshot equality",
+      "FORBIDDEN_EXECUTION": [
+        "live A14/D01/P05/P06 actions",
+        "fresh receipt/authority or INSTALL",
+        "save/commit",
+        "mutation/invalidation case execution"
+      ],
+      "NATIVE_SCHEMA_COMPATIBILITY": "Enum admitted by codec; no budget matrices in frame to trigger mandatory budget-scope rule",
+      "POLICY": "Exact reviewed compatible version still required; P05/P06 unselected",
+      "SCOPE": "PARTIAL_SYNTHETIC_BUDGET_QUALIFICATION",
+      "SELECTION_STATUS": "NOT_SEALED_AS_A14_SCOPE",
+      "SNAPSHOT": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/corrected-prospective-snapshot.json",
+        "pointer": "",
+        "raw_sha256": "0c3efd163fc76a752bf4221c14d284fc75863cd9f587511b57313087f1c3fe89"
+      },
+      "SOURCE_PINS": [
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+          },
+          "path": "E2-DECIDE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0a1daaa24eea752c83ed20aad3f7756b72e2e6b76b7e0c4c2033e5f6a9bc0f99"
+          },
+          "path": "E2-PREPARE.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "10c07a62e01c907b47d78fa9ddf2560f45b9862a9362eda04549e841edb6f617"
+          },
+          "path": "E2-COLLECT.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "537ed482e8aaa4dede6dfd3039c1eb2ce53f4cfd95660f8f8022b7970ec93fb6"
+          },
+          "path": "E2-CHECK.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/choice-6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "75f7dcdabc604b4ce60a4dc47c3373db804ebf9d250b9b2770aaf9368112a33a"
+          },
+          "path": "resolution.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "81b1ce2c58cfaf0cc43aa6b43d838e59ce7bef3ad9ed26c9215a8b02786b85dd"
+          },
+          "path": "E2-FINISH.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "path": "docs/plans/qualification/E2_P05_D01_A14_PROSPECTIVE_SOURCE_CORRECTION_1/sources/grant-cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+          },
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_SOURCES.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+          },
+          "path": "source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      ],
+      "START": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+      }
+    }
+  ],
+  "CONTRACT_SOURCE": {
+    "path": "adapter/planner/codec.py",
+    "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+  },
+  "END": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+  },
+  "EVENT_SET": [],
+  "FRAME_RANGE_SEALED": true,
+  "NATIVE_SEMANTICS": "Empty event interval plus source/policy/model/provenance reconstruction and exact checkpoint identity comparison; zero events does not mean no replay obligations",
+  "REPLAY_SCOPE_SELECTED": false,
+  "SELECTED_REPLAY_SCOPE": null,
+  "START": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "A14_REUSED": "Capability evidence only, no grant and no rerun",
+  "COLD_READERS": 8,
+  "DYNAMIC_PROCESS_IDS": "Observed lifecycle evidence only; no fabricated expected PID or timestamp",
+  "EXIT_EVIDENCE_REQUIRED_FIELDS": [
+    "supervisor_pid",
+    "child_pid",
+    "observed_wait_status",
+    "observation_time",
+    "handoff_hash",
+    "publication_verified"
+  ],
+  "HANDOFF_NOT_EXIT_PROOF": true,
+  "HANDOFF_REQUIRED_FIELDS": [
+    "variant",
+    "initial_snapshot",
+    "invalidation_event",
+    "after_snapshot",
+    "bundle_identity",
+    "bundle_path",
+    "bundle_bytes_hash",
+    "published_file_hashes"
+  ],
+  "HASH_SEEDS": [
+    0,
+    1,
+    7,
+    101
+  ],
+  "INITIAL_PRECONDITION_ORACLE": "starting-state-precondition-oracle.json",
+  "PLANNED_INITIAL_RESTORES": 2,
+  "PROCESS_SEQUENCE": [
+    "Supervisor verifies exact bounded grant, input/source seals, empty non-symlink row-owned target",
+    "Fresh writer native restore of exact retained checkpoint using initial-checkpoint-restore-contract.json; verify complete initial bundle, Snapshot identity, source/policy pins and 19-event prefix before record_result; compare full initial computation (RUNNABLE, FINISH actionable) and both typed proofs usable using starting-state-precondition-oracle.json",
+    "record_result(original_bundle,exact SourceInvalidation input,snapshot_resolver=None) exactly once; compare complete POST_RECORD_RESULT DTO",
+    "save_bundle(updated_bundle,exact row directory,exact repository root); compare returned path/ID and all canonical bytes",
+    "Writer exclusively publishes persisted handoff with exact variant/input/after/event/bundle/path/byte hash and publication-file hashes; flush/fsync file before immutable publication",
+    "Writer exits successfully",
+    "Supervisor waitpid/Popen.wait on its own child returns status 0; verify handoff/publication independently; persist exit evidence including observed PID/status/time/hand-off hash",
+    "Only then launch four new independent readers with fixed seeds, empty caches and no writer objects",
+    "Each reader restore(expected path,expected bundle identity,repository root), derive full native capture DTO from restored bundle, compare ALL fields and bytes/protected identities; publish separate reader evidence",
+    "Supervisor requires all eight exact comparisons and no effects outside row; no aggregate D01 PASS inferred"
+  ],
+  "READERS_PER_VARIANT": 4,
+  "READER_CANNOT_LAUNCH_FROM_WRITER_HANDOFF_ALONE": true,
+  "READER_OPERATIONS_EXECUTED": 0,
+  "SAVE_TARGETS_CREATED": false,
+  "SUPERVISORS": 1,
+  "SUPPLEMENTARY_NATIVE_COMPARISONS": {
+    "typed_proof_usability": "After record and each cold restore, call typed_proofs.usable on each exact typed proof, compare complete expected list. Full capture DTO remains separately exact.",
+    "validation_target_and_action_state": "Exact full typed Snapshot comparison includes all proof/contract validation values, all ROOT/SLOT states, FINISH ActionStatus and all protected fields."
+  },
+  "TOTAL_PLANNED_RESTORE_CALLS": 10,
+  "VARIANT_ORDER": [
+    "PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL",
+    "PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL"
+  ],
+  "WRITERS": 2,
+  "WRITER_HASH_SEED": 0
+}

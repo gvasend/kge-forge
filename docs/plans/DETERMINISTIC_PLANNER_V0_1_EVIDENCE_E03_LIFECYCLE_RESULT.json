@@ -1,0 +1,106 @@
+{
+  "work_package": "EVIDENCE-E03",
+  "result": "PARTIAL",
+  "root_cause": [
+    "RECEIPT_ADMISSION_DEFAULTED_VALIDATION",
+    "STALE_ACTION_STATUS_PROJECTION",
+    "MISSING_NATIVE_VALIDATION_PROOF_TRANSITIONS"
+  ],
+  "receipt_semantics": "PASS: admission publishes RECEIVED only; entity validated=False and ValidationState.NOT_EVALUATED",
+  "validation_semantics": "PARTIAL: independent contract identified, but no qualified native persisted validation transition is available",
+  "proof_semantics": "PASS (generic separation): proof requires VALIDATED; native E2 proof admission not executed/available",
+  "reentry_semantics": "PASS at receipt boundary: unmet E2-PROOF predicate blocks reentry; completion remains separate",
+  "generic_lifecycle": [
+    "ABSENT",
+    "RECEIVED",
+    "VALIDATED",
+    "PROVED",
+    "REENTRY_ELIGIBLE",
+    "REENTER_COMPLETED"
+  ],
+  "generic_lifecycle_result": "PASS",
+  "generic_lifecycle_trace": [
+    "RECEIVED",
+    "VALIDATED",
+    "PROVED",
+    "REENTRY_ELIGIBLE",
+    "REENTER_COMPLETED"
+  ],
+  "invalid_transitions": [
+    {
+      "case": "ABSENT_TO_VALIDATED",
+      "result": "REJECTED",
+      "reason": "VALIDATION_STAGE"
+    },
+    {
+      "case": "RECEIVED_TO_PROVED",
+      "result": "REJECTED",
+      "reason": "PROOF_REQUIRES_VALIDATION"
+    },
+    {
+      "case": "RECEIVED_TO_REENTER",
+      "result": "REJECTED",
+      "reason": "REENTRY_NOT_ELIGIBLE"
+    },
+    {
+      "case": "VALIDATED_TO_REENTER_WITHOUT_PROOF",
+      "result": "REJECTED",
+      "reason": "REENTRY_NOT_ELIGIBLE"
+    },
+    {
+      "case": "PROVED_TO_FINISH_WITHOUT_REENTRY",
+      "result": "REJECTED",
+      "reason": "REENTER_STAGE"
+    }
+  ],
+  "invalidation": "PASS (generic state machine requires dependent stages to be discarded by caller; live invalidation not run)",
+  "persistence": "PASS for corrected RECEIVED post-receipt bundle",
+  "cold_restore": "PASS for corrected RECEIVED post-receipt bundle",
+  "replay": "PASS for historical receipt event; validation/proof/reentry replay not reached",
+  "regressions": "PASS: T01 receipt boundary and existing E2 T03 suite (6 tests)",
+  "e2_t01_readmission": {
+    "result": "PASS",
+    "bundle_id": "fa3aca3c5ca9a50f9f00668196647935858d5e7085a6939a4577eb1df96c2491",
+    "state_id": "576466563c22376cbd11be5b2b8a97fe81e783bfb0a8fa66caf8e0bb3daa6182",
+    "ingress_event_id": "c54b1c6e65cab35db5c71870b9e3391ed392f74f1123d056b784f844e9a17176",
+    "receipt_id": "349335c1a9697b8e1b50044b5cb7522a8156e9422913a3f1e5facbbe61a3497e",
+    "evidence_received": true,
+    "evidence_validated": false,
+    "proof_accepted": false,
+    "reentry_completed": false,
+    "e2_reenter_actionable": false,
+    "e2_finish_actionable": false,
+    "control": "EXTERNAL_WAIT"
+  },
+  "post_receipt": {
+    "evidence_received": true,
+    "evidence_validated": false,
+    "proof_accepted": false,
+    "e2_reenter_actionable": false,
+    "e2_finish_actionable": false
+  },
+  "validation_id": "NOT_CREATED",
+  "validation_result": "NOT_EXECUTED",
+  "proof_id": "NOT_CREATED",
+  "proof_admission": "NOT_EXECUTED",
+  "reentry_eligible": "NO (E2-PROOF remains UNKNOWN)",
+  "e2_reenter": "NOT_EXECUTED",
+  "e2_finish_after_reenter": "NOT_EVALUATED",
+  "p03_exit_predicate": false,
+  "e2_p03_result": "BLOCKED",
+  "e2_p04_ready": false,
+  "next_package": "EVIDENCE-E04 native validation/proof transitions and event persistence",
+  "e1_artifacts_modified": 0,
+  "production_effect": false,
+  "e2_finish_executed": false,
+  "counterexamples": [
+    "Original receipt state had validated=True/ACCEPTED and stale downstream ACTION_ELIGIBLE statuses; corrected rerun no longer reproduces either."
+  ],
+  "new_runtime_defects": [
+    "No qualified native persisted validation transition",
+    "No qualified native typed proof-admission transition",
+    "No qualified event-bearing reentry transition after proof"
+  ],
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false
+}

@@ -1,0 +1,143 @@
+{
+  "schema": "deterministic-planner-e2-p03-synthetic-evidence-contract-v1",
+  "proposition_id": "E2-EXTERNAL-REQUIREMENT",
+  "proposition": "Authenticated governing rule for target operation; no rule currently received",
+  "subject": {
+    "kind": "CANONICAL_OBJECT_IDENTITY",
+    "namespace": "TEST-target",
+    "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "expected_value": "GOVERNING_RULE_PRESENT_FOR_E2_REENTER",
+  "consumer": "E2-REENTER",
+  "gate_id": "E2-GATE",
+  "source": {
+    "source_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "source_type": "TEST-rule-owner governing-rule source",
+    "identity_domain": "AUTHORITY_IDENTITY",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "provenance_required": true,
+    "currentness_rule": "0 <= tick <= 100",
+    "qualification_only": true
+  },
+  "payload": {
+    "schema": "E2-SYNTHETIC-EXTERNAL-EVIDENCE-1",
+    "qualification_only": true,
+    "proposition_id": "E2-EXTERNAL-REQUIREMENT",
+    "proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "subject": {
+      "kind": "CANONICAL_OBJECT_IDENTITY",
+      "namespace": "TEST-target",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "value": "GOVERNING_RULE_PRESENT_FOR_E2_REENTER",
+    "source_id": {
+      "kind": "AUTHORITY_IDENTITY",
+      "namespace": "TEST-rule-owner",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    "gate_id": "E2-GATE",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "generation": "E2-GENERATION-1",
+    "currentness": {
+      "valid_from": 0,
+      "valid_until": 100
+    }
+  },
+  "content_id": "78654fdd7f475d76caa4e8c4b022103a2b9e34686cc0f759e4fd86a49959a605",
+  "evidence_id": "70087bfc0162f2a3fc44df7d8e2ff3121258b1ea0f97276883c59a2333da154b",
+  "ingress_event_id": "c1d87905b8371fed485e9e2bbda93ad42de11a15f1633b22198b0436f3ac115b",
+  "ingress_bundle": {
+    "schema": "PLANNER-EVIDENCE-INGRESS-1",
+    "gate_id": "E2-GATE",
+    "receipt_action": "TEST-RECEIVE",
+    "requirements": [
+      "E2-EXTERNAL-REQUIREMENT"
+    ],
+    "evidence_id": "70087bfc0162f2a3fc44df7d8e2ff3121258b1ea0f97276883c59a2333da154b",
+    "content_id": "78654fdd7f475d76caa4e8c4b022103a2b9e34686cc0f759e4fd86a49959a605",
+    "source_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "expected_snapshot_identity": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c",
+    "snapshot_lineage": "E2-CANONICAL-BASELINE-1",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "generation": "E2-GENERATION-1",
+    "currentness": {
+      "valid_from": 0,
+      "valid_until": 100
+    },
+    "receipt_binding": {
+      "gate": "E2-GATE",
+      "proposition_id": "E2-EXTERNAL-REQUIREMENT",
+      "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "producer": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  },
+  "validation_oracle": {
+    "result": "PASS",
+    "rule": "payload proposition, target, producer, gate, scope, lineage, generation and currentness exactly match qualified E2-GATE contract"
+  },
+  "proof_contract": {
+    "type": "EVIDENCE_OBLIGATION_PROOF",
+    "proposition_id": "E2-EXTERNAL-REQUIREMENT",
+    "evidence_id": "70087bfc0162f2a3fc44df7d8e2ff3121258b1ea0f97276883c59a2333da154b",
+    "source_id": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "target": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "admission": "independent native validation and typed proof admission"
+  },
+  "reentry_binding": {
+    "consumer": "E2-REENTER",
+    "authority": "E2-GRANT",
+    "gate": "E2-GATE",
+    "reentry": [
+      "E2-REENTER"
+    ]
+  },
+  "positive_fixture": {
+    "payload_complete": true,
+    "source_binding": "PASS",
+    "ingress_bundle_complete": true,
+    "validation_oracle": "PASS",
+    "proof_contract_complete": true,
+    "reentry_binding_complete": true
+  },
+  "negative_fixtures": [
+    "wrong proposition",
+    "wrong subject",
+    "wrong source",
+    "wrong content",
+    "wrong scope",
+    "wrong lineage",
+    "wrong snapshot lineage",
+    "stale evidence",
+    "invalid provenance",
+    "malformed payload",
+    "wrong gate",
+    "wrong receipt binding",
+    "source substitution",
+    "content identity mismatch"
+  ],
+  "determinism": {
+    "seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "dimensions": [
+      "object-key",
+      "source-field",
+      "independent-process"
+    ],
+    "result": "PASS"
+  },
+  "t01_preflight": "PASS",
+  "external_evidence_admitted": false,
+  "receipt_created": false,
+  "proof_created": false,
+  "actions_executed": 0,
+  "initial_snapshot_identity": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+}

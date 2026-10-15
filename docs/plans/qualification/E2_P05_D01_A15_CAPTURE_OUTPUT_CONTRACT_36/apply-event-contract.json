@@ -1,0 +1,37 @@
+{
+  "CONTROL_EFFECT": "Native recompute(updated).control and full Computation; exact value target-dependent",
+  "ENTRYPOINT": "adapter.planner.core.apply_event(snapshot,supplied)",
+  "INPUT_DESCRIPTOR_TYPE": "SourceInvalidation",
+  "INPUT_STATE": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+  },
+  "INVOKED": false,
+  "NATIVE_SOURCE": {
+    "path": "adapter/planner/core.py",
+    "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+  },
+  "PERSISTENCE_EFFECT": "NONE; no event append, save, HEAD, writer or reader",
+  "PROOF_EFFECT": "Computed against exact changed sources and dependency closure; no fabricated proof or blanket authority",
+  "RESUME_EFFECT": "No persisted permission Boolean. Later resume_eligibility(replayed updated bundle,source_root) returns computed allowed/actions/reasons/support identities",
+  "RETURN_VALUE": "Native TransitionReport with Snapshot and full computation",
+  "STATE_MUTATION": [
+    "Return immutable native invalidated Snapshot",
+    "Propagate assertion evidence staleness, entities/knowledge/predicate/root/slot support currentness",
+    "Withdraw installed/authentication/decision/receipt/validation/proof support according to source/dependency intersections",
+    "Preserve mandatory ordering/prerequisites; held nonterminal descendants move to waiting/blocked currentness",
+    "Native typed_proofs.reevaluate may recompute statuses/satisfaction and append native reevaluation records"
+  ],
+  "TRACE_EFFECT": "Returns TransitionReport(updated, (), recompute(updated)); the empty changes tuple is not an ExecutionEvent or committed trace",
+  "VALIDATION": [
+    "Native SourceInvalidation field/type admission",
+    "expected_snapshot must equal native snapshot_id(input)",
+    "Native input model validation",
+    "Every changed source must be CONTENT_IDENTITY; raw/profile/source role exactness belongs to qualified target binding"
+  ]
+}

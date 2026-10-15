@@ -1,0 +1,22 @@
+{
+  "BROKER_BOUNDARY": "All writable outputs must route through broker; workload cannot write alternate files, inherited descriptors or uncontrolled streams. Existing source has no independently qualified all-producer broker. Requires separately approved exact source/host sandbox scope.",
+  "CGROUP_ENFORCES_CUMULATIVE_WRITES": false,
+  "CRITICAL_CONTRACT_COMPLETE": false,
+  "CRITICAL_RESERVE_BYTES": 32694,
+  "CRITICAL_WRITER_OWNER": "Independent qualified observer/broker, not terminated workload",
+  "CRITICAL_WRITE_BUDGET": 32694,
+  "ENFORCEMENT_COMPLETE": false,
+  "FILE_SIZE_OR_QUOTA_ACCEPTED": false,
+  "MINIMAL_BROKER_INTERFACE": "Fixed closed record-type enum + fixed producer token + canonical bounded record bytes; no arbitrary path. Descriptor-based writer validates schema, serializes concurrent requests, precharges entire submitted buffer against normal/reserve ledger, publishes once no-overwrite and applies durability barriers. No delete/overwrite refund or automatic write retry.",
+  "MODEL_FAILURE_MAX": 129825,
+  "NORMAL_MAX": 111665,
+  "POST_DEADLINE_FINALIZATION": "Separate finite governed finalization window, CPU/memory/FD and reserve access. Ends workload authority permanently; never restarts or reopens claim. Duration undefined, no ledger bypass permitted.",
+  "REQUIRED_FIELDS": [
+    "First causal failure immutable",
+    "Secondary failures bounded",
+    "Consumption state",
+    "Unknown outcome explicit",
+    "Final audit"
+  ],
+  "TOTAL_PROTECTED_ALLOCATION": 144359
+}

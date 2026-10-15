@@ -1,0 +1,610 @@
+{
+  "initial_parent": {
+    "bundle": true,
+    "snapshot": true,
+    "event": true,
+    "context": true
+  },
+  "initial_failure": "ROUTE_NOT_CURRENT",
+  "pre_state": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324"
+  },
+  "initial_bundle": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-bundle-v1",
+    "sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+  },
+  "append_head": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-event-v1",
+    "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+  },
+  "route_type": "ExternalResolutionContract",
+  "route_lookup_key": {
+    "gate": "E2-GATE",
+    "requirement": "E2-EXTERNAL-REQUIREMENT"
+  },
+  "no_native_RouteId": true,
+  "canonical_route": {
+    "$type": "ExternalResolutionContract",
+    "request": "TEST-REQUEST",
+    "gate": {
+      "$type": "GateId",
+      "value": "E2-GATE"
+    },
+    "requirement": {
+      "$type": "EvidenceId",
+      "value": "E2-EXTERNAL-REQUIREMENT"
+    },
+    "proposition": "Authenticated governing rule for target operation; no rule currently received",
+    "target": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CANONICAL_OBJECT_IDENTITY"
+      },
+      "namespace": "TEST-target",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    "producers": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "TEST-rule-owner",
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      }
+    ],
+    "source_class": "TEST-rule-owner governing-rule source",
+    "requirement_source": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+    },
+    "gate_source": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+    },
+    "receipt_action": "TEST-RECEIVE",
+    "reentry": [
+      {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    ],
+    "held_actions": [
+      {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    ],
+    "scope": "E2-QUALIFICATION-ONLY",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "provenance": {
+      "$type": "Provenance",
+      "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-08.json",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "76a1358ea02e5657fb4819905c86b577d5f9d37c86c76a6f312b310fa26a653b"
+      },
+      "section": "/",
+      "excerpt": "{\"authored_initial_premise\":true,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"historical_reconstruction\":false,\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"qualification_type\":\"PROSPECTIVE_REPLACEMENT\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_decision\":\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\",\"template_provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"contract\\\":{\\\"gate\\\":{\\\"$type\\\":\\\"GateId\\\",\\\"value\\\":\\\"TEST-GATE\\\"},\\\"gate_source\\\":{\\\"$type\\\":\\\"ArtifactIdentity\\\",\\\"kind\\\":{\\\"$enum\\\":\\\"IdentityKind\\\",\\\"value\\\":\\\"CONTENT_IDENTITY\\\"},\\\"namespace\\\":\\\"raw-file-sha256\\\",\\\"sha256\\\":\\\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\\\"},\\\"generation\\\":\\\"TEST/generation\\\",\\\"held_actions\\\":[{\\\"$type\\\":\\\"ActionId\\\",\\\"value\\\":\\\"TEST-ACTION\\\"}],\\\"lineage\\\":\\\"TEST/lineage\\\",\\\"producers\\\":[{\\\"$type\\\":\\\"ArtifactIdentity\\\",\\\"kind\\\":{\\\"$enum\\\":\\\"IdentityKind\\\",\\\"value\\\":\\\"AUTHORITY_IDENTITY\\\"},\\\"namespace\\\":\\\"TEST-rule-owner\\\",\\\"sha256\\\":\\\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\\\"}],\\\"proposition\\\":\\\"Authenticated governing rule for target operation; no rule currently received\\\",\\\"receipt_action\\\":\\\"TEST-RECEIVE\\\",\\\"reentry\\\":[{\\\"$type\\\":\\\"ActionId\\\",\\\"value\\\":\\\"TEST-ACTION\\\"}],\\\"request\\\":\\\"TEST-REQUEST\\\",\\\"requirement\\\":{\\\"$type\\\":\\\"EvidenceId\\\",\\\"value\\\":\\\"TEST-RULE\\\"},\\\"requirement_source\\\":{\\\"$type\\\":\\\"ArtifactIdentity\\\",\\\"kind\\\":{\\\"$enum\\\":\\\"IdentityKind\\\",\\\"value\\\":\\\"CONTENT_IDENTITY\\\"},\\\"namespace\\\":\\\"raw-file-sha256\\\",\\\"sha256\\\":\\\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\\\"},\\\"scope\\\":\\\"TEST/scope\\\",\\\"source_class\\\":\\\"TEST-rule-owner governing-rule source\\\",\\\"target\\\":{\\\"$type\\\":\\\"ArtifactIdentity\\\",\\\"kind\\\":{\\\"$enum\\\":\\\"IdentityKind\\\",\\\"value\\\":\\\"CANONICAL_OBJECT_IDENTITY\\\"},\\\"namespace\\\":\\\"TEST-target\\\",\\\"sha256\\\":\\\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"}},\\\"schema\\\":\\\"EXTERNAL-RESOLUTION-CONTRACT-1\\\"}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef\"},\"method\":\"QUALIFICATION_ONLY\",\"path\":\"resolution.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"}}",
+      "method": "PROSPECTIVE_AUTHORED_INPUT",
+      "scope": "E2-QUALIFICATION-ONLY"
+    }
+  },
+  "expected_source": {
+    "schema": "EXTERNAL-RESOLUTION-CONTRACT-1",
+    "contract": {
+      "request": "TEST-REQUEST",
+      "gate": {
+        "$type": "GateId",
+        "value": "E2-GATE"
+      },
+      "requirement": {
+        "$type": "EvidenceId",
+        "value": "E2-EXTERNAL-REQUIREMENT"
+      },
+      "proposition": "Authenticated governing rule for target operation; no rule currently received",
+      "target": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CANONICAL_OBJECT_IDENTITY"
+        },
+        "namespace": "TEST-target",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "producers": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "source_class": "TEST-rule-owner governing-rule source",
+      "requirement_source": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+      },
+      "gate_source": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+      },
+      "receipt_action": "TEST-RECEIVE",
+      "reentry": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "held_actions": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "scope": "E2-QUALIFICATION-ONLY",
+      "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "generation": "E2-P03-PROSPECTIVE-GENERATION-1"
+    }
+  },
+  "actual_source": {
+    "authored_initial_premise": true,
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "historical_reconstruction": false,
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "qualification_type": "PROSPECTIVE_REPLACEMENT",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "scope_decision": "AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION",
+    "template_provenance": {
+      "$type": "Provenance",
+      "excerpt": "{\"contract\":{\"gate\":{\"$type\":\"GateId\",\"value\":\"TEST-GATE\"},\"gate_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"generation\":\"TEST/generation\",\"held_actions\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"lineage\":\"TEST/lineage\",\"producers\":[{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}],\"proposition\":\"Authenticated governing rule for target operation; no rule currently received\",\"receipt_action\":\"TEST-RECEIVE\",\"reentry\":[{\"$type\":\"ActionId\",\"value\":\"TEST-ACTION\"}],\"request\":\"TEST-REQUEST\",\"requirement\":{\"$type\":\"EvidenceId\",\"value\":\"TEST-RULE\"},\"requirement_source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\"},\"scope\":\"TEST/scope\",\"source_class\":\"TEST-rule-owner governing-rule source\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CANONICAL_OBJECT_IDENTITY\"},\"namespace\":\"TEST-target\",\"sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}},\"schema\":\"EXTERNAL-RESOLUTION-CONTRACT-1\"}",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d31c57f258c8b82dafdaad33671d0851c4905d8a30c1846e50baa441b4ecbbef"
+      },
+      "method": "QUALIFICATION_ONLY",
+      "path": "resolution.json",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "section": "/"
+    }
+  },
+  "field_comparison": [
+    {
+      "field": "/schema",
+      "expected": "EXTERNAL-RESOLUTION-CONTRACT-1",
+      "actual_present": false,
+      "actual": null,
+      "equal": false
+    },
+    {
+      "field": "/contract/request",
+      "expected": "TEST-REQUEST",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "TEST-REQUEST",
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/gate",
+      "expected": {
+        "$type": "GateId",
+        "value": "E2-GATE"
+      },
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": {
+        "$type": "GateId",
+        "value": "TEST-GATE"
+      },
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/requirement",
+      "expected": {
+        "$type": "EvidenceId",
+        "value": "E2-EXTERNAL-REQUIREMENT"
+      },
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": {
+        "$type": "EvidenceId",
+        "value": "TEST-RULE"
+      },
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/proposition",
+      "expected": "Authenticated governing rule for target operation; no rule currently received",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "Authenticated governing rule for target operation; no rule currently received",
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/target",
+      "expected": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CANONICAL_OBJECT_IDENTITY"
+        },
+        "namespace": "TEST-target",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CANONICAL_OBJECT_IDENTITY"
+        },
+        "namespace": "TEST-target",
+        "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/producers",
+      "expected": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      ],
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/source_class",
+      "expected": "TEST-rule-owner governing-rule source",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "TEST-rule-owner governing-rule source",
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/requirement_source",
+      "expected": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+      },
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+      },
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/gate_source",
+      "expected": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+      },
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25"
+      },
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/receipt_action",
+      "expected": "TEST-RECEIVE",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "TEST-RECEIVE",
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/reentry",
+      "expected": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": [
+        {
+          "$type": "ActionId",
+          "value": "TEST-ACTION"
+        }
+      ],
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/held_actions",
+      "expected": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": [
+        {
+          "$type": "ActionId",
+          "value": "TEST-ACTION"
+        }
+      ],
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/scope",
+      "expected": "E2-QUALIFICATION-ONLY",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "TEST/scope",
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/lineage",
+      "expected": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "TEST/lineage",
+      "nested_template_is_native_source": false
+    },
+    {
+      "field": "/contract/generation",
+      "expected": "E2-P03-PROSPECTIVE-GENERATION-1",
+      "actual_present": false,
+      "actual": null,
+      "equal": false,
+      "nested_historical_template_value": "TEST/generation",
+      "nested_template_is_native_source": false
+    }
+  ],
+  "semantic_bindings": {
+    "scope_lineage_generation": true,
+    "gate": true,
+    "requirement": true,
+    "proposition": true,
+    "target": true,
+    "producers": true,
+    "gate_source": true,
+    "requirement_source": true,
+    "receipt_action": true,
+    "reentry": true,
+    "held_actions": true
+  },
+  "expected_source_identity": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "raw-file-sha256",
+    "sha256": "bb528a253ed466ff2fce89cadfdd6a1b0cdab41458651230d733f7455aba2567"
+  },
+  "actual_source_identity": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "raw-file-sha256",
+    "sha256": "76a1358ea02e5657fb4819905c86b577d5f9d37c86c76a6f312b310fa26a653b"
+  },
+  "prepared_source_identity": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "raw-file-sha256",
+    "sha256": "bb528a253ed466ff2fce89cadfdd6a1b0cdab41458651230d733f7455aba2567"
+  },
+  "prepared_source_equals_expected": true,
+  "original_route_predicate_current": false,
+  "isolated_prepared_definition_predicate_current": true,
+  "isolated_definition_installed_in_canonical_state": false,
+  "prepared_pin_already_in_bundle": false,
+  "event_union": [
+    "SuppliedResult",
+    "ForwardRef('RecordedDecision')",
+    "ForwardRef('DecisionReentry')",
+    "ForwardRef('ExternalEvent')",
+    "ForwardRef('SourceInvalidation')",
+    "ForwardRef('EvidenceSourceAdmission')",
+    "ForwardRef('TypedProofAdmission')",
+    "ForwardRef('ProofDependencyChange')",
+    "ForwardRef('ActionReevaluation')"
+  ],
+  "apply_event_dispatch_attributes": [
+    "ActionReevaluation",
+    "DecisionReentry",
+    "EvidenceSourceAdmission",
+    "ExternalEvent",
+    "PlannerError",
+    "ProofDependencyChange",
+    "RecordedDecision",
+    "SourceInvalidation",
+    "SuppliedResult",
+    "TypedProofAdmission",
+    "validate_types"
+  ],
+  "existing_route_definition_installation_event": false,
+  "negative_controls": {
+    "wrong_route_source": {
+      "result": "PASS_REJECTED",
+      "domain": "Native route predicate in isolated counterfactual definition fixture; not installation"
+    },
+    "wrong_route_pin": {
+      "result": "PASS_REJECTED",
+      "domain": "Native route predicate in isolated counterfactual definition fixture; not installation"
+    },
+    "wrong_identity_domain": {
+      "result": "PASS_REJECTED",
+      "domain": "Native route predicate in isolated counterfactual definition fixture; not installation"
+    },
+    "wrong_scope": {
+      "result": "PASS_REJECTED",
+      "domain": "Native route predicate in isolated counterfactual definition fixture; not installation"
+    },
+    "wrong_lineage": {
+      "result": "PASS_REJECTED",
+      "domain": "Native route predicate in isolated counterfactual definition fixture; not installation"
+    },
+    "stale_route": {
+      "result": "PASS_REJECTED",
+      "domain": "Native gate stale validation; no source invalidation event applied"
+    },
+    "wrong_policy_pin": {
+      "result": "PASS_REJECTED",
+      "reason": "unsupported selection policy identity/version binding"
+    },
+    "another_parent_lineage": {
+      "result": "PASS_REJECTED_BY_PARENT_ORACLE",
+      "foreign_parent": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-genesis-event-v1",
+        "sha256": "f1728a173fc772cefd0e11ae8b9a5eeb8265942b3d04811b74a7694dc854299c"
+      },
+      "actual_parent": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+      },
+      "domain": "Exact A09 parent oracle rejects historical G04/T01 parent event; route predicate itself does not authenticate parent events"
+    },
+    "wrong_installation_authority": {
+      "result": "NOT_QUALIFIED_NO_INSTALLATION_INTERFACE",
+      "required_behavior": "Future installer must reject atomically before any durable state/source/event change"
+    },
+    "definition_installed_without_authority": {
+      "result": "NOT_QUALIFIED_NO_INSTALLATION_INTERFACE",
+      "required_behavior": "Future installer must reject atomically before any durable state/source/event change"
+    },
+    "proof_INSTANCE_for_CONTRACT": {
+      "result": "NOT_QUALIFIED_NO_INSTALLATION_INTERFACE",
+      "required_behavior": "Future installer must reject atomically before any durable state/source/event change"
+    },
+    "ActionResult_for_accepted_result_CONTRACT": {
+      "result": "NOT_QUALIFIED_NO_INSTALLATION_INTERFACE",
+      "required_behavior": "Future installer must reject atomically before any durable state/source/event change"
+    }
+  },
+  "installed_route": null,
+  "post_install_state": null,
+  "install_event": null,
+  "canonical_state_unchanged": true,
+  "accepted_P04_events": 0
+}

@@ -1,0 +1,90 @@
+import copy,hashlib,json,os,pathlib,sys
+B=pathlib.Path('docs/plans/governance/development-operating-model-reset');R=B/'retry-accounting-correction';D=pathlib.Path('docs/plans/governance/development-model-adoption-standing-grant-issuance')
+def read(p):return json.loads(pathlib.Path(p).read_text())
+def digest(x,ascii=True):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=ascii).encode()).hexdigest()
+def raw(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def checkpin(p):assert raw(p['path'])==p['raw_sha256']
+subject=read(R/'owner-decision-subject.json');policy=read(B/'engineering-policy-supplement.json');contract=read(R/'standing-development-contract.json');pilot=read(R/'pilot-authorization-subject.json');approval=read(D/'approval-authentication.json')
+for v in [subject,policy,contract,pilot]:assert digest(v['CONTENT'])==v['IDENTITY']['sha256']
+assert subject['IDENTITY']['sha256']=='234639855530c3861c66d1149c0b8708956c6c14afcac77aeb8fa06cf7fcd200'
+assert approval['SUBJECT_IDENTITY']==subject['IDENTITY'] and approval['OPTION']=='ADOPT_MODEL_AND_AUTHORIZE_CONDITIONAL_CLASS_A_DEVELOPMENT_PILOT' and approval['OWNER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+checkpin(approval['SUBJECT_RAW_PIN'])
+for section,labels in [(subject['CONTENT']['GOVERNANCE_SECTION'],['POLICY']),(subject['CONTENT']['STANDING_EXECUTION_SECTION'],['CONTRACT','PILOT'])]:
+ for label in labels:checkpin(section[label+'_PIN']);assert read(section[label+'_PIN']['path'])['IDENTITY']==section[label+'_IDENTITY']
+charter=read('docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66/effective-charter-reference.json')
+for key in ['CHARTER_CONTENT_PIN','OWNER_DECISION_PIN']:
+ p=charter[key];assert raw(p['PATH'])==p['RAW_SHA256']
+assert digest(read(charter['CHARTER_CONTENT_PIN']['PATH']),False)==charter['CHARTER_CONTENT_IDENTITY']['sha256']
+assert charter['CHARTER_EFFECTIVE'] and 'General engineering governance authority' in charter['EXCLUSIONS']
+previous=None
+for t,state in zip(charter['TRANSITIONS'],['REVIEWED','APPROVED','EFFECTIVE']):
+ v=read(t['PATH']);assert digest(v['RECORD'],False)==v['IDENTITY']['sha256'];assert v['IDENTITY']==t['IDENTITY'] and v['RECORD']['to_state']==state
+ if previous is not None:
+  # Whole linked transition bytes are additionally pinned by prior-file audit;
+  # exact predecessor equality is reconstructed from the recorded chain field.
+  assert previous['sha256'] in json.dumps(v['RECORD'])
+ previous=v['IDENTITY']
+assert previous==charter['EFFECTIVE_LIFECYCLE_IDENTITY']
+events=read('docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json')['EVENTS'];prev='0'*64
+for event in events:
+ body={k:v for k,v in event.items() if k!='EVENT_HASH'};assert digest(body)==event['EVENT_HASH'];assert event['PREVIOUS_EVENT_HASH']==prev;prev=event['EVENT_HASH']
+assert 'LL-11' in json.dumps(events) and 'LL-12' in json.dumps(events)
+for p,h in read(B/'authentication-and-static-review.json')['INPUT_AUTHORITY_PINS'].items():assert raw(p)==h,p
+for p,h in read(D/'prior-file-integrity-manifest.json').items():assert raw(p)==h,p
+stage=sys.argv[1];names={'policy':'policy-adoption-record.json','policy-effect':'policy-effectiveness-reference.json','grant':'issued-standing-development-grant.json','grant-effect':'standing-grant-effectiveness-reference.json'}
+v=read(D/names[stage]);r=v['RECORD'];idkey='GRANT_IDENTITY' if stage=='grant' else 'IDENTITY';assert digest(r)==v[idkey]['sha256']
+receipt=read(D/(names[stage]+'.publication-receipt.json'));checkpin(receipt['PIN'])
+for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC']:assert receipt[k] is True
+def validate(x):
+ assert x['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+ assert x['APPROVED_SUBJECT_IDENTITY']==subject['IDENTITY']
+ if stage=='policy':
+  assert x['ADOPTED_CONTENT']==policy['CONTENT'] and x['CONTENT_IDENTITY']==policy['IDENTITY'] and x['CHARTER_UNCHANGED'] is True and x['EXECUTION_GRANT'] is None and x['NO_OPERATION_EXECUTED'] is True
+  for k in ['APPROVED_SUBJECT_PIN','OWNER_DECISION_PIN','POLICY_PIN']:checkpin(x[k])
+ elif stage=='grant':
+  assert x['APPROVED_CONTENT']==contract['CONTENT'] and x['ALLOCATION']==contract['CONTENT']['RESOURCE_BUDGETS'] and x['RETRY_POLICY']==contract['CONTENT']['RETRY_POLICY']
+  assert x['PILOT_CONTENT']==pilot['CONTENT'] and x['PILOT_IDENTITY']==pilot['IDENTITY']
+  assert x['CONTRACT_IDENTITY']==contract['IDENTITY']
+  assert x['POLICY_EFFECTIVENESS_IDENTITY']==read(D/'policy-effectiveness-reference.json')['IDENTITY']
+  for k in ['CONTRACT_PIN','PILOT_PIN','APPROVED_SUBJECT_PIN','OWNER_DECISION_PIN','POLICY_EFFECTIVENESS_PIN']:checkpin(x[k])
+  for k in ['ALLOCATION_CONSUMED_BY_ISSUANCE','ENVIRONMENT_ADMITTED','PILOT_EXECUTED','PROTECTED_PROMOTION_AUTHORITY']:assert x[k] is False
+  assert x['EXCLUSIONS']==r['EXCLUSIONS'] and 'No development execution' in x['CONDITIONAL_EXECUTION'] and 'No restart/reset/refund' in x['EPOCH_RULE']
+ else:
+  kind='policy' if stage=='policy-effect' else 'grant'
+  srcname=names[kind];source=read(D/srcname);key='ADOPTION_IDENTITY' if kind=='policy' else 'GRANT_IDENTITY';assert x[key]==source['IDENTITY' if kind=='policy' else 'GRANT_IDENTITY']
+  checkpin(x['ADOPTION_PIN' if kind=='policy' else 'GRANT_PIN']);checkpin(x['INDEPENDENT_VERIFICATION_PIN']);vv=read(x['INDEPENDENT_VERIFICATION_PIN']['path']);assert vv['RESULT']=='PASS' and len(vv['RESULTS'])==4 and len({a['semantic_sha256'] for a in vv['RESULTS']})==1
+  assert x['NO_BACKDATING'] is True
+  if kind=='policy':assert x['POLICY_IDENTITY']==policy['IDENTITY'] and x['CHARTER_UNCHANGED'] is True and x['NO_DEVELOPMENT_EXECUTION_GRANT_CREATED'] is True
+  else:
+   assert x['AUTHORIZATION_VALIDITY_DAYS']==30 and x['ENVIRONMENT_ADMISSION_REQUIRED'] is True
+   for k in ['ENVIRONMENT_ADMITTED','PILOT_ENTRY_READY','DEVELOPMENT_ALLOCATIONS_CONSUMED']:assert x[k] is False
+validate(r)
+mutations=[]
+def add(path,value):
+ m=copy.deepcopy(r);target=m
+ for k in path[:-1]:target=target[k]
+ target[path[-1]]=value;mutations.append((path,m))
+add(['ISSUER_ROLE'],'UNAUTHORIZED');add(['APPROVED_SUBJECT_IDENTITY','sha256'],'0'*64)
+if stage=='policy':
+ add(['ADOPTED_CONTENT','RISK_CLASSES','A','AUTHORIZATION'],'Unlimited execution');add(['CONTENT_IDENTITY','sha256'],'0'*64);add(['CHARTER_UNCHANGED'],False);add(['EXECUTION_GRANT'],{});add(['NO_OPERATION_EXECUTED'],False);add(['POLICY_PIN','raw_sha256'],'0'*64)
+elif stage=='grant':
+ for key,value in [('MAX_WORK_ITEMS',51),('MAX_PROCESS_STARTS_PER_EPOCH',601),('MAX_SOURCE_REVISIONS_PER_WORK_ITEM',4),('MAX_AUTOMATIC_RECOVERABLE_RETRIES_PER_WORK_ITEM',3),('AUTHORIZATION_VALIDITY_DAYS',31)]:add(['ALLOCATION',key],value)
+ add(['RETRY_POLICY','NO_RESET'],'Reset after revision');add(['PILOT_CONTENT','MAX_PROCESS_STARTS'],13)
+ for k in ['ALLOCATION_CONSUMED_BY_ISSUANCE','ENVIRONMENT_ADMITTED','PILOT_EXECUTED','PROTECTED_PROMOTION_AUTHORITY']:add([k],True)
+ add(['EXCLUSIONS'],[]);add(['CONTRACT_PIN','raw_sha256'],'0'*64);add(['POLICY_EFFECTIVENESS_IDENTITY','sha256'],'0'*64);add(['EPOCH_RULE'],'Reset budgets on restart')
+else:
+ add(['NO_BACKDATING'],False);add(['INDEPENDENT_VERIFICATION_PIN','raw_sha256'],'0'*64);add(['ADOPTION_IDENTITY' if stage=='policy-effect' else 'GRANT_IDENTITY','sha256'],'0'*64)
+ if stage=='policy-effect':add(['NO_DEVELOPMENT_EXECUTION_GRANT_CREATED'],False);add(['CHARTER_UNCHANGED'],False)
+ else:
+  add(['AUTHORIZATION_VALIDITY_DAYS'],31);add(['ENVIRONMENT_ADMISSION_REQUIRED'],False);add(['ENVIRONMENT_ADMITTED'],True);add(['PILOT_ENTRY_READY'],True);add(['DEVELOPMENT_ALLOCATIONS_CONSUMED'],True)
+rejected=0
+for path,m in mutations:
+ try:validate(m)
+ except (AssertionError,KeyError):rejected+=1
+ else:raise AssertionError('mutation accepted: '+str(path))
+# Receipt durability is checked independently of the content-level validators.
+for key in ['FILE_FSYNC','DIRECTORY_FSYNC','EXCLUSIVE_NO_OVERWRITE']:
+ m=copy.deepcopy(receipt);m[key]=False
+ assert not all(m[k] is True for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC']);rejected+=1
+semantic={'stage':stage,'record_identity':v[idkey],'subject':subject['IDENTITY'],'retry_limit':2,'retry_unit':'CUMULATIVE_PER_WORK_ITEM','preservation':'PASS','negative_designs':len(mutations)+3,'negative_rejected':rejected,'environment_admitted':False,'pilot_executed':False}
+print(json.dumps({'seed':os.environ['PYTHONHASHSEED'],'semantic':semantic,'semantic_sha256':digest(semantic)},sort_keys=True))

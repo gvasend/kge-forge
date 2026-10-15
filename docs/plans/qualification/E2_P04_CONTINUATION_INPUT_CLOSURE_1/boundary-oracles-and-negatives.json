@@ -1,0 +1,212 @@
+{
+  "status": "PARTIAL_BEFORE_EXECUTION",
+  "oracles": {
+    "P04_INITIAL": {
+      "expected_semantics": "Pre-receipt EXTERNAL_WAIT; evidence absent/no resume/no actionable",
+      "complete_exact_oracle": true,
+      "identity_status": "EXACT_EXISTING",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "POST_A09": {
+      "expected_semantics": "Received only; pending native Evidence, no validation/proof/accepted observation/resume",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "POST_A10": {
+      "expected_semantics": "Actual validation accepted; external-complete observation where assigned; resume still false before reentry",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "POST_A11": {
+      "expected_semantics": "Accepted typed evidence support and exact named reentry/C03; REENTER not completed",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "POST_A12": {
+      "expected_semantics": "Actual selected REENTER PASS; exact declared K current; root remains unresolved before independent proofs",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "SLOT_BOUNDARY": {
+      "expected_semantics": "SLOT_PROOF accepted/slot resolved; root unresolved/FINISH non-actionable",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "ROOT_BOUNDARY": {
+      "expected_semantics": "Independent ROOT_PROOF accepted/root satisfied; FINISH readiness recomputed",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    },
+    "POST_A13": {
+      "expected_semantics": "Selected finishing result admitted and goals independently proven; terminal success only if all pass",
+      "complete_exact_oracle": false,
+      "identity_status": "UNRESOLVED_DEFINITION_INSTALLATION_AND_COMPOSED_EVENT_CONTRACTS",
+      "source": "Original canonical matrix stage obligations; authored before P04 execution; not observed future output"
+    }
+  },
+  "persistence": [
+    {
+      "when": "P04_INITIAL",
+      "expected_state": "Pre-receipt EXTERNAL_WAIT; evidence absent/no resume/no actionable",
+      "expected_bundle_contents": "Exact existing two-event checkpoint",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "POST_A09",
+      "expected_state": "Received only; pending native Evidence, no validation/proof/accepted observation/resume",
+      "expected_bundle_contents": "SourceAdmission + RECEIVED atomic pair; payload source admitted only after full checks",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "POST_A10",
+      "expected_state": "Actual validation accepted; external-complete observation where assigned; resume still false before reentry",
+      "expected_bundle_contents": "Actual validation result and native evidence lifecycle events; composed adapter unresolved",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "POST_A11",
+      "expected_state": "Accepted typed evidence support and exact named reentry/C03; REENTER not completed",
+      "expected_bundle_contents": "Accepted proof/reentry lineage and policy/context binding",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "POST_A12",
+      "expected_state": "Actual selected REENTER PASS; exact declared K current; root remains unresolved before independent proofs",
+      "expected_bundle_contents": "SuppliedResult event with complete inventory",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "SLOT_BOUNDARY",
+      "expected_state": "SLOT_PROOF accepted/slot resolved; root unresolved/FINISH non-actionable",
+      "expected_bundle_contents": "Actual native slot proof event, not fixture satisfaction",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "ROOT_BOUNDARY",
+      "expected_state": "Independent ROOT_PROOF accepted/root satisfied; FINISH readiness recomputed",
+      "expected_bundle_contents": "Native root proof/reevaluation event",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    },
+    {
+      "when": "POST_A13",
+      "expected_state": "Selected finishing result admitted and goals independently proven; terminal success only if all pass",
+      "expected_bundle_contents": "Actual selected FINISH supplied result; no P05 execution",
+      "source_policy_pins": "Preserve checkpoint pins; only source additions supported by a separately qualified installation/admission contract. New definitions must be pinned before use.",
+      "event_ancestry": "Keep exact existing two-event prefix; append actual stage-owned events only, never invented historical events.",
+      "next_parent_event": "Actual previous committed append head; do not reuse initial head after any event. Future IDs derived by native codec, not guessed."
+    }
+  ],
+  "negative_specs": [
+    {
+      "name": "wrong_parent",
+      "stage": "A09",
+      "mutation": "Different bundle/snapshot/event",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_source",
+      "stage": "A09",
+      "mutation": "Producer/target/payload source identity mismatch",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_policy",
+      "stage": "A11",
+      "mutation": "Unsupported or differently pinned policy",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_attestor",
+      "stage": "A09",
+      "mutation": "Different authority/predicate or Evidence-bound signer",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_Evidence",
+      "stage": "A09-A11",
+      "mutation": "Different semantic/content/native binding",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_validation",
+      "stage": "A10-A11",
+      "mutation": "Missing/wrong/stale ValidationResult",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_proof",
+      "stage": "A11",
+      "mutation": "Wrong requirement/proposition/support/currentness",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_authority",
+      "stage": "A09-A13",
+      "mutation": "Authority class/target/scope/applicability mismatch",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_slot_root_proof",
+      "stage": "A13",
+      "mutation": "Wrong proof type/target/source/support",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_action_result",
+      "stage": "A12-A13",
+      "mutation": "Wrong selected Action, missing/extra inventory or prospective output claimed actual",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_scope",
+      "stage": "A09-A13",
+      "mutation": "Context scope mismatch",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "wrong_lineage",
+      "stage": "A09-A13",
+      "mutation": "Generation/lineage mismatch",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    },
+    {
+      "name": "lifecycle_skip",
+      "stage": "A09-A13",
+      "mutation": "Receipt promoted directly to proof/reentry/completion",
+      "expected": "REJECT_WITH_NO_ACCEPTED_EVENT_OR_STATE_CHANGE",
+      "execution": "PREPARED_SPEC_ONLY"
+    }
+  ]
+}

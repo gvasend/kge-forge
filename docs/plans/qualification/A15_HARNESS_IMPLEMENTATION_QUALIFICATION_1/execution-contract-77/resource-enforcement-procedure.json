@@ -1,0 +1,121 @@
+{
+  "CGROUP_WRITES_ALLOWED": false,
+  "CONTROLS": [
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "MAX_LIVE_CHILDREN",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Trusted fixed-probe supervisor reserves physical bwrap/payload slots before spawn; whole tree observed; independent OS PID bound only if actually delegated",
+      "REQUIRED_LIMIT": 4,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Fixed sealed payloads cannot spawn descendants; at most one bwrap pair plus trusted controller; arbitrary descendant guarantee remains unqualified"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "One fresh append-only locked host-probe counter; admission before every launch",
+      "REQUIRED_LIMIT": 128,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "No old journal touched; cap128 covers all metadata/fault children"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "MAX_CHILD_WALL_SECONDS",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Parent monotonic communicate/wait deadline<=60s, scoped kill/reap own child group",
+      "REQUIRED_LIMIT": 60,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Child may use lower fixed probe timeout; no host-global signal"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "CHILD_CPU_SECONDS",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Child setrlimit(RLIMIT_CPU,(30,30)) before exec",
+      "REQUIRED_LIMIT": 30,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Query actual effective caps, controlled CPU probe under own timeout"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "CHILD_ADDRESS_SPACE_BYTES",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Child setrlimit(RLIMIT_AS,(1073741824,1073741824))",
+      "REQUIRED_LIMIT": 1073741824,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Read cap and allocate forbidden size expecting failure inside child"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "CHILD_FILE_BYTES",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Child setrlimit(RLIMIT_FSIZE,(16777216,16777216))",
+      "REQUIRED_LIMIT": 16777216,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Owned private file only; planned limit hit must not exceed16MiB"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "CHILD_OPEN_FILE_DESCRIPTORS",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Child setrlimit(RLIMIT_NOFILE,(64,64)); close_fds=True",
+      "REQUIRED_LIMIT": 64,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Open /dev/null until EMFILE; no outside file writes"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "MAX_CAMPAIGN_WALL_SECONDS",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "One parent-monotonic start/deadline600s across steps/seeds",
+      "REQUIRED_LIMIT": 600,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Abort before exhaustion; no clock/counter reset"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "MAX_CAMPAIGN_WRITTEN_BYTES",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Trusted pre-write admission/cumulative byte account<=67108864 includes fixtures/staging/evidence/stdout",
+      "REQUIRED_LIMIT": 67108864,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Reserve bounded write allowance before child; no final-size-only inference"
+    },
+    {
+      "ACTUAL_HOST_CAPABILITY": "UNVERIFIED; mechanism available as candidate, not assumed enforceable",
+      "CONTROL_ID": "AUTOMATIC_RETRIES",
+      "CURRENT_STATUS": "NOT_READY",
+      "EXPECTED_EVIDENCE": "Actual child/parent cap, wait, output and global budget records from independent observer",
+      "PROPOSED_ENFORCEMENT": "Zero retries, no fallback, fail-stop campaign",
+      "REQUIRED_LIMIT": 0,
+      "REQUIRED_PERMISSION": "Only acting account/process-local limits/private tmp/evidence under explicit future approval; no cgroup/host-policy change",
+      "VERIFICATION_PROCEDURE": "Expected predeclared rejection not retry; genuine control failure stops subject"
+    }
+  ],
+  "HOST_RESOURCE_ENFORCEMENT_READY": false,
+  "NO_HOST_SETTINGS_CHANGE": true,
+  "RESOURCE_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  }
+}

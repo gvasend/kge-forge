@@ -1,0 +1,83 @@
+{
+  "CURRENT_FACTS": {
+    "G1_SAVE_RETURN": false,
+    "G2_PUBLICATION_VERIFIED": false,
+    "G3_PERSISTED_HANDOFF": false,
+    "G4_WRITER_EXIT_OBSERVED": false,
+    "G5_READER_STARTED_FRESH": false,
+    "G6_RESTORE_VALIDATED": false,
+    "G7_REPLAY_VALIDATED": false
+  },
+  "CURRENT_SATISFIED_COUNT": 0,
+  "GUARDS": [
+    {
+      "EVIDENCE": "Successful native return path/identity captured in exact persisted handoff; no exception/failure-hook",
+      "ID": "G1_SAVE_RETURN",
+      "OBSERVER": "Trusted supervisor protocol verifier",
+      "PREDECESSORS": [],
+      "PRODUCER": "Native save caller in writer"
+    },
+    {
+      "EVIDENCE": "Corresponding final path exists, nonsymlink, 153602 bytes, exact raw hash and native ID",
+      "ID": "G2_PUBLICATION_VERIFIED",
+      "OBSERVER": "Supervisor and independent reader",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN"
+      ],
+      "PRODUCER": "Writer-side exact file verifier"
+    },
+    {
+      "EVIDENCE": "Actual expected handoff file at row-specific path; self-certification of writer exit expressly false",
+      "ID": "G3_PERSISTED_HANDOFF",
+      "OBSERVER": "Supervisor/reader exact hash/content validation",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN",
+        "G2_PUBLICATION_VERIFIED"
+      ],
+      "PRODUCER": "Qualification harness immutable metadata publisher"
+    },
+    {
+      "EVIDENCE": "Actual writer PID, process-complete wait, exit code 0, stdout/stderr/target association; writer cannot produce this future fact",
+      "ID": "G4_WRITER_EXIT_OBSERVED",
+      "OBSERVER": "Parent supervisor, independently authenticated to reader",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN",
+        "G2_PUBLICATION_VERIFIED",
+        "G3_PERSISTED_HANDOFF"
+      ],
+      "PRODUCER": "Parent supervisor wait result"
+    },
+    {
+      "EVIDENCE": "Exec of new interpreter after writer wait; PID distinct, close_fds, sealed cwd/env; no warm objects",
+      "ID": "G5_READER_STARTED_FRESH",
+      "OBSERVER": "Supervisor and reader PID/environment verification",
+      "PREDECESSORS": [
+        "G4_WRITER_EXIT_OBSERVED"
+      ],
+      "PRODUCER": "Trusted process launcher"
+    },
+    {
+      "EVIDENCE": "Native restore status + exact bundle/Snapshot/source/policy/frame identities and original exception classification if failed",
+      "ID": "G6_RESTORE_VALIDATED",
+      "OBSERVER": "Supervisor compares structured result to independent oracle",
+      "PREDECESSORS": [
+        "G1_SAVE_RETURN",
+        "G2_PUBLICATION_VERIFIED",
+        "G3_PERSISTED_HANDOFF",
+        "G4_WRITER_EXIT_OBSERVED",
+        "G5_READER_STARTED_FRESH"
+      ],
+      "PRODUCER": "Native restore and reader identity comparator"
+    },
+    {
+      "EVIDENCE": "P06, PARTIAL_HISTORICAL_REPLAY, exact initial=current, zero event count, ten pins and exact reconstructed Snapshot; reader exit 0 necessary but insufficient",
+      "ID": "G7_REPLAY_VALIDATED",
+      "OBSERVER": "Supervisor semantic identity/result comparator",
+      "PREDECESSORS": [
+        "G6_RESTORE_VALIDATED"
+      ],
+      "PRODUCER": "Native zero-event bundle validation and independent range/scope comparison"
+    }
+  ],
+  "TRUST_RULE": "Persisted expected records or JSON flags alone cannot satisfy runtime observations; authenticated supervisor/process/file evidence required"
+}

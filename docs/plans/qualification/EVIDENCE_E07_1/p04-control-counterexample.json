@@ -1,0 +1,73 @@
+{
+  "canonical_commit": false,
+  "differing_computation_fields": {
+    "blocked": {
+      "after": [
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-FINISH"
+          },
+          [
+            "PRIOR_ATTEMPT_HOLD:BLOCKED"
+          ]
+        ],
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          [
+            "PRIOR_ATTEMPT_HOLD:BLOCKED"
+          ]
+        ]
+      ],
+      "before": [
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-FINISH"
+          },
+          [
+            "ACTION_COMPLETED:E2-REENTER"
+          ]
+        ],
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          [
+            "DECISION_REENTRY_REQUIRED",
+            "EXTERNAL_GATE:E2-GATE",
+            "PREDICATE:E2-PROOF:UNKNOWN"
+          ]
+        ]
+      ]
+    }
+  },
+  "failure": "RECEIPT_CHANGED_CONTROL",
+  "initial_bundle": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-bundle-v1",
+    "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+  },
+  "unchanged_actionable": true,
+  "unchanged_control": true,
+  "classification": "PREEXISTING_RECEIPT_CONTROL_COMPARISON_AND_BLOCKED_STATUS_CACHE",
+  "scope_decision": "Do not relax the complete-computation guard or alter Action/blocking semantics in E07",
+  "call_path": [
+    "codec.preflight_external_evidence",
+    "codec._extend_private(EvidenceSourceAdmission)",
+    "core.apply_event",
+    "evidence.apply publishes derived statuses",
+    "codec._extend_private(EVIDENCE_RECEIVED)",
+    "core.apply_receipt",
+    "codec full Computation equality guard"
+  ],
+  "next_package": "P04-A09-RECEIPT-CONTROL-INVARIANT-CLOSURE"
+}

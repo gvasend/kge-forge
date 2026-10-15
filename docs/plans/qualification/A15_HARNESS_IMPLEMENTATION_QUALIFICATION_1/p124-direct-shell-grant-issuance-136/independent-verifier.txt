@@ -1,0 +1,65 @@
+import copy,hashlib,json,os,pathlib
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/p124-direct-shell-grant-issuance-136';P=D.parent/'p86-direct-file-capture-decision-135'
+def raw(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def j(p): return json.loads(p.read_text())
+def h(v): return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def cid(ns,v): return dict(kind='CONTENT_IDENTITY',namespace=ns,sha256=h(v))
+def checkpin(v): assert raw(R/v['path'])==v['raw_sha256'],v['path']
+s=j(P/'prospective-authorization-subject.json'); c=s['CONTENT']; owner=j(D/'owner-approval-authentication.json')
+assert s['IDENTITY']==cid('qualification-p135-direct-file-capture-check-subject-v1',c)
+assert s['IDENTITY']['sha256']=='591181c1ddc4313b2042f11c6109240bf1474748154f9fbd6ba5090950b09c67'
+assert owner['IDENTITY']==cid('qualification-p136-owner-decision-v1',owner['CONTENT'])
+assert owner['CONTENT']['OPTION_ID']=='AUTHORIZE_SINGLE_P124_DIRECT_SHELL_PASSIVE_CHECK'
+assert owner['CONTENT']['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY']
+for path,digest in j(D/'authenticated-input-index.json')['CURRENT_RAW_PINS'].items(): assert raw(R/path)==digest,path
+for path,digest in j(D/'preservation-before.json').items(): assert raw(R/path)==digest,path
+for pin in [owner['CONTENT']['SUBJECT_RAW_PIN'],owner['CONTENT']['OFFERED_DOSSIER_PIN']]: checkpin(pin)
+plan=j(D/'prepublication-validation.json')['PUBLICATION_PLAN']
+state={'CONFLICT':False,'CONSUMED':False,'REVOKED':False,'EXECUTED':False,'HISTORY_CHANGED':False}
+# Exact reference comparisons independently derived from original subject, not candidate's own asserted PASS.
+def validate(g,pl,st):
+ r=g['RECORD'];assert g['GRANT_IDENTITY']==cid('qualification-p136-single-p124-direct-shell-issued-grant-v1',r)
+ assert r['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'];checkpin(r['APPROVED_SUBJECT_PIN']);checkpin(r['CALLSITE_SOURCE_PIN'])
+ assert r['ISSUER_ROLE']==c['ISSUER_ROLE'];assert r['PROJECT_OWNER_DECISION_IDENTITY']==owner['IDENTITY'];checkpin(r['PROJECT_OWNER_DECISION_PIN'])
+ assert r['MAX_ATTEMPTS']==1 and r['AUTOMATIC_RETRIES']==0
+ for k,original in [('EXACT_INVOCATION_CONTRACT','EXACT_INVOCATION_CONTRACT'),('NATIVE_EXECUTABLE_PINS','NATIVE_EXECUTABLE_PINS'),('CONSUMPTION','CONSUMPTION'),('FAILURE_POLICY','FAILURE_POLICY'),('HISTORICAL_EXCLUSIONS','HISTORICAL_EXCLUSIONS'),('GOVERNING_CHARTER_IDENTITY','GOVERNING_CHARTER_IDENTITY'),('STARTING_STATE','STARTING_STATE'),('PUBLICATION_BOUNDARY','NORMAL_PUBLICATION_SCHEMA_LEDGER'),('FRESH_ENTRY_PREDICATES','PARAMETER_AND_FRESH_ENTRY_GATES')]: assert r[k]==c[original],k
+ assert r['RESIDUAL_RISK_ACCEPTANCE']==owner['CONTENT']['RISK_ACCEPTANCE'];assert r['NO_CONTROL_VERIFICATION_INFERRED'] is True
+ assert r['INSTRUMENT_STATUS']=='ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE'
+ assert not r['EXECUTION_ENTRY_READY_AT_ISSUANCE'] and not r['ATTEMPT_CONSUMED_AT_ISSUANCE'] and not r['WITNESS_EXECUTED_AT_ISSUANCE']
+ assert r['PREDECESSOR_GRANT'] is None and not r['REPLACEMENT_OR_RETRY_AUTHORITY']
+ assert all(pl[k] is True for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC','INDEPENDENT_REREAD'])
+ assert not any(st.values())
+g=j(D/'issuance-candidate.json')['ENVELOPE'];validate(g,plan,state)
+phase=os.environ.get('P136_VERIFY_PHASE','prepublication')
+if phase!='prepublication':
+ receipt=j(D/'issuance-publication-receipt.json');checkpin(receipt['PIN']);assert j(R/receipt['PIN']['path'])==g
+ assert all(receipt[k] for k in ['FILE_FSYNC','DIRECTORY_FSYNC','EXCLUSIVE_NO_OVERWRITE','READONLY_BYTES_MATCH'])
+ if phase=='effective':
+  e=j(D/'effective-single-p124-grant-reference.json');body=e['CONTENT'];assert e['IDENTITY']==cid('qualification-p136-single-p124-grant-effectiveness-reference-v1',body)
+  assert body['GRANT_IDENTITY']==g['GRANT_IDENTITY'] and body['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and body['GRANT_EFFECTIVE'] is True
+  checkpin(body['GRANT_RECORD_PIN']);checkpin(body['INDEPENDENT_ISSUANCE_VERIFICATION_PIN']);checkpin(body['PERSISTED_FOUR_SEED_PIN']);checkpin(body['PREPUBLICATION_NEGATIVES_PIN'])
+  assert not body['EXECUTION_ENTRY_READY'] and not body['ATTEMPT_CONSUMED'] and not body['WITNESS_EXECUTED']
+neg=[]
+if os.environ.get('P136_NEGATIVES')=='1':
+ mutations=[('wrong_hash',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(sha256='0'*64)),('wrong_namespace',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(namespace='wrong')),('changed_argv',lambda r:r['EXACT_INVOCATION_CONTRACT']['P124_ARGV'].append('--wrong')),('unauthorized_issuer',lambda r:r.update(ISSUER_ROLE='UNAUTHORIZED')),('increased_attempts',lambda r:r.update(MAX_ATTEMPTS=2)),('automatic_retry',lambda r:r.update(AUTOMATIC_RETRIES=1)),('omitted_risk',lambda r:r.update(RESIDUAL_RISK_ACCEPTANCE='')),('expanded_scope',lambda r:r.update(HISTORICAL_EXCLUSIONS=[]))]
+ for name,mut in mutations:
+  z=copy.deepcopy(g);mut(z['RECORD']);z['GRANT_IDENTITY']=cid('qualification-p136-single-p124-direct-shell-issued-grant-v1',z['RECORD'])
+  try:validate(z,plan,state)
+  except (AssertionError,KeyError):neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+ for name,key in [('conflicting_grant','CONFLICT'),('consumed_grant','CONSUMED'),('revoked_grant','REVOKED'),('premature_execution','EXECUTED'),('history_modification','HISTORY_CHANGED')]:
+  z=dict(state);z[key]=True
+  try:validate(g,plan,z)
+  except AssertionError:neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+ z=dict(plan);z['FILE_FSYNC']=False
+ try:validate(g,z,state)
+ except AssertionError:neg.append({'DESIGN':'missing_fsync','RESULT':'REJECTED'})
+ else:raise AssertionError('missing_fsync')
+ # Forged effectiveness independently checked against canonical body and issuance reference.
+ fake={'CONTENT':{'GRANT_IDENTITY':g['GRANT_IDENTITY'],'GRANT_EFFECTIVE':True},'IDENTITY':{'sha256':'0'*64}}
+ try:assert fake['IDENTITY']==cid('qualification-p136-single-p124-grant-effectiveness-reference-v1',fake['CONTENT'])
+ except AssertionError:neg.append({'DESIGN':'forged_effectiveness','RESULT':'REJECTED'})
+ else:raise AssertionError('forged_effectiveness')
+sem={'PHASE':phase,'SUBJECT_IDENTITY':s['IDENTITY'],'OWNER_DECISION_IDENTITY':owner['IDENTITY'],'GRANT_IDENTITY':g['GRANT_IDENTITY'],'GRANT_EFFECTIVE':phase=='effective','ENTRY_READY':False,'ATTEMPT_CONSUMED':False,'WITNESS_EXECUTED':False,'PRESERVATION':'PASS','NEGATIVES':neg}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC':sem,'SEMANTIC_SHA256':h(sem)},sort_keys=True))

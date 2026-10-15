@@ -1,0 +1,121 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "TRANSACTION_INTERFACE_GAP": "PERSISTED_DOSSIER_VALIDATION_OPERAND_MISSING",
+  "integration_implemented_or_qualified": false,
+  "locations": [
+    {
+      "end_line": 578,
+      "line": 565,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "record_result"
+    },
+    {
+      "end_line": 583,
+      "line": 547,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "apply_event"
+    },
+    {
+      "end_line": 335,
+      "line": 320,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "apply_result"
+    },
+    {
+      "end_line": 685,
+      "line": 678,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "ExecutionEvent"
+    },
+    {
+      "end_line": 135,
+      "line": 122,
+      "path": "adapter/planner/gates.py",
+      "pointer": "",
+      "raw_sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f",
+      "symbol": "validate_result"
+    },
+    {
+      "end_line": 548,
+      "line": 446,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_replay"
+    }
+  ],
+  "minimum_required_generic_integration": {
+    "atomicity": "No durable knowledge/dossier/validation/completion without the one native event and complete post-bundle; failure preserves exact start/head.",
+    "identity": "Full typed operand must participate in existing ExecutionEvent canonical hash; omitting validations or source additions is forbidden.",
+    "preflight_execution_equivalence": "Same canonical operand/source pins validated and consumed; no alternate reconstruction or authenticated Boolean.",
+    "replay": "Replay historical typed validation outcomes with their original input bindings; do not make new validator decisions.",
+    "retry": "Same authorized semantic operation creates one occurrence; conflict/stale parent fails closed. Existing T02 state no-op alone does not establish ledger idempotence.",
+    "semantics": "Durably carry exact existing T02 SuppliedResult + ValidationInstance tuple and raw source addition; validate pinned pre-state/current parent; invoke unchanged T02 admission atomically with event+source pins+bundle."
+  },
+  "missing_predicate_installation_inferred": false,
+  "ordinary_path": [
+    "codec.record_result",
+    "core.apply_event",
+    "core.apply_result",
+    "core._inventory",
+    "core._decision_result",
+    "ExecutionEvent",
+    "codec.append_event",
+    "codec._replay"
+  ],
+  "ordinary_result_fields": [
+    "action",
+    "result",
+    "knowledge",
+    "expected_snapshot",
+    "dossier"
+  ],
+  "plain_result_failure": "Current Action.prepared_dossier=None; ordinary validate_result compares any supplied dossier against that definition. Even preloading it would not supply the missing typed validations atomically.",
+  "predicate_reference_rule": "Native validate_p03/validate_p04 include ValidationInstance predicate IDs; dossier readiness consumes those typed instances. No six-predicate install requirement is established.",
+  "runtime_modified": false,
+  "source_pin_gap": "New dossier-source pin is offline. Source addition/replay enrollment currently has explicit paths for EvidenceSourceAdmission/InstallDefinition, not a dossier materialization event.",
+  "state_operation": {
+    "end_line": 428,
+    "line": 338,
+    "path": "adapter/planner/core.py",
+    "pointer": "",
+    "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+    "symbol": "admit_dossier_materialization"
+  },
+  "state_operation_operands": [
+    "snapshot",
+    "SuppliedResult",
+    "Tuple[ValidationInstance,...]"
+  ],
+  "state_operation_output": "TransitionReport(snapshot, effects, Computation); no ExecutionEvent/ledger append",
+  "supported_event_result_variants": [
+    "SuppliedResult",
+    "RecordedDecision",
+    "DecisionReentry",
+    "ExternalEvent",
+    "SourceInvalidation",
+    "EvidenceSourceAdmission",
+    "TypedProofAdmission",
+    "ProofDependencyChange",
+    "ActionReevaluation",
+    "InstallDefinition",
+    "ValidationSupportAdmission"
+  ],
+  "why_not_bypass": [
+    "Direct state admission followed by handcrafted event is not native event execution",
+    "Snapshot reset loses genuine parent ancestry",
+    "ValidationInstances cannot be installed as definitions",
+    "Expected oracle bytes cannot be admitted as actual results"
+  ]
+}

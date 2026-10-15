@@ -1,0 +1,135 @@
+{
+  "HASH_SEED": "0",
+  "RECONSTRUCTION": {
+    "ASSURANCE": "AST/JSON comparisons and mutated reporting contracts only; no target imports/behavior or OS tests",
+    "A_PROPOSED_RESERVE": 70422,
+    "A_UNKNOWN_REMAINDER": 21420,
+    "BINDING_TESTS": [
+      "B89-COMMAND_REJECTION",
+      "B89-GRANT_REJECTION",
+      "B89-FIRST_CONSUMPTION",
+      "B89-DUPLICATE_CONSUMPTION",
+      "B89-CONCURRENT_CLAIMS",
+      "B89-PARTIAL_RECORD",
+      "B89-CRASH_BEFORE_LAUNCH",
+      "B89-CRASH_AFTER_CONSUMPTION",
+      "B89-LAUNCH_FAILURE",
+      "B89-UNKNOWN_COMPLETION",
+      "B89-AUDIT_FAILURE",
+      "B89-REVOCATION",
+      "B89-RESOURCE_MISMATCH",
+      "B89-ZERO_RETRIES"
+    ],
+    "B_HELPERS": 11,
+    "B_PARTITION_MODEL_BYTES": [
+      50978,
+      162323
+    ],
+    "CONTRACT_PINS": {
+      "alternative-a-reduced-evidence.json": "9dbcddb2404713df06ca904873198390f66bfc33a3943fd34f79a59a4d10c2ed",
+      "alternative-b-partitioned-campaigns.json": "d89a79b9603cc36580dc6debb2ec087f5dd45c171cf50ed010eec8a197884043",
+      "alternative-c-bootstrap-subset.json": "ff2decda20b36874b244ef26990d29c9b6566bd48165a49d41cd1370b6e29298",
+      "assurance-boundaries.json": "c6daa042ea07b6b2dfe1502891b3906849b49a8cec281d895285311ac6d10527",
+      "authority-applicability-assessment.json": "323d9c991729f73a92d143479c3a694f44787d20ca8dc72c58c1581753ed48c2",
+      "entry-authentication.json": "087ae056f4c4395912eecf7482ba682ab22886efc89f0cf5eb45d7a878abe390",
+      "lessons-register-review.json": "0f329457328e9f556c7f4d43c5ab9658d9e54ec82e39712735499d02fa994e15",
+      "minimum-bootstrap-assurance.json": "dc5f64604bc00ef1afa9914082ed2c6954ce0cd0321851c2220807fab898ba61",
+      "qualification-dependency-graph.json": "409e0b8088702d20217eee2483617de7eae4f947cc134eb6cfb2df8f45986920",
+      "remaining-gap-dossier.json": "e48d4409ee8378d51d66f745a69c3d2280aac010385df58203a10490a22bbc81",
+      "requirement-to-authority-matrix.json": "5bde472787fade115f95182b2667453058ab56ebd03f9743bc023cbf97b55850",
+      "resource-feasibility-comparison.json": "2999a58f1dc504b018a2977dc7664e6a4a4c668eb0cb6f54d8989056a63e2fb7",
+      "strategy-comparison-and-selection.json": "b91d473b0259a6eaf4c766ae7fbc4689e402e7fc8af82d50cd517301b2d3d4d7",
+      "whole-workload-termination-assessment.json": "6ff72e99671da8d034e77c5cfe6e9ded2daf212a2c2a951a98b1716609cd20c0"
+    },
+    "C_HELPERS": 10,
+    "C_SUBSET_MODEL_BYTES": 161329,
+    "DECISION_READY": false,
+    "FEASIBILITY_ESTABLISHED": false,
+    "GRAPH_ACYCLIC": true,
+    "LL11_HEAD": "885fd0eaceb15847201dfd058217682741fb43c255298713ccbc1e7251eec791",
+    "NEGATIVES": [
+      {
+        "CAUSE": "binding optional",
+        "CONTROL": "binding optional",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "subset full",
+        "CONTROL": "subset full qualification",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "partition retry",
+        "CONTROL": "partition retry",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "grant reused",
+        "CONTROL": "reused grant",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "causal evidence missing",
+        "CONTROL": "missing causal evidence",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "unbounded reference",
+        "CONTROL": "unbounded references",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "unbounded failure",
+        "CONTROL": "unbounded failure accepted",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "unknown deficit/surplus",
+        "CONTROL": "unknown deficit treated surplus",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "parent-only",
+        "CONTROL": "parent-only watchdog",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "unknown survivor",
+        "CONTROL": "unknown survivor ignored",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "cycle",
+        "CONTROL": "qualification cycle",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "unissued effective",
+        "CONTROL": "unissued authority effective",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "source changed",
+        "CONTROL": "unauthorized source changed",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "activated",
+        "CONTROL": "premature activation",
+        "RESULT": "REJECTED"
+      },
+      {
+        "CAUSE": "real execution",
+        "CONTROL": "H77 A15 execution",
+        "RESULT": "REJECTED"
+      }
+    ],
+    "PREFERRED_STRATEGY": "NO_ALTERNATIVE_SELECTED",
+    "REQUIREMENT_COUNT": 35,
+    "SOURCES": {
+      "adapter/qualification_bootstrap/systemd_pids_once.py": "492b2b219f55ed894da6b898043309481edf7a2e602196654c85c4ec7af32fb2",
+      "adapter/tests/test_systemd_pids_bootstrap.py": "a85882418fddeef2ee39ecd880aae698bfcbe5b09adf0f0a838a8b84e310d76e"
+    }
+  },
+  "SEMANTIC_SHA256": "3df85c9afb94caf1530ac980bf85675647a5c906b0154a9b6bdaeec9a2133328"
+}

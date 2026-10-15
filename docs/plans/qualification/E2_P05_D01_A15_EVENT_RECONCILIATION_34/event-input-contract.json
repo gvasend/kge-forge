@@ -1,0 +1,78 @@
+{
+  "A14_PERSISTENCE_EVENT_APPLICABLE": false,
+  "A16_DEPENDENCY": "No direct dependency: canonical A16 starts from restored A14 unknown-rule variant, not A15 invalidated accepted-support state",
+  "ADDITIONAL_GATE": "Full A15 event-trace/reload assurance requires its separately sealed persistence/ledger sequence; current APPLY_EVENT dispatch alone does not generate an occurrence or persist invalidation",
+  "CONTRACT_ENVELOPE": {
+    "EVENT_ROLE": "INPUT_INVALIDATION_DESCRIPTOR",
+    "EXISTS_AS_QUALIFYING_RETAINED_INPUT": false,
+    "EXPECTED_SNAPSHOT": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+    },
+    "FUTURE_EVENT_ASSERTED_EXISTING": false,
+    "GENERATION": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "LEDGER_INPUT": null,
+    "LINEAGE": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "NATIVE_INPUT_EVENT_ID": null,
+    "NATIVE_INPUT_TYPE": "SourceInvalidation",
+    "PARENT_EVENT_INPUT": null,
+    "POSITION_INPUT": null,
+    "PRODUCER": "qualification fixture preparation; native application core.apply_event",
+    "PROVENANCE": {
+      "path": "docs/plans/qualification/E2_P05_D01_FIXTURE_ORACLE_CLOSURE_2/fixtures/D01-VARIANT__E2-A15__CANONICAL_REQUIRED_BEHAVIOR.json",
+      "raw_sha256": "4b5e8fe11d3e54ab4ac06bb93e6957648fdb11033d6f8e34cbbcfb727d362569"
+    },
+    "SCOPE": "E2-QUALIFICATION-ONLY",
+    "SUBJECT": "exact sealed A15 pre-state"
+  },
+  "CURRENT_LEDGER": {
+    "event_count": 19,
+    "future_parent_event_rule": "last exact input event identity; no native ledger root/append-head operand consumed by core.apply_event",
+    "future_record_result_sequence_rule": "len(exact input bundle.events)+1; 20 only if this exact 19-event bundle is selected unchanged",
+    "head": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "88fb01def0514728ab17bc53f3885448725cd5a968ede91c8a0e52ea7c98fcc6"
+    }
+  },
+  "HISTORICAL_EVENT_REQUIRED": false,
+  "INPUT_NATIVE_IDENTITY": "No SourceInvalidation.identity field; consumes exact source identities and expected Snapshot identity, not an ExecutionEvent ID",
+  "NATIVE_DESCRIPTOR_FIELDS": {
+    "changed": "Tuple[ArtifactIdentity,...]; exact disjoint required source targets remain unsealed; native unordered field, no source selected",
+    "expected_snapshot": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+    }
+  },
+  "NATIVE_EVENT_MANUFACTURED": false,
+  "OCCURRENCE_IDENTITY_RULE": "planner-event-v1 hash over canonical sequence,parent_snapshot,parent_event,typed result,after_snapshot and optional resume_binding. Future after_snapshot is unknown; no future occurrence ID computed",
+  "PRODUCER_BOUNDARIES": {
+    "descriptor": "Pure native-model fixture preparation or exact retained ExecutionEvent.result projection, only after input/target ownership is sealed",
+    "durable_commit": "codec.commit_event additionally publishes transactional state/HEAD; not authorized here",
+    "ledger_occurrence": "adapter.planner.codec.record_result(bundle,supplied) -> updated native bundle with new ExecutionEvent; executes transition and replay; future execution authority required",
+    "state_transition": "adapter.planner.core.apply_event(snapshot,supplied) -> TransitionReport; does not append a ledger occurrence"
+  },
+  "PROSPECTIVE_EVENT_PERMITTED": true,
+  "STATE_CONTEXT": {
+    "$type": "EvaluationContext",
+    "allowed_effects": [],
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "tick": 0
+  }
+}

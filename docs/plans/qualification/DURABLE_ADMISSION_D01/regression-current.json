@@ -1,0 +1,40 @@
+{
+  "elapsed_seconds": 687.546,
+  "errors": [
+    {
+      "test": "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_conflicting_claims_are_not_overwritten",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 200, in test_conflicting_claims_are_not_overwritten\n    self.assertEqual(validated.current.receipt_observations[0].claims[0].outcome,m.ProofState.DISPROVED)\nIndexError: tuple index out of range\n"
+    },
+    {
+      "test": "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_pinned_source_shaped_fixture",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 368, in test_pinned_source_shaped_fixture\n    after,identity,noop=c.admit_external_evidence(cold,request,{request.entity.provenance.path:fixture['new_evidence_utf8'].encode()},root/'store',root)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 928, in admit_external_evidence\n    updated = preflight_external_evidence(current,request,source_bytes,repo_root,\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 886, in preflight_external_evidence\n    admitted = _extend_private(current,request)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/codec.py\", line 855, in _extend_private\n    after = apply_event(bundle.current,supplied).snapshot\n  File \"/home/gvasend/app/kge-forge/adapter/planner/core.py\", line 559, in apply_event\n    return apply(snapshot, supplied)\n  File \"/home/gvasend/app/kge-forge/adapter/planner/evidence.py\", line 117, in apply\n    raise m.PlannerError('FIELD_PROVENANCE')\nadapter.planner.model.PlannerError: FIELD_PROVENANCE\n"
+    }
+  ],
+  "failures": [
+    {
+      "test": "adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x05_all_nine_checks_required_not_majority_vote",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_e1_replay.py\", line 137, in test_x05_all_nine_checks_required_not_majority_vote\n    self.assertNotEqual(gates.decision_readiness(mutated, decision(mutated, 'DEC-BUDGET')).state, m.DecisionReadiness.DECISION_READY)\nAssertionError: <DecisionReadiness.DECISION_READY: 'DECISION_READY'> == <DecisionReadiness.DECISION_READY: 'DECISION_READY'>\n"
+    },
+    {
+      "test": "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_validation_and_reentry_separate",
+      "traceback": "Traceback (most recent call last):\n  File \"/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py\", line 96, in test_validation_and_reentry_separate\n    self.assertEqual(validated.current.external_gates[0].stage,m.ExternalStage.EVIDENCE_VALIDATED)\nAssertionError: <ExternalStage.WAITING_FOR_EXTERNAL_EVIDENCE: 'WAITING_FOR_EXTERNAL_EVIDENCE'> != <ExternalStage.EVIDENCE_VALIDATED: 'EVIDENCE_VALIDATED'>\n"
+    }
+  ],
+  "phase": "POST_D01_AFFECTED_REGRESSION",
+  "selectors": [
+    "adapter.tests.test_planner_dossier_transaction",
+    "adapter.tests.test_planner_installation",
+    "adapter.tests.test_planner_action_installation",
+    "adapter.tests.test_planner_authentication_installation",
+    "adapter.tests.test_planner_validation_support",
+    "adapter.tests.test_planner_evidence_transaction",
+    "adapter.tests.test_planner_validation_input_sets",
+    "adapter.tests.test_planner_core.P01Tests",
+    "adapter.tests.test_planner_e1_replay.P04ReplayTests",
+    "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_conflicting_claims_are_not_overwritten",
+    "adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_pinned_source_shaped_fixture",
+    "adapter.tests.test_planner_evidence_admission.AdmissionTests.test_validation_and_reentry_separate"
+  ],
+  "skipped": [],
+  "tests_run": 128
+}

@@ -1,0 +1,505 @@
+{
+  "A03_DEFINITION": {
+    "A03_AUTHORITY": "None for ordinary NON_EFFECTING CHECK/COLLECT; qualification scope decision is separate",
+    "A03_ID": "E2-A03",
+    "A03_NATIVE_OPERATION": "codec.commit_event -> codec.record_result -> apply_event/apply_result -> append_event/native ledger replay -> atomic HEAD publication",
+    "A03_POSTCONDITION": "Only declared knowledge accepted; stale/missing outputs cannot complete current prerequisites; PASS alone does not resolve root/slot",
+    "A03_PRECONDITIONS": "Selected acquisition action with independently specified output contract",
+    "A03_TYPE": "Acceptance case / bounded native supplied-result operation",
+    "canonical_case": {
+      "CASE_ID": "E2-A03",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Only declared knowledge accepted; stale/missing outputs cannot complete current prerequisites; PASS alone does not resolve root/slot",
+      "INITIAL_STATE": "Selected acquisition action with independently specified output contract",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "record_result/append_event with supplied bounded result",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Bounded execution and accepted knowledge",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "native_Actions": [
+      {
+        "accepted_result": "PASS",
+        "authority": [],
+        "cost": null,
+        "cost_unit": "",
+        "effect": "NON_EFFECTING",
+        "evidence": [],
+        "executor": "QUALIFICATION_DETERMINISTIC",
+        "external": [],
+        "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+        "id": "E2-CHECK",
+        "knowledge": [],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "operation": "DETERMINISTIC_VALIDATION",
+        "output": {
+          "id": "E2-K-CHECK",
+          "outcome": "PASS",
+          "producer": "E2-CHECK",
+          "statement": "Synthetic independent check passed",
+          "type": "KnowledgeRecord"
+        },
+        "pass_model_complete": true,
+        "prerequisites": [],
+        "qualification": "ACCEPTED",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "stage": "DEFAULT",
+        "tick": 0,
+        "valid_until": 100
+      },
+      {
+        "accepted_result": "PASS",
+        "authority": [],
+        "cost": null,
+        "cost_unit": "",
+        "effect": "NON_EFFECTING",
+        "evidence": [],
+        "executor": "QUALIFICATION_DETERMINISTIC",
+        "external": [],
+        "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+        "id": "E2-COLLECT",
+        "knowledge": [],
+        "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+        "operation": "SOURCE_ACQUISITION",
+        "output": {
+          "id": "E2-K-COLLECT",
+          "outcome": "PASS",
+          "producer": "E2-COLLECT",
+          "statement": "Synthetic inventory collected",
+          "type": "KnowledgeRecord"
+        },
+        "pass_model_complete": true,
+        "prerequisites": [],
+        "qualification": "ACCEPTED",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "stage": "DEFAULT",
+        "tick": 0,
+        "valid_until": 100
+      }
+    ],
+    "owner": "E2-P02 historically; this is a separately authorized prospective qualification for the P05 A03 evidence term"
+  },
+  "AFTER_FUTURE_A03_SUCCESS_NEXT_MISSING_INPUT": "E2-A04.prepare_result_event_ancestry",
+  "AUTHORITATIVE_SOURCE_PINS": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/authoritative-source-pins.json",
+    "pointer": "",
+    "raw_sha256": "7e9522ed791f2eba03e95f4ae88a4b4427b30c3a0936ff5bfd0d00e5daac97a5"
+  },
+  "AUTHORITY": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/authorization-capture.json",
+    "pointer": "",
+    "raw_sha256": "a1b6106e2776b51d3aebc92fbbc1b8c2281910970bb555134ef81a64417e6830"
+  },
+  "AUTHORITY_DECISION_READY_MEANING": "NOT_REQUIRED; applicable scope decision already selected, no new native operating grant",
+  "AUTHORIZATION_AUTHENTICATION": "PASS",
+  "COLD_RESTORE_CONTRACT": {
+    "END_mapping_restore": "Re-read pinned authorization and mapping manifest separately; recompute evidence binding from actual restored events. No native END object serialized.",
+    "checkpoints": [
+      "SEALED_START",
+      "POST_CHECK",
+      "POST_COLLECT"
+    ],
+    "checks": [
+      "Trusted exact raw BundleId",
+      "Exact immutable event bytes/identities and positions",
+      "Current/initial native state identities",
+      "Parent and source/policy audit",
+      "Exact admitted result/output/currentness",
+      "Recomputed full Computation/selection",
+      "Read-only END replacement mapping and historical UNPROVEN marker"
+    ],
+    "cold_readers_per_checkpoint_per_seed": 3,
+    "execute_now": false,
+    "forbid": "Reading writer-memory, saved control/permission labels as authority, or oracle data as Planner input",
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "total_minimum_reader_comparisons": 36,
+    "writer_termination": "Writer process must exit before independent readers start"
+  },
+  "CONTRACT_ONLY": true,
+  "DETERMINISM_CONTRACT": {
+    "cold_readers_per_checkpoint_per_seed": 3,
+    "compare": [
+      "Canonical state/bundle/event bytes and native identities",
+      "Complete typed results/provenance",
+      "Full Computation, witnesses, reasons, selections",
+      "Rejections and exact END mapping semantics"
+    ],
+    "execute_now": false,
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "independent_writer_processes_per_seed": 3,
+    "membership_negatives": "Different source/output membership must remain different; duplicate native identifiers reject",
+    "no_runtime_entropy": "Writer labels, PID, time and output directories are report metadata only, never native identity fields",
+    "nonpermutable": [
+      "Causal event order CHECK -> COLLECT",
+      "sequence/parent links",
+      "ordered selector clauses",
+      "result-provider invocation order",
+      "non-set native fields"
+    ],
+    "object_key_permutations": true,
+    "unordered_fields": [
+      "Snapshot.actions/statuses/roots/predicates/goals/knowledge",
+      "PersistenceBundle.sources",
+      "Action.accepted_inventory and prerequisites where codec declares set semantics",
+      "SuppliedResult.knowledge"
+    ],
+    "unordered_presentations": [
+      "Original",
+      "Reversed",
+      "Rotated"
+    ]
+  },
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "END_MAPPING": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/END-acceptance-mapping.json",
+    "pointer": "",
+    "raw_sha256": "2233603059d969c8af0a39b25b0960746f0c8a35e05fcf75ea8dad6cb233a041"
+  },
+  "EXECUTION_CONTRACT": {
+    "STOP_on": [
+      "Any definition/source/content/policy/runtime/input identity divergence",
+      "Wrong authority/scope/lineage/generation",
+      "Different selected Action/result/output/parent/pre/post/sequence",
+      "Extra event/install/authority or failure of N12/N13 mapping",
+      "Oracle used as input or post-hoc fixture/expected-answer changes",
+      "Any persistence/replay/negative/determinism mismatch"
+    ],
+    "entry": "Load exact native sealed start, not historical completed snapshots; verify every input/runtime/source/policy/capture pin and explicit empty head/ledger",
+    "failure_record": [
+      "FIRST_COUNTEREXAMPLE",
+      "EXPECTED",
+      "ACTUAL",
+      "STATE_ID",
+      "EVENT_ID",
+      "CLASSIFICATION"
+    ],
+    "native_API_limit": "Ordinary supplied-result transaction has no command-ID operand; current bundle/head lock, expected_snapshot and event chronology provide the native binding",
+    "no_live_repair": true,
+    "package": "E2-P05-A03-PROSPECTIVE-OCCURRENCE-EXECUTION-1",
+    "request_required_before_execution": "This contract package performs no execution; later execution instruction must invoke the sealed contract",
+    "retry": "Do not reexecute an already committed positive Action. Existing writer-main head or incomplete run requires stop/audit; independent reproductions use separate isolated output directories and the same sealed inputs.",
+    "sequence": [
+      "Read-only recompute/select twice; CHECK exact; canonical bytes/ledger/knowledge unchanged (N12 boundary)",
+      "Invoke bounded synthetic provider for CHECK using authored input declarations, not oracle files",
+      "Run native typed/current-selection/result validation; commit via ordinary codec.commit_event exactly once",
+      "Compare actual CHECK result/event/post-state with independently sealed oracle; persist checkpoint",
+      "Recompute current selection COLLECT; freshly provide and commit COLLECT exactly once, parent CHECK",
+      "Compare actual COLLECT result/event/post-state; PREPARE may be ready but must not execute",
+      "Persist final exact two-event qualification bundle and all event files; terminate writer",
+      "Run cold-reader, replay, independent-writer/permutation and isolated negative dimensions",
+      "Only on all PASS bind read-only authorized prospective A03 evidence into P05 with original history UNPROVEN",
+      "Recheck prior bindings and identify only next missing input A04; stop without P05/P06 execution"
+    ]
+  },
+  "EXECUTION_READY_MEANING": "Sealed contract ready for a separately requested prospective execution package; no positive experiment verdict claimed",
+  "EXPECTED_EVENT_ORACLE": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/oracles/expected-events.json",
+    "pointer": "",
+    "raw_sha256": "0af46520607a0babcb38e78b4931eecb527a19ce39ef65a5f68373f83756b462"
+  },
+  "EXPECTED_RESULT_ORACLE": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/oracles/expected-results.json",
+    "pointer": "",
+    "raw_sha256": "478653a3e9da7e02315047d14345479f76d54a48daf11bcb3df822e6ec6c276f"
+  },
+  "GIT_DIFF_CHECK": "PASS",
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "METADATA_VALIDATION": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/metadata-validation.json",
+    "pointer": "",
+    "raw_sha256": "a9443e9e95caca63967ac3bed5d419741c9acaf61792f191ac13e6ee5ccea595"
+  },
+  "N12_MAPPING": {
+    "pointer": "/N12_mapping",
+    "source": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/assurance-mapping.json",
+      "pointer": "",
+      "raw_sha256": "201ddf79906133b95f882f85a30953780a247bbe0d028ca36f6bd54635e51200"
+    }
+  },
+  "N12_MAPPING_PRESERVED": "YES",
+  "N13_MAPPING": {
+    "pointer": "/N13_mapping",
+    "source": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/assurance-mapping.json",
+      "pointer": "",
+      "raw_sha256": "201ddf79906133b95f882f85a30953780a247bbe0d028ca36f6bd54635e51200"
+    }
+  },
+  "N13_MAPPING_PRESERVED": "YES",
+  "NATIVE_EVENTS_ADMITTED": 0,
+  "NEGATIVE_CASE_COUNT": 24,
+  "NEGATIVE_SUITE": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/negative-contract.json",
+    "pointer": "",
+    "raw_sha256": "b09f4afd283901de638e1d81d6530c785e1540f8bb4fe08aed4e60b413014d15"
+  },
+  "NEW_NATIVE_AUTHORITIES": 0,
+  "NEXT_PACKAGE": "E2-P05-A03-PROSPECTIVE-OCCURRENCE-EXECUTION-1",
+  "N_REAL_SATISFIED": "NO",
+  "OCCURRENCE_ORACLE": {
+    "PASS_requires_all": [
+      "Exact selected Action and current sealed pre-state",
+      "Fresh typed actual supplied result matches PC01 bounded oracle",
+      "Actual native commit/admission produces expected transition and event payload",
+      "Exact expected native event identity/parent/sequence and source/result binding",
+      "Membership in exact newly declared ordered ledger, one CHECK then one COLLECT event",
+      "No PREPARE/DECIDE/REENTER/FINISH event or extra authority/configuration",
+      "Durable native bundle/event/HEAD and independent cold restoration",
+      "Historical replay preserves exact new semantic occurrence",
+      "All sealed negative controls and determinism pass",
+      "Separate END authorized replacement mapping and historical UNPROVEN label remain exact"
+    ],
+    "not_sufficient": [
+      "Expected event hash",
+      "Definition/accepted inventory",
+      "Selection trace",
+      "Post-state alone",
+      "Result/report label",
+      "Retained historical PASS report"
+    ],
+    "original_historical_occurrence_result": "UNPROVEN even after future prospective PASS",
+    "status_now": "NOT_EXECUTED"
+  },
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_ASSURANCE": {
+    "END_dependency": "A03 stage coverage and lifecycle ancestry consumed by experiment acceptance case END",
+    "N12": {
+      "CASE_ID": "E2-N12",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "No native result accepted; ledger/knowledge not fabricated",
+      "INITIAL_STATE": "Selected action with no supplied result",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Attempt to use selection record as execution/completion",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Selection/history conflation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "N13": {
+      "CASE_ID": "E2-N13",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Reject wrong event/result; knowledge/root/slot unchanged",
+      "INITIAL_STATE": "Admitted Action definition",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "Present its output declaration as actual supplied result",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Prospective/actual conflation",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "ledger_membership": "Actual native ordered ledger with identified event positions",
+    "lost_historical_assurance": [
+      "Actual submitted payload",
+      "Actual parent and native event identity",
+      "Native ledger membership/position",
+      "Original adjacent-event continuity and admission provenance"
+    ],
+    "native_occurrence": "Actual typed SuppliedResult admission is recorded as ExecutionEvent, beyond definitions or selection",
+    "ordering": "Selection precedes supplied result; CHECK then COLLECT precede PREPARE in the acquisition prefix",
+    "parent_ancestry": "Exact historical pre-state/parent/post-state continuity",
+    "result_output_provenance": "Exact producer/source/outcome/native KnowledgeRecords linked to the admitted event",
+    "retained_but_insufficient": "PASS reports, before/after state hashes and archived knowledge/statuses; they do not prove occurrence",
+    "semantic_result": "Only the PC01-declared bounded PASS outputs are accepted",
+    "state_transition": "Then-selected CHECK/COLLECT transition to completed with exact accepted knowledge; root/slot cannot be inferred from PASS"
+  },
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "P01_RESULT": "PASS",
+  "P02_RESULT": "PASS",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_RESULT": "PASS",
+  "P05_BINDING_GRAPH_CHANGED": "NO",
+  "P05_BOUND_STAGE_INPUTS": 9,
+  "P05_EXECUTED": "NO",
+  "P05_EXECUTION_READY": "NO",
+  "P05_INITIAL_ORACLE": "PASS",
+  "P05_NEXT_MISSING_INPUT": "E2-A03.native_result_event_trace",
+  "P05_TOTAL_STAGE_INPUTS": 13,
+  "P06_EXECUTED": "NO",
+  "PERSISTENCE_CONTRACT": {
+    "atomicity": "Only a consistent published head is canonical for this isolated qualification run; orphan files cannot establish an occurred result. Stop on partial/failed commit and report it.",
+    "boundaries": [
+      {
+        "boundary": "POST_CHECK",
+        "event_count": 1,
+        "head": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+        "native_bundle_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3",
+        "parent": null,
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/checkpoints/post-check",
+        "state_id": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+      },
+      {
+        "boundary": "POST_COLLECT",
+        "event_count": 2,
+        "head": "planner-event-v1:d6ac0bb81a978ed5b8d8eb10195e75f75aba1af34c284e093f0ec8b70a797e8f",
+        "native_bundle_id": "planner-bundle-v1:b4a7494aa5617b4c913d23addf338361959a75d9cfee13b3ba2308f8ccb69a39",
+        "parent": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+        "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/checkpoints/post-collect",
+        "state_id": "planner-snapshot-v1:3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+      }
+    ],
+    "checkpoint_publication": "Save actual native bundle/event artifacts beside each checkpoint bundle via codec.save_bundle; duplicating immutable bytes is not another semantic event",
+    "commit": "codec.commit_event using actual freshly supplied result and exact current bundle. It verifies the current HEAD, saves complete native bundle/event files and atomically publishes HEAD. No manual status or knowledge changes.",
+    "future_output_root": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1",
+    "ledger_container_identity": "Native BundleId at each boundary plus /bundle/events; no standalone ordinary LedgerId is invented",
+    "ordinary_native_head_directory": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/native-head",
+    "preserve": [
+      "Initial/current snapshots",
+      "Complete typed SuppliedResults/KnowledgeRecords",
+      "Ordered ExecutionEvents",
+      "Parent/pre/post/sequence/content identities",
+      "Physical source and policy pins",
+      "Scope/lineage/generation/provenance",
+      "HEAD.previous and command=None audit semantics"
+    ],
+    "root": "CHECK event identity after first append; ordinary native event root, not GENESIS root commitment",
+    "start": {
+      "file": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/starting-bundle.json",
+      "native_restore": "codec.restore with exact expected start identity; empty events requires no event files",
+      "trusted_bundle_identity": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+    },
+    "write_now": false
+  },
+  "PREEXECUTION_SEAL": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/seal.json",
+    "pointer": "",
+    "raw_sha256": "0035566843c7e76c216078bd9cb870477bb9c028eb2cfef2a7ff85a6b2606555"
+  },
+  "PRESERVATION": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/preservation.json",
+    "pointer": "",
+    "raw_sha256": "c2f36f09aa39f4e564e513464a7d76aa79a09d37ca6306aece47d2205fa57e56"
+  },
+  "PRODUCTION_EFFECT": "NO",
+  "PROSPECTIVE_A03_AUTHORITY_DECISION_READY": "NO",
+  "PROSPECTIVE_A03_AUTHORITY_DECISION_REQUIRED": "NO",
+  "PROSPECTIVE_A03_EXECUTED": "NO",
+  "PROSPECTIVE_A03_EXECUTION_READY": "YES",
+  "PROSPECTIVE_ASSURANCE": {
+    "source": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/assurance-mapping.json",
+      "pointer": "",
+      "raw_sha256": "201ddf79906133b95f882f85a30953780a247bbe0d028ca36f6bd54635e51200"
+    },
+    "status": "SEALED_NOT_EXECUTED"
+  },
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "PROSPECTIVE_INPUTS": {
+    "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/input-inventory.json",
+    "pointer": "",
+    "raw_sha256": "e8c455082da7a1346862b9926c17a28a78d87fb90a95d7d246819405d7ede43f"
+  },
+  "PROSPECTIVE_START": {
+    "APPEND_HEAD": null,
+    "LEDGER_ID": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+    "LEDGER_ID_domain": "Exact sealed native bundle/events coordinate; ordinary PersistenceBundle has no standalone LedgerId field. Not a GENESIS ledger identity.",
+    "LEDGER_ROOT": null,
+    "PARENT_EVENT_ID": null,
+    "PREEXPERIMENT_OCCURRENCES_ASSERTED": 0,
+    "PROSPECTIVE_LINEAGE_DIFFERS_FROM_ORIGINAL": true,
+    "START_BUNDLE_ID": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a",
+    "START_STATE_ID": "planner-snapshot-v1:0dee436c9fe2c8d54bb558098188296da3cce9ddf589e2571d5a474c121609ff",
+    "context": {
+      "$type": "EvaluationContext",
+      "allowed_effects": [],
+      "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+      "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "tick": 0
+    },
+    "entry_oracle": {
+      "actionable": [
+        "E2-CHECK",
+        "E2-COLLECT"
+      ],
+      "actions": [
+        "E2-CHECK",
+        "E2-COLLECT",
+        "E2-DECIDE",
+        "E2-FINISH",
+        "E2-PREPARE",
+        "E2-REENTER"
+      ],
+      "actual_knowledge": [],
+      "authority_entities": [],
+      "completed_Actions": [],
+      "control": "RUNNABLE",
+      "native_events": [],
+      "receipt_instances": [],
+      "reentry_eligible": false,
+      "root": "UNRESOLVED",
+      "selected": "E2-CHECK",
+      "slots": []
+    },
+    "event_count": 0,
+    "form": "Fresh prospectively authored all-unexecuted ordinary PersistenceBundle; native empty ledger",
+    "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+    "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+    "native_bundle_scope": "PARTIAL_HISTORICAL_REPLAY",
+    "native_bundle_scope_meaning": "Existing codec policy/serialization scope, not a claim of historical reconstruction; qualification meaning is explicitly prospective",
+    "native_empty_bundle_validation": "PASS",
+    "null_meaning": "Explicit empty authored ledger, not missing/TBD ancestry. First admitted event establishes root/head; no historical parent inferred.",
+    "operating_authority_reference_CHECK": null,
+    "operating_authority_reference_COLLECT": null,
+    "original_lineage": "E2-CANONICAL-BASELINE-1",
+    "physical_source_pin_checks": "PASS",
+    "policy": {
+      "$type": "ArtifactPin",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+      },
+      "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+      "pointer": "",
+      "profile": {
+        "$enum": "HashProfile",
+        "value": "raw-file-sha256"
+      }
+    },
+    "policy_version": "E1-SELECTION-1-P06",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "selection_oracle": "CHECK/COLLECT have equal (0,0,0) coverage and no information metric. Admitted policy class priority ranks DETERMINISTIC_VALIDATION ahead of SOURCE_ACQUISITION; after CHECK only COLLECT is eligible, then PREPARE becomes ready but remains unexecuted.",
+    "source_template": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_INITIAL_SNAPSHOT.json",
+      "pointer": "",
+      "raw_sha256": "545ad19184d8dd7dfb5b2737e081b043d13982f05d05326939ac2cbb89bf54e2"
+    },
+    "start_bundle": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_CONTRACT_1/inputs/starting-bundle.json",
+      "pointer": "",
+      "raw_sha256": "1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+    }
+  },
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "REPLAY_CONTRACT": {
+    "exactness": "Same typed results, KnowledgeRecords, parent chain, state/bundle/event identities, full recomputed native Computation; exactly two semantic events",
+    "execute_now": false,
+    "historical_limit": "Replay of this new lineage proves no original A03 occurrence, parent or historical P04 ancestry",
+    "native_function": "codec._replay of actual persisted ordinary bundle plus prefix validation",
+    "not_new_decision": "Consume recorded supplied results; do not reacquire outputs or call provider/executor as a new operation",
+    "sequence": [
+      "E2-CHECK actual SuppliedResult/event 1",
+      "E2-COLLECT actual SuppliedResult/event 2"
+    ],
+    "start_bundle_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a"
+  },
+  "RESULT": "PASS",
+  "RUNTIME_MODIFIED": "NO",
+  "SELECTED_OPTION": "AUTHORIZE_PROSPECTIVE_P05_A03_OCCURRENCE_QUALIFICATION",
+  "WORK_PACKAGE": "E2-P05-A03-PROSPECTIVE-OCCURRENCE-CONTRACT",
+  "schema": "E2-P05-A03-PROSPECTIVE-OCCURRENCE-CONTRACT-1"
+}

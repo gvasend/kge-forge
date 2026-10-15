@@ -1,0 +1,3296 @@
+{
+  "N_REAL_SATISFIED": false,
+  "acceptance_checks": {
+    "15_negative_controls": true,
+    "36_fresh_reader_comparisons": true,
+    "A14_unknown_route_bundle_cold_restore": true,
+    "A15_A16_invalidation_fresh_restore": true,
+    "A15_all_disjoint_current_state_source_invalidations": true,
+    "A15_current_native_receipt_proof_withdrawn": true,
+    "A15_knowledge_authority_slot_root_and_ordering_withdrawal": true,
+    "A16_acquisition_source_PLAN_DEFECT": true,
+    "FINISH_not_executed": true,
+    "authorization_authentication": true,
+    "bounded_scope_authority_admission": true,
+    "bounded_scope_authority_applicability": true,
+    "cold_restore": true,
+    "complete_oracle_and_algebraic_native_bundle_identity": true,
+    "event_backed_start_and_fresh_start_reader": true,
+    "independent_preexecution_state_pin_authority_context_oracle": true,
+    "independent_reproduction": true,
+    "mainline_execution_stopped_at_pre_receipt_boundary": true,
+    "native_bundle_persistence": true,
+    "native_replay": true,
+    "policy_pin_equality": true,
+    "same_fixture_used_by_both_accepted_reproductions": true,
+    "source_pin_equality": true,
+    "successful_fixture_revision_sealed_before_its_execution": true,
+    "unordered_collection_determinism": true
+  },
+  "additional_current_runtime_qualification": {
+    "checkpoint_fresh_readers": 36,
+    "independent_writers": 2,
+    "invalidation_fresh_readers": 21,
+    "native_source_policy_checks": "PASS",
+    "negative_controls": 15,
+    "ordered_event_replay": "PASS",
+    "starting_fresh_readers": 8,
+    "unordered_collection_permutations": "PASS"
+  },
+  "aggregate_release_requirements_changed": false,
+  "append_head": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-event-v1",
+    "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+  },
+  "authority_admission": "PASS",
+  "authority_applicability": "PASS_EXACT_DOSSIER_PROSPECTIVE_REPLACEMENT_ONLY",
+  "authorization_authentication": "PASS_TRUSTED_EXPLICIT_USER_DECISION",
+  "authorized_change_only": "Original historical mainline checkpoint equality replaced by approved prospective assurance test; no other P03/N-REAL/aggregate gate waived",
+  "broad_regression_status": {
+    "current_runtime_targeted": {
+      "causes": [
+        "RECEIPT_CHANGED_CONTROL",
+        "FIELD_PROVENANCE"
+      ],
+      "errors": 12,
+      "failures": 4,
+      "result": "FAIL",
+      "tests": 66
+    },
+    "logs": {
+      "CURRENT_RUNTIME": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_CURRENT_RUNTIME.log",
+      "FULL_COLLECTION": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_FULL_COLLECTION.log",
+      "PLANNER_PY311": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_PLANNER_PY311.log",
+      "PLANNER_PY38": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_PLANNER_PY38.log",
+      "PREEXISTING_COMPARISON": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_PREEXISTING_COMPARISON.log",
+      "TARGETED": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_TARGETED.log"
+    },
+    "planner_discovery_python311": {
+      "command": "python -m unittest discover -s adapter/tests -p 'test_planner*.py' -q",
+      "errors": 12,
+      "failures": 5,
+      "result": "FAIL",
+      "same_failure_set_as_python38": true,
+      "tests": 190
+    },
+    "planner_discovery_python38": {
+      "additional_cause": "X05 old nine-dossier-check expectation conflicts with the already-present supported-six-check native contract",
+      "command": "python3 -m unittest discover -s adapter/tests -p 'test_planner*.py' -q",
+      "errors": 12,
+      "failures": 5,
+      "result": "FAIL",
+      "tests": 185
+    },
+    "preexisting_core_comparison": {
+      "errors": 2,
+      "failures": 1,
+      "method": "Load the untouched HEAD core.py in an isolated interpreter, retain the supplied preexisting evidence/gates implementations, rerun three representative failing cases",
+      "result": "REPRODUCED",
+      "same_causes": [
+        "RECEIPT_CHANGED_CONTROL",
+        "FIELD_PROVENANCE",
+        "X05 nine-check expectation"
+      ],
+      "tests": 3
+    },
+    "repository_collection": {
+      "collection_errors": 288,
+      "command": "python -m pytest --collect-only -q",
+      "result": "BLOCKED_FROZEN_E1_DUPLICATE_IMPORT",
+      "tests_collected": 383
+    },
+    "targeted": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest adapter.tests.test_planner_typed_proofs adapter.tests.test_planner_e06_regressions -q",
+      "result": "PASS",
+      "tests": 12
+    }
+  },
+  "comparisons": {
+    "E2_FINISH_actionable_current_continuation": true,
+    "N_REAL_SATISFIED": false,
+    "all_sealed_inputs_verified_unchanged": true,
+    "authority": {
+      "authentication": "Explicit user-role decision supplied through trusted conversation transport; no signature or external issuer fabricated",
+      "dossier": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_CHECKPOINT_SCOPE_DECISION_DOSSIER_1.json",
+      "dossier_md_raw_sha256": "f8cc296036ade665b1a3d4ba5381ceb50306372e4e1e51c82a8e04e9aab58ca0",
+      "dossier_raw_sha256": "fc352948b9a23d72ca91c59dc47d424ae6a3b94d4c21ae8fab83fb134a62c6d2",
+      "exclusions": [
+        "historical reconstruction",
+        "unrelated P03 acceptance changes",
+        "N-REAL",
+        "aggregate release",
+        "E1 mutation",
+        "FINISH execution",
+        "P04 execution"
+      ],
+      "issuance_time": "2026-10-03",
+      "issuer": "authenticated human user of this session",
+      "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+      "permissions": [
+        "Prospective contract adopted from selected Option B",
+        "New physical source/policy fixture inputs and authored HUMAN_HANDOFF initial premises",
+        "Bounded synthetic ALLOW_QUALIFICATION_MAPPING capture",
+        "Revised P03 historical checkpoint clause and P04 gate only after all retained acceptance terms pass"
+      ],
+      "provenance": "User instruction P03 AUTHORIZED PROSPECTIVE CHECKPOINT QUALIFICATION 1, AUTHORITATIVE HUMAN DECISION",
+      "schema": "P03-QUALIFICATION-SCOPE-DECISION-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "selected_option": "AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION",
+      "sequence": 1,
+      "subject": "P03 irreproducible historical checkpoint qualification"
+    },
+    "authorization_authentication": "PASS_EXPLICIT_USER_DECISION_TRUSTED_TRANSPORT",
+    "checkpoint": {
+      "actionable": [],
+      "algebraic_expected_bundle_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+      },
+      "append_head": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+      },
+      "before_execution_oracle": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/mainline-oracle.json",
+      "boundary": "Post-RecordedDecision known-rule EXTERNAL_WAIT before RECEIVED",
+      "bundle_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+      },
+      "event_ancestry_expected_from_sealed_oracle": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0"
+        },
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+        }
+      ],
+      "ledger_id": null,
+      "ledger_id_reason": "Native PersistenceBundle has an ordered ExecutionEvent tuple, no separate LedgerId field; no report-created identity substituted",
+      "ledger_root": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0"
+      },
+      "ledger_root_domain": "Actual first native ExecutionEvent identity; not a GenesisLedger.root",
+      "mainline_FINISH_non_actionable": true,
+      "resume_eligibility": {
+        "actions": [],
+        "allowed": false,
+        "reasons": [
+          "EXTERNAL:E2-GATE:ACCEPTED_REENTRY_EVENT_MISSING",
+          "EXTERNAL:E2-GATE:E2-REENTER:DECISION_REENTRY_REQUIRED",
+          "EXTERNAL:E2-GATE:E2-REENTER:EXTERNAL_GATE:E2-GATE",
+          "EXTERNAL:E2-GATE:E2-REENTER:PREDICATE:E2-PROOF:UNKNOWN",
+          "EXTERNAL:E2-GATE:NAMED_REENTRY_NOT_ACTIONABLE",
+          "EXTERNAL:E2-GATE:OBLIGATION:E2-EXTERNAL-REQUIREMENT:UNKNOWN:PROOF_RULE_KNOWN_EVIDENCE_MISSING",
+          "EXTERNAL:E2-GATE:REENTRY_STAGE_REQUIRED"
+        ],
+        "supporting_identities": [],
+        "type": "ResumeEligibility"
+      },
+      "state_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324"
+      }
+    },
+    "comparison_domain_correction": "Standalone source/authority tuple presentation order differs under legal set permutations; native canonical bytes, complete Computation and per-record identities equal. Compare those two declared unordered collections as canonical multisets.",
+    "driver_correction": {
+      "corrected_driver": "adapter/tests/run_p03_prospective.py",
+      "corrected_driver_hash": "63874c2df99a2cee3cde37ccb4c6e842bb63d0e2a6c11f2173885e9f49b82409",
+      "driver_sealed_before_corrected_runs": true,
+      "earlier_failed_fixture_encoding_preserved": true,
+      "failed_attempts": [
+        "writer-a",
+        "writer-b",
+        "corrected-a",
+        "corrected-b",
+        "revision-2 accepted-support premise comparison"
+      ],
+      "fixture_changed_between_accepted_reproductions": false,
+      "reason": "Initial driver ROOT-first correctly rejected; corrected driver revealed native A14 source grammar mismatch; preserved failed attempt and sealed distinct revisions with native contract/payload source grammar before accepted runs",
+      "revision_sealed_before_accepted_reproductions": true,
+      "runtime_changed": false,
+      "scope": "Dependency ordering already mandated by sealed contracts; no source/policy/contract/oracle pin added or changed"
+    },
+    "e1_artifacts_modified": 0,
+    "e2_finish_executed": false,
+    "equality": {
+      "authority": "PASS",
+      "cold_restore": "PASS",
+      "control": "PASS",
+      "determinism": "PASS",
+      "event_ancestry": "PASS",
+      "fresh_reader": "PASS",
+      "independent_reproduction": "PASS",
+      "persistence": "PASS",
+      "policy_pin": "PASS",
+      "provenance": "PASS",
+      "replay": "PASS",
+      "scope_lineage": "PASS",
+      "semantic_state": "PASS",
+      "source_pin": "PASS"
+    },
+    "event_backed_start": "PASS_ACTUAL_NATIVE_REEVALUATION_EVENT_AND_FRESH_READER_BEFORE_CONTINUATION",
+    "fixture_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-prospective-fixture-v1",
+      "sha256": "a8d4c2940b9c56a7c7721fd6290493e06b612188c375a582bf67e17436ba44aa"
+    },
+    "fresh_reader_comparisons": [
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 4,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 5,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 6,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 7,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 8,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 9,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 10,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 11,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 12,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 13,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 14,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "mainline",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/mainline/checkpoint/bundle-d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 15,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 16,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 17,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 18,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 19,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 20,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 21,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 22,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 23,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 24,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 25,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 26,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/checkpoint/bundle-15d6e65c9a65732f7fdd98771582c487267689bc93e6e91dd69ad9d8974c7ea0.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 27,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 28,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 29,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 30,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 0,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 31,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 32,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 33,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 1,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 34,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 35,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 36,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 7,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 37,
+        "repeat": 0,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 38,
+        "repeat": 1,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      },
+      {
+        "authority": "PASS",
+        "bundle_identity": "PASS",
+        "computation": "PASS",
+        "event_ancestry": "PASS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "input_allowlist": [
+          "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/checkpoint/bundle-4c7f1b171d855f7771136fb8fe22fd3ffe330cadc1724839f711b01e55e23117.json",
+          "trusted expected bundle identity",
+          "sealed physical source files",
+          "sealed supported policy",
+          "native modules/sealed contracts"
+        ],
+        "policy_pins": "PASS",
+        "provenance": "PASS",
+        "reader_pid": 39,
+        "repeat": 2,
+        "replay": "PASS",
+        "scope_lineage": "PASS",
+        "seed": 101,
+        "semantic_state": "PASS",
+        "snapshot_identity": "PASS",
+        "source_pins": "PASS",
+        "writer_context": "revision-3-a / executor 53562",
+        "writer_pid": 2,
+        "writer_terminated": true
+      }
+    ],
+    "fresh_reader_count": 36,
+    "historical_correspondence": "UNPROVEN",
+    "historical_reconstruction": false,
+    "invalidation_fresh_readers": [
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d79af8955b8d89e07d2d896ba9c62eebbbd33c7f6aef604efa4940343d9011e6"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 40,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0b775c6c83db114e87e4416ed1f16e50fd499d5ea13b9244a5bfaf232c3601ad"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-05.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "316ec00c800a9fe137dd3f66434f990a82b0716cf0ed3da19e33cf6db684731b"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 41,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "6d4dbe41821dfa5e583227d1e8da4d6647eced5bd1e16f29a975a04cb7a293f5"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 42,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "207e2c6a8b69eb01c4aef1c9d44897c2b658df28ccbb7ce84efd50fd54a3450d"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-00.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b192fa4c6f691b5d99a1faa99b7427ca108e1d105abf6ee193621538b1e029fe"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 43,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-01.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "f13de1e13459096085bb5e7f5e0b683fd90c42c38a275bf5077d767d1f247315"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 44,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "8bf34241624ae07559203a278855c08626aabd3eedf6675d27a64a2a6f6b0236"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-06.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d4e8d50e048b81ce20070876566dab837084aac8d9fbd1d122e19d442371f686"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 45,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "aa031fdb1da1a109d5eddf4309dd775403ddbd56f9b23274be39b62c6957d788"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-02.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d3dfa7dd4fe20d9b6327fa2d248c8428bf14b0a3e8aa52ea0625ca12f3ffe9fe"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 46,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ac6ff9735dce009b12b734e2738d984c19240dbbca3ff5605faa47ca390e5c2c"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-11.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "a8e2d4318b1a977516398b6ccdb3fd9407bcd5d320d899e5035aa064324b8b85"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 47,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ba2ac22de8be26c3380955f2c36e77c1317ad6d81d788451325c6721cf9c8fb4"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-07.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "84f8bb726da053fd46b7c89596baeb8382b38d902a721fcd4e49615e68a48056"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 48,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "bce5320d831bd228af30dab403add01e0fa1b9e82896ff5ea2449b495e43bf36"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-native-receipt-payload.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "249ce74880910ead77a36fa5330be2dfbcf5ef26c2a42f75fb2ed18a5c5010d3"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 49,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "c0d228cc551dc60c83ff09f8f8e087d60c4c882871fc4af8dfd541a135c6a2db"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-03.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b57faf24901c188dfcda249b673c5bf919cfd58162ccb264c4a74c7a8b61f710"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 50,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ca8cae8362c5c2a09360fa124552e861cff0d0c476dad685297d528ab4079ff3"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-08.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "4c26d54ac20057cb3ae5761906d0dd91b54cc86c0a9fa52f916d372dead9520c"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 51,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "e9dcb5735f2f0e99dc9028c581de4ee31cb365b2461ab92a014071170c184926"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-10.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "c47d35b86c397285e4b1823dfacab5a2e38f818e84b74ddf84335fa6ebf16ef8"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 52,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "fa6926113ad80b42bb83b10575cf3b961afa32e6fcd86ab4277fee104280a025"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-04.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "3c2b081bbcbb3ad5efd8d5cee2bc5f94bcd5cc543fb6935ead4e93c268d8dcea"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "accepted-support",
+        "reader_pid": 53,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "fbf3d86bc12219f85ac2b75ce1cacff63394c973508f9bad33c14d19022a3d63"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-12.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d7707de15cf3dcb88571cc732b492fd764211e1eb55a8be066704a0674c79821"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "reader_pid": 54,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "17193ea5c8f2fbf773f337fb39063019f7f91fb4ba5bd7a9b825af540ae4af78"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-authority-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "06ed4a2976fb74bc9f84a1ada1da0d1e7fd01bf1e9dcfea79ab97fa89d4dfc47"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "reader_pid": 55,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "193e71c46643a6d27c04bf9fe2abf354d2be5c40aeef7ba0da3a3e61a33282d2"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-root-contract-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "4fe3eb570facee250e7480f4f37ac2c8f456ec3f12964433366b7d157c9ef95c"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "reader_pid": 56,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "cb6dd7a8e30c1ac1e7b219b6e67a9951f811bb10a8c026ac61434e78c05c5004"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "reader_pid": 57,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3807d023037c1dca62a0caffe4f3cf81e8796c6be5c71ad171e97c689f02e62d"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-action-ordering-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "bb1db9e37d76e79aaf5c791d2aae086a125d157095d875779bbdc5993d39afcd"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "reader_pid": 58,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3f60e03d457d5b9b2f187c2274d2a7f42511893552778df8c0f568f80599b7d8"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-slot-contract-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b1148b498b8bf54c4ed147da62f353855f526acf9cb44763555c667bf53a7254"
+        },
+        "case": "A15",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "typed-support",
+        "reader_pid": 59,
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "eb2a00fcbd4ba5cd0392d62d07151cd208f143a00ea9743669f25705ecf9156d"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-knowledge-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "ae157248aaad12419bac71b63bdda5948474288b08813de3378ceca940f81044"
+        },
+        "case": "A16",
+        "domain_comparisons": "PASS_ALL_NATIVE_VIEW_DOMAINS",
+        "exit_status": 0,
+        "fixture": "unknown",
+        "reader_pid": 60,
+        "source": null
+      }
+    ],
+    "invalidations": [
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "eb2c1c85bf0ca2b6e41f27004d8967ff12978925535e5afdde02079869b3be62"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d79af8955b8d89e07d2d896ba9c62eebbbd33c7f6aef604efa4940343d9011e6"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-00/bundle-d79af8955b8d89e07d2d896ba9c62eebbbd33c7f6aef604efa4940343d9011e6.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "0b775c6c83db114e87e4416ed1f16e50fd499d5ea13b9244a5bfaf232c3601ad"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-05.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "2355fac059ae217f5dd9177601b901c6cc3ffef88186453f1a5605f7b5924991"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "316ec00c800a9fe137dd3f66434f990a82b0716cf0ed3da19e33cf6db684731b"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-01/bundle-316ec00c800a9fe137dd3f66434f990a82b0716cf0ed3da19e33cf6db684731b.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "5ba6dc4bcd1ccda92aee04c1f7301b09a2d86dc67cf606255bf2d191d43d1eec"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "6d4dbe41821dfa5e583227d1e8da4d6647eced5bd1e16f29a975a04cb7a293f5"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-02/bundle-6d4dbe41821dfa5e583227d1e8da4d6647eced5bd1e16f29a975a04cb7a293f5.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "207e2c6a8b69eb01c4aef1c9d44897c2b658df28ccbb7ce84efd50fd54a3450d"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-00.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "523ef52c51393e3a1650b37b469493abf8bee3c24cbea6faa0d345f9bf9d5992"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b192fa4c6f691b5d99a1faa99b7427ca108e1d105abf6ee193621538b1e029fe"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-04/bundle-b192fa4c6f691b5d99a1faa99b7427ca108e1d105abf6ee193621538b1e029fe.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-01.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "4c63f06f5e3c057e07ff93c913980b05c04a4287da67e463300ff30c8e1076e3"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "f13de1e13459096085bb5e7f5e0b683fd90c42c38a275bf5077d767d1f247315"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-07/bundle-f13de1e13459096085bb5e7f5e0b683fd90c42c38a275bf5077d767d1f247315.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "8bf34241624ae07559203a278855c08626aabd3eedf6675d27a64a2a6f6b0236"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-06.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "19d883a7d8dbad91319a46cfdb9d8998f256375f2ed9caf4fee301a8083403ec"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d4e8d50e048b81ce20070876566dab837084aac8d9fbd1d122e19d442371f686"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-09/bundle-d4e8d50e048b81ce20070876566dab837084aac8d9fbd1d122e19d442371f686.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "aa031fdb1da1a109d5eddf4309dd775403ddbd56f9b23274be39b62c6957d788"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-02.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "5a5e4feff5830243b86dbc6737f1966edcc66d47bbcb010636c1ff34251f13ac"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d3dfa7dd4fe20d9b6327fa2d248c8428bf14b0a3e8aa52ea0625ca12f3ffe9fe"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-10/bundle-d3dfa7dd4fe20d9b6327fa2d248c8428bf14b0a3e8aa52ea0625ca12f3ffe9fe.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ac6ff9735dce009b12b734e2738d984c19240dbbca3ff5605faa47ca390e5c2c"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-11.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "a4051a6ece623892bb9b83e7b69e5f9b07b8bc4a2fcf9a15cd6a3d4563d0fb17"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "a8e2d4318b1a977516398b6ccdb3fd9407bcd5d320d899e5035aa064324b8b85"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-11/bundle-a8e2d4318b1a977516398b6ccdb3fd9407bcd5d320d899e5035aa064324b8b85.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ba2ac22de8be26c3380955f2c36e77c1317ad6d81d788451325c6721cf9c8fb4"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-07.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "cb13b9b36cf558ae777a04d8ee2682e1d23005401cc900b6f5dae58e892f7cf2"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "84f8bb726da053fd46b7c89596baeb8382b38d902a721fcd4e49615e68a48056"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-12/bundle-84f8bb726da053fd46b7c89596baeb8382b38d902a721fcd4e49615e68a48056.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "bce5320d831bd228af30dab403add01e0fa1b9e82896ff5ea2449b495e43bf36"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-native-receipt-payload.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "a4d5dfdcb54f69ea7f911c000d681923f40f6dc04c465dd6176151133b7d04ae"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "249ce74880910ead77a36fa5330be2dfbcf5ef26c2a42f75fb2ed18a5c5010d3"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-13/bundle-249ce74880910ead77a36fa5330be2dfbcf5ef26c2a42f75fb2ed18a5c5010d3.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "c0d228cc551dc60c83ff09f8f8e087d60c4c882871fc4af8dfd541a135c6a2db"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-03.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "72b10d6ec90d9e6566d03934affbf8e990b0101842023dd379cc36d49f1debf9"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b57faf24901c188dfcda249b673c5bf919cfd58162ccb264c4a74c7a8b61f710"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-14/bundle-b57faf24901c188dfcda249b673c5bf919cfd58162ccb264c4a74c7a8b61f710.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ca8cae8362c5c2a09360fa124552e861cff0d0c476dad685297d528ab4079ff3"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-08.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "cb13b9b36cf558ae777a04d8ee2682e1d23005401cc900b6f5dae58e892f7cf2"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "4c26d54ac20057cb3ae5761906d0dd91b54cc86c0a9fa52f916d372dead9520c"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-16/bundle-4c26d54ac20057cb3ae5761906d0dd91b54cc86c0a9fa52f916d372dead9520c.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "e9dcb5735f2f0e99dc9028c581de4ee31cb365b2461ab92a014071170c184926"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-10.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "37daa5b4a83c5dbe4d416ce48958f7c70919c455348285f135e3ae0e47f5f5c3"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "c47d35b86c397285e4b1823dfacab5a2e38f818e84b74ddf84335fa6ebf16ef8"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-17/bundle-c47d35b86c397285e4b1823dfacab5a2e38f818e84b74ddf84335fa6ebf16ef8.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "fa6926113ad80b42bb83b10575cf3b961afa32e6fcd86ab4277fee104280a025"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-04.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "e55c4c1c743158e71fca430821a204d48f4e195a33bc6716f61f9c3781ae2984"
+        },
+        "fixture": "accepted-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "3c2b081bbcbb3ad5efd8d5cee2bc5f94bcd5cc543fb6935ead4e93c268d8dcea"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/accepted-support/invalidation-18/bundle-3c2b081bbcbb3ad5efd8d5cee2bc5f94bcd5cc543fb6935ead4e93c268d8dcea.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "fbf3d86bc12219f85ac2b75ce1cacff63394c973508f9bad33c14d19022a3d63"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/accepted-support-source-12.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "11bef30d651687e53856874e2b8b140ad9a36cff285e1ea1d58190d9e5e360fd"
+        },
+        "fixture": "typed-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d7707de15cf3dcb88571cc732b492fd764211e1eb55a8be066704a0674c79821"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/invalidation-00/bundle-d7707de15cf3dcb88571cc732b492fd764211e1eb55a8be066704a0674c79821.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "17193ea5c8f2fbf773f337fb39063019f7f91fb4ba5bd7a9b825af540ae4af78"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-authority-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "e8bd168a980fe1dd0bc3c505f8a7b4bb6256bf965e14af238610132223de6b1f"
+        },
+        "fixture": "typed-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "06ed4a2976fb74bc9f84a1ada1da0d1e7fd01bf1e9dcfea79ab97fa89d4dfc47"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/invalidation-01/bundle-06ed4a2976fb74bc9f84a1ada1da0d1e7fd01bf1e9dcfea79ab97fa89d4dfc47.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "193e71c46643a6d27c04bf9fe2abf354d2be5c40aeef7ba0da3a3e61a33282d2"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-root-contract-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "bc993165f989eb99c079f44c3385dbced3cff491ad817894e06614a200b56852"
+        },
+        "fixture": "typed-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "4fe3eb570facee250e7480f4f37ac2c8f456ec3f12964433366b7d157c9ef95c"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/invalidation-02/bundle-4fe3eb570facee250e7480f4f37ac2c8f456ec3f12964433366b7d157c9ef95c.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "763c334309685a7f4abc98e76fd28dc1a68ceb0d96794daecaaace8a937a3a42"
+        },
+        "fixture": "typed-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "cb6dd7a8e30c1ac1e7b219b6e67a9951f811bb10a8c026ac61434e78c05c5004"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/invalidation-04/bundle-cb6dd7a8e30c1ac1e7b219b6e67a9951f811bb10a8c026ac61434e78c05c5004.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3807d023037c1dca62a0caffe4f3cf81e8796c6be5c71ad171e97c689f02e62d"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-action-ordering-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "ff3669a65c970298e1b650ee73431436d7aa87ee2649d19e6c3f41d9ba201af0"
+        },
+        "fixture": "typed-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "bb1db9e37d76e79aaf5c791d2aae086a125d157095d875779bbdc5993d39afcd"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/invalidation-06/bundle-bb1db9e37d76e79aaf5c791d2aae086a125d157095d875779bbdc5993d39afcd.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "3f60e03d457d5b9b2f187c2274d2a7f42511893552778df8c0f568f80599b7d8"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-slot-contract-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "after_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "327f93b067205fbf004c691692f143dc2d8cadda3dcd1e99a46cbe782b3ff521"
+        },
+        "fixture": "typed-support",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "b1148b498b8bf54c4ed147da62f353855f526acf9cb44763555c667bf53a7254"
+        },
+        "oracle": "mandatory obligations retained; direct knowledge stale; typed dependent held; no shortcut",
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/typed-support/invalidation-09/bundle-b1148b498b8bf54c4ed147da62f353855f526acf9cb44763555c667bf53a7254.json",
+        "result": "PASS",
+        "source": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "eb2a00fcbd4ba5cd0392d62d07151cd208f143a00ea9743669f25705ecf9156d"
+          },
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/typed-knowledge-source.json",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        }
+      },
+      {
+        "case": "A16",
+        "fixture": "unknown",
+        "id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "ae157248aaad12419bac71b63bdda5948474288b08813de3378ceca940f81044"
+        },
+        "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/unknown/route-invalidation/bundle-ae157248aaad12419bac71b63bdda5948474288b08813de3378ceca940f81044.json",
+        "result": "PASS_PLAN_DEFECT"
+      }
+    ],
+    "mainline_actions_executed": [
+      "E2-DECIDE via RecordedDecision"
+    ],
+    "native_receipt_support_withdrawal": [
+      {
+        "after": "UNKNOWN",
+        "before": "PROVED",
+        "bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "84f8bb726da053fd46b7c89596baeb8382b38d902a721fcd4e49615e68a48056"
+        },
+        "reasons": [
+          "STALE_PREREQUISITE_SUPPORT"
+        ]
+      }
+    ],
+    "negative_controls": {
+      "G04_checkpoint": {
+        "g04_bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-genesis-bundle-v1",
+          "sha256": "8a735d47e88abe2e9556d1c00eeca73878c5d19878c955e9841345dd7dd66c18"
+        },
+        "g04_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "c5494ac40375a0590504a3795968f0a93e04d960473c917c68fa7e769ea239ae"
+        },
+        "reason": "Different native bundle schema/identity, checkpoint context and unknown rule; never accepted as source-pinned prospective checkpoint",
+        "result": "PASS_REJECTED"
+      },
+      "earlier_checkpoint": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "CHECKPOINT_BOUNDARY_OR_PROVENANCE_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "later_checkpoint": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_EVENT_LINEAGE_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "missing_provenance": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "incomplete provenance",
+        "result": "PASS_REJECTED"
+      },
+      "post_hoc_pin_creation": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_SOURCE_SET_MISMATCH_OR_POST_HOC_PIN",
+        "result": "PASS_REJECTED"
+      },
+      "similar_different_pins": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_SOURCE_SET_MISMATCH_OR_POST_HOC_PIN",
+        "result": "PASS_REJECTED"
+      },
+      "unrelated_event_lineage": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "ledger sequence/parent mismatch",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_authority": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_AUTHORITY_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_lineage": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_LINEAGE_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_physical_source": {
+        "level": "Native physical raw pin verification",
+        "reason": "pinned source changed: docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-05.json",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_policy": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_POLICY_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_policy_identity": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_POLICY_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_scope": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_SCOPE_MISMATCH",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_source_binding": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "SEALED_SOURCE_SET_MISMATCH_OR_POST_HOC_PIN",
+        "result": "PASS_REJECTED"
+      },
+      "wrong_source_contract": {
+        "level": "Native validation/replay or independently sealed qualification oracle, as stated by reason",
+        "reason": "missing provenance source pin",
+        "result": "PASS_REJECTED"
+      }
+    },
+    "policy_pin_set_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-policy-pin-set-v1",
+      "sha256": "ea00440d0d6d92366a08b6070d70027b021ef9c5e6179274498e2a6a5982638b"
+    },
+    "pre_execution_oracle": "PASS_AUTHORED_BEFORE_EVENTS; EXACT_STATE/PINS/AUTHORITY/CONTEXT_AND_ALGEBRAIC_ANCESTRY",
+    "procedure_hash": "ddfdf076983c6064559e6b5782393e1a099ad5d662e628b64e3f9f1ce1a2f3b4",
+    "production_effect": false,
+    "prospective_p03_checkpoint_qualification": "PASS",
+    "qualification_contract_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "3e34062b2106d2efa070138f46b5057bd2f094d9bdcc0f0d7ba142f25fa65e9d"
+    },
+    "qualification_scope_authority": "PASS_BOUNDED_METADATA_SCOPE_AUTHORITY; DISTINCT_FROM_NATIVE_ACTION_PERMISSION",
+    "qualification_type": "PROSPECTIVE_REPLACEMENT",
+    "run_evidence": {
+      "first": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-a/writer-result.json",
+      "second": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/runs/revision-3-b/writer-result.json"
+    },
+    "runtime_hashes": {
+      "adapter/planner/__init__.py": "25c834058e64b6606d1689177ed1a875ee421275d97d5d3a98d7378ac5a4ab64",
+      "adapter/planner/__main__.py": "fa9d923348f5c27c54a8fb4dd14a16c0d18ca2cbd4409c1d07a30833bec3ed36",
+      "adapter/planner/action_materializer.py": "4a9aa786cf52ff97089c339bb9f9d2e6d09b16d9652fe0c00b912fce179d6272",
+      "adapter/planner/attestor.py": "63b1ee0c910c9ef9f4459b71a13d5c88264283fa3706eac4849b505b1a264e45",
+      "adapter/planner/budget.py": "3655ac5bc1f292ba3d0ccd237c3bb56a18f21cbd623622046ab424124f0c41d3",
+      "adapter/planner/codec.py": "ce3af4147c0c8b8723929c84fd83775ed030d4f97ec26f3db486ae9c16f47dac",
+      "adapter/planner/core.py": "6254f0724d6ce36f095b1aa32fce2aa3347f90e989c751d9f65edc6983fec884",
+      "adapter/planner/evidence.py": "c08036e2c5deb54f93f75276d4713c7f828c2705a79dee94d3a939a940e51fcd",
+      "adapter/planner/evidence_attestation.py": "1ea8bc975aaab77a9795edbc2d6dafd925392197b9be7a449be2ef4138bc08cc",
+      "adapter/planner/evidence_lifecycle.py": "87bf38f0161c0598790933fc666a368869342c341e9033ec3e1f314d83be79d8",
+      "adapter/planner/evidence_materializer.py": "9b027fffb63d62d751b20c25d7046bd4e23de998e08e598da69ae2343826c091",
+      "adapter/planner/evidence_transitions.py": "985fc96fc3fbfcacf85eb56cef7974fdfecacd62c9b3fc5e688db1900902ccc5",
+      "adapter/planner/gates.py": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f",
+      "adapter/planner/genesis_bundle.py": "746696dd3a472e8336a515993b63a85486d0dde2f9b68b27aad2c39a9b996a37",
+      "adapter/planner/genesis_event.py": "6f2aafa85049338b7cc458ca95259c0cfaf648b325a1fec299447ab5b65d8347",
+      "adapter/planner/genesis_ledger.py": "3a59ace45bebf89580f8df054775c7229fd3b9712acddfe4730a38526bd57916",
+      "adapter/planner/human_decision.py": "ff44bb1c34f2c1ca143210940caa592ee9dc64719a09de7b9015d300f760f012",
+      "adapter/planner/model.py": "a0faf35edf2141d8fac1b458e449d32981758be240232bac389f56f55b52bb0a",
+      "adapter/planner/replay.py": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e",
+      "adapter/planner/selector.py": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f",
+      "adapter/planner/typed_proofs.py": "eae1da102a3963ea4aa58f68f56594a7a1d30ddd7753e4479c9a8166ac7cfff5"
+    },
+    "runtime_modified": false,
+    "seal": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/revision-3-seal.json",
+    "source_pin_set_id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-source-pin-set-v1",
+      "sha256": "0d8ded3f3854a59ae6b256ca29c4661cd840c08751b0042fd49ba04f24670556"
+    },
+    "starting_fresh_readers": [
+      {
+        "fixture": "accepted-support",
+        "reader_pid": 3,
+        "result": "PASS",
+        "writer": "revision-3-a"
+      },
+      {
+        "fixture": "mainline",
+        "reader_pid": 4,
+        "result": "PASS",
+        "writer": "revision-3-a"
+      },
+      {
+        "fixture": "typed-support",
+        "reader_pid": 5,
+        "result": "PASS",
+        "writer": "revision-3-a"
+      },
+      {
+        "fixture": "unknown",
+        "reader_pid": 6,
+        "result": "PASS",
+        "writer": "revision-3-a"
+      },
+      {
+        "fixture": "accepted-support",
+        "reader_pid": 3,
+        "result": "PASS",
+        "writer": "revision-3-b"
+      },
+      {
+        "fixture": "mainline",
+        "reader_pid": 4,
+        "result": "PASS",
+        "writer": "revision-3-b"
+      },
+      {
+        "fixture": "typed-support",
+        "reader_pid": 5,
+        "result": "PASS",
+        "writer": "revision-3-b"
+      },
+      {
+        "fixture": "unknown",
+        "reader_pid": 6,
+        "result": "PASS",
+        "writer": "revision-3-b"
+      }
+    ],
+    "unordered_input_permutations": [
+      {
+        "order": "reverse",
+        "result": "PASS_COMPLETE_VIEW_AND_NATIVE_IDENTITIES"
+      },
+      {
+        "order": "rotate",
+        "result": "PASS_COMPLETE_VIEW_AND_NATIVE_IDENTITIES"
+      }
+    ],
+    "writers": [
+      {
+        "executor_session": 53562,
+        "exit_status": 0,
+        "label": "revision-3-a",
+        "pid": 2,
+        "pid_namespace_note": "Independent sandbox executions can reuse PID 2; executor session and run label distinguish writers",
+        "source": "native writer-result.json; both processes terminated before collected cold readers"
+      },
+      {
+        "executor_session": 10406,
+        "exit_status": 0,
+        "label": "revision-3-b",
+        "pid": 2,
+        "pid_namespace_note": "Independent sandbox executions can reuse PID 2; executor session and run label distinguish writers",
+        "source": "native writer-result.json; both processes terminated before collected cold readers"
+      }
+    ]
+  },
+  "e1_artifacts_modified": 0,
+  "e2_finish_actionable": true,
+  "e2_finish_executed": false,
+  "e2_p03_result": "PASS",
+  "e2_p04_ready": true,
+  "full_suite_status": "BLOCKED_BY_PREEXISTING_FROZEN_E1_DUPLICATE_IMPORT; separate known current-runtime failures retained, not relabeled PASS",
+  "git_diff_check": "PASS",
+  "historical_artifact_hashes_unchanged": {
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_AUTHORITATIVE_HANDOFF_SNAPSHOT_1.json": "9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_CHECKPOINT_BUNDLE_QUALIFICATION_1.json": "f8470556168dca904e5aac1065d1cfabd8e0229aa7a7d27a899ce9764796a5c8",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_CHECKPOINT_BUNDLE_QUALIFICATION_1.md": "2e2d291b81d97eff072b28316c4d3d2318e444ceebf76d76d177809b8f17d76e",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_MAINLINE_CHECKPOINT_REPRODUCTION_1.json": "05c9b7eb315b8b8f551c90a47296ea01d3b199d89d9b35b8feb2c5e6ced9d4b7",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_MAINLINE_CHECKPOINT_REPRODUCTION_1.md": "c67df204986528b7ae20479865cca94413b48ad48e04bbf6d2a82a51028769af",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC03_FIXTURES.json": "e601d1cdc133cdc790a90ed8c7218c779214bd47407bc044b7e9b86e7f5c7fd4",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_ROOT_SLOT_REEVALUATION_RESULT.json": "5507de4cab89f5a98c6c359e7454787bd681a035a684a14503976516b9092ee6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_ROOT_SLOT_REEVALUATION_RESULT.md": "f90a345d3ca2298c704dbdf202cb81a4af926512f30a5b26b3e9f0d2f0d968c6",
+    "docs/plans/DETERMINISTIC_PLANNER_V0_1_N_REAL_RECONCILIATION_1.md": "173316ed87afe6792db0e69321679123b9deebc3b262f1b2fc30035dcb8cae38"
+  },
+  "historical_debt": {
+    "historical_reconstruction": false,
+    "historical_snapshot": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf",
+    "missing_assurance": "Exact original source/policy/event envelope and original writer/cold comparison not established",
+    "n_real_effect": "NONE",
+    "original_historical_checkpoint_correspondence": "UNPROVEN",
+    "qualification_disposition": "SUPERSEDED_UNPROVED for this explicitly amended P03 criterion; historical gap remains recorded",
+    "release_effect": "No aggregate release requirement altered"
+  },
+  "ledger_id": null,
+  "ledger_root": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-event-v1",
+    "sha256": "a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0"
+  },
+  "lifecycle_source": {
+    "file": "docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+    "qualification_scope": "Original qualified E06 continuation retained; no claim that this later state is the prospective pre-receipt checkpoint",
+    "snapshot_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-snapshot-v1",
+      "sha256": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+    }
+  },
+  "next_package": "E2-P04 \u2014 ready for separate authorization/execution; not executed here",
+  "p03_exit_predicate": true,
+  "p03_lifecycle_term_evaluation": {
+    "E2_FINISH_actionable": true,
+    "E2_FINISH_not_executed": true,
+    "E2_K_REENTER_current": true,
+    "E2_REENTER_completed": true,
+    "E2_ROOT_satisfied": true,
+    "E2_SLOT_satisfied": true,
+    "ROOT_PROOF_accepted": true,
+    "SLOT_PROOF_accepted": true,
+    "evidence_proof_accepted": true,
+    "evidence_received": true,
+    "evidence_validated": true,
+    "reentry_eligible_route_completed": true
+  },
+  "p03_original_case_evaluation": {
+    "A07": "PASS_AUTHORIZED_PROSPECTIVE_NATIVE_BUNDLE",
+    "A08": "PASS_AUTHORIZED_PROSPECTIVE_TERMINATED_WRITER_AND_FRESH_READER",
+    "A14": "PASS_NEW_INDEPENDENT_KNOWN_FALSE_NATIVE_ROUTE_FIXTURE",
+    "A15": "PASS_DECLARED_CURRENT_SUPPORT_DISJOINT_SOURCE_INVALIDATION_AND_COLD_RELOAD",
+    "A16": "PASS_ROUTE_INVALIDATION_PLAN_DEFECT_AND_COLD_RELOAD",
+    "P02_predecessor": "Previously qualified predecessor consumed as expressly authorized initial fixture premises; no new historical prefix claimed"
+  },
+  "p03_scope_verdict": "PASS_UNDER_AUTHORIZED_PROSPECTIVE_REPLACEMENT_SCOPE",
+  "p04_authoritative_contract": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json#/packages/E2-P04",
+  "p04_executed": false,
+  "p04_prerequisites": [
+    "E2-P03"
+  ],
+  "planner_v0_1_release_qualified": false,
+  "policy_pin_set_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-policy-pin-set-v1",
+    "sha256": "ea00440d0d6d92366a08b6070d70027b021ef9c5e6179274498e2a6a5982638b"
+  },
+  "production_effect": false,
+  "prospective_checkpoint_bundle_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-bundle-v1",
+    "sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+  },
+  "prospective_checkpoint_state_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324"
+  },
+  "prospective_fixture_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-prospective-fixture-v1",
+    "sha256": "a8d4c2940b9c56a7c7721fd6290493e06b612188c375a582bf67e17436ba44aa"
+  },
+  "prospective_mainline_finish_actionable": false,
+  "prospective_p03_checkpoint_qualification": "PASS",
+  "qualification_contract_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "raw-file-sha256",
+    "sha256": "3e34062b2106d2efa070138f46b5057bd2f094d9bdcc0f0d7ba142f25fa65e9d"
+  },
+  "qualification_scope_authority_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "qualification-scope-authority-v1",
+    "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+  },
+  "qualification_scope_authority_source": {
+    "$type": "ArtifactPin",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+    },
+    "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+    "pointer": "",
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    }
+  },
+  "qualification_scope_changed": true,
+  "result": "PASS",
+  "runtime_modified": false,
+  "selected_option": "AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION",
+  "source_pin_set_id": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-source-pin-set-v1",
+    "sha256": "0d8ded3f3854a59ae6b256ca29c4661cd840c08751b0042fd49ba04f24670556"
+  },
+  "targeted_regressions": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python -m unittest adapter.tests.test_planner_typed_proofs adapter.tests.test_planner_e06_regressions -q",
+    "covered_packages": [
+      "E01-E06",
+      "T01",
+      "G01-G04",
+      "typed root/slot proofs",
+      "bounded reevaluation",
+      "native bundle persistence/replay/cold restore"
+    ],
+    "elapsed_seconds": 7.278,
+    "result": "PASS",
+    "tests": 12
+  },
+  "work_package": "P03-PROSPECTIVE-CHECKPOINT-QUALIFICATION"
+}

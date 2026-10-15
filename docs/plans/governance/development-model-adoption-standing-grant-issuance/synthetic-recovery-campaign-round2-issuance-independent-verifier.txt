@@ -1,0 +1,38 @@
+import copy,hashlib,json,pathlib,runpy,sys
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';P='synthetic-recovery-campaign-round2-'
+def read(n):return json.loads((D/(P+n)).read_text())
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()).hexdigest()}
+runpy.run_path(str(D/(P+'independent-verifier-final.txt')))
+s=read('owner-decision-subject-final.json');assert s['IDENTITY']['sha256']=='fa816673404dd18cfb278e89c25bc8890b318a66b091c1790272cab5abefead0';assert sha(D/(P+'owner-decision-subject-final.json'))=='cbbfe9c7c330a73ebe1d442b787d208d532074265b9777243ad92c1dab8cd972'
+a=read('owner-approval.json');assert a['OPTION_ID']=='AUTHORIZE_BOUNDED_SYNTHETIC_RECOVERY_TEST_CAMPAIGN_ROUND2' and a['SUBJECT_IDENTITY']==s['IDENTITY']
+expected=read('issuance-candidate.json')
+def validate(g):
+ r=g['RECORD'];assert g['GRANT_IDENTITY']==cid('kge-forge-round2-synthetic-recovery-campaign-grant-v1',r)
+ assert r['APPROVED_CONTENT']==s['CONTENT'] and r['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and r['LIMITS']==s['CONTENT']['LIMITS'] and r['EXCLUSIONS']==s['CONTENT']['EXCLUSIONS']
+ assert r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and r['HISTORICAL_ALLOCATIONS_UNCHANGED'] and r['FRESH_ENTRY_REQUIRED']
+ assert not r['ENVIRONMENT_ADMITTED'] and not r['TESTS_EXECUTED'] and r['RESERVATIONS_CREATED']==0 and r['REVISIONS_CONSUMED_BY_ISSUANCE']==0
+ for p in r['SOURCE_AUTHORITY_PINS']+[r['APPROVED_SUBJECT_PIN'],r['OWNER_APPROVAL_PIN'],r['ACCOUNTING_PLAN_PIN'],r['PUBLICATION_MECHANISM_PIN']]:assert sha(p['path'])==p['raw_sha256']
+ assert r==expected['RECORD']
+validate(read(sys.argv[1]));p=read('accounting-identity-plan.json');assert not p['COUNTERS_INITIALIZED'] and p['HOST_EVENTS_CREATED']==0
+assert len(p['INVOCATIONS'])==5 and len(p['REVISION_RECEIPTS'])==3
+for slot,run in zip(p['INVOCATIONS'],s['CONTENT']['INVOCATIONS']):
+ desc={'SUBJECT':s['IDENTITY'],'ORDINAL':run['ORDINAL'],'ALLOCATION_ID':run['ALLOCATION_ID'],'RESERVATION_PATH':run['RESERVATION_PATH'],'OUTCOME_PATH':run['OUTCOME_PATH'],'EXACT_ARGV':run['EXACT_ARGV']}
+ assert slot['INVOCATION_IDENTITY']==cid('kge-forge-round2-suite-invocation-v1',desc) and not slot['RECORDS_CREATED']
+ assert slot['RESERVATION_SLOT_IDENTITY']==cid('kge-forge-round2-reservation-slot-v1',{'INVOCATION':slot['INVOCATION_IDENTITY'],'PATH':run['RESERVATION_PATH']})
+ assert slot['OUTCOME_SLOT_IDENTITY']==cid('kge-forge-round2-outcome-slot-v1',{'INVOCATION':slot['INVOCATION_IDENTITY'],'PATH':run['OUTCOME_PATH']})
+assert len({v['INVOCATION_IDENTITY']['sha256'] for v in p['INVOCATIONS']})==5
+mutations=[('sixth suite',lambda r:r['LIMITS'].update(SUITE_INVOCATIONS=6)),('fourth revision',lambda r:r['LIMITS'].update(MANUAL_DIAGNOSTIC_REVISIONS=4)),('retry',lambda r:r['LIMITS'].update(AUTOMATIC_RETRIES=1)),('wrong owner',lambda r:r.update(ISSUER_ROLE='OTHER')),('history reset',lambda r:r.update(HISTORICAL_ALLOCATIONS_UNCHANGED=False)),('premature admission',lambda r:r.update(ENVIRONMENT_ADMITTED=True)),('reservation during issuance',lambda r:r.update(RESERVATIONS_CREATED=1)),('premature test',lambda r:r.update(TESTS_EXECUTED=True)),('lost exclusion',lambda r:r.update(EXCLUSIONS=[])),('wrong subject',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(sha256='0'*64)),('network shared',lambda r:r['APPROVED_CONTENT']['INVOCATIONS'][0]['EXACT_ARGV'].remove('--unshare-net')),('host tmp exposed',lambda r:r['APPROVED_CONTENT']['INVOCATIONS'][0]['EXACT_ARGV'].__setitem__(r['APPROVED_CONTENT']['INVOCATIONS'][0]['EXACT_ARGV'].index('--bind')+1,'/tmp'))]
+for label,f in mutations:
+ b=copy.deepcopy(expected);f(b['RECORD']);b['GRANT_IDENTITY']=cid('kge-forge-round2-synthetic-recovery-campaign-grant-v1',b['RECORD'])
+ try:validate(b)
+ except (AssertionError,KeyError,ValueError,TypeError):pass
+ else:raise AssertionError('accepted mutation '+label)
+for p,h in read('issuance-preservation-before.json').items():assert sha(p)==h,p
+out={'RESULT':'PASS','GRANT_IDENTITY':expected['GRANT_IDENTITY'],'SUBJECT_IDENTITY':s['IDENTITY'],'LIMITS':s['CONTENT']['LIMITS'],'ORIGINAL_SUBJECT_NEGATIVE_DESIGNS':14,'ISSUANCE_NEGATIVE_DESIGNS':12,'ADDITIONAL_NEGATIVE_REJECTIONS':12,'HISTORICAL_PRESERVATION':'PASS','RESERVATIONS_CREATED':0,'EXECUTION':False}
+if len(sys.argv)>2:
+ e=read('effectiveness-reference.json');assert e['IDENTITY']==cid('kge-forge-round2-synthetic-recovery-campaign-effectiveness-v1',e['RECORD']);r=e['RECORD'];assert r['GRANT_IDENTITY']==expected['GRANT_IDENTITY'] and r['SUBJECT_IDENTITY']==s['IDENTITY']
+ assert r['STATUS']=='EFFECTIVE_BOUNDED_SYNTHETIC_CAMPAIGN_SUBJECT_TO_FRESH_ENTRY' and r['ENVIRONMENT_ADMITTED'] is False
+ for k in ['GRANT_PIN','ISSUANCE_VERIFICATION_PIN','CONFLICT_RECHECK_PIN']:assert sha(r[k]['path'])==r[k]['raw_sha256']
+ out['EFFECTIVENESS_IDENTITY']=e['IDENTITY']
+print(json.dumps(out,sort_keys=True))

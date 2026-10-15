@@ -1,0 +1,25 @@
+import hashlib,json,os,pathlib,socket,stat
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';key='48f7ff401d5bfec3a300f79f2bab28eece53e0243865994d54fc2ae58c8c1e1f';dest='/home/gvasend/.codex/kge-forge-class-a.config.toml';expected='b694333f4c108c8fea455f7e117cda1d003f3c915bb36d78ae7ec466022b47f8'
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canonical(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+assert socket.gethostname()=='ubuntu01' and os.geteuid()==os.getegid()==1000
+parts=pathlib.PurePosixPath(dest).parts;fd=os.open('/',os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|os.O_CLOEXEC)
+try:
+ for part in parts[1:-1]:
+  nxt=os.open(part,os.O_RDONLY|os.O_DIRECTORY|os.O_NOFOLLOW|os.O_CLOEXEC,dir_fd=fd);os.close(fd);fd=nxt
+  st=os.fstat(fd);assert st.st_uid in (0,1000) and (not st.st_mode&2 or st.st_uid==0 and st.st_mode&stat.S_ISVTX)
+ leaf=os.open(parts[-1],os.O_RDONLY|os.O_NOFOLLOW|os.O_CLOEXEC|os.O_NONBLOCK,dir_fd=fd)
+ try:
+  before=os.fstat(leaf);data=os.read(leaf,1092);after=os.fstat(leaf);named=os.stat(parts[-1],dir_fd=fd,follow_symlinks=False)
+  assert (before.st_dev,before.st_ino,before.st_size,before.st_mtime_ns,before.st_ctime_ns)==(after.st_dev,after.st_ino,after.st_size,after.st_mtime_ns,after.st_ctime_ns)
+  assert stat.S_ISREG(after.st_mode) and after.st_uid==after.st_gid==1000 and stat.S_IMODE(after.st_mode)==0o600 and after.st_nlink==1 and after.st_size==len(data)==1091
+  assert (after.st_dev,after.st_ino)==(named.st_dev,named.st_ino)==(64768,2262825) and hashlib.sha256(data).hexdigest()==expected
+ finally:os.close(leaf)
+finally:os.close(fd)
+source=D/'restricted-permission-profile.toml.txt';assert sha(source)==expected and source.stat().st_size==1091
+cp=D/('profile-recovery-attempt-'+key+'.json');raw=cp.read_bytes();c=json.loads(raw);r=c['RECORD'];assert hashlib.sha256(canonical(r)).hexdigest()==c['IDENTITY']['sha256'];assert r['STATE']=='CONSUMED_BEFORE_WRITE' and r['ATTEMPT_IDENTITY']['sha256']==key and r['RECOVERY_ATTEMPTS']==1 and r['AUTOMATIC_RETRIES']==0 and r['MAX_SUCCESSFUL_CONTENT_BYTES']==1091
+assert r['DESTINATION_DEVICE']==64768 and r['DESTINATION_INODE']==2262825 and r['DESTINATION_PATH']==dest and r['SOURCE_SHA256']==expected
+op=r['OPERATION'];assert hashlib.sha256(canonical(op)).hexdigest()==r['OPERATION_IDENTITY']['sha256'] and op['UTILITY_SHA256']==sha(R/'recover.py')=='372512c1c07f8eba6381cf01f50a13965b383b30f9deb191885f6d95447e80cd';assert op['PYTHON_ISOLATED']==1 and op['EXECUTABLE']=='/usr/bin/python3.8'
+assert op['ARGV']==[str(R/'recover.py'),'--execute','--expected-device','64768','--expected-inode','2262825','--confirm-exclusive-operator']
+obs=json.loads((D/'profile-recovery-real-execution-observation.json').read_text());assert obs['EXIT_CODE']==0 and obs['SUBMISSION_COUNT']==1 and obs['CONSUMPTION_PIN']['raw_sha256']==hashlib.sha256(raw).hexdigest()
+print(json.dumps({'RESULT':'PASS','INDEPENDENT_VERIFIER_PROCESS':os.getpid(),'HOST':'ubuntu01','SOURCE_SHA256':expected,'INSTALLED_PROFILE_SHA256':hashlib.sha256(data).hexdigest(),'INSTALLED_BYTES':len(data),'DESTINATION_DEVICE':64768,'DESTINATION_INODE':2262825,'DESTINATION_INODE_PRESERVED':True,'DESTINATION_MODE':'0600','DESTINATION_UID_GID':[1000,1000],'DESTINATION_NLINK':1,'CONSUMPTION_IDENTITY':c['IDENTITY'],'CONSUMPTION_RAW_SHA256':hashlib.sha256(raw).hexdigest(),'OPERATION_IDENTITY':r['OPERATION_IDENTITY'],'RECOVERY_ATTEMPT_STATE':'PERMANENTLY_CONSUMED','SINGLE_EXECUTE_SUBMISSION_VERIFIED':True,'NO_PROFILE_ACTIVATION':True},sort_keys=True))

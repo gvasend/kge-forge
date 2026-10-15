@@ -1,0 +1,115 @@
+{
+  "CONSUMPTION_POLICY": "exact Package87 stable key, permanent reservation, barriers/reread, first-winner-only single handoff; consumed/ambiguous never reopens",
+  "DECISION_OPTIONS": [],
+  "EFFECTIVE_CHARTER_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "kge-forge-qualification-governance-charter-v1",
+    "sha256": "d26962c58f17281173e965433dae63a941e078115f3dcc30e2a3512fa21812b8"
+  },
+  "ENTRY_PREDICATES": [
+    "effective separate bootstrap contract and construction/test grant",
+    "actual direct context/actor/resource/file permissions",
+    "qualified trusted fixed-source inert observer and basic POSIX/store semantics",
+    "exact synthetic fixture/oracle/source identities; no real grant/test input",
+    "no previous consumed qualification attempt/no retries"
+  ],
+  "EVIDENCE_BOUNDARY": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/qualification-bootstrap-88/future-qualified-bootstrap/<exact-approved-attempt>",
+  "EVIDENCE_REQUIREMENTS": [
+    "basic trusted fixed-program/actual store profile qualified independently of target pids enforcement",
+    "independent inert expected outputs and controlled crash/concurrency observations",
+    "complete known write-path accounting and bounded parent observation",
+    "exact source and later target grant/argv mapping"
+  ],
+  "EXACT_SUBJECT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h88-bootstrap-construction-draft-v1",
+    "sha256": "1e128743d6263c1d2ac09e2cecb5b1db3b5529b8d764d33b1cd4ee13d67b44cc"
+  },
+  "EXACT_TARGET_ARGV": [
+    "/usr/bin/systemd-run",
+    "--no-ask-password",
+    "--quiet",
+    "--wait",
+    "--collect",
+    "--pipe",
+    "--unit=kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "--slice=system.slice",
+    "--uid=1000",
+    "--gid=1000",
+    "--working-directory=/",
+    "--property=TasksAccounting=yes",
+    "--property=TasksMax=8",
+    "--property=MemoryAccounting=yes",
+    "--property=MemoryMax=67108864",
+    "--property=RuntimeMaxSec=20s",
+    "--property=TimeoutStopSec=2s",
+    "--property=KillMode=control-group",
+    "--property=SendSIGKILL=yes",
+    "--property=Restart=no",
+    "--property=NoNewPrivileges=yes",
+    "--property=PrivateNetwork=yes",
+    "--property=PrivateTmp=yes",
+    "--property=ProtectSystem=strict",
+    "--property=ProtectHome=yes",
+    "--property=ReadOnlyPaths=/sys/fs/cgroup",
+    "--property=RestrictAddressFamilies=AF_UNIX",
+    "--property=LimitCPU=5",
+    "--property=LimitAS=134217728",
+    "--property=LimitFSIZE=65536",
+    "--property=LimitNOFILE=32",
+    "--property=UMask=0077",
+    "/usr/bin/python3.8",
+    "-I",
+    "-B",
+    "-c",
+    "import os,json,pathlib,time,datetime,sys\nUNIT = 'kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service'\nMAX_OUTPUT = 65536\nwritten = 0\ndef emit(value):\n global written\n raw=(json.dumps(value,sort_keys=True,separators=(',',':'))+'\\n').encode()\n if len(raw)>8192 or written+len(raw)>MAX_OUTPUT: raise RuntimeError('OUTPUT_BOUND')\n offset=0\n while offset<len(raw):\n  n=os.write(1,raw[offset:])\n  if n<=0: raise RuntimeError('OUTPUT_WRITE')\n  offset+=n; written+=n\n\ndef snapshot(phase):\n if os.geteuid()!=1000 or os.getegid()!=1000: raise RuntimeError('NONROOT_IDENTITY_MISMATCH')\n entries={}\n for line in pathlib.Path('/proc/self/cgroup').read_text().splitlines():\n  unused,controllers,path=line.split(':',2)\n  for controller in controllers.split(','): entries[controller]=path\n pids=entries.get('pids'); manager=entries.get('name=systemd')\n if pids is None or manager is None: raise RuntimeError('MISSING_V1_CONTROLLER')\n if not pids.startswith('/') or '..' in pids.split('/'): raise RuntimeError('CGROUP_PATH')\n location=pathlib.Path('/sys/fs/cgroup/pids')/pids.lstrip('/')\n maximum=(location/'pids.max').read_text().strip()\n current=(location/'pids.current').read_text().strip()\n record={'schema':'H86-PIDS-METADATA-1','phase':phase,'service_unit':UNIT,\n 'SERVICE_PID':os.getpid(),'SERVICE_PIDS_CGROUP':pids,'SERVICE_SYSTEMD_CGROUP':manager,\n 'KERNEL_PIDS_MAX':maximum,'KERNEL_PIDS_CURRENT':current,\n 'SYSTEMD_TASKS_MAX':None,'OBSERVATION_TIME':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n 'EVIDENCE_PROVENANCE':'service readonly proc/sysfs observation; SYSTEMD_TASKS_MAX supplied only by independent manager query'}\n emit(record)\n if pids!='/system.slice/'+UNIT or maximum!='8' or not current.isdigit() or not 1<=int(current)<=8:\n  raise RuntimeError('SERVICE_SPECIFIC_PIDS_LIMIT_NOT_CONFIRMED')\ntry:\n snapshot('START')\n time.sleep(8)\n snapshot('BEFORE_EXIT')\nexcept BaseException as exc:\n try: emit({'schema':'H86-PIDS-ERROR-1','error_type':type(exc).__name__,'service_unit':UNIT,'retry_allowed':False})\n except BaseException: pass\n sys.exit(2)\n"
+  ],
+  "EXACT_TARGET_COMMAND_PIN": {
+    "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-process-enforcement-86/transient-service-specification.json",
+    "raw_sha256": "ed1d5ac9be069d1553f2940d64023cf9ce7d592c974fd1e029d73aa6e8e3430b"
+  },
+  "HISTORICAL_EXCLUSIONS": [
+    "system-level service/probe execution",
+    "original H77 probe",
+    "H77 gate campaign",
+    "actual A15 invalidation/capture",
+    "source changes outside two prospective paths",
+    "original gate/harness/native runtime/V3 changes",
+    "old journal/history/E1 modification",
+    "policy/security/cgroup delegation changes",
+    "production/external effects"
+  ],
+  "ISSUED_AUTHORITY": null,
+  "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY",
+  "NO_RETRY_POLICY": 0,
+  "PERMITTED_OPERATIONS": [
+    "after separate approval: construct minimal command-specific coordinator only in two exact source paths",
+    "after qualified entry: inert once-claim/barrier/concurrency/crash qualification; no system service or actual H77 command",
+    "static fixed-target argv/current-grant/authority/epoch checks and immutable evidence"
+  ],
+  "PROPOSED_INERT_QUALIFICATION_CEILINGS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CAMPAIGN_WALL_SECONDS": 30,
+    "CAMPAIGN_WRITTEN_BYTES": 1048576,
+    "CHILD_ADDRESS_SPACE_BYTES": 134217728,
+    "CHILD_CPU_SECONDS": 5,
+    "CHILD_FDS": 32,
+    "CHILD_FILE_BYTES": 65536,
+    "CHILD_WALL_SECONDS": 10,
+    "MAX_CHILD_LAUNCHES": 16,
+    "MAX_LIVE_CHILDREN": 2
+  },
+  "PROPOSED_SOURCE_BOUNDARY": [
+    "adapter/qualification_bootstrap/systemd_pids_once.py",
+    "adapter/tests/test_systemd_pids_bootstrap.py"
+  ],
+  "REUSE_CONSTRAINT": "No importing/calling issuer scripts, native save/restore/capture, or original gate real mode; reuse only the independently evidenced primitive protocol.",
+  "STATUS": "PROPOSED_INCOMPLETE_NO_APPROVAL_OPTIONS",
+  "TARGET_NOT_EXECUTABLE_UNDER_THIS_SUBJECT": true,
+  "UNBOUND_DECISION_INPUTS": [
+    "approved independent bootstrap trust/baseline rather than original gate-host contract",
+    "qualified actual basic environment/store/observer and literal inert test invocation",
+    "exact source selection/implementation-test resource enforcement and authority applicability",
+    "independent qualified inert fixture/oracle/test campaign identity and output paths"
+  ]
+}

@@ -1,0 +1,3194 @@
+{
+  "NATIVE_CONTEXT": {
+    "$type": "EvaluationContext",
+    "allowed_effects": [],
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "tick": 0
+  },
+  "RECORDS": [
+    {
+      "KIND": "E2_DECISION_PROTOCOL",
+      "RECORD": {
+        "allow_oracle": {
+          "exit": {
+            "actionable": [],
+            "control": "EXTERNAL_WAIT",
+            "e2_finish": "NON_ACTIONABLE",
+            "external_evidence": "ABSENT",
+            "external_gate": "VALID",
+            "receipt_route": "VALID",
+            "reentry_route": "VALID",
+            "selected": null
+          },
+          "sequence": [
+            "HUMAN_HANDOFF",
+            "authenticated_allow_choice",
+            "recorded_decision_admitted",
+            "E2-GRANT_current_and_applicable",
+            "E2-DECIDE_recorded_and_completed",
+            "normal_recomputation",
+            "external_request_with_expected_absence",
+            "EXTERNAL_WAIT"
+          ]
+        },
+        "authority_issued": false,
+        "authority_sequence": [
+          "human_selects_option_id",
+          "construct_authenticated_choice_evidence",
+          "admit_recorded_decision",
+          "materialize_e2_grant_for_allow_only",
+          "evaluate_authority_applicability",
+          "recompute_planner_control",
+          "establish_external_request_and_expected_absence",
+          "reach_external_wait_on_allow"
+        ],
+        "branch_policy": {
+          "decline_counts_as_p02_positive_exit": false,
+          "negative_control": "DECLINE",
+          "positive_path": "ALLOW_QUALIFICATION_MAPPING"
+        },
+        "canonical_e2_qualified": false,
+        "choice_evidence": {
+          "binds": [
+            "E2-DECIDE",
+            "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+            "selected_option",
+            "issuer_identity",
+            "E2-QUALIFICATION-ONLY",
+            "E2-CANONICAL-BASELINE-1",
+            "monotonic_sequence_or_order",
+            "canonical_content_identity",
+            "provenance"
+          ],
+          "capture": "Future human interface accepts an explicit option identifier and constructs the authenticated record.",
+          "free_form_text_is_evidence": false,
+          "model_assertion_is_evidence": false,
+          "type": "PINNED_QUALIFICATION_RECORD"
+        },
+        "decision_recorded": false,
+        "decline_oracle": {
+          "exit": {
+            "control": "QUALIFICATION_DECLINED",
+            "external_wait": false,
+            "grant": "ABSENT",
+            "reentry": "NOT_AUTHORIZED"
+          },
+          "sequence": [
+            "HUMAN_HANDOFF",
+            "authenticated_decline_choice",
+            "recorded_decision_admitted_without_grant",
+            "QUALIFICATION_DECLINED"
+          ]
+        },
+        "e1_artifacts_modified": 0,
+        "e2_grant": {
+          "applicability": "Selected option is ALLOW_QUALIFICATION_MAPPING and target, permission, scope, lineage, and current independent predicate match exactly.",
+          "authority_id": "E2-GRANT",
+          "authority_type": "QUALIFICATION_USE_GRANT",
+          "consumer": "E2-REENTER",
+          "generic_planner_authority": false,
+          "identity_domain": "AUTHORITY_IDENTITY",
+          "issuer": "E2_QUALIFICATION_DECISION_AUTHORITY",
+          "lineage": "E2-CANONICAL-BASELINE-1",
+          "permitted_use": "USE",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": "E2-REENTER",
+          "validity": "Current only for the pinned decision snapshot and decision sequence."
+        },
+        "e2_p02_retry_allowed": false,
+        "e2_p03_ready": false,
+        "experiment_actions_executed": 0,
+        "human_decision_blockers": [
+          "runtime issuer/trust materializer is not yet available",
+          "authenticated choice-evidence capture is not yet available",
+          "E2-GRANT materializer is not yet available",
+          "decision persistence/replay materializer is not yet available",
+          "DECLINE terminal qualification representation is not yet available",
+          "no human option has been selected"
+        ],
+        "human_decision_ready": false,
+        "implementation_modified": false,
+        "issuer_role": {
+          "decision_class": "ARCHITECT_CONTRACT_DECISION",
+          "identity_domain": "QUALIFICATION_AUTHORITY_IDENTITY",
+          "permitted_options": [
+            "ALLOW_QUALIFICATION_MAPPING",
+            "DECLINE"
+          ],
+          "provenance_required": true,
+          "role": "E2_QUALIFICATION_DECISION_AUTHORITY",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": "E2-DECIDE",
+          "trust_root": "Independently pinned E2 qualification protocol artifact and source/content identity, admitted as a qualification-only trust anchor."
+        },
+        "n_real_satisfied": false,
+        "native_capabilities": {
+          "authority_applicability": "SUPPORTED_ONCE_BOUND_INPUTS_EXIST",
+          "authority_entity_and_predicate": "MATERIALIZER_REQUIRED",
+          "decision_persistence_and_replay": "MATERIALIZER_REQUIRED",
+          "decline_terminal_state": "MISSING_RUNTIME_CAPABILITY_UNLESS_EXISTING_TERMINAL_QUALIFICATION_RECORD_IS_ADOPTED",
+          "issuer_identity_and_trust": "MATERIALIZER_REQUIRED",
+          "pinned_choice_evidence": "MATERIALIZER_REQUIRED",
+          "recorded_decision_and_apply_recorded_decision": "SUPPORTED"
+        },
+        "negative_cases": [
+          "unauthorized_issuer",
+          "missing_issuer",
+          "wrong_choice_evidence",
+          "model_generated_choice_evidence",
+          "wrong_dossier",
+          "wrong_subject",
+          "invalid_option",
+          "wrong_scope",
+          "wrong_lineage",
+          "stale_decision",
+          "invalid_authority",
+          "wrong_authority_use",
+          "authority_not_applicable",
+          "duplicate_decision",
+          "conflicting_decision",
+          "decline_with_grant",
+          "allow_grant_outside_e2_scope"
+        ],
+        "options": {
+          "ALLOW_QUALIFICATION_MAPPING": {
+            "authority_effect": "May produce exactly one current E2-GRANT for E2-REENTER, USE, E2-QUALIFICATION-ONLY, E2-CANONICAL-BASELINE-1.",
+            "control_effect": "Admit the RecordedDecision, evaluate grant applicability, and recompute Planner control.",
+            "does_not_authorize": [
+              "production_effects",
+              "E1_work",
+              "general_planner_authority",
+              "proof_satisfaction",
+              "root_or_slot_satisfaction",
+              "external_evidence",
+              "automatic_execution"
+            ],
+            "downstream_effect": "Continue the bounded E2 path toward the external-evidence checkpoint.",
+            "meaning": "Permit materialization and application of the narrowly scoped synthetic E2-GRANT required to evaluate E2-REENTER.",
+            "reentry_effect": "Does not itself execute or complete E2-REENTER; it only permits its governed route.",
+            "termination_or_wait": "Positive path reaches EXTERNAL_WAIT when the external proposition remains absent."
+          },
+          "DECLINE": {
+            "authority_effect": "No E2-GRANT is issued and no reentry authority becomes applicable.",
+            "control_effect": "Record an authenticated decline and terminate the qualification decision branch.",
+            "downstream_effect": "No external-evidence or reentry path is entered.",
+            "meaning": "Refuse the bounded qualification mapping permission.",
+            "reentry_effect": "E2-REENTER remains unauthorized and is not completed.",
+            "termination_or_wait": "Reaches QUALIFICATION_DECLINED, a qualification-only terminal state; it is not EXTERNAL_WAIT."
+          }
+        },
+        "production_effect": false,
+        "protocol_complete": true,
+        "purpose": "Qualification-only exercise of DecisionDossier -> HUMAN_HANDOFF -> authenticated choice -> RecordedDecision -> bounded authority/applicability -> EXTERNAL_WAIT.",
+        "qualification_only": true,
+        "recorded_decision": {
+          "additional_admission_inputs": [
+            "accepted decision-choice:E2-DECIDE knowledge",
+            "matching choice/provenance",
+            "current dossier and authority applicability"
+          ],
+          "authority": "Applicable authority predicate for the qualification decision.",
+          "choice": "One of the two exact option identifiers.",
+          "decision": "E2-DECIDE",
+          "expected_snapshot": "Exact current E2 decision-ready snapshot identity.",
+          "fields": [
+            "decision",
+            "choice",
+            "record",
+            "authority",
+            "expected_snapshot"
+          ],
+          "native_type": "RecordedDecision",
+          "record": "Authenticated choice-evidence entity bound to dossier, issuer, scope, lineage and sequence."
+        },
+        "schema": "deterministic-planner-e2-p02-synthetic-human-decision-protocol-v1",
+        "selected_option": null,
+        "work_package": "E2-P02-SYNTHETIC-HUMAN-DECISION-PROTOCOL"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_SYNTHETIC_HUMAN_DECISION_PROTOCOL_1.json",
+        "RAW_SHA256": "d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "E2_PROOF_AUTHORITY_INVENTORY",
+      "RECORD": {
+        "complete": false,
+        "constraints": [
+          "No generic proof may satisfy arbitrary root/slot",
+          "No positive evidence exists at checkpoint",
+          "No authority applicability inferred from object presence",
+          "Positive mainline uses known rule; unknown variant remains unknown"
+        ],
+        "entries": [
+          {
+            "missing": [
+              "ConditionId",
+              "PredicateId and operands",
+              "exact source/claim",
+              "scope/lineage/currentness"
+            ],
+            "native_contract": "RootCondition.predicate + native gate evaluation",
+            "purpose": "root proof",
+            "status": "FIXTURE_INCOMPLETE"
+          },
+          {
+            "missing": [
+              "SlotId",
+              "exact typed value and source",
+              "slot-specific predicate",
+              "scope/lineage/currentness"
+            ],
+            "native_contract": "ValueSlot requirements/root_requirements/value/required_type",
+            "purpose": "slot proof",
+            "status": "FIXTURE_INCOMPLETE"
+          },
+          {
+            "missing": [
+              "grant entity/identity",
+              "issuer/predicate",
+              "permission/target",
+              "decision alternative/checklist",
+              "scope/lineage/generation"
+            ],
+            "native_contract": "AUTHORITY predicate + recorded_decision_valid",
+            "purpose": "synthetic bounded authority",
+            "status": "FIXTURE_INCOMPLETE"
+          },
+          {
+            "missing": [
+              "proposition and target",
+              "expected producer",
+              "request/receipt/reentry identities",
+              "matching pinned contract bytes"
+            ],
+            "native_contract": "ExternalGate / EvidenceRequirement / ExternalResolutionContract",
+            "purpose": "external absence/route",
+            "status": "FIXTURE_INCOMPLETE"
+          },
+          {
+            "missing": [
+              "payload schema/content identity",
+              "entity/source identity",
+              "producer/target/claims",
+              "authentication and exact receipt binding"
+            ],
+            "native_contract": "ReceiptAdmission / EvidenceClaim / authentication predicate",
+            "purpose": "future evidence",
+            "status": "FIXTURE_INCOMPLETE"
+          }
+        ],
+        "invalidation": [
+          "knowledge",
+          "root proof",
+          "slot proof",
+          "authority",
+          "route",
+          "received evidence after reload"
+        ],
+        "schema": "E2-P01-PROOF-AUTHORITY-INVENTORY-1",
+        "unresolved_transaction": "E2-G01"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P01_PROOF_AUTHORITY.json",
+        "RAW_SHA256": "54aeae69ab415fe7e5418bced40d7ce8e9a425c380bda0029a1843d3745e5428"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "ROOT_SLOT_DESIGN_DOSSIER",
+      "RECORD": {
+        "authority_issued": false,
+        "authority_record": {
+          "issuer": "Architect/qualification authority",
+          "lineage": "E2-CANONICAL-BASELINE-1",
+          "permitted_operation": "define and admit E2-SLOT, SLOT_PROOF, E2-ROOT, ROOT_PROOF and their bindings",
+          "prohibited": [
+            "production semantics",
+            "real-world proof",
+            "E1 authority",
+            "general root/slot satisfaction"
+          ],
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": "E2 root/slot synthetic qualification fixture"
+        },
+        "authority_scope": "E2-QUALIFICATION-ONLY",
+        "authority_type": "existing DECIDE/qualification-authority decision mechanism, bounded fixture-admission operation",
+        "decision_subject": "Authorize bounded E2 root/slot proof fixture semantics",
+        "e1_artifacts_modified": 0,
+        "e2_finish_executed": false,
+        "e2_p03_result": "BLOCKED",
+        "e2_p04_ready": false,
+        "e2_pc02_fixture_decision_ready": true,
+        "e2_pc02_fixture_decision_required": true,
+        "e2_root_contract": {
+          "currentness": "current slot/proof/root sources",
+          "expected_value": "E2-SLOT SATISFIED",
+          "lineage": "E2-CANONICAL-BASELINE-1",
+          "predicate": "E2-ROOT-PROPOSITION",
+          "provenance": "new qualification-fixture provenance required",
+          "required_slots": [
+            "E2-SLOT"
+          ],
+          "root_id": "E2-ROOT",
+          "root_type": "RootCondition",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": "E2-SLOT",
+          "support_type": "typed ROOT_PROOF plus satisfied slot"
+        },
+        "e2_slot_contract": {
+          "currentness": "source/proof/knowledge current",
+          "expected_value": "E2-K-REENTER:PASS/current",
+          "knowledge_input": "E2-K-REENTER",
+          "lineage": "E2-CANONICAL-BASELINE-1",
+          "predicate": "E2-SLOT-PROPOSITION",
+          "provenance": "new qualification-fixture provenance required",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "slot_id": "E2-SLOT",
+          "slot_type": "QUALIFICATION_VALUE_SLOT",
+          "subject": "E2-K-REENTER",
+          "support_type": "typed SLOT_PROOF plus current KnowledgeRecord"
+        },
+        "finish_relationship": "existing E2-FINISH prerequisite ACTION_COMPLETED(E2-REENTER) remains unchanged; fixture root/slot support must make E2-ROOT available to the existing finish readiness path",
+        "invalidation": "E2-K-REENTER invalidation => SLOT_PROOF unusable => slot unsatisfied => ROOT_PROOF unusable => root unresolved => FINISH non-actionable",
+        "materialization_plan": [
+          "materialize typed slot/proof/root definitions",
+          "requalify six-Action model",
+          "invalidate affected snapshots",
+          "reconstruct P03 through E2-REENTER",
+          "admit SLOT_PROOF",
+          "admit ROOT_PROOF",
+          "recompute root/control",
+          "evaluate P03 exit"
+        ],
+        "negative_oracles": [
+          "knowledge without SLOT_PROOF",
+          "wrong/stale knowledge",
+          "wrong slot proposition",
+          "wrong SLOT_PROOF",
+          "wrong scope/lineage",
+          "slot without ROOT_PROOF",
+          "wrong root proposition",
+          "wrong/stale ROOT_PROOF",
+          "unrelated slot proof",
+          "root with unsatisfied slot",
+          "FINISH before root satisfaction"
+        ],
+        "next_package": "E2-PC02-A authorized root/slot fixture issuance",
+        "next_package_ready": true,
+        "options": [
+          "AUTHORIZE_E2_ROOT_SLOT_FIXTURE",
+          "DECLINE_E2_ROOT_SLOT_FIXTURE"
+        ],
+        "positive_oracle": [
+          "E2-K-REENTER current",
+          "SLOT_PROOF admitted",
+          "E2-SLOT satisfied",
+          "independent ROOT_PROOF admitted",
+          "E2-ROOT satisfied",
+          "E2-FINISH actionable",
+          "E2-FINISH unexecuted"
+        ],
+        "production_effect": false,
+        "result": "PASS",
+        "root_proof_admitted": false,
+        "root_proof_contract": {
+          "admission_rule": "typed ROOT_PROOF, exact slot/root/proposition/scope/lineage match; independent admission required",
+          "currentness": "current slot and proof sources",
+          "lineage": "E2-CANONICAL-BASELINE-1",
+          "proof_type": "E2-ROOT-PROOF-v1",
+          "proposition": "E2-ROOT-PROPOSITION",
+          "provenance": "qualification-fixture authority record",
+          "satisfied_slot_input": "E2-SLOT SATISFIED",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "support": "independent root proof source, distinct from SLOT_PROOF",
+          "target_root": "E2-ROOT"
+        },
+        "root_proposition": {
+          "id": "E2-ROOT-PROPOSITION",
+          "production": false,
+          "statement": "The independently admitted E2-SLOT proof establishes the bounded post-reentry qualification root.",
+          "type": "synthetic independent root proposition"
+        },
+        "root_satisfaction": "satisfied E2-SLOT plus accepted independent ROOT_PROOF => E2-ROOT SATISFIED; slot alone is insufficient",
+        "runtime_modified": false,
+        "selected_option": "NONE",
+        "slot_proof_admitted": false,
+        "slot_proof_contract": {
+          "admission_rule": "typed proof, exact knowledge/source/value/scope/lineage match; independent admission required",
+          "currentness": "current accepted knowledge and proof source",
+          "knowledge_input": "E2-K-REENTER",
+          "lineage": "E2-CANONICAL-BASELINE-1",
+          "proof_type": "E2-SLOT-PROOF-v1",
+          "proposition": "E2-SLOT-PROPOSITION",
+          "provenance": "qualification-fixture authority record",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "source": "E2-REENTER accepted-result contract and current result provenance",
+          "target_slot": "E2-SLOT"
+        },
+        "slot_proposition": {
+          "id": "E2-SLOT-PROPOSITION",
+          "production": false,
+          "statement": "The current accepted E2-REENTER result supplies the bounded qualification value required by E2-SLOT.",
+          "type": "synthetic typed qualification proposition"
+        },
+        "slot_satisfaction": "accepted current SLOT_PROOF plus exact current E2-K-REENTER => E2-SLOT SATISFIED; knowledge alone is insufficient",
+        "work_package": "E2-PC02-ROOT-SLOT-FIXTURE-AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_ROOT_SLOT_FIXTURE_AUTHORITY_1.json",
+        "RAW_SHA256": "3cb3f97dd589433de5cb6af84d11ba3d8b4c967f1fef8513b3545f07f7e146b0"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "ROOT_SLOT_SEMANTIC_REQUEST",
+      "RECORD": {
+        "consumer": "E2-P04/A13",
+        "definition_subjects": [
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "25a8f6baac206d1db436505e2f7b1ac52a63b408ee496c02e0f1fee5baa8d83b"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/slot-definition.json"
+          },
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "becaa958b8d9b9a8ffe24b6b078a01c476ba9bb0505851f3288f648b899de612"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/root-definition.json"
+          },
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "f3a755ed0b9fa0114d22f5d345118d4a29c41caf76e733a2bd08cbf54ceefbb6"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/slot-proof-contract.json"
+          },
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "276c3cbd27b55ed60b990f86f2e7f4381943ecc29e444d3b322060fa5176f350"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/root-proof-contract.json"
+          },
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "6564fdd8486162f896545b02cc5a4b30d23a568beafea2d668a7a8d897d1ce2c"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/support-resolution-contract.json"
+          }
+        ],
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "issuer_role": "QUALIFICATION_AUTHORITY",
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "native_authority_specs": [
+          {
+            "binding": {
+              "consumer": "E2-P04/A13",
+              "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+              "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+              "qualification_only": true,
+              "scope": "E2-QUALIFICATION-ONLY",
+              "valid_until": 100
+            },
+            "entity_id": {
+              "$type": "EntityId",
+              "value": "P04-A13-SLOT_PROOF-FIXTURE-AUTHORITY:ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+            },
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+            },
+            "kind": "AUTHORITY",
+            "permissions": [
+              "DECIDE"
+            ],
+            "produced_and_validated_only_after": "Explicit semantic decision admission and canonical policy/source installation",
+            "provenance": {
+              "$type": "Provenance",
+              "excerpt": "{\"consumer\":\"E2-P04/A13\",\"excludes\":[\"INSTALL\",\"production semantics\",\"world facts\",\"Action execution\",\"Evidence admission\",\"unrelated proof targets\"],\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_authority_target\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107\"},\"native_permission\":\"DECIDE\",\"no_delegation\":true,\"permitted_operation\":\"Validate exact typed SLOT_PROOF declaration/support contract only\",\"qualification_only\":true,\"schema\":\"PLANNER-BOUNDED-QUALIFICATION-FIXTURE-POLICY-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"source_content_id\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107\"},\"source_path\":\"docs/plans/qualification/FINISH_F02_1/slot-source.json\",\"subject\":\"E2-SLOT\",\"valid_until\":100}",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+              },
+              "method": "F02_AUTHENTICATED_FIXTURE_POLICY",
+              "path": "docs/plans/qualification/FINISH_F02_1/slot-semantic-policy.json",
+              "scope": "E2-QUALIFICATION-ONLY",
+              "section": "/"
+            },
+            "status": "SPECIFICATION_NOT_ISSUED",
+            "target": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107"
+            },
+            "validity": [
+              0,
+              100
+            ]
+          },
+          {
+            "binding": {
+              "consumer": "E2-P04/A13",
+              "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+              "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+              "qualification_only": true,
+              "scope": "E2-QUALIFICATION-ONLY",
+              "valid_until": 100
+            },
+            "entity_id": {
+              "$type": "EntityId",
+              "value": "P04-A13-ROOT_PROOF-FIXTURE-AUTHORITY:4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+            },
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+            },
+            "kind": "AUTHORITY",
+            "permissions": [
+              "DECIDE"
+            ],
+            "produced_and_validated_only_after": "Explicit semantic decision admission and canonical policy/source installation",
+            "provenance": {
+              "$type": "Provenance",
+              "excerpt": "{\"consumer\":\"E2-P04/A13\",\"excludes\":[\"INSTALL\",\"production semantics\",\"world facts\",\"Action execution\",\"Evidence admission\",\"unrelated proof targets\"],\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_authority_target\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4\"},\"native_permission\":\"DECIDE\",\"no_delegation\":true,\"permitted_operation\":\"Validate exact typed ROOT_PROOF declaration/support contract only\",\"qualification_only\":true,\"schema\":\"PLANNER-BOUNDED-QUALIFICATION-FIXTURE-POLICY-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"source_content_id\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4\"},\"source_path\":\"docs/plans/qualification/FINISH_F02_1/independent-root-source.json\",\"subject\":\"E2-ROOT\",\"valid_until\":100}",
+              "identity": {
+                "$type": "ArtifactIdentity",
+                "kind": {
+                  "$enum": "IdentityKind",
+                  "value": "CONTENT_IDENTITY"
+                },
+                "namespace": "raw-file-sha256",
+                "sha256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+              },
+              "method": "F02_AUTHENTICATED_FIXTURE_POLICY",
+              "path": "docs/plans/qualification/FINISH_F02_1/root-semantic-policy.json",
+              "scope": "E2-QUALIFICATION-ONLY",
+              "section": "/"
+            },
+            "status": "SPECIFICATION_NOT_ISSUED",
+            "target": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+            },
+            "validity": [
+              0,
+              100
+            ]
+          }
+        ],
+        "operating_permission": "DECIDE restricted independently to each exact source content identity; not INSTALL, Action execution or proof acceptance without current support",
+        "policy_subjects": [
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/slot-semantic-policy.json"
+          },
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/root-semantic-policy.json"
+          }
+        ],
+        "qualification_only": true,
+        "qualification_only_statement": "Authorize exactly the PC02-derived bounded synthetic propositions, distinct source roles and fixed actual-support rules in this P04 lineage; no real-world facts/current satisfaction",
+        "required_selection": "AUTHORIZE_P04_A13_SUPPORT_SEMANTICS",
+        "schema": "PLANNER-P04-A13-SEMANTIC-AUTHORITY-REQUEST-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "source_subjects": [
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/slot-source.json"
+          },
+          {
+            "content_id": {
+              "kind": "CONTENT_IDENTITY",
+              "namespace": "raw-file-sha256",
+              "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+            },
+            "path": "docs/plans/qualification/FINISH_F02_1/independent-root-source.json"
+          }
+        ],
+        "status": "UNSELECTED_UNISSUED",
+        "valid_until": 100
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/FINISH_F02_1/semantic-authority-request.json",
+        "RAW_SHA256": "5520bb0810a596559a7322674816177355390dfb05513313d28e51ba6878c168"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "ROOT_SLOT_HUMAN_DECISIONS",
+      "RECORD": {
+        "authentication": "EXPLICIT_CURRENT_SESSION_HUMAN_DECISION_TRANSPORT",
+        "issuer": "AUTHENTICATED_HUMAN_USER",
+        "material_sealed_terms_changed": false,
+        "permits_canonical_lifecycle_execution": false,
+        "qualification_only": true,
+        "role": "QUALIFICATION_AUTHORITY",
+        "schema": "FINISH-F03-AUTHENTICATED-HUMAN-DECISIONS-1",
+        "scope_conflict": {
+          "clarification": "retain that sealed oracle and qualify the remaining path",
+          "oracle": "Retain F02 PLAN_DEFECT before root proof; no control/goal rewrite",
+          "status": "RESOLVED_BY_EXPLICIT_HUMAN_CLARIFICATION"
+        },
+        "sealed_subjects": {
+          "install-authority-request.json": {
+            "path": "docs/plans/qualification/FINISH_F02_1/install-authority-request.json",
+            "sha256": "0e2e7bf540b08a64ca0056255d4ab77444f300aafbe8b14c16330b49efa89028"
+          },
+          "sealed-manifest.json": {
+            "path": "docs/plans/qualification/FINISH_F02_1/sealed-manifest.json",
+            "sha256": "c8264129a5b43dfd6dbfbd6513de1a7ae863ff4169879e0971121b79d336fa08"
+          },
+          "semantic-authority-request.json": {
+            "path": "docs/plans/qualification/FINISH_F02_1/semantic-authority-request.json",
+            "sha256": "5520bb0810a596559a7322674816177355390dfb05513313d28e51ba6878c168"
+          }
+        },
+        "selected_install_option": "AUTHORIZE_P04_A13_CONFIGURATION_INSTALLATION",
+        "selected_semantic_option": "AUTHORIZE_P04_A13_SUPPORT_SEMANTICS"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/FINISH_F03_1/authenticated-decisions.json",
+        "RAW_SHA256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "ATTEST_HUMAN_DECISION",
+      "RECORD": {
+        "I03_contract_id": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "a116740b3f5e3ba313ed60bbce1a637ace57bac41b0bfe3581e54d22bbc375ae"
+        },
+        "authentication": "EXPLICIT_USER_ROLE_SESSION_MESSAGE",
+        "capture_sequence": 1,
+        "context": {
+          "$type": "EvaluationContext",
+          "allowed_effects": [],
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "tick": 0
+        },
+        "date": "2026-10-04",
+        "definition_set_id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-installable-definition-v1",
+          "sha256": "dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436"
+        },
+        "exclusions": [
+          "route replacement",
+          "A09-A13 execution",
+          "Evidence admission",
+          "proof/Action/result/validation/root-slot installations",
+          "P03/historical/N-REAL/release changes"
+        ],
+        "ingress_id": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-installable-definition-v1",
+          "sha256": "a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3"
+        },
+        "issuer": "AUTHENTICATED_HUMAN_USER",
+        "issuer_role": "QUALIFICATION_AUTHORITY",
+        "member_subjects": {
+          "attestor": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20"
+          },
+          "authority": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0"
+          },
+          "authority_predicate": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db"
+          },
+          "source_predicate": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3"
+          }
+        },
+        "operating_authority_permission": "Separately issue/admit exact scoped ATTEST declaration under I03; INSTALL does not issue it",
+        "parent_event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "a19b52ab601c6d3c7668b78c6e20cc87e54cfc317595e4da641fcbb7d107fb1e"
+        },
+        "pre_bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "885b23b6f64503153d2d6c4419b160cc278112b26238eecbab14c8b9ecb92ee4"
+        },
+        "pre_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "99e47ad1e462c30cd33e2258e4c74ff670164fa7378e5a998e0f23b9256e4454"
+        },
+        "provenance": "Current explicit INSTALLATION-I04 user instruction; trusted transport, no cryptographic signature",
+        "schema": "PLANNER-I04-AUTHENTICATED-HUMAN-DECISION-1",
+        "selected_option": "AUTHORIZE_P04_ATTEST_INGRESS_INSTALLATION"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I04_1/authenticated-human-decision.json",
+        "RAW_SHA256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "OPERATING_ATTEST_GRANT",
+      "RECORD": {
+        "I03_contract_content_reference": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "a116740b3f5e3ba313ed60bbce1a637ace57bac41b0bfe3581e54d22bbc375ae"
+        },
+        "authenticated_decision_reference": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+        },
+        "authority_class": "ATTEST",
+        "consumer": "A09",
+        "declared_authority_identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "qualification-attest-authority",
+          "sha256": "7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca"
+        },
+        "delegation": false,
+        "gate": "E2-GATE",
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "issuer": "AUTHENTICATED_HUMAN_USER",
+        "issuer_role": "QUALIFICATION_AUTHORITY",
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "member_definition_and_content_ids": {
+          "attestor": {
+            "content_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "2c351047c6d1d70db5bba80db5b0fc895ce7a708ac09d7d2364d7e68a1249cbc"
+            },
+            "definition_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-installable-definition-v1",
+              "sha256": "de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20"
+            }
+          },
+          "authority": {
+            "content_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "94fff2c47ddaa656b3279a42dea31db39ea0cc4829035360e3d7fe84d7b3c4c7"
+            },
+            "definition_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-installable-definition-v1",
+              "sha256": "dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0"
+            }
+          },
+          "authority_predicate": {
+            "content_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "41c7e65b0d30ae7ff458fd0d8551209acb76bac15a25775c6bc053bc22bdd9d1"
+            },
+            "definition_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-installable-definition-v1",
+              "sha256": "fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db"
+            }
+          },
+          "source_predicate": {
+            "content_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "8facd8df588c644748d110f5ac5993b7021a873e5020018d4c2c55e15e9501d9"
+            },
+            "definition_id": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-installable-definition-v1",
+              "sha256": "a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3"
+            }
+          }
+        },
+        "provenance": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+        },
+        "requirement": "E2-EXTERNAL-REQUIREMENT",
+        "schema": "PLANNER-ATTEST-DEFINITION-AUTHORIZATION-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "source": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "valid_from": 0,
+        "valid_until": 100
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I04_1/issued-operating-attest-grant.json",
+        "RAW_SHA256": "493b30637c97881ff2136b6b9defcf328f4d3cea4f8c0020e6031f3cf15aebab"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "INSTALL_GRANT",
+      "RECORD": {
+        "authority_class": "INSTALL",
+        "content_id": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "bb528a253ed466ff2fce89cadfdd6a1b0cdab41458651230d733f7455aba2567"
+        },
+        "contract_id": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "7ad3a32911da20c66e60ac93b53a2ee099663b39f199a13f98972748f7f6851a"
+        },
+        "decision_id": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "2eeb71d18be1a1184437666988928fabc174f539fe22825a5c6564fd40dd518d"
+        },
+        "definition_id": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "planner-installable-definition-v1",
+          "sha256": "1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970"
+        },
+        "definition_type": "EXTERNAL_RESOLUTION_CONTRACT",
+        "delegation": false,
+        "expected_old_reference": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "planner-baseline-definition-reference-v1",
+          "sha256": "a2f6eaff1c927740cb3e2d3e51b38ee1fde06e599653310f4764ce926226c758"
+        },
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "issuer": "QUALIFICATION_AUTHORITY",
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "operation": "REPLACE",
+        "parent_event": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-event-v1",
+          "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+        },
+        "policy": {
+          "$type": "ArtifactPin",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+          },
+          "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+          "pointer": "",
+          "profile": {
+            "$enum": "HashProfile",
+            "value": "raw-file-sha256"
+          }
+        },
+        "policy_version": "E1-SELECTION-1-P06",
+        "pre_bundle": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-bundle-v1",
+          "sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+        },
+        "pre_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324"
+        },
+        "provenance": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "2eeb71d18be1a1184437666988928fabc174f539fe22825a5c6564fd40dd518d"
+        },
+        "schema": "PLANNER-INSTALL-GRANT-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "subject": {
+          "consumer": "E2-REENTER",
+          "gate": "E2-GATE",
+          "kind": "EXTERNAL_ROUTE_ROLE",
+          "requirement": "E2-EXTERNAL-REQUIREMENT"
+        },
+        "use_limit": 1,
+        "valid_from": 0,
+        "valid_until": 100
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I02_1/issued-install-grant.json",
+        "RAW_SHA256": "66570262d49eb55ac4e49638b33ad901e7b6c2f4723c083827ad4f24e0b1e75b"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "66570262d49eb55ac4e49638b33ad901e7b6c2f4723c083827ad4f24e0b1e75b"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "bb528a253ed466ff2fce89cadfdd6a1b0cdab41458651230d733f7455aba2567"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "7ad3a32911da20c66e60ac93b53a2ee099663b39f199a13f98972748f7f6851a"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "2eeb71d18be1a1184437666988928fabc174f539fe22825a5c6564fd40dd518d"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "1de38b5278463e9c55b656af1c765fe8952cdadc7bf53d4322eb32f7deb5a970"
+          },
+          "definition_type": "EXTERNAL_RESOLUTION_CONTRACT",
+          "delegation": false,
+          "expected_old_reference": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-baseline-definition-reference-v1",
+            "sha256": "a2f6eaff1c927740cb3e2d3e51b38ee1fde06e599653310f4764ce926226c758"
+          },
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "REPLACE",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "2eeb71d18be1a1184437666988928fabc174f539fe22825a5c6564fd40dd518d"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "consumer": "E2-REENTER",
+            "gate": "E2-GATE",
+            "kind": "EXTERNAL_ROUTE_ROLE",
+            "requirement": "E2-EXTERNAL-REQUIREMENT"
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "2eeb71d18be1a1184437666988928fabc174f539fe22825a5c6564fd40dd518d"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I02_1/install-authority-admission.json",
+        "RAW_SHA256": "6620db190e7fd39b5f7acb6ced20cecb37536249c649587dd0546e90f9616d2d"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A04_SCOPE_DECISION",
+      "RECORD": {
+        "AUTHORIZATION_SUBJECT_MATCH": "PASS",
+        "HISTORICAL_RECONSTRUCTION": "NO",
+        "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+        "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+        "QUALIFICATION_SCOPE_AUTHORIZATION": "PASS",
+        "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+        "applicable_scope": {
+          "exclusions": [
+            "Historical reconstruction or alias",
+            "P05/P06 execution",
+            "A05/A06 replacement",
+            "Full original END ancestry waiver",
+            "New operating/install authority",
+            "Runtime implementation or repair",
+            "Any live PREPARE execution in this recovery"
+          ],
+          "operation": "Bounded new native PREPARE/dossier-readiness ancestry qualification for this one P05 stage input.",
+          "required_before_execution": "Separate prospective contract sealing start/inputs/authority/oracles/native durable event path/parent/ledger/persistence/replay/negatives/N12/N13 and explicit END replacement mapping.",
+          "success_effect": "May bind only A04 as AUTHORIZED_PROSPECTIVE_REPLACEMENT, with original occurrence/ancestry UNPROVEN and new lineage/event identities distinct."
+        },
+        "execution_in_this_package_authorized": false,
+        "install_authority_issued": false,
+        "issuer": "HUMAN_EXPLICIT_CURRENT_CONVERSATION_INSTRUCTION",
+        "native_operating_authority_issued": false,
+        "retained_dossier": {
+          "path": "docs/plans/qualification/E2_P05_A04_EVENT_ANCESTRY_RECOVERY_1/scope-decision-dossier.json",
+          "pointer": "",
+          "raw_sha256": "5b1dd95a15d8d874946e30b74878b0d1cf2d443da6e46f10f247ff0f52cedd4f"
+        },
+        "retained_dossier_modified": false,
+        "selected_option": "AUTHORIZE_PROSPECTIVE_P05_A04_ANCESTRY_QUALIFICATION",
+        "selected_option_source": "Current user message, AUTHORITATIVE HUMAN DECISION",
+        "subject_identity": "qualification-scope-subject-v1:4b57d7fc27d1c0b63deaece9d0be47c72e8e6d7b40e7a54ea7a56d6a641c85ac",
+        "verification": "Exact selected option and unchanged retained subject content; no native signature/grant invented"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/authenticated-scope-decision.json",
+        "RAW_SHA256": "908112b3974cbd774616946921a5ccbc8987d0d6176a7297fb957c3ca82368f6"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A04_AUTHORITY_ASSESSMENT",
+      "RECORD": {
+        "ADDITIONAL_AUTHORITY_REQUIRED": "NO",
+        "HISTORICAL_RECONSTRUCTION": "NO",
+        "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+        "PROSPECTIVE_A04_AUTHORITY_DECISION_READY": "NO",
+        "PROSPECTIVE_A04_AUTHORITY_DECISION_REQUIRED": "NO",
+        "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+        "QUALIFICATION_SCOPE_AUTHORIZATION": {
+          "AUTHORIZATION_SUBJECT_MATCH": "PASS",
+          "HISTORICAL_RECONSTRUCTION": "NO",
+          "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+          "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+          "QUALIFICATION_SCOPE_AUTHORIZATION": "PASS",
+          "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+          "applicable_scope": {
+            "exclusions": [
+              "Historical reconstruction or alias",
+              "P05/P06 execution",
+              "A05/A06 replacement",
+              "Full original END ancestry waiver",
+              "New operating/install authority",
+              "Runtime implementation or repair",
+              "Any live PREPARE execution in this recovery"
+            ],
+            "operation": "Bounded new native PREPARE/dossier-readiness ancestry qualification for this one P05 stage input.",
+            "required_before_execution": "Separate prospective contract sealing start/inputs/authority/oracles/native durable event path/parent/ledger/persistence/replay/negatives/N12/N13 and explicit END replacement mapping.",
+            "success_effect": "May bind only A04 as AUTHORIZED_PROSPECTIVE_REPLACEMENT, with original occurrence/ancestry UNPROVEN and new lineage/event identities distinct."
+          },
+          "execution_in_this_package_authorized": false,
+          "install_authority_issued": false,
+          "issuer": "HUMAN_EXPLICIT_CURRENT_CONVERSATION_INSTRUCTION",
+          "native_operating_authority_issued": false,
+          "retained_dossier": {
+            "path": "docs/plans/qualification/E2_P05_A04_EVENT_ANCESTRY_RECOVERY_1/scope-decision-dossier.json",
+            "pointer": "",
+            "raw_sha256": "5b1dd95a15d8d874946e30b74878b0d1cf2d443da6e46f10f247ff0f52cedd4f"
+          },
+          "retained_dossier_modified": false,
+          "selected_option": "AUTHORIZE_PROSPECTIVE_P05_A04_ANCESTRY_QUALIFICATION",
+          "selected_option_source": "Current user message, AUTHORITATIVE HUMAN DECISION",
+          "subject_identity": "qualification-scope-subject-v1:4b57d7fc27d1c0b63deaece9d0be47c72e8e6d7b40e7a54ea7a56d6a641c85ac",
+          "verification": "Exact selected option and unchanged retained subject content; no native signature/grant invented"
+        },
+        "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+        "canonical_authority_requirements": [],
+        "future_RUNTIME_implementation_authorized_here": false,
+        "missing_installation_set_established": false,
+        "native_Action_authority": null,
+        "new_grants_issued": [],
+        "reason": "No native PREPARE operating or INSTALL grant is required for dossier-result admission. The selected qualification-scope decision applies to this new bounded lineage continuation; it grants no runtime repair permission.",
+        "source_permission": "Authored qualification-only dossier bytes under the selected experiment scope; no production semantics"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/authority.json",
+        "RAW_SHA256": "c82cb76832e74b353d8d275ffdf10a48a1e7abde903346c809ec86defd8538b0"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "END_SCOPE_DECISION",
+      "RECORD": {
+        "INSTALL_authority": false,
+        "P05_execution_authority": false,
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SELECTED_OPTION": "AUTHORIZE_COMPOSITE_P05_END_QUALIFICATION_MAPPING",
+        "authentication": "Explicit user-role selection through trusted conversation transport; no invented signature",
+        "bridge_ids": [
+          "qualification-END-edge-v1:e2d20d94c60bfa5059f66af82c4b5841a3210ca20ce1a1af621c8cc3cb06a089",
+          "qualification-END-edge-v1:79e37b09898f870505a2fca2e67784ca53dcc971d7f9b500af666182e54866a3",
+          "qualification-END-edge-v1:9df0e0cbb7d9a053e3334f69280724cd3712101b7d74f125e3523cad6cfc4e45",
+          "qualification-END-edge-v1:ebcbc8ccbb3f8806aef8f04aac0d45cea8b17cef0ff4610bb3ee99e090ad1176"
+        ],
+        "consumer": "E2-P05 / E2-END acceptance only",
+        "dossier": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/aggregate-END-decision-dossier.json",
+          "pointer": "",
+          "raw_sha256": "955408c7d0977f7b49fe16206fb6a6373671a172139b0536e67dce0f8cbb64fa"
+        },
+        "event_authority": false,
+        "exact_authorized_option": {
+          "consequences": [
+            "Qualification-scope authorization only; no native grant, event, result, proof or installation",
+            "After authentication and separate mapping qualification, the named aggregate acceptance-method gap may close",
+            "Neither a continuous original nor a continuous new A01-A13 native chain becomes proven",
+            "Full P05 readiness must still independently check current interfaces, initial N08/N12 operands, processes, persistence/replay, authority subjects and all non-stage terms",
+            "P05/P06 not authorized to execute merely by this choice; all current P05 cases remain required",
+            "Every historical label, A05 pre-existing-grant limitation and stage-local scope remains unchanged"
+          ],
+          "meaning": "Explicitly amend the aggregate END acceptance method for this exact graph: accept fully qualified native component segments plus exactly four named semantic bridge edges instead of asserting a single native A01-A13 causal execution.",
+          "option": "AUTHORIZE_COMPOSITE_P05_END_QUALIFICATION_MAPPING",
+          "selected": false
+        },
+        "excluded_claims": [
+          "One original historical A01-A13 native execution lineage was retained and proven",
+          "Cross-lineage post-state/pre-state equality or original parent continuity was recovered",
+          "The P03 initial completed-prefix premises are original occurred events",
+          "The retained P03/A05 decision issued its pre-existing grant",
+          "New request bytes were transmitted to a real external service",
+          "All current P05 negatives/D01/REG or P06 review already PASS",
+          "A qualification semantic edge is native execution, reentry permission, proof or authority",
+          "N_REAL, E1 migration or aggregate Planner release requirements are satisfied"
+        ],
+        "graph_content": {
+          "path": "docs/plans/qualification/E2_P05_END_ANCESTRY_RECONCILIATION_1/qualified-evidence-graph.json",
+          "pointer": "",
+          "raw_sha256": "a0ec00a6d264b977c446bcc90809f27b6aa2935febf104c4687b30c00e1a2c6d"
+        },
+        "graph_identity": "qualification-END-evidence-graph-v1:d3979240252a12139aac34db1bb1cb2396c6860af371084b94118740ec23af15",
+        "identity": "qualification-END-scope-authentication-v1:7aa2aca4557a1b151ff2493ebe22aff2ea8351b468370d78ebf69b18aaf2ad97",
+        "issuer": "Authenticated human user of this session",
+        "native_Action_authority": false,
+        "native_END_authority": false,
+        "native_grant_issued": false,
+        "new_native_human_choice": false,
+        "no_material_sealed_term_changed": true,
+        "original_dossier_updated": false,
+        "pass_claim": "Required Planner stage behaviors and local native occurrence/ancestry assurances are qualified through the exact explicitly authorized composite evidence mappings; cross-segment links are semantic acceptance edges.",
+        "qualification_only": true,
+        "qualification_scope_subject": "qualification-scope-subject-v1:12b2e68bea4d28c8da2cd35e15b9cb704b153288df40360ed0dc33e414402256",
+        "schema": "P05-COMPOSITE-END-SCOPE-AUTHENTICATION-1",
+        "selected_user_statement": "The human explicitly selected: AUTHORIZE_COMPOSITE_P05_END_QUALIFICATION_MAPPING"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_COMPOSITE_END_QUALIFICATION_1/scope-authentication.json",
+        "RAW_SHA256": "5c6d52b9dc06ac524584195318c5d435d33c2be6534a86b9053def4731ed0024"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "P05_AUTHORITY_READINESS",
+      "RECORD": {
+        "BASELINE_REGRESSION_IMPORTER": {
+          "restriction": "Read-only legacy regression tests are explicitly owned by REG; import_e1 is excluded from canonical E2 END.",
+          "status": "NO_NEW_AUTHORITY_REQUIRED"
+        },
+        "END_REPRODUCTION_AUTHORITY_BINDING": {
+          "classification": "NOT_YET_BOUND_TO_CURRENT_END_INPUT_GRAPH",
+          "restriction": "Use only applicable existing bounded subjects. No new human decision or native grant is defined or issued by this recovery.",
+          "status": "OTHER"
+        },
+        "P04_ATTEST_AND_ACTION_AUTHORITIES": {
+          "restriction": "Applicability evaluated at required historic/current consumer boundaries; terminal state is not an invitation to execute completed Actions.",
+          "status": "PRESENT_IN_TRUSTED_CANONICAL_STATE"
+        },
+        "P04_HISTORICAL_INSTALL_GRANTS": {
+          "restriction": "Only exact historical subjects/pre-state/parents; no P05-wide grant and no authorization to install unrelated definitions.",
+          "status": "PRESENT_CURRENT_FOR_HISTORICAL_BINDINGS"
+        },
+        "P04_ROOT_SLOT_SEMANTIC_AUTHORITY": {
+          "restriction": "Exact P04 qualification-only source/propositions/lineage; typed proof usability checked on target.",
+          "status": "PRESENT_CURRENT"
+        },
+        "P05_EVALUATION": {
+          "basis": "Canonical P05 allocation and current user instruction permit recovery; later qualification operates only synthetic isolated inputs.",
+          "class": "NO_NEW_NATIVE_AUTHORITY",
+          "status": "AUTHORITY_APPLIES"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_READINESS_1/authority-inventory.json",
+        "RAW_SHA256": "e6109daefd00f4fab98a7f53f73b3e6054a7e64473dd2723627eb3dc88449cfe"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "END_INTERFACE_AUTHORITY_REQUIREMENT",
+      "RECORD": {
+        "INSTALL_configuration": {
+          "reason": "No native definition/current Action/state change is needed to create a documentary END interface manifest",
+          "status": "NOT_REQUIRED"
+        },
+        "authority_issued": false,
+        "must_stop_for_new_authority_or_contract_change": "If new source semantics, unqualified model generation, different graph/bridge/evidence subject or new native grant/state installation is required, existing scope does not apply",
+        "new_authority_required": false,
+        "runtime_USE_or_execution": {
+          "reason": "The read-only consumer/process binding is not a native permission, result, event or Action",
+          "status": "NOT_REQUIRED"
+        },
+        "semantic_acceptance": {
+          "capture": {
+            "path": "docs/plans/qualification/E2_P05_COMPOSITE_END_QUALIFICATION_1/scope-authentication.json",
+            "pointer": "",
+            "raw_sha256": "5c6d52b9dc06ac524584195318c5d435d33c2be6534a86b9053def4731ed0024"
+          },
+          "limit": "Document/pin a required interface projection from already included qualified sources without changing graph/stages/four bridges/claims/exclusions",
+          "option": "AUTHORIZE_COMPOSITE_P05_END_QUALIFICATION_MAPPING",
+          "status": "EXISTING_APPLIES_WITHIN_BOUNDARY",
+          "subject": "qualification-scope-subject-v1:12b2e68bea4d28c8da2cd35e15b9cb704b153288df40360ed0dc33e414402256"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_END_INTERFACE_CLOSURE_1/PC01-authority-requirement.json",
+        "RAW_SHA256": "c24ca9d9b7ed58371ffb4f0ad81235b756c4015b666172a8e78ec76e84c2e3e6"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_RUNTIME_SCOPE",
+      "RECORD": {
+        "AUTHORITY_SOURCE": "Explicit human selection in work-package 31; prior dossier remains unmodified and historically unselected",
+        "EXCLUDED": [
+          "No original A14 ancestry/historical D01 reconstruction",
+          "No policy/ranking changes, E1 import, native authority or event creation",
+          "No full A14 Action/D01 128-case/P05/P06 execution",
+          "No full-output oracle construction or END binding",
+          "No directory-fsync/power-loss/general crash assertion"
+        ],
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_RUNTIME_PERSISTENCE_QUALIFICATION",
+        "SUBJECT_IDENTITY": "qualification-A14-runtime-persistence-decision-v1:924439185024f3cc55d723225766492bb4478522494f389c99923aef78eecc97",
+        "SUBJECT_SHA256": "ee579ab7bc581230677a98a8a011c4dd6c6b563cf09c2b0c3f4426fd7368c8ce"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_QUALIFICATION_31/scope-authentication.json",
+        "RAW_SHA256": "d1331178b4c495556e7047369ed80deaf5f8c816d75e00f59faf9658e11dc9cc"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_RUNTIME_DOSSIER",
+      "RECORD": {
+        "DECISION_READY": true,
+        "DECISION_REQUIRED": true,
+        "EXACT_SUBJECT": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/bounded-execution-decision-subject.json",
+          "raw_sha256": "ee579ab7bc581230677a98a8a011c4dd6c6b563cf09c2b0c3f4426fd7368c8ce"
+        },
+        "OPTIONS": [
+          "AUTHORIZE_BOUNDED_A14_RUNTIME_PERSISTENCE_QUALIFICATION",
+          "DECLINE_A14_RUNTIME_PERSISTENCE_QUALIFICATION"
+        ],
+        "PERMISSION": "Only exact sequence/effects/attempt bounds and mandatory audit; runtime hooks must verify selected subject before operations",
+        "SELECTION": "NOT_SELECTED",
+        "SUBJECT_IDENTITY": "qualification-A14-runtime-persistence-decision-v1:924439185024f3cc55d723225766492bb4478522494f389c99923aef78eecc97"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_RUNTIME_PERSISTENCE_CONTRACT_30/bounded-execution-decision-dossier.json",
+        "RAW_SHA256": "25838d74f9cce459f90516c94c5672db7a9298dc0c7049e40e1c17dde2b98a99"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A15_NORMATIVE_SCHEMA",
+      "RECORD": {
+        "AUTHORIZATION_STATE": "PROPOSED_NORMATIVE_KNOWLEDGE only; no AUTHORIZED_NORMATIVE_KNOWLEDGE",
+        "FIELDS": {
+          "AMENDMENT_COMPATIBILITY": "State whether additional prospective interpretation changes acceptance scope/baseline; original frozen requirement/labels remain untouched",
+          "APPLICABILITY_SCOPE": {
+            "bound_obligation": "E2-A15; original frozen obligation retained",
+            "expected_snapshot": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "planner-snapshot-v1",
+              "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+            },
+            "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+            "graph_identity": "qualification-A15-support-graph-v1:36c6188226bfc396f85c97ca24492deabc7afbebb087f590d1037a1df58e5675",
+            "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+            "scope": "E2-QUALIFICATION-ONLY"
+          },
+          "CONSUMER_ROOT_RULE": "Exact typed owner pairs or complete typed applicability predicate with independently verifiable finite result; no implicit first/latest/count selection",
+          "DISJOINTNESS_RULE": "Exact full CONTENT_IDENTITY group membership, exhaustive coverage, alias/shared/overlap/protected-set semantics",
+          "HISTORICAL_EXCLUSIONS": [
+            "Not original historical A15 contract/source inventory",
+            "No source/event/parent repinning",
+            "No A14 grant transfer",
+            "No ownership/target selection from 14/45/49",
+            "No new proof/permission or native schema implied"
+          ],
+          "INVALIDATION_EFFECT_RULE": "Reuse unchanged native currentness/dependent effect propagation for supplied qualified source seeds; no invented graph edges or proof requirements",
+          "ISSUING_AUTHORITY": "Verified authorized human qualification owner or explicitly designated knowledge owner, referenced by actual evidence. No identity/grant invented. Normative applicability/necessity amendment requires explicit scope selection.",
+          "KNOWLEDGE_CONTRACT_ID": "Qualification canonical identity over complete versioned rule content, exact input/evidence and issuing-owner designation pins, and exclusions; exclude its own ID and later selection/authorization receipt to avoid circularity. Authorized-knowledge wrapper separately binds this ID to actual decision evidence; no instance ID before complete",
+          "QUALIFICATION_CRITERIA": "Exact relevance/role membership, necessity including alternatives, currentness, native effects, closure/group invariants, determinism, fail-closed boundaries and frozen acceptance compatibility",
+          "RELEVANT_SUPPORT_RULE": "Explicit mapping from each operative native role/group/record to source content/support identities; graph association alone insufficient",
+          "SOURCE_PROVENANCE": "All native graph/source/proof/support/context/rule/authority pins and source locations; no historical relabeling",
+          "SUPPORT_NECESSITY_RULE": "Define required-by-proof versus necessary-for-target and per-source/group coverage across admissible alternatives; native AND/ANY semantics fixed",
+          "TARGET_DISCOVERY_CLOSURE_RULE": "Exact role-qualified upstream required-source discovery rule; separate from forward native effect closure",
+          "VERSION": "Explicit version, no current/latest heuristic"
+        },
+        "INSTANCE_COMPLETE": false,
+        "INSTANCE_VALUES": {
+          "CONSUMER_ROOT_RULE": null,
+          "DISJOINTNESS_RULE": null,
+          "ISSUING_AUTHORITY": null,
+          "KNOWLEDGE_CONTRACT_ID": null,
+          "RELEVANT_SUPPORT_RULE": null,
+          "SUPPORT_NECESSITY_RULE": null,
+          "TARGET_DISCOVERY_CLOSURE_RULE": null
+        },
+        "NATIVE_STORAGE_CHANGE_REQUIRED": false,
+        "REPRESENTATION": "Qualification JSON referencing existing native typed IDs, source/proof/group identities and signed/reviewed authority references; not a new native KnowledgeRecord or schema",
+        "SCHEMA_ID": "A15-PROSPECTIVE-NORMATIVE-KNOWLEDGE-SCHEMA-1",
+        "STATUS": "PROPOSED — NOT AUTHORIZED; schema only, no complete normative instance",
+        "VERSION": 1
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_NORMATIVE_KNOWLEDGE_CONTRACT_42/normative-knowledge-schema.json",
+        "RAW_SHA256": "bcb7a11dd4bdae267b8d731548694fac8391bee6c070fdf4772af423041a09f4"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A15_AUTHORITY_PREPARATION",
+      "RECORD": {
+        "ALL_GRANTS_ISSUED": false,
+        "AUTHORITY_PREPARATION_ELIGIBLE": true,
+        "AUTHORITY_SUBJECT_MISSING_FIELDS": [
+          "authenticated issuer identity/role",
+          "authority version",
+          "exact separate adoption/execution grant identities"
+        ],
+        "AUTHORITY_SUBJECT_READY": false,
+        "BASELINE_AMENDMENT_REQUIREMENT": "No native fixture baseline replacement currently justified. Proposed separate isolated capture/process contract must be bound in future execution subject; any V3 matrix/capsule change separately governed.",
+        "ELIGIBILITY_LIMIT": "Prepare only; neither adoption nor execution permitted",
+        "EXECUTION_SCOPE": "Two record_result/save writers, eight fresh restore/comparison readers, listed immutable row targets and lifecycle evidence, no HEAD/E1/A14/other dispatch effects",
+        "FULL_A15_ORACLE_READY": true,
+        "INITIAL_RESTORE_SCOPE": "Two writer-owned native restores of the exact original retained checkpoint before record_result; eight later cold restore readers. No new baseline save/amendment.",
+        "ISSUER_VERSION_GRANT": "Must be authenticated/sealed in Package62; not invented or issued here",
+        "NORMATIVE_SCOPE_SUBJECT": "Package59 exact two admission-provenance variants, owned ROOT/SLOT, singleton coverage/protection policy; historical/global21-owner completeness excluded",
+        "STATIC_HARNESS_READY": true
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/authority-preparation-eligibility.json",
+        "RAW_SHA256": "ac6f6b53c3ce5d221387ecb028e29ee85d7ebee863510abe102879a63389f3c1"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "E1_CONTINUATION_DELEGATION",
+      "RECORD": {
+        "EXACT_TEXT": "ARCHITECT MATERIAL DELEGATION\nFuture Continuation Enrollment\n\nEffective prospectively from this delegation.\n\nThe Architect authorizes establishment of a governed continuation-\nenrollment capability within the existing E1 runtime lineage.\n\nThis delegation does not modify, reinterpret, replace, replay, or\nbroaden the accepted bootstrap, C1 authority, R1 identity, or any\nhistorical authority record.\n\nThe delegated capability is limited to recording adoption eligibility\nfor an exact continuation candidate that:\n\n1. identifies the exact current predecessor/runtime lineage;\n\n2. has been independently qualified under the applicable continuation\n   qualification policy;\n\n3. is bound by immutable identity/digest to the qualification evidence;\n\n4. is enrolled through an authenticated, append-only authority event;\n\n5. has not obtained enrollment authority merely by creating,\n   qualifying, proposing, or presenting itself;\n\n6. cannot use enrollment itself as adoption authority; and\n\n7. remains subject to a separate exact adoption authorization before\n   any runtime-head transition.\n\nThis delegation authorizes implementation and qualification of the\nenrollment mechanism. It does not itself enroll C2, authorize adoption\nof C2, establish R2, authorize r13, or authorize any E1 production\neffect.\n\nThe implementation must fail closed on absent, ambiguous, stale,\nreplayed, mismatched, or unauthorized enrollment authority.\n\nHistorical authority and evidence established before this delegation\nremain immutable.\n\nSuccessful qualification must demonstrate both positive and negative\nenrollment cases before the capability may be relied upon for ordinary\ncontinuation.\n"
+      },
+      "SOURCE": {
+        "PATH": "docs/experiments/E1/a2_1i_enrollment_qualification_2026-09-19/ARCHITECT_DELEGATION_SOURCE.md",
+        "RAW_SHA256": "0b7dff84fcd262b0b0433fdfd06d106c31eca9a3056d77ab546ce4a1361ac8f3"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "443808e8ca1150f8ff8abc807b8cd1365500c17695caf86278e4efad2e66a7c1"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "072686aaee68ff6f9fa704c45467f93b65cd457955a96200e4578bbe0b0d38a8"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "a116740b3f5e3ba313ed60bbce1a637ace57bac41b0bfe3581e54d22bbc375ae"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "dfc8ce46edcc16a97967bc139e1c108bb6dfb3c42591681de4bdb644a10c1436"
+          },
+          "definition_type": "AUTHENTICATION_DEFINITION_SET",
+          "delegation": false,
+          "expected_old_reference": null,
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "INSTALL",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "a19b52ab601c6d3c7668b78c6e20cc87e54cfc317595e4da641fcbb7d107fb1e"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "885b23b6f64503153d2d6c4419b160cc278112b26238eecbab14c8b9ecb92ee4"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "99e47ad1e462c30cd33e2258e4c74ff670164fa7378e5a998e0f23b9256e4454"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "consumer": "A09",
+            "gate": "E2-GATE",
+            "kind": "INGRESS_AUTHENTICATION_ROLE",
+            "receipt_action": "TEST-RECEIVE",
+            "requirement": "E2-EXTERNAL-REQUIREMENT",
+            "source": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "AUTHORITY_IDENTITY"
+              },
+              "namespace": "TEST-rule-owner",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I04_1/authentication-install-admission.json",
+        "RAW_SHA256": "9f038b61e6d22413f7e25e2c1d658d5fb1667531e3009f1b18cb25197e7abea5"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "8519cc44bdef58aeac7fb7c366db08cfde44b2f7b015a6f9889d8dd07665f172"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "db89cd62739a5d92ff98d5d6db391c45a81d3cfe4a2647adb38e978bf09d1461"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "a116740b3f5e3ba313ed60bbce1a637ace57bac41b0bfe3581e54d22bbc375ae"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "a41322cc192110fda4ee51f6cd93125231d1b43a7d6238fe905a16dd702bb0a3"
+          },
+          "definition_type": "EVIDENCE_INGRESS_CONTRACT",
+          "delegation": false,
+          "expected_old_reference": null,
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "INSTALL",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "a537ba9f5be1ef3d099ff178028847036e83406bd338e662f5b7680d4b90a3a0"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "3d592bba4f574dfd3f1f4e8fa0c1a38d3965fb43f18fbf8dfee765bee2bc4e7a"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "92e51d3a60bb02d807fdc7b340546b1fcd08a94a121a3effb6a4cc4e911484a6"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "authentication": "E2-ATTESTOR-MAY-ATTEST:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539",
+            "consumer": "A09",
+            "gate": "E2-GATE",
+            "kind": "EVIDENCE_INGRESS_ROLE",
+            "receipt_action": "TEST-RECEIVE",
+            "requirement": "E2-EXTERNAL-REQUIREMENT",
+            "source": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "AUTHORITY_IDENTITY"
+              },
+              "namespace": "TEST-rule-owner",
+              "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I04_1/ingress-install-admission.json",
+        "RAW_SHA256": "892e7d645ec73941443c505f282fad500bca3ad95b53159baa11e83f690db622"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "OPERATING_ATTEST_ADMISSION",
+      "RECORD": {
+        "admission_policy_reference": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "a116740b3f5e3ba313ed60bbce1a637ace57bac41b0bfe3581e54d22bbc375ae"
+        },
+        "authenticated_decision_reference": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+        },
+        "exact_grant_json": "{\"I03_contract_content_reference\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"a116740b3f5e3ba313ed60bbce1a637ace57bac41b0bfe3581e54d22bbc375ae\"},\"authenticated_decision_reference\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8\"},\"authority_class\":\"ATTEST\",\"consumer\":\"A09\",\"declared_authority_identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"delegation\":false,\"gate\":\"E2-GATE\",\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"issuer\":\"AUTHENTICATED_HUMAN_USER\",\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"member_definition_and_content_ids\":{\"attestor\":{\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"2c351047c6d1d70db5bba80db5b0fc895ce7a708ac09d7d2364d7e68a1249cbc\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20\"}},\"authority\":{\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"94fff2c47ddaa656b3279a42dea31db39ea0cc4829035360e3d7fe84d7b3c4c7\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0\"}},\"authority_predicate\":{\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"41c7e65b0d30ae7ff458fd0d8551209acb76bac15a25775c6bc053bc22bdd9d1\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db\"}},\"source_predicate\":{\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"8facd8df588c644748d110f5ac5993b7021a873e5020018d4c2c55e15e9501d9\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3\"}}},\"provenance\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8\"},\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"schema\":\"PLANNER-ATTEST-DEFINITION-AUTHORIZATION-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_from\":0,\"valid_until\":100}",
+        "grant_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-attest-definition-authorization-v1",
+          "sha256": "493b30637c97881ff2136b6b9defcf328f4d3cea4f8c0020e6031f3cf15aebab"
+        },
+        "provenance": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "941069448f4cc09457c99aabfadc02f6fa1783a8ab7d1a6d0701dea906e485b8"
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-ATTEST-DEFINITION-ADMISSION-1",
+        "trusted_issuer_reference": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/INSTALLATION_I04_1/operating-attest-admission.json",
+        "RAW_SHA256": "2544f4a3258212dfda7cbc7803aae2d3f17f9c3cc7a6901113659a4c7504423b"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "AUTHORITY_TYPE": "QUALIFICATION_HISTORY_FRAME_ONLY",
+        "DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_HISTORY_BINDING_RECONCILIATION_23/bounded-history-decision-dossier.json",
+          "raw_sha256": "a266dc614d00f386a92e9c75329bb5ad5f2dfd1a923d5e3802f4d93de52b2ba9"
+        },
+        "EXACT_SUBJECT": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_HISTORY_BINDING_RECONCILIATION_23/bounded-history-decision-subject.json",
+          "pointer": "",
+          "raw_sha256": "90bc2fe0a02d7475b3cc17bbc146f16557c619d5b383645da056e3f3f2624dab"
+        },
+        "EXCLUSIONS": [
+          "No historical event relabel/rehash/parent/root rewrite",
+          "No claim old history ends at corrected Snapshot",
+          "No event creation, A14/D01 execution, save/read, INSTALL or native authority issuance",
+          "No policy/version or replay-scope selection",
+          "No END binding or waiver/drop of any frozen obligation",
+          "No automatic bundle construction or operand promotion"
+        ],
+        "METHOD": "Explicit current human selection authenticated to exact option, raw subject-file pin, semantic subject digest, corrected Snapshot, source root and exact zero-event commitment",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-history-frame-v1:bdaa73edeb7f5b25a969b6d03b4a83449f85d283ab0d86bbb91995f1123e43d7",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_PROSPECTIVE_A14_CHECKPOINT_HISTORY_FRAME"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_CHECKPOINT_HISTORY_FRAME_24/scope-authentication.json",
+        "RAW_SHA256": "43643246d4dbdc99e21c1865b0ba1677fee909e98526ff89bdfd06d839672d9f"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "ALLOWLIST": [
+          "/home/gvasend/app/kge-forge/E2-CHECK.json",
+          "New package qualification evidence"
+        ],
+        "EXCLUSIONS": [
+          "No materialization in Recovery12",
+          "No later source materialization/recovery or bundled authority",
+          "No source/path/provenance/content/authority/schema/Snapshot change",
+          "No root/policy/history/bundle/save/reader repair",
+          "No INSTALL, A14/D01/P05/P06 execution, output oracle or END binding"
+        ],
+        "METHOD": "Current human selection matched exact Recovery12 option, subject digest, raw subject-file pin, bytes, root/path and unchanged Snapshot commitment",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "NOTE": "Recovery12 no-materialization restriction remains historical; this package records its separate explicit bounded authorization",
+        "RECOVERY_DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_CHECK_SOURCE_RECOVERY_12/bounded-source-decision-dossier.json",
+          "raw_sha256": "66b247b8f0294a7124db02544645dfc95b17ee5a4970cc4b17260a6f57239ded"
+        },
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-E2CHECK-materialization-v1:8963340fe23285ceb44a8cc8544abe5eed24ef2963cb84887034d764f1b0c9a7",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_CHECK_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_CHECK_SOURCE_RECOVERY_12/bounded-materialization-subject.json",
+          "raw_sha256": "640c3d1fca8e1efcec8f98c27b954c7303284473a6464a353267ba620b974f26"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_E2_CHECK_MATERIALIZATION_13/scope-authentication.json",
+        "RAW_SHA256": "fa7468d81488ea34240ed32378077845e0c33f3322cbe61b1bc029ce70e93ecc"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "ALLOWLIST": [
+          "/home/gvasend/app/kge-forge/E2-COLLECT.json",
+          "New package qualification evidence"
+        ],
+        "EXCLUSIONS": [
+          "No materialization in Recovery14",
+          "No later source materialization/recovery or bundled authority",
+          "No source/path/provenance/content/authority/schema/Snapshot change",
+          "No root/policy/history/bundle/save/reader repair",
+          "No INSTALL, A14/D01/P05/P06 execution, output oracle or END binding"
+        ],
+        "METHOD": "Current human selection matched exact Recovery14 option, subject digest, raw subject-file pin, bytes, root/path and unchanged Snapshot commitment",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "NOTE": "Recovery14 no-materialization restriction remains historical; this package records its separate explicit bounded authorization",
+        "RECOVERY_DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_COLLECT_SOURCE_RECOVERY_14/bounded-source-decision-dossier.json",
+          "raw_sha256": "55af0793ebb07f4cd4961f6398d757c34735b60cc83ff2c6a56d7e4e25dc3cc2"
+        },
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-E2COLLECT-materialization-v1:44a0a12d86ea2456c928bd530a6df8747216020e5b87d80bd1aad227eee1926e",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_COLLECT_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_COLLECT_SOURCE_RECOVERY_14/bounded-materialization-subject.json",
+          "raw_sha256": "525f8e07b1c57ae8e1fb7013cb5d4069abdd5403021ffcbf99664700f32cd7b8"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_E2_COLLECT_MATERIALIZATION_15/scope-authentication.json",
+        "RAW_SHA256": "65775a27aeb7b0068adf6a232acaedeed9a4ca04ff6bc6ce5a16df1ec36b5cee"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "ALLOWLIST": [
+          "Create only /home/gvasend/app/kge-forge/E2-DECIDE.json from exact isolated recovered bytes",
+          "Read-only verification and qualification evidence"
+        ],
+        "DOSSIER_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_DECIDE_SOURCE_RECOVERY_8/bounded-source-decision-dossier.json",
+          "pointer": "",
+          "raw_sha256": "b7994dcc52fad565386227d427188dedee35309b18faa3a960e457955a38a9ed"
+        },
+        "EXCLUSIONS": "Only restore this existing exact RAW byte source under the already-declared canonical relative path; stop at the next missing source. No repinning/root/policy/history replacement, Action installation, runtime execution, save/reader, oracle or END binding.",
+        "METHOD": "Explicit current-user selection matched to exact sealed option, subject digest, raw dossier subject pin, root/path and byte commitment",
+        "NATIVE_AUTHORITY_ISSUANCE": false,
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-E2DECIDE-materialization-v1:7f4a326e7596f702b479415509d8f4614c595fdd5a2f21bb9e1a4b98c27b9bec",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_DECIDE_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_DECIDE_SOURCE_RECOVERY_8/bounded-source-materialization-subject.json",
+          "pointer": "",
+          "raw_sha256": "f06b3f3d823d84e67e081740556529b89623daafa9c5354209f68cc090e09bdc"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_E2_DECIDE_MATERIALIZATION_9/scope-authentication.json",
+        "RAW_SHA256": "a1b4019c5c554729ed5435bf71720035dd41289eed1228fbf3ffcce8379e4af7"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "ALLOWLIST": [
+          "/home/gvasend/app/kge-forge/E2-FINISH.json",
+          "New package qualification evidence"
+        ],
+        "EXCLUSIONS": [
+          "No materialization in Recovery16",
+          "No later source materialization/recovery or bundled authority",
+          "No source/path/provenance/content/authority/schema/Snapshot change",
+          "No root/policy/history/bundle/save/reader repair",
+          "No INSTALL, A14/D01/P05/P06 execution, output oracle or END binding",
+          "No substitution of current P04 FINISH wrapper/Action for the A14-required physical marker"
+        ],
+        "METHOD": "Current human selection matched exact Recovery16 option, subject digest, raw subject-file pin, bytes, root/path and unchanged Snapshot commitment",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "NOTE": "Recovery16 no-materialization restriction remains historical; this package records its separate explicit bounded authorization",
+        "RECOVERY_DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_FINISH_SOURCE_RECOVERY_16/bounded-source-decision-dossier.json",
+          "raw_sha256": "e5f0dc86b80079ba13eeb77071f2765a97ebc9a876fc24a199d65199680e27eb"
+        },
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-E2FINISH-materialization-v1:3fb9b33c879407e1c2e533d4122063053b4db98c793ca4deea514283d896d0b6",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_FINISH_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_FINISH_SOURCE_RECOVERY_16/bounded-materialization-subject.json",
+          "raw_sha256": "a90713fe31df68bfd907f2894f1e6fead09d98d510971e375b2c9e0f3db8013b"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_E2_FINISH_MATERIALIZATION_17/scope-authentication.json",
+        "RAW_SHA256": "a0220626518c4af245d72abc13034acbaea9ac5f5ba5a0af865c8d182133902a"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "ALLOWLIST": [
+          "/home/gvasend/app/kge-forge/E2-PREPARE.json",
+          "New package qualification evidence"
+        ],
+        "EXCLUSIONS": [
+          "No materialization in Recovery18",
+          "No later source materialization/recovery or bundled authority",
+          "No source/path/provenance/content/authority/schema/Snapshot change",
+          "No root/policy/history/bundle/save/reader repair",
+          "No INSTALL, A14/D01/P05/P06 execution, output oracle or END binding",
+          "No PREPARE execution or any final-source recovery/materialization",
+          "No substitution of later/current PREPARE wrapper/Action for the A14-required physical marker"
+        ],
+        "METHOD": "Current human selection matched exact Recovery18 option, subject digest, raw subject-file pin, bytes, root/path and unchanged Snapshot commitment",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "NOTE": "Recovery18 no-materialization restriction remains historical; this package records its separate explicit bounded authorization",
+        "RECOVERY_DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_PREPARE_SOURCE_RECOVERY_18/bounded-source-decision-dossier.json",
+          "raw_sha256": "7db85bab4b09ebb44e81667757768c48322bcd465e0a1982c6ba03c58016f65f"
+        },
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-E2PREPARE-materialization-v1:a6d8a9c5084d8d14d9bf5687e80ccef50128d0e94f7f847615c066021824ee9e",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_E2_PREPARE_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_E2_PREPARE_SOURCE_RECOVERY_18/bounded-materialization-subject.json",
+          "raw_sha256": "16ddc89d02ca196f47192d21cd7ef27fb2abd2e6d9b0d3fb68cf07ff98f98a6e"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_E2_PREPARE_MATERIALIZATION_19/scope-authentication.json",
+        "RAW_SHA256": "b5627c1f0e9ddb98f03996c2d173826ea66ff72e50b15503695bc8b85023e315"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "CURRENT_TASK_READ_ONLY_SCOPE": "User separately requests replay-scope recovery and native candidate construction/validation if dimensions close; no runtime event/save/read authority",
+        "EXACT_SUBJECT": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_POLICY_BINDING_RECONCILIATION_25/bounded-policy-decision-subject.json",
+          "pointer": "",
+          "raw_sha256": "08fde73dee44405fdadd415c83ef366ae6868a2fb56857afb8d933d69818ce50"
+        },
+        "EXCLUSIONS": [
+          "No policy source/rule/config drift or new policy admission",
+          "No reinterpretation as E2-P05/P06 phase authorization",
+          "No replay-scope selection, E1 import or real-world proof",
+          "No A14/D01/P05/P06 execution, save/read, bundle creation, INSTALL or authority issuance",
+          "No automatic operand promotion or END binding"
+        ],
+        "METHOD": "Current human selection matched exact P06 option, admitted source/configuration, runtime pins and qualified frame",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "POLICY_AUTHORITY": "Exact existing P06 binding only",
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_POLICY_BINDING_E1_SELECTION_1_P06",
+        "SUBJECT_IDENTITY": "qualification-A14-policy-decision-v1:20822d142f5509470eca627302067c50dbb39a28f41de6ae9c77e958445ea3d4"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_P06_POLICY_REPLAY_CLOSURE_26/scope-authentication.json",
+        "RAW_SHA256": "b43561133ad70525ea80d21b7557e9fa186cfa49832b5b1935e90aefc5858cab"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "AUTHENTICATION_METHOD": "Explicit current user selection matched against exact sealed option, correction subject, dossier identity and raw subject/source hashes; no native authority issuance",
+        "CORRECTION_SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SOURCE_PROVENANCE_RECONCILIATION_6/minimum-correction-contract.json",
+          "pointer": "",
+          "raw_sha256": "f01a21492cd219b64967430528ea58d7a12337ea8ec25d31624a6ed3ab38b3d6"
+        },
+        "DOSSIER_IDENTITY": "qualification-A14-provenance-correction-v1:9a8a5ecc45083d5a6d64d9f23a30ed2b6cdb9820f6b732ee7ff18c60eadc17e4",
+        "DOSSIER_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SOURCE_PROVENANCE_RECONCILIATION_6/bounded-correction-decision-dossier.json",
+          "pointer": "",
+          "raw_sha256": "b4a9728869f0e81b0b6d2c8aca898c8fdb4b7870b03ddd725c0f083b7f735ca0"
+        },
+        "EXCLUDED": [
+          "Execute A14 or the 128-row qualification",
+          "Save runtime results or launch qualification readers",
+          "Issue/reissue choice or authority",
+          "Apply native mutation/invalidation transitions",
+          "Modify native validation/key/schema rules",
+          "Claim original historical Snapshot/bundle repaired in place",
+          "Bind D01 to END or select broader prospective D01 execution scope"
+        ],
+        "NATIVE_AUTHORITIES_ISSUED": 0,
+        "OLD_DOSSIER_MODIFIED": false,
+        "PERMITTED": "Exactly two byte-preserving source files and three path assignments in a new prospective fixture",
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-provenance-correction-v1:c6cc35ce0f1d0a15fbff354498d76275c4a4ac101bb825996c4c08e820adb863",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_PROSPECTIVE_A14_PROVENANCE_FIXTURE_CORRECTION"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_PROVENANCE_FIXTURE_CORRECTION_7/scope-authentication.json",
+        "RAW_SHA256": "6518fc03dd494b9a5464d5fba3157cac5726b2ea40dbb6426c7ab2e9b858156a"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "ALLOWLIST": [
+          "/home/gvasend/app/kge-forge/resolution.json",
+          "Read-only complete-source oracle",
+          "Static handoff/111-reference audit",
+          "New package evidence"
+        ],
+        "EXCLUSIONS": [
+          "No resolution.json materialization in Recovery20",
+          "No repinning, path/provenance/authority/schema/Snapshot change",
+          "No source/root/policy/history correction, bundle mutation or unproven history reconstruction",
+          "No A14/D01/P05/P06 execution, save/read/commit, INSTALL, new receipt/authority or output oracle",
+          "No automatic operand promotion or END binding; handoff reentry is a bounded future read-only plan, not runtime authority"
+        ],
+        "METHOD": "Current explicit human selection matched option, exact subject hash/digest, byte commitment, root/path and unchanged Snapshot. Current task additionally authorizes sealed read-only validation/static reentry; no runtime authority.",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "RECOVERY_DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_RESOLUTION_SOURCE_RECOVERY_20/bounded-source-decision-dossier.json",
+          "raw_sha256": "7ec1e5a79ebffafc41a57cb24b94469400ee7b126f6b5d340f94d8ebcbd78a5f"
+        },
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-resolution-materialization-v1:b1085bc47f3e19d422d0173901121e3e7dd546945c38028da8c2a585db1f7dfe",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_RESOLUTION_LOSSLESS_SOURCE_MATERIALIZATION"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_RESOLUTION_MATERIALIZATION_21/scope-authentication.json",
+        "RAW_SHA256": "e46a103c0100a31baa341667d0ed3681dba6dbad2000d1b446170b771b12c525"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "A14_SCOPE_DECISION",
+      "RECORD": {
+        "AUTHORIZED_TARGET": "/home/gvasend/app/kge-forge/source.json",
+        "EXCLUSIONS": [
+          "No TEST-to-E2 rewriting of the raw source payload",
+          "No change to native fields/authority/paths/identities",
+          "No other source/root/policy/history repair",
+          "No INSTALL/A14/D01/runtime save/cold-reader/oracle/END operation"
+        ],
+        "METHOD": "Explicit current-user selection matched to sealed option, subject digest and raw subject-file hash, exact root/path, bytes and Snapshot commitment",
+        "NATIVE_AUTHORITY_ISSUED": false,
+        "RECOVERY_DOSSIER": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SOURCE_JSON_RECOVERY_10/bounded-source-decision-dossier.json",
+          "raw_sha256": "a6d8f39b8f28ed0f6ca0ff8506d99e36287af1747a60eb5c0c7ef265f6245a91"
+        },
+        "SCOPE_AUTHENTICATION": "PASS",
+        "SEALED_SUBJECT": "qualification-A14-sourcejson-materialization-v1:37de2e93f414d76b65db4aa672816d6621015df61d33621051e3d8c1c6d38ba0",
+        "SELECTED_OPTION": "AUTHORIZE_BOUNDED_A14_SOURCE_JSON_LOSSLESS_SOURCE_MATERIALIZATION",
+        "SUBJECT_SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_A14_SOURCE_JSON_RECOVERY_10/bounded-materialization-subject.json",
+          "raw_sha256": "09d26e684cdbe36bd6205f3bd5b08ccf602ab5d98c15e405a5d56cd417dfc1dd"
+        }
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A14_SOURCE_JSON_MATERIALIZATION_11/scope-authentication.json",
+        "RAW_SHA256": "fb96ec42260494db5658ef3c154fc239fc77cb50bdc9f756b85c6548491fc6ce"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "P04_INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "1e2c621d1131e8a278ab02f9497870961aec3fd57c1c858e7b7229ce0273cbfa"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9306dbc93aaab907f80887bb86d63ec6f9589ebc816e3dff80eca46c49ab3ece"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "88052978b28b5d24258c6d8108cf4bd5f4e64f0632a8e09cebdb796c8cd6ed24"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "57137391fe81cae8e713d137c443d5ae8ac84429abcc6337f0e8b025769502ca"
+          },
+          "definition_type": "ROOT_SLOT_CONFIGURATION_SET",
+          "delegation": false,
+          "expected_old_reference": null,
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "INSTALL",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "45cec78291bd025c2ad9b8d2853ee8a9cedd2f63b956321899bed6b7b3ab4da5"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "359ab5424030c4482292bb546e83acd36dd140a8f618766a9a35ce61282f4445"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "023be7ec986722356f3871e7831e2cf2dd1ab1e8c45fb1f46103619557253513"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "consumer": "E2-P04/A13",
+            "kind": "ROOT_SLOT_CONFIGURATION_ROLE",
+            "root": "E2-ROOT",
+            "slot": "E2-SLOT"
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/FINISH_F03_1/install-authority-0.json",
+        "RAW_SHA256": "7c2471a8707fb87599d8aacec8b7c2cdeb6dec4473e26f6b9103f96b86b07d45"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "P04_INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "4b6f5b01711a8837a9cbd081b1525dbb794d7eda74b5ee7a82707a724ceb1fb4"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "cecfe11b189ddc237d28a7357465733c049c486b6931de01514673f82793f56c"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "88052978b28b5d24258c6d8108cf4bd5f4e64f0632a8e09cebdb796c8cd6ed24"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "240c1f15e65231395e1222fb3654c149407f12d6ae68ca63057d53a85aeb8f59"
+          },
+          "definition_type": "ACTION_DEFINITION",
+          "delegation": false,
+          "expected_old_reference": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-baseline-definition-reference-v1",
+            "sha256": "aa2e12906dc31d90845dad0fb654b211c0e1db2827eb69075854b7a854d8312a"
+          },
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "REPLACE",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "eea47d285116ec651541148eb6e9c982b71f39aa76bd45ad7541685bca306caa"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "5e093d83949fcce8e3de43854a2f7748e6d2016e4f2bb2e75ada015a507d3517"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "5732fe84b6a7ac5fff2706d7b537b8c4e657b7b5f3a4eb8860d15e7aa656a0a6"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "action": "E2-FINISH",
+            "consumer": "E2-FINISH",
+            "kind": "ACTION_ROLE"
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/FINISH_F03_1/install-authority-1.json",
+        "RAW_SHA256": "6ba52fb7f91042a43710fdd9167a7ca11abc94ffd490c0b3027d201d20616ecb"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "P04_INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "bed613916a699b5d49d0bd02a1a47d095ad270677b8bdd44596eff844f7343a8"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "f3a755ed0b9fa0114d22f5d345118d4a29c41caf76e733a2bd08cbf54ceefbb6"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "88052978b28b5d24258c6d8108cf4bd5f4e64f0632a8e09cebdb796c8cd6ed24"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "8e60c75e9923657527548a7d77284c202af9fb2d182d29d8d66ae863a4413275"
+          },
+          "definition_type": "SLOT_PROOF_CONTRACT_DEFINITION",
+          "delegation": false,
+          "expected_old_reference": null,
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "INSTALL",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "faa01cdbb77d46b0f13f07de2c81de81ecc09f87046043a6e5770c4b3bcc1a9e"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "d54cc9f704d5280e4681d1200ed06c582530d5cd370cdc099864ba9ecb368eeb"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "0c5e7f523f698af18371b9a80f101cb129277c441683bd2cdcf44bf762443410"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "consumer": "E2-P04/A13",
+            "kind": "TYPED_PROOF_CONTRACT_ROLE",
+            "proof_type": "SLOT_PROOF",
+            "target": "E2-SLOT"
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/FINISH_F03_1/install-authority-2.json",
+        "RAW_SHA256": "b49b6439b622b6bf52edf2216f872df55dc82f931bc91727578ff540cc61767f"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "P04_INSTALL_ADMISSION",
+      "RECORD": {
+        "authentication": "EXPLICIT_HUMAN_DECISION_TRANSPORT",
+        "authority_id": {
+          "kind": "AUTHORITY_IDENTITY",
+          "namespace": "planner-install-authority-v1",
+          "sha256": "f23f434e03e0d241027f904985128c6abb3cf2539208a62b2789cc738cb17716"
+        },
+        "grant": {
+          "authority_class": "INSTALL",
+          "content_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "276c3cbd27b55ed60b990f86f2e7f4381943ecc29e444d3b322060fa5176f350"
+          },
+          "contract_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "88052978b28b5d24258c6d8108cf4bd5f4e64f0632a8e09cebdb796c8cd6ed24"
+          },
+          "decision_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "definition_id": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "planner-installable-definition-v1",
+            "sha256": "aae9c5b2bd546a98bfc24b9a21253e12bc55f94806963aedcc1442444dc60ff9"
+          },
+          "definition_type": "ROOT_PROOF_CONTRACT_DEFINITION",
+          "delegation": false,
+          "expected_old_reference": null,
+          "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+          "issuer": "QUALIFICATION_AUTHORITY",
+          "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+          "operation": "INSTALL",
+          "parent_event": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-event-v1",
+            "sha256": "03d2a34f1ed94e542a2ee341a0e095ef3486f29f0fd1e6008fbdbf00a2effb5c"
+          },
+          "policy": {
+            "$type": "ArtifactPin",
+            "identity": {
+              "$type": "ArtifactIdentity",
+              "kind": {
+                "$enum": "IdentityKind",
+                "value": "CONTENT_IDENTITY"
+              },
+              "namespace": "raw-file-sha256",
+              "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+            },
+            "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+            "pointer": "",
+            "profile": {
+              "$enum": "HashProfile",
+              "value": "raw-file-sha256"
+            }
+          },
+          "policy_version": "E1-SELECTION-1-P06",
+          "pre_bundle": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-bundle-v1",
+            "sha256": "505cd7a7f07a20667c15cf054111b1f5d825943dae1759291cb5e0f9d23176f5"
+          },
+          "pre_state": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "8e41c11255513323c63aad1aa476e800845f7fa40cd8976d608b216af683ea06"
+          },
+          "provenance": {
+            "kind": "CONTENT_IDENTITY",
+            "namespace": "raw-file-sha256",
+            "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+          },
+          "schema": "PLANNER-INSTALL-GRANT-1",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "subject": {
+            "consumer": "E2-P04/A13",
+            "kind": "TYPED_PROOF_CONTRACT_ROLE",
+            "proof_type": "ROOT_PROOF",
+            "target": "E2-ROOT"
+          },
+          "use_limit": 1,
+          "valid_from": 0,
+          "valid_until": 100
+        },
+        "result": "ACCEPTED",
+        "schema": "PLANNER-INSTALL-AUTHORITY-ADMISSION-1",
+        "trusted_decision": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "raw-file-sha256",
+          "sha256": "9b3b6725231a3178c57e55789f73831ff5772998d213f70ecfc317dc7f05556a"
+        },
+        "trusted_issuer": "QUALIFICATION_AUTHORITY"
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/FINISH_F03_1/install-authority-3.json",
+        "RAW_SHA256": "3714955459c634166e5d88a6493ea104d8e39fbfec40629dd239bf4f5757bc1f"
+      },
+      "SOURCE_POINTER": "/"
+    },
+    {
+      "KIND": "NATIVE_CHECKPOINT_AUTHORITY",
+      "RECORD": {
+        "$type": "GraphEntity",
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "consumed": false,
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-GRANT"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "prospective-use-authority-v1",
+          "sha256": "e80b77439d6dc8d2cdadd65e137de13444283a517aa55136ff72ad8e80d20bf2"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "USE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"choice\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf\"},\"dossier\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-dossier-sha256\",\"sha256\":\"53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1\"},\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"permission\":\"USE\",\"qualification_only\":true,\"scope\":\"E2-QUALIFICATION-ONLY\",\"subject\":\"E2-REENTER\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "966a23b17e754fa28b5de64d979c56a91f75677a8b1d49628bc30dfa9f8e5f67"
+          },
+          "method": "PROSPECTIVE_AUTHORED_INPUT",
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/grant-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/checkpoints/post-root-proof/post-root-proof.json",
+        "RAW_SHA256": "6dcd63b9cb4b6e6b074bd8112f24bf2c570615e1acab38c7afcb63df606ab0e0"
+      },
+      "SOURCE_POINTER": "/bundle/current/entities/0"
+    },
+    {
+      "KIND": "NATIVE_CHECKPOINT_AUTHORITY",
+      "RECORD": {
+        "$type": "GraphEntity",
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "consumed": false,
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-PROSPECTIVE-CHOICE"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "prospective-choice-authority-v1",
+          "sha256": "7669a3d7db260e0141ea539e4a31f87df3100460af646d1d4d7026895cf04a1c"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "DECIDE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"decision\":\"E2-DECIDE\",\"dossier\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-dossier-sha256\",\"sha256\":\"53da6ec10eec4bb05ba229e25be4869315fe5ab1074f4048a28d9b9c95fcd5a1\"},\"issuer\":\"authenticated human user of this session\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"option\":\"ALLOW_QUALIFICATION_MAPPING\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"scope_authority\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed\"},\"sequence\":1}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf"
+          },
+          "method": "PROSPECTIVE_AUTHORED_INPUT",
+          "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/choice-evidence.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "ba2ac22de8be26c3380955f2c36e77c1317ad6d81d788451325c6721cf9c8fb4"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/checkpoints/post-root-proof/post-root-proof.json",
+        "RAW_SHA256": "6dcd63b9cb4b6e6b074bd8112f24bf2c570615e1acab38c7afcb63df606ab0e0"
+      },
+      "SOURCE_POINTER": "/bundle/current/entities/1"
+    },
+    {
+      "KIND": "NATIVE_CHECKPOINT_AUTHORITY",
+      "RECORD": {
+        "$type": "GraphEntity",
+        "consumed": false,
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "qualification-attest-authority",
+          "sha256": "7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "ATTEST"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"members\":{\"attestor\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"GraphEntity\",\"consumed\":false,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":{\"$type\":\"EntityId\",\"value\":\"E2-SYNTHETIC-ATTESTOR:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attestor\",\"sha256\":\"80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"kind\":{\"$enum\":\"EntityKind\",\"value\":\"AUTHORITY\"},\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"permissions\":[{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}],\"produced\":true,\"scope\":\"E2-QUALIFICATION-ONLY\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_until\":100,\"validated\":true,\"validation\":{\"$enum\":\"ValidationState\",\"value\":\"ACCEPTED\"},\"validator\":null},\"native_type\":\"GraphEntity\",\"schema\":\"PLANNER-ATTESTOR-DEFINITION-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"2c351047c6d1d70db5bba80db5b0fc895ce7a708ac09d7d2364d7e68a1249cbc\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/attestor-body.json\"},\"authority\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"GraphEntity\",\"consumed\":false,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":{\"$type\":\"EntityId\",\"value\":\"E2-ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"kind\":{\"$enum\":\"EntityKind\",\"value\":\"AUTHORITY\"},\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"permissions\":[{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}],\"produced\":true,\"scope\":\"E2-QUALIFICATION-ONLY\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_until\":100,\"validated\":true,\"validation\":{\"$enum\":\"ValidationState\",\"value\":\"ACCEPTED\"},\"validator\":null},\"native_type\":\"GraphEntity\",\"schema\":\"PLANNER-ATTEST-AUTHORITY-REFERENCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"94fff2c47ddaa656b3279a42dea31db39ea0cc4829035360e3d7fe84d7b3c4c7\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/authority-body.json\"},\"authority_predicate\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"Predicate\",\"action\":null,\"condition\":null,\"entity\":{\"$type\":\"EntityId\",\"value\":\"E2-ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"expected\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"id\":{\"$type\":\"PredicateId\",\"value\":\"ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"kind\":{\"$enum\":\"PredicateKind\",\"value\":\"AUTHORITY\"},\"knowledge\":null,\"operands\":[],\"other\":null,\"permission\":{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}},\"native_type\":\"Predicate\",\"schema\":\"PLANNER-ATTEST-AUTHORITY-PREDICATE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"41c7e65b0d30ae7ff458fd0d8551209acb76bac15a25775c6bc053bc22bdd9d1\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/authority_predicate-body.json\"},\"source_predicate\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"Predicate\",\"action\":null,\"condition\":null,\"entity\":{\"$type\":\"EntityId\",\"value\":\"E2-SYNTHETIC-ATTESTOR:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"expected\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"id\":{\"$type\":\"PredicateId\",\"value\":\"E2-ATTESTOR-MAY-ATTEST:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"kind\":{\"$enum\":\"PredicateKind\",\"value\":\"AUTHORITY\"},\"knowledge\":null,\"operands\":[],\"other\":null,\"permission\":{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}},\"native_type\":\"Predicate\",\"schema\":\"PLANNER-SOURCE-ATTESTOR-PREDICATE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"8facd8df588c644748d110f5ac5993b7021a873e5020018d4c2c55e15e9501d9\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/source_predicate-body.json\"}},\"operating_authority_requirement\":{\"admission_schema\":\"PLANNER-ATTEST-DEFINITION-ADMISSION-1\",\"authority_identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"automatic_issuance_by_install\":false,\"class\":\"ATTEST\",\"delegation\":false,\"exact_members\":{\"attestor\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20\"},\"authority\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0\"},\"authority_predicate\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db\"},\"source_predicate\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3\"}},\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_from\":0,\"valid_until\":100},\"projection\":{\"entity_provenance\":\"COMMON_SET_PROVENANCE\",\"predicate_provenance\":\"MEMBERSHIP_WITNESS_TO_COMMON_SET_PROVENANCE\",\"standalone_member_activation\":false},\"schema\":\"PLANNER-AUTHENTICATION-DEFINITION-SET-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "072686aaee68ff6f9fa704c45467f93b65cd457955a96200e4578bbe0b0d38a8"
+          },
+          "method": "I03-PROSPECTIVE-DEFINITION-1",
+          "path": "docs/plans/qualification/INSTALLATION_I03_1/authentication-set-body.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/checkpoints/post-root-proof/post-root-proof.json",
+        "RAW_SHA256": "6dcd63b9cb4b6e6b074bd8112f24bf2c570615e1acab38c7afcb63df606ab0e0"
+      },
+      "SOURCE_POINTER": "/bundle/current/entities/2"
+    },
+    {
+      "KIND": "NATIVE_CHECKPOINT_AUTHORITY",
+      "RECORD": {
+        "$type": "GraphEntity",
+        "consumed": false,
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-SYNTHETIC-ATTESTOR:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "qualification-attestor",
+          "sha256": "80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "ATTEST"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"members\":{\"attestor\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"GraphEntity\",\"consumed\":false,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":{\"$type\":\"EntityId\",\"value\":\"E2-SYNTHETIC-ATTESTOR:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attestor\",\"sha256\":\"80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"kind\":{\"$enum\":\"EntityKind\",\"value\":\"AUTHORITY\"},\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"permissions\":[{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}],\"produced\":true,\"scope\":\"E2-QUALIFICATION-ONLY\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_until\":100,\"validated\":true,\"validation\":{\"$enum\":\"ValidationState\",\"value\":\"ACCEPTED\"},\"validator\":null},\"native_type\":\"GraphEntity\",\"schema\":\"PLANNER-ATTESTOR-DEFINITION-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"2c351047c6d1d70db5bba80db5b0fc895ce7a708ac09d7d2364d7e68a1249cbc\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/attestor-body.json\"},\"authority\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"GraphEntity\",\"consumed\":false,\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":{\"$type\":\"EntityId\",\"value\":\"E2-ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"kind\":{\"$enum\":\"EntityKind\",\"value\":\"AUTHORITY\"},\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"permissions\":[{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}],\"produced\":true,\"scope\":\"E2-QUALIFICATION-ONLY\",\"target\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_until\":100,\"validated\":true,\"validation\":{\"$enum\":\"ValidationState\",\"value\":\"ACCEPTED\"},\"validator\":null},\"native_type\":\"GraphEntity\",\"schema\":\"PLANNER-ATTEST-AUTHORITY-REFERENCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"94fff2c47ddaa656b3279a42dea31db39ea0cc4829035360e3d7fe84d7b3c4c7\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/authority-body.json\"},\"authority_predicate\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"Predicate\",\"action\":null,\"condition\":null,\"entity\":{\"$type\":\"EntityId\",\"value\":\"E2-ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"expected\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"id\":{\"$type\":\"PredicateId\",\"value\":\"ATTEST-AUTHORITY:7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"kind\":{\"$enum\":\"PredicateKind\",\"value\":\"AUTHORITY\"},\"knowledge\":null,\"operands\":[],\"other\":null,\"permission\":{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}},\"native_type\":\"Predicate\",\"schema\":\"PLANNER-ATTEST-AUTHORITY-PREDICATE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"41c7e65b0d30ae7ff458fd0d8551209acb76bac15a25775c6bc053bc22bdd9d1\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/authority_predicate-body.json\"},\"source_predicate\":{\"body\":{\"authority_reference\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"binding\":{\"consumer\":\"A09\",\"gate\":\"E2-GATE\",\"receipt_action\":\"TEST-RECEIVE\",\"requirement\":\"E2-EXTERNAL-REQUIREMENT\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"}},\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_definition\":{\"$type\":\"Predicate\",\"action\":null,\"condition\":null,\"entity\":{\"$type\":\"EntityId\",\"value\":\"E2-SYNTHETIC-ATTESTOR:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"expected\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"id\":{\"$type\":\"PredicateId\",\"value\":\"E2-ATTESTOR-MAY-ATTEST:80f82bc3c61ea0dd5cb77f715d2af356b5249d01fc37e6a8c1701102713c7539\"},\"kind\":{\"$enum\":\"PredicateKind\",\"value\":\"AUTHORITY\"},\"knowledge\":null,\"operands\":[],\"other\":null,\"permission\":{\"$enum\":\"AuthorityClass\",\"value\":\"ATTEST\"}},\"native_type\":\"Predicate\",\"schema\":\"PLANNER-SOURCE-ATTESTOR-PREDICATE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"},\"content_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"8facd8df588c644748d110f5ac5993b7021a873e5020018d4c2c55e15e9501d9\"},\"definition_id\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3\"},\"source\":\"docs/plans/qualification/INSTALLATION_I03_1/source_predicate-body.json\"}},\"operating_authority_requirement\":{\"admission_schema\":\"PLANNER-ATTEST-DEFINITION-ADMISSION-1\",\"authority_identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"qualification-attest-authority\",\"sha256\":\"7af52928fbc6b7960e26eb799f97f1e610478a08bec8fed41a3f8af356d4b8ca\"},\"automatic_issuance_by_install\":false,\"class\":\"ATTEST\",\"delegation\":false,\"exact_members\":{\"attestor\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"de754a27fe4e5d5af166641ae0b674814da4e346ac0283ea203855a93b798f20\"},\"authority\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"dc0986e0358c7ebf087714cb8c489328c4f2a7750e7bdf9534c97ac19f4efec0\"},\"authority_predicate\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"fa0f47cc95ffc93654d2eab28dca5e88987d7dc7e9e6b69bf895780e03ea54db\"},\"source_predicate\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"planner-installable-definition-v1\",\"sha256\":\"a8ca10f789e9c2ba32f1666bbb947a5857685fbe752aca6552406c12f7c3e9a3\"}},\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"source\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"AUTHORITY_IDENTITY\"},\"namespace\":\"TEST-rule-owner\",\"sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"},\"valid_from\":0,\"valid_until\":100},\"projection\":{\"entity_provenance\":\"COMMON_SET_PROVENANCE\",\"predicate_provenance\":\"MEMBERSHIP_WITNESS_TO_COMMON_SET_PROVENANCE\",\"standalone_member_activation\":false},\"schema\":\"PLANNER-AUTHENTICATION-DEFINITION-SET-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "072686aaee68ff6f9fa704c45467f93b65cd457955a96200e4578bbe0b0d38a8"
+          },
+          "method": "I03-PROSPECTIVE-DEFINITION-1",
+          "path": "docs/plans/qualification/INSTALLATION_I03_1/authentication-set-body.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "TEST-rule-owner",
+          "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/checkpoints/post-root-proof/post-root-proof.json",
+        "RAW_SHA256": "6dcd63b9cb4b6e6b074bd8112f24bf2c570615e1acab38c7afcb63df606ab0e0"
+      },
+      "SOURCE_POINTER": "/bundle/current/entities/3"
+    },
+    {
+      "KIND": "NATIVE_CHECKPOINT_AUTHORITY",
+      "RECORD": {
+        "$type": "GraphEntity",
+        "consumed": false,
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "P04-A13-ROOT_PROOF-FIXTURE-AUTHORITY:4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "DECIDE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"consumer\":\"E2-P04/A13\",\"excludes\":[\"INSTALL\",\"production semantics\",\"world facts\",\"Action execution\",\"Evidence admission\",\"unrelated proof targets\"],\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_authority_target\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4\"},\"native_permission\":\"DECIDE\",\"no_delegation\":true,\"permitted_operation\":\"Validate exact typed ROOT_PROOF declaration/support contract only\",\"qualification_only\":true,\"schema\":\"PLANNER-BOUNDED-QUALIFICATION-FIXTURE-POLICY-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"source_content_id\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4\"},\"source_path\":\"docs/plans/qualification/FINISH_F02_1/independent-root-source.json\",\"subject\":\"E2-ROOT\",\"valid_until\":100}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+          },
+          "method": "F02_AUTHENTICATED_FIXTURE_POLICY",
+          "path": "docs/plans/qualification/FINISH_F02_1/root-semantic-policy.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/checkpoints/post-root-proof/post-root-proof.json",
+        "RAW_SHA256": "6dcd63b9cb4b6e6b074bd8112f24bf2c570615e1acab38c7afcb63df606ab0e0"
+      },
+      "SOURCE_POINTER": "/bundle/current/entities/6"
+    },
+    {
+      "KIND": "NATIVE_CHECKPOINT_AUTHORITY",
+      "RECORD": {
+        "$type": "GraphEntity",
+        "consumed": false,
+        "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "P04-A13-SLOT_PROOF-FIXTURE-AUTHORITY:ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "DECIDE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"consumer\":\"E2-P04/A13\",\"excludes\":[\"INSTALL\",\"production semantics\",\"world facts\",\"Action execution\",\"Evidence admission\",\"unrelated proof targets\"],\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"issuer_role\":\"QUALIFICATION_AUTHORITY\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"native_authority_target\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107\"},\"native_permission\":\"DECIDE\",\"no_delegation\":true,\"permitted_operation\":\"Validate exact typed SLOT_PROOF declaration/support contract only\",\"qualification_only\":true,\"schema\":\"PLANNER-BOUNDED-QUALIFICATION-FIXTURE-POLICY-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"source_content_id\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107\"},\"source_path\":\"docs/plans/qualification/FINISH_F02_1/slot-source.json\",\"subject\":\"E2-SLOT\",\"valid_until\":100}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+          },
+          "method": "F02_AUTHENTICATED_FIXTURE_POLICY",
+          "path": "docs/plans/qualification/FINISH_F02_1/slot-semantic-policy.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "SOURCE": {
+        "PATH": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/checkpoints/post-root-proof/post-root-proof.json",
+        "RAW_SHA256": "6dcd63b9cb4b6e6b074bd8112f24bf2c570615e1acab38c7afcb63df606ab0e0"
+      },
+      "SOURCE_POINTER": "/bundle/current/entities/8"
+    }
+  ],
+  "SCHEMA_AND_AUTHORITY_VERSION_DISTINCT": true,
+  "SEARCH_METHOD": "rg --files for authority/grant/issuer/trust/delegation/decision paths; source-referenced scoped records; exclude duplicate snapshot embeddings and test-negative fixtures",
+  "SEARCH_SCOPE": "Named E2 human protocols, native checkpoint authority entities, P04 install/ATTEST/root-slot instruments, P05/END/A04 decisions, all retained A14 scope-authentication records, Contract42/Package61 requirements and one explicit E1 delegation. No assertion that external or unretained authority sources do not exist.",
+  "SUPPORTING_RULE_SOURCES": [
+    {
+      "PATH": "docs/plans/qualification/FINISH_F02_1/root-semantic-policy.json",
+      "RAW_SHA256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+    },
+    {
+      "PATH": "docs/plans/qualification/FINISH_F02_1/slot-semantic-policy.json",
+      "RAW_SHA256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+    },
+    {
+      "PATH": "docs/plans/qualification/FINISH_F02_1/sealed-manifest.json",
+      "RAW_SHA256": "c8264129a5b43dfd6dbfbd6513de1a7ae863ff4169879e0971121b79d336fa08"
+    },
+    {
+      "PATH": "docs/plans/qualification/FINISH_F02_1/install-authority-request.json",
+      "RAW_SHA256": "0e2e7bf540b08a64ca0056255d4ab77444f300aafbe8b14c16330b49efa89028"
+    },
+    {
+      "PATH": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_T01_TRUST_ANCESTRY_CLOSURE_1.json",
+      "RAW_SHA256": "380d8a8dfe52359229b90d2ad72c6822e1d1047e543da9c927a0f85c3486d706"
+    },
+    {
+      "PATH": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_DECISION_AUTHORITY_MATERIALIZATION_CLOSURE_1.json",
+      "RAW_SHA256": "2f6811e7e32a583dc2c323586fb1847f4e06eeab91e2b4d0d251efc3b1d809c4"
+    },
+    {
+      "PATH": "docs/plans/qualification/E2_P05_D01_SOURCE_BYTES_DISPATCH_CORRECTION_33/authority-analysis.json",
+      "RAW_SHA256": "a9bd8a4412b4fbc69af1b568a15b9dd092756ca5ad6717c09fb102b0775b8b0a"
+    },
+    {
+      "PATH": "adapter/planner/authentication_installation.py",
+      "RAW_SHA256": "fb13a74090813c70cecbc32e8ca28931a0bec4fe01b1bc1f884962c84142b7bb"
+    },
+    {
+      "PATH": "adapter/planner/installation.py",
+      "RAW_SHA256": "351a7a2cdad0ce5e60c50e2c500a5803b9af1620a0a54f31b42c9419f46f1ccf"
+    },
+    {
+      "PATH": "adapter/temporal_authority.py",
+      "RAW_SHA256": "28a3af975677a485e53a784f65b5ca6269b2ec2e1659f9cdf2a753d1b26dd225"
+    },
+    {
+      "PATH": "adapter/authority_bootstrap.py",
+      "RAW_SHA256": "e981f999af2488f9c290296a0c612d17add7d31dadb4dd25423cf3a15daa0a25"
+    },
+    {
+      "PATH": "adapter/authority_profile.py",
+      "RAW_SHA256": "a6f371fe1b6a4204631195976fbb938238a45ae1445243945aee68ad32c7c0a7"
+    },
+    {
+      "PATH": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/grant-source.json",
+      "RAW_SHA256": "966a23b17e754fa28b5de64d979c56a91f75677a8b1d49628bc30dfa9f8e5f67"
+    },
+    {
+      "PATH": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/choice-evidence.json",
+      "RAW_SHA256": "daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf"
+    },
+    {
+      "PATH": "docs/plans/qualification/INSTALLATION_I03_1/authentication-set-body.json",
+      "RAW_SHA256": "072686aaee68ff6f9fa704c45467f93b65cd457955a96200e4578bbe0b0d38a8"
+    },
+    {
+      "PATH": "docs/plans/qualification/INSTALLATION_I03_1/authentication-set-body.json",
+      "RAW_SHA256": "072686aaee68ff6f9fa704c45467f93b65cd457955a96200e4578bbe0b0d38a8"
+    },
+    {
+      "PATH": "docs/plans/qualification/FINISH_F02_1/root-semantic-policy.json",
+      "RAW_SHA256": "4c86d2373c0c0d9b4cbbcba0fe872830722113d20a3ecea84b63856167069f0b"
+    },
+    {
+      "PATH": "docs/plans/qualification/FINISH_F02_1/slot-semantic-policy.json",
+      "RAW_SHA256": "ae328056b28216e7e52ff629ede832db234a1577b522b11b2f1a92c58d7a3183"
+    }
+  ],
+  "TARGET_CHECKPOINT": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+  },
+  "TARGET_SUBJECT": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "qualification-A15-technical-preparation-subject-v1",
+    "sha256": "befe07aacc6b4c4e203488bce731f265a0520cf145174dca33dbfb4e68b43e9b"
+  }
+}

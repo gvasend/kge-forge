@@ -1,0 +1,25 @@
+{
+  "FILE_HANDLE_EXPECTATION": "Native save closes temporary writer descriptor before publication; read checks close their descriptors; no open descriptor/pipe/cache transported as reader state",
+  "KNOWN_ORCHESTRATOR": {
+    "path": "docs/plans/qualification/E2_P05_D01_FIXTURE_ORACLE_CLOSURE_2/runner_v2.py",
+    "pointer": "",
+    "raw_sha256": "b5fa62e3ce6b88bed0e6fbece60b03484b4391bea78af435a5d98d20268b24dd"
+  },
+  "LAST_ALLOWED_NATIVE_OPERATION": "Successful exact codec.save_bundle; no further Planner transition",
+  "LAST_ALLOWED_POST_SAVE_ACTION": "Exact published artifact checks and immutable qualification handoff publication, then normal return",
+  "LAST_NATIVE_STATE": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "7ec95347f9662731ad5254221c03196fe789eb3435d02947eb09a70077ab66b9"
+  },
+  "MEMORY_ISOLATION_REQUIREMENT": "New reader subprocess/interpreter after wait, explicit cwd/environment/source allowlist, close_fds=True (Python subprocess native default); no writer object graph or forked snapshot/cache",
+  "NO_SUPERVISOR_OR_WRITER_RUN_HERE": true,
+  "ORCHESTRATOR_ENTRYPOINT": "runner_v2.cold_readers; subprocess.run writer completes before reader loop",
+  "PROCESS_EXIT_REQUIREMENT": "Supervisor waits for writer process termination and requires exit code 0",
+  "SAVE_SUCCESS_AND_WRITER_EXIT_SEPARATE": true,
+  "WRITER_EXIT_EVENT_PROOF": "Supervisor wait/returncode evidence; writer-persisted record cannot assert its own future exit"
+}

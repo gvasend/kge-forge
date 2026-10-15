@@ -1,0 +1,42 @@
+{
+  "ARGS": "Exact Package127 CONTENT.ARGV unchanged",
+  "CLOEXEC": "Internal error pipe must disappear on exec; API/source callsite alone does not prove embedded implementation. Atomic noninheritability of created pipes does not prove every preexisting FD safe.",
+  "DECISION_OPTIONS": [],
+  "EARLIEST_BOUNDARY": "If Python is already running as invoking context, fork child contains same interpreter until fork_exec execs prlimit. If Python is newly launched, it is the first executable and needs independently safe upstream inheritance before Python starts. Popen cannot retroactively close descriptors at interpreter startup.",
+  "EXECUTABLE": "/usr/bin/prlimit",
+  "KEYWORD_ARGUMENTS": {
+    "close_fds": true,
+    "cwd": "/",
+    "env": {
+      "HOME": "/nonexistent",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "PATH": "/bin"
+    },
+    "pass_fds": [],
+    "preexec_fn": null,
+    "restore_signals": true,
+    "shell": false,
+    "start_new_session": false,
+    "stderr": "subprocess.PIPE (bounded external drain required)",
+    "stdin": "subprocess.DEVNULL (O_RDONLY backing independently verified)",
+    "stdout": "subprocess.PIPE (bounded external drain required)",
+    "text": false
+  },
+  "MECHANISM": "existing CPython POSIX subprocess.Popen API, candidate only",
+  "NATIVE_CLOSURE": "subprocess.py passes close_fds and sorted keep-set to built-in _posixsubprocess.fork_exec, including internal exec-error descriptor; native C source/build correspondence not found in inspected local locations, not independently proved by Python callsite",
+  "NOT_AN_EXISTING_QUALIFIED_CALLER": true,
+  "NO_IMPLEMENTATION_CREATED": true,
+  "POSIX_SPAWN": "Local subprocess.py lines1584-1594 require not close_fds for fast path; this proposal close_fds=True excludes it",
+  "PREEXEC": "None; do not use Python callback after fork for closure/resource limits; fork-time interpreter/thread deadlock hazard remains source-design consideration",
+  "PYTHON_EXECUTABLE_PIN": {
+    "RAW_SHA256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+    "RESOLVED_PATH": "/usr/bin/python3.8"
+  },
+  "QUALIFICATION_COMPLETE": false,
+  "RESOURCE_GATE": "Unqualified bounded collector/resource/termination context remains separate",
+  "SOURCE_PIN": {
+    "RAW_SHA256": "994d9284d438d44d08bbac73c8e5b2ec4b0e1c992a5ffe15505f6cbc4135015f",
+    "RESOLVED_PATH": "/usr/lib/python3.8/subprocess.py"
+  }
+}

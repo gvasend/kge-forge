@@ -1,0 +1,96 @@
+{
+  "applicability": "Selected native DECISION_INPUT_ACQUISITION Action with a supported dossier and independent typed checks; qualification executor is NON_EFFECTING here",
+  "excluded_outputs": [
+    "new standalone ActionResult ID",
+    "new ValidationInstance ID",
+    "Proof entity",
+    "permission/eligibility Boolean",
+    "recorded human choice",
+    "new authority",
+    "INSTALL event",
+    "P05 execution"
+  ],
+  "failure_policy": "Any mismatch before HEAD replacement aborts; no later step, live repair, new fixture or new authority. Post-publication uncertainty is resolved by reading HEAD under lock and comparing the identical intent.",
+  "operation": "GENERIC_PERSISTED_DOSSIER_MATERIALIZATION",
+  "order": [
+    "Validate exact sealed contract and expected external trust anchor; load pinned pre-bundle and source bytes",
+    "Acquire existing local transaction lock; restore and audit HEAD and native prefix; resolve retry before producer",
+    "For new intent require exact expected bundle/state/head/context/policy and selected unexecuted PREPARE",
+    "Invoke bounded producer on admitted inputs and pinned authored source; capture actual result and independent typed validations",
+    "Validate native result/tuple, provenance, supported check membership, ordered input identities and authority applicability",
+    "Apply unchanged T02 state admission privately; require exact independent result/postcondition oracle",
+    "Encode immutable post-Snapshot as PLANNER-SNAPSHOT-1; compute native SnapshotId",
+    "Construct unchanged native SuppliedResult occurrence event from sequence, pre-Snapshot, parent event, actual result, post-Snapshot ID",
+    "Construct DossierMaterializationBinding for event, trusted pre-bundle and exact new source pins; build updated bundle",
+    "Run full detached-archive replay verifier and occurrence/ancestry/post-state oracles without invoking producer or live validators",
+    "Stage immutable source/archive/event/bundle files, fsync; revalidate all pins and HEAD/pre-state",
+    "Atomically publish existing PLANNER-HEAD-1 with new bundle, previous pre-bundle, command=None; fsync directory; return success"
+  ],
+  "outputs": [
+    "committed PersistenceBundle and native planner-bundle-v1 ID",
+    "native ExecutionEvent and planner-event-v1 ID",
+    "canonical post-Snapshot and planner-snapshot-v1 ID",
+    "full actual SuppliedResult in event.result",
+    "actual KnowledgeRecords and DecisionDossier in post-state",
+    "native ValidationInstances in post-state",
+    "bundle-level DossierMaterializationBinding",
+    "content-addressed archive closure",
+    "HEAD and commit/retry disposition"
+  ],
+  "postconditions": "Complete sealed T02 result/knowledge/dossier/validations and decision readiness; no decision choice, no authority issuance, no other Action execution",
+  "private_precommit_candidate": {
+    "equivalence": "Preflight and publication consume the same canonical native values; recheck full values/source bytes/pre-head under the lock. No independently reconstructed replacement result.",
+    "live_admission_operand": "core.admit_dossier_materialization(pre_bundle.current, actual_supplied, actual_validation_tuple)",
+    "members": [
+      "trusted pre-bundle ID/state/head",
+      "actual supplied result",
+      "actual validation tuple",
+      "source pins and bytes",
+      "T02 post-Snapshot",
+      "native occurrence event",
+      "minimal bundle binding",
+      "updated PersistenceBundle"
+    ],
+    "type": "Frozen internal execution context, never serialized as an event/result field"
+  },
+  "producer_outputs": {
+    "supplied": "Actual native SuppliedResult: ActionId, bounded ActionResult, actual KnowledgeRecord tuple, mandatory expected_snapshot, DecisionDossier",
+    "trust_boundary": "The live operation owns invocation of the qualified producer. A raw result/candidate/expected Snapshot supplied without that invocation is not a live execution API. Native historical replay has a separate verifier path.",
+    "validation_instances": "Actual Tuple[ValidationInstance,...] from independent producer-rule evaluations, never copied from expected oracles"
+  },
+  "producer_retry_limit": "Exactly once durable semantic occurrence; a crash before commit may rerun this NON_EFFECTING producer. No claim of exactly once callback invocation across crashes or distributed writers.",
+  "public_operands": [
+    {
+      "binding": "Trusted exact native bundle identity, current Snapshot, append head, source/policy inventory and context",
+      "name": "pre_bundle",
+      "type": "PersistenceBundle"
+    },
+    {
+      "binding": "External trusted pre-bundle/HEAD anchor, not a newly computed trust claim",
+      "name": "expected_bundle",
+      "type": "ArtifactIdentity[planner-bundle-v1]"
+    },
+    {
+      "binding": "Exactly selected unexecuted decision-input producer in pre-state",
+      "name": "action",
+      "type": "ActionId"
+    },
+    {
+      "binding": "Registered trusted producer bound to current Action/source rules; receives pinned inputs only; no caller-supplied executed/validated Boolean",
+      "name": "producer",
+      "type": "Qualified bounded executor callable"
+    },
+    {
+      "binding": "Exact raw bytes for new source pins; immutable path/profile/content and rule/provenance references",
+      "name": "source_artifacts",
+      "type": "Tuple[(ArtifactPin, bytes), ...]"
+    },
+    {
+      "binding": "Existing no-symlink, local-lock, frozen-E1 and immutable-content constraints",
+      "name": "repo_root / output_dir",
+      "type": "Filesystem roots"
+    }
+  ],
+  "source_admission": "One sealed raw dossier source is enrolled atomically with this event; this is provenance enrollment, not governed definition INSTALL or a new semantic grant",
+  "status": "COMPLETE_PROPOSED_CONTRACT_NOT_IMPLEMENTED_OR_EXECUTED"
+}

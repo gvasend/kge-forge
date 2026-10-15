@@ -1,0 +1,114 @@
+{
+  "EXISTING_SOURCE_FILE_CHANGES": 0,
+  "FINDINGS": [
+    {
+      "DETAIL": "Closed Bubblewrap launcher exists, but metadata preflight failed before payload; no successful worker/reader isolation evidence.",
+      "FINDING_ID": "IR72-ISOLATION",
+      "STATUS": "UNQUALIFIED"
+    },
+    {
+      "DETAIL": "Four rlimits are configured in pre-exec and a shared locked ledger bounds supervisor reservations/bytes/deadlines. Full enforceability is not established because namespace preflight failed; no independent complete runtime cap proof.",
+      "FINDING_ID": "IR72-RESOURCE",
+      "STATUS": "PARTIAL"
+    },
+    {
+      "DETAIL": "No native imports/calls or actual A15 state decode; fake states/events use explicit qualification-fake domains, not historical/native Snapshot claims.",
+      "FINDING_ID": "IR72-NATIVE",
+      "STATUS": "DISABLED"
+    },
+    {
+      "DETAIL": "Fail-closed guards and negative-test definitions exist. Fake-protocol cases were not executed; no qualification claimed.",
+      "FINDING_ID": "IR72-FAILURE",
+      "STATUS": "UNQUALIFIED"
+    },
+    {
+      "DETAIL": "Role APIs require explicit verifier callback and digest-bound grant/subject proof. CLI proof validation does not itself establish live revocation or all phase predicates; an external trusted controller must establish those before any allowed run.",
+      "FINDING_ID": "IR72-AUTHORITY",
+      "STATUS": "PARTIAL"
+    }
+  ],
+  "METHOD": "Separate stdlib AST/source inspection, not implementation success reports",
+  "QUALIFICATION_RESULT": "STATIC_INSPECTION_ONLY; FAKE_PROTOCOL_NOT_QUALIFIED",
+  "SOURCE_FILES": {
+    "adapter/qualification_a15/__init__.py": {
+      "FUNCTIONS": [],
+      "RAW_SHA256": "f40c0b427c2d9ded45b4227608686fe816af99ae226b341b1450178a5aa9f432"
+    },
+    "adapter/qualification_a15/contracts.py": {
+      "FUNCTIONS": [
+        "require",
+        "raw_hash",
+        "_value",
+        "canonical",
+        "parse",
+        "keys",
+        "identity",
+        "validate_identity",
+        "grant_identity",
+        "record",
+        "validate",
+        "read_exact",
+        "private_path",
+        "publish",
+        "compare_complete_output",
+        "validate_synthetic_input",
+        "validate_handoff",
+        "validate_binding",
+        "authorize_proof",
+        "pairs",
+        "reject"
+      ],
+      "RAW_SHA256": "86947bb0561d7406f8c51667250eddf83d56f5d7960eed920f0036aac064f06a"
+    },
+    "adapter/qualification_a15/reader.py": {
+      "FUNCTIONS": [
+        "run_reader",
+        "main"
+      ],
+      "RAW_SHA256": "0e31a082120ac35bd887c1a488ef648fbc9c763d582ddb1e7f3117a220aaadd6"
+    },
+    "adapter/qualification_a15/supervisor.py": {
+      "FUNCTIONS": [
+        "_limits",
+        "_environment",
+        "_sandbox_command",
+        "launch_child",
+        "verify_environment",
+        "observe_child_exit",
+        "run_supervisor",
+        "main",
+        "__init__",
+        "account",
+        "check",
+        "charge",
+        "reserve",
+        "release",
+        "fail_closed"
+      ],
+      "RAW_SHA256": "8dba09b6fb156d01ce8b22e78c3bcb4e41347bb9a047a06630b40c67cd3c8aa7"
+    },
+    "adapter/qualification_a15/worker.py": {
+      "FUNCTIONS": [
+        "record_synthetic_result",
+        "publish_synthetic_bundle",
+        "run_worker",
+        "main"
+      ],
+      "RAW_SHA256": "48e17e2f781ad5545f7ace7be5d741506ccaff4939250d4cb9385be417766707"
+    },
+    "adapter/tests/test_qualification_a15_harness.py": {
+      "FUNCTIONS": [
+        "independent_expected",
+        "prepare_inputs",
+        "setUpClass",
+        "tearDownClass",
+        "test_01_complete_process_protocol",
+        "test_02_exact_schemas_and_authority",
+        "test_03_source_and_dispatch",
+        "test_04_serialization_and_completeness",
+        "test_05_failure_and_isolation"
+      ],
+      "RAW_SHA256": "289dd761908a3577357a14cc386edd1de575834c167fd9cd187d9cb2b2112228"
+    }
+  }
+}

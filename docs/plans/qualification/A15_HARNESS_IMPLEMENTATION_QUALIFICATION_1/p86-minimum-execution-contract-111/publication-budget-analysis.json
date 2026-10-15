@@ -1,0 +1,25 @@
+{
+  "CRITICAL_FAILURE_RESERVE_BYTES": null,
+  "MANDATORY_UNBOUNDED_PRODUCERS": [
+    "Claim/launch canonical schemas",
+    "Independent manager/kernel raw metadata and framing",
+    "Observer startup/stderr/capture",
+    "Secondary cleanup errors",
+    "Final critical audit"
+  ],
+  "MAX_CONCURRENT_PUBLICATION_BYTES": null,
+  "MAX_FAILURE_PATH_BYTES": null,
+  "MAX_NORMAL_PATH_BYTES": null,
+  "NO_ARBITRARY_RESERVE": true,
+  "PARTIAL_WRITE_ACCOUNTING": "Encoded/successfully transferred record bytes are not cumulative bytes submitted to os.write. The sealed emit loop resubmits remaining suffixes on partial writes; that accounting must be independently bounded if included in future publication semantics.",
+  "PAYLOAD_EMIT_DERIVATION": "At most START, BEFORE_EXIT and one except-block error emit. This excludes interpreter startup/stderr and independent capture/control records; source never executed.",
+  "PUBLICATION_BUDGET_COMPLETE": false,
+  "PUBLICATION_CAP_BYTES": 65536,
+  "SERVICE_CAPTURE_CAP_BYTES": 65536,
+  "SERVICE_CAPTURE_PLUS_OTHER_REQUIRED_RECORDS": "65536 + positive envelope/authority/claim/failure bytes exceeds65536 if worst capture retained in same publication budget. Not a complete exact deficit because other record schemas remain unbounded.",
+  "SMALLEST_REPAIR_REQUIREMENT": "Exact closed publication schemas and raw-capture allocation plus protected critical reserve under65536; missing causal evidence must yield INCOMPLETE rather than unverified hash reference or silent truncation. No ceiling increase or full campaign budget import.",
+  "SOURCE_PAYLOAD_ENCODED_RECORD_BOUND_BYTES": 24576,
+  "SOURCE_PAYLOAD_MAX_EMIT_CALLS": 3,
+  "SOURCE_PAYLOAD_PER_RECORD_CEILING_BYTES": 8192,
+  "TOTAL_MAX_PUBLICATION_BYTES": null
+}

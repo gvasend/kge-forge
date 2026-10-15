@@ -1,0 +1,115 @@
+{
+  "ACTUAL_CRASH_OR_CONCURRENCY_TESTS_PASSED": false,
+  "ROWS": [
+    {
+      "CASE": "BEFORE_CLAIM",
+      "CONSUMPTION_STATE": "UNCLAIMED",
+      "DURABLE_EVIDENCE": "denied-entry/injection evidence; no token",
+      "FIRST_CAUSAL_FAILURE": "original entry/injected error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "DURING_CLAIM",
+      "CONSUMPTION_STATE": "RESERVED_OR_UNKNOWN",
+      "DURABLE_EVIDENCE": "permanent possibly empty/partial reservation",
+      "FIRST_CAUSAL_FAILURE": "original reservation/write/barrier error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "AFTER_CLAIM_BEFORE_LAUNCH",
+      "CONSUMPTION_STATE": "CONSUMED_OR_AMBIGUOUS_BLOCKED",
+      "DURABLE_EVIDENCE": "complete or ambiguous claim; no transferable capability",
+      "FIRST_CAUSAL_FAILURE": "original confirmation/epoch/control error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "DURING_LAUNCH",
+      "CONSUMPTION_STATE": "CONSUMED_OUTCOME_UNKNOWN",
+      "DURABLE_EVIDENCE": "attempt/claim retained; server acceptance cannot be assumed",
+      "FIRST_CAUSAL_FAILURE": "original handoff/transport error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "AFTER_LAUNCH_BEFORE_OBSERVATION",
+      "CONSUMPTION_STATE": "CONSUMED_OUTCOME_UNKNOWN",
+      "DURABLE_EVIDENCE": "claimed and attempted records; missing exit remains unknown",
+      "FIRST_CAUSAL_FAILURE": "original observation/timeout error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "AFTER_COMPLETION_BEFORE_AUDIT",
+      "CONSUMPTION_STATE": "CONSUMED_COMPLETION_OBSERVATION_RETAINED",
+      "DURABLE_EVIDENCE": "claim and available parent outcome survive audit failure",
+      "FIRST_CAUSAL_FAILURE": "original audit/publication error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "CONCURRENT_CLAIMANTS",
+      "CONSUMPTION_STATE": "ONE_WINNER_AT_MOST",
+      "DURABLE_EVIDENCE": "one permanent key; loser rejected; witness both participants",
+      "FIRST_CAUSAL_FAILURE": "first actual unexpected error; intentional loser is expected",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "PROCESS_RESTART",
+      "CONSUMPTION_STATE": "CONSUMED_OR_AMBIGUOUS_BLOCKED",
+      "DURABLE_EVIDENCE": "owned store remains, recover reader denies launch",
+      "FIRST_CAUSAL_FAILURE": "original record/state integrity error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "PARTIAL_PUBLICATION",
+      "CONSUMPTION_STATE": "RESERVED_AMBIGUOUS",
+      "DURABLE_EVIDENCE": "no deletion/repair/reset; exact partial evidence",
+      "FIRST_CAUSAL_FAILURE": "original incomplete write/fsync error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "STALE_LOCK",
+      "CONSUMPTION_STATE": "UNAVAILABLE_PENDING_CURRENT_AUTHORITY",
+      "DURABLE_EVIDENCE": "stale lock never treated as unused grant",
+      "FIRST_CAUSAL_FAILURE": "original lock/currentness error",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    },
+    {
+      "CASE": "UNKNOWN_OUTCOME",
+      "CONSUMPTION_STATE": "CONSUMED_UNAVAILABLE",
+      "DURABLE_EVIDENCE": "no assumed completion or retry",
+      "FIRST_CAUSAL_FAILURE": "original unknown outcome",
+      "LAUNCH_PERMISSION": "none on failure/recovery; only original durably verified winner may invoke one callback in success case",
+      "RECOVERY_RULE": "readonly classification; never issue another launch capability",
+      "RETRY_PERMISSION": false,
+      "SECONDARY_FAILURES": "cleanup/accounting/audit failures appended without replacing first"
+    }
+  ]
+}

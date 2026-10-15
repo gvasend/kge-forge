@@ -1,0 +1,801 @@
+{
+  "COUNT": 18,
+  "CRASH_DETAIL": {
+    "AFTER_CLAIM_BEFORE_LAUNCH": "No callback; token cannot reopen",
+    "AFTER_COMPLETION_BEFORE_AUDIT": "Claim remains; outcome observation missing, cannot infer completed audit",
+    "AFTER_DIRECTORY_FSYNC": "Directory barrier complete, readonly confirmation not yet entered",
+    "AFTER_FILE_FSYNC": "File barrier only; directory durability unknown",
+    "AFTER_LAUNCH_BEFORE_OBSERVATION": "Callback expected once; no externally persisted callback-count marker in existing source",
+    "DURING_CLAIM": "Empty reservation; no durability barrier",
+    "DURING_LAUNCH": "Source hook occurs before callback, not proof of OS launch/crash behavior"
+  },
+  "INDEPENDENT_ORACLES_COMPLETE": false,
+  "MODEL_INDEPENDENT_OF_EXECUTION": true,
+  "NO_ACTUAL_BOUND_ORACLE_SEALED": true,
+  "NO_GATE_OUTPUT_USED": true,
+  "ORACLES": [
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "consumed, attempt, observed; duplicate creates no fresh claim",
+      "EXPECTED_DURABLE_STATE": "CONFIRMED_CONSUMED",
+      "EXPECTED_FAILURE_CLASS": "FileExistsError on second request",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 1
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "First valid claim returns consumed; identical duplicate rejected",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "c01a7dc7981e63e80bd613de326dd56a5915286b463c3f87ed15c34c23f16ec4"
+      },
+      "TEST_ID": "T82-FIRST_AND_DUPLICATE_CLAIM"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "No claim/launch audit",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "NONE",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Canonical key equals independent formula; reordering preserves identity",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "6081ff5f0f5f6e4735deabaf507a1e3529322d40b36d7118eb678523058b4bd4"
+      },
+      "TEST_ID": "T82-KEY_IS_INDEPENDENTLY_RECONSTRUCTED_AND_STABLE"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "One winning claim; source result rows identify accepted loser/winner, not ordered deterministically",
+      "EXPECTED_DURABLE_STATE": "ONE_CONFIRMED_CONSUMED",
+      "EXPECTED_FAILURE_CLASS": "loser FileExistsError or BlockingIOError; scheduling dependent",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 1
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Two eligible simultaneous requests admit at most one; healthy source test asserts exactly one accepted",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "34d37b6a16c3adf92b2d4a77cfc65d4c9c162ea5b5e2c299b9aab5dfca8abd27"
+      },
+      "TEST_ID": "T82-CONCURRENT_CLAIMANTS_AT_MOST_ONE"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "First claim retained; restart cannot mint permission",
+      "EXPECTED_DURABLE_STATE": "CONFIRMED_CONSUMED",
+      "EXPECTED_FAILURE_CLASS": "second child rejected, normally FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 1
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "First process accepted; restart refused for same key",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "e5404c161285753cc7f3e4ae0f1ba0e783f988185de61832abeb92040246f142"
+      },
+      "TEST_ID": "T82-PROCESS_RESTART_PRESERVES_CLAIM"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "Partial/complete token retained; no post-exit result file; external callback witness missing",
+      "EXPECTED_DURABLE_STATE": "PARTIAL_OR_CONSUMED_DEPENDING_STAGE",
+      "EXPECTED_FAILURE_CLASS": "child exit77; subsequent FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": {
+          "AFTER_CLAIM_BEFORE_LAUNCH": 0,
+          "AFTER_COMPLETION_BEFORE_AUDIT": 1,
+          "AFTER_DIRECTORY_FSYNC": 0,
+          "AFTER_FILE_FSYNC": 0,
+          "AFTER_LAUNCH_BEFORE_OBSERVATION": 1,
+          "DURING_CLAIM": 0,
+          "DURING_LAUNCH": 0
+        }
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Seven injected exits77; all subsequent claims rejected",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "f85727dcdec986f1b28f0498b75101a5d69c69b3e22e1a8f9c85b3ac43671ecb"
+      },
+      "TEST_ID": "T82-CONTROLLED_CRASH_POINTS_REMAIN_BLOCKED"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "No claimed-state audit; original rejection needs controller witness",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "RuntimeError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Injected before-claim error; inert callback never invoked",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "55d8a613a606f8d0cb5fcee462a6c722b230a7d012f0b670b6ac9645dc4faa5e"
+      },
+      "TEST_ID": "T82-BEFORE_CLAIM_FAILURE_DOES_NOT_LAUNCH"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "No claim audit; qualified controller must retain exact rejection",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "GateError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Wrong raw grant pin rejected before reservation",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "1de5ff06cf3606bbfda44d1d751a5fe9af7c1e2bc83f50f482904f11f674890a"
+      },
+      "TEST_ID": "T82-INVALID_GRANT_PIN"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "No claim audit; never dispatch substituted argv",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "GateError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Unapproved command rejected before reservation",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "2cde34b0e017413692d5bd698940bcb086de8c84775ef689cbd71d212a43fa10"
+      },
+      "TEST_ID": "T82-WRONG_COMMAND"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "Synthetic epoch status remains revoked; no launch",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "GateError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Revoked disposable synthetic epoch rejected",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "e55d94aa821bbd6de01049a07bc7547e9c0aa25d2c28a37994eb201891fd7da1"
+      },
+      "TEST_ID": "T82-REVOKED_EPOCH"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "No claim; authorization ceilings never expanded",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "GateError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "CPU31 mismatches approved synthetic budget30",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "28c2ac200b141bee0f6211d8f1701a0f09a9a007d2927ed27b95b447f12898d0"
+      },
+      "TEST_ID": "T82-RESOURCE_MISMATCH"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "Empty claim plus possible unknown record; recovery launch/retry false",
+      "EXPECTED_DURABLE_STATE": "AMBIGUOUS_RESERVED",
+      "EXPECTED_FAILURE_CLASS": "RuntimeError, then FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "After-reservation injected error leaves empty blocking token; recovery unknown",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "4012f035857e7492898aeecc28c6886f6cf4476209d1cad0c93b5d0348e22c7f"
+      },
+      "TEST_ID": "T82-PARTIAL_AND_CONFLICTING_RECORDS"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "Complete bytes may be visible; file/directory barrier not confirmed; audit write may also fail",
+      "EXPECTED_DURABLE_STATE": "WRITTEN_BUT_DURABILITY_UNCONFIRMED",
+      "EXPECTED_FAILURE_CLASS": "OSError then FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Injected file-fsync failure; no callback and duplicate rejected",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "3303856205a4af68da23986108431b04d0a6312925418655ed9db677400741f7"
+      },
+      "TEST_ID": "T82-FILE_FSYNC_FAILURE_BLOCKS_LAUNCH"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "File flush alone cannot establish entry durability; original failure must remain visible",
+      "EXPECTED_DURABLE_STATE": "FILE_SYNCED_DIRECTORY_UNCONFIRMED",
+      "EXPECTED_FAILURE_CLASS": "OSError then FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Injected directory-fsync failure; no callback and duplicate rejected",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "ed1447e8a7cb70963dd7eab56fa977bb082565c7f7fb285ddb54f2cad8709450"
+      },
+      "TEST_ID": "T82-DIRECTORY_FSYNC_FAILURE_BLOCKS_LAUNCH"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "Consumed token retained; unknown outcome audit expected if its own publication succeeds",
+      "EXPECTED_DURABLE_STATE": "CONSUMED_BARRIERS_COMPLETED",
+      "EXPECTED_FAILURE_CLASS": "GateError then FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Barrier-complete token but confirmation fails; no callback",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "9cc98e1cda53a2aee90d401e5e9e5f09de705c6566ad6411e081a656da9617fe"
+      },
+      "TEST_ID": "T82-INDEPENDENT_REREAD_FAILURE_BLOCKS_LAUNCH"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "consumed/attempt/unknown; never completion or restored authority",
+      "EXPECTED_DURABLE_STATE": "CONFIRMED_CONSUMED",
+      "EXPECTED_FAILURE_CLASS": "RuntimeError then FileExistsError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 1
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Inert callback throws; claim remains consumed and cannot retry",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "497852580944bb80eb8366d5e99e2be69b9f609f5e8d3469e9f3c5456067fd6c"
+      },
+      "TEST_ID": "T82-POST_CONSUMPTION_FAILURE_UNKNOWN_AND_NO_RETRY"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "No trustworthy claim; exception evidence must identify each cause",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "GateError in both subcases",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Unknown permission or altered subject pin independently rejected",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "25cf93811c98f9ba73242a3c60b4f7f3930e33daafe280a3aa3fc86918086ffe"
+      },
+      "TEST_ID": "T82-MISSING_PERMISSIONS_AND_WRONG_SUBJECT"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "Owned synthetic link remains, no escape, store grants unchanged",
+      "EXPECTED_DURABLE_STATE": "NO_CLAIM",
+      "EXPECTED_FAILURE_CLASS": "OSError",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 0
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Symlinked store rejected without claim",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "659e9bdfb60e5fc042839de88ab6e92d9c32f544c6fd188128652ae013cecd5e"
+      },
+      "TEST_ID": "T82-SYMLINK_STORE_REJECTED"
+    },
+    {
+      "COMPLETENESS": "PARTIAL_BOUND_INPUT_AND_OBSERVATION",
+      "DERIVATION_RULE": "Package79 irreversible state/key/exclusive-reservation/durability/concurrency rules, instantiated against sealed source-defined inputs; outcome independent of future gate execution",
+      "EXPECTED_AUDIT_STATE": "synthetic consumed/attempt/observed only; no actual process evidence",
+      "EXPECTED_DURABLE_STATE": "CONFIRMED_CONSUMED",
+      "EXPECTED_FAILURE_CLASS": "NONE; AssertionError if Popen reached",
+      "EXPECTED_LAUNCH_COUNT": {
+        "KIND": "INERT_CALLBACK_INVOCATIONS_NOT_PROBE_LAUNCHES",
+        "VALUE": 1
+      },
+      "EXPECTED_RETRY_COUNT": 0,
+      "EXPECTED_SEMANTIC_RESULT": "Inert callback succeeds while any Popen would fail test",
+      "EXPECTED_VALUE_SCOPE": "Conditional on independently qualified host controls and fresh isolated synthetic state; unconfirmed fsync is UNKNOWN, not proven durable state",
+      "INDEPENDENT_EVIDENCE": [
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+          "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+          "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+        },
+        {
+          "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+          "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+        },
+        {
+          "PATH": "adapter/tests/test_h77_02_launch_gate.py",
+          "RAW_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+        }
+      ],
+      "INDEPENDENT_VERIFICATION": "Reconstruct expected key and state transitions from sealed fixture parameters; qualified observer compares full claim/audit/fault/callback witnesses, not unittest PASS alone",
+      "MISSING": [
+        "Actual sealed fixture parameters/identities and manifest-to-generated-input comparison",
+        "Independent callback-count/fault-origin/full-audit observation and comparison bindings"
+      ],
+      "SPECIFICATION_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-h77-02-synthetic-test-oracle-spec-v1",
+        "sha256": "0b8723efbc1cafa96252fe90f71b69c81f8e247659c014f4dcad2bd58f36d280"
+      },
+      "TEST_ID": "T82-NO_REAL_LAUNCHER_REACHABLE_IN_SYNTHETIC_MODE"
+    }
+  ],
+  "SEMANTIC_SPECIFICATION": "All18 specified; actual identities, independent witness and full comparison remain incomplete"
+}

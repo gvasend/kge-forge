@@ -1,0 +1,17 @@
+{
+  "COMPLETE": false,
+  "CPU_QUOTA": null,
+  "ENFORCEMENT_SCOPE": "Aggregate scheduling bandwidth within service cgroup; not terminal total CPU-seconds budget",
+  "LEGACY_KERNEL_INTERFACES": [
+    "cpu.cfs_quota_us",
+    "cpu.cfs_period_us",
+    "cpuacct.usage",
+    "cpu.stat throttling counters"
+  ],
+  "PERIOD": null,
+  "PERMISSION_REQUIREMENTS": "Manager property application, actual cpu+cpuacct membership and readable kernel accounting; unverified",
+  "PROPERTY_CANDIDATE": "CPUQuota with CPUQuotaPeriodSec; CPUAccounting=yes",
+  "QUOTA_OR_WEIGHT": "Quota candidate; shares/weight alone are not finite ceiling",
+  "TOTAL_CPU_SECONDS_LIMIT": null,
+  "TOTAL_TIME_GAP": "If mandatory, separately qualified controller enforces monitored cpuacct threshold with bounded overshoot or a conservative quota-times-hard-lifetime envelope including periods and stop/finalization; no exact justified values or bound supplied. Quota alone is rejected."
+}

@@ -1,0 +1,21 @@
+{
+  "schema":"deterministic-planner-event-genesis-contract-v1",
+  "genesis_semantics":"authorize qualified canonical state as genesis of a new ledger; never represent pre-genesis operations as events",
+  "eligible_state_contract":["native snapshot","canonical identity","semantic qualification","cold restore","deterministic reproduction","current scope/lineage/provenance","no conflicting ancestry"],
+  "genesis_authority_class":"GENESIS",
+  "authorizing_role":"QUALIFICATION_AUTHORITY or Architect with explicit genesis permission",
+  "genesis_event_contract":{"type":"LINEAGE_GENESIS","parent":null,"pre_state":null,"post_state":"source snapshot state","source_snapshot":"immutable bound identity","scope":"bound","lineage":"new authorized lineage","authority":"GENESIS authority"},
+  "ledger_contract":{"identity":"deterministic from genesis event","root":"genesis event identity","append_head":"genesis event identity","pre_genesis_history":"NOT_REPRESENTED"},
+  "persistence_bundle_contract":{"identity":"deterministic from source snapshot+ledger+genesis","trusted":"qualified state + explicit authority + immutable binding"},
+  "idempotence":"same request returns same lineage; conflicting request fails",
+  "fork_control":"one genesis per snapshot/scope/lineage; distinct lineage requires distinct explicit authority",
+  "invalidation":"invalid source/authority/scope/lineage invalidates genesis, bundle and descendants",
+  "replay":"bundle genesis reproduces source state without pre-genesis history",
+  "cold_restore":"state, ledger, genesis, head, trust and provenance recover exactly",
+  "security_negatives":["arbitrary snapshot","wrong/tampered identity","unauthorized authority","DECIDE/USE/ATTEST substitution","wrong scope/lineage","stale state","conflicting genesis","fabricated history","bundle/state mismatch","ledger/genesis mismatch"],
+  "qualification_requirements":["positive genesis","authority negatives","snapshot binding","idempotence","fork control","persistence","cold restore","replay","invalidation","determinism","T01 append preflight"],
+  "runtime_capability":"begin_event_lineage(snapshot, genesis_authority, scope, lineage) -> trusted PersistenceBundle",
+  "e2_application":{"source_snapshot":"c5494ac40375a0590504a3795968f0a93e04d960473c917c68fa7e769ea239ae","scope":"E2-QUALIFICATION-ONLY","lineage":"E2-CANONICAL-BASELINE-1","required_authority":"GENESIS authority","outputs":["LINEAGE_GENESIS event","trusted PersistenceBundle"]},
+  "human_decision":{"required":true,"ready":true,"subject":"Authorize new trusted event lineage from qualified E2 state","options":["AUTHORIZE_EVENT_GENESIS","DECLINE_EVENT_GENESIS"],"authorize":"permits one bounded E2 genesis; does not attest evidence","decline":"no bundle/genesis; T01-B and P03 remain blocked"},
+  "implementation_ready":true,"events_created":0,"persistence_bundles_created":0,"external_evidence_admitted":false,"t01_b_result":"BLOCKED","e1_artifacts_modified":0,"production_effect":false
+}

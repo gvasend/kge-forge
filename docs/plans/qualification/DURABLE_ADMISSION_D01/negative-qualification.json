@@ -1,0 +1,206 @@
+{
+  "durable_cases": [
+    {
+      "case": "wrong PrepareResult",
+      "expected": "Reject before T02/HEAD",
+      "id": "DA01",
+      "result": "PASS",
+      "test": "test_wrong_native_result_and_output_inventory",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "result not actually executed",
+      "expected": "Reject live API bypass; replay verifier is read-only",
+      "id": "DA02",
+      "result": "PASS",
+      "test": "test_no_raw_or_boolean_live_execution_context",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong pre-state",
+      "expected": "Reject stale/misbound context",
+      "id": "DA03",
+      "result": "PASS",
+      "test": "test_wrong_source_and_pre_bundle",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong parent",
+      "expected": "Reject before append",
+      "id": "DA04",
+      "result": "PASS",
+      "test": "test_wrong_event_parent_position_payload_and_identity",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong post-Snapshot",
+      "expected": "Reject hash/model/whole-state comparison",
+      "id": "DA05",
+      "result": "PASS",
+      "test": "test_archive_missing_wrong_and_no_latest_snapshot_fallback",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "tampered post-state",
+      "expected": "Reject complete T02 projection equality",
+      "id": "DA06",
+      "result": "PASS",
+      "test": "test_rehashed_tampered_state_still_fails_historical_projection",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong event",
+      "expected": "Reject native event identity and binding check",
+      "id": "DA07",
+      "result": "PASS",
+      "test": "test_wrong_event_parent_position_payload_and_identity",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong ledger",
+      "expected": "Reject occurrence mapping",
+      "id": "DA08",
+      "result": "PASS",
+      "test": "test_trusted_ledger_head_and_source_tampering",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "wrong append head",
+      "expected": "Reject exact prefix intent",
+      "id": "DA09",
+      "result": "PASS",
+      "test": "test_foreign_append_head_stops_before_operation",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "validation bound to different Snapshot",
+      "expected": "Reject immutable binding",
+      "id": "DA10",
+      "result": "PASS",
+      "test": "test_validation_subject_inputs_membership_and_currentness",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "missing validation binding",
+      "expected": "Reject complete tuple/reference closure",
+      "id": "DA11",
+      "result": "PASS",
+      "test": "test_binding_missing_tampered_duplicate_orphan_and_extra_source",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "event without result",
+      "expected": "Reject schema or replay effect",
+      "id": "DA12",
+      "result": "PASS",
+      "test": "test_partial_result_event_bundle_and_orphan_files_are_not_head",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "result without event",
+      "expected": "Reject P05 occurrence assurance",
+      "id": "DA13",
+      "result": "PASS",
+      "test": "test_partial_result_event_bundle_and_orphan_files_are_not_head",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "duplicate retry",
+      "expected": "No duplicate durable effect; reject second append and return historical no-op",
+      "id": "DA14",
+      "result": "PASS",
+      "test": "test_exact_retry_before_producer_and_after_descendants",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "conflicting retry",
+      "expected": "Reject effect conflict",
+      "id": "DA15",
+      "result": "PASS",
+      "test": "test_conflicting_validation_retry_and_physical_closure",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "replay creating second occurrence",
+      "expected": "Reject; verify-only replay",
+      "id": "DA16",
+      "result": "PASS",
+      "test": "test_replay_is_read_only_and_cannot_create_second_occurrence",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "source substitution",
+      "expected": "Reject source validation",
+      "id": "DA17",
+      "result": "PASS",
+      "test": "test_trusted_ledger_head_and_source_tampering",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "source boundary drift",
+      "expected": "Reject expected pre-bundle/source equality",
+      "id": "DA18",
+      "result": "PASS",
+      "test": "test_binding_missing_tampered_duplicate_orphan_and_extra_source",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "archive missing after descendant invalidation",
+      "expected": "Reject restore/replay; history cannot be inferred",
+      "id": "DA19",
+      "result": "PASS",
+      "test": "test_missing_historical_archive_after_invalidation",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "orphan archive accepted as occurrence",
+      "expected": "Reject graph binding",
+      "id": "DA20",
+      "result": "PASS",
+      "test": "test_partial_result_event_bundle_and_orphan_files_are_not_head",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "binding tampering",
+      "expected": "Reject trusted bundle hash or semantic binding",
+      "id": "DA21",
+      "result": "PASS",
+      "test": "test_binding_missing_tampered_duplicate_orphan_and_extra_source",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "duplicate binding/member",
+      "expected": "Reject uniqueness",
+      "id": "DA22",
+      "result": "PASS",
+      "test": "test_validation_subject_inputs_membership_and_currentness",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "ordered input reversal",
+      "expected": "Reject sealed ordered input contract; R05 does not declare this tuple unordered",
+      "id": "DA23",
+      "result": "PASS",
+      "test": "test_validation_subject_inputs_membership_and_currentness",
+      "test_layer": "NATIVE_GENERIC_TRANSACTION"
+    },
+    {
+      "case": "historical relabeling",
+      "expected": "Reject authorized replacement labeling",
+      "id": "DA24",
+      "result": "PASS",
+      "test": "historical_label_negatives",
+      "test_layer": "QUALIFICATION_OVERLAY_VALIDATOR"
+    }
+  ],
+  "historical_label_checks": 5,
+  "inherited_A04_24_negatives": "PRESERVED_UNCHANGED; NOT_EXECUTED_IN_D01",
+  "inherited_negative_contract": {
+    "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/negative-contract.json",
+    "pointer": "",
+    "raw_sha256": "164cd1bfdec7137888ed541bce2734442cfc7d89bd86cf67760774d9fecc206c"
+  },
+  "native_generic_cases": 23,
+  "result": "PASS",
+  "scope": "Generic native admission negatives, plus qualification-label preservation. No A04 transaction or END binding occurs."
+}

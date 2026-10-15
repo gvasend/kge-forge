@@ -1,0 +1,41 @@
+{
+  "NO_EXECUTION_PERFORMED": true,
+  "ORDERED_STEPS": [
+    {
+      "POSITION": 1,
+      "STEP": "Invoke exact native save in authorized isolated writer"
+    },
+    {
+      "POSITION": 2,
+      "STEP": "Require successful native return"
+    },
+    {
+      "POSITION": 3,
+      "STEP": "Verify exact published target/path/bytes/hash/native identity"
+    },
+    {
+      "POSITION": 4,
+      "STEP": "Publish exact guarded qualification handoff metadata; close transient handles"
+    },
+    {
+      "POSITION": 5,
+      "STEP": "Supervisor waits and requires writer process exit 0"
+    },
+    {
+      "POSITION": 6,
+      "STEP": "Launch separately sealed independent cold reader"
+    },
+    {
+      "POSITION": 7,
+      "STEP": "Reader reads exact persisted target and authenticates against independent trusted identity"
+    }
+  ],
+  "ORDER_SIGNIFICANCE": "STRICT_RUNTIME_OBLIGATIONS_NOT_REPORT_CHRONOLOGY",
+  "RETRIES": {
+    "before_publication": "No success/handoff gate; retry same exact bundle may create final target",
+    "conflict": "Reject, never overwrite",
+    "identical_retry": "Accept exact nonsymlink existing bytes; no new lifecycle/event/HEAD, no new fsync promised",
+    "reader_before_exit": "Reject independent of target visibility",
+    "writer_failure_after_publication_before_exit": "File may remain, but reader gate fails even if static bytes match; re-establish authorized successful writer/exit/handoff"
+  }
+}

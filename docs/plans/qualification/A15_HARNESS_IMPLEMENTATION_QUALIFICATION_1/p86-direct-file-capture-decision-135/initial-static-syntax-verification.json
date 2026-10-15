@@ -1,0 +1,41 @@
+[
+  {
+    "ARTIFACT": "artifact",
+    "ARGV": [
+      "/bin/bash",
+      "--noprofile",
+      "--norc",
+      "-n",
+      "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/p86-direct-file-capture-decision-135/proposed-direct-file-capture-callsite.sh"
+    ],
+    "RETURN_CODE": 0,
+    "STDERR": "",
+    "MODE": "GRAMMAR_ONLY_NO_COMMAND_EXECUTION",
+    "ENVIRONMENT": {
+      "PATH": "/bin",
+      "LC_ALL": "C",
+      "LANG": "C",
+      "HOME": "/nonexistent"
+    }
+  },
+  {
+    "ARTIFACT": "worker",
+    "ARGV": [
+      "/bin/bash",
+      "--noprofile",
+      "--norc",
+      "-n",
+      "-c",
+      "set -C\numask 077\ngrant=$1\nsubject=$2\nguard=$3\nexpected_claim=$4\nroot=/var/tmp/kge-forge/p124-direct-file-capture-135\nprefix=\"$root/grant-$grant\"\n/bin/sync -- \"$prefix.claim.json\" \"$root\" || exit 125\nactual_guard=$(/usr/bin/sha256sum -- \"$prefix.guard.json\") || exit 125\n[[ ${actual_guard:0:64} == \"$guard\" ]] || exit 125\nactual_claim=$(/usr/bin/sha256sum -- \"$prefix.claim.json\") || exit 125\n[[ ${actual_claim:0:64} == \"$expected_claim\" ]] || exit 125\nprintf '{\"attempt\":1,\"grant_identity_sha256\":\"%s\",\"guard_sha256\":\"%s\",\"no_retry\":true,\"schema\":\"P135-LAUNCH-1\",\"subject_sha256\":\"%s\"}\n' \"$grant\" \"$guard\" \"$subject\" > \"$prefix.launch.json\" || exit 125\n/bin/sync -- \"$prefix.launch.json\" \"$root\" || exit 125\n/usr/bin/prlimit --cpu=60:60 --as=268435456:268435456 --nofile=64:64 -- /bin/bash --noprofile --norc -c 'umask 077\n\"$@\"\nresult=$?\nprintf \"P127_PARENT_EXIT=%s\\n\" \"$result\" >&2\nexit \"$result\"\n' P127_FIXED_PARENT /usr/bin/timeout --signal=KILL 200s /usr/bin/bwrap --unshare-user --uid 1000 --gid 1000 --unshare-pid --unshare-net --unshare-ipc --unshare-uts --cap-drop ALL --die-with-parent --dir /bin --dir /lib --dir /lib/x86_64-linux-gnu --dir /lib64 --dir /dev --dir /proc --dir /work --ro-bind /bin/findmnt /bin/findmnt --ro-bind /lib/x86_64-linux-gnu/ld-2.31.so /lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 --ro-bind /lib/x86_64-linux-gnu/libblkid.so.1.1.0 /lib/x86_64-linux-gnu/libblkid.so.1 --ro-bind /lib/x86_64-linux-gnu/libc-2.31.so /lib/x86_64-linux-gnu/libc.so.6 --ro-bind /lib/x86_64-linux-gnu/libdl-2.31.so /lib/x86_64-linux-gnu/libdl.so.2 --ro-bind /lib/x86_64-linux-gnu/libmount.so.1.1.0 /lib/x86_64-linux-gnu/libmount.so.1 --ro-bind /usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0 /lib/x86_64-linux-gnu/libpcre2-8.so.0 --ro-bind /lib/x86_64-linux-gnu/libpthread-2.31.so /lib/x86_64-linux-gnu/libpthread.so.0 --ro-bind /lib/x86_64-linux-gnu/libselinux.so.1 /lib/x86_64-linux-gnu/libselinux.so.1 --ro-bind /lib/x86_64-linux-gnu/libsmartcols.so.1.1.0 /lib/x86_64-linux-gnu/libsmartcols.so.1 --ro-bind /lib/x86_64-linux-gnu/libudev.so.1.6.17 /lib/x86_64-linux-gnu/libudev.so.1 --ro-bind /lib/x86_64-linux-gnu/ld-2.31.so /lib64/ld-linux-x86-64.so.2 --proc /proc --remount-ro /proc --tmpfs /work --remount-ro / --chdir /work --setenv PATH /bin --setenv LC_ALL C --setenv LANG C -- /bin/findmnt --json --output TARGET,SOURCE,FSTYPE,OPTIONS\ninner_status=$?\nout_bytes=$(/usr/bin/stat --format='%s' -- \"$prefix.stdout.bin\") || exit 125\nerr_bytes=$(/usr/bin/stat --format='%s' -- \"$prefix.stderr.bin\") || exit 125\n[[ $out_bytes =~ ^[0-9]{1,7}$ && $err_bytes =~ ^[0-9]{1,7}$ ]] || exit 125\n[[ $out_bytes -le 4329436 && $err_bytes -le 4329436 ]] || exit 125\nclassification=FAIL\n[[ $inner_status -eq 0 ]] && classification=OBSERVED\n[[ $inner_status -eq 124 || $inner_status -eq 137 ]] && classification=UNKNOWN\n[[ $out_bytes -eq 4329436 || $err_bytes -eq 4329436 ]] && classification=INCOMPLETE\nprintf '{\"classification\":\"%s\",\"grant_identity_sha256\":\"%s\",\"guard_sha256\":\"%s\",\"inner_status\":%s,\"schema\":\"P135-RESULT-1\",\"stderr_bytes\":%s,\"stdout_bytes\":%s,\"subject_sha256\":\"%s\"}\n' \"$classification\" \"$grant\" \"$guard\" \"$inner_status\" \"$err_bytes\" \"$out_bytes\" \"$subject\" > \"$prefix.result.json\" || exit 125\n/bin/sync -- \"$prefix.stdout.bin\" \"$prefix.stderr.bin\" \"$prefix.result.json\" \"$root\" || exit 125\nexit \"$inner_status\"\n"
+    ],
+    "RETURN_CODE": 0,
+    "STDERR": "",
+    "MODE": "GRAMMAR_ONLY_NO_COMMAND_EXECUTION",
+    "ENVIRONMENT": {
+      "PATH": "/bin",
+      "LC_ALL": "C",
+      "LANG": "C",
+      "HOME": "/nonexistent"
+    }
+  }
+]

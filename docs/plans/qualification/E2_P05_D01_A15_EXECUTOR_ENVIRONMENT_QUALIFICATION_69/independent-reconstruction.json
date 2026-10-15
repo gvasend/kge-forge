@@ -1,0 +1,261 @@
+{
+  "CAPABILITIES": [
+    {
+      "CAPABILITY_ID": "C69-CHECKPOINT",
+      "COMPONENTS": [
+        "N69-RESTORE"
+      ],
+      "MISSING_BEHAVIOR": "Native restore exists; A15 start gate integration missing",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-INVALIDATION-CAPTURE",
+      "COMPONENTS": [
+        "N69-INVALIDATION",
+        "N69-RECORD",
+        "R69-V3-CAPTURE"
+      ],
+      "MISSING_BEHAVIOR": "Exactly one record_result call; compare updated DTO/events before save",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-PUBLICATION-HANDOFF",
+      "COMPONENTS": [
+        "N69-PUBLISH",
+        "N69-IMMUTABLE",
+        "R69-A14-WRITER"
+      ],
+      "MISSING_BEHAVIOR": "A15 exact immutable manifest and handoff adapter missing",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-WRITER-EXIT",
+      "COMPONENTS": [
+        "R69-A14-SUPERVISOR",
+        "R69-V3-PROCESSES"
+      ],
+      "MISSING_BEHAVIOR": "Own-child exit observation before readers exists generically, not A15 qualified",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-COLD-READERS",
+      "COMPONENTS": [
+        "R69-A14-READER",
+        "R69-V3-PROCESSES"
+      ],
+      "MISSING_BEHAVIOR": "Eight fresh readers, four per variant, full 20-event/DTO/query comparisons missing",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-ISOLATION",
+      "COMPONENTS": [
+        "R69-A14-SUPERVISOR",
+        "R69-CGROUP",
+        "R69-BARRIER"
+      ],
+      "MISSING_BEHAVIOR": "Exact A15 process/row isolation and enforced filesystem/network boundary unqualified",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-FAILURE-RETRY",
+      "COMPONENTS": [
+        "R69-A14-SUPERVISOR",
+        "N69-PUBLISH"
+      ],
+      "MISSING_BEHAVIOR": "Package61 fail-closed failure map not wired to exact supervisor; no automatic retries",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "PARTIALLY_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-EXACT-SUPERVISOR-WORKER",
+      "COMPONENTS": [],
+      "MISSING_BEHAVIOR": "No established Package61 A15 supervisor/writer/reader executable binding",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "NOT_IMPLEMENTED"
+    },
+    {
+      "CAPABILITY_ID": "C69-ENVIRONMENT-SEAL",
+      "COMPONENTS": [],
+      "MISSING_BEHAVIOR": "No actual A15 executable/launcher permission profile sealed",
+      "REQUIRED_PROCESS_CONTRACT_PIN": {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+        "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+      },
+      "STATUS": "NOT_IMPLEMENTED"
+    }
+  ],
+  "ENVIRONMENT_OBSERVATION_HASH": "84d2c4d45f2872895deea1237c13be2b3b47ee659e07a2fa14959cb4e5ca348a",
+  "IMPLEMENTATION_PLAN_HASH": "f441fd1ea63d41202fefa10633b67124ef07b3c4d561f9d123f4a9911e3aeb80",
+  "INVENTORY_RECONSTRUCTION": [
+    {
+      "FUNCTION_AST": "31f3b7cc44e862d4e692ced64442c640abb8f53afca9875587a8e356e50ff7ea",
+      "ID": "N69-RESTORE",
+      "QUALIFICATION": "IMPLEMENTED_AND_QUALIFIED",
+      "SIGNATURE": "(path, expected_identity, repo_root)",
+      "SOURCE_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "FUNCTION_AST": "ee88cbf098e39b67644162c21f019fe2f73e3fbc6923531478eb30f34e18318c",
+      "ID": "N69-INVALIDATION",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(snapshot, supplied)",
+      "SOURCE_SHA256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+    },
+    {
+      "FUNCTION_AST": "ec4b3ef87575b7630e761f5119a802230db3cb99039fb2d9837409eb25178d22",
+      "ID": "N69-RECORD",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(bundle, supplied, *, snapshot_resolver=None)",
+      "SOURCE_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "FUNCTION_AST": "0752c046dc6168b20fe442c4b0259ed93f69f297d64f7487ac8115b7ee5dd1fd",
+      "ID": "N69-SERIALIZE",
+      "QUALIFICATION": "IMPLEMENTED_AND_QUALIFIED",
+      "SIGNATURE": "(bundle, *, snapshot_resolver=None)",
+      "SOURCE_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "FUNCTION_AST": "7eb5ce324d83cae554100c3f315ce96cd3f3aae11fa2ec308313581496953880",
+      "ID": "N69-PUBLISH",
+      "QUALIFICATION": "IMPLEMENTED_AND_QUALIFIED",
+      "SIGNATURE": "(bundle, output_dir, repo_root, *, snapshot_resolver=None, failure_hook=None)",
+      "SOURCE_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "FUNCTION_AST": "e5dbc066925365e6100b7759d2a222c8c29e346a54a209779e0e3aee888406ba",
+      "ID": "N69-IMMUTABLE",
+      "QUALIFICATION": "IMPLEMENTED_AND_QUALIFIED",
+      "SIGNATURE": "(directory, name, raw)",
+      "SOURCE_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "FUNCTION_AST": "e577f5710c1e7cc5984daaf5910827833617a48f5c2114b07a6c0a452b0ab450",
+      "ID": "N69-RESUME",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(bundle, source_root=None)",
+      "SOURCE_SHA256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+    },
+    {
+      "FUNCTION_AST": "67b20bb827cc2eab6b696b2b15a338835a28c8f4ab100e1370815786ada3cd06",
+      "ID": "N69-USABILITY",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(snapshot, proof)",
+      "SOURCE_SHA256": "f3d95766cc21ec263ab7f6dc8679d821a8a16cdee5c5806de9e28cb34baf830b"
+    },
+    {
+      "FUNCTION_AST": "cf461d48c2fea44641b8ac0436874f73b75a19a1bab99b42d589bd7779c7d404",
+      "ID": "N69-REPLAY",
+      "QUALIFICATION": "IMPLEMENTED_AND_QUALIFIED",
+      "SIGNATURE": "(bundle, *, snapshot_resolver=None, _limit=None)",
+      "SOURCE_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "FUNCTION_AST": "90c01a72e8261232b9179eed798f925ec9a10b27d138e31d9863753cf54d369a",
+      "ID": "R69-A14-SUPERVISOR",
+      "QUALIFICATION": "PARTIALLY_IMPLEMENTED",
+      "SIGNATURE": "(mode, index, seed, ev=None)",
+      "SOURCE_SHA256": "795dfd3fa4491967af94083f59c11a20f1819a1cb09349d18aa4842f8e6b875c"
+    },
+    {
+      "FUNCTION_AST": "21927048368238684218e4a1d0ae8af5f45edde62ac5f3b3448d2bffaf6eeea7",
+      "ID": "R69-A14-WRITER",
+      "QUALIFICATION": "PARTIALLY_IMPLEMENTED",
+      "SIGNATURE": "(spec, scope_verifier)",
+      "SOURCE_SHA256": "998226625deba170b2d90388157c615e8e7af9a0d860485ba7ecad6e18ed4970"
+    },
+    {
+      "FUNCTION_AST": "717f360ecf1639188853f28aba14e61a07dfe7494427a86e58fa7abbd1a96447",
+      "ID": "R69-A14-READER",
+      "QUALIFICATION": "PARTIALLY_IMPLEMENTED",
+      "SIGNATURE": "(spec, supervisor_evidence, scope_verifier, guard_verifier)",
+      "SOURCE_SHA256": "c0faace1290e515df4d2eb6d4b9f7222e3b97cf4f746b0b894f383d2e2f80b2d"
+    },
+    {
+      "FUNCTION_AST": "68dda52ad0cb28bfefa6a7e3d3d945ce3cdcad8b23bd066c6ce0963eb0d1e00c",
+      "ID": "R69-V3-CAPTURE",
+      "QUALIFICATION": "PARTIALLY_IMPLEMENTED",
+      "SIGNATURE": "(subject, bundle, result, error, context)",
+      "SOURCE_SHA256": "1c9fcfdbb8e2f9cd843bbf91625ae288521fbfaae455f8aedf9bd1e1bb894937"
+    },
+    {
+      "FUNCTION_AST": "164b8ccb20adfc0ce2ca418e68eceffc827950772183a2225c1c9b22378b6600",
+      "ID": "R69-V3-PROCESSES",
+      "QUALIFICATION": "PARTIALLY_IMPLEMENTED",
+      "SIGNATURE": "(writer_command, reader_commands, context)",
+      "SOURCE_SHA256": "1c9fcfdbb8e2f9cd843bbf91625ae288521fbfaae455f8aedf9bd1e1bb894937"
+    },
+    {
+      "FUNCTION_AST": "ce4d19cc3e938db691f2b65b33db79b1a6680005dfeaa1fd6d67a955bb6a44b8",
+      "ID": "R69-CGROUP",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(self, base='/sys/fs/cgroup/unified/kge-forge/executor', audit_path=None, signaler=None, termination_seconds=5, grace_seconds=.5, poll_seconds=.05)",
+      "SOURCE_SHA256": "fab608977ebb3b96f7ed4c22e08b8bc05301f3fdc84ce938ff06798748a57a82"
+    },
+    {
+      "FUNCTION_AST": "ec8812526c6aab79be66952c2c90e312cc4cf02496ae0924cf4084556ebd4801",
+      "ID": "R69-BARRIER",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(root, argv)",
+      "SOURCE_SHA256": "0f3cc78de0c6c66a214da222099f852cb9cbfd402628123c8a814e901059686f"
+    },
+    {
+      "FUNCTION_AST": "d55029585ed1452c4e085c40b42cfa0931c6a2bfbdcc6f6f24c59d673031464a",
+      "ID": "R69-PAYLOAD",
+      "QUALIFICATION": "IMPLEMENTED_NOT_QUALIFIED",
+      "SIGNATURE": "(hold_fd)",
+      "SOURCE_SHA256": "dba32679524369186f3aee54b8c1494bc35da14c065f97eca0c326ae338ba2a7"
+    }
+  ],
+  "NATIVE_FUNCTIONS_CALLED": false,
+  "PERMISSION_HASH": "eabe334a4c0a51d3f6a9bc5f0735eb9fcae717d775eba051daf5451c48b7a052",
+  "PROPOSED_SUBJECT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-A15-implementation-test-subject-v1",
+    "sha256": "a79d190bc8ac5668da13107eba275084392e6814873bfdc3b7178e2adbded6c5"
+  },
+  "READINESS": {
+    "A15_CAPTURE_DECISION_READY": "NO",
+    "A15_EXECUTION_DECISION_READY": "NO",
+    "A15_NORMATIVE_MANDATE_EFFECTIVE": "YES",
+    "CHARTER_EFFECTIVE": "YES",
+    "ENVIRONMENT_PROFILE_SEALED": "NO",
+    "EXECUTABLE_IDENTITY_SEALED": "NO",
+    "IMPLEMENTATION_INVENTORY_COMPLETE": "YES",
+    "IMPLEMENTATION_TEST_AUTHORITY_READY": "NO",
+    "RESOURCE_PERMISSIONS_VERIFIED": "NO (current read/DAC observations only; future profile unsealed)",
+    "SUPERVISOR_WORKER_QUALIFIED": "NO"
+  },
+  "RESULT": "PASS_STATIC",
+  "VARIANT_BINDING_HASH": "8a42ac772c7ecbf827f7da4b2b3cb373b4e830efa4db8ba2e45bc8536ce492a2"
+}

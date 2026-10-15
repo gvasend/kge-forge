@@ -1,0 +1,138 @@
+{
+  "ARGV0": "codex-linux-sandbox",
+  "BOOLEAN_FLAGS": [
+    {
+      "FLAG": "--apply-seccomp-then-exec",
+      "PRESENT": true
+    },
+    {
+      "FLAG": "--managed-network",
+      "PRESENT": false
+    },
+    {
+      "FLAG": "--use-legacy-landlock",
+      "PRESENT": false
+    }
+  ],
+  "COMMAND_BODY_OR_ENVIRONMENT_COPIED": false,
+  "CURRENT_ENFORCER_IDENTIFICATION": "Local Codex linux-sandbox entrypoint in packaged app-server executable; managed permission profile applied before command exec",
+  "EXECUTABLE_GID": 1000,
+  "EXECUTABLE_MODE": "0o755",
+  "EXECUTABLE_RAW_SHA256": "50ed828f357c655a3c82054d346cab8434f24901f14ec19b8267571bdd008b38",
+  "EXECUTABLE_UID": 1000,
+  "HISTORICAL_PACKAGE72_ATTRIBUTION": "Current inspected execution context; original Package72 outer argv/filter/owner assignment was not recorded. Same host/runtime indicators support a hypothesis, not an exact historical filter reconstruction.",
+  "OBSERVATION_TIME_UTC": "2026-10-09T16:33:27.089169+00:00",
+  "PROCESS_ANCESTRY": [
+    {
+      "COMM": "python3",
+      "EXE": "/usr/bin/python3.8",
+      "PID": 2,
+      "PPID": 1,
+      "SECURITY_FIELDS": [
+        "Uid:\t1000\t1000\t1000\t1000",
+        "Gid:\t1000\t1000\t1000\t1000",
+        "NSpid:\t2",
+        "CapEff:\t0000000000000000",
+        "CapBnd:\t0000000000000000",
+        "NoNewPrivs:\t1",
+        "Seccomp:\t2"
+      ]
+    },
+    {
+      "COMM": "codex",
+      "EXE": "/home/gvasend/.codex/packages/app-server-daemon/releases/0.162.0-x86_64-unknown-linux-musl/bin/codex",
+      "PID": 1,
+      "PPID": 0,
+      "SECURITY_FIELDS": [
+        "Uid:\t1000\t1000\t1000\t1000",
+        "Gid:\t1000\t1000\t1000\t1000",
+        "NSpid:\t1",
+        "CapEff:\t0000000000000000",
+        "CapBnd:\t0000000000000000",
+        "NoNewPrivs:\t1",
+        "Seccomp:\t2"
+      ]
+    }
+  ],
+  "RELEASE_PATH_VERSION": "0.162.0-x86_64-unknown-linux-musl",
+  "SELECTED_LAUNCH_OPTIONS": {
+    "--command-cwd": "/home/gvasend/app/kge-forge",
+    "--permission-profile": {
+      "file_system": {
+        "entries": [
+          {
+            "access": "read",
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "root"
+              }
+            }
+          },
+          {
+            "access": "write",
+            "path": {
+              "path": "/home/gvasend/app/kge-forge",
+              "type": "path"
+            }
+          },
+          {
+            "access": "write",
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "slash_tmp"
+              }
+            }
+          },
+          {
+            "access": "write",
+            "path": {
+              "type": "special",
+              "value": {
+                "kind": "tmpdir"
+              }
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "/home/gvasend/app/kge-forge/.git",
+              "type": "path"
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "/home/gvasend/app/kge-forge/.agents",
+              "type": "path"
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "/home/gvasend/app/kge-forge/.codex",
+              "type": "path"
+            }
+          },
+          {
+            "access": "read",
+            "missing_path_behavior": "skip",
+            "path": {
+              "path": "/home/gvasend/app/kge-forge/.aws",
+              "type": "path"
+            }
+          }
+        ],
+        "type": "restricted"
+      },
+      "network": "restricted",
+      "type": "managed"
+    },
+    "--sandbox-policy-cwd": "/home/gvasend/app/kge-forge"
+  },
+  "VISIBLE_OUTER_EXECUTABLE": "/home/gvasend/.codex/packages/app-server-daemon/releases/0.162.0-x86_64-unknown-linux-musl/bin/codex"
+}

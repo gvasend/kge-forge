@@ -1,0 +1,256 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "N12_original_expected_state": "No native result accepted; ledger/knowledge not fabricated",
+  "N13_original_expected_state": "Reject wrong event/result; knowledge/root/slot unchanged",
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "cases": [
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; current selection/result-source contract exact",
+      "id": "A03-PROSPECTIVE-N01",
+      "layer": "Native result admission / sealed input guard",
+      "mutation": "Substitute CHECK/COLLECT action/source declaration",
+      "name": "wrong_A03_input",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; result differs from bounded outcome contract",
+      "id": "A03-PROSPECTIVE-N02",
+      "layer": "Native gates.validate_result",
+      "mutation": "Use FAIL instead of declared PASS",
+      "name": "wrong_result",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; exact inventory and unique KnowledgeIds required",
+      "id": "A03-PROSPECTIVE-N03",
+      "layer": "Native gates.validate_result",
+      "mutation": "Wrong/missing/extra knowledge output or producer",
+      "name": "wrong_output",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; expected native parent continuity",
+      "id": "A03-PROSPECTIVE-N04",
+      "layer": "Native ledger replay / sealed event oracle",
+      "mutation": "Use foreign/non-null first parent or wrong second parent",
+      "name": "wrong_parent",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; supplied result pre-state mismatch",
+      "id": "A03-PROSPECTIVE-N05",
+      "layer": "Native core.apply_result",
+      "mutation": "Supply a stale/foreign expected_snapshot",
+      "name": "wrong_pre_state",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; event identity or admitted transition mismatch",
+      "id": "A03-PROSPECTIVE-N06",
+      "layer": "Native event identity/replay / sealed oracle",
+      "mutation": "Change typed supplied result while retaining trusted event/bundle identity",
+      "name": "wrong_event_payload",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; start bundle/events lineage coordinate differs",
+      "id": "A03-PROSPECTIVE-N07",
+      "layer": "Native bundle trust / sealed ledger coordinate",
+      "mutation": "Move event into another bundle/initial/source set",
+      "name": "wrong_ledger",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; exact two-event chronology and sequence",
+      "id": "A03-PROSPECTIVE-N08",
+      "layer": "Native event replay / sealed event oracle",
+      "mutation": "Skip/reverse/duplicate sequence position",
+      "name": "wrong_append_position",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; no native operating authority is required or authorized for this fixture",
+      "id": "A03-PROSPECTIVE-N09",
+      "layer": "Authenticated scope/fixture boundary",
+      "mutation": "Use prior P03/GENESIS/INSTALL/USE grant instead of selected scope decision, or add an operating authority to CHECK/COLLECT",
+      "name": "wrong_authority",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; exact source/state/capture scope",
+      "id": "A03-PROSPECTIVE-N10",
+      "layer": "Sealed start/context guard and native provenance",
+      "mutation": "Change E2-QUALIFICATION-ONLY",
+      "name": "wrong_scope",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; prospective lineage identity exact",
+      "id": "A03-PROSPECTIVE-N11",
+      "layer": "Sealed start/context guard and native bundle identity",
+      "mutation": "Use original or foreign lineage",
+      "name": "wrong_lineage",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; exact prospective generation",
+      "id": "A03-PROSPECTIVE-N12",
+      "layer": "Sealed start/source guard",
+      "mutation": "Use prior or foreign generation",
+      "name": "wrong_generation",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; exact result/source binding or raw pin mismatch",
+      "id": "A03-PROSPECTIVE-N13",
+      "layer": "Native result inventory / physical pins",
+      "mutation": "Change KnowledgeRecord.provenance or source bytes",
+      "name": "wrong_provenance",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; correct name does not establish identity/membership",
+      "id": "A03-PROSPECTIVE-N14",
+      "layer": "Native ledger identity/parent replay / mapping guard",
+      "mutation": "Supply a same-named event from a different lineage",
+      "name": "foreign_event",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; oracle is not an occurred event, no occurrence PASS",
+      "id": "A03-PROSPECTIVE-N15",
+      "layer": "Occurrence evidence admission",
+      "mutation": "Offer only expected event descriptors without actual native writer/admission/persisted event artifacts",
+      "name": "event_without_actual_A03_admission",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; SnapshotId is not event identity or native occurrence",
+      "id": "A03-PROSPECTIVE-N16",
+      "layer": "END prospective mapping guard",
+      "mutation": "Offer expected/actual post Snapshot only",
+      "name": "snapshot_as_occurrence",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; no typed ledger event payload/membership",
+      "id": "A03-PROSPECTIVE-N17",
+      "layer": "END prospective mapping guard",
+      "mutation": "Offer PASS/selection/result label/report only",
+      "name": "report_as_occurrence",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; original remains UNPROVEN",
+      "id": "A03-PROSPECTIVE-N18",
+      "layer": "END qualification labeling guard",
+      "mutation": "Change ORIGINAL_HISTORICAL_OCCURRENCE to PROVEN or claim recovery",
+      "name": "prospective_labeled_historical",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; separate replacement binding only",
+      "id": "A03-PROSPECTIVE-N19",
+      "layer": "END identity-domain guard",
+      "mutation": "Populate original historical event slot or splice prospective event into original P04 ancestry",
+      "name": "prospective_bound_as_original_identity",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; exact start bytes/ledger/knowledge unchanged",
+      "id": "A03-PROSPECTIVE-N20",
+      "layer": "Native typed boundary and occurrence guard",
+      "mutation": "Use select/recompute trace as result/completion, with no SuppliedResult",
+      "name": "selection_as_execution_N12",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT wrong event/result; knowledge/root/slot/ledger unchanged",
+      "id": "A03-PROSPECTIVE-N21",
+      "layer": "Native typed SuppliedResult boundary",
+      "mutation": "Submit Action/output declaration/KnowledgeRecord itself instead of typed actual SuppliedResult",
+      "name": "output_declaration_as_result_N13",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT; allowlisted authored input provider and native admission evidence required",
+      "id": "A03-PROSPECTIVE-N22",
+      "layer": "Comparison-only input separation",
+      "mutation": "Read expected-results/events as provider or submit an oracle event directly as actual evidence",
+      "name": "oracle_loaded_as_operand",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT duplicate identifier; unordered fields are not multisets",
+      "id": "A03-PROSPECTIVE-N23",
+      "layer": "Native unique/supplied-result validation",
+      "mutation": "Submit duplicate identical knowledge record identities",
+      "name": "duplicate_KnowledgeId",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    },
+    {
+      "base": "Isolated copy of presealed start or relevant expected boundary, never canonical target",
+      "expected": "REJECT stale pre-state/parent; no third semantic event",
+      "id": "A03-PROSPECTIVE-N24",
+      "layer": "Native codec.commit_event current parent guard",
+      "mutation": "Resubmit a pre-commit operand against head after success",
+      "name": "repeat_committed_command",
+      "on_rejection": "No durable successor/event/knowledge; prior committed bytes/head unchanged",
+      "qualification_status": "SEALED_NOT_EXECUTED"
+    }
+  ],
+  "comparison_only": true,
+  "count": 24,
+  "mapping_negatives_layer": "Qualification evidence manifest/acceptance guard, not invented native END API",
+  "not_a_P05_execution": true,
+  "schema": "E2-P05-A03-PROSPECTIVE-NEGATIVE-CONTRACT-1",
+  "wrong_parent_mutation": "One dimension at a time; retain trusted expected bundle/event identity; attacker rehash is not a new trust anchor"
+}

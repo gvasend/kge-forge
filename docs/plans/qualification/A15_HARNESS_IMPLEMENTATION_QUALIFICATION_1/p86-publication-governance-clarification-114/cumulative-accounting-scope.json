@@ -1,0 +1,39 @@
+{
+  "CANDIDATES": [
+    {
+      "CONSEQUENCE": "Could multiply total by record count; not proposed",
+      "SCOPE": "per record",
+      "SOURCE_SUPPORT": "Existing source does not explicitly select this scope"
+    },
+    {
+      "CONSEQUENCE": "Could multiply65536 by producers; not proposed",
+      "SCOPE": "per producer",
+      "SOURCE_SUPPORT": "Existing source does not explicitly select this scope"
+    },
+    {
+      "CONSEQUENCE": "Restart could reset budget; not proposed",
+      "SCOPE": "per observer instance",
+      "SOURCE_SUPPORT": "Existing source does not explicitly select this scope"
+    },
+    {
+      "CONSEQUENCE": "Stable non-resetting envelope, independently verifiable; proposed",
+      "SCOPE": "per issued grant",
+      "SOURCE_SUPPORT": "Existing source does not explicitly select this scope"
+    },
+    {
+      "CONSEQUENCE": "Equivalent only when exact one-grant/one-attempt binding maintained; proposed as bound scope",
+      "SCOPE": "per one-attempt campaign",
+      "SOURCE_SUPPORT": "Existing source does not explicitly select this scope"
+    },
+    {
+      "CONSEQUENCE": "Within that one grant and authorized collection interval; included, not all host/global audit forever",
+      "SCOPE": "all observer/control-plane publication",
+      "SOURCE_SUPPORT": "Existing source does not explicitly select this scope"
+    }
+  ],
+  "END": "Permanent finalization or authorized evidence window closure; no further writing under this attempt. Final audit records success/failure/incomplete only for that interval, not global host history.",
+  "OBSERVER_WINDOW": "Retained total25 seconds; no new post-deadline extension authorized",
+  "PROPOSED_SCOPE": "Single issued probe grant and its one authorized attempt; all scoped producer publications cumulatively precharged; all observer instances/restarts share same durable ledger",
+  "RESET_BEHAVIOR": "No budget refund from failure, deletion, overwrite, restart, collection, replay or new unit name. No authority reset.",
+  "START": "First authorized attributable publication, including durable claim/launch preparation; all later writes use same grant allocation"
+}

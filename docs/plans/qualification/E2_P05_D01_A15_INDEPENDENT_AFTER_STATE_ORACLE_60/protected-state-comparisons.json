@@ -1,0 +1,312 @@
+[
+  {
+    "EVENT_PREFIX_PRESERVED": true,
+    "FRAME": {
+      "EXACT_EXPECTED_CHANGED_FIELDS": [
+        {
+          "COLLECTION": "proof_contracts",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-TypedProofContract-v1",
+            "sha256": "10f96412ca6b0096f8fdf83878b123728946d18049e7ce2d432d8b65512a62ec"
+          },
+          "RULE": "Own provenance equality"
+        },
+        {
+          "COLLECTION": "typed_proofs",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-TypedProof-v1",
+            "sha256": "07a9656600dd8fa9ba547047eb2203f7a273c1f33636edc81048d28d307bf646"
+          },
+          "RULE": "Own provenance equality"
+        },
+        {
+          "COLLECTION": "entities",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "EntityId",
+            "value": "P04-A13-INDEPENDENT-ROOT-SOURCE-1"
+          },
+          "RULE": "Source entity provenance equality"
+        },
+        {
+          "COLLECTION": "installed_definitions",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "INSTANCE_IDENTITY"
+            },
+            "namespace": "planner-installed-definition-v1",
+            "sha256": "78b11bb2492e7fa5da9d51fb201b72c6255130cafe667996696df65ce8691c7b"
+          },
+          "RULE": "Exact source membership in installed support IDs"
+        },
+        {
+          "COLLECTION": "installed_definitions",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "INSTANCE_IDENTITY"
+            },
+            "namespace": "planner-installed-definition-v1",
+            "sha256": "88fb081705f75b432e4c6791170082866fbc425c1becc2c3771310b38f9adc18"
+          },
+          "RULE": "Exact source membership in installed support IDs"
+        }
+      ],
+      "EXPECTED_NEW_REEVALUATION": {
+        "$type": "ReevaluationRecord",
+        "action": {
+          "$type": "ActionId",
+          "value": "E2-FINISH"
+        },
+        "dependencies": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "e7bb37c91329dd58c80c14ac4319fbd1f4e562ef6c59a65bcad99ccf8ed6f8a4"
+          }
+        ],
+        "new_state": {
+          "$enum": "ActionState",
+          "value": "BLOCKED"
+        },
+        "old_state": {
+          "$enum": "ActionState",
+          "value": "ACTIONABLE"
+        },
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"asserts_execution\":false,\"asserts_satisfaction\":false,\"consumer\":\"E2-P04/A13\",\"expected_value\":\"Actual accepted/current E2-K-REENTER PASS from completed E2-REENTER\",\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":\"P04-A13-SLOT-SOURCE-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"proposition\":{\"id\":\"E2-SLOT-PROPOSITION\",\"production\":false,\"statement\":\"The current accepted E2-REENTER result supplies the bounded qualification value required by E2-SLOT.\",\"type\":\"synthetic typed qualification proposition\"},\"provenance_origin\":{\"artifact\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_ROOT_SLOT_FIXTURE_AUTHORITY_1.json\",\"identity\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"3cb3f97dd589433de5cb6af84d11ba3d8b4c967f1fef8513b3545f07f7e146b0\"},\"origin_id\":\"PC02:SLOT_RESULT_DECLARATION\",\"section\":\"/slot_proposition\"},\"qualification_only\":true,\"role\":\"SLOT_PROOF\",\"schema\":\"PLANNER-QUALIFICATION-PROPOSITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"support_selector\":{\"expected_output_contract\":{\"$type\":\"KnowledgeRecord\",\"evidence\":[],\"id\":{\"$type\":\"KnowledgeId\",\"value\":\"E2-K-REENTER\"},\"outcome\":{\"$enum\":\"ActionResult\",\"value\":\"PASS\"},\"producer\":{\"$type\":\"ActionId\",\"value\":\"E2-REENTER\"},\"provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"authored_initial_premise\\\":true,\\\"generation\\\":\\\"E2-P03-PROSPECTIVE-GENERATION-1\\\",\\\"historical_reconstruction\\\":false,\\\"lineage\\\":\\\"E2-P03-PROSPECTIVE-QUALIFICATION-1\\\",\\\"qualification_type\\\":\\\"PROSPECTIVE_REPLACEMENT\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\",\\\"scope_decision\\\":\\\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\\\",\\\"template_provenance\\\":{\\\"$type\\\":\\\"Provenance\\\",\\\"excerpt\\\":\\\"{\\\\\\\"acquisition_contract_complete\\\\\\\":true,\\\\\\\"branch\\\\\\\":\\\\\\\"TEST-ROOT\\\\\\\",\\\\\\\"expected_producer\\\\\\\":\\\\\\\"TEST-rule-owner\\\\\\\",\\\\\\\"gate\\\\\\\":\\\\\\\"TEST-GATE\\\\\\\",\\\\\\\"lineage\\\\\\\":\\\\\\\"TEST/lineage\\\\\\\",\\\\\\\"missing_proposition\\\\\\\":\\\\\\\"Authenticated governing rule for target operation; no rule currently received\\\\\\\",\\\\\\\"positive_admission\\\\\\\":\\\\\\\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\\\\\\\",\\\\\\\"qualification_only\\\\\\\":true,\\\\\\\"receipt_action\\\\\\\":\\\\\\\"TEST-RECEIVE\\\\\\\",\\\\\\\"reentry\\\\\\\":[\\\\\\\"TEST-ACTION\\\\\\\"],\\\\\\\"requirement\\\\\\\":\\\\\\\"TEST-RULE\\\\\\\",\\\\\\\"schema\\\\\\\":\\\\\\\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\\\\\\\",\\\\\\\"scope\\\\\\\":\\\\\\\"TEST/scope\\\\\\\"}\\\",\\\"identity\\\":{\\\"$type\\\":\\\"ArtifactIdentity\\\",\\\"kind\\\":{\\\"$enum\\\":\\\"IdentityKind\\\",\\\"value\\\":\\\"CONTENT_IDENTITY\\\"},\\\"namespace\\\":\\\"raw-file-sha256\\\",\\\"sha256\\\":\\\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\\\"},\\\"method\\\":\\\"SYNTHETIC_CONTRACT\\\",\\\"path\\\":\\\"source.json\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\",\\\"section\\\":\\\"/\\\"}}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd\"},\"method\":\"PROSPECTIVE_AUTHORED_INPUT\",\"path\":\"docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"state\":{\"$enum\":\"KnowledgeState\",\"value\":\"KNOWN_COMPLETE\"},\"statement\":\"Bounded reentry mapping produced\",\"validation\":{\"$enum\":\"ValidationState\",\"value\":\"ACCEPTED\"}},\"knowledge\":\"E2-K-REENTER\",\"producer\":\"E2-REENTER\"},\"target\":\"E2-SLOT\",\"valid_until\":100}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107"
+          },
+          "method": "F02_SEALED_PROSPECTIVE_DEFINITION",
+          "path": "docs/plans/qualification/FINISH_F02_1/slot-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "support_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "fb87ef57424e4c7c7fabf49212a4f79f52e4d05dc664a2a64ccd93fb1a159e94"
+        }
+      },
+      "FRAME_ORACLE_COMPLETE_FOR_EXPECTED_STATE": true,
+      "IMMUTABLE_EVENT_PREFIX": true,
+      "UNCHANGED_COLLECTIONS": [
+        "$type",
+        "actions",
+        "assertions",
+        "boundaries",
+        "context",
+        "decisions",
+        "evidence_requirements",
+        "external_gates",
+        "goals",
+        "ingress_contracts",
+        "knowledge",
+        "predicates",
+        "receipt_admissions",
+        "receipt_observations",
+        "validation_contracts",
+        "validation_instances",
+        "validation_results",
+        "validation_support_contracts",
+        "validation_support_records",
+        "validation_transaction_contracts"
+      ],
+      "UNCHANGED_POLICY_SOURCES_CONTEXT_KNOWLEDGE": true
+    },
+    "VARIANT": "PROPOSED-ROOT_PROOF-PROVENANCE-WITHDRAWAL"
+  },
+  {
+    "EVENT_PREFIX_PRESERVED": true,
+    "FRAME": {
+      "EXACT_EXPECTED_CHANGED_FIELDS": [
+        {
+          "COLLECTION": "proof_contracts",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-TypedProofContract-v1",
+            "sha256": "02b2c4c3f0faf45a9d111a27d8cdec7252a8f3e2156a8fd29b2e1cf6d2510315"
+          },
+          "RULE": "Own provenance equality"
+        },
+        {
+          "COLLECTION": "typed_proofs",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-TypedProof-v1",
+            "sha256": "c0bc73616be1d5b4e65ceb6a6dca986982762ddf9cbf6fd30041085d860c00f7"
+          },
+          "RULE": "Own provenance equality"
+        },
+        {
+          "COLLECTION": "entities",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "EntityId",
+            "value": "P04-A13-SLOT-SOURCE-1"
+          },
+          "RULE": "Source entity provenance equality"
+        },
+        {
+          "COLLECTION": "installed_definitions",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "INSTANCE_IDENTITY"
+            },
+            "namespace": "planner-installed-definition-v1",
+            "sha256": "78b11bb2492e7fa5da9d51fb201b72c6255130cafe667996696df65ce8691c7b"
+          },
+          "RULE": "Exact source membership in installed support IDs"
+        },
+        {
+          "COLLECTION": "installed_definitions",
+          "EXPECTED": "STALE",
+          "FIELD": "validation",
+          "ID": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "INSTANCE_IDENTITY"
+            },
+            "namespace": "planner-installed-definition-v1",
+            "sha256": "ea1cc55bf6753e978a346143732ae95a4a824a1a757f18ccf162e0d1c5a65910"
+          },
+          "RULE": "Exact source membership in installed support IDs"
+        }
+      ],
+      "EXPECTED_NEW_REEVALUATION": {
+        "$type": "ReevaluationRecord",
+        "action": {
+          "$type": "ActionId",
+          "value": "E2-FINISH"
+        },
+        "dependencies": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107"
+          }
+        ],
+        "new_state": {
+          "$enum": "ActionState",
+          "value": "BLOCKED"
+        },
+        "old_state": {
+          "$enum": "ActionState",
+          "value": "ACTIONABLE"
+        },
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"asserts_execution\":false,\"asserts_satisfaction\":false,\"consumer\":\"E2-P04/A13\",\"expected_value\":\"Actual accepted/current E2-K-REENTER PASS from completed E2-REENTER\",\"generation\":\"E2-P03-PROSPECTIVE-GENERATION-1\",\"id\":\"P04-A13-SLOT-SOURCE-1\",\"lineage\":\"E2-P03-PROSPECTIVE-QUALIFICATION-1\",\"proposition\":{\"id\":\"E2-SLOT-PROPOSITION\",\"production\":false,\"statement\":\"The current accepted E2-REENTER result supplies the bounded qualification value required by E2-SLOT.\",\"type\":\"synthetic typed qualification proposition\"},\"provenance_origin\":{\"artifact\":\"docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_ROOT_SLOT_FIXTURE_AUTHORITY_1.json\",\"identity\":{\"kind\":\"CONTENT_IDENTITY\",\"namespace\":\"raw-file-sha256\",\"sha256\":\"3cb3f97dd589433de5cb6af84d11ba3d8b4c967f1fef8513b3545f07f7e146b0\"},\"origin_id\":\"PC02:SLOT_RESULT_DECLARATION\",\"section\":\"/slot_proposition\"},\"qualification_only\":true,\"role\":\"SLOT_PROOF\",\"schema\":\"PLANNER-QUALIFICATION-PROPOSITION-SOURCE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"support_selector\":{\"expected_output_contract\":{\"$type\":\"KnowledgeRecord\",\"evidence\":[],\"id\":{\"$type\":\"KnowledgeId\",\"value\":\"E2-K-REENTER\"},\"outcome\":{\"$enum\":\"ActionResult\",\"value\":\"PASS\"},\"producer\":{\"$type\":\"ActionId\",\"value\":\"E2-REENTER\"},\"provenance\":{\"$type\":\"Provenance\",\"excerpt\":\"{\\\"authored_initial_premise\\\":true,\\\"generation\\\":\\\"E2-P03-PROSPECTIVE-GENERATION-1\\\",\\\"historical_reconstruction\\\":false,\\\"lineage\\\":\\\"E2-P03-PROSPECTIVE-QUALIFICATION-1\\\",\\\"qualification_type\\\":\\\"PROSPECTIVE_REPLACEMENT\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\",\\\"scope_decision\\\":\\\"AUTHORIZE_PROSPECTIVE_P03_CHECKPOINT_QUALIFICATION\\\",\\\"template_provenance\\\":{\\\"$type\\\":\\\"Provenance\\\",\\\"excerpt\\\":\\\"{\\\\\\\"acquisition_contract_complete\\\\\\\":true,\\\\\\\"branch\\\\\\\":\\\\\\\"TEST-ROOT\\\\\\\",\\\\\\\"expected_producer\\\\\\\":\\\\\\\"TEST-rule-owner\\\\\\\",\\\\\\\"gate\\\\\\\":\\\\\\\"TEST-GATE\\\\\\\",\\\\\\\"lineage\\\\\\\":\\\\\\\"TEST/lineage\\\\\\\",\\\\\\\"missing_proposition\\\\\\\":\\\\\\\"Authenticated governing rule for target operation; no rule currently received\\\\\\\",\\\\\\\"positive_admission\\\\\\\":\\\\\\\"Existing native independently authenticated receipt, exact target and producer, all obligation claims; receiving a rule does not make it executable or prove applicability\\\\\\\",\\\\\\\"qualification_only\\\\\\\":true,\\\\\\\"receipt_action\\\\\\\":\\\\\\\"TEST-RECEIVE\\\\\\\",\\\\\\\"reentry\\\\\\\":[\\\\\\\"TEST-ACTION\\\\\\\"],\\\\\\\"requirement\\\\\\\":\\\\\\\"TEST-RULE\\\\\\\",\\\\\\\"schema\\\\\\\":\\\\\\\"SYNTHETIC-GOVERNED-RULE-ACQUISITION-1\\\\\\\",\\\\\\\"scope\\\\\\\":\\\\\\\"TEST/scope\\\\\\\"}\\\",\\\"identity\\\":{\\\"$type\\\":\\\"ArtifactIdentity\\\",\\\"kind\\\":{\\\"$enum\\\":\\\"IdentityKind\\\",\\\"value\\\":\\\"CONTENT_IDENTITY\\\"},\\\"namespace\\\":\\\"raw-file-sha256\\\",\\\"sha256\\\":\\\"d8caaee52fc8a043db22eab3e405e66c7fa2873ea4f89773e20cc22bb9f05c25\\\"},\\\"method\\\":\\\"SYNTHETIC_CONTRACT\\\",\\\"path\\\":\\\"source.json\\\",\\\"scope\\\":\\\"E2-QUALIFICATION-ONLY\\\",\\\"section\\\":\\\"/\\\"}}\",\"identity\":{\"$type\":\"ArtifactIdentity\",\"kind\":{\"$enum\":\"IdentityKind\",\"value\":\"CONTENT_IDENTITY\"},\"namespace\":\"raw-file-sha256\",\"sha256\":\"3a744d47b6c1a69de40652976068b3d438cee276c546cff46d695dd01fca0afd\"},\"method\":\"PROSPECTIVE_AUTHORED_INPUT\",\"path\":\"docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/mainline-source-01.json\",\"scope\":\"E2-QUALIFICATION-ONLY\",\"section\":\"/\"},\"state\":{\"$enum\":\"KnowledgeState\",\"value\":\"KNOWN_COMPLETE\"},\"statement\":\"Bounded reentry mapping produced\",\"validation\":{\"$enum\":\"ValidationState\",\"value\":\"ACCEPTED\"}},\"knowledge\":\"E2-K-REENTER\",\"producer\":\"E2-REENTER\"},\"target\":\"E2-SLOT\",\"valid_until\":100}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "d5ffca80b0bd5e0d2776dc50d16c5d5ba7a9f31f7cf129c9cafed2ce50773107"
+          },
+          "method": "F02_SEALED_PROSPECTIVE_DEFINITION",
+          "path": "docs/plans/qualification/FINISH_F02_1/slot-source.json",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/"
+        },
+        "support_state": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "2a6e50742f6ee7b55dd4cf3dc01ae93956cde096f7f6d4880d694abe79967bd7"
+        }
+      },
+      "FRAME_ORACLE_COMPLETE_FOR_EXPECTED_STATE": true,
+      "IMMUTABLE_EVENT_PREFIX": true,
+      "UNCHANGED_COLLECTIONS": [
+        "$type",
+        "actions",
+        "assertions",
+        "boundaries",
+        "context",
+        "decisions",
+        "evidence_requirements",
+        "external_gates",
+        "goals",
+        "ingress_contracts",
+        "knowledge",
+        "predicates",
+        "receipt_admissions",
+        "receipt_observations",
+        "validation_contracts",
+        "validation_instances",
+        "validation_results",
+        "validation_support_contracts",
+        "validation_support_records",
+        "validation_transaction_contracts"
+      ],
+      "UNCHANGED_POLICY_SOURCES_CONTEXT_KNOWLEDGE": true
+    },
+    "VARIANT": "PROPOSED-SLOT_PROOF-PROVENANCE-WITHDRAWAL"
+  }
+]

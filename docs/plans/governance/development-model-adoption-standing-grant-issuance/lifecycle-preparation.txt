@@ -1,0 +1,67 @@
+import ast,datetime,hashlib,json,os,pathlib,sys,tempfile
+B=pathlib.Path('docs/plans/governance/development-operating-model-reset')
+R=B/'retry-accounting-correction'
+D=pathlib.Path('docs/plans/governance/development-model-adoption-standing-grant-issuance')
+P=pathlib.Path('docs/plans/qualification/E2_P05_D01_A15_NORMATIVE_ADOPTION_ISSUANCE_68/issue.py')
+def read(p):return json.loads(pathlib.Path(p).read_text())
+def raw(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canonical(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()
+def identity(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canonical(x)).hexdigest()}
+def pin(p):return {'path':str(p),'raw_sha256':raw(p)}
+assert raw(P)=='ba6c00589e88ffb7d380538758c15ff648d431e55325e933d6f911d04a9af0bc'
+fn=next(n for n in ast.parse(P.read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='publish')
+g={'D':D,'json':json,'os':os,'tempfile':tempfile}
+exec(compile(ast.Module(body=[fn],type_ignores=[]),str(P),'exec'),g)
+publish=g['publish']
+subject=read(R/'owner-decision-subject.json');contract=read(R/'standing-development-contract.json');pilot=read(R/'pilot-authorization-subject.json');policy=read(B/'engineering-policy-supplement.json')
+approved=read(D/'approval-authentication.json')
+assert subject['IDENTITY']['sha256']=='234639855530c3861c66d1149c0b8708956c6c14afcac77aeb8fa06cf7fcd200'
+for v in [subject,contract,pilot,policy]:assert identity(v['IDENTITY']['namespace'],v['CONTENT'])==v['IDENTITY']
+def preserve():
+ for p,h in read(D/'prior-file-integrity-manifest.json').items():assert raw(p)==h,p
+def conflicts(stage):
+ findings=[];scanned=[]
+ targets=[subject['IDENTITY']['sha256'],policy['IDENTITY']['sha256'],contract['IDENTITY']['sha256']]
+ for root in ['docs/plans/governance','docs/plans/qualification']:
+  for p in pathlib.Path(root).rglob('*.json'):
+   if D in p.parents:continue
+   name=p.name.lower()
+   if not any(k in name for k in ['issued','adoption-record','effective','revocation','supersession','consumption']):continue
+   scanned.append(str(p))
+   text=p.read_text()
+   if any(t in text for t in targets):findings.append(str(p))
+ assert not findings,findings
+ publish(stage+'-conflict-review.json',{'RESULT':'PASS','DOMAIN':'Retained repository governed records only; external host/authority state remains a fresh entry predicate','SCANNED_PATHS':scanned,'MATCHING_PRIOR_ISSUANCE_REVOCATION_SUPERSESSION_CONSUMPTION':findings,'NO_GLOBAL_ABSENCE_CLAIM':True,'HISTORICAL_GRANTS_UNCHANGED':True})
+def receipt(name,record):
+ p=publish(name,record)
+ publish(name+'.publication-receipt.json',{'PIN':pin(p),'EXCLUSIVE_NO_OVERWRITE':True,'COMPLETE_WRITE':True,'FILE_FSYNC':True,'DIRECTORY_FSYNC':True,'INDEPENDENT_REREAD_PENDING':True,'GENERAL_POWER_LOSS_ASSURANCE':False})
+def verification(stage):
+ v=read(D/(stage+'-four-seed-verification.json'))
+ assert v['RESULT']=='PASS' and len(v['RESULTS'])==4 and len({r['semantic_sha256'] for r in v['RESULTS']})==1
+ assert v['NEGATIVE_EXECUTIONS_REJECTED']==4*v['NEGATIVE_DESIGNS']
+ return pin(D/(stage+'-four-seed-verification.json'))
+mode=sys.argv[1]
+preserve()
+if mode=='policy':
+ conflicts('pre-policy')
+ charter=read('docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66/effective-charter-reference.json')
+ r={'SCHEMA':'SCOPED-NORMATIVE-INTERPRETATION-ADOPTION-104-1','ISSUANCE_RECORD_TYPE':'SCOPED_ENGINEERING_POLICY_SUPPLEMENT_ADOPTION','ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','AUTHORITY_ROOT':'Current exact owner engineering-policy approval and actual project-controlled resources; not an expansion of qualification-only charter authority','APPROVED_SUBJECT_IDENTITY':subject['IDENTITY'],'APPROVED_SUBJECT_PIN':pin(R/'owner-decision-subject.json'),'OWNER_DECISION_PIN':pin(D/'approval-authentication.json'),'ADOPTED_CONTENT':policy['CONTENT'],'CONTENT_IDENTITY':policy['IDENTITY'],'POLICY_PIN':pin(B/'engineering-policy-supplement.json'),'CHARTER_BINDING':charter['CHARTER_CONTENT_IDENTITY'],'CHARTER_UNCHANGED':True,'STATUS':'ADOPTION_RECORDED_PENDING_INDEPENDENT_EFFECTIVENESS_VERIFICATION','PREDECESSOR_ADOPTION':None,'EXECUTION_GRANT':None,'EFFECTIVENESS_RULE':'Separate durable reference only after persisted independent four-seed verification, negatives, conflict recheck and preservation; no backdating','REVOCATION_SUPERSESSION':'Explicit owner-scoped immutable record naming exact identities and dependent disposition; unknown state denies use','NO_OPERATION_EXECUTED':True}
+ envelope={'RECORD':r,'IDENTITY':identity('kge-forge-engineering-policy-adoption-record-v1',r)}
+ publish('policy-adoption-candidate.json',envelope);receipt('policy-adoption-record.json',envelope)
+elif mode=='policy-effect':
+ v=verification('policy');conflicts('pre-policy-effect')
+ issued=read(D/'policy-adoption-record.json')
+ r={'ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','ADOPTION_IDENTITY':issued['IDENTITY'],'ADOPTION_PIN':pin(D/'policy-adoption-record.json'),'POLICY_IDENTITY':policy['IDENTITY'],'APPROVED_SUBJECT_IDENTITY':subject['IDENTITY'],'INDEPENDENT_VERIFICATION_PIN':v,'STATUS':'EFFECTIVE_ENGINEERING_POLICY_ONLY','EFFECTIVE_AT_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'NO_BACKDATING':True,'CHARTER_UNCHANGED':True,'NO_DEVELOPMENT_EXECUTION_GRANT_CREATED':True,'REVOCATION_SUPERSESSION':'Explicit immutable owner-scoped disposition; unresolved state denies dependent use'}
+ receipt('policy-effectiveness-reference.json',{'RECORD':r,'IDENTITY':identity('kge-forge-engineering-policy-effectiveness-reference-v1',r)})
+elif mode=='grant':
+ verification('policy-effect');conflicts('pre-grant')
+ pe=read(D/'policy-effectiveness-reference.json')
+ r={'SCHEMA':'SCOPED-STANDING-DEVELOPMENT-ISSUED-GRANT-1','ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','AUTHORITY_ROOT':'Exact owner-approved engineering supplement and project resource scope; actual platform/OS permission remains mandatory at environment admission','APPROVED_SUBJECT_IDENTITY':subject['IDENTITY'],'APPROVED_SUBJECT_PIN':pin(R/'owner-decision-subject.json'),'OWNER_DECISION_PIN':pin(D/'approval-authentication.json'),'POLICY_EFFECTIVENESS_IDENTITY':pe['IDENTITY'],'POLICY_EFFECTIVENESS_PIN':pin(D/'policy-effectiveness-reference.json'),'CONTRACT_IDENTITY':contract['IDENTITY'],'CONTRACT_PIN':pin(R/'standing-development-contract.json'),'APPROVED_CONTENT':contract['CONTENT'],'ALLOCATION':contract['CONTENT']['RESOURCE_BUDGETS'],'RETRY_POLICY':contract['CONTENT']['RETRY_POLICY'],'PILOT_IDENTITY':pilot['IDENTITY'],'PILOT_PIN':pin(R/'pilot-authorization-subject.json'),'PILOT_CONTENT':pilot['CONTENT'],'STATUS':'ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE','CONDITIONAL_EXECUTION':'No development execution until independently admitted restricted disposable environment and all fresh entry predicates pass','EPOCH_RULE':'Thirty days from separately verified effectiveness timestamp, earlier revocation or exhaustion stops. No restart/reset/refund; pilot nested within parent pools, charges counted once','ALLOCATION_CONSUMED_BY_ISSUANCE':False,'ENVIRONMENT_ADMITTED':False,'PILOT_EXECUTED':False,'PROTECTED_PROMOTION_AUTHORITY':False,'EXCLUSIONS':['Production','Protected authoritative promotion','Credential access','Network access','Privilege escalation','Package124 passive check','Package86 real probe','H77-02','A15','Existing-grant mutation or consumption/reset'],'REVOCATION_SUPERSESSION':'Exact immutable owner record; unknown denies entry. Additional retry or allocation requires separate explicit authorization','EFFECTIVENESS_RULE':'Separate no-overwrite durable reference after independent persisted four-seed reconstruction, negatives, preservation and conflict recheck'}
+ envelope={'RECORD':r,'GRANT_IDENTITY':identity('kge-forge-conditional-class-a-standing-development-issued-grant-v1',r)}
+ publish('standing-grant-candidate.json',envelope);receipt('issued-standing-development-grant.json',envelope)
+elif mode=='grant-effect':
+ v=verification('grant');conflicts('pre-grant-effect');issued=read(D/'issued-standing-development-grant.json')
+ r={'ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','GRANT_IDENTITY':issued['GRANT_IDENTITY'],'GRANT_PIN':pin(D/'issued-standing-development-grant.json'),'APPROVED_SUBJECT_IDENTITY':subject['IDENTITY'],'POLICY_EFFECTIVENESS_IDENTITY':read(D/'policy-effectiveness-reference.json')['IDENTITY'],'INDEPENDENT_VERIFICATION_PIN':v,'STATUS':'EFFECTIVE_CONDITIONAL_STANDING_AUTHORITY','EFFECTIVE_AT_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'AUTHORIZATION_VALIDITY_DAYS':30,'NO_BACKDATING':True,'ENVIRONMENT_ADMISSION_REQUIRED':True,'ENVIRONMENT_ADMITTED':False,'PILOT_ENTRY_READY':False,'DEVELOPMENT_ALLOCATIONS_CONSUMED':False,'REVOCATION_SUPERSESSION':'Explicit identity-bound owner disposition; fresh check required before entry and continuation'}
+ receipt('standing-grant-effectiveness-reference.json',{'RECORD':r,'IDENTITY':identity('kge-forge-standing-development-effectiveness-reference-v1',r)})
+else:raise ValueError(mode)
+print(json.dumps({'stage':mode,'publication':'PASS','execution':'NONE'}))

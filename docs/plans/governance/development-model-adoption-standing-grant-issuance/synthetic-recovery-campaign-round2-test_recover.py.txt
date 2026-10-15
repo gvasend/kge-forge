@@ -1,0 +1,203 @@
+"""Disposable recovery tests. Run only in an independently permitted environment.
+No real adapter, profile destination, or authoritative store is accessed.
+"""
+import errno
+import importlib.util
+import os
+from pathlib import Path
+import stat
+import tempfile
+import unittest
+from unittest.mock import patch
+
+spec = importlib.util.spec_from_file_location('recovery_under_test', Path(__file__).with_name('recover.py'))
+r = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(r)
+DATA = Path(__file__).with_name('recover_test_source.toml').read_bytes()
+
+class RecoveryTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix='synthetic-recovery-')
+        self.addCleanup(self.tmp.cleanup)
+        self.path = Path(self.tmp.name) / 'empty-profile'
+        self.path.touch(mode=0o600)
+        st = self.path.stat()
+        self.expected = (st.st_dev, st.st_ino)
+        self.used = False
+        self.consume_calls = 0
+        # Environmental errors are errors in setup, never a passing rejection oracle.
+        with r.directory_fd(self.path.parent) as parent_fd:
+            self.assertEqual(os.fstat(parent_fd).st_ino, self.path.parent.stat().st_ino)
+        self.writer_patch = patch.object(r, 'write_authenticated', wraps=r.write_authenticated)
+        self.writer = self.writer_patch.start()
+        self.addCleanup(self.writer_patch.stop)
+        # Fixture principal only; CLI still requires the approved real principal.
+        self.uid = patch.object(r, 'EXPECTED_UID', os.getuid())
+        self.gid = patch.object(r, 'EXPECTED_GID', os.getgid())
+        self.uid.start(); self.gid.start()
+        self.addCleanup(self.uid.stop); self.addCleanup(self.gid.stop)
+    def consume(self, key, device, inode, *, held_fd):
+        self.consume_calls += 1
+        if self.used:
+            raise r.Stop('synthetic attempt consumed')
+        self.assertEqual((device, inode), self.expected)
+        self.assertEqual(os.fstat(held_fd).st_ino, inode)
+        self.used = True
+        return {'synthetic': True}
+    def run_transaction(self, consume=None):
+        return r.recover_transaction(DATA, self.path, self.expected, consume or self.consume)
+    def test_success_same_inode(self):
+        self.run_transaction()
+        self.assertEqual(self.consume_calls, 1)
+        self.assertEqual(self.writer.call_count, 1)
+        self.assertTrue(self.used)
+        self.assertEqual(self.path.read_bytes(), DATA)
+        self.assertEqual(self.path.stat().st_ino, self.expected[1])
+    def assert_untouched(self):
+        self.assertFalse(self.used)
+        self.assertEqual(self.consume_calls, 0)
+        self.assertEqual(self.writer.call_count, 0)
+        self.assertEqual(self.path.read_bytes(), b'')
+    def test_symlink_rejected(self):
+        alias = self.path.with_name('alias')
+        alias.symlink_to(self.path)
+        with self.assertRaises(OSError) as error:
+            r.recover_transaction(DATA, alias, self.expected, self.consume)
+        self.assertEqual(error.exception.errno, errno.ELOOP)
+        self.assertEqual(error.exception.filename, alias.name)
+        self.assert_untouched()
+    def test_ancestor_symlink_rejected(self):
+        alias = self.path.parent.with_name(self.path.parent.name + '-alias')
+        alias.symlink_to(self.path.parent, target_is_directory=True)
+        self.addCleanup(alias.unlink)
+        with self.assertRaises(OSError) as error:
+            r.recover_transaction(DATA, alias / self.path.name, self.expected, self.consume)
+        self.assertEqual(error.exception.errno, errno.ENOTDIR)
+        self.assertEqual(error.exception.filename, alias.name)
+        self.assert_untouched()
+    def test_wrong_inode(self):
+        with self.assertRaisesRegex(r.Stop, '^destination receipt identity mismatch$'):
+            r.recover_transaction(DATA, self.path, (self.expected[0], self.expected[1] + 1), self.consume)
+        self.assert_untouched()
+    def test_wrong_mode(self):
+        self.path.chmod(0o644)
+        with self.assertRaisesRegex(r.Stop, '^destination mode mismatch$'): self.run_transaction()
+        self.assert_untouched()
+    def test_wrong_owner(self):
+        # Perturb only the destination fstat receipt; keep ancestor principal intact.
+        original = os.fstat
+        def wrong_destination_owner(fd):
+            st = original(fd)
+            if (st.st_dev, st.st_ino) == self.expected:
+                fields = list(st)
+                fields[4] = os.getuid() + 1
+                return os.stat_result(fields)
+            return st
+        with patch.object(r.os, 'fstat', side_effect=wrong_destination_owner):
+            with self.assertRaisesRegex(r.Stop, '^destination owner mismatch$'):
+                self.run_transaction()
+        self.assert_untouched()
+    def test_hardlink(self):
+        os.link(self.path, self.path.with_name('second-link'))
+        with self.assertRaisesRegex(r.Stop, "^destination link/size mismatch$"): self.run_transaction()
+        self.assertFalse(self.used)
+        self.assertEqual(self.consume_calls, 0)
+        self.assertEqual(self.writer.call_count, 0)
+    def test_nonempty(self):
+        self.path.write_bytes(b'x')
+        with self.assertRaisesRegex(r.Stop, "^destination link/size mismatch$"): self.run_transaction()
+        self.assertFalse(self.used)
+        self.assertEqual(self.consume_calls, 0)
+        self.assertEqual(self.writer.call_count, 0)
+    def test_existing_consumption(self):
+        self.used = True
+        with self.assertRaisesRegex(r.Stop, '^synthetic attempt consumed$'): self.run_transaction()
+        self.assertEqual(self.consume_calls, 1)
+        self.assertEqual(self.writer.call_count, 0)
+        self.assertEqual(self.path.read_bytes(), b'')
+    def test_unknown_consumption_no_write(self):
+        def unknown(*args, **kwargs):
+            self.consume_calls += 1
+            self.used = True
+            raise r.Stop('unknown publication')
+        with self.assertRaisesRegex(r.Stop, '^unknown publication$'): self.run_transaction(unknown)
+        self.assertTrue(self.used)
+        self.assertEqual(self.consume_calls, 1)
+        self.assertEqual(self.writer.call_count, 0)
+        self.assertEqual(self.path.read_bytes(), b'')
+    def test_no_consumption_result(self):
+        def no_receipt(*args, **kwargs):
+            self.consume_calls += 1
+            return None
+        with self.assertRaisesRegex(r.Stop, '^no verified consumption result$'):
+            self.run_transaction(no_receipt)
+        self.assertEqual(self.consume_calls, 1)
+        self.assertEqual(self.writer.call_count, 0)
+        self.assertFalse(self.used)
+        self.assertEqual(self.path.read_bytes(), b'')
+    def test_short_write_suffix_only(self):
+        parts = []
+        def short(fd, data):
+            parts.append(data[:17])
+            return min(17, len(data))
+        r.write_authenticated(-1, DATA, short)
+        self.assertEqual(b''.join(parts), DATA)
+    def test_zero_write_stops(self):
+        with self.assertRaisesRegex(r.Stop, "^zero/invalid write result: stop$"): r.write_authenticated(-1, DATA, lambda fd, data: 0)
+    def test_partial_failure_no_retry(self):
+        calls = []
+        def failing(fd, data):
+            calls.append(data)
+            if len(calls) == 1: return 10
+            raise OSError(errno.EIO, 'synthetic write failure')
+        with self.assertRaises(OSError) as error: r.write_authenticated(-1, DATA, failing)
+        self.assertEqual(error.exception.errno, errno.EIO)
+        self.assertEqual(len(calls), 2)
+        self.assertEqual(calls[1], DATA[10:])
+    def test_path_replaced_after_consumption(self):
+        def replace(*args, **kwargs):
+            result = self.consume(*args, **kwargs)
+            self.path.rename(self.path.with_name('original'))
+            self.path.touch(mode=0o600)
+            return result
+        with self.assertRaisesRegex(r.Stop, '^destination receipt identity mismatch$'):
+            self.run_transaction(replace)
+        self.assertTrue(self.used)
+        self.assertEqual(self.consume_calls, 1)
+        self.assertEqual(self.writer.call_count, 0)
+        self.assertEqual(self.path.read_bytes(), b'')
+    def test_fsync_failure_remains_consumed(self):
+        sync_error = OSError(errno.EIO, 'synthetic sync failure')
+        with patch.object(r.os, 'fsync', side_effect=sync_error) as sync:
+            with self.assertRaises(OSError) as error: self.run_transaction()
+        self.assertIs(error.exception, sync_error)
+        self.assertEqual(sync.call_count, 1)
+        self.assertTrue(self.used)
+        self.assertEqual(self.consume_calls, 1)
+        self.assertEqual(self.writer.call_count, 1)
+        self.assertEqual(self.path.read_bytes(), DATA)
+        # No second write: exercise the same mock adapter's refusal directly.
+        with self.assertRaisesRegex(r.Stop, '^synthetic attempt consumed$'):
+            self.consume(r.ATTEMPT_KEY, *self.expected, held_fd=None)
+        self.assertEqual(self.writer.call_count, 1)
+    def test_bad_source_never_consumes(self):
+        with self.assertRaisesRegex(r.Stop, '^source not authenticated$'):
+            r.recover_transaction(b'wrong', self.path, self.expected, self.consume)
+        self.assert_untouched()
+    def test_store_existing_record_rejected(self):
+        domain = Path(self.tmp.name)
+        marker = domain / 'synthetic-consumed.json'
+        marker.write_text('{}')
+        with patch.object(r, 'DOMAIN', domain), patch.object(r, 'CONSUMPTION', marker):
+            with self.assertRaisesRegex(r.Stop, '^attempt occupied/consumed: never retry$'): r.check_dispositions()
+        self.assert_untouched()
+    def test_store_revocation_rejected(self):
+        domain = Path(self.tmp.name)
+        (domain / 'revocation.json').write_text(r.canonical({'RECORD': {
+            'RECORD_TYPE': 'RECOVERY_GRANT_REVOCATION', 'GRANT': r.GRANT_SHA}}).decode())
+        with patch.object(r, 'DOMAIN', domain), patch.object(r, 'CONSUMPTION', domain / 'unused.json'):
+            with self.assertRaisesRegex(r.Stop, '^conflicting authority/use event: revocation[.]json$'): r.check_dispositions()
+        self.assert_untouched()
+
+if __name__ == '__main__':
+    unittest.main()

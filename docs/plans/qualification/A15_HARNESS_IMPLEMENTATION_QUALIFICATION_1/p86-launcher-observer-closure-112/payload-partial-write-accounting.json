@@ -1,0 +1,20 @@
+{
+  "ACCOUNTING_DOMAINS": {
+    "BYTES_PERSISTED": "Output publication persistence separately observed; neither return count nor hash proves durability",
+    "LOGICAL_RECORD_BYTES": "Canonical encoded record length including LF, at most8192 each and at most3emitcalls",
+    "WRITE_BYTES_SUBMITTED": "Sum of os.write buffer lengths, not progress; a remaining suffix can be submitted multiple times",
+    "WRITE_BYTES_TRANSFERRED": "Sum positive returned n; bounded by logical record length per emit"
+  },
+  "BOUND_ASSURANCE": "Conservative bound using source admission ceiling, not exact attainable record size or observed runtime requirement; does not prove an exact deficit or infeasibility.",
+  "MAX_ARGUMENT_BYTES_SUBMITTED_PER_EMIT": 33558528,
+  "MAX_EMIT_CALLS": 3,
+  "MAX_LOGICAL_PAYLOAD_BYTES": 24576,
+  "MAX_OS_WRITE_CALLS_PER_EMIT": 8192,
+  "MAX_RECORD_BYTES": 8192,
+  "MAX_THREE_EMIT_ARGUMENT_BYTES_SUBMITTED": 100675584,
+  "PAYLOAD_EXECUTED": false,
+  "PYTHON_API_MODEL": "For N-byte record, each positive short write advances offset by integer at least1. A final zero/error stops that emit. Therefore maximum explicit Python os.write argument-length sum is N+(N-1)+...+1=N(N+1)/2.",
+  "SEALED_LOOP_CHANGED": false,
+  "SUBMITTED_UPPER_BOUND_MINUS65536": 100610048,
+  "SYSCALL_RETRY_LIMITATION": "Python/libc/kernel EINTR/internal syscall retries are not separately counted by this API-level model; if governing semantics count those, exact mediation/semantics remain unbound."
+}

@@ -1,0 +1,122 @@
+{
+  "CASES": [
+    {
+      "CONSEQUENCE": "Protected repository/store/history corrupted",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Before entry prove no writable host mounts/FDs; promoter sole exact-path writer",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Unknown platform policy/permission",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "UNAUTHORIZED_WRITE"
+    },
+    {
+      "CONSEQUENCE": "Write or read escapes candidate root",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Held-root descriptors, no-follow traversal, reject unapproved paths/links",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Kernel/implementation qualification pending",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "SYMLINK_ESCAPE"
+    },
+    {
+      "CONSEQUENCE": "Frozen candidate or protected file altered through alias",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Private filesystem/export ownership, nlink/device/ownership checks; prohibit unmanaged aliases",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Mount/export recipe unbound",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "HARDLINK_ALIAS"
+    },
+    {
+      "CONSEQUENCE": "Descendant reaches host/network or exhausts resources",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Closed command graph or qualified complete inherited boundary, external observer",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Existing resource/control identity absent",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "UNCONTROLLED_SUBPROCESS"
+    },
+    {
+      "CONSEQUENCE": "Data exfiltration or unintended external effect",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Independently verified deny network; no inherited sockets",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "No exact network receipt",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "NETWORK_ACCESS"
+    },
+    {
+      "CONSEQUENCE": "Different bytes promoted than verified",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Outside-owner immutable export; rehash held source handles; candidate exact grants",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "No trusted handoff mechanism",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "CANDIDATE_TAMPERING"
+    },
+    {
+      "CONSEQUENCE": "Incomplete source/evidence or host pressure",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Pre-entry finite full-workload controls and non-resetting admission; stop at cap",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Numbers proposed, controls unverified",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "RESOURCE_EXHAUSTION"
+    },
+    {
+      "CONSEQUENCE": "Unknown causal/result state",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Protected independent writer; finite schemas/durability, explicit INCOMPLETE",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Critical promotion bounds missing",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "EVIDENCE_LOSS"
+    },
+    {
+      "CONSEQUENCE": "Malicious candidate accepted",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Independent pinned static-only verifier and external confinement; dynamic ambiguity denies",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Static verification is not runtime assurance",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "VERIFIER_COMPROMISE"
+    },
+    {
+      "CONSEQUENCE": "One source exists without matching pair",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "No pair-success before bothdurable seals and commit; separately governed repair only",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Physical pair atomicity not established",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "PARTIAL_PROMOTION"
+    },
+    {
+      "CONSEQUENCE": "Repeated writes consume unintended authority",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Durable exclusive promotion key/claimant single handoff; preexisting files deny",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "New promoter/store qualification pending",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "DUPLICATE_PROMOTION"
+    },
+    {
+      "CONSEQUENCE": "Uncertain consumption, descendants or writes",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Consume irreversible authority; UNKNOWN/INCOMPLETE, fresh review",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Unavailable independent observer",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "UNKNOWN_OUTCOME"
+    },
+    {
+      "CONSEQUENCE": "Disposable artifacts remain or removal crosses boundary",
+      "FAIL_CLOSED_ACTION": "Deny entry or stop consumed/unknown; retain evidence, no automatic retry or PASS",
+      "MITIGATION": "Exact separate cleanup permission afterretention; no refunds; preserve unknown",
+      "PROBABILITY_BASIS": "UNKNOWN; no measured rates",
+      "RESIDUAL_RISK": "Actual root/owner unbound",
+      "REVERSIBILITY": "Private unexecuted candidate often reversible under exact permission; protected history, external effects and partial promotion cannot be assumed reversible",
+      "THREAT_OR_FAILURE": "CLEANUP_FAILURE"
+    }
+  ],
+  "NO_NUMERIC_EXPECTED_VALUES_INVENTED": true
+}

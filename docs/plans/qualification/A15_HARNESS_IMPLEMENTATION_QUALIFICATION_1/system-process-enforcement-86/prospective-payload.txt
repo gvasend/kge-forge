@@ -1,0 +1,42 @@
+import os,json,pathlib,time,datetime,sys
+UNIT = 'kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service'
+MAX_OUTPUT = 65536
+written = 0
+def emit(value):
+ global written
+ raw=(json.dumps(value,sort_keys=True,separators=(',',':'))+'\n').encode()
+ if len(raw)>8192 or written+len(raw)>MAX_OUTPUT: raise RuntimeError('OUTPUT_BOUND')
+ offset=0
+ while offset<len(raw):
+  n=os.write(1,raw[offset:])
+  if n<=0: raise RuntimeError('OUTPUT_WRITE')
+  offset+=n; written+=n
+
+def snapshot(phase):
+ if os.geteuid()!=1000 or os.getegid()!=1000: raise RuntimeError('NONROOT_IDENTITY_MISMATCH')
+ entries={}
+ for line in pathlib.Path('/proc/self/cgroup').read_text().splitlines():
+  unused,controllers,path=line.split(':',2)
+  for controller in controllers.split(','): entries[controller]=path
+ pids=entries.get('pids'); manager=entries.get('name=systemd')
+ if pids is None or manager is None: raise RuntimeError('MISSING_V1_CONTROLLER')
+ if not pids.startswith('/') or '..' in pids.split('/'): raise RuntimeError('CGROUP_PATH')
+ location=pathlib.Path('/sys/fs/cgroup/pids')/pids.lstrip('/')
+ maximum=(location/'pids.max').read_text().strip()
+ current=(location/'pids.current').read_text().strip()
+ record={'schema':'H86-PIDS-METADATA-1','phase':phase,'service_unit':UNIT,
+ 'SERVICE_PID':os.getpid(),'SERVICE_PIDS_CGROUP':pids,'SERVICE_SYSTEMD_CGROUP':manager,
+ 'KERNEL_PIDS_MAX':maximum,'KERNEL_PIDS_CURRENT':current,
+ 'SYSTEMD_TASKS_MAX':None,'OBSERVATION_TIME':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ 'EVIDENCE_PROVENANCE':'service readonly proc/sysfs observation; SYSTEMD_TASKS_MAX supplied only by independent manager query'}
+ emit(record)
+ if pids!='/system.slice/'+UNIT or maximum!='8' or not current.isdigit() or not 1<=int(current)<=8:
+  raise RuntimeError('SERVICE_SPECIFIC_PIDS_LIMIT_NOT_CONFIRMED')
+try:
+ snapshot('START')
+ time.sleep(8)
+ snapshot('BEFORE_EXIT')
+except BaseException as exc:
+ try: emit({'schema':'H86-PIDS-ERROR-1','error_type':type(exc).__name__,'service_unit':UNIT,'retry_allowed':False})
+ except BaseException: pass
+ sys.exit(2)

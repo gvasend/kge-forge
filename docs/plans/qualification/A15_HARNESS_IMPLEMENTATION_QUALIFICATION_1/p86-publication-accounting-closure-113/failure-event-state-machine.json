@@ -1,0 +1,324 @@
+{
+  "CONSUMED_AUTHORITY_RESTORED": false,
+  "DUPLICATE_REQUESTS": "Denied entry to claim lifecycle; multiple adversarial requests cannot be inferred bounded from MAX_ATTEMPTS=1. Audit flood/collection policy requires separate finite contract.",
+  "FINALIZED_MEANS": "Audit completed, not necessarily probe success; outcome retains FAILED/UNKNOWN",
+  "FIRST_FAILURE_IMMUTABLE": true,
+  "STATES": [
+    "UNISSUED",
+    "ISSUED",
+    "AUTHENTICATED",
+    "CLAIM_RESERVED",
+    "CONSUMPTION_DURABLE",
+    "LAUNCH_PERMITTED",
+    "LAUNCH_ATTEMPTED",
+    "SERVICE_STARTED",
+    "SERVICE_EXITED",
+    "OBSERVATION_COMPLETE",
+    "FINALIZED",
+    "FAILED",
+    "UNKNOWN"
+  ],
+  "STATUS": "Prospective single-invocation lifecycle; not applied authority or implemented controller",
+  "TRANSITIONS": [
+    {
+      "EVENT": "GRANT_ISSUED",
+      "EVIDENCE_RECORD": "GRANT_ISSUED",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "UNISSUED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Separately issued exact grant, not this work package",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "ISSUED"
+    },
+    {
+      "EVENT": "AUTHORITY_VERIFIED",
+      "EVIDENCE_RECORD": "AUTHORITY_VERIFIED",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "ISSUED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Effective exact authority/principal/command/host entry",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "AUTHENTICATED"
+    },
+    {
+      "EVENT": "CLAIM_RESERVED",
+      "EVIDENCE_RECORD": "CLAIM_RESERVED",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "AUTHENTICATED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Exclusive permanent grant anchor absent",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "CLAIM_RESERVED"
+    },
+    {
+      "EVENT": "CONSUMPTION_DURABLE",
+      "EVIDENCE_RECORD": "CONSUMPTION_DURABLE",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "CLAIM_RESERVED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Complete claim+file/directory barrier",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "CONSUMPTION_DURABLE"
+    },
+    {
+      "EVENT": "CLAIM_CONFIRMED",
+      "EVIDENCE_RECORD": "CLAIM_CONFIRMED",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "CONSUMPTION_DURABLE",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Independent confirmation and original live owner",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "LAUNCH_PERMITTED"
+    },
+    {
+      "EVENT": "LAUNCH_HANDOFF",
+      "EVIDENCE_RECORD": "LAUNCH_HANDOFF",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "LAUNCH_PERMITTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Spend local capability before exact invocation",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "LAUNCH_ATTEMPTED"
+    },
+    {
+      "EVENT": "SERVICE_START",
+      "EVIDENCE_RECORD": "SERVICE_START",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "LAUNCH_ATTEMPTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Independent exact unit/PID/membership witness",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "SERVICE_STARTED"
+    },
+    {
+      "EVENT": "SERVICE_EXIT",
+      "EVIDENCE_RECORD": "SERVICE_EXIT",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "SERVICE_STARTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Independent terminal process identity/status",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "SERVICE_EXITED"
+    },
+    {
+      "EVENT": "OBSERVATION_COMPLETE",
+      "EVIDENCE_RECORD": "OBSERVATION_COMPLETE",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "SERVICE_EXITED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Required manager/kernel/final-membership evidence complete",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "OBSERVATION_COMPLETE"
+    },
+    {
+      "EVENT": "FINAL_AUDIT",
+      "EVIDENCE_RECORD": "FINAL_AUDIT",
+      "FAILURE_PATH": "FAILED or UNKNOWN, never back to launch-permitted",
+      "FROM": "OBSERVATION_COMPLETE",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Bounded independent final audit",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FINALIZED"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "ISSUED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "ISSUED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "AUTHENTICATED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "AUTHENTICATED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "CLAIM_RESERVED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "CLAIM_RESERVED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "CONSUMPTION_DURABLE",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "CONSUMPTION_DURABLE",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "LAUNCH_PERMITTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "LAUNCH_PERMITTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "LAUNCH_ATTEMPTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "LAUNCH_ATTEMPTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "SERVICE_STARTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "SERVICE_STARTED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "SERVICE_EXITED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "SERVICE_EXITED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FAILED",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "OBSERVATION_COMPLETE",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Definite causal failure",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FAILED"
+    },
+    {
+      "EVENT": "UNKNOWN",
+      "EVIDENCE_RECORD": "Immutable first cause and consumption/exit state",
+      "FAILURE_PATH": "Bounded finalization only, no relaunch",
+      "FROM": "OBSERVATION_COMPLETE",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Ambiguous/missing evidence",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "UNKNOWN"
+    },
+    {
+      "EVENT": "FINAL_AUDIT",
+      "EVIDENCE_RECORD": "Failure or incomplete outcome, never successful probe",
+      "FAILURE_PATH": "Audit failure leaves terminal incomplete outcome",
+      "FROM": "FAILED",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Independent bounded failure/unknown final audit published in remaining observer window",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FINALIZED"
+    },
+    {
+      "EVENT": "FINAL_AUDIT",
+      "EVIDENCE_RECORD": "Failure or incomplete outcome, never successful probe",
+      "FAILURE_PATH": "Audit failure leaves terminal incomplete outcome",
+      "FROM": "UNKNOWN",
+      "MAX_OCCURRENCES_PER_SINGLE_AUTHORIZED_INVOCATION": 1,
+      "PRECONDITION": "Independent bounded failure/unknown final audit published in remaining observer window",
+      "RETRY_ELIGIBILITY": false,
+      "TO": "FINALIZED"
+    }
+  ]
+}

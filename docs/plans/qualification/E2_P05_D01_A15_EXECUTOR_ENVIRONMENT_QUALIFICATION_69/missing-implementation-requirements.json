@@ -1,0 +1,121 @@
+[
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [
+      "M69-CONTRACTS",
+      "M69-WORKER",
+      "M69-READER",
+      "M69-ENVIRONMENT"
+    ],
+    "EXPECTED_BEHAVIOR": "Authenticate scoped grants/profile/input pins; launch two fresh workers from same checkpoint, independently wait for success, reverify handoff/publication, launch eight fresh readers; stop on first failure; record authoritative exit evidence",
+    "REQUIREMENT_ID": "M69-SUPERVISOR",
+    "SOURCE_FILES": [
+      "adapter/qualification_a15/supervisor.py"
+    ],
+    "TEST_REQUIREMENTS": [
+      "fake own-child lifecycle",
+      "reader forbidden before supervisor wait",
+      "nonzero/timeout/missing handoff fail closed",
+      "variant namespace separation"
+    ]
+  },
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [
+      "M69-CONTRACTS",
+      "M69-COMPARISON"
+    ],
+    "EXPECTED_BEHAVIOR": "Restore exact checkpoint; verify full initial state; record_result once with sealed SourceInvalidation; compare complete DTO/query/protection/event/byte outputs; save updated bundle immutably; verify manifests; publish handoff without claiming exit",
+    "REQUIREMENT_ID": "M69-WORKER",
+    "SOURCE_FILES": [
+      "adapter/qualification_a15/worker.py"
+    ],
+    "TEST_REQUIREMENTS": [
+      "synthetic backend trace order",
+      "wrong parent/source rejects before backend call",
+      "zero real A15 checkpoint access in implementation tests"
+    ]
+  },
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [
+      "M69-CONTRACTS",
+      "M69-COMPARISON"
+    ],
+    "EXPECTED_BEHAVIOR": "Fresh process, verified supervisor exit evidence; restore exact row bundle, compare complete outputs and bytes including resume reason order; independent reader evidence; no save/application",
+    "REQUIREMENT_ID": "M69-READER",
+    "SOURCE_FILES": [
+      "adapter/qualification_a15/reader.py"
+    ],
+    "TEST_REQUIREMENTS": [
+      "fresh interpreter cache separation with fake backend",
+      "wrong event/policy/protected field fail closed",
+      "cannot launch from handoff alone"
+    ]
+  },
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [
+      "M69-IMPLEMENTATION-AUTHORITY"
+    ],
+    "EXPECTED_BEHAVIOR": "Typed exact subject/variant/profile/invocation/handoff manifests, authority gates, input/source identities, allowlists, retries default none; no wildcard paths or mode",
+    "REQUIREMENT_ID": "M69-CONTRACTS",
+    "SOURCE_FILES": [
+      "adapter/qualification_a15/contracts.py"
+    ],
+    "TEST_REQUIREMENTS": [
+      "wrong identities and grants",
+      "symlink/output conflicts",
+      "no automatic retry",
+      "approval-content identity noncircular"
+    ]
+  },
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [
+      "M69-CONTRACTS"
+    ],
+    "EXPECTED_BEHAVIOR": "Complete Package61 DTO + native query + canonical byte comparisons; exact event order, proof validation/usability/ANY, FINISH and all resume fields; missing fields fail",
+    "REQUIREMENT_ID": "M69-COMPARISON",
+    "SOURCE_FILES": [
+      "adapter/qualification_a15/contracts.py",
+      "adapter/qualification_a15/worker.py",
+      "adapter/qualification_a15/reader.py"
+    ],
+    "TEST_REQUIREMENTS": [
+      "independent synthetic expected values",
+      "drop each comparison domain fails",
+      "false resume with wrong/order-changed reasons fails"
+    ]
+  },
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [
+      "M69-IMPLEMENTATION-QUALIFICATION"
+    ],
+    "EXPECTED_BEHAVIOR": "Bind qualified executable/dependency hashes and actual actor/host/security launcher permissions, deny network, exact RO inputs/RW isolated outputs, bounded process/resource/audit policy; execution-entry recheck",
+    "REQUIREMENT_ID": "M69-ENVIRONMENT",
+    "SOURCE_FILES": [],
+    "TEST_REQUIREMENTS": [
+      "static profile missing field denial",
+      "later authorized synthetic sandbox verification; no real variants"
+    ]
+  },
+  {
+    "AUTHORITY_REQUIRED": "Separate bounded implementation/test approval; none issued or inferred here",
+    "DEPENDENCIES": [],
+    "EXPECTED_BEHAVIOR": "Explicit isolated qualification-adapter construction/test approval plus actual repo and synthetic-test resource permissions; no normative-authority substitution",
+    "REQUIREMENT_ID": "M69-IMPLEMENTATION-AUTHORITY",
+    "SOURCE_FILES": [
+      "adapter/qualification_a15/__init__.py",
+      "adapter/qualification_a15/contracts.py",
+      "adapter/qualification_a15/supervisor.py",
+      "adapter/qualification_a15/worker.py",
+      "adapter/qualification_a15/reader.py",
+      "adapter/tests/test_qualification_a15_harness.py"
+    ],
+    "TEST_REQUIREMENTS": [
+      "grant exact file/fixture/operation exclusions"
+    ]
+  }
+]

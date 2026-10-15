@@ -1,0 +1,48 @@
+test_conflicting_claims_are_not_overwritten (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_conflicting_claims_are_not_overwritten) ... ERROR
+test_pinned_source_shaped_fixture (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_pinned_source_shaped_fixture) ... ERROR
+test_x05_all_nine_checks_required_not_majority_vote (adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x05_all_nine_checks_required_not_majority_vote) ... FAIL
+
+======================================================================
+ERROR: test_conflicting_claims_are_not_overwritten (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_conflicting_claims_are_not_overwritten)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 198, in test_conflicting_claims_are_not_overwritten
+    received,_,_=c.admit_external_evidence(bundle,request,{request.entity.provenance.path:raw},root/'store',root)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 783, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_pinned_source_shaped_fixture (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests.test_pinned_source_shaped_fixture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 368, in test_pinned_source_shaped_fixture
+    after,identity,noop=c.admit_external_evidence(cold,request,{request.entity.provenance.path:fixture['new_evidence_utf8'].encode()},root/'store',root)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 776, in admit_external_evidence
+    admitted = _extend_private(current,request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 725, in _extend_private
+    after = apply_event(bundle.current,supplied).snapshot
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "pre-E06-core.py", line 527, in apply_event
+    # Reenable only declared routes; all original gates are independently recalculated.
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gvasend/app/kge-forge/adapter/planner/evidence.py", line 114, in apply
+    raise m.PlannerError('FIELD_PROVENANCE')
+adapter.planner.model.PlannerError: FIELD_PROVENANCE
+
+======================================================================
+FAIL: test_x05_all_nine_checks_required_not_majority_vote (adapter.tests.test_planner_e1_replay.P04ReplayTests.test_x05_all_nine_checks_required_not_majority_vote)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_e1_replay.py", line 137, in test_x05_all_nine_checks_required_not_majority_vote
+    self.assertNotEqual(gates.decision_readiness(mutated, decision(mutated, 'DEC-BUDGET')).state, m.DecisionReadiness.DECISION_READY)
+AssertionError: <DecisionReadiness.DECISION_READY: 'DECISION_READY'> == <DecisionReadiness.DECISION_READY: 'DECISION_READY'>
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.748s
+
+FAILED (failures=1, errors=2)
+PRE_E06_CORE_COMPARISON 3 errors 2 failures 1

@@ -1,0 +1,84 @@
+{
+  "CONTROLS": [
+    {
+      "CONTROL": "Consumption inferred from approval",
+      "COUNTEREXAMPLE": "ValueError: APPROVAL_NOT_CONSUMPTION",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Unqualified gate treated as qualified issuance prerequisite",
+      "COUNTEREXAMPLE": "ValueError: SPEC_NOT_QUALIFIED",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Check-then-create admission race",
+      "COUNTEREXAMPLE": "ValueError: NO_CHECK_CREATE_RACE",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Missing directory durability barrier",
+      "COUNTEREXAMPLE": "ValueError: DURABILITY_BARRIER",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Timestamp-based consumption identity",
+      "COUNTEREXAMPLE": "ValueError: STABLE_KEY",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Duplicate concurrent claim accepted",
+      "COUNTEREXAMPLE": "ValueError: CONCURRENT_CLAIMS",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Stale lock treated as unused",
+      "COUNTEREXAMPLE": "ValueError: STALE_LOCK",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Crash restores permission",
+      "COUNTEREXAMPLE": "ValueError: CRASH_REOPEN",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Launch before durable claim",
+      "COUNTEREXAMPLE": "ValueError: LAUNCH_BEFORE_CLAIM",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Wrong command identity accepted",
+      "COUNTEREXAMPLE": "ValueError: EXACT_COMMAND",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Unauthorized implementation path",
+      "COUNTEREXAMPLE": "ValueError: GATE_SCOPE",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Actual H77 probe invoked as synthetic callback",
+      "COUNTEREXAMPLE": "ValueError: ACTUAL_PROBE_EXECUTION",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    },
+    {
+      "CONTROL": "Real A15 execution included",
+      "COUNTEREXAMPLE": "ValueError: REAL_EXECUTION",
+      "EXIT_CODE": 1,
+      "RESULT": "REJECTED"
+    }
+  ],
+  "LIMITATION": "Metadata contract corruption controls; no concurrency, crash, storage or launch behavior actually tested",
+  "RESULT": "13/13 PASS STATIC_CONTRACT_CONTROLS"
+}

@@ -1,0 +1,216 @@
+{
+  "END_mapping_labels": "SEPARATE_UNPROVEN_ORIGINAL",
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "PID": 7,
+  "PROSPECTIVE_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "actual_result_transactions_executed": 0,
+  "boundary": {
+    "append_head": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+    "boundary": "POST_CHECK",
+    "bundle": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/writer-main/checkpoints/post-check/bundle-dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3.json",
+      "raw_sha256": "dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3"
+    },
+    "bundle_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3",
+    "computation": {
+      "actionable": [
+        "E2-COLLECT"
+      ],
+      "control": "RUNNABLE",
+      "defects": [],
+      "full_computation": {
+        "actionable": [
+          {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          }
+        ],
+        "blocked": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            [
+              "ACTION_COMPLETED:E2-PREPARE",
+              "DECISION_NOT_READY"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            [
+              "ACTION_COMPLETED:E2-COLLECT"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "ACTION_COMPLETED:E2-DECIDE",
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ],
+        "branches": [
+          [
+            {
+              "$type": "ConditionId",
+              "value": "E2-ROOT"
+            },
+            {
+              "type": "BranchState",
+              "value": "RUNNABLE_INTERNAL"
+            }
+          ]
+        ],
+        "control": {
+          "type": "ControlState",
+          "value": "RUNNABLE"
+        },
+        "defects": [],
+        "frontier": [],
+        "human_batches": [],
+        "human_routing": {
+          "type": "HumanRouting",
+          "value": "RUNNABLE"
+        },
+        "selection": {
+          "criterion": 0,
+          "selected": {
+            "$type": "ActionId",
+            "value": "E2-COLLECT"
+          },
+          "steps": [
+            "SINGLETON"
+          ],
+          "type": "SelectionTrace"
+        },
+        "statuses": [
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-CHECK"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "COMPLETED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-COLLECT"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "ACTIONABLE"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-DECIDE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-PREPARE"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          },
+          {
+            "$type": "ActionStatus",
+            "id": {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            "state": {
+              "$enum": "ActionState",
+              "value": "BLOCKED"
+            }
+          }
+        ],
+        "type": "Computation",
+        "unresolved_roots": 1,
+        "unresolved_slots": 0
+      },
+      "selected": "E2-COLLECT"
+    },
+    "context": {
+      "$type": "EvaluationContext",
+      "allowed_effects": [],
+      "generation": "E2-P05-A03-PROSPECTIVE-GENERATION-1",
+      "lineage": "E2-P05-A03-PROSPECTIVE-QUALIFICATION-1",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "tick": 0
+    },
+    "event_count": 1,
+    "ledger_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3#/bundle/events",
+    "ledger_root": "planner-event-v1:db8bc77aa2f5bd161272ed2e54993bf6d1c74b63d202d15af329ab64b51edd2c",
+    "lineage_ledger_anchor": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a#/bundle/events",
+    "state_id": "planner-snapshot-v1:0511b620b720c738afd4de0b4977c8fecd3c9e93866cbd2cf31e5ca48ad5d133"
+  },
+  "checkpoint": "POST_CHECK",
+  "hash_seed": "0",
+  "historical_original_proven": false,
+  "native_authorities_issued": 0,
+  "reader_number": "1",
+  "replay_prefix_checks": [
+    {
+      "bundle_id": "planner-bundle-v1:1798ee4b44140427cc90768fc251fadab5080b4984cf87dc8e6d04266082914a",
+      "event_count": 0,
+      "result": "PASS"
+    },
+    {
+      "bundle_id": "planner-bundle-v1:dbb3b09dad3d8775c978b33e9a9c65b45b8ac2d412c07894c16c2b29a5922fe3",
+      "event_count": 1,
+      "result": "PASS"
+    }
+  ],
+  "replay_provider_invocations": 0,
+  "result": "PASS",
+  "writer_memory_used": false,
+  "writer_process_already_terminated": true
+}

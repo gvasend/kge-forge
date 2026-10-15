@@ -1,0 +1,23 @@
+{
+  "BINDING_SOURCES": [
+    "Charter QUALIFICATION_EXECUTION_AUTHORITY/POLICY and ACTIVATION_PRECONDITIONS; RESOURCE_AND_SECURITY_BOUNDARY/UNKNOWN_RESOURCE_PERMISSION",
+    "Sealed137 ENTRY_PREDICATES, OPERATIONS, INVOCATION_CONTEXT, FAILURE_POLICY"
+  ],
+  "DEPENDENCY_GRAPH_ACYCLIC": true,
+  "ISSUANCE_PREREQUISITES": "Authenticated owner/subject/charter, exact unchanged scope, no conflicting repository authority, qualified immutable publication and independent verification: PASS",
+  "LATER_ENTRY_PREDICATES": [
+    "Actual caller birth/context",
+    "Actual direct-host creation/read permissions and qualified pins",
+    "Trusted parents, safe nofollow path/mount/alias review, both targets absent",
+    "Current external revocation/supersession and unused setup run"
+  ],
+  "MANAGEABLE_RISK": "Two empty private directories only; namespace race mitigated by trusted/sticky parent and owner0700 new parent, no-overwrite mkdir and postcheck. Ordinary disk/mode failure recoverable through separately authorized repair. OS permission not inferred from owner approval.",
+  "NO_FUTURE_RESULT_REQUIRED_FOR_ITS_OWN_GRANT": true,
+  "NO_HOST_CONTROL_VERIFICATION_INFERRED": true,
+  "NO_NEW_SUPERVISOR_REQUIRED": true,
+  "POST_PROVISION_OBSERVATIONS": [
+    "Both paths actual empty directories, direct UID/GID1000 and mode0700, no symlinks, unsafe aliases/bind mounts or protected-store overlap; capture root namespace/mount/device/inode recorded",
+    "Check parent identity unchanged and new child metadata after creation; trusted owned0700 parent protects child-name admission",
+    "Native success is observed provisioning only, not general crash durability; later137fresh root check remains required"
+  ]
+}

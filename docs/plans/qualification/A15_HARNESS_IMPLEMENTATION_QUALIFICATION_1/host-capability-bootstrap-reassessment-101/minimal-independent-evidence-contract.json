@@ -1,0 +1,145 @@
+{
+  "ACTUAL_OBSERVER_QUALIFIED": false,
+  "EVIDENCE_FIELDS_COMPLETE": true,
+  "FIRST_FAILURE": "immutable,secondarycleanupseparate;missing/collectedResultnotinvented",
+  "MANAGER_QUERY_AND_CLEANUP": [
+    {
+      "EXECUTABLE": "no probe launched on predicate failure",
+      "ID": "ENTRY",
+      "PROCEDURE": "authenticate exact direct ubuntu01 manager/binaries/account, administrator permission for this exact one-shot command/properties/unit and output paths; verify no prior attempt, unit/receipt conflict; durably record authorized attempt before launch; unknown or ambiguous denies launch"
+    },
+    {
+      "EXACT_ARGV": [
+        "/usr/bin/systemd-run",
+        "--no-ask-password",
+        "--quiet",
+        "--wait",
+        "--collect",
+        "--pipe",
+        "--unit=kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+        "--slice=system.slice",
+        "--uid=1000",
+        "--gid=1000",
+        "--working-directory=/",
+        "--property=TasksAccounting=yes",
+        "--property=TasksMax=8",
+        "--property=MemoryAccounting=yes",
+        "--property=MemoryMax=67108864",
+        "--property=RuntimeMaxSec=20s",
+        "--property=TimeoutStopSec=2s",
+        "--property=KillMode=control-group",
+        "--property=SendSIGKILL=yes",
+        "--property=Restart=no",
+        "--property=NoNewPrivileges=yes",
+        "--property=PrivateNetwork=yes",
+        "--property=PrivateTmp=yes",
+        "--property=ProtectSystem=strict",
+        "--property=ProtectHome=yes",
+        "--property=ReadOnlyPaths=/sys/fs/cgroup",
+        "--property=RestrictAddressFamilies=AF_UNIX",
+        "--property=LimitCPU=5",
+        "--property=LimitAS=134217728",
+        "--property=LimitFSIZE=65536",
+        "--property=LimitNOFILE=32",
+        "--property=UMask=0077",
+        "/usr/bin/python3.8",
+        "-I",
+        "-B",
+        "-c",
+        "import os,json,pathlib,time,datetime,sys\nUNIT = 'kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service'\nMAX_OUTPUT = 65536\nwritten = 0\ndef emit(value):\n global written\n raw=(json.dumps(value,sort_keys=True,separators=(',',':'))+'\\n').encode()\n if len(raw)>8192 or written+len(raw)>MAX_OUTPUT: raise RuntimeError('OUTPUT_BOUND')\n offset=0\n while offset<len(raw):\n  n=os.write(1,raw[offset:])\n  if n<=0: raise RuntimeError('OUTPUT_WRITE')\n  offset+=n; written+=n\n\ndef snapshot(phase):\n if os.geteuid()!=1000 or os.getegid()!=1000: raise RuntimeError('NONROOT_IDENTITY_MISMATCH')\n entries={}\n for line in pathlib.Path('/proc/self/cgroup').read_text().splitlines():\n  unused,controllers,path=line.split(':',2)\n  for controller in controllers.split(','): entries[controller]=path\n pids=entries.get('pids'); manager=entries.get('name=systemd')\n if pids is None or manager is None: raise RuntimeError('MISSING_V1_CONTROLLER')\n if not pids.startswith('/') or '..' in pids.split('/'): raise RuntimeError('CGROUP_PATH')\n location=pathlib.Path('/sys/fs/cgroup/pids')/pids.lstrip('/')\n maximum=(location/'pids.max').read_text().strip()\n current=(location/'pids.current').read_text().strip()\n record={'schema':'H86-PIDS-METADATA-1','phase':phase,'service_unit':UNIT,\n 'SERVICE_PID':os.getpid(),'SERVICE_PIDS_CGROUP':pids,'SERVICE_SYSTEMD_CGROUP':manager,\n 'KERNEL_PIDS_MAX':maximum,'KERNEL_PIDS_CURRENT':current,\n 'SYSTEMD_TASKS_MAX':None,'OBSERVATION_TIME':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n 'EVIDENCE_PROVENANCE':'service readonly proc/sysfs observation; SYSTEMD_TASKS_MAX supplied only by independent manager query'}\n emit(record)\n if pids!='/system.slice/'+UNIT or maximum!='8' or not current.isdigit() or not 1<=int(current)<=8:\n  raise RuntimeError('SERVICE_SPECIFIC_PIDS_LIMIT_NOT_CONFIRMED')\ntry:\n snapshot('START')\n time.sleep(8)\n snapshot('BEFORE_EXIT')\nexcept BaseException as exc:\n try: emit({'schema':'H86-PIDS-ERROR-1','error_type':type(exc).__name__,'service_unit':UNIT,'retry_allowed':False})\n except BaseException: pass\n sys.exit(2)\n"
+      ],
+      "ID": "START_ONCE",
+      "PROCEDURE": "one qualified direct-host observer launches exactly argv, captures separate stdout/stderr each bounded within aggregate65536 and monotonic25s deadline; no shell interpolation, no sudo, no fallback user manager"
+    },
+    {
+      "EXACT_ARGV": [
+        "/bin/systemctl",
+        "--no-ask-password",
+        "--no-pager",
+        "show",
+        "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+        "--property=Id",
+        "--property=MainPID",
+        "--property=ControlGroup",
+        "--property=User",
+        "--property=Group",
+        "--property=TasksAccounting",
+        "--property=TasksMax",
+        "--property=MemoryMax",
+        "--property=RuntimeMaxUSec",
+        "--property=TimeoutStopUSec",
+        "--property=KillMode",
+        "--property=Restart",
+        "--property=NoNewPrivileges",
+        "--property=PrivateNetwork",
+        "--property=ProtectSystem",
+        "--property=ProtectHome",
+        "--property=ActiveState",
+        "--property=SubState",
+        "--property=Result",
+        "--property=ExecMainCode",
+        "--property=ExecMainStatus"
+      ],
+      "ID": "INDEPENDENT_LIVE_QUERY",
+      "PROCEDURE": "query once while service START snapshot is live; crosscheck MainPID with service output and host /proc/<MainPID>/cgroup; separately derive pids and name=systemd controller paths. Read pids.max/current only under exact derived service pids path. Do not use manager ControlGroup as a pids substitute."
+    },
+    {
+      "ID": "COMPARE",
+      "PROCEDURE": "require exact unit, nonroot UID/GID1000, MainPID correspondence, service pids=/system.slice/<unit>, kernel maximum8, configured TasksMax8, current1..8 and distinct direct controller provenance; preserve raw records/time/PIDs. Missing/mismatched fields fail. No excess-task rejection claim."
+    },
+    {
+      "ID": "OBSERVE_EXIT",
+      "PROCEDURE": "wait for launcher and independently observe terminal service Result/ExecMainStatus if retained by manager; zero exit plus both snapshots required. Collected post-exit metadata absence is not an invented successful Result; record raw not-found and verify no living service PID."
+    },
+    {
+      "EXACT_ALLOWED_STOP_ARGV": [
+        "/bin/systemctl",
+        "--no-ask-password",
+        "stop",
+        "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service"
+      ],
+      "EXACT_UNLOAD_CHECK_ARGV": [
+        "/bin/systemctl",
+        "--no-ask-password",
+        "--no-pager",
+        "show",
+        "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+        "--property=LoadState",
+        "--property=ActiveState"
+      ],
+      "ID": "CLEANUP",
+      "PROCEDURE": "stop only this exact unit if still active or observer cap/deadline fails; within25s budget. Verify no active tasks, no persistent unit, no /run/systemd/transient/<unit>; collect or empty/remove cgroup state read-only. Never reset attempt receipt. Cleanup error secondary to first failure; no relaunch."
+    }
+  ],
+  "OBSERVATION_TIME_AVAILABLE_NOW": false,
+  "PROVENANCE": "rawserviceLFframedJSON plusindependentmanagerquery,/procactualPID,pidscontrollerfile,parentwait/statusandcleanup;recordactualtimestampsonly",
+  "REQUIRED_FIELDS": [
+    "ISSUED_GRANT_IDENTITY",
+    "CONSUMPTION_IDENTITY",
+    "HOST_IDENTITY",
+    "SYSTEMD_UNIT_IDENTITY",
+    "SERVICE_PROCESS_IDENTITY",
+    "SERVICE_PIDS_CGROUP",
+    "SYSTEMD_TASKS_MAX",
+    "KERNEL_PIDS_MAX",
+    "KERNEL_PIDS_CURRENT",
+    "EXIT_STATUS",
+    "OBSERVATION_TIME",
+    "FIRST_FAILURE",
+    "UNKNOWN_OUTCOME",
+    "NO_RETRY_STATUS"
+  ],
+  "RETAINED_FIELDS": {
+    "KERNEL_PIDS_CURRENT": "observed integer1..8; retained raw value/time",
+    "KERNEL_PIDS_MAX": "8",
+    "OBSERVATION_PROVENANCE": "raw service snapshots plus independent manager/kernel/parent captures with actual times",
+    "SERVICE_EXIT_STATUS": "independent manager/parent outcome; no success inferred from collection or service self-report",
+    "SERVICE_PIDS_CGROUP": "/system.slice/kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "SERVICE_PROCESS_ID": "payload SERVICE_PID independently matches manager MainPID and host /proc/<PID>/cgroup",
+    "SERVICE_SYSTEMD_CGROUP": "separately captured own name=systemd path, never used as pids substitute",
+    "SYSTEMD_SERVICE_IDENTITY": "kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "SYSTEMD_TASKS_MAX": 8
+  },
+  "RETENTION": "ownedboundedobserverboundary65,536publishedbytes;stabledurableclaimrecords musthaveexactseparatebindingandbeincludedinthequalifiedscope",
+  "UNKNOWN_OUTCOME": "explicit,consumed,noretry"
+}

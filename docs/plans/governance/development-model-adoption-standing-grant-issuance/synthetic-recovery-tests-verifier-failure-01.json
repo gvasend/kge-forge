@@ -1,0 +1,35 @@
+{
+  "STAGE": "CANDIDATE_STATIC_REVIEW",
+  "FAILURE": "Overbroad AST rule rejected unittest.main as if it were recovery.main. No target code was executed.",
+  "RESULTS": [
+    {
+      "chunk_id": "ac445e",
+      "wall_time_seconds": 0.000019811,
+      "exit_code": 1,
+      "original_token_count": 85,
+      "output": "Traceback (most recent call last):\n  File \"/tmp/verify-synthetic-recovery-test-grant.py\", line 45, in <module>\n    if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute):assert n.func.attr not in ('main','read_source','authority_bundle','durable_consume_and_independently_verify','independent_consumption_reader')\nAssertionError\n"
+    },
+    {
+      "chunk_id": "2ff5b9",
+      "wall_time_seconds": 0.000014908,
+      "exit_code": 1,
+      "original_token_count": 85,
+      "output": "Traceback (most recent call last):\n  File \"/tmp/verify-synthetic-recovery-test-grant.py\", line 45, in <module>\n    if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute):assert n.func.attr not in ('main','read_source','authority_bundle','durable_consume_and_independently_verify','independent_consumption_reader')\nAssertionError\n"
+    },
+    {
+      "chunk_id": "96b5d0",
+      "wall_time_seconds": 0.000014602,
+      "exit_code": 1,
+      "original_token_count": 85,
+      "output": "Traceback (most recent call last):\n  File \"/tmp/verify-synthetic-recovery-test-grant.py\", line 45, in <module>\n    if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute):assert n.func.attr not in ('main','read_source','authority_bundle','durable_consume_and_independently_verify','independent_consumption_reader')\nAssertionError\n"
+    },
+    {
+      "chunk_id": "ce1309",
+      "wall_time_seconds": 0.000011325,
+      "exit_code": 1,
+      "original_token_count": 85,
+      "output": "Traceback (most recent call last):\n  File \"/tmp/verify-synthetic-recovery-test-grant.py\", line 45, in <module>\n    if isinstance(n,ast.Call) and isinstance(n.func,ast.Attribute):assert n.func.attr not in ('main','read_source','authority_bundle','durable_consume_and_independently_verify','independent_consumption_reader')\nAssertionError\n"
+    }
+  ],
+  "CORRECTION": "Restrict prohibited adapter-call check to receiver r (the recovery module)."
+}

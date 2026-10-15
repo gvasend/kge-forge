@@ -1,0 +1,80 @@
+{
+  "EARLIEST_A14_D01_TERMINOLOGY": {
+    "A14_CASE": "Independent canonical governed-unknown checkpoint; no exact P05/P06 policy_version specified",
+    "SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md",
+      "pointer": "",
+      "raw_sha256": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd"
+    },
+    "TERM": "Existing supported selection-policy contract may be reused with its exact admitted identity/version; E2 label cannot replace policy hash under old version. No import_e1 or historical source projection belongs to E2."
+  },
+  "NATIVE_CONSUMER_EXAMPLES": {
+    "A14_DISTINCTION": "RECOMPUTE/SAVE_BUNDLE/RESTORE consumes presealed bundle; does not invoke either policy-fixing importer",
+    "A14_V2_DISPATCH": {
+      "path": "docs/plans/qualification/E2_P05_D01_FIXTURE_ORACLE_CLOSURE_2/dispatch-table-v2.json",
+      "pointer": "",
+      "raw_sha256": "2480f50c6f492017f2515e7f4ff7c86edaf37432801fb2e671c61d1151bf6df6"
+    },
+    "import_e1": "Full frozen E1 importer explicitly fixes P06 and FULL_FROZEN_E1_REPLAY",
+    "import_fixture": "PLANNER-REPLAY-1/2 J-M-capable adapter explicitly fixes P05"
+  },
+  "NORMATIVE_POLICY_SPEC": {
+    "path": "docs/experiments/E1/E1_TEMPLATE1_GRAPH_RESOLUTION_PLAN_1.json",
+    "pointer": "/selection_policy",
+    "raw_sha256": "2662971aa42bda300dcea7bf591e95c113b4ed5cb32db1381cd25b024c06e91c"
+  },
+  "NORMATIVE_SOURCE_POLICY_ID": "E1_GRAPH_RESOLUTION_SELECTION_POLICY_1",
+  "NORMATIVE_SOURCE_SPECIFICATION_SCOPE": "Selection specification and dry-run validation only; no action execution or completion. Historical execution_state remains unchanged.",
+  "PHASE_NAMESPACE_DISTINCTION": "Planner P05/P06 implementation milestones and E2-P05/P06 acceptance/review packages are separate from full E1-SELECTION-1-P05/P06 binding strings",
+  "POLICY": "E1-SELECTION-1 algorithm + exact admitted source artifact/profile/domain",
+  "POLICY_APPLICABILITY": "Native codec version/state/scope compatibility plus exact source/config validation; does not by itself select a version",
+  "POLICY_BINDING": "Exact pair ArtifactPin + version validated against PolicyBinding registry and CONTRACT_DIGESTS, then owned by one native bundle invocation",
+  "POLICY_BINDING_POINT": "Native PersistenceBundle.policy and .policy_version, supplied to save/replay/runner invocation",
+  "POLICY_CONSUMER": "PersistenceBundle/replay and native selector; Snapshot itself owns no policy_version",
+  "POLICY_IDENTITY_DOMAINS": [
+    "CONTENT_IDENTITY/raw-file-sha256 policy bytes",
+    "Reviewed configuration digest, not new native authority identity",
+    "CONTENT_IDENTITY/planner-bundle-v1 includes policy/version in canonical envelope"
+  ],
+  "POLICY_SOURCE": {
+    "$type": "ArtifactPin",
+    "identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "475bef0b28d7b484ba2641c654b37e9ce3d6f6ae1b0e13dfdcadaa3f79a2a3b5"
+    },
+    "path": "docs/experiments/E1/E1_GRAPH_RESOLUTION_SELECTION_POLICY_1.md",
+    "pointer": "",
+    "profile": {
+      "$enum": "HashProfile",
+      "value": "raw-file-sha256"
+    }
+  },
+  "POLICY_VERSION": "Reviewed native selector/bundle schema-binding string; P05/P06 are retained versions, not timestamps or E2 phase IDs",
+  "RUNTIME_PINS": {
+    "codec.py": {
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "model.py": {
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+    },
+    "replay.py": {
+      "path": "adapter/planner/replay.py",
+      "pointer": "",
+      "raw_sha256": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e"
+    },
+    "selector.py": {
+      "path": "adapter/planner/selector.py",
+      "pointer": "",
+      "raw_sha256": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f"
+    }
+  }
+}

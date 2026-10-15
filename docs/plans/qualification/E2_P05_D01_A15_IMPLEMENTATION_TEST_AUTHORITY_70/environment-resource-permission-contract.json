@@ -1,0 +1,380 @@
+{
+  "ACTIVATION_CONJUNCTION": [
+    "EP70-GRANT",
+    "EP70-ACTOR",
+    "EP70-PATHS",
+    "EP70-CODE-SEAL",
+    "EP70-CONFINEMENT",
+    "EP70-LIMITS",
+    "EP70-PHASE",
+    "EP70-FIXTURE",
+    "EP70-PROCESS",
+    "EP70-NATIVE-SCOPE",
+    "EP70-AUDIT"
+  ],
+  "ACTIVATION_EVALUATION_RULE": {
+    "NATIVE_CALLED_IN_PREFLIGHT_OR_FAKE_PHASE": false,
+    "PHASE_NOT_LISTED": "DENY",
+    "PRE_NATIVE_ACTIONS": "Only expressly scoped metadata/process confinement preflight, synthetic preparation and fake backend qualification; no native fixture execution while EP70-PHASE is false.",
+    "RULE": "For the requested phase, enable only if every listed independently evidenced predicate has exact boolean true and its evidence pins/current identities match. Missing/false/unknown/not-applicable-as-bypass/string-true denies. Controller authentication of issued grant is external; an input assertion of a grant never qualifies.",
+    "UNKNOWN_POLICY": "DENY"
+  },
+  "ACTUAL_RESOURCE_PERMISSION_FOR_FUTURE_TESTS": "UNDETERMINED_UNTIL_ENTRY_PREDICATES_PASS",
+  "AUDIT_BOUNDARY": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1",
+  "BOUNDARY_COMPLETENESS": "No unknown permission is accepted; future values governed by exact closed selectors and denial rules, not claimed known now",
+  "CLEAN_TEST_ENVIRONMENT": {
+    "LC_ALL": "C.UTF-8",
+    "PATH": "/usr/bin:/bin",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONHASHSEED": "exact 0,1,7,101 test schedule",
+    "PYTHONPATH": "/home/gvasend/app/kge-forge"
+  },
+  "DEPENDENCY_VERSIONS": {
+    "BWRAP_BINARY_PIN": {
+      "PATH": "/usr/bin/bwrap",
+      "RAW_SHA256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987"
+    },
+    "NATIVE_IMPLEMENTATION_SOURCE_PINS": [
+      {
+        "PATH": "adapter/planner/__init__.py",
+        "RAW_SHA256": "25c834058e64b6606d1689177ed1a875ee421275d97d5d3a98d7378ac5a4ab64"
+      },
+      {
+        "PATH": "adapter/planner/__main__.py",
+        "RAW_SHA256": "fa9d923348f5c27c54a8fb4dd14a16c0d18ca2cbd4409c1d07a30833bec3ed36"
+      },
+      {
+        "PATH": "adapter/planner/action_installation.py",
+        "RAW_SHA256": "262026c542979046299f1151a1e5f47cd1c4b2e3778d9a5f1f85d5b95a75a0a4"
+      },
+      {
+        "PATH": "adapter/planner/action_materializer.py",
+        "RAW_SHA256": "4a9aa786cf52ff97089c339bb9f9d2e6d09b16d9652fe0c00b912fce179d6272"
+      },
+      {
+        "PATH": "adapter/planner/attestor.py",
+        "RAW_SHA256": "63b1ee0c910c9ef9f4459b71a13d5c88264283fa3706eac4849b505b1a264e45"
+      },
+      {
+        "PATH": "adapter/planner/authentication_installation.py",
+        "RAW_SHA256": "fb13a74090813c70cecbc32e8ca28931a0bec4fe01b1bc1f884962c84142b7bb"
+      },
+      {
+        "PATH": "adapter/planner/budget.py",
+        "RAW_SHA256": "3655ac5bc1f292ba3d0ccd237c3bb56a18f21cbd623622046ab424124f0c41d3"
+      },
+      {
+        "PATH": "adapter/planner/codec.py",
+        "RAW_SHA256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+      },
+      {
+        "PATH": "adapter/planner/core.py",
+        "RAW_SHA256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+      },
+      {
+        "PATH": "adapter/planner/dossier_transaction.py",
+        "RAW_SHA256": "073eca6c6a2245e2ff8a057cac364be27a19bf19f8ce3ec60d1d02fe67ba4609"
+      },
+      {
+        "PATH": "adapter/planner/evidence.py",
+        "RAW_SHA256": "187e2ed535787711fe60efb4fb0c1345c829d8e490a31f5c61a119e4a0651982"
+      },
+      {
+        "PATH": "adapter/planner/evidence_attestation.py",
+        "RAW_SHA256": "83ee2a0935c8cabf8c8c4391c0f42ab79c671510001c323f2cbc59487bc1f1e0"
+      },
+      {
+        "PATH": "adapter/planner/evidence_lifecycle.py",
+        "RAW_SHA256": "87bf38f0161c0598790933fc666a368869342c341e9033ec3e1f314d83be79d8"
+      },
+      {
+        "PATH": "adapter/planner/evidence_materializer.py",
+        "RAW_SHA256": "f7984061cab67d828a6f33f3f2731c0a2fb0160616f6d1b1d43c6dc7c6705f12"
+      },
+      {
+        "PATH": "adapter/planner/evidence_transaction.py",
+        "RAW_SHA256": "17161ee9e60bf4b096b76b08a933db79f91640e0f95f295d1609fb2ae2bb3ab2"
+      },
+      {
+        "PATH": "adapter/planner/evidence_transitions.py",
+        "RAW_SHA256": "985fc96fc3fbfcacf85eb56cef7974fdfecacd62c9b3fc5e688db1900902ccc5"
+      },
+      {
+        "PATH": "adapter/planner/gates.py",
+        "RAW_SHA256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+      },
+      {
+        "PATH": "adapter/planner/genesis_bundle.py",
+        "RAW_SHA256": "746696dd3a472e8336a515993b63a85486d0dde2f9b68b27aad2c39a9b996a37"
+      },
+      {
+        "PATH": "adapter/planner/genesis_event.py",
+        "RAW_SHA256": "6f2aafa85049338b7cc458ca95259c0cfaf648b325a1fec299447ab5b65d8347"
+      },
+      {
+        "PATH": "adapter/planner/genesis_ledger.py",
+        "RAW_SHA256": "3a59ace45bebf89580f8df054775c7229fd3b9712acddfe4730a38526bd57916"
+      },
+      {
+        "PATH": "adapter/planner/human_decision.py",
+        "RAW_SHA256": "ff44bb1c34f2c1ca143210940caa592ee9dc64719a09de7b9015d300f760f012"
+      },
+      {
+        "PATH": "adapter/planner/installation.py",
+        "RAW_SHA256": "351a7a2cdad0ce5e60c50e2c500a5803b9af1620a0a54f31b42c9419f46f1ccf"
+      },
+      {
+        "PATH": "adapter/planner/model.py",
+        "RAW_SHA256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+      },
+      {
+        "PATH": "adapter/planner/proof_installation.py",
+        "RAW_SHA256": "9adbfb67d2fa7ff4e75bea856816423fe2e0476b9856df897eec889da4544e26"
+      },
+      {
+        "PATH": "adapter/planner/replay.py",
+        "RAW_SHA256": "f847cd1e84d64e1694dccccdf470ed72812a22f74fa4cdeaedb33f2e1263929e"
+      },
+      {
+        "PATH": "adapter/planner/selector.py",
+        "RAW_SHA256": "2884044696cf1e5e378c67a78a672cea4bbd2814d36aca20d3305435ea16df2f"
+      },
+      {
+        "PATH": "adapter/planner/typed_proofs.py",
+        "RAW_SHA256": "f3d95766cc21ec263ab7f6dc8679d821a8a16cdee5c5806de9e28cb34baf830b"
+      },
+      {
+        "PATH": "adapter/planner/validation_installation.py",
+        "RAW_SHA256": "bbb655395c3eff7124bb65e249409e72450e96ef8310bbc862c4d7d58c0973d8"
+      },
+      {
+        "PATH": "adapter/planner/validation_transaction.py",
+        "RAW_SHA256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361"
+      },
+      {
+        "PATH": "adapter/__init__.py",
+        "RAW_SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "NEW_SOURCES_AND_COMPLETE_STDLIB_LOADER_CLOSURE": "UNDETERMINED until bounded construction and independent sealing; EP70-CODE-SEAL denies test launch until exact manifest matches",
+    "PYTHON": "3.8.10"
+  },
+  "ENVIRONMENT_FRESHNESS_RULE": "All eleven predicates independently rerun at each phase/entry; any drift stops. A changed observed host/runtime or broadened boundary requires a newly qualified subject and owner decision, not silent rebind.",
+  "FILESYSTEM_PERMISSIONS": "Current stat/access observations only; independently verified scoped rights and mounts required at entry",
+  "HOST_IDENTITY": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "qualification-observed-test-host-v1",
+    "sha256": "4dce7e674d285ba0d33b2cac3c5e2593dd02a6abc3d12566934c99c8ace055ec"
+  },
+  "INPUT_OUTPUT_PATH_SELECTION": {
+    "ALLOWED_TEST_IDS": [
+      "T70-PROCESS",
+      "T70-INPUT",
+      "T70-DISPATCH",
+      "T70-CAPTURE",
+      "T70-SERIALIZE",
+      "T70-PUBLISH",
+      "T70-EXIT",
+      "T70-HANDOFF",
+      "T70-READER",
+      "T70-COMPARE",
+      "T70-ISOLATION",
+      "T70-FAILURE",
+      "T70-DETERMINISM"
+    ],
+    "EVIDENCE_PUBLICATION": "Controller only, exclusive immutable publication; no preexisting target overwrite or deletion; exact generated file paths/hashes in manifest",
+    "EVIDENCE_ROOT": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1",
+    "FIXTURE_ROWS": "scratch/fixtures/<TEST_ID>/<synthetic-variant-key>, exact manifest entries only",
+    "MUTABLE_ROWS": "scratch/outputs/<TEST_ID>/<synthetic-variant-key>, exact manifest entries only",
+    "ORIGINAL_RUNTIME_DENIED": "docs/plans/qualification/A15_PROSPECTIVE_SCENARIO_1_RUNTIME",
+    "RESOURCE_PRIVILEGES_CREATED": false,
+    "SCRATCH_BASENAME_RULE": "kge-a15-harness-test- followed by one lowercase 32-hex campaign token; mkdir exclusive mode0700 by approved actor; actual path and inode sealed before use; no symlink ancestors or reuse",
+    "SCRATCH_PARENT": "/tmp",
+    "SRC_PATHS": [
+      "adapter/qualification_a15/__init__.py",
+      "adapter/qualification_a15/contracts.py",
+      "adapter/qualification_a15/supervisor.py",
+      "adapter/qualification_a15/worker.py",
+      "adapter/qualification_a15/reader.py",
+      "adapter/tests/test_qualification_a15_harness.py"
+    ],
+    "VARIANT_KEYS": [
+      "SYNTHETIC-ONE",
+      "SYNTHETIC-TWO"
+    ]
+  },
+  "INTERPRETER": {
+    "INTERPRETER_BINARY_SHA256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+    "INTERPRETER_PATH": "/usr/bin/python3",
+    "INTERPRETER_RESOLVED_PATH": "/usr/bin/python3.8",
+    "INTERPRETER_VERSION": "3.8.10"
+  },
+  "NETWORK_POLICY": "DENY external network; exact enforced private namespace and verified no external route/interface, no external socket or service access",
+  "OBSERVATION_PIN": {
+    "PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_AUTHORITY_70/observed-environment.json",
+    "RAW_SHA256": "e7d18541319653ddc60158fd6802cff0799f7b47d5a49e8712dff3d5a808d16b"
+  },
+  "OBSERVED_CURRENT": true,
+  "OPERATING_SYSTEM": "Linux",
+  "PHASE_GUARDS": {
+    "CONSTRUCTION": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-AUDIT"
+    ],
+    "FAKE_PROTOCOL_TEST": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-CODE-SEAL",
+      "EP70-CONFINEMENT",
+      "EP70-LIMITS",
+      "EP70-PROCESS",
+      "EP70-AUDIT"
+    ],
+    "FINAL_SEAL": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-CODE-SEAL",
+      "EP70-CONFINEMENT",
+      "EP70-LIMITS",
+      "EP70-PHASE",
+      "EP70-FIXTURE",
+      "EP70-PROCESS",
+      "EP70-NATIVE-SCOPE",
+      "EP70-AUDIT"
+    ],
+    "NATIVE_SYNTHETIC_TEST": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-CODE-SEAL",
+      "EP70-CONFINEMENT",
+      "EP70-LIMITS",
+      "EP70-PHASE",
+      "EP70-FIXTURE",
+      "EP70-PROCESS",
+      "EP70-NATIVE-SCOPE",
+      "EP70-AUDIT"
+    ],
+    "TRUSTED_METADATA_PREFLIGHT": [
+      "EP70-GRANT",
+      "EP70-ACTOR",
+      "EP70-PATHS",
+      "EP70-LIMITS",
+      "EP70-AUDIT"
+    ]
+  },
+  "PREDICATES": [
+    {
+      "APPLIES": "Every construction/test/sealing operation",
+      "EXACT_RULE": "Authenticate future issued implementation/test grant against exact Package70 subject digest, effective charter/lifecycle, project-owner approval/direct role and normative reference. Deny missing/revoked/superseded/expired/wrong-scope grants. Grant evidence is outside editable sources and immutable test outputs; no test or module can self-authorize.",
+      "PREDICATE_ID": "EP70-GRANT",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Every operation",
+      "EXACT_RULE": "Current actor UID/GID, host facts/content identity, interpreter and bwrap hashes equal approved observation. Independently establish actual actor resource control and operation permissions, including every source parent write/search and each input read/search; deny any mismatch/unknown. Never derive OS rights from charter or rely on inherited elevated privilege.",
+      "PREDICATE_ID": "EP70-ACTOR",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Construction and evidence publication",
+      "EXACT_RULE": "All paths resolve under exact six-source allowlist, private campaign scratch or evidence root. lstat every ancestor, reject symlinks/foreign ownership and preexisting creation/publication targets; sources only new six files. Preserve preexisting evidence/runtime/E1 hashes. Root workspace write access alone is insufficient.",
+      "PREDICATE_ID": "EP70-PATHS",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Before any test child",
+      "EXACT_RULE": "Trusted independent controller seals exact six new source bytes and unchanged native dependency pins, interpreter/loader/stdlib executable dependency closure, approved invocation/argv/cwd/clean environment and fixture/oracle manifest. Future source hashes are generated artifacts under bounded creation authority; missing/drifting closure denies tests. No package install/network dependency or modification of native modules.",
+      "PREDICATE_ID": "EP70-CODE-SEAL",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Before any native synthetic call",
+      "EXACT_RULE": "Independent launcher confines inputs to readonly exact pinned code/runtime libraries, only the new test module, immutable synthetic fixtures/oracles and copied native policy. Real checkpoint, 19 ledgers, Package59 real inputs, real oracles and runtime output path are not mounted/readable by the native test child. Scratch output row is the only writable fixture resource. Network namespace isolated with no external interfaces/routes, inherited descriptors closed, environment allowlisted, no host privilege escalation. Verify actual namespace/mount/access properties from a trusted bounded metadata preflight after approval; unknown mechanism/usability denies native testing.",
+      "PREDICATE_ID": "EP70-CONFINEMENT",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Before and during every test",
+      "EXACT_RULE": "Independently verify lowering child hard/soft RLIMIT_CPU, AS, FSIZE and NOFILE to approved caps; supervisor enforce max live/total children, per-child/overall monotonic deadlines and total bytes. Abort on unsupported setting/overflow. Only owned campaign child groups may be terminated/reaped on timeout; no system process/cgroup broad rights inferred. Resource policy values are proposed caps, not claims of current enforceability.",
+      "PREDICATE_ID": "EP70-LIMITS",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Before native integration phase",
+      "EXACT_RULE": "First qualify input/authority/path gates and supervisor isolation/exit/reader ordering using injected fake backend and bounded metadata-only child processes. Independent controller verifies exact qualified source identities and protocol evidence. Native integration remains disabled until those checks and actual confinement/permission predicates pass; phase success is a prerequisite under an already issued grant, never a new grant.",
+      "PREDICATE_ID": "EP70-PHASE",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Every native call",
+      "EXACT_RULE": "Authenticate immutable synthetic fixture and preexecution independently qualified full expected output seals; full native identities, reserved scope/lineage/generation/names and distinctness against explicit real denylist. Validate all synthetic source and copied policy pins. All native bundle/descriptor/path arguments must be exactly fixture manifest entries; expected values cannot come from execution. Deny real Snapshot/bundle/source/event/variant identities or real checkpoint/archive data as execution input.",
+      "PREDICATE_ID": "EP70-FIXTURE",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Each worker/reader launch",
+      "EXACT_RULE": "Before worker launch, verify independent process/start/output identity and trusted supervisor method/clean environment. Observe own-child successful wait after that worker actually exits, then verify exact publication and handoff; readers launch only when all three READER_LAUNCH_REQUIRED_RUNTIME_FACTS hold. During fake-protocol qualification, these outcomes are measured rather than assumed. During native phase, the method must already be independently protocol-qualified, and every actual runtime fact is still freshly observed. No worker self-exit claim, warm object or cross-variant reuse.",
+      "PREDICATE_ID": "EP70-PROCESS",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Before every native dispatch",
+      "EXACT_RULE": "Only allowlisted native read/query/record/save/restore calls on exact synthetic objects. record_result owns synthetic SourceInvalidation application, no separate apply_event; no HEAD/commit_event, real A15 variant, source file mutation, production/E1/native-runtime change. Check operation count and effect class against sealed fixture contract; any unknown call denied.",
+      "PREDICATE_ID": "EP70-NATIVE-SCOPE",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    },
+    {
+      "APPLIES": "Throughout campaign and before sealing",
+      "EXACT_RULE": "Trusted independent controller records profile/grant/subject/code/fixture/oracle IDs, monotonic launch/wait/exit ordering and hashes, publication/handoff/reader comparisons, failed cases, budget/accounting and final preservation. Failure stops activation, retains evidence, no auto retry or optimistic PASS. Test child cannot supply its own authority/permission/exit certification. Seal successful executable/environment only after independent comparisons and preservation succeed.",
+      "PREDICATE_ID": "EP70-AUDIT",
+      "UNKNOWN_OR_FALSE_RESULT": "DENY_ACTIVATION"
+    }
+  ],
+  "PREDICATE_EVALUATOR_REQUIREMENTS": "Trusted qualification controller/engineering launcher external to worker/module under test; authentic grant and OS/source evidence independent of editable test code and assertions. Exact evaluator/profile identity and enforcement results independently sealed before native tests. If unavailable, native integration stays blocked.",
+  "PROCESS_CREATION_PERMISSIONS": "Observed metadata subprocess ability is not future test permission; must satisfy EP70-ACTOR/CONFINEMENT/LIMITS/GRANT for each launch",
+  "PROFILE_STATE": "UNSEALED_FUTURE_TEST_ENTRY; COMPLETE_CONDITIONAL_AUTHORIZATION_BOUNDARY",
+  "RESOURCE_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  },
+  "SCHEMA_ID": "A15-IMPLEMENTATION-TEST-ENVIRONMENT-CONTRACT-70-1",
+  "SEALED_FOR_TEST_ENTRY": false,
+  "SOURCE_ALLOWLIST": [
+    "adapter/qualification_a15/__init__.py",
+    "adapter/qualification_a15/contracts.py",
+    "adapter/qualification_a15/supervisor.py",
+    "adapter/qualification_a15/worker.py",
+    "adapter/qualification_a15/reader.py",
+    "adapter/tests/test_qualification_a15_harness.py"
+  ],
+  "TEMPORAL_GATES": {
+    "FINAL_SEAL": "Independently verify all required future synthetic results, exact runtime comparisons, failed-case evidence/budget accounting and preservation; permission alone is not successful implementation qualification.",
+    "READER_LAUNCH_REQUIRED_RUNTIME_FACTS": [
+      "SUPERVISOR_OBSERVED_OWN_CHILD_EXIT_ZERO",
+      "EXACT_IMMUTABLE_PUBLICATION_VERIFIED",
+      "EXACT_PERSISTED_HANDOFF_VERIFIED"
+    ],
+    "READER_LAUNCH_RULE": "All three exact runtime facts independently verified by controller AND phase entry predicates still valid. Worker/handoff assertions alone do not satisfy any runtime fact.",
+    "WORKER_LAUNCH": "Evaluate phase entry permissions, immutable input/profile/code and independent qualified supervision method before worker start; do not require that worker exit has already occurred."
+  },
+  "WORKING_DIRECTORY": "/home/gvasend/app/kge-forge"
+}

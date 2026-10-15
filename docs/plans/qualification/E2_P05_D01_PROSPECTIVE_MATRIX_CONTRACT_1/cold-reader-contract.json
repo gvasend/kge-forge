@@ -1,0 +1,41 @@
+{
+  "concrete_checkpoint_manifest_sealed": false,
+  "min_readers_per_checkpoint_seed": 3,
+  "minimum_per_checkpoint": 12,
+  "no_warm_reader_substitution": true,
+  "presentation_allocation": "Conservatively propose 3 readers per seed per required presentation; prospective strengthening only, not a change to original minimum",
+  "reader_allowlist": [
+    "persisted bundle",
+    "trusted expected bundle identity",
+    "original Snapshot archives",
+    "pinned source bytes",
+    "exact policy pin/version",
+    "reviewed contracts",
+    "explicit source/store root"
+  ],
+  "reader_contract": {
+    "expected_output": "Full independent expected output for exact persisted variant; concrete values not yet sealed",
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "mode": "COLD_INDEPENDENT_PROCESS",
+    "persisted_source": "Per-variant trusted event-bearing bundle and complete archive/source/policy closure; concrete bytes not yet materialized",
+    "reader_input": [
+      "persisted bundle",
+      "trusted expected bundle identity",
+      "original Snapshot archives",
+      "pinned source bytes",
+      "exact policy pin/version",
+      "reviewed contracts",
+      "explicit source/store root"
+    ],
+    "readers_per_checkpoint_seed": 3,
+    "writer_termination": "After complete immutable source/archive/event/bundle durability and commit acknowledgement; writer exits before reader"
+  },
+  "required_persisted_source": "Each realized checkpoint immutable native bundle + trusted original identity + complete event/after-Snapshot/source/policy archives",
+  "seed_count": 4,
+  "writer_termination_point": "After native durable publication acknowledgement and complete artifact record; writer process exits before reader start"
+}

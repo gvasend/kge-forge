@@ -1,0 +1,269 @@
+{
+  "A09_EXECUTED": "NO",
+  "A09_READY": "YES",
+  "A10_EXECUTED": "NO",
+  "A10_READY": "YES",
+  "A11_EVENT_ADMITTED": "NO",
+  "A11_EVENT_IMPLEMENTATION_READY": "NO_FOR_FULL_REQUESTED_ACCEPTANCE: native implementation exists; exact positive P04 event/C03, negatives and durable retry/atomicity qualification not performed",
+  "A11_POSITIVE_POSTCONDITION": {
+    "A12_execution": "NOT_PERFORMED",
+    "FINISH_completed": false,
+    "REENTER_completed": false,
+    "control": "native recompute; requires named Action actionable; exact full P04 oracle still needs positive qualification",
+    "named_eligibility": [
+      "E2-REENTER"
+    ],
+    "proof": "PROVED derived typed result",
+    "received": true,
+    "root_slot_instances": "ABSENT",
+    "support": "CURRENT",
+    "validation": "ACCEPTED"
+  },
+  "A11_READY": "NO",
+  "A12_BOUNDARY": {
+    "assumptions": [
+      "A11 exit passed",
+      "accepted reentry event persisted",
+      "named E2-REENTER currently eligible",
+      "validation/support/proof basis/source/policy current"
+    ],
+    "not_assumptions": [
+      "REENTER already completed",
+      "result inventory automatically complete",
+      "proof sufficient without C03"
+    ],
+    "recompute": "required ordinary currentness/readiness recomputation; not new historical proof decision"
+  },
+  "A12_EXECUTED": "NO",
+  "ATOMICITY": {
+    "limit": "do not claim dedicated command CAS/HEAD atomicity or failure-injection qualification not run",
+    "semantic": "pure immutable admission returns complete valid bundle or raises; no reachable modified input bundle",
+    "storage": "save_bundle emits immutable fsynced event sidecars then bundle; output interruption can leave unreferenced sidecars; not a dedicated reentry command HEAD transaction"
+  },
+  "C03_EVENT_CONSUMPTION": {
+    "authority": "ordinary named Action/recorded decision/current operating authorities; INSTALL does not grant them",
+    "decision_route": "DecisionReentry is separate if current recorded decision requires DOWNSTREAM_REEVALUATION; cannot omit or fold into external event silently",
+    "gate": "E2-GATE",
+    "named_actions": [
+      "E2-REENTER"
+    ],
+    "no_general_permission": true,
+    "predicate_id": "no standalone persisted PredicateId for C03; native resume_eligibility function",
+    "requirements": [
+      "DEPENDENT_ACTION_REENTRY stage",
+      "qualified complete receipt contract",
+      "every requirement PROVED",
+      "accepted native reentry event",
+      "event.resume_binding equals current codec.resume_binding",
+      "evaluation context present",
+      "named Action in core.recompute.actionable",
+      "no blocking external/decision route affecting named Action",
+      "source_root supplied",
+      "every source and policy pin independently loads"
+    ],
+    "subject": "E2-REENTER",
+    "type": "derived current non-effecting resume proof; conjunction over native reentry route/event, obligation proofs, Action prerequisites, context/policy binding and independently loaded source bytes"
+  },
+  "DEPENDENT_ACTION_REENTRY_SEMANTICS": {
+    "A12_consumer": "recompute/current C03 then deterministic selection/result; never persisted permission",
+    "C03_consumer": "core.resume_eligibility",
+    "native_type": "ExternalEvent",
+    "occurrence": "the qualified external gate accepts its transition from EVIDENCE_VALIDATED to DEPENDENT_ACTION_REENTRY after all independent obligations hold, reopening only its declared noncompleted dependent Actions for ordinary recomputation",
+    "preconditions": [
+      "valid model",
+      "expected_snapshot exact",
+      "known gate",
+      "legal predecessor EVIDENCE_VALIDATED",
+      "gate validation ACCEPTED",
+      "every independent proof admitted/current via _external_complete_admitted",
+      "artifact=None"
+    ],
+    "subject": "E2-GATE",
+    "target/named_reentry": "gate.reentry=(E2-REENTER)"
+  },
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "ELIGIBILITY_RECOMPUTATION": "fresh resume_eligibility replays bundle, checks current obligations/event binding/actionability/source bytes; stale premises withdraw eligibility while immutable event stays auditable",
+  "EVENT_ADMISSION": {
+    "canonical_execution": "NOT_PERFORMED",
+    "construct": "ExternalEvent(E2-GATE, DEPENDENT_ACTION_REENTRY, exact snapshot identity, artifact=None)",
+    "decision_route": "DecisionReentry remains separate if decision-backed gates require it",
+    "ordinary_parent": "current prior event identity for P04; _replay verifies sequence,parent_snapshot,parent_event,identity and after_snapshot",
+    "source_check": "restore/save_bundle verifies pins; core.resume_eligibility requires source_root for current permission",
+    "wrap": "codec.record_result creates ExecutionEvent from replay-admitted current bundle then append_event validates full ledger"
+  },
+  "EVENT_AUTHORITY": {
+    "Action_authority": "separate gate evaluated by actionability/C03, not created/consumed by this event",
+    "current_Action_authority_predicate": null,
+    "important_limit": "event acceptance alone does not prove Action authority or C03 eligibility; wrong operating authority may block C03 while event still accepts",
+    "native_event_permission": "no standalone authority ID/class/issuer operand or separate INSTALL/ATTEST/Action grant checked directly by ExternalEvent",
+    "new_authority": "NOT_REQUIRED_BY_EXISTING_NATIVE_EVENT_CONTRACT",
+    "trust_premises": "independently admitted authenticated receipt/support and valid canonical gate; typed model/proof checks"
+  },
+  "EVENT_IDENTITY": {
+    "body_fields": [
+      "sequence",
+      "parent (snapshot identity)",
+      "parent_event",
+      "result (typed ExternalEvent)",
+      "after (snapshot identity)",
+      "resume_binding if present"
+    ],
+    "hash": "SHA256(native canonical_bytes(body))",
+    "namespace": "planner-event-v1",
+    "not_extra_fields": [
+      "no command key",
+      "no Proof ID",
+      "no authority operand",
+      "no standalone scope/lineage/generation/provenance payload; bindings inherited through full snapshots/model/policy"
+    ],
+    "resume_binding": "planner-resume-binding-v1 hash of schema RESUME-EVENT-BINDING-1, exact policy pin, policy_version, bundle.scope"
+  },
+  "EVENT_OPERATING_AUTHORITY": "NO_SEPARATE_NATIVE_GRANT; existing authenticated premises and Action authority checks remain distinct",
+  "EVENT_PROOF_RELATIONSHIP": {
+    "bindings": "apply_receipt checks exact snapshot before recomputing proof; event envelope binds exact pre-state/ordinary parent; stale-state Proof cannot be passed as authority",
+    "classification": [
+      "required state-derived precondition",
+      "native admission oracle"
+    ],
+    "payload": "no Proof value or Proof identity operand",
+    "persisted_proof": "NOT_REQUIRED"
+  },
+  "EVENT_STATE_EFFECT": {
+    "Action": "only gate.reentry noncompleted statuses set ACTION_ELIGIBLE by native transition; actionable remains separately recomputed",
+    "Proof/ResumeEligibility": "not persisted",
+    "append_head": "new event identity",
+    "authority": "unchanged",
+    "execution": "no REENTER result, knowledge output or Action completion",
+    "gate": "stage DEPENDENT_ACTION_REENTRY; native ordered history appends stage",
+    "knowledge": "unchanged",
+    "ledger": "ExecutionEvent appended once with sequence/pre/post/head identity",
+    "root/slot": "stored records unchanged; returned computation recomputes satisfaction"
+  },
+  "IDEMPOTENCE": {
+    "append_event": "exact identical admitted ExecutionEvent identity+bytes returns original bundle; conflicting bytes same identity fails",
+    "command_context": "no native command_key on ExternalEvent; cannot claim generic command-key retry semantics",
+    "qualification": "defined by inspected code; no event executed here",
+    "record_result": "recreating same ExternalEvent after successful transition fails stale expected_snapshot/illegal stage; does not duplicate history"
+  },
+  "INSTALLABILITY": "existing gate/requirement/ExternalEvent/C03 are available; event INSTANCE belongs to A11, not installation",
+  "INSTALLATION_ADAPTER": "NONE_REQUIRED for recovered native path",
+  "INSTALL_AUTHORITY": "NONE_REQUIRED_FOR_EXISTING_DEFINITIONS; no new content/set identities fabricated; prior grants not broadened",
+  "NEGATIVE_SUITE": [
+    "unsatisfied obligation",
+    "stale validation/support/source",
+    "unknown/wrong gate or named reentry definition",
+    "wrong parent",
+    "wrong pre-state",
+    "tampered authority causing C03 failure",
+    "wrong scope/lineage/generation causing premise failure",
+    "tampered provenance/model or pinned bytes",
+    "foreign lineage event",
+    "unsupported execution/result payload",
+    "persisted eligibility Boolean payload",
+    "caller eligibility substituted for C03",
+    "historical event treated as sufficient after premise withdrawal",
+    "conflicting bytes under identical event identity",
+    "duplicate fresh result submission after gate advanced"
+  ],
+  "NEXT_PACKAGE": "isolated post-A10 native A11 event/C03 precommit qualification; verify decision route and exact current Action prerequisites; do not add authority/adapter unless counterexample requires it",
+  "N_REAL_SATISFIED": "NO",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_A11_DEFINITION_INSTALLATION_DECISION_READY": "NO_NOT_APPLICABLE",
+  "P04_A11_DEFINITION_INSTALLATION_DECISION_REQUIRED": "NO",
+  "P04_A11_EVENT_AUTHORITY_DECISION_READY": "NO_NOT_APPLICABLE",
+  "P04_A11_EVENT_AUTHORITY_DECISION_REQUIRED": "NO",
+  "P04_EXECUTION_READY": "NO",
+  "PERSISTENCE_CONTRACT": "save complete event-bearing bundle with immutable event sidecars and exact source/policy pins; restore and recompute Proof/C03; no result/permission serialization",
+  "PRODUCTION_EFFECT": "NO",
+  "PROOF_RESULT_PERSISTED": "NO",
+  "PROSPECTIVE_DEFINITIONS": {
+    "A11 event definition": "ALREADY_AVAILABLE ExternalEvent/DecisionReentry; not new installed definition",
+    "C03 contract": "ALREADY_AVAILABLE_NATIVE_FUNCTION; exact P04 positive qualification pending",
+    "Proof / eligibility instances": "LIFECYCLE_RESULT_NOT_PROSPECTIVE_DEFINITION",
+    "authority references": "existing operating references must independently pass; no new grant or installation created",
+    "eligibility result definition": "ALREADY_AVAILABLE ResumeEligibility; lifecycle query output, NOT_INSTALLABLE_PERMISSION",
+    "named reentry definition": "ALREADY_CURRENT: E2-GATE.reentry=(E2-REENTER)",
+    "proof admission definition": "NOT_REQUIRED for derived native Proof; CONTRACT_MISSING if separate persisted EvidenceProof demanded",
+    "proof proposition / requirement": "ALREADY_CURRENT: E2-EXTERNAL-REQUIREMENT",
+    "proof rule": "ALREADY_CURRENT native rule_known requirement and installed V02 validation/support definitions"
+  },
+  "REPLAY_CONTRACT": "_replay applies historical event once in ordered sequence and verifies pre/post identities; derives current eligibility separately; never new permission record",
+  "RESULT": "PARTIAL",
+  "RESUME_ELIGIBILITY_PERSISTED": "NO",
+  "RUNTIME_MODIFIED": "NO",
+  "WORK_PACKAGE": "REENTRY-R03",
+  "human_options": {
+    "AUTHORIZE_P04_A11_REENTRY_DEFINITIONS": "not applicable without a missing sealed installable definition set",
+    "DECLINE_P04_A11_REENTRY_DEFINITIONS": "no new installation; native semantics unchanged",
+    "selected": "NONE"
+  },
+  "negative_boundary": "wrong authority/named Action/scope etc must be evaluated at actual native boundary: event has gate only, not caller-selected target/authority fields; no invented operand checks",
+  "sources": [
+    {
+      "first_line": 577,
+      "last_line": 627,
+      "path": "adapter/planner/core.py",
+      "sha256": "8756f1f5018abb8ab33aec689a6f3316c53c9c11cc45d99e457cc074a7f43ba9"
+    },
+    {
+      "first_line": 720,
+      "last_line": 798,
+      "path": "adapter/planner/core.py",
+      "sha256": "8756f1f5018abb8ab33aec689a6f3316c53c9c11cc45d99e457cc074a7f43ba9"
+    },
+    {
+      "first_line": 427,
+      "last_line": 440,
+      "path": "adapter/planner/codec.py",
+      "sha256": "ed5eb083a08d173bef2e1cd47f06241720cfedfa2d071b3cc1fa5ac1f451da04"
+    },
+    {
+      "first_line": 493,
+      "last_line": 578,
+      "path": "adapter/planner/codec.py",
+      "sha256": "ed5eb083a08d173bef2e1cd47f06241720cfedfa2d071b3cc1fa5ac1f451da04"
+    },
+    {
+      "first_line": 617,
+      "last_line": 659,
+      "path": "adapter/planner/codec.py",
+      "sha256": "ed5eb083a08d173bef2e1cd47f06241720cfedfa2d071b3cc1fa5ac1f451da04"
+    },
+    {
+      "first_line": 58,
+      "last_line": 119,
+      "path": "adapter/planner/gates.py",
+      "sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f"
+    },
+    {
+      "first_line": 1145,
+      "last_line": 1150,
+      "path": "adapter/planner/model.py",
+      "sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759"
+    },
+    {
+      "first_line": 1218,
+      "last_line": 1225,
+      "path": "adapter/planner/model.py",
+      "sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759"
+    },
+    {
+      "first_line": 145,
+      "last_line": 171,
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    }
+  ],
+  "verification": {
+    "event_tests": "NOT_RUN_NO_LIFECYCLE_EXECUTION",
+    "native_replay": "PASS_CURRENT_CONFIGURATION_ONLY",
+    "native_restore": "PASS",
+    "positive_restore/replay": "CONTRACT_DEFINED_NOT_QUALIFIED",
+    "preservation": {
+      "changed": [],
+      "git_diff_check": "PASS",
+      "protected_files": 12752
+    }
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "CGROUP_HOST_OBSERVATION": "cgroup v1 controllers as supplied; no v2 delegation claim",
+  "COMPLETE_CONFINEMENT_QUALIFIED": false,
+  "QUALIFICATION_TESTS_PERFORMED": 0,
+  "ROWS": [
+    {
+      "CONTROL_ID": "USER_NAMESPACE",
+      "CURRENT_STATUS": "PARTIAL",
+      "ENFORCEMENT_MECHANISM": "Kernel user namespaces + approved launcher",
+      "EVIDENCE": "Supplied --unshare-user launch succeeded; mapping/cap scope not independently inspected",
+      "HOST_CAPABILITY": "PARTIAL",
+      "QUALIFICATION_TEST": "Later authorised namespace/UID-map/cap observation",
+      "REQUIRED_BEHAVIOR": "Isolated unprivileged user namespace"
+    },
+    {
+      "CONTROL_ID": "PID_NAMESPACE",
+      "CURRENT_STATUS": "PARTIAL",
+      "ENFORCEMENT_MECHANISM": "Kernel PID namespace + fresh fixed-role processes",
+      "EVIDENCE": "Supplied --unshare-pid launch succeeded; process-tree/reader freshness not qualified",
+      "HOST_CAPABILITY": "PARTIAL",
+      "QUALIFICATION_TEST": "Independent actual child/namespace/tree comparisons",
+      "REQUIRED_BEHAVIOR": "Independent process visibility/ownership"
+    },
+    {
+      "CONTROL_ID": "NETWORK_NAMESPACE",
+      "CURRENT_STATUS": "PARTIAL",
+      "ENFORCEMENT_MECHANISM": "Kernel network namespace + permitted private loopback setup",
+      "EVIDENCE": "Supplied --unshare-net launch succeeded; no route/interface/external denial inventory",
+      "HOST_CAPABILITY": "PARTIAL",
+      "QUALIFICATION_TEST": "Read-only actual namespace/interface/route/allowlist evidence under separately bounded verification",
+      "REQUIRED_BEHAVIOR": "Private namespace, no external network"
+    },
+    {
+      "CONTROL_ID": "FILESYSTEM_WRITES",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "OS mount/access confinement plus scoped launcher",
+      "EVIDENCE": "System ro-bind and tmpfs supplied; complete worker row/code/fixture/data visibility restriction not tested",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Observe exact readonly/writable mount/path/inode/ownership and negative escape controls",
+      "REQUIRED_BEHAVIOR": "Only assigned row/private scratch writable"
+    },
+    {
+      "CONTROL_ID": "READONLY_INPUTS",
+      "CURRENT_STATUS": "PARTIAL",
+      "ENFORCEMENT_MECHANISM": "Readonly mounts and independently pinned inputs",
+      "EVIDENCE": "Read-only system binds observed by supplied success, not exact input mounts",
+      "HOST_CAPABILITY": "PARTIAL",
+      "QUALIFICATION_TEST": "Verify actual input/code identities and mount readonly properties",
+      "REQUIRED_BEHAVIOR": "Exact readonly code/fixtures/oracles/policy"
+    },
+    {
+      "CONTROL_ID": "OUTPUT_ALLOWLIST",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "Scoped mount layout + exact safe path validation",
+      "EVIDENCE": "No host target/row manifest or permissions",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Seal targets and verify no symlink/conflict/outside writes",
+      "REQUIRED_BEHAVIOR": "Distinct immutable publication per variant"
+    },
+    {
+      "CONTROL_ID": "PATH_ESCAPE",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "Kernel write boundaries + independent path/owner/identity checks",
+      "EVIDENCE": "Source guards exist, implementation tests not executed",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Separately approved synthetic path/fault qualification",
+      "REQUIRED_BEHAVIOR": "No symlink/ancestor/path substitution"
+    },
+    {
+      "CONTROL_ID": "PROCESS_CREATION",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "Trusted supervisor accounting + applicable OS containment",
+      "EVIDENCE": "Host cgroup-v1 controllers stated; no delegated v2 assumed",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Verify actual controller/delegation/limits or qualified equivalent, whole tree and global counters",
+      "REQUIRED_BEHAVIOR": "4 live,128 total, no uncontrolled descendants"
+    },
+    {
+      "CONTROL_ID": "TERMINATION",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "Supervisor wait/process identity and trusted clock",
+      "EVIDENCE": "Host probe is not A15 writer/readers lifecycle",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Independent writer wait status, publication/handoff and later reader starts",
+      "REQUIRED_BEHAVIOR": "Successful own-child exit observed before readers"
+    },
+    {
+      "CONTROL_ID": "RESOURCE_CAPS",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "Kernel rlimits + scoped supervisor/controller counters/quota",
+      "EVIDENCE": "None of the full caps demonstrated by supplied command",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Verify each row in resource matrix",
+      "REQUIRED_BEHAVIOR": "Every approved resource ceiling enforced"
+    },
+    {
+      "CONTROL_ID": "AUDIT",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "ENFORCEMENT_MECHANISM": "Trusted outside controller + append-only evidence",
+      "EVIDENCE": "Owner-provided output, no future actual profile/controller identity",
+      "HOST_CAPABILITY": "UNDETERMINED",
+      "QUALIFICATION_TEST": "Seal audit controller/evidence boundary and independent comparisons",
+      "REQUIRED_BEHAVIOR": "Independent protected campaign/failure evidence"
+    }
+  ]
+}

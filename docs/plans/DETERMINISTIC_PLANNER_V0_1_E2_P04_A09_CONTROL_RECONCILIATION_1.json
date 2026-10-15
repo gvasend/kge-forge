@@ -1,0 +1,975 @@
+{
+  "A09_A13_EXECUTED": "NO",
+  "A09_EXECUTION_PREFLIGHT": "PASS",
+  "A09_POSTCONDITION": {
+    "Action": "existing completions retained; incomplete dependent Actions blocked by ordinary E03 derived status projection; no new result/inventory or completion",
+    "CONTROL": {
+      "basis": "A09 receipt/A10 unvalidated initial state + E03 explicit received-only external wait + current external-boundary/obligation contract; no validation Action declared",
+      "classification": "DERIVABLE",
+      "value": "EXTERNAL_WAIT"
+    },
+    "Evidence": "exact authenticated source admitted; produced true; validated false; validation NOT_EVALUATED",
+    "configuration_authority_scope_lineage": "unchanged; no INSTALL or authority issuance",
+    "events_sources": "private simulation appends exactly authenticated ingress then EVIDENCE_RECEIVED, and exact source addition; commit remains forbidden here",
+    "proof": "no proof/proof-contract admission; independent E2-PROOF remains UNKNOWN",
+    "receipt": "one ReceiptAdmission with exact E02 identity association; target gate pending exact native Evidence and stage EVIDENCE_RECEIVED",
+    "reentry": "no accepted DEPENDENT_ACTION_REENTRY; resume false; external_complete false",
+    "root_slot_knowledge": "unchanged",
+    "validation": "no ValidationInstance or accepted ReceiptObservation; existing gate validation=ACCEPTED validates gate contract only, not Evidence"
+  },
+  "A09_READY": "YES",
+  "A10_INITIAL_CONTRACT": {
+    "authority": "Acceptance matrix E2-A10",
+    "control_at_initial": {
+      "classification": "DERIVABLE",
+      "no_RUNNABLE_validation_Action": "The sealed Action model contains no A10 validation Action; event-stage eligibility is distinct from scheduler actionability.",
+      "value": "EXTERNAL_WAIT"
+    },
+    "expected_after_A10": "accepted ReceiptObservation and external_complete true; resume false until accepted named reentry",
+    "initial": "received Evidence, current scoped source, authentic independently admitted claims",
+    "missing": "prospective current validation definition/contract and native event-bearing validation composition; no applicable installation authority for it",
+    "next_legal_external_stage": "EVIDENCE_VALIDATED",
+    "operation": "separate EVIDENCE_VALIDATED event through append_event, backed by independent validation; not a newly declared Planner Action",
+    "operational_validation_ready": false,
+    "post_A09": "gate EVIDENCE_RECEIVED, Evidence NOT_EVALUATED, no accepted observation, no proof/reentry",
+    "receipt_prerequisite_satisfied": true
+  },
+  "CANONICAL_E2_QUALIFIED": "NO",
+  "CLASSIFICATION": "PRECOMMIT_ORACLE_DEFECT",
+  "CORRECTION_APPLIED": "YES",
+  "E03_REGRESSION": "PASS",
+  "E07_REGRESSION": "PASS",
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "E2_FINISH_EXECUTED": "NO",
+  "E2_P04_READY": "NO",
+  "EXPECTED_POST_A09_ACTIONABLE": [],
+  "EXPECTED_POST_A09_CONTROL": "EXTERNAL_WAIT",
+  "EXPECTED_POST_A09_DECISION_READY": [],
+  "EXPECTED_POST_A09_SELECTED": null,
+  "LIFECYCLE_SEPARATION": "PASS",
+  "MINIMUM_CORRECTION": {
+    "allowed_fields": [
+      "one received Evidence entity",
+      "one exact authenticated ReceiptAdmission",
+      "target gate pending/stage/history",
+      "derived ActionStatus projection"
+    ],
+    "canonical_comparison": "snapshot identity respects native-declared unordered collections; causal histories remain ordered",
+    "description": "Generic pre-execution receipt_oracle from immutable pre-state and authenticated request; compare exact canonical postcondition and native recomputation after ordinary private admission+receipt. Keep all authentication/parent/source/atomicity checks.",
+    "forbidden_fields": [
+      "validation instances",
+      "accepted observations",
+      "proof/contract admission",
+      "reentry",
+      "Action result/completion",
+      "knowledge",
+      "root/slot changes",
+      "configuration/authority/scope/lineage"
+    ],
+    "no_changes": [
+      "core control/actionability",
+      "gates proof/currentness",
+      "evidence E03 received-only transformation",
+      "model/authority/schema",
+      "P03/I04/E07 artifacts"
+    ],
+    "oracle_is_not_execution": "Expected snapshot never publishes a receipt or becomes canonical; actual effects are exclusively from native EvidenceSourceAdmission and ExternalEvent paths",
+    "runtime_files": [
+      "adapter/planner/codec.py",
+      "adapter/planner/evidence_transaction.py"
+    ]
+  },
+  "NEXT_PACKAGE": "P04-A10-VALIDATION-INSTALLATION-CONTRACT",
+  "N_REAL_SATISFIED": "NO",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P03_RESULT": "PASS",
+  "P04_EXECUTION_READY": "NO",
+  "PRECOMMIT_CHECK_PURPOSE": [
+    "NO_UNAUTHORIZED_LIFECYCLE_ADVANCEMENT",
+    "LEGACY_ASSUMPTION"
+  ],
+  "PRECOMMIT_CONTROL_CHECK": {
+    "SOURCE_OF_EXPECTATION": "legacy code assertion, not an authoritative canonical requirement for full pre/post diagnostic equality",
+    "WHY_EQUALITY_IS_REQUIRED": "Intended to prevent unauthorized planning/lifecycle advancement. Full pre/post diagnostic equality is not required by the native receipt or A09/A10 contracts.",
+    "actual_control": "EXTERNAL_WAIT",
+    "actual_disagreement": "Only Computation.blocked differs after E03 publishes derived blocked statuses; _actionability uses PRIOR_ATTEMPT_HOLD:BLOCKED on next recomputation.",
+    "expected_control": "EXTERNAL_WAIT",
+    "location": "codec.preflight_external_evidence",
+    "misleading_error": "RECEIPT_CHANGED_CONTROL",
+    "new": "exact canonical post-state and its complete native Computation equal the independent received-only oracle; no equality to pre-control imposed",
+    "old": "core.recompute(pre) == core.recompute(post), complete Computation equality"
+  },
+  "PRE_A09_BUNDLE_ID": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-bundle-v1",
+    "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+  },
+  "PRE_A09_CONTROL": "EXTERNAL_WAIT",
+  "PRE_A09_STATE_ID": {
+    "$type": "ArtifactIdentity",
+    "kind": {
+      "$enum": "IdentityKind",
+      "value": "CONTENT_IDENTITY"
+    },
+    "namespace": "planner-snapshot-v1",
+    "sha256": "c5c85434ddfb69be7f327e9e8fd72d2c7270505cf4908ea4fd9b4918075c1591"
+  },
+  "PRODUCTION_EFFECT": "NO",
+  "RECEIPT_RESOLVES_EXTERNAL_WAIT": "NO",
+  "REMAINING_CONTINUATION_DAG": {
+    "A09": {
+      "candidate_parent": "unchanged I04 append head",
+      "canonical_commit": false,
+      "execution_preflight": "PASS",
+      "status": "READY"
+    },
+    "A10": {
+      "prepared_offline": "validation-proof-reentry-inputs.json",
+      "requires": [
+        "complete native persisted validation event composition",
+        "typed validation contract installation adapter",
+        "bounded installation authority and current definitions"
+      ],
+      "status": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED"
+    },
+    "A11": {
+      "ownership": "exact C03 dependent Action reentry after accepted validation/proof; not generic resume",
+      "prepared_offline": "typed-proof-contracts-final-definitions.json",
+      "requires": [
+        "current typed evidence-proof contract/input bindings",
+        "event-backed proof/reentry",
+        "named authority/source/policy prerequisites"
+      ],
+      "status": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED"
+    },
+    "A12": {
+      "ownership": "actual REENTER selection and supplied permitted result/output admission",
+      "prepared_offline": "action-definitions.json",
+      "requires": [
+        "current Action accepted-result/output inventory",
+        "typed installation support",
+        "bounded installation authority"
+      ],
+      "status": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED"
+    },
+    "A13": {
+      "ownership": "independent root/slot proofs and selected finishing result",
+      "prepared_offline": "slot-root-finish-definitions.json",
+      "requires": [
+        "current root/slot and typed proof contracts",
+        "separately sealed independent root proof source",
+        "FINISH accepted-result definition/inventory",
+        "bounded installation authority"
+      ],
+      "status": "RUNTIME_BLOCKED_AND_INSTALL_AUTHORITY_REQUIRED"
+    },
+    "installation_timing": "Prospective configuration must be authorized and current before use. Any later installation advances canonical history and stales this uncommitted A09 command; rematerialize. A09 readiness does not satisfy full continuation/inventory/readiness contract."
+  },
+  "RESULT": "PASS",
+  "SIMULATED_POST_A09_CONTROL": "EXTERNAL_WAIT",
+  "VALIDATION_READY_AFTER_RECEIPT": "NO",
+  "VALIDATION_RECEIPT_PREREQUISITE_READY": "YES",
+  "WORK_PACKAGE": "E2-P04-A09-CONTROL-RECONCILIATION",
+  "cold_restore_oracle": {
+    "canonical_P04_restored_after_A09": "NOT_RUN_A09_UNCOMMITTED",
+    "expected_control": "EXTERNAL_WAIT",
+    "generic_requalification": "PASS",
+    "state": "exact received-only inventory, source/authority/scope/lineage/currentness, blocked native statuses and unresolved independent proof"
+  },
+  "control_trace_before_repair": {
+    "A09_A13_EXECUTED": "NO",
+    "A09_READY": "NO",
+    "P04_EXECUTION_READY": "NO",
+    "command_key": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-command-v1",
+      "sha256": "3b5c56790f9468bbb9f6b14006aa6ae4b1e1aece3c849ef66b7f42e958e826fe"
+    },
+    "computation_differences": {
+      "blocked": {
+        "post": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "PRIOR_ATTEMPT_HOLD:BLOCKED"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "PRIOR_ATTEMPT_HOLD:BLOCKED"
+            ]
+          ]
+        ],
+        "pre": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ]
+      }
+    },
+    "execution_preflight": "RECEIPT_CHANGED_CONTROL",
+    "independent_oracle_comparisons": {
+      "actionable": true,
+      "canonical_unchanged": true,
+      "control": true,
+      "decision_ready": true,
+      "no_action_completion": true,
+      "no_canonical_commit": true,
+      "no_external_complete": true,
+      "no_knowledge": true,
+      "no_observation_acceptance": true,
+      "no_proof": true,
+      "no_proof_contract_admission": true,
+      "no_resume": true,
+      "no_validation": true,
+      "received": true,
+      "root_slot_unchanged": true,
+      "selected": true,
+      "two_private_events": true,
+      "unvalidated": true
+    },
+    "mode": "diagnose",
+    "oracle_sha256": "34644b6e15112448f0f9ed2afcf2a01bb2f835e716ac476fc93c2a7b60ea29c2",
+    "parent": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "549e41859f55cd3414d91b5ce97f023ab9e150f55ed01ae81a9a9dc5ef2f362c"
+    },
+    "post": {
+      "Evidence": [
+        {
+          "id": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685",
+          "validated": false,
+          "validation": "NOT_EVALUATED"
+        }
+      ],
+      "actionable": [],
+      "blocked": [
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-FINISH"
+          },
+          [
+            "PRIOR_ATTEMPT_HOLD:BLOCKED"
+          ]
+        ],
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          [
+            "PRIOR_ATTEMPT_HOLD:BLOCKED"
+          ]
+        ]
+      ],
+      "bundle_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "e9d4a5aa40fa5837016c7383604ea48a17f0f8a2305ef51c80a95676441a7154"
+      },
+      "computed_statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "BLOCKED",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "BLOCKED"
+      },
+      "control": "EXTERNAL_WAIT",
+      "decision_ready": [],
+      "gate": [
+        {
+          "external_complete": false,
+          "id": "E2-GATE",
+          "pending": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685",
+          "stage": "EVIDENCE_RECEIVED"
+        }
+      ],
+      "knowledge": [
+        "E2-K-CHECK",
+        "E2-K-COLLECT",
+        "E2-K-PREPARE",
+        "decision-choice:E2-DECIDE"
+      ],
+      "proof_contracts": 0,
+      "receipt_admissions": 1,
+      "receipt_observations": 0,
+      "resume_allowed": false,
+      "roots": {
+        "E2-ROOT": "UNRESOLVED"
+      },
+      "selected": null,
+      "slots": {},
+      "state_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "734e4195c2c2a82cbbc0592a6df87c20c20e09ccd353b1b85132f12124699a2f"
+      },
+      "statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "BLOCKED",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "BLOCKED"
+      },
+      "typed_proofs": 0,
+      "validation_instances": 6
+    },
+    "pre": {
+      "Evidence": [],
+      "actionable": [],
+      "blocked": [
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-FINISH"
+          },
+          [
+            "ACTION_COMPLETED:E2-REENTER"
+          ]
+        ],
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          [
+            "DECISION_REENTRY_REQUIRED",
+            "EXTERNAL_GATE:E2-GATE",
+            "PREDICATE:E2-PROOF:UNKNOWN"
+          ]
+        ]
+      ],
+      "bundle_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+      },
+      "computed_statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "BLOCKED",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "BLOCKED"
+      },
+      "control": "EXTERNAL_WAIT",
+      "decision_ready": [],
+      "gate": [
+        {
+          "external_complete": false,
+          "id": "E2-GATE",
+          "pending": null,
+          "stage": "WAITING_FOR_EXTERNAL_EVIDENCE"
+        }
+      ],
+      "knowledge": [
+        "E2-K-CHECK",
+        "E2-K-COLLECT",
+        "E2-K-PREPARE",
+        "decision-choice:E2-DECIDE"
+      ],
+      "proof_contracts": 0,
+      "receipt_admissions": 0,
+      "receipt_observations": 0,
+      "resume_allowed": false,
+      "roots": {
+        "E2-ROOT": "UNRESOLVED"
+      },
+      "selected": null,
+      "slots": {},
+      "state_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "c5c85434ddfb69be7f327e9e8fd72d2c7270505cf4908ea4fd9b4918075c1591"
+      },
+      "statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "ACTION_ELIGIBLE",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "ACTION_ELIGIBLE"
+      },
+      "typed_proofs": 0,
+      "validation_instances": 6
+    },
+    "transient_attestation_persisted_before_commit": false
+  },
+  "diagnosis_before_runtime_repair": {
+    "all_18_actual_oracle_terms_pass": true,
+    "classification": "PRECOMMIT_ORACLE_DEFECT",
+    "complete_oracle": true,
+    "diagnosis_runtime_unchanged": true,
+    "original_guard": "core.recompute(pre) == core.recompute(post): full Computation, not only control",
+    "repair": "replace full pre/post equality with exact postcondition from immutable pre-state, authenticated request and E03 receipt semantics; preserve native derived control",
+    "scope": "generic native receipt transaction only; no canonical A09 commit, no Action/control recomputation semantics changed",
+    "sealed_inputs": {
+      "docs/plans/qualification/E2_P04_A09_CONTROL_RECONCILIATION_1/diagnose-trace.json": "5f708f0b554904943e6211ebf8c04fe7748a5d35fe32a60c2fe6d874a8bae720",
+      "docs/plans/qualification/E2_P04_A09_CONTROL_RECONCILIATION_1/independent-oracle.json": "34644b6e15112448f0f9ed2afcf2a01bb2f835e716ac476fc93c2a7b60ea29c2",
+      "docs/plans/qualification/E2_P04_A09_CONTROL_RECONCILIATION_1/pre-work-hashes.json": "a4cb8a732642d331e32b33b6fbe077ba04a32a5723cd5f77db59e23fb596680c"
+    }
+  },
+  "expected_transition": "EXTERNAL_WAIT -> EXTERNAL_WAIT; receipt phase and blocked-diagnostic reason change, not semantic control enum",
+  "external_wait_reason": {
+    "after": "Evidence exists but is NOT_EVALUATED; governing-rule proof remains UNKNOWN and reentry is unaccepted. Source-level authentication is not semantic validation.",
+    "before": "qualified unresolved governing-rule Evidence requirement; no accepted current validation/proof or named reentry",
+    "predicate_rule": "gates._obligation_proof and _external_complete; governed_external_unknown explicitly admits EVIDENCE_RECEIVED as a control-only acquisition boundary"
+  },
+  "git_diff_check": "PASS",
+  "independent_oracle": {
+    "A10_executable_contract_ready": false,
+    "A10_stage_prerequisite_ready": true,
+    "allowed_delta": [
+      "one Evidence entity (received, not validated)",
+      "one authenticated ReceiptAdmission",
+      "active gate stage/pending/history",
+      "E03 derived ActionStatus projection",
+      "two native event records and source addition"
+    ],
+    "authority_sources": {
+      "A09": "acceptance matrix E2-A09",
+      "A10": "acceptance matrix E2-A10",
+      "separation": "EVIDENCE-E03 lifecycle result"
+    },
+    "cold_restore_expected_control": "EXTERNAL_WAIT",
+    "expected_post_A09": {
+      "Evidence_received": true,
+      "Evidence_validated": false,
+      "Evidence_validation": "NOT_EVALUATED",
+      "FINISH_actionable": false,
+      "REENTER_actionable": false,
+      "REENTER_completed": false,
+      "actionable": [],
+      "control": "EXTERNAL_WAIT",
+      "control_classification": "DERIVABLE; no declared validation Action, unsatisfied independent proof and named reentry, exposed external boundary",
+      "decision_ready": [],
+      "gate_stage": "EVIDENCE_RECEIVED",
+      "knowledge_added": 0,
+      "pending": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685",
+      "proof_contracts_added": 0,
+      "receipt_admissions_added": 1,
+      "receipt_observations_added": 0,
+      "resume_allowed": false,
+      "root_slot_unchanged": true,
+      "selected": null,
+      "typed_proofs_added": 0,
+      "validation_instances_added": 0
+    },
+    "initial_bundle": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-bundle-v1",
+      "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+    },
+    "replay_expected_control": "EXTERNAL_WAIT; no A10 performed",
+    "role": "PRE_EXECUTION_ORACLE; EXPECTATIONS, NOT CANONICAL EXECUTION",
+    "validation_work_classification": "next external lifecycle event; no A10 scheduler Action is declared"
+  },
+  "not_a_stale_parent_guard": "Parent/state/bundle checks are separate and retained",
+  "not_an_atomicity_guard": "Immutable source/event publication and atomic HEAD are separate and retained",
+  "preservation": {
+    "A09_A13_EXECUTED": "NO",
+    "E07_artifacts_unchanged": true,
+    "E1_ARTIFACTS_MODIFIED": 0,
+    "E2_FINISH_EXECUTED": "NO",
+    "I04_bundle_unchanged": true,
+    "P03_bundle_unchanged": true,
+    "PRODUCTION_EFFECT": "NO",
+    "changed_prior_files": [
+      "adapter/planner/codec.py",
+      "adapter/planner/evidence_transaction.py"
+    ],
+    "core_gates_evidence_model_unchanged": true,
+    "frozen_E1_files_checked": 10967,
+    "historical_qualification_artifacts_modified": 0
+  },
+  "regressions": {
+    "broader_known_failures": "E07 documented DecisionDossier failure predates these changes. Frozen-E1 duplicate-import broad collection blocker preserved separately. No full-suite PASS claimed.",
+    "fresh_reader_comparisons": {
+      "all_pass": true,
+      "comparisons": 72,
+      "readers": [
+        {
+          "checks": {
+            "bundle_identity": true,
+            "content_binding": true,
+            "event_parent": true,
+            "exact_recorded_operand": true,
+            "four_records": true,
+            "no_validation": true,
+            "one_attestation": true,
+            "one_evidence": true,
+            "one_receipt": true,
+            "precommit_prefix": true,
+            "prefix_has_no_evidence_or_attestation": true,
+            "received_stage": true,
+            "replay": true,
+            "scope_lineage": true,
+            "semantic_binding": true,
+            "source_pin": true,
+            "source_provenance": true,
+            "state_identity": true
+          },
+          "hash_seed": "0",
+          "no_new_attestation_decision": true,
+          "reader_pid": 4,
+          "writer_pid": 3
+        },
+        {
+          "checks": {
+            "bundle_identity": true,
+            "content_binding": true,
+            "event_parent": true,
+            "exact_recorded_operand": true,
+            "four_records": true,
+            "no_validation": true,
+            "one_attestation": true,
+            "one_evidence": true,
+            "one_receipt": true,
+            "precommit_prefix": true,
+            "prefix_has_no_evidence_or_attestation": true,
+            "received_stage": true,
+            "replay": true,
+            "scope_lineage": true,
+            "semantic_binding": true,
+            "source_pin": true,
+            "source_provenance": true,
+            "state_identity": true
+          },
+          "hash_seed": "1",
+          "no_new_attestation_decision": true,
+          "reader_pid": 5,
+          "writer_pid": 3
+        },
+        {
+          "checks": {
+            "bundle_identity": true,
+            "content_binding": true,
+            "event_parent": true,
+            "exact_recorded_operand": true,
+            "four_records": true,
+            "no_validation": true,
+            "one_attestation": true,
+            "one_evidence": true,
+            "one_receipt": true,
+            "precommit_prefix": true,
+            "prefix_has_no_evidence_or_attestation": true,
+            "received_stage": true,
+            "replay": true,
+            "scope_lineage": true,
+            "semantic_binding": true,
+            "source_pin": true,
+            "source_provenance": true,
+            "state_identity": true
+          },
+          "hash_seed": "7",
+          "no_new_attestation_decision": true,
+          "reader_pid": 6,
+          "writer_pid": 3
+        },
+        {
+          "checks": {
+            "bundle_identity": true,
+            "content_binding": true,
+            "event_parent": true,
+            "exact_recorded_operand": true,
+            "four_records": true,
+            "no_validation": true,
+            "one_attestation": true,
+            "one_evidence": true,
+            "one_receipt": true,
+            "precommit_prefix": true,
+            "prefix_has_no_evidence_or_attestation": true,
+            "received_stage": true,
+            "replay": true,
+            "scope_lineage": true,
+            "semantic_binding": true,
+            "source_pin": true,
+            "source_provenance": true,
+            "state_identity": true
+          },
+          "hash_seed": "101",
+          "no_new_attestation_decision": true,
+          "reader_pid": 7,
+          "writer_pid": 3
+        }
+      ],
+      "role": "Read-only requalification of committed non-E2 E07 fixture; no canonical P04 receipt persisted"
+    },
+    "legacy_admission": {
+      "current_legacy_suite": {
+        "error": 2,
+        "fail": 1,
+        "pass": 17
+      },
+      "previous_legacy_suite": {
+        "error": 12,
+        "fail": 4,
+        "pass": 4
+      },
+      "remaining_legacy_cases": {
+        "test_conflicting_claims_are_not_overwritten": "Latent old expectation: rejected observation has accepted claims",
+        "test_pinned_source_shaped_fixture": "preexisting FIELD_PROVENANCE",
+        "test_validation_and_reentry_separate": "Latent old expectation: an external event alone validates unvalidated Evidence"
+      },
+      "repair_scope": "No E03 authentication or validation separation weakened; no legacy test rewritten",
+      "unchanged_lifecycle_runtime": {
+        "adapter/planner/core.py": true,
+        "adapter/planner/evidence.py": true,
+        "adapter/planner/gates.py": true
+      },
+      "validation_event_without_validation_result": {
+        "accepted": false,
+        "claims": 0,
+        "reasons": [
+          "EVIDENCE_MISSING_OR_UNVALIDATED"
+        ],
+        "stage": "WAITING_FOR_EXTERNAL_EVIDENCE"
+      }
+    },
+    "targeted": {
+      "I02_I04_T01_E01_E06_G01_G04_root_slot": 40,
+      "pass": 53,
+      "receipt_replay": 3,
+      "tests": 53,
+      "transaction_and_E07": 10
+    }
+  },
+  "replay_oracle": {
+    "canonical_P04_replay_after_commit": "NOT_RUN_A09_UNCOMMITTED",
+    "events": "ingress and RECEIVED only; no A10/validation/proof/reentry or new attestation decision",
+    "expected_control": "EXTERNAL_WAIT",
+    "generic_requalification": "PASS"
+  },
+  "requalification_trace": {
+    "A09_A13_EXECUTED": "NO",
+    "A09_READY": "YES",
+    "P04_EXECUTION_READY": "NO",
+    "command_key": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-evidence-command-v1",
+      "sha256": "3b5c56790f9468bbb9f6b14006aa6ae4b1e1aece3c849ef66b7f42e958e826fe"
+    },
+    "computation_differences": {
+      "blocked": {
+        "post": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "PRIOR_ATTEMPT_HOLD:BLOCKED"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "PRIOR_ATTEMPT_HOLD:BLOCKED"
+            ]
+          ]
+        ],
+        "pre": [
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            [
+              "ACTION_COMPLETED:E2-REENTER"
+            ]
+          ],
+          [
+            {
+              "$type": "ActionId",
+              "value": "E2-REENTER"
+            },
+            [
+              "DECISION_REENTRY_REQUIRED",
+              "EXTERNAL_GATE:E2-GATE",
+              "PREDICATE:E2-PROOF:UNKNOWN"
+            ]
+          ]
+        ]
+      }
+    },
+    "execution_preflight": "PASS",
+    "independent_oracle_comparisons": {
+      "actionable": true,
+      "canonical_unchanged": true,
+      "control": true,
+      "decision_ready": true,
+      "no_action_completion": true,
+      "no_canonical_commit": true,
+      "no_external_complete": true,
+      "no_knowledge": true,
+      "no_observation_acceptance": true,
+      "no_proof": true,
+      "no_proof_contract_admission": true,
+      "no_resume": true,
+      "no_validation": true,
+      "received": true,
+      "root_slot_unchanged": true,
+      "selected": true,
+      "two_private_events": true,
+      "unvalidated": true
+    },
+    "mode": "requalify",
+    "oracle_sha256": "34644b6e15112448f0f9ed2afcf2a01bb2f835e716ac476fc93c2a7b60ea29c2",
+    "parent": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-event-v1",
+      "sha256": "549e41859f55cd3414d91b5ce97f023ab9e150f55ed01ae81a9a9dc5ef2f362c"
+    },
+    "post": {
+      "Evidence": [
+        {
+          "id": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685",
+          "validated": false,
+          "validation": "NOT_EVALUATED"
+        }
+      ],
+      "actionable": [],
+      "blocked": [
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-FINISH"
+          },
+          [
+            "PRIOR_ATTEMPT_HOLD:BLOCKED"
+          ]
+        ],
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          [
+            "PRIOR_ATTEMPT_HOLD:BLOCKED"
+          ]
+        ]
+      ],
+      "bundle_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "e9d4a5aa40fa5837016c7383604ea48a17f0f8a2305ef51c80a95676441a7154"
+      },
+      "computed_statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "BLOCKED",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "BLOCKED"
+      },
+      "control": "EXTERNAL_WAIT",
+      "decision_ready": [],
+      "gate": [
+        {
+          "external_complete": false,
+          "id": "E2-GATE",
+          "pending": "EVIDENCE:aa290c653e577b775bc9b20ad9b06b3ae7a9efc9e84a6303834df0f13e9c0685",
+          "stage": "EVIDENCE_RECEIVED"
+        }
+      ],
+      "knowledge": [
+        "E2-K-CHECK",
+        "E2-K-COLLECT",
+        "E2-K-PREPARE",
+        "decision-choice:E2-DECIDE"
+      ],
+      "proof_contracts": 0,
+      "receipt_admissions": 1,
+      "receipt_observations": 0,
+      "resume_allowed": false,
+      "roots": {
+        "E2-ROOT": "UNRESOLVED"
+      },
+      "selected": null,
+      "slots": {},
+      "state_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "734e4195c2c2a82cbbc0592a6df87c20c20e09ccd353b1b85132f12124699a2f"
+      },
+      "statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "BLOCKED",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "BLOCKED"
+      },
+      "typed_proofs": 0,
+      "validation_instances": 6
+    },
+    "pre": {
+      "Evidence": [],
+      "actionable": [],
+      "blocked": [
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-FINISH"
+          },
+          [
+            "ACTION_COMPLETED:E2-REENTER"
+          ]
+        ],
+        [
+          {
+            "$type": "ActionId",
+            "value": "E2-REENTER"
+          },
+          [
+            "DECISION_REENTRY_REQUIRED",
+            "EXTERNAL_GATE:E2-GATE",
+            "PREDICATE:E2-PROOF:UNKNOWN"
+          ]
+        ]
+      ],
+      "bundle_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-bundle-v1",
+        "sha256": "fa86ce94d76651ce5eccfa76c2d862243548d6d8dcaae91e74dca4e9c571c7d1"
+      },
+      "computed_statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "BLOCKED",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "BLOCKED"
+      },
+      "control": "EXTERNAL_WAIT",
+      "decision_ready": [],
+      "gate": [
+        {
+          "external_complete": false,
+          "id": "E2-GATE",
+          "pending": null,
+          "stage": "WAITING_FOR_EXTERNAL_EVIDENCE"
+        }
+      ],
+      "knowledge": [
+        "E2-K-CHECK",
+        "E2-K-COLLECT",
+        "E2-K-PREPARE",
+        "decision-choice:E2-DECIDE"
+      ],
+      "proof_contracts": 0,
+      "receipt_admissions": 0,
+      "receipt_observations": 0,
+      "resume_allowed": false,
+      "roots": {
+        "E2-ROOT": "UNRESOLVED"
+      },
+      "selected": null,
+      "slots": {},
+      "state_id": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "c5c85434ddfb69be7f327e9e8fd72d2c7270505cf4908ea4fd9b4918075c1591"
+      },
+      "statuses": {
+        "E2-CHECK": "COMPLETED",
+        "E2-COLLECT": "COMPLETED",
+        "E2-DECIDE": "COMPLETED",
+        "E2-FINISH": "ACTION_ELIGIBLE",
+        "E2-PREPARE": "COMPLETED",
+        "E2-REENTER": "ACTION_ELIGIBLE"
+      },
+      "typed_proofs": 0,
+      "validation_instances": 6
+    },
+    "transient_attestation_persisted_before_commit": false
+  },
+  "schema": "PLANNER-P04-A09-CONTROL-RECONCILIATION-1"
+}

@@ -1,0 +1,75 @@
+# Independent metadata parser and original identity reconstruction; no target imports or host operations.
+import pathlib,json,hashlib,copy,os
+R=pathlib.Path('/home/gvasend/app/kge-forge');B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';D=B/'p124-capture-directory-provisioning-grant-138';P=B/'p124-direct-shell-entry-guard-137';G=B/'p124-direct-shell-grant-issuance-136'
+def j(p):return json.loads(p.read_text())
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def h(v):return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def cid(ns,v):return dict(kind='CONTENT_IDENTITY',namespace=ns,sha256=h(v))
+def pincheck(p):assert raw(R/p['path'])==p['raw_sha256'],p['path']
+a=j(D/'authenticated-source-index.json')
+for p,digest in a['CURRENT_RAW_PINS'].items():assert raw(R/p)==digest,p
+sd=j(P/'provisioning-review-unselected-owner-dossier-final.json');pincheck(sd['SUBJECT_RAW_PIN']);s=j(R/sd['SUBJECT_RAW_PIN']['path']);c=s['CONTENT'];assert s['IDENTITY']==cid('qualification-p137-capture-directory-provisioning-subject-v1',c)==sd['SUBJECT_IDENTITY'];assert s['IDENTITY']['sha256']=='b29c16f622a4794c5299a3db7f2a34cf0002b38df4494ccb4c843bc18d099e50'
+owner=j(D/'owner-approval-binding.json');assert owner['IDENTITY']==cid('qualification-p138-provisioning-owner-decision-v1',owner['CONTENT'])
+assert owner['CONTENT']['OPTION_ID']=='AUTHORIZE_P124_CAPTURE_DIRECTORY_PROVISIONING_ONLY' in sd['OPTIONS'];assert owner['CONTENT']['ISSUER_ROLE']==c['ISSUER_ROLE']==sd['ISSUER_ROLE'];assert owner['CONTENT']['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'];pincheck(owner['CONTENT']['APPROVED_SUBJECT_PIN']);pincheck(owner['CONTENT']['OFFERED_DOSSIER_PIN'])
+# Actual charter records reconstructed; broad echo-based legacy scanner is not used.
+E=R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66';C=E.parent/'KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65'
+def typed(ns,v):return {'$type':'ArtifactIdentity','kind':{'$enum':'IdentityKind','value':'CONTENT_IDENTITY'},'namespace':ns,'sha256':hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()).hexdigest()}
+ref=j(E/'effective-charter-reference.json');ch=j(C/'charter-content.json');identity=typed('kge-forge-qualification-governance-charter-v1',ch);assert identity==ref['CHARTER_CONTENT_IDENTITY']==c['GOVERNING_CHARTER_IDENTITY'];assert ref['CHARTER_EFFECTIVE']
+cd=j(C/'charter-adoption-decision-dossier.json');dec=j(E/'owner-adoption-decision.json');di=typed('kge-forge-charter-owner-adoption-decision-v1',dec);assert dec['ACTOR_AUTHORIZED_ROLE']==cd['ISSUING_ROLE']==c['ISSUER_ROLE'];assert dec['APPROVED_CONTENT_IDENTITY']==identity and dec['SELECTED_OPTION']=='ADOPT_KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_V1_0'
+prev={'$type':'ArtifactIdentity','kind':{'$enum':'IdentityKind','value':'CONTENT_IDENTITY'},'namespace':'raw-file-sha256','sha256':raw(C/'charter-content-identity.json')};states=['DRAFT','REVIEWED','APPROVED','EFFECTIVE']
+for k,t in enumerate(ref['TRANSITIONS'],1):
+ doc=j(R/t['PATH']);r=doc['RECORD'];ident=typed('kge-forge-charter-lifecycle-record-v1',r);assert ident==doc['IDENTITY']==t['IDENTITY']
+ assert r['predecessor_lifecycle_record_identity']==prev and (r['from_state'],r['to_state'])==(states[k-1],states[k]) and r['transition_ordinal']==k
+ assert r['charter_content_identity']==identity and r['decision_evidence_identity']==di and r['actor_identity_or_authorized_role']==c['ISSUER_ROLE']
+ assert r['scope']==ch['QUALIFICATION_SCOPE'] and r['historical_exclusions']==ch['EXCLUSIONS'];assert r['effective_boundary']['NO_BACKDATING'];prev=ident
+assert len(ref['TRANSITIONS'])==3 and ref['EFFECTIVE_LIFECYCLE_IDENTITY']==prev
+reg=j(R/'docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json');prevh='0'*64;heads=[]
+for event in reg['EVENTS']:
+ v=dict(event);eh=v.pop('EVENT_HASH');assert v['PREVIOUS_EVENT_HASH']==prevh and h(v)==eh;prevh=eh;heads.append(eh)
+assert prevh=='76f87581bcbd67d7ffecc8d1c9f8b92d7e5b35e23681b372083a120cafaedcdc' and '885fd0eaceb15847201dfd058217682741fb43c255298713ccbc1e7251eec791' in heads
+p136=j(G/'effective-single-p124-grant-reference.json');assert p136['IDENTITY']==cid('qualification-p136-single-p124-grant-effectiveness-reference-v1',p136['CONTENT']);pincheck(p136['CONTENT']['GRANT_RECORD_PIN']);g136=j(R/p136['CONTENT']['GRANT_RECORD_PIN']['path']);assert g136['GRANT_IDENTITY']==cid('qualification-p136-single-p124-direct-shell-issued-grant-v1',g136['RECORD']);assert p136['CONTENT']['GRANT_EFFECTIVE'] and p136['CONTENT']['GRANT_IDENTITY']==c['RELATION_TO_P136']['GRANT_IDENTITY']
+g=j(D/'issuance-candidate.json')['ENVELOPE'];plan=j(D/'prepublication-validation.json')['PUBLICATION_PLAN'];st={'conflict':False,'revoked':False,'consumed':False,'host_permissions_assumed':False,'history_changed':False}
+def validate(z,pl,state):
+ r=z['RECORD'];assert z['GRANT_IDENTITY']==cid('qualification-p138-p124-directory-provisioning-issued-grant-v1',r)
+ assert r['INSTRUMENT_STATUS']=='ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE' and r['RECORD_TYPE']=='P124_CAPTURE_DIRECTORY_PROVISIONING_ONLY'
+ assert r['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'];pincheck(r['APPROVED_SUBJECT_PIN']);assert r['APPROVED_CONTENT']==c
+ assert r['ISSUER_ROLE']==c['ISSUER_ROLE'] and r['PROJECT_OWNER_DECISION_IDENTITY']==owner['IDENTITY'];pincheck(r['PROJECT_OWNER_DECISION_PIN']);assert r['GOVERNING_CHARTER_IDENTITY']==c['GOVERNING_CHARTER_IDENTITY']
+ for f,k in [('EXACT_ALLOWED_PATHS','EXACT_ALLOWED_PATHS'),('OWNERSHIP','OWNERSHIP'),('DIRECTORY_MODE_OCTAL','DIRECTORY_MODE_OCTAL'),('PERMITTED_OPERATIONS','OPERATIONS'),('EXACT_INVOCATION_CONTEXT','INVOCATION_CONTEXT'),('ORDERED_COMMANDS','ORDERED_COMMANDS'),('ENTRY_PREDICATES','ENTRY_PREDICATES'),('POST_CREATION_ACCEPTANCE','POST_CREATION_ACCEPTANCE'),('FAILURE_POLICY','FAILURE_POLICY'),('HISTORICAL_EXCLUSIONS','EXCLUSIONS'),('RELATION_TO_P136','RELATION_TO_P136')]:assert r[f]==c[k],f
+ assert r['AUTOMATIC_RETRIES']==0 and r['MAX_PROVISIONING_RUNS']==1
+ assert r['NO_CAPABILITY_CHECK_OR_CONSUMPTION_PERMISSION'] and r['NO_CONSTRUCTION_OR_REAL_PROBE_PERMISSION']
+ assert r['FRESH_OPERATOR_ENTRY_READY'] is False and r['DIRECT_HOST_PERMISSIONS_VERIFIED'] is False and r['DIRECTORIES_CREATED']==0 and not r['DIRECTORY_PERMISSIONS_CHANGED'] and not r['CAPABILITY_CHECK_ATTEMPT_CONSUMED_BY_138'] and not r['CAPABILITY_CHECK_EXECUTED_BY_138']
+ assert r['PREDECESSOR_GRANT'] is None;assert all(pl[k] for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC','INDEPENDENT_REREAD']);assert not any(state.values())
+validate(g,plan,st);phase=os.environ.get('P138_PHASE','prepublication')
+if phase!='prepublication':
+ receipt=j(D/'issuance-publication-receipt.json');pincheck(receipt['PIN']);assert j(R/receipt['PIN']['path'])==g;assert all(receipt[k] is True for k in ['EXCLUSIVE_NO_OVERWRITE','FILE_FSYNC','DIRECTORY_FSYNC','READONLY_BYTES_MATCH'])
+if phase=='effective':
+ eff=j(D/'effective-capture-directory-provisioning-grant-reference.json');b=eff['CONTENT'];assert eff['IDENTITY']==cid('qualification-p138-directory-provisioning-effectiveness-reference-v1',b)
+ assert b['GRANT_IDENTITY']==g['GRANT_IDENTITY'] and b['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and b['PROVISIONING_GRANT_EFFECTIVE'] is True and b['EXACT_ALLOWED_PATHS']==c['EXACT_ALLOWED_PATHS'] and b['HISTORICAL_EXCLUSIONS']==c['EXCLUSIONS'] and b['ISSUER_ROLE']==c['ISSUER_ROLE']
+ for k in ['GRANT_RECORD_PIN','INDEPENDENT_ISSUANCE_VERIFICATION_PIN','PERSISTED_FOUR_SEED_PIN','PREPUBLICATION_FOUR_SEED_PIN','CONFLICT_RECHECK_PIN','PRESERVATION_PIN']:pincheck(b[k])
+ assert b['FRESH_OPERATOR_ENTRY_READY'] is False and b['DIRECTORIES_CREATED']==0 and b['CAPABILITY_CHECK_EXECUTED'] is False
+ er=j(D/'effectiveness-publication-receipt.json');pincheck(er['PIN']);assert all(er[k] is True for k in ['EXCLUSIVE_NO_OVERWRITE','FILE_FSYNC','DIRECTORY_FSYNC','READONLY_BYTES_MATCH'])
+neg=[]
+if os.environ.get('P138_NEGATIVES')=='1':
+ mutations=[('wrong_namespace',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(namespace='wrong')),('wrong_hash',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(sha256='0'*64)),('wrong_raw_pin',lambda r:r['APPROVED_SUBJECT_PIN'].update(raw_sha256='0'*64)),('wrong_owner_role',lambda r:r.update(ISSUER_ROLE='UNAUTHORIZED')),('changed_charter',lambda r:r['GOVERNING_CHARTER_IDENTITY'].update(sha256='0'*64)),('additional_directory',lambda r:r['EXACT_ALLOWED_PATHS'].append('/extra')),('different_UID',lambda r:r['OWNERSHIP'].update(uid=0)),('different_GID',lambda r:r['OWNERSHIP'].update(gid=0)),('different_mode',lambda r:r.update(DIRECTORY_MODE_OCTAL='0777')),('symlink_acceptance',lambda r:r['ENTRY_PREDICATES'].clear()),('recursive_creation',lambda r:r['ORDERED_COMMANDS'][3].insert(1,'-p')),('overwrite_creation',lambda r:r['APPROVED_CONTENT'].update(COMMAND_STATUS_RULES='overwrite allowed')),('arbitrary_chmod_chown',lambda r:r['PERMITTED_OPERATIONS'].update(CHMOD_CHOWN_EXISTING_OBJECTS=True)),('premature_effectiveness',lambda r:r.update(INSTRUMENT_STATUS='EFFECTIVE')),('automatic_retry',lambda r:r.update(AUTOMATIC_RETRIES=1)),('attempt_consumption',lambda r:r.update(CAPABILITY_CHECK_ATTEMPT_CONSUMED_BY_138=True)),('capability_check_execution',lambda r:r.update(CAPABILITY_CHECK_EXECUTED_BY_138=True)),('Package86_real_probe',lambda r:r['HISTORICAL_EXCLUSIONS'].remove('Package86 real probe')),('H77_02',lambda r:r['HISTORICAL_EXCLUSIONS'].remove('H77-02/A15')),('A15',lambda r:r['APPROVED_CONTENT']['EXCLUSIONS'].remove('H77-02/A15')),('source_modification',lambda r:r['HISTORICAL_EXCLUSIONS'].remove('construction/source editing/promotion')),('assumed_host_permission',lambda r:r.update(DIRECT_HOST_PERMISSIONS_VERIFIED=True)),('historical_pin_mutation',lambda r:r['PROJECT_OWNER_DECISION_PIN'].update(raw_sha256='0'*64))]
+ for name,mut in mutations:
+  z=copy.deepcopy(g);mut(z['RECORD']);z['GRANT_IDENTITY']=cid('qualification-p138-p124-directory-provisioning-issued-grant-v1',z['RECORD'])
+  try:validate(z,plan,st)
+  except (AssertionError,KeyError,ValueError):neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+ wrong=copy.deepcopy(owner);wrong['CONTENT']['OPTION_ID']='DECLINE_P124_CAPTURE_DIRECTORY_PROVISIONING_ONLY';wrong['IDENTITY']=cid('qualification-p138-provisioning-owner-decision-v1',wrong['CONTENT'])
+ try:assert wrong['CONTENT']['OPTION_ID']=='AUTHORIZE_P124_CAPTURE_DIRECTORY_PROVISIONING_ONLY'
+ except AssertionError:neg.append({'DESIGN':'wrong_owner_option','RESULT':'REJECTED'})
+ else:raise AssertionError('wrong_owner_option')
+ for name,key in [('invalid_file_durability','FILE_FSYNC'),('invalid_directory_durability','DIRECTORY_FSYNC')]:
+  pl=dict(plan);pl[key]=False
+  try:validate(g,pl,st)
+  except AssertionError:neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+ for name,key in [('conflict_ignored','conflict'),('revocation_ignored','revoked'),('prior_run_consumption_ignored','consumed'),('history_mutation_ignored','history_changed')]:
+  state=dict(st);state[key]=True
+  try:validate(g,plan,state)
+  except AssertionError:neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+sem={'PHASE':phase,'SUBJECT_IDENTITY':s['IDENTITY'],'OWNER_DECISION_IDENTITY':owner['IDENTITY'],'GRANT_IDENTITY':g['GRANT_IDENTITY'],'GRANT_EFFECTIVE':phase=='effective','EXACT_PATHS':c['EXACT_ALLOWED_PATHS'],'OWNERSHIP':{'uid':1000,'gid':1000},'MODE':'0700','FRESH_OPERATOR_ENTRY_READY':False,'DIRECTORIES_CREATED':0,'CAPABILITY_CHECK_EXECUTED':False,'P136_UNCHANGED_EFFECTIVE':True,'LL12_HEAD':prevh,'NEGATIVES':neg}
+if phase=='effective':sem['EFFECTIVENESS_IDENTITY']=eff['IDENTITY']
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC':sem,'SEMANTIC_SHA256':h(sem)},sort_keys=True))

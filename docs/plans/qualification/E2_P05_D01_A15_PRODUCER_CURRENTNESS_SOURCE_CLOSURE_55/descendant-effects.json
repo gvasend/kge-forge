@@ -1,0 +1,37 @@
+{
+  "ADMISSION_WITNESS_SUBSTITUTION": false,
+  "CURRENT_CONTROL": "RUNNABLE",
+  "DEPENDENCY": [
+    {
+      "$type": "Gate",
+      "kind": {
+        "$enum": "GateKind",
+        "value": "ACTION_COMPLETED"
+      },
+      "target": {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    },
+    {
+      "$type": "Gate",
+      "kind": {
+        "$enum": "GateKind",
+        "value": "CONDITION_SATISFIED"
+      },
+      "target": {
+        "$type": "ConditionId",
+        "value": "E2-ROOT"
+      }
+    }
+  ],
+  "DESCENDANT_ID": {
+    "$type": "ActionId",
+    "value": "E2-FINISH"
+  },
+  "EXPECTED_CONTROL": "UNSEALED_COMPLETE_NATIVE_CONTROL",
+  "EXPECTED_HELD_OR_BLOCKED": "Conditional on actual qualified input causing required qualification loss; complete status/reason projection unsealed",
+  "EXPECTED_RESUME": "Frozen false after invalidation; named-route and full result independent of stale admission",
+  "OBSERVATION_METHOD": "Exact full report plus persisted/independently restored comparisons later",
+  "STARTING_STATE": "ACTIONABLE"
+}

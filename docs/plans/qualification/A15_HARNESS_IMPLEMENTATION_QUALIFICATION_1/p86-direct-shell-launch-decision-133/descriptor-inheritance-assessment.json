@@ -1,0 +1,59 @@
+{
+  "COMPLETE_TABLE_AT_FUTURE_LAUNCH": "UNVERIFIED; redirections, pipelines or later execs can create/replace descriptors",
+  "DECODED_FLAGS": [
+    {
+      "ACCESS_MODE": "O_RDWR",
+      "FD": 0,
+      "FLAGS_OWNER_SUPPLIED": "02002",
+      "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+      "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+      "O_APPEND": true,
+      "O_CLOEXEC": false,
+      "O_NONBLOCK": false,
+      "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+    },
+    {
+      "ACCESS_MODE": "O_RDWR",
+      "FD": 1,
+      "FLAGS_OWNER_SUPPLIED": "02002",
+      "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+      "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+      "O_APPEND": true,
+      "O_CLOEXEC": false,
+      "O_NONBLOCK": false,
+      "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+    },
+    {
+      "ACCESS_MODE": "O_RDWR",
+      "FD": 2,
+      "FLAGS_OWNER_SUPPLIED": "02002",
+      "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+      "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+      "O_APPEND": true,
+      "O_CLOEXEC": false,
+      "O_NONBLOCK": false,
+      "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+    },
+    {
+      "ACCESS_MODE": "O_RDWR",
+      "FD": 255,
+      "FLAGS_OWNER_SUPPLIED": "02002002",
+      "INDEPENDENCE": "Static decode of owner-supplied octal using pinned Linux headers; not observed live descriptor",
+      "NORMATIVE_IMPACT": "Do not use owner nonblocking interpretation as proof of bounded stream drain",
+      "O_APPEND": true,
+      "O_CLOEXEC": true,
+      "O_NONBLOCK": false,
+      "TARGET_OWNER_SUPPLIED": "/dev/pts/1"
+    }
+  ],
+  "DISCREPANCY": "02002 = O_RDWR|O_APPEND; O_NONBLOCK(04000) not set. 02002002 adds O_CLOEXEC. Preserve owner wording separately rather than silently modify raw flags.",
+  "FD0_TO2": "Reported terminal /dev/pts/1 and O_RDWR; not the proposed null stdin/qualified bounded capture endpoints",
+  "FD255": "CLOEXEC bit present in supplied flags, normally closes at successful exec; not a future table guarantee",
+  "FIRST_EXEC": "Nominated Bash already-running operator shell -> prospective127 prlimit; actual shell callsite not supplied. Bash FD255 internal descriptor is not assumed to protect every other handle.",
+  "INTERPRETER_CAVEAT": "If later route adds Python, startup is a new earlier boundary; Popen close_fds not retroactive",
+  "NORMAL_INHERITANCE": "Absent close-on-exec/explicit closure, standard streams can cross exec. No universal close-all from shell flags or snapshot. Shell-created pipe/dup lifetime needs exact callsite.",
+  "NO_PYTHON_INTRODUCED": true,
+  "POLICY_QUALIFIED": false,
+  "PROTECTED_WRITABLE_FD_OBSERVED": "NO_IN_SUPPLIED_SNAPSHOT",
+  "SMALLEST_PENDING_CONTROL": "Actual Bash callsite with explicit stdin/output/descriptor policy and independently supported no protected mutable inheritance before prlimit"
+}

@@ -1,0 +1,42 @@
+import copy,hashlib,json,os,pathlib,runpy,sys
+D=pathlib.Path('/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance');P='synthetic-recovery-tests-bootstrap-read-'
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def read(p):
+ def pairs(items):
+  d={}
+  for k,v in items:assert k not in d;d[k]=v
+  return d
+ return json.loads(pathlib.Path(p).read_text(),object_pairs_hook=pairs)
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()).hexdigest()}
+# Independent original-input ELF, permission table, canonical subject and 18 mutation reconstruction.
+runpy.run_path(str(D/(P+'independent-verifier.txt')))
+s=read(D/(P+'owner-decision-subject.json'));assert s['IDENTITY']['sha256']=='f872c8902166fccfac2a690c912627de9b3950e236bc4ac697ac234e0b9392a0';assert sha(D/(P+'owner-decision-subject.json'))=='ffdfd227880fe5fdf620d618dc014d5c3abbd5a41ddfa3fdc63c133fa7647a35'
+a=read(D/(P+'owner-approval.json'));assert a['OPTION_ID']=='AUTHORIZE_EXACT_CODEX_BOOTSTRAP_READ_AND_ONE_NEW_SYNTHETIC_SUITE' and a['SUBJECT_IDENTITY']==s['IDENTITY']
+expected=read(D/(P+'issuance-candidate.json'))
+def check(g):
+ assert g['GRANT_IDENTITY']==cid(g['GRANT_IDENTITY']['namespace'],g['RECORD']);r=g['RECORD'];x=s['CONTENT']
+ assert r['APPROVED_CONTENT']==x and r['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY']
+ assert r['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and r['INVOCATION_LIMIT']==1 and r['AUTOMATIC_RETRIES']==0
+ assert r['ALLOCATION_ID']==x['NEW_ALLOCATION_ID'] and r['EXCLUSIONS']==x['CORRECTED_EXECUTION_CONTRACT']['EXCLUSIONS']
+ assert r['PREVIOUS_INVOCATION_PERMANENTLY_CONSUMED'] is True and r['NO_RESET_OR_REFUND'] is True
+ assert r['SUITE_EXECUTED'] is False and r['INVOCATION_RESERVED'] is False and r['ENVIRONMENT_ADMITTED'] is False
+ assert r['INVOCATION_IDENTITY']==cid('kge-forge-bootstrap-read-synthetic-invocation-v1',{'SUBJECT_IDENTITY':s['IDENTITY'],'ALLOCATION_ID':x['NEW_ALLOCATION_ID'],'RESERVATION_PATH':x['NEW_RESERVATION_PATH'],'OUTCOME_PATH':x['NEW_OUTCOME_PATH'],'INVOCATION_LIMIT':1,'AUTOMATIC_RETRIES':0})
+ for p in r['PARENT_AUTHORITY_PINS']+[r['APPROVED_SUBJECT_PIN'],r['OWNER_DECISION_PIN'],r['PUBLICATION_MECHANISM_PIN']]:assert sha(p['path'])==p['raw_sha256']
+ for p in r['PARENT_AUTHORITY_PINS']:
+  q=read(p['path']);key='GRANT_IDENTITY' if 'GRANT_IDENTITY' in q else 'IDENTITY' if 'IDENTITY' in q else None
+  if key and 'RECORD' in q:assert q[key]==cid(q[key]['namespace'],q['RECORD'])
+ assert r==expected['RECORD']
+check(read(D/(P+sys.argv[1])))
+mutations=[('issuer',lambda r:r.update(ISSUER_ROLE='OTHER')),('second invocation',lambda r:r.update(INVOCATION_LIMIT=2)),('retry',lambda r:r.update(AUTOMATIC_RETRIES=1)),('refund',lambda r:r.update(NO_RESET_OR_REFUND=False)),('old consumption forgotten',lambda r:r.update(PREVIOUS_INVOCATION_PERMANENTLY_CONSUMED=False)),('premature execution',lambda r:r.update(SUITE_EXECUTED=True)),('premature reservation',lambda r:r.update(INVOCATION_RESERVED=True)),('broader home',lambda r:r['APPROVED_CONTENT']['CORRECTED_EXECUTION_CONTRACT']['PERMISSION_RULES'].update({'permissions.kge-forge-recovery-synthetic-once.filesystem./home/gvasend':'read'})),('network',lambda r:r['APPROVED_CONTENT']['CORRECTED_EXECUTION_CONTRACT']['PERMISSION_RULES'].update({'permissions.kge-forge-recovery-synthetic-once.network.enabled':True})),('changed argv',lambda r:r['APPROVED_CONTENT']['CORRECTED_EXECUTION_CONTRACT']['EXACT_SANDBOX_ARGV'].append('linux')),('changed limit',lambda r:r['APPROVED_CONTENT']['NEW_LIMITS'].update(CPU_SECONDS=61)),('lost exclusion',lambda r:r.update(EXCLUSIONS=[]))]
+for name,f in mutations:
+ bad=copy.deepcopy(expected);f(bad['RECORD']);bad['GRANT_IDENTITY']=cid(bad['GRANT_IDENTITY']['namespace'],bad['RECORD'])
+ try:check(bad)
+ except (AssertionError,KeyError,ValueError,TypeError):pass
+ else:raise AssertionError('accepted '+name)
+for p,h in read(D/(P+'grant-preservation-before.json')).items():assert sha(p)==h,p
+result={'RESULT':'PASS','GRANT_IDENTITY':expected['GRANT_IDENTITY'],'INVOCATION_IDENTITY':expected['RECORD']['INVOCATION_IDENTITY'],'ADDITIONAL_NEGATIVE_DESIGNS':len(mutations),'ADDITIONAL_NEGATIVE_EXECUTIONS_REJECTED':len(mutations),'ORIGINAL_SUBJECT_NEGATIVE_DESIGNS':18,'PRIOR_RECORDS_UNCHANGED':True,'FRESH_EXTERNAL_STATE':'PENDING','SUITE_EXECUTED':False}
+if len(sys.argv)>2:
+ e=read(D/(P+'effectiveness-reference.json'));assert e['IDENTITY']==cid(e['IDENTITY']['namespace'],e['RECORD']);r=e['RECORD'];assert r['GRANT_IDENTITY']==expected['GRANT_IDENTITY'] and r['SUBJECT_IDENTITY']==s['IDENTITY'] and r['INVOCATION_IDENTITY']==expected['RECORD']['INVOCATION_IDENTITY'];assert r['STATUS']=='EFFECTIVE_EXACT_BOOTSTRAP_READ_ONE_NEW_SUITE_SUBJECT_TO_FRESH_ENTRY'
+ for k in ['GRANT_PIN','VERIFICATION_PIN','CONFLICT_RECHECK_PIN']:assert sha(r[k]['path'])==r[k]['raw_sha256']
+ result['EFFECTIVENESS_IDENTITY']=e['IDENTITY']
+print(json.dumps(result,sort_keys=True))

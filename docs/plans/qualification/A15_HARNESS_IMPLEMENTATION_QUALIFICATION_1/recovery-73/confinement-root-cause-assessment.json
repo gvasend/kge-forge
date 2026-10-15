@@ -1,0 +1,54 @@
+{
+  "FAILURE_CAUSE_ESTABLISHED": false,
+  "FAILURE_CLASSIFICATION": "EPERM at route-netlink socket creation inside Bubblewrap loopback setup; Python metadata payload not reached",
+  "FAILURE_POINT_ESTABLISHED": true,
+  "HYPOTHESES": [
+    {
+      "CLASSIFICATION": "CONTRADICTED",
+      "EVIDENCE_AND_LIMIT": "The recorded diagnostic is socket creation during loopback setup, not clone/unshare error. Upstream ordering supports reaching setup; complete namespace equivalence is not proved.",
+      "HYPOTHESIS_ID": "H73-NETNS-CREATE-DENIED"
+    },
+    {
+      "CLASSIFICATION": "SUPPORTED",
+      "EVIDENCE_AND_LIMIT": "Exact stderr and installed binary negative socket branch localize failure before bind and subsequent interface configuration.",
+      "HYPOTHESIS_ID": "H73-LOOPBACK-STAGE"
+    },
+    {
+      "CLASSIFICATION": "SUPPORTED",
+      "EVIDENCE_AND_LIMIT": "Installed instructions call socket with AF_NETLINK=16, SOCK_RAW|SOCK_CLOEXEC=0x80003, NETLINK_ROUTE=0; result negative with EPERM diagnostic.",
+      "HYPOTHESIS_ID": "H73-NETLINK-SOCKET-DENIED"
+    },
+    {
+      "CLASSIFICATION": "CONTRADICTED",
+      "EVIDENCE_AND_LIMIT": "Current unprivileged_userns_clone=1 and positive namespace limits; failure point also differs from namespace creation. Child namespace permissions are not generally qualified.",
+      "HYPOTHESIS_ID": "H73-USERNS-GLOBALLY-DISABLED"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "EVIDENCE_AND_LIMIT": "Current capability sets/bounding set zero; no failed-child namespace capability snapshot. Parent absence alone does not identify the socket rejection cause.",
+      "HYPOTHESIS_ID": "H73-MISSING-CAPABILITY-ROOT-CAUSE"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "EVIDENCE_AND_LIMIT": "Current Seccomp=2 and NoNewPrivs=1 are observed. Effective filter program and socket-argument errno action are not observable.",
+      "HYPOTHESIS_ID": "H73-SPECIFIC-SECCOMP-RULE"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "EVIDENCE_AND_LIMIT": "Current process attr is unconfined while AppArmor is enabled; failed child exec-transition state/other LSM rule and denial audit unavailable.",
+      "HYPOTHESIS_ID": "H73-APPARMOR-OR-LSM"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "EVIDENCE_AND_LIMIT": "Restricted proc/mount/cgroup view and filter state are present, but denying rule owner/profile is not authenticated.",
+      "HYPOTHESIS_ID": "H73-OUTER-CONTAINER-OR-LAUNCHER-POLICY"
+    },
+    {
+      "CLASSIFICATION": "UNDETERMINED",
+      "EVIDENCE_AND_LIMIT": "Sealed source requests --unshare-net and --cap-drop ALL; no evidence permits assigning this socket denial to those options or changing them safely.",
+      "HYPOTHESIS_ID": "H73-INVOCATION-CONFIGURATION-CAUSE"
+    }
+  ],
+  "MISSING_DISCRIMINATOR": "Authenticated effective outer filter/LSM/launcher policy or contemporaneous syscall-denial audit for that specific socket operation and qualification context",
+  "NO_GLOBAL_HOST_INCAPABILITY_INFERENCE": true
+}

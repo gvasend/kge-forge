@@ -1,0 +1,104 @@
+{
+  "EFFECTIVE_POLICY": {
+    "CHANGE_CLASSIFICATION": "NORMATIVE_AMENDMENT_REQUIRED",
+    "EVENT_COUNT_FROM_ONE_ATTEMPT": false,
+    "FIRST_CAUSE_REPLACEMENT": false,
+    "IN_SAME_PUBLICATION_DOMAIN": true,
+    "NUMERIC_MAXIMUM": null,
+    "OPERATIONS": [
+      "Service stop/wait/membership check",
+      "Observer pipe/FD close and timeout accounting",
+      "Claim store/read/barrier failure",
+      "Evidence encode/write/fsync/reread",
+      "Final audit publication",
+      "Monotonic deadline stop/finalization"
+    ],
+    "POLICY": "Independently derive exact operation/handle/concurrency event counts before active entry; include all simultaneously feasible secondaries in reserve. Mutually exclusive primary outcomes are not summed as concurrent.",
+    "REPEATED_WRITES": "Every new record/republication charges full logical length again; suffix continuation of same admitted artifact is not a new record. No automatic probe retry or new audit campaign.",
+    "UNEXPECTED_OR_OVERFLOW": "Additional unmodelled/missing secondary witness makes outcome INCOMPLETE; record bounded overflow via reserved slot if possible. Never claim complete errors from truncated/unverifiable exception text."
+  },
+  "FAILURES": [
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "CONSUMPTION_STORE_ACCESS",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "SERVICE_STOP_WAIT",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "OBSERVER_PIPE_FD_CLEANUP",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "CGROUP_METADATA_CAPTURE",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "EVIDENCE_PUBLICATION",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "TIMEOUT_HANDLING",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "FINAL_AUDIT",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Can coexist with another producer failure during stop/observer/publication finalization",
+      "FAILURE_TYPE": "DURABLE_RECORD_REREAD",
+      "FIRST_CAUSAL_FAILURE_RELATION": "May not replace primary immutable cause",
+      "MAX_OCCURRENCES": null,
+      "MAX_RECORD_BYTES": 743,
+      "MISSING": "Exact operation/handle/write-attempt controller cardinality and independent witness bounds",
+      "MUTUAL_EXCLUSIVITY": "Do not sum unrelated alternative first causes; within a feasible path all owned operation errors must be included",
+      "PUBLICATION_CHARGE": "743 per approved112 bounded secondary record plus actual independent causal witness/framing; actual multiplicity unsealed"
+    }
+  ],
+  "OVERFLOW": "Unexpected or unmodelled error/witness overflow is INCOMPLETE, never silent discard or PASS; overflow record/reserve must also be bounded before activation",
+  "SECONDARY_FAILURE_BOUNDS_COMPLETE": false
+}

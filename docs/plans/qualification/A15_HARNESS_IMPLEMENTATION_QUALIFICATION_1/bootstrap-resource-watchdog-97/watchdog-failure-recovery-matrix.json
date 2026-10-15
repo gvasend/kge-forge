@@ -1,0 +1,85 @@
+{
+  "CASES": [
+    {
+      "CASE": "NORMAL_COMPLETION",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": null,
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "independently observed all exits",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "CHILD_TIMEOUT",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "CHILD_TIMEOUT",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "PARENT_FAILURE",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "PARENT_FAILURE",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "WATCHDOG_FAILURE",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "WATCHDOG_FAILURE",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "DESCENDANT_ESCAPE",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "DESCENDANT_ESCAPE",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "PARTIAL_TERMINATION",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "PARTIAL_TERMINATION",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "UNKNOWN_EXIT_STATUS",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "UNKNOWN_EXIT_STATUS",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    },
+    {
+      "CASE": "AUDIT_FAILURE",
+      "EXPECTED_AUDIT_EVIDENCE": "exact creation/membership/deadline/signals/exit statuses/remaining-members/first+secondary/consumption/retryfalse",
+      "EXPECTED_CONSUMPTION_STATE": "unchanged consumed/ambiguous; never restore",
+      "EXPECTED_FIRST_COUNTEREXAMPLE": "AUDIT_FAILURE",
+      "EXPECTED_SECONDARY_FAILURES": "preserve subsequent kill/reap/accounting/audit errors separately",
+      "EXPECTED_TERMINATION_STATE": "terminate covered workload; unknown/remaining members means NOT_COMPLETE",
+      "RECOVERY_RULE": "readonly reconciliation; unknown cannot be reported success or relaunched",
+      "RETRY_ELIGIBILITY": false
+    }
+  ],
+  "NORMAL_SUCCESS_REQUIREMENT": "complete independent termination+audit witness, not parent report alone"
+}

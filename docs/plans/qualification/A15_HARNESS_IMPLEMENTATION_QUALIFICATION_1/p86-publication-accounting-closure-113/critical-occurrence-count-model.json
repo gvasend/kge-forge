@@ -1,0 +1,103 @@
+{
+  "EVENTS": [
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "FIRST_CAUSAL_FAILURE",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": 1,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": 1,
+      "MAX_RECORD_BYTES": 746,
+      "MAX_TOTAL_BYTES": 746,
+      "MUTUAL_EXCLUSIVITY": "First cause cannot be replaced by cleanup/audit errors",
+      "TRIGGER": "First failure transitions once"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "SERVICE_START_FAILURE",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": 1,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": 1,
+      "MAX_RECORD_BYTES": 747,
+      "MAX_TOTAL_BYTES": 747,
+      "MUTUAL_EXCLUSIVITY": "Not the same path as confirmed start; subsequent timeout is secondary if it occurs",
+      "TRIGGER": "Definite failure before confirmed start"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "TIMEOUT",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": 1,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": 1,
+      "MAX_RECORD_BYTES": 733,
+      "MAX_TOTAL_BYTES": 733,
+      "MUTUAL_EXCLUSIVITY": "Primary start-failure and primary timeout reason records are alternative first-cause detail slots, not blindly summed",
+      "TRIGGER": "One monotonic attempt window expires"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "UNKNOWN_EXIT",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": 1,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": 1,
+      "MAX_RECORD_BYTES": 738,
+      "MAX_TOTAL_BYTES": 738,
+      "MUTUAL_EXCLUSIVITY": "Confirmed final exit and unknown-exit verdict mutually exclusive; unknown can follow timeout and concurrent cleanup failure",
+      "TRIGGER": "Missing final exit or remaining-task observation"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "CONSUMPTION_STATE",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": 1,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": 1,
+      "MAX_RECORD_BYTES": 743,
+      "MAX_TOTAL_BYTES": 743,
+      "MUTUAL_EXCLUSIVITY": "Actual durable claim creation separately inventoried, summary not a new fresh claim",
+      "TRIGGER": "One final state summary"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "DUPLICATE_REJECTION",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": null,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": null,
+      "MAX_RECORD_BYTES": null,
+      "MAX_TOTAL_BYTES": null,
+      "MUTUAL_EXCLUSIVITY": "One attempt does not bound external duplicate request volume or denial-audit writes",
+      "TRIGGER": "External duplicate/partial/conflicting requests"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "SECONDARY_FAILURE",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": null,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": null,
+      "MAX_RECORD_BYTES": 743,
+      "MAX_TOTAL_BYTES": null,
+      "MUTUAL_EXCLUSIVITY": "Can coexist with primary failure and unknown exit; no exact source handle/operation cardinality authenticated",
+      "TRIGGER": "Stop/query/wait/FD-close/publication/barrier/observer failures after first cause"
+    },
+    {
+      "CONCURRENT_POSSIBILITY": "Primary cause fixed once; stop/observer/publication secondary errors can occur concurrently and must all fit future reserve",
+      "CURRENT_STATUS": "Closed single-slot proposal, all-event model incomplete",
+      "EVENT_TYPE": "FINAL_AUDIT",
+      "EVIDENCE_SOURCE": "Authenticated112 record bounds plus113 prospective state machine; counts are design slot limits, not implemented/event enforcement",
+      "MAX_OCCURRENCES_ALL_REQUIRED_PRODUCERS": 1,
+      "MAX_OCCURRENCES_PER_SINGLE_INVOCATION_PROPOSED": 1,
+      "MAX_RECORD_BYTES": 737,
+      "MAX_TOTAL_BYTES": 737,
+      "MUTUAL_EXCLUSIVITY": "Audit failure may itself require secondary critical evidence; that recovery cardinality is unsealed",
+      "TRIGGER": "One immutable final outcome publication slot"
+    }
+  ],
+  "FAILURE_EVENT_COUNTS_COMPLETE": false,
+  "MISSING": "Exact independent observer/stop/query/FD/publication operation topology, duplicate-denial audit policy and concurrent event mediation needed before finite maximum secondary/denial/witness occurrences can be approved",
+  "NO_TEST_COUNT_AS_EVENT_COUNT": true
+}

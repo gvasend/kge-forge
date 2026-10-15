@@ -1,0 +1,219 @@
+{
+  "atomic_unit": "Each actual phase result + its post-state, occurrence event and complete PersistenceBundle/head",
+  "cold_restore": {
+    "checkpoints": [
+      "SEALED_START",
+      "POST_REQUEST_READY",
+      "POST_WAIT"
+    ],
+    "comparisons": [
+      "full canonical Snapshot/bundle/event bytes and identities",
+      "request/gate/context/provenance",
+      "source/policy pins",
+      "parents/indices/sequence/root/head",
+      "post control/absence oracles",
+      "no resumed Action/permission"
+    ],
+    "reader_inputs": "Trusted bundle identity/path, native immutable event files, sealed source bytes, supported policy and pinned code; expected files are comparison-only",
+    "reader_memory_access": false,
+    "reader_operation": "codec.restore with trusted expected bundle ID, then core.recompute/obligation_proof/resume_eligibility",
+    "writer_terminates": true
+  },
+  "determinism": {
+    "cold_readers_per_checkpoint_per_seed": 3,
+    "different_sealed_fixture": "Own new context/source/history/event IDs must match its own presealed oracle; compare A06 semantic projection, not equality with primary IDs",
+    "fresh_inputs_for_reproductions": [
+      {
+        "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/inputs/reproduction-1/input-manifest.json",
+        "pointer": "",
+        "raw_sha256": "d58b8d279c930ed2dc647efeaea32b67ed669cd20debbe91ba9513be993455ef"
+      },
+      {
+        "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/inputs/reproduction-2/input-manifest.json",
+        "pointer": "",
+        "raw_sha256": "3671b7fcc8979dcb4c12444a33632870672adbf0d103e4b26313d2a67d9dc079"
+      },
+      {
+        "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/inputs/reproduction-3/input-manifest.json",
+        "pointer": "",
+        "raw_sha256": "fd8e320452fa3e236da121b5ac998156f8f0c648317f2823d5882f8de6117375"
+      }
+    ],
+    "hash_seeds": [
+      0,
+      1,
+      7,
+      101
+    ],
+    "independent_new_fixture_reproductions": 3,
+    "ordered_fields_never_permuted": [
+      "causal ExecutionEvents",
+      "ExternalGate.history"
+    ],
+    "permitted_fields": [
+      "object key order",
+      "Snapshot.predicates",
+      "PersistenceBundle.sources"
+    ],
+    "primary_cold_reader_processes": 36,
+    "primary_independent_writers": 4,
+    "reproduction_final_cold_readers_each": 3,
+    "reproduction_seed": 0,
+    "same_fixture": "Exact canonical native identities, full state/Computation/trace; no salt/UUID/timestamp",
+    "singleton_set_fields": "Invariant under their only permutation; request string and proposition are not sets",
+    "unordered_permutations": [
+      "original",
+      "reversed",
+      "rotated"
+    ]
+  },
+  "direct_D01_dossier_transaction_required": false,
+  "exact_retry": "append_event is identity-idempotent for an already-enrolled identical event. commit_event stale parent/old expected Snapshot rejects; acknowledge a persisted event read-only only after exact native identity/payload checks. No silent rewind/new command.",
+  "first_commit": "Against exact empty start, event 1 only; actual after-state/event/bundle must equal independently sealed ready oracles",
+  "forbidden_contents": [
+    "Evidence/receipt/validation/support/proof",
+    "ActionResult/Knowledge/completion",
+    "human choice/native grant",
+    "installed definitions",
+    "persisted ResumeEligibility"
+  ],
+  "historical_replay": {
+    "new_events_appended": 0,
+    "new_external_send_or_decision": false,
+    "new_occurrence_created": false,
+    "operation": "codec.restore/_replay consumes recorded ExternalEvent results from the sealed prospective initial Snapshot",
+    "original_historical_A06_proved": false,
+    "repeat_replay": "Same two event/result identities, state and bundle; never record_result/commit_event while validating history"
+  },
+  "independent_reproduction_semantic_projection": [
+    "typed phase order",
+    "known-rule/missing-evidence proposition/target/producer",
+    "native request string and exact gate/held Action names",
+    "null-first-parent then exact own event-1 parent",
+    "sequence/ledger positions",
+    "exact source/context applicability within each fixture",
+    "EXTERNAL_WAIT with no action/receipt/proof/result/Knowledge/authority effect"
+  ],
+  "legal_intermediate": "A durable request-ready checkpoint with event 1 is valid; it is not a complete accepted A06 trace until waiting/event 2 commits",
+  "native_path": "codec.commit_event -> record_result/append_event -> core.apply_event/apply_receipt -> immutable Snapshot/event/bundle -> atomic HEAD publication",
+  "native_sources": [
+    {
+      "end_line": 1162,
+      "line": 1158,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e",
+      "symbol": "ExternalEvent"
+    },
+    {
+      "end_line": 685,
+      "line": 678,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e",
+      "symbol": "ExecutionEvent"
+    },
+    {
+      "end_line": 1227,
+      "line": 1165,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e",
+      "symbol": "validate_p05"
+    },
+    {
+      "end_line": 632,
+      "line": 586,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "apply_receipt"
+    },
+    {
+      "end_line": 724,
+      "line": 635,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "_global_control"
+    },
+    {
+      "end_line": 800,
+      "line": 728,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "resume_eligibility"
+    },
+    {
+      "end_line": 607,
+      "line": 594,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "symbol": "record_result"
+    },
+    {
+      "end_line": 591,
+      "line": 580,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "symbol": "append_event"
+    },
+    {
+      "end_line": 954,
+      "line": 942,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "symbol": "commit_event"
+    },
+    {
+      "end_line": 577,
+      "line": 448,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "symbol": "_replay"
+    },
+    {
+      "end_line": 729,
+      "line": 705,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "symbol": "restore"
+    },
+    {
+      "end_line": 445,
+      "line": 440,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "symbol": "_event_identity"
+    },
+    {
+      "end_line": 876,
+      "line": 786,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e",
+      "symbol": "validate_predicate_contracts"
+    }
+  ],
+  "partial_failure": "Before HEAD publication authoritative old bundle remains. After publication reader sees complete new bundle; staged unreachable immutable files are not an accepted occurrence.",
+  "post_bundle_contents": [
+    "exact sealed initial Snapshot",
+    "two ordered actual ExecutionEvents",
+    "exact actual WAITING post-Snapshot",
+    "all three sealed source pins",
+    "supported policy pin/version",
+    "PARTIAL_HISTORICAL_REPLAY"
+  ],
+  "qualification_only_histories_never_spliced_into_P04": true,
+  "reason_not_D01": "A06 is already a registered ExternalEvent with deterministic state application. No PrepareResult, typed dossier ValidationInstances or DossierMaterializationBinding exists in this stage.",
+  "schema": "E2-P05-A06-PERSISTENCE-REPLAY-CONTRACT-1",
+  "second_commit": "Against restored/verified post-ready current HEAD; construct command from actual ready Snapshot; event 2 only",
+  "transaction_count": 2
+}

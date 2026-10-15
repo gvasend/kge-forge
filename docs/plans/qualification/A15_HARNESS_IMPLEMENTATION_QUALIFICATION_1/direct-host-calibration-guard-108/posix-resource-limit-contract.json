@@ -1,0 +1,62 @@
+{
+  "LIMITS": [
+    {
+      "CURRENT_QUALIFICATION_STATUS": "UNDETERMINED",
+      "DERIVATION": "Measured requirement and resource-owner-approved finite safety cap absent; not aggregate CPU",
+      "ENFORCEMENT_SCOPE": "Per process, inherited across child exec subject to independently checked wrapper and non-raising hard limits",
+      "EXPECTED_FAILURE": "Deny launch if missing; exceeded limit must yield independently observed failure/unknown, never retry",
+      "INDEPENDENT_OBSERVATION": "Outer observer captures effective limits, every process/exit and aggregate observations",
+      "INHERITANCE": "Require independently verified inherited soft/hard limits before any helper launch",
+      "PROPOSED_VALUE": null,
+      "REQUIRED_PERMISSION": "Direct actor ability to lower limits and preserve non-raising hard cap; unverified",
+      "RESOURCE": "RLIMIT_CPU"
+    },
+    {
+      "CURRENT_QUALIFICATION_STATUS": "UNDETERMINED",
+      "DERIVATION": "Startup/full-workload virtual peak and approved safety cap absent; separate aggregate memory requirement unresolved",
+      "ENFORCEMENT_SCOPE": "Per-process virtual address space, not aggregate RSS",
+      "EXPECTED_FAILURE": "Deny launch if missing; exceeded limit must yield independently observed failure/unknown, never retry",
+      "INDEPENDENT_OBSERVATION": "Outer observer captures effective limits, every process/exit and aggregate observations",
+      "INHERITANCE": "Require independently verified inherited soft/hard limits before any helper launch",
+      "PROPOSED_VALUE": null,
+      "REQUIRED_PERMISSION": "Direct actor ability to lower limits and preserve non-raising hard cap; unverified",
+      "RESOURCE": "RLIMIT_AS"
+    },
+    {
+      "CURRENT_QUALIFICATION_STATUS": "UNDETERMINED",
+      "DERIVATION": "Exact FD graph/peak and finite selected cap absent; observed soft1024 is not derivation",
+      "ENFORCEMENT_SCOPE": "Per-process descriptor ceiling including inherited observer/control handles",
+      "EXPECTED_FAILURE": "Deny launch if missing; exceeded limit must yield independently observed failure/unknown, never retry",
+      "INDEPENDENT_OBSERVATION": "Outer observer captures effective limits, every process/exit and aggregate observations",
+      "INHERITANCE": "Require independently verified inherited soft/hard limits before any helper launch",
+      "PROPOSED_VALUE": null,
+      "REQUIRED_PERMISSION": "Direct actor ability to lower limits and preserve non-raising hard cap; unverified",
+      "RESOURCE": "RLIMIT_NOFILE"
+    },
+    {
+      "CURRENT_QUALIFICATION_STATUS": "UNDETERMINED",
+      "DERIVATION": "Largest single approved record/file and all write paths needed; 144359 is not per-file authority",
+      "ENFORCEMENT_SCOPE": "Per-file size, not cumulative bytes written",
+      "EXPECTED_FAILURE": "Deny launch if missing; exceeded limit must yield independently observed failure/unknown, never retry",
+      "INDEPENDENT_OBSERVATION": "Outer observer captures effective limits, every process/exit and aggregate observations",
+      "INHERITANCE": "Require independently verified inherited soft/hard limits before any helper launch",
+      "PROPOSED_VALUE": null,
+      "REQUIRED_PERMISSION": "Direct actor ability to lower limits and preserve non-raising hard cap; unverified",
+      "RESOURCE": "RLIMIT_FSIZE"
+    },
+    {
+      "CURRENT_QUALIFICATION_STATUS": "UNDETERMINED",
+      "DERIVATION": "Existing UID workload, privilege exemptions and namespace semantics unverified; cannot turn four model processes into rlimit4",
+      "ENFORCEMENT_SCOPE": "Actor/UID task limit, not assumed dedicated campaign kernel cap",
+      "EXPECTED_FAILURE": "Deny launch if missing; exceeded limit must yield independently observed failure/unknown, never retry",
+      "INDEPENDENT_OBSERVATION": "Outer observer captures effective limits, every process/exit and aggregate observations",
+      "INHERITANCE": "Require independently verified inherited soft/hard limits before any helper launch",
+      "PROPOSED_VALUE": null,
+      "REQUIRED_PERMISSION": "Direct actor ability to lower limits and preserve non-raising hard cap; unverified",
+      "RESOURCE": "RLIMIT_NPROC"
+    }
+  ],
+  "PER_PROCESS_AS_EQUALS_AGGREGATE_RSS": false,
+  "RLIMIT_CONTRACT_COMPLETE": false,
+  "RLIMIT_RSS_ACCEPTED": false
+}

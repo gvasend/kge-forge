@@ -1,0 +1,98 @@
+{
+  "ACTUAL_RECEIPT": false,
+  "CONTENT": {
+    "ACTUAL_CALLER_NOMINATED": false,
+    "ACTUAL_RECEIPT_COLLECTED": false,
+    "BIRTH_CHECK": "Read boot/stat before and after collection and immediately before future entry. Tuple(host,boot,pid,startticks) must match. Reject PIDreuse/change, inaccessible or partial evidence; command timestamp not identity.",
+    "CALLER_IDENTITY_FIELDS": {
+      "boot_id": "/proc/sys/kernel/random/boot_id exact",
+      "cwd": "actual readlink/proc path + source/namespace context",
+      "exe": "readlink resolved raw executable SHA256 supplied independently under operator permission",
+      "hostname": "actual operator host identity",
+      "namespaces": "user,mnt,pid,net,ipc,uts namespace identities",
+      "pid_ppid": "actual intended running shell, not Codex/receipt reader",
+      "real_effective_uid_gid": "status Uid/Gid allfields, groups separately",
+      "session_pgrp": "fields5/6 procstat, compare actual caller session",
+      "starttime_ticks": "field22 /proc/PID/stat parsed after final closing parenthesis, not naive whitespace comm field",
+      "timestamp": "operator UTC collection metadata, not a stable identity component"
+    },
+    "COMMAND_TEMPLATES": [
+      [
+        "/bin/cat",
+        "/proc/sys/kernel/hostname",
+        "/proc/sys/kernel/random/boot_id",
+        "/proc/<SHELL_PID>/stat",
+        "/proc/<SHELL_PID>/status",
+        "/proc/<SHELL_PID>/limits",
+        "/proc/<SHELL_PID>/cgroup"
+      ],
+      [
+        "/bin/readlink",
+        "--",
+        "/proc/<SHELL_PID>/exe",
+        "/proc/<SHELL_PID>/cwd",
+        "/proc/<SHELL_PID>/ns/user",
+        "/proc/<SHELL_PID>/ns/mnt",
+        "/proc/<SHELL_PID>/ns/pid",
+        "/proc/<SHELL_PID>/ns/net",
+        "/proc/<SHELL_PID>/ns/ipc",
+        "/proc/<SHELL_PID>/ns/uts"
+      ],
+      [
+        "/bin/ls",
+        "-l",
+        "--",
+        "/proc/<SHELL_PID>/fd"
+      ],
+      [
+        "/bin/readlink",
+        "--",
+        "/proc/<SHELL_PID>/fd/<OBSERVED_FD>"
+      ],
+      [
+        "/bin/cat",
+        "/proc/<SHELL_PID>/fdinfo/<OBSERVED_FD>"
+      ],
+      [
+        "/usr/bin/stat",
+        "--format=%d:%i:%f:%u:%g:%h",
+        "--",
+        "<ALREADY_AUTHENTICATED_PROTECTED_PATH>"
+      ]
+    ],
+    "ENV_SOURCE": "Exact safe launch environment from authenticated existing callsite configuration. No assumption /proc environ fully captures interactive shell current exported state. Do not run export/env/set to alter or expose caller here.",
+    "EXISTING_READER_PINS": {
+      "/bin/cat": {
+        "RAW_SHA256": "87e5bd81850e11eeec2d3bb696b626b2a7f45673241cbbd64769c83580432869",
+        "RESOLVED": "/bin/cat"
+      },
+      "/bin/ls": {
+        "RAW_SHA256": "1e39354a6e481dac48375bfebb126fd96aed4e23bab3c53ed6ecf1c5e4d5736d",
+        "RESOLVED": "/bin/ls"
+      },
+      "/bin/readlink": {
+        "RAW_SHA256": "d51208f0931965a9ea6afb5596bb24a1af5f9978819a5f2a9a44c6682706d227",
+        "RESOLVED": "/bin/readlink"
+      },
+      "/usr/bin/stat": {
+        "CONTEXT": "Read-only installed bytes, direct-host equality pending",
+        "RAW_SHA256": "422b0e57ae673cb8d58ab672bff58d78792cf4e54fce38e06207a73d4d96980f",
+        "RESOLVED": "/usr/bin/stat"
+      }
+    },
+    "FD_ANALYSIS": "Decode octal fdinfo flags: access-mode bits plus O_CLOEXEC from exact platform semantics; inspect object type and aliases. Do not infer writable authority solely from target path. O_CLOEXEC snapshot is not universal future guarantee. Directory/socket handles require separate capability analysis.",
+    "NAMESPACE": "qualification-p132-direct-interactive-shell-receipt-specification-v1",
+    "NO_AUTONOMOUS_CODEX_QUALIFICATION": true,
+    "NO_GLOB_ASSUMPTION": "Enumerate actual observed decimal FD entries; no shell wildcard silently expands another process/table. Any additional reader invocation separately bounded by operator permission.",
+    "OUTPUT_BOUNDARY": "Own separately permissioned read-only receipt evidence, no protected-store write by132. Finite records/bytes and collector must be agreed for operator action before collection; no unbound template treated as collection grant.",
+    "PERMISSION": "Operator proc access/hidepid/ptrace/file rules must permit exact reads; no sudo, signals, child exec or witness. Any new active check requires separate authority.",
+    "REDACTION": "Never dump full environ/cmdline by default. Publish only approved PATH/LANG/LC_ALL/HOME values and startup-hook presence/absence/type; secret credential/token/password/cookie/key values omitted entirely, not hashed for disclosure. Caller cmdline reviewed/redacted before publication. Redaction prevents full exact public identity: trusted independent private verification or alternate exact nonsecret callsite source is needed; otherwise INCOMPLETE.",
+    "ROLE_NOMINATED": "Operator-controlled interactive shell on ubuntu01 intended for future124check",
+    "SNAPSHOT_NOT_INHERITANCE_PROOF": true,
+    "STATE": "SPECIFICATION_ONLY"
+  },
+  "IDENTITY": {
+    "namespace": "qualification-p132-direct-interactive-shell-receipt-specification-v1",
+    "sha256": "ca58f1206a08607da2a42e6bf19ddaa6a87eb10b0e4119ef69a52268e93e8478"
+  }
+}

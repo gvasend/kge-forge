@@ -1,0 +1,67 @@
+# Independent static reconstruction only; never imports or executes future inspection commands.
+import pathlib,json,hashlib,copy,shlex,os
+R=pathlib.Path('/home/gvasend/app/kge-forge');B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';D=B/'p124-provisioning-reconciliation-140';G=B/'p124-capture-directory-provisioning-grant-138';H=B/'p124-directory-provisioning-139'
+def j(p):return json.loads(p.read_text())
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def h(v):return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def cid(ns,v):return dict(kind='CONTENT_IDENTITY',namespace=ns,sha256=h(v))
+def pc(v):assert raw(R/v['path'])==v['raw_sha256']
+a=j(D/'source-authentication.json')
+for p,digest in a['SOURCE_PINS'].items():assert raw(R/p)==digest,p
+e=j(G/'effective-capture-directory-provisioning-grant-reference.json');assert e['IDENTITY']==cid('qualification-p138-directory-provisioning-effectiveness-reference-v1',e['CONTENT']);assert e['CONTENT']['PROVISIONING_GRANT_EFFECTIVE'];pc(e['CONTENT']['GRANT_RECORD_PIN']);g=j(R/e['CONTENT']['GRANT_RECORD_PIN']['path']);assert g['GRANT_IDENTITY']==cid('qualification-p138-p124-directory-provisioning-issued-grant-v1',g['RECORD']);assert e['CONTENT']['GRANT_IDENTITY']==g['GRANT_IDENTITY'];pc(g['RECORD']['APPROVED_SUBJECT_PIN']);old=j(R/g['RECORD']['APPROVED_SUBJECT_PIN']['path']);c=old['CONTENT'];assert old['IDENTITY']==cid('qualification-p137-capture-directory-provisioning-subject-v1',c);assert c==g['RECORD']['APPROVED_CONTENT']
+charpath=R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/charter-content.json';char=j(charpath);assert hashlib.sha256(json.dumps(char,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()==c['GOVERNING_CHARTER_IDENTITY']['sha256']
+reg=j(R/'docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json');prev='0'*64;heads=[]
+for ev in reg['EVENTS']:
+ x=dict(ev);eh=x.pop('EVENT_HASH');assert x['PREVIOUS_EVENT_HASH']==prev and h(x)==eh;prev=eh;heads.append(eh)
+assert prev=='76f87581bcbd67d7ffecc8d1c9f8b92d7e5b35e23681b372083a120cafaedcdc' and '885fd0eaceb15847201dfd058217682741fb43c255298713ccbc1e7251eec791' in heads
+# Search is bounded by actual catalog, with all scanned files pinned and no fake fixtures treated as I3.
+search=j(D/'bounded-search-results.json');assert search['FILES_EXAMINED']==search['MAX_FILES_THIS_SEARCH']==len(search['EXACT_CATALOG'])==86
+for p in search['EXACT_CATALOG']:pc(p)
+assert search['QUALIFYING_I3_RESULTS']==[] and search['REVOCATION_SUPERSESSION_RECORDS']==[] and search['PROVISIONING_CONSUMPTION_RECORDS']==[] and not search['CONTEMPORANEOUS_INDEPENDENT_READ_AUTHORITY_ESTABLISHED']
+hist=j(D/'historical-inspection-reconciliation.json');receipt=j(H/'owner-supplied-existing-evidence-001.json');assert shlex.split(receipt['OBSERVATIONS'][1]['COMMAND_TEXT'])==c['ORDERED_COMMANDS'][0];assert shlex.split(receipt['OBSERVATIONS'][2]['COMMAND_TEXT']) not in c['ORDERED_COMMANDS'];assert receipt['OBSERVATIONS'][0]['NATIVE_EXPANSION'] is None and receipt['OBSERVATIONS'][3]['COMMAND_TEXT'] is None
+assert hist['UNIT']=='PER_TOOL_INVOCATION' and hist['REMAINING_INSPECTION_BUDGET'] is None and not hist['HISTORICAL_INVOCATIONS_RECONCILED']
+s=j(D/'prospective-inspection-authority-subject.json');v=s['CONTENT'];d=j(D/'unselected-owner-decision-dossier.json');assert s['IDENTITY']==cid('qualification-p140-prospective-provisioning-inspection-subject-v1',v)==d['SUBJECT_IDENTITY'];pc(d['SUBJECT_RAW_PIN']);assert d['SELECTION'] is None and not d['NEW_AUTHORITY_ISSUED'];assert not s['ISSUED'] and not s['EFFECTIVE']
+expected_ids=['R01','R02','R03','R04','R05','R06','R07','R08','R09','I1','I2','I3','R10','I4','I5','I6','I7']
+old_reads=[x for x in c['ORDERED_COMMANDS'] if x[0]!='/bin/mkdir'];allowed_native={'/bin/cat','/bin/readlink','/bin/ls','/usr/bin/sha256sum','/usr/bin/stat'}
+def validate(z):
+ assert z['AFFECTED_GRANT_IDENTITY']==g['GRANT_IDENTITY'] and z['AFFECTED_GRANT_EFFECTIVENESS_IDENTITY']==e['IDENTITY'] and z['AFFECTED_SUBJECT_IDENTITY']==old['IDENTITY'];pc(z['AFFECTED_SUBJECT_PIN'])
+ assert z['INSTRUMENT_KIND']=='SEPARATE_PROSPECTIVE_INSPECTION_ONLY_GRANT_REQUIRED; no grant issued or charter amendment proposed here'
+ assert z['EXACT_TARGET_PATHS']==c['EXACT_ALLOWED_PATHS'] and z['UNCHANGED_OWNERSHIP']=={'uid':1000,'gid':1000} and z['UNCHANGED_MODE']=='0700'
+ assert z['GOVERNING_CHARTER_IDENTITY']==c['GOVERNING_CHARTER_IDENTITY'] and z['ISSUER_ROLE']==c['ISSUER_ROLE']
+ al=z['ALLOCATION'];assert al['COUNT_UNIT']=='ONE_INSPECTION_TOOL_INVOCATION_PER_CHARGE; one exact Bash builtin invocation also charged1; operands do not multiply the charge';assert al['MAX_INSPECTION_INVOCATIONS']==17 and al['MAX_INSPECTION_ROUNDS']==1 and al['MAX_INVOCATIONS_PER_STEP']==1 and al['AUTOMATIC_RETRIES']==0 and al['NEW_MKDIR_AUTHORIZATIONS']==0 and al['NEW_CHMOD_CHOWN_AUTHORIZATIONS']==0 and al['NEW_FILE_CONTENT_WRITES']==0
+ assert al['MAX_NONPERSISTENT_CONTEXT_SETUP_BUILTIN_INVOCATIONS']==3 and al['CONTEXT_SETUP_VECTOR']==['cd -- /','umask 077',"export 'PATH=/bin' 'LC_ALL=C' 'LANG=C' 'HOME=/nonexistent'"]
+ assert [x['STEP_ID'] for x in z['STEPS']]==expected_ids and len(z['STEPS'])==sum(x['CHARGE'] for x in z['STEPS'])==17
+ assert [x['ARGV'] for x in z['STEPS'] if x['STEP_ID'].startswith('I')]==old_reads
+ assert sum(x['CLASS']=='CONDITIONAL_POST_CREATION_VERIFICATION' for x in z['STEPS'])==4
+ for x in z['STEPS']:
+  assert x['MAX_INVOCATIONS']==x['CHARGE']==1
+  if 'ARGV' in x:assert x['ARGV'][0] in allowed_native
+  else:
+   assert x['SHELL_TEXT'].startswith('builtin ') and not any(t in x['SHELL_TEXT'] for t in ['eval ','$(', ' >',' <','|',';'])
+ rel=z['AUTHORITY_RELATIONSHIP'];assert rel['P138_RECORDS_CHANGED'] is False and rel['OLD_HISTORICAL_INSPECTION_CHARGES']=='UNKNOWN_PRESERVED; no classification, authorization or absolution of past reads'
+ assert 'not restored' in rel['PROSPECTIVE_INSPECTION_MIGRATION'] and rel['NEW_ALLOCATION']=='Explicit separately approved prospective authority, independent identity/ledger/epoch; starts unused only when actually issued and verified, never a reset of138counter'
+ assert 'this read grant does not reopen it' in rel['ORIGINAL_CREATION_AUTHORITY'] and 'does not silently override' in rel['NO_IMPLICIT_FAILURE_POLICY_AMENDMENT']
+ assert 'retrospective authorization/reclassification of139A/B/C or earlierproc reads' in z['EXCLUSIONS'] and 'Package136attempt consumption or any124 bwrap/findmnt witness' in z['EXCLUSIONS'] and 'Package86realprobe/H77-02/A15' in z['EXCLUSIONS']
+validate(v)
+# Exact additional argv reconstructed from pinned source rather than trusting call count alone.
+pid=str(v['NOMINATED_OPERATOR_BIRTH_TUPLE']['pid']);proc='/proc/'+pid;byid={x['STEP_ID']:x for x in v['STEPS']}
+assert byid['R04']['ARGV']==['/bin/cat','--','/proc/sys/kernel/hostname','/proc/sys/kernel/random/boot_id',proc+'/stat',proc+'/status',proc+'/limits',proc+'/cgroup']
+assert byid['R05']['ARGV']==['/bin/readlink','--',proc+'/exe',proc+'/cwd']+[proc+'/ns/'+n for n in ['user','mnt','pid','net','ipc','uts']]+[proc+'/fd/'+n for n in ['0','1','2','255']]
+assert byid['R06']['ARGV']==['/bin/ls','-l','--',proc+'/fd']
+assert byid['R07']['ARGV']==['/bin/cat','--']+[proc+'/fdinfo/'+n for n in ['0','1','2','255']]+[proc+'/mountinfo',proc+'/attr/current']
+assert byid['R08']['ARGV']==['/usr/bin/sha256sum','--','/bin/bash']+list(c['SOURCE_METADATA_PIN'])+['/bin/cat']
+assert byid['R09']['ARGV']==['/bin/ls','-ld','--','/','/var','/var/tmp'] and byid['R10']['ARGV']==['/bin/cat','--','/proc/sys/kernel/hostname','/proc/sys/kernel/random/boot_id',proc+'/stat',proc+'/status']
+assert v['QUALIFIED_EXISTING_BASH_PIN']==c['INVOCATION_CONTEXT']['BASH_PIN']
+for name,p in c['SOURCE_METADATA_PIN'].items():assert v['QUALIFIED_EXISTING_NATIVE_PINS'][name]==p
+reader=j(B/'p124-direct-shell-entry-guard-137/fresh-operator-receipt-request.json')['READER_PINS'];assert v['QUALIFIED_EXISTING_NATIVE_PINS']['/bin/cat']['SHA256']==reader['/bin/cat']['RAW_SHA256']
+neg=[]
+controls=[('wrong_effective_grant',lambda z:z['AFFECTED_GRANT_IDENTITY'].update(sha256='0'*64)),('extra_target_path',lambda z:z['EXACT_TARGET_PATHS'].append('/other')),('wrong_uid_gid',lambda z:z['UNCHANGED_OWNERSHIP'].update(uid=0)),('wrong_mode',lambda z:z.update(UNCHANGED_MODE='0777')),('per_path_count',lambda z:z['ALLOCATION'].update(COUNT_UNIT='PER_PATH')),('unbounded_calls',lambda z:z['ALLOCATION'].update(MAX_INSPECTION_INVOCATIONS=None)),('extra_round',lambda z:z['ALLOCATION'].update(MAX_INSPECTION_ROUNDS=2)),('automatic_retry',lambda z:z['ALLOCATION'].update(AUTOMATIC_RETRIES=1)),('new_mkdir_permission',lambda z:z['ALLOCATION'].update(NEW_MKDIR_AUTHORIZATIONS=2)),('new_chmod_permission',lambda z:z['ALLOCATION'].update(NEW_CHMOD_CHOWN_AUTHORIZATIONS=1)),('live_claim_write',lambda z:z['ALLOCATION'].update(NEW_FILE_CONTENT_WRITES=1)),('unlisted_command',lambda z:z['STEPS'][3]['ARGV'].insert(0,'/bin/mkdir')),('altered_I3',lambda z:z['STEPS'][11]['ARGV'].append('/unapproved')),('retrospective_authorization',lambda z:z['EXCLUSIONS'].remove('retrospective authorization/reclassification of139A/B/C or earlierproc reads')),('old_counter_reset',lambda z:z['AUTHORITY_RELATIONSHIP'].update(OLD_HISTORICAL_INSPECTION_CHARGES='ZERO')),('old_creation_reopened',lambda z:z['AUTHORITY_RELATIONSHIP'].update(ORIGINAL_CREATION_AUTHORITY='readPASS permits2newmkdir')),('old_grant_modified',lambda z:z['AUTHORITY_RELATIONSHIP'].update(P138_RECORDS_CHANGED=True)),('witness_expansion',lambda z:z['EXCLUSIONS'].remove('Package136attempt consumption or any124 bwrap/findmnt witness')),('real_probe_expansion',lambda z:z['EXCLUSIONS'].remove('Package86realprobe/H77-02/A15')),('unsupported_context_setup',lambda z:z['ALLOCATION'].update(MAX_NONPERSISTENT_CONTEXT_SETUP_BUILTIN_INVOCATIONS=100))]
+for name,mut in controls:
+ z=copy.deepcopy(v);mut(z)
+ try:validate(z)
+ except (AssertionError,KeyError):neg.append({'DESIGN':name,'RESULT':'REJECTED','MUTATION_SHA256':h(z)})
+ else:raise AssertionError(name)
+sem={'OLD_GRANT_IDENTITY':g['GRANT_IDENTITY'],'OLD_EFFECTIVENESS_IDENTITY':e['IDENTITY'],'HISTORICAL_RECONCILED':False,'HISTORICAL_REMAINING':None,'NEW_SUBJECT_IDENTITY':s['IDENTITY'],'NEW_INSPECTION_ALLOCATION':17,'BEFORE_CREATION_READS':13,'CONDITIONAL_POST_READS':4,'ANCILLARY_CONTEXT_SETUP_MAX':3,'NEW_MKDIR_PERMISSION':0,'OWNER_DECISION_READY':True,'SELECTION':None,'NEW_AUTHORITY_ISSUED':False,'HOST_OPERATIONS':0,'NEGATIVES':neg}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'RESULT':'PASS_STATIC_RECONSTRUCTION','SEMANTIC':sem,'SEMANTIC_SHA256':h(sem)},sort_keys=True))
+
+

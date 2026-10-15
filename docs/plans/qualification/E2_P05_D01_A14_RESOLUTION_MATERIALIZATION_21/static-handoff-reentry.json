@@ -1,0 +1,113 @@
+{
+  "A14_BUNDLE_PREFLIGHT": "FAIL",
+  "COLD_READER_PREFLIGHT": "NOT_RUN",
+  "FIRST_NON_SOURCE_BLOCKER": {
+    "CLASSIFICATION": "BUNDLE_CONTRACT",
+    "MISSING_TERMS": [
+      "Exact native PersistenceBundle or sealed deterministic construction rule for corrected prospective A14 boundary",
+      "Authoritative initial Snapshot and ordered event history; cannot assume empty history",
+      "Exact applicable policy ArtifactPin and policy_version",
+      "Explicit replay bundle scope distinct from Snapshot context scope",
+      "Ledger root/head from legitimate ordered history where required",
+      "Complete dossier materialization/archive requirements where historical event results require them"
+    ],
+    "REASON": "Current A14 input is a corrected source-complete Snapshot, not an authoritative native PersistenceBundle. No exact initial/history/policy/replay-scope binding or sealed pure construction rule is selected.",
+    "REPAIRED": false,
+    "SOURCE_BYTES_BLOCKER_CLOSED": true
+  },
+  "ORDERED_RESULTS": [
+    {
+      "STATUS": "PASS",
+      "STEP": 1,
+      "TERM": "complete current physical source set"
+    },
+    {
+      "BLOCKER": {
+        "CLASSIFICATION": "BUNDLE_CONTRACT",
+        "MISSING_TERMS": [
+          "Exact native PersistenceBundle or sealed deterministic construction rule for corrected prospective A14 boundary",
+          "Authoritative initial Snapshot and ordered event history; cannot assume empty history",
+          "Exact applicable policy ArtifactPin and policy_version",
+          "Explicit replay bundle scope distinct from Snapshot context scope",
+          "Ledger root/head from legitimate ordered history where required",
+          "Complete dossier materialization/archive requirements where historical event results require them"
+        ],
+        "REASON": "Current A14 input is a corrected source-complete Snapshot, not an authoritative native PersistenceBundle. No exact initial/history/policy/replay-scope binding or sealed pure construction rule is selected.",
+        "REPAIRED": false,
+        "SOURCE_BYTES_BLOCKER_CLOSED": true
+      },
+      "STATUS": "FAIL",
+      "STEP": 2,
+      "TERM": "native prospective A14 bundle"
+    },
+    {
+      "CONTRACT_INSPECTED": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_HANDOFF_CLOSURE_5/save-contract.json",
+        "raw_sha256": "57bfac464d788a7c995a65ea3af912fb0265dc30ec87baa10baa6fd84781f8d8"
+      },
+      "STATUS": "NOT_RUN_UPSTREAM_BUNDLE_FAIL",
+      "STEP": 3,
+      "TERM": "save contract preflight"
+    },
+    {
+      "CONTRACT_INSPECTED": {
+        "path": "docs/plans/qualification/E2_P05_D01_A14_HANDOFF_CLOSURE_5/cold-reader-contract.json",
+        "raw_sha256": "6ff084e1e4990c6346902b5b6a1807412c96dfe26b468f5a987d3dc00f0c8255"
+      },
+      "STATUS": "NOT_RUN_UPSTREAM_BUNDLE_FAIL",
+      "STEP": 4,
+      "TERM": "writer termination preflight"
+    },
+    {
+      "STATUS": "NOT_RUN_UPSTREAM_BUNDLE_FAIL",
+      "STEP": 5,
+      "TERM": "cold-reader persisted source/operands"
+    },
+    {
+      "STATUS": "PASS_AUDIT_ONLY_NONE_RESOLVED",
+      "STEP": 6,
+      "TERM": "16 dependent reference audit"
+    },
+    {
+      "STATUS": "PASS_AUDIT_ONLY_52_RESOLVED_59_UNRESOLVED",
+      "STEP": 7,
+      "TERM": "111 reference audit"
+    },
+    {
+      "STATUS": "IDENTIFIED_BUNDLE_CONTRACT",
+      "STEP": 8,
+      "TERM": "first remaining non-source blocker"
+    }
+  ],
+  "QUALIFICATION_READER_LAUNCHED": false,
+  "READER_NATIVE_ENTRYPOINT": {
+    "BODY_AST_IDENTITY": "qualification-D01-A14-handoff-contract-v1:4f1c4e8c95c1605ea7011914faec51e3202d965cac0587a15f191f0ebedd63cf",
+    "ENTRYPOINT": "adapter.planner.codec.restore",
+    "LINE": 705,
+    "SIGNATURE_AST": "arguments(posonlyargs=[], args=[arg(arg='path', annotation=None, type_comment=None), arg(arg='expected_identity', annotation=None, type_comment=None), arg(arg='repo_root', annotation=None, type_comment=None)], vararg=None, kwonlyargs=[], kw_defaults=[], kwarg=None, defaults=[])",
+    "SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    }
+  },
+  "SAVE_CONTRACT_PREFLIGHT": "NOT_RUN",
+  "SAVE_EXECUTED": false,
+  "SAVE_NATIVE_ENTRYPOINT": {
+    "BODY_AST_IDENTITY": "qualification-D01-A14-handoff-contract-v1:26397d89919aca7d4600f92447a74c76d229542f12bedf458a71d5271837c86b",
+    "ENTRYPOINT": "adapter.planner.codec.save_bundle",
+    "LINE": 677,
+    "SIGNATURE_AST": "arguments(posonlyargs=[], args=[arg(arg='bundle', annotation=None, type_comment=None), arg(arg='output_dir', annotation=None, type_comment=None), arg(arg='repo_root', annotation=None, type_comment=None)], vararg=None, kwonlyargs=[arg(arg='snapshot_resolver', annotation=None, type_comment=None), arg(arg='failure_hook', annotation=None, type_comment=None)], kw_defaults=[Constant(value=None, kind=None), Constant(value=None, kind=None)], kwarg=None, defaults=[])",
+    "SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    }
+  },
+  "SEALED_PLAN": {
+    "path": "docs/plans/qualification/E2_P05_D01_A14_RESOLUTION_SOURCE_RECOVERY_20/a14-handoff-reentry-oracle.json",
+    "raw_sha256": "3b422e53ae5e3292b7ef799609e64b9113b736afc06ca15d4c0a2445690fe61d"
+  },
+  "WRITER_TERMINATED": false,
+  "WRITER_TERMINATION_PREFLIGHT": "NOT_RUN"
+}

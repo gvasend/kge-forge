@@ -1,0 +1,73 @@
+# Independent documentary reconstruction; no target commands, builtins or modules executed.
+import pathlib,json,hashlib,copy,os
+R=pathlib.Path('/home/gvasend/app/kge-forge');B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';D=B/'p124-prospective-inspection-grant-issuance-141';P=B/'p124-provisioning-reconciliation-140'
+def j(p):return json.loads(p.read_text())
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def h(v):return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def cid(ns,v):return dict(kind='CONTENT_IDENTITY',namespace=ns,sha256=h(v))
+def pc(v):assert raw(R/v['path'])==v['raw_sha256'],v['path']
+a=j(D/'source-authentication.json')
+for p,digest in a['CURRENT_RAW_PINS'].items():assert raw(R/p)==digest,p
+sd=j(P/'unselected-owner-decision-dossier.json');pc(sd['SUBJECT_RAW_PIN']);s=j(R/sd['SUBJECT_RAW_PIN']['path']);c=s['CONTENT'];assert s['IDENTITY']==cid('qualification-p140-prospective-provisioning-inspection-subject-v1',c)==sd['SUBJECT_IDENTITY'];assert s['IDENTITY']['sha256']=='d86a0bc8e8426bbda9c5bcf0029ff742a7edee1a4ef6fb93c54043fe32aa927a'
+assert len(c['STEPS'])==sum(x['CHARGE'] for x in c['STEPS'])==c['ALLOCATION']['MAX_INSPECTION_INVOCATIONS']==17;assert c['ALLOCATION']['MAX_NONPERSISTENT_CONTEXT_SETUP_BUILTIN_INVOCATIONS']==len(c['ALLOCATION']['CONTEXT_SETUP_VECTOR'])==3
+owner=j(D/'owner-approval-authentication.json');assert owner['IDENTITY']==cid('qualification-p141-owner-inspection-decision-v1',owner['CONTENT']);assert owner['CONTENT']['OPTION_ID']=='AUTHORIZE_PROSPECTIVE_P124_PROVISIONING_INSPECTIONS_ONLY' in sd['OPTIONS'];assert owner['CONTENT']['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and owner['CONTENT']['ISSUER_ROLE']==c['ISSUER_ROLE']==sd['ISSUER_ROLE'];pc(owner['CONTENT']['APPROVED_SUBJECT_PIN']);pc(owner['CONTENT']['OFFERED_DOSSIER_PIN'])
+# Independent actual original charter lifecycle reconstruction; documentary echoes are not new adoption records.
+E=R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66';C=E.parent/'KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65'
+def typed(ns,v):return {'$type':'ArtifactIdentity','kind':{'$enum':'IdentityKind','value':'CONTENT_IDENTITY'},'namespace':ns,'sha256':hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False,allow_nan=False).encode()).hexdigest()}
+ref=j(E/'effective-charter-reference.json');ch=j(C/'charter-content.json');charid=typed('kge-forge-qualification-governance-charter-v1',ch);assert charid==ref['CHARTER_CONTENT_IDENTITY']==c['GOVERNING_CHARTER_IDENTITY'] and ref['CHARTER_EFFECTIVE'];dec=j(E/'owner-adoption-decision.json');decid=typed('kge-forge-charter-owner-adoption-decision-v1',dec);assert dec['ACTOR_AUTHORIZED_ROLE']==c['ISSUER_ROLE'] and dec['APPROVED_CONTENT_IDENTITY']==charid
+prev={'$type':'ArtifactIdentity','kind':{'$enum':'IdentityKind','value':'CONTENT_IDENTITY'},'namespace':'raw-file-sha256','sha256':raw(C/'charter-content-identity.json')};states=['DRAFT','REVIEWED','APPROVED','EFFECTIVE']
+for k,t in enumerate(ref['TRANSITIONS'],1):
+ doc=j(R/t['PATH']);r=doc['RECORD'];identity=typed('kge-forge-charter-lifecycle-record-v1',r);assert identity==doc['IDENTITY']==t['IDENTITY'];assert r['predecessor_lifecycle_record_identity']==prev and (r['from_state'],r['to_state'])==(states[k-1],states[k]) and r['transition_ordinal']==k
+ assert r['charter_content_identity']==charid and r['decision_evidence_identity']==decid and r['actor_identity_or_authorized_role']==c['ISSUER_ROLE'];assert r['scope']==ch['QUALIFICATION_SCOPE'] and r['historical_exclusions']==ch['EXCLUSIONS'] and r['effective_boundary']['NO_BACKDATING'];prev=identity
+assert len(ref['TRANSITIONS'])==3 and prev==ref['EFFECTIVE_LIFECYCLE_IDENTITY']
+reg=j(R/'docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json');head='0'*64;heads=[]
+for ev in reg['EVENTS']:
+ x=dict(ev);eh=x.pop('EVENT_HASH');assert x['PREVIOUS_EVENT_HASH']==head and h(x)==eh;head=eh;heads.append(eh)
+assert head=='76f87581bcbd67d7ffecc8d1c9f8b92d7e5b35e23681b372083a120cafaedcdc' and '885fd0eaceb15847201dfd058217682741fb43c255298713ccbc1e7251eec791' in heads
+old138=j(B/'p124-capture-directory-provisioning-grant-138/effective-capture-directory-provisioning-grant-reference.json');assert old138['IDENTITY']==cid('qualification-p138-directory-provisioning-effectiveness-reference-v1',old138['CONTENT']);pc(old138['CONTENT']['GRANT_RECORD_PIN']);r138=j(R/old138['CONTENT']['GRANT_RECORD_PIN']['path']);assert r138['GRANT_IDENTITY']==cid('qualification-p138-p124-directory-provisioning-issued-grant-v1',r138['RECORD'])==c['AFFECTED_GRANT_IDENTITY'] and old138['CONTENT']['PROVISIONING_GRANT_EFFECTIVE']
+old136=j(B/'p124-direct-shell-grant-issuance-136/effective-single-p124-grant-reference.json');assert old136['IDENTITY']==cid('qualification-p136-single-p124-grant-effectiveness-reference-v1',old136['CONTENT']);assert old136['CONTENT']['GRANT_EFFECTIVE'];pc(old136['CONTENT']['GRANT_RECORD_PIN'])
+g=j(D/'issuance-candidate.json')['ENVELOPE'];plan=j(D/'prepublication-validation.json')['PUBLICATION_PLAN'];state={'duplicate':False,'conflict':False,'revoked':False,'superseded':False,'consumed':False,'effectiveness_before_persisted_verification':False,'history_changed':False}
+def validate(z,p,st):
+ r=z['RECORD'];assert z['GRANT_IDENTITY']==cid('qualification-p141-prospective-p124-inspection-issued-grant-v1',r)
+ assert r['INSTRUMENT_STATUS']=='ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE' and r['RECORD_TYPE']=='P124_PROSPECTIVE_INSPECTION_ONLY_141'
+ assert r['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'];pc(r['APPROVED_SUBJECT_PIN']);assert r['APPROVED_CONTENT']==c
+ assert r['ISSUER_ROLE']==c['ISSUER_ROLE'] and r['OWNER_OPTION_ID']==owner['CONTENT']['OPTION_ID'] and r['PROJECT_OWNER_DECISION_IDENTITY']==owner['IDENTITY'];pc(r['PROJECT_OWNER_DECISION_PIN']);assert r['GOVERNING_CHARTER_IDENTITY']==charid
+ for f,k in [('EXACT_STEPS','STEPS'),('ALLOCATION','ALLOCATION'),('AUTHORITY_RELATIONSHIP','AUTHORITY_RELATIONSHIP'),('HISTORICAL_EXCLUSIONS','EXCLUSIONS'),('ENTRY_AND_SAFETY','ENTRY_AND_SAFETY'),('OUTPUT_AND_OBSERVER','OUTPUT_AND_OBSERVER'),('FAILURE_POLICY','FAILURE_POLICY')]:assert r[f]==c[k],f
+ assert r['CONTEXT_SETUP_VECTOR']==c['ALLOCATION']['CONTEXT_SETUP_VECTOR'] and r['INSPECTION_INVOCATIONS']==17 and r['TEMPORARY_SETUP_BUILTINS']==3
+ assert r['NEW_CREATION_CALLS']==r['WITNESS_ATTEMPTS']==r['AUTOMATIC_RETRIES']==0
+ assert r['HISTORICAL_CHARGES_RESET'] is False and r['HISTORICAL_CHARGES_REFUNDED'] is False and r['RETROACTIVE_AUTHORIZATION'] is False
+ assert r['P136_GRANT_CHANGED'] is False and r['P138_GRANT_RECORDS_CHANGED'] is False and r['PACKAGE_136_ATTEMPT_CONSUMED_BY_141'] is False
+ assert r['HOST_INSPECTION_ENTRY_READY'] is False and r['PROVISIONING_ENTRY_READY'] is False and r['HOST_INSPECTIONS_EXECUTED']==r['SETUP_BUILTINS_EXECUTED']==r['DIRECTORIES_CREATED']==0 and r['CAPABILITY_CHECK_EXECUTED'] is False
+ assert r['PREDECESSOR_INSPECTION_GRANT'] is None
+ assert all(p[k] is True for k in ['EXCLUSIVE_NO_OVERWRITE','COMPLETE_WRITE','FILE_FSYNC','DIRECTORY_FSYNC','INDEPENDENT_REREAD','PRESERVATION_REQUIRED']) and not any(st.values())
+validate(g,plan,state);phase=os.environ.get('P141_PHASE','prepublication')
+if phase!='prepublication':
+ r=j(D/'issuance-publication-receipt.json');pc(r['PIN']);assert j(R/r['PIN']['path'])==g;assert all(r[k] for k in ['EXCLUSIVE_NO_OVERWRITE','FILE_FSYNC','DIRECTORY_FSYNC','READONLY_BYTES_MATCH'])
+if phase=='effective':
+ ef=j(D/'effective-prospective-inspection-grant-reference.json');b=ef['CONTENT'];assert ef['IDENTITY']==cid('qualification-p141-prospective-inspection-effectiveness-reference-v1',b) and b['GRANT_EFFECTIVE']
+ assert b['GRANT_IDENTITY']==g['GRANT_IDENTITY'] and b['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY'] and b['INSPECTION_INVOCATIONS_AUTHORIZED']==17 and b['TEMPORARY_SETUP_BUILTINS']==3 and b['NEW_CREATION_CALLS']==0
+ assert b['EXACT_STEPS']==c['STEPS'] and b['AUTHORITY_RELATIONSHIP']==c['AUTHORITY_RELATIONSHIP'] and b['HISTORICAL_EXCLUSIONS']==c['EXCLUSIONS'] and b['ISSUER_ROLE']==c['ISSUER_ROLE']
+ assert not b['HOST_INSPECTION_ENTRY_READY'] and not b['PROVISIONING_ENTRY_READY'] and not b['CAPABILITY_CHECK_EXECUTED']
+ for key in ['GRANT_RECORD_PIN','INDEPENDENT_ISSUANCE_VERIFICATION_PIN','PERSISTED_FOUR_SEED_PIN','PREPUBLICATION_FOUR_SEED_PIN','CONFLICT_RECHECK_PIN','PRESERVATION_PIN']:pc(b[key])
+ er=j(D/'effectiveness-publication-receipt.json');pc(er['PIN']);assert all(er[k] for k in ['EXCLUSIVE_NO_OVERWRITE','FILE_FSYNC','DIRECTORY_FSYNC','READONLY_BYTES_MATCH'])
+neg=[]
+if os.environ.get('P141_NEGATIVES')=='1':
+ mutations=[('wrong_subject_hash',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(sha256='0'*64)),('wrong_subject_namespace',lambda r:r['APPROVED_SUBJECT_IDENTITY'].update(namespace='wrong')),('wrong_subject_raw_pin',lambda r:r['APPROVED_SUBJECT_PIN'].update(raw_sha256='0'*64)),('wrong_owner_option',lambda r:r.update(OWNER_OPTION_ID='DECLINE_PROSPECTIVE_P124_PROVISIONING_INSPECTIONS_ONLY')),('unauthorized_issuer',lambda r:r.update(ISSUER_ROLE='UNAUTHORIZED')),('changed_vector',lambda r:r['EXACT_STEPS'][11]['ARGV'].append('/other')),('extra_command',lambda r:r['EXACT_STEPS'].append(copy.deepcopy(r['EXACT_STEPS'][3]))),('changed_count_unit',lambda r:r['ALLOCATION'].update(COUNT_UNIT='PER_PATH')),('more_than17',lambda r:r.update(INSPECTION_INVOCATIONS=18)),('changed_setup_builtin',lambda r:r['CONTEXT_SETUP_VECTOR'].append('cd -- /tmp')),('more_than3_setup',lambda r:r.update(TEMPORARY_SETUP_BUILTINS=4)),('historical_counter_reset',lambda r:r.update(HISTORICAL_CHARGES_RESET=True)),('historical_refund',lambda r:r.update(HISTORICAL_CHARGES_REFUNDED=True)),('retroactive_authorization',lambda r:r.update(RETROACTIVE_AUTHORIZATION=True)),('new_mkdir_calls',lambda r:r.update(NEW_CREATION_CALLS=2)),('witness_execution',lambda r:r.update(CAPABILITY_CHECK_EXECUTED=True)),('witness_attempts_added',lambda r:r.update(WITNESS_ATTEMPTS=1)),('P136_consumption',lambda r:r.update(PACKAGE_136_ATTEMPT_CONSUMED_BY_141=True)),('automatic_retry',lambda r:r.update(AUTOMATIC_RETRIES=1)),('premature_effective_issuance',lambda r:r.update(INSTRUMENT_STATUS='EFFECTIVE')),('source_construction_scope',lambda r:r['HISTORICAL_EXCLUSIONS'].remove('source construction/promotion')),('H77_A15_realprobe_scope',lambda r:r['HISTORICAL_EXCLUSIONS'].remove('Package86realprobe/H77-02/A15'))]
+ for name,mut in mutations:
+  z=copy.deepcopy(g);mut(z['RECORD']);z['GRANT_IDENTITY']=cid('qualification-p141-prospective-p124-inspection-issued-grant-v1',z['RECORD'])
+  try:validate(z,plan,state)
+  except (AssertionError,KeyError):neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+ for name,key in [('duplicate_issuance','duplicate'),('conflicting_issuance','conflict'),('revoked_grant','revoked'),('superseded_grant','superseded'),('consumed_own_round','consumed'),('effectiveness_before_verification','effectiveness_before_persisted_verification'),('history_mutation','history_changed')]:
+  st=dict(state);st[key]=True
+  try:validate(g,plan,st)
+  except AssertionError:neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+ for name,key in [('missing_preservation','PRESERVATION_REQUIRED'),('missing_file_fsync','FILE_FSYNC'),('missing_parent_fsync','DIRECTORY_FSYNC')]:
+  pl=dict(plan);pl[key]=False
+  try:validate(g,pl,state)
+  except AssertionError:neg.append({'DESIGN':name,'RESULT':'REJECTED'})
+  else:raise AssertionError(name)
+sem={'PHASE':phase,'OWNER_DECISION_IDENTITY':owner['IDENTITY'],'SUBJECT_IDENTITY':s['IDENTITY'],'GRANT_IDENTITY':g['GRANT_IDENTITY'],'GRANT_EFFECTIVE':phase=='effective','INSPECTION_INVOCATIONS_IF_EFFECTIVE':17 if phase=='effective' else 0,'SETUP_IF_EFFECTIVE':3 if phase=='effective' else 0,'HOST_INSPECTION_ENTRY_READY':False,'PROVISIONING_ENTRY_READY':False,'HISTORICAL_CHARGES_RESET':False,'RETROACTIVE_AUTHORIZATION':False,'NEW_CREATION_CALLS':0,'HOST_INSPECTIONS_EXECUTED':0,'PACKAGE_136_ATTEMPT_CONSUMED_BY_141':False,'LL12_HEAD':head,'NEGATIVES':neg}
+if phase=='effective':sem['EFFECTIVENESS_IDENTITY']=ef['IDENTITY']
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC':sem,'SEMANTIC_SHA256':h(sem)},sort_keys=True))

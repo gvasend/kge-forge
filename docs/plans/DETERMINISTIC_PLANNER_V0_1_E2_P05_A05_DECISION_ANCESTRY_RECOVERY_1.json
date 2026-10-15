@@ -1,0 +1,1382 @@
+{
+  "A05_DEFINITION": {
+    "A05_AUTHORITY": "Exact native DECIDE predicate bound to admitted choice entity and dossier source; distinct bounded USE predicate for E2-REENTER",
+    "A05_EXPECTED_RESULT": "Accepted RecordedDecision with exact ALLOW_QUALIFICATION_MAPPING on the positive P02 path",
+    "A05_ID": "E2-A05",
+    "A05_INPUTS": {
+      "choice_knowledge_id": "decision-choice:E2-DECIDE",
+      "choice_predicate": {
+        "$type": "Predicate",
+        "action": null,
+        "condition": null,
+        "entity": {
+          "$type": "EntityId",
+          "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "expected": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "id": {
+          "$type": "PredicateId",
+          "value": "E2-CHOICE-AUTHORITY:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "kind": {
+          "$enum": "PredicateKind",
+          "value": "AUTHORITY"
+        },
+        "knowledge": null,
+        "operands": [],
+        "other": null,
+        "permission": {
+          "$enum": "AuthorityClass",
+          "value": "DECIDE"
+        }
+      },
+      "context": {
+        "$type": "EvaluationContext",
+        "allowed_effects": [],
+        "generation": "E2-GENERATION-1",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "tick": 0
+      },
+      "dossier_canonical_identity": "planner-dossier-sha256:6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+      "dossier_provenance_content_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+      },
+      "original_handoff_state": "planner-snapshot-v1:9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa",
+      "record_authority_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "AUTHORITY_IDENTITY"
+        },
+        "namespace": "e2-choice-record",
+        "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+      },
+      "record_entity_id": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+      "record_provenance_content_identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+      },
+      "recorded_decision_fields": [
+        "decision",
+        "choice",
+        "record",
+        "authority",
+        "expected_snapshot"
+      ]
+    },
+    "A05_NATIVE_OPERATION": "apply_recorded_decision through ordinary ExecutionEvent/append_event",
+    "A05_OUTPUTS": {
+      "action": "Native E2-DECIDE completion under accepted RecordedDecision",
+      "decision": "recorded_choice and record stored; history advances DECISION_RECORDED",
+      "event": "Ordinary ExecutionEvent containing RecordedDecision when appended",
+      "forbidden": "No root/slot satisfaction, fabricated proof, downstream execution, general or production authority",
+      "grant": "ALLOW materializer makes only qualification-scoped E2-GRANT available for native USE evaluation",
+      "knowledge": "Existing admitted choice-evidence knowledge is consumed; no invented E2-K-DECIDE"
+    },
+    "A05_POSTCONDITION": "Decision history recorded; bounded authority evaluated by native predicate; no root/slot automatically satisfied",
+    "A05_PRECONDITIONS": [
+      "Ready admitted DecisionDossier/checklist",
+      "E2-DECIDE independently actionable and DECISION_READY",
+      "Predefined exact qualification-only option",
+      "Independently authenticated/pinned choice record",
+      "Current native DECIDE authority predicate",
+      "Accepted decision-choice:E2-DECIDE knowledge matching record provenance",
+      "Exact native current expected_snapshot and scope"
+    ],
+    "A05_PURPOSE": "Synthetic bounded decision/grant",
+    "A05_TYPE": "ARCHITECT_CONTRACT_DECISION; synthetic NON_EFFECTING qualification operation",
+    "ACTION_ID": "E2-DECIDE",
+    "CANONICAL_CASE": {
+      "CASE_ID": "E2-A05",
+      "DETERMINISM_REQUIREMENT": "Repeat equal semantic inputs; canonical identities and full computation equal.",
+      "EXPECTED_STATE": "Decision history recorded; bounded authority evaluated by native predicate; no root/slot automatically satisfied",
+      "INITIAL_STATE": "Ready human decision with predefined qualification-only choices and independently pinned record",
+      "NEGATIVE_INVARIANTS": "No E1 mutation, authority leakage, fabricated proof or bypass.",
+      "OPERATION": "apply_recorded_decision through append_event; exact permitted record",
+      "PERSISTENCE_REQUIREMENT": "Canonical before/after identities and event trace required.",
+      "PURPOSE": "Synthetic bounded decision/grant",
+      "status": "PLANNED_NOT_EXECUTED"
+    },
+    "EARLIEST_DEFINITION": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "pointer": "",
+      "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    "OWNING_PACKAGE": "E2-P02",
+    "native_action_definition": {
+      "$type": "Action",
+      "accepted_inventory": [],
+      "effect": {
+        "$enum": "EffectClass",
+        "value": "NON_EFFECTING"
+      },
+      "evidence": [],
+      "id": {
+        "$type": "ActionId",
+        "value": "E2-DECIDE"
+      },
+      "operation": {
+        "$enum": "OperationClass",
+        "value": "ARCHITECT_CONTRACT_DECISION"
+      },
+      "pass_model_complete": true,
+      "prerequisites": [
+        {
+          "$type": "Gate",
+          "kind": {
+            "$enum": "GateKind",
+            "value": "ACTION_COMPLETED"
+          },
+          "target": {
+            "$type": "ActionId",
+            "value": "E2-PREPARE"
+          }
+        }
+      ],
+      "source": {
+        "$type": "Provenance",
+        "excerpt": "{\"action\":\"E2-DECIDE\",\"lineage\":\"E2-CANONICAL-BASELINE-1\",\"scope\":\"E2-QUALIFICATION-ONLY\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "030cd5b248c3de5a89b512d8e044a1520462cc2fb558f2ff1711f8a84034401e"
+        },
+        "method": "E2-PC01-WHOLE-MODEL-1",
+        "path": "E2-DECIDE.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/"
+      }
+    }
+  },
+  "A05_EVENT_ID": null,
+  "A05_EXECUTED": "NO_IN_THIS_PACKAGE",
+  "A05_NATIVE_OPERATION": "apply_recorded_decision through ordinary ExecutionEvent/append_event",
+  "A05_ORIGINAL_LEDGER_MEMBERSHIP": null,
+  "A05_PARENT_EVENT_ID": null,
+  "A05_PURPOSE": "Synthetic bounded decision/grant",
+  "A05_REEXECUTED": "NO",
+  "ALTERNATE_NATIVE_SEARCH": {
+    "candidate_classification": "QUALIFIED_NATIVE_EVENT in P03; same event enrolled in canonical P04 descendant",
+    "current_acceptance_scope": "DOES_NOT_AUTHORIZE_A05_REPLACEMENT",
+    "event_payload_parent_position_source_state_bindings": "PASS_READ_ONLY",
+    "result": "PASS",
+    "typed_event": {
+      "$type": "ExecutionEvent",
+      "after_snapshot": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324"
+      },
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728"
+      },
+      "parent_event": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0"
+      },
+      "parent_snapshot": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8"
+      },
+      "result": {
+        "$type": "RecordedDecision",
+        "authority": {
+          "$type": "PredicateId",
+          "value": "E2-PROSPECTIVE-CHOICE-AUTHORITY"
+        },
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "expected_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8"
+        },
+        "record": {
+          "$type": "EntityId",
+          "value": "E2-PROSPECTIVE-CHOICE"
+        }
+      },
+      "sequence": 2
+    }
+  },
+  "ANCESTRY_CONTRACT": {
+    "A05_replacement_scope_already_authorized": false,
+    "adopted_P05_oracle": {
+      "EXPECTED_CURRENTNESS": "At owning stage, and at current consumer for reusable support; historical occurrence is not ongoing eligibility.",
+      "EXPECTED_IDENTITY": {
+        "identity_domain": "planner-event-v1",
+        "no_surrogate": "Snapshot/KnowledgeId/result label cannot replace an event identity",
+        "status": "EXACT_ORIGINAL_NATIVE_LIFECYCLE_EVENT_WITNESS_REQUIRED_BUT_NOT_RECOVERED"
+      },
+      "EXPECTED_PROVENANCE": "Exact authoritative native records/source pins and owning result, ordinary event ancestry for lifecycle occurrence; no qualification-instance substitution",
+      "EXPECTED_SOURCE": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json",
+      "EXPECTED_VALUE_RESULT": "Decision history recorded; bounded authority evaluated by native predicate; no root/slot automatically satisfied",
+      "slot": "E2-A05"
+    },
+    "assurance": {
+      "END": "Actual native decision occurrence on the governed E2 lifecycle path, not merely a stored choice or completion flag.",
+      "N12": {
+        "A05_witness_role": "Exact admitted RecordedDecision ExecutionEvent and parent/ledger/post-state linkage distinguish admission from selection or descriptive history.",
+        "current_mapping": "NOT_CLOSED_FOR_ORIGINAL_A05_ANCESTRY",
+        "original_requirement": "Selection/history is not execution/completion; no accepted native result/ledger/knowledge may be fabricated."
+      },
+      "N13": {
+        "A05_witness_role": "Typed event result must reference actual authenticated record and admitted knowledge; source definition/grant presence alone is not occurrence.",
+        "current_mapping": "NOT_CLOSED_FOR_ORIGINAL_A05_ANCESTRY",
+        "original_requirement": "An admitted prospective definition/output declaration is not an actual supplied result; wrong event/result leaves knowledge/root/slot unchanged."
+      },
+      "assurance_lost": [
+        "Original native event payload binding",
+        "Parent/pre-state ancestry",
+        "Ledger enrollment and position",
+        "Causal link to prior actual preparation and later external wait",
+        "Event-to-resulting-state/authority correlation"
+      ],
+      "assurance_retained": [
+        "Exact archived admitted decision and choice",
+        "Original authenticated choice content/issuer/trust/dossier binding",
+        "Bounded USE grant and its choice/dossier/state relationship",
+        "Native post-decision Snapshot existence and original semantic PASS"
+      ],
+      "new_negative_executions": 0,
+      "prior_N12_N13_qualification_reversed": false
+    },
+    "authority_effect_requirement": "Bind exact bounded authority/effect evaluation through native identities; do not mislabel an existing grant as newly issued by RecordedDecision.",
+    "event_identity_semantics": {
+      "content": "canonical_bytes(sequence,parent_snapshot,parent_event,typed_result,after_snapshot,optional_resume_binding)",
+      "namespace": "planner-event-v1",
+      "scope_lineage_provenance": "Bound through immutable exact parent/post Snapshots and referenced entities/source pins; not invented inline fields",
+      "source": {
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+      }
+    },
+    "fields_not_required_by_native_schema": [
+      "Separate RecordedDecision content ID",
+      "Extra event authority field",
+      "Standalone ActionResult ID",
+      "Artificial LedgerId",
+      "Report ordinal as ledger position"
+    ],
+    "input": "E2-A05.recorded_decision_event_ancestry",
+    "native_grant_issuance_by_decision_event_required": false,
+    "original_event_required_by_current_binding": true,
+    "qualification_witness_automatically_acceptable": false,
+    "representation": "Composite native witness: ExecutionEvent + typed result + immutable referenced Snapshots + native ordered bundle/pins",
+    "requirements": [
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED",
+        "required_native_witness": "planner-event-v1 identity of enclosing ExecutionEvent",
+        "term": "decision_event_id"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED_FOR_ORIGINAL",
+        "required_native_witness": "ExecutionEvent whose result is exact RecordedDecision",
+        "term": "event_type"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "Semantic fields retained; original native command payload not serialized",
+        "required_native_witness": "decision, choice, record, authority, expected_snapshot",
+        "term": "payload"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "State references retained; event binding absent",
+        "required_native_witness": "Typed command references exact native ActionId/EntityId/PredicateId",
+        "term": "RecordedDecision_binding"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "RETAINED_NATIVE_STATE_AND_SOURCE",
+        "required_native_witness": "Exact accepted choice knowledge and record provenance identity; authenticated dossier/issuer/trust root",
+        "term": "choice_evidence_binding"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED",
+        "required_native_witness": "Exact native parent_event; None only for actual first ledger event",
+        "term": "parent_event"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED; report handoff pre-state is not proven prepared-command pre-state",
+        "required_native_witness": "parent_snapshot and result.expected_snapshot must be identical to exact admitted command pre-state",
+        "term": "pre_state"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "Retained post-materialization Snapshot exists; no enclosing event-to-Snapshot reference",
+        "required_native_witness": "after_snapshot addresses actual decision transition; resulting authority linkage must remain explicit",
+        "term": "post_state"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED_FOR_ORIGINAL; no standalone LedgerId in ordinary bundle",
+        "required_native_witness": "Exact event-bearing native PersistenceBundle identity and ordered /bundle/events membership",
+        "term": "ledger_identity"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED; choice sequence 1 is not a ledger position",
+        "required_native_witness": "sequence equals ordered enrollment index+1 and correct predecessor/successor",
+        "term": "ledger_position"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "Retained state relationship provable; event/transaction occurrence linkage absent",
+        "required_native_witness": "Exact DECIDE authority and bounded USE grant/predicate/source/dossier/choice relationship",
+        "term": "result_authority"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "Context retained in state; event context binding absent",
+        "required_native_witness": "Original qualification context and currentness at occurrence",
+        "term": "scope_lineage_generation"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "State/content provenance retained; original event enrollment absent",
+        "required_native_witness": "Choice/dossier/record/grant source identity, pinned native bytes and event-bearing state ancestry",
+        "term": "provenance"
+      },
+      {
+        "mandatory": true,
+        "original_recovery": "NOT_RECOVERED; no cross-lineage/report-order inference",
+        "required_native_witness": "Coherent native preparation -> accepted decision -> later wait/checkpoint path",
+        "term": "ordering"
+      }
+    ],
+    "snapshot_only_sufficient": false
+  },
+  "ASSURANCE_PURPOSE": {
+    "END": "Actual native decision occurrence on the governed E2 lifecycle path, not merely a stored choice or completion flag.",
+    "N12": {
+      "A05_witness_role": "Exact admitted RecordedDecision ExecutionEvent and parent/ledger/post-state linkage distinguish admission from selection or descriptive history.",
+      "current_mapping": "NOT_CLOSED_FOR_ORIGINAL_A05_ANCESTRY",
+      "original_requirement": "Selection/history is not execution/completion; no accepted native result/ledger/knowledge may be fabricated."
+    },
+    "N13": {
+      "A05_witness_role": "Typed event result must reference actual authenticated record and admitted knowledge; source definition/grant presence alone is not occurrence.",
+      "current_mapping": "NOT_CLOSED_FOR_ORIGINAL_A05_ANCESTRY",
+      "original_requirement": "An admitted prospective definition/output declaration is not an actual supplied result; wrong event/result leaves knowledge/root/slot unchanged."
+    },
+    "assurance_lost": [
+      "Original native event payload binding",
+      "Parent/pre-state ancestry",
+      "Ledger enrollment and position",
+      "Causal link to prior actual preparation and later external wait",
+      "Event-to-resulting-state/authority correlation"
+    ],
+    "assurance_retained": [
+      "Exact archived admitted decision and choice",
+      "Original authenticated choice content/issuer/trust/dossier binding",
+      "Bounded USE grant and its choice/dossier/state relationship",
+      "Native post-decision Snapshot existence and original semantic PASS"
+    ],
+    "new_negative_executions": 0,
+    "prior_N12_N13_qualification_reversed": false
+  },
+  "AUTHORITIES_ISSUED": 0,
+  "CANDIDATE_WITNESSES": [
+    {
+      "acceptable_ancestry": false,
+      "classification": "NATIVE_RECORDED_DECISION_WITHOUT_EVENT",
+      "name": "Archived actual ALLOW post-Snapshot",
+      "native_command_serialized": false,
+      "native_identity": "planner-snapshot-v1:8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf",
+      "record_id": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+      "scope": "original A05 state/effect retained",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+        "pointer": "/snapshot",
+        "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+      }
+    },
+    {
+      "acceptable_ancestry": false,
+      "authentic_content_retained": true,
+      "classification": "CHOICE_EVIDENCE_ONLY",
+      "name": "Archived choice evidence in native record/knowledge",
+      "native_identity": "raw-file-sha256:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+        "pointer": "/snapshot/knowledge",
+        "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+      }
+    },
+    {
+      "acceptable_ancestry": false,
+      "classification": "OTHER",
+      "grant_choice_and_dossier_bindings": "PASS_STATE_CONTENT_ONLY",
+      "name": "Original bounded USE grant",
+      "native_identity": "e2-grant:cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574",
+      "native_type": "GraphEntity AUTHORITY; no decision event",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+        "pointer": "/snapshot/entities",
+        "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+      }
+    },
+    {
+      "acceptable_ancestry": false,
+      "classification": "REPORT_METADATA",
+      "fields_missing": [
+        "ExecutionEvent identity/payload",
+        "parent",
+        "ledger position/membership"
+      ],
+      "fields_retained": [
+        "pre_state",
+        "post_state",
+        "choice_evidence",
+        "record_id",
+        "grant_identity",
+        "dossier",
+        "option",
+        "subject",
+        "scope",
+        "lineage",
+        "decision_stage"
+      ],
+      "name": "ALLOW Retry 1 trace",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_RETRY_1_TRACE.json",
+        "pointer": "",
+        "raw_sha256": "5a7af448c81e4c7833536fbbe30c1f416e263a8c48bd1b7d8650fbba0bc8af35"
+      }
+    },
+    {
+      "acceptable_ancestry": false,
+      "claim": "Native materializer/application and Snapshot persistence qualified; no retained enclosing original event.",
+      "classification": "REPORT_METADATA",
+      "name": "T03 qualification report and test source",
+      "sources": [
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T03_RESULT.json",
+          "pointer": "",
+          "raw_sha256": "0e73b7b4e2d2da989c2ce347ebc0a894843bae47798dda7ad7a6004be5ef2a0c"
+        },
+        {
+          "path": "adapter/tests/test_e2_t03_human_decision.py",
+          "pointer": "",
+          "raw_sha256": "9705e67922015dcc1fc88434e6176505c97dd383abe05cd89437dc0bc671767a"
+        }
+      ]
+    },
+    {
+      "acceptable_ancestry": false,
+      "classification": "DERIVED",
+      "name": "Canonical P02 Retry 4 decision/evidence-chain result",
+      "report_chain_is_not_ledger": true,
+      "semantic_PASS_preserved": true,
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json",
+        "pointer": "",
+        "raw_sha256": "1d885295981a90929bfa958a9324da711fb2ab7dfb5a386f099f34774f9c589f"
+      }
+    },
+    {
+      "USE_grant_in_pre_state": true,
+      "acceptable_ancestry_under_current_A05_scope": false,
+      "candidate_for_explicit_alternate_A05_scope": true,
+      "classification": "QUALIFIED_NATIVE_EVENT",
+      "event_id": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+      "grant_issuance_by_this_event": false,
+      "ledger_membership": "planner-bundle-v1:d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859#/bundle/events",
+      "name": "P03 prospective RecordedDecision event",
+      "native_identity_parent_position_source_binding_checks": "PASS_READ_ONLY",
+      "native_result": {
+        "$type": "RecordedDecision",
+        "authority": {
+          "$type": "PredicateId",
+          "value": "E2-PROSPECTIVE-CHOICE-AUTHORITY"
+        },
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "expected_snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8"
+        },
+        "record": {
+          "$type": "EntityId",
+          "value": "E2-PROSPECTIVE-CHOICE"
+        }
+      },
+      "origin_scope": "AUTHORIZED_P03_PROSPECTIVE_CHECKPOINT_REPLACEMENT",
+      "parent": "planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0",
+      "position": 2,
+      "post_state": "planner-snapshot-v1:576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324",
+      "pre_state": "planner-snapshot-v1:c48cc70219d9d7df5aa8dd93221cf678eeb32b4696a2a5a8f6d6ff5052c7dfc8",
+      "same_original_choice_or_context": false,
+      "same_semantic_Action_as_A05": true,
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+        "pointer": "/bundle/events/1",
+        "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+      },
+      "zero_based_index": 1
+    },
+    {
+      "acceptable_ancestry_under_current_A05_scope": false,
+      "canonical_descendant_enrollment": true,
+      "classification": "CANONICAL_NATIVE_EVENT",
+      "event_id": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+      "ledger_membership": "planner-bundle-v1:3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2#/bundle/events",
+      "name": "Same qualified event carried in canonical P04 history",
+      "origin": "Same P03 event, not a second A05 occurrence",
+      "original_A05_event_identity": false,
+      "position": 2,
+      "same_checkpoint_prefix": "PASS",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+        "pointer": "/bundle/events/1",
+        "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+      },
+      "successor": {
+        "checks": {
+          "RecordedDecision_pre_state_exact": true,
+          "event_comparison_identity_exact": true,
+          "parent_event_exact": true,
+          "pre_state_exact": true,
+          "sequence_matches_position": true
+        },
+        "identity": "planner-event-v1:a19b52ab601c6d3c7668b78c6e20cc87e54cfc317595e4da641fcbb7d107fb1e",
+        "index": 2,
+        "parent": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+        "post_state": "planner-snapshot-v1:99e47ad1e462c30cd33e2258e4c74ff670164fa7378e5a998e0f23b9256e4454",
+        "pre_state": "planner-snapshot-v1:576fe3a99286bcbceee1587dedf7db8e3073517e251d6a064821f286b77b5324",
+        "result_type": "InstallDefinition",
+        "sequence": 3
+      }
+    },
+    {
+      "acceptable_ancestry": false,
+      "classification": "SNAPSHOT_ONLY",
+      "genesis_does_not_prove_pre_genesis_occurrence": true,
+      "matching_RecordedDecision_events": 0,
+      "name": "G04 genesis/post-decision descendants",
+      "sources": [
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_GENESIS_PERSISTENCE_BUNDLE.json",
+          "pointer": "",
+          "raw_sha256": "888fde2845bd3fb2c61f9badcfed7f27051184fe43adbbef59f6026d07365f26"
+        },
+        {
+          "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_CHECKPOINT_BUNDLE_QUALIFICATION_1.json",
+          "pointer": "",
+          "raw_sha256": "f8470556168dca904e5aac1065d1cfabd8e0229aa7a7d27a899ce9764796a5c8"
+        }
+      ]
+    },
+    {
+      "classification": "OTHER",
+      "matching_RecordedDecision_events": 0,
+      "name": "A04 authorized prospective native bundle",
+      "native_identity": "planner-bundle-v1:45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7",
+      "native_results": [
+        "E2-CHECK",
+        "E2-COLLECT",
+        "E2-PREPARE"
+      ],
+      "original_A05_ancestry": false,
+      "role": "Retained DECISION_READY input for separately authorized future contract assessment only; no A05 continuation authorized.",
+      "source": {
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_BUNDLE_1.json",
+        "pointer": "/bundle",
+        "raw_sha256": "45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7"
+      }
+    },
+    {
+      "acceptable_ancestry": false,
+      "classification": "DERIVED",
+      "name": "Prior P05 missing-binding metadata",
+      "source": {
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_EXECUTION_1/P05-binding-rerun.json",
+        "pointer": "/stage_bindings/4",
+        "raw_sha256": "74aeb8695f7f84f196ce1cd5984060d1e117fc9307c503f1e2e207f6282e181f"
+      }
+    }
+  ],
+  "CANONICAL_EVENT_SEARCH": {
+    "alternate_accepted_under_current_A05_scope": false,
+    "canonical_descendant_contains_alternate_event": true,
+    "required_original_event_found": false,
+    "result": "PASS_SEARCH_COMPLETE",
+    "retained_distinct_native_E2_DECIDE_event_identities": 1,
+    "same_qualified_event_occurrences": 273
+  },
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "E2_A05_RECORDED_DECISION_EVENT_ANCESTRY": "FAIL",
+  "E2_P01_RESULT": "PASS",
+  "E2_P02_RESULT": "PASS",
+  "E2_P03_RESULT": "PASS",
+  "E2_P04_RESULT": "PASS",
+  "E2_P05_READY": "YES",
+  "END_MAPPING": "BLOCKED_NO_APPLICABLE_A05_REPLACEMENT_SCOPE; exact required original witness absent",
+  "EVENTS_CREATED": 0,
+  "FRESH_CHOICE_FOR_ACCEPTING_RETAINED_ALTERNATE": "NOT_REQUIRED_TO_RECOVER_ALREADY_AUTHORIZED_P03_EVENT; new acceptance-scope decision still required",
+  "FRESH_CHOICE_FOR_NEW_PROSPECTIVE_A05": "REQUIRED_IF_NEW_DOSSIER_STATE_LINEAGE; old choice cannot be retagged",
+  "GIT_DIFF_CHECK": "PASS",
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "LOSSLESS_RECOVERY": "NO",
+  "N12_MAPPING": "NOT_CLOSED_FOR_A05_ORIGINAL_ANCESTRY; existing qualifications unchanged",
+  "N13_MAPPING": "NOT_CLOSED_FOR_A05_ORIGINAL_ANCESTRY; existing qualifications unchanged",
+  "NEXT_AFTER_A05_IF_LATER_AUTHORIZED_AND_BOUND": "E2-A06.request_wait_event_trace",
+  "NEXT_PACKAGE": "E2-P05-A05 BOUNDED QUALIFICATION-SCOPE DECISION",
+  "N_REAL_SATISFIED": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "ORIGINAL_A05_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "ORIGINAL_HISTORY_CHANGED": "NO",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P05_BOUND_STAGE_INPUTS": 11,
+  "P05_EXECUTED": "NO",
+  "P05_EXECUTION_READY": "NO",
+  "P05_NEXT_MISSING_INPUT": "E2-A05.recorded_decision_event_ancestry",
+  "P05_TOTAL_STAGE_INPUTS": 13,
+  "P06_EXECUTED": "NO",
+  "PERSISTENCE_SEARCH": {
+    "HEADs": 173,
+    "genesis_ledgers": 4,
+    "pure_decode_limitations": "17 comparisons: 2 report operand schemas and 15 obsolete ValidationSupportOutcome records; all structurally inventoried, none contains a matching A05 event. No matching event skipped.",
+    "qualified_event_position": 2,
+    "representations": 590,
+    "required_original_ancestry_found": false,
+    "result": "PASS_SEARCH_COMPLETE"
+  },
+  "PRIMARY_CLASSIFICATION": "IRRECOVERABLE_HISTORICAL_WITNESS",
+  "PRIMARY_CLASSIFICATION_SUBJECT": "Original A05 RecordedDecision event ancestry required by current P05 input oracle",
+  "PRODUCTION_EFFECT": "NO",
+  "QUALIFIED_ALTERNATE_EVENT_ID": "planner-event-v1:9f00d563a015969d02179c7a991d2efec97b763448fbc27c34e7bd634d36a728",
+  "QUALIFIED_ALTERNATE_LEDGER_POSITION": 2,
+  "QUALIFIED_ALTERNATE_PARENT_ID": "planner-event-v1:a0413d075c0ec54dfa6f2fe6a16a540a6cb185a104efe143e02cc0985fb44ee0",
+  "RECORDED_DECISION_MODEL": {
+    "AUTHENTICATION_EVIDENCE": {
+      "choice_knowledge": {
+        "$type": "KnowledgeRecord",
+        "evidence": [],
+        "id": {
+          "$type": "KnowledgeId",
+          "value": "decision-choice:E2-DECIDE"
+        },
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+          "path": "qualification://E2-P02-human-decision",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/choice"
+        },
+        "state": {
+          "$enum": "KnowledgeState",
+          "value": "KNOWN_COMPLETE"
+        },
+        "statement": "ALLOW_QUALIFICATION_MAPPING",
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        }
+      },
+      "content_identity": "raw-file-sha256:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+      "payload": {
+        "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+        "issuer": "ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "option": "ALLOW_QUALIFICATION_MAPPING",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "sequence": 1,
+        "subject": "E2-DECIDE",
+        "trust_root": "d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+        "path": "qualification://E2-P02-human-decision",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/choice"
+      },
+      "record": {
+        "$type": "GraphEntity",
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "consumed": false,
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "generation": "E2-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "e2-choice-record",
+          "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "DECIDE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+          },
+          "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+          "path": "qualification://E2-P02-human-decision",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/choice"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "retained_authentication_result": "PASS from immutable ALLOW Retry 1 report"
+    },
+    "AUTHORITY_EFFECT": {
+      "DECIDE_predicate": {
+        "$type": "Predicate",
+        "action": null,
+        "condition": null,
+        "entity": {
+          "$type": "EntityId",
+          "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "expected": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "d821e2b08fa623c78d01014708b43fb9361f5921bca482f9893cb20d6d980121"
+        },
+        "id": {
+          "$type": "PredicateId",
+          "value": "E2-CHOICE-AUTHORITY:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+        },
+        "kind": {
+          "$enum": "PredicateKind",
+          "value": "AUTHORITY"
+        },
+        "knowledge": null,
+        "operands": [],
+        "other": null,
+        "permission": {
+          "$enum": "AuthorityClass",
+          "value": "DECIDE"
+        }
+      },
+      "USE_grant": {
+        "$type": "GraphEntity",
+        "choice": "ALLOW_QUALIFICATION_MAPPING",
+        "consumed": false,
+        "decision": {
+          "$type": "ActionId",
+          "value": "E2-DECIDE"
+        },
+        "generation": "E2-GENERATION-1",
+        "id": {
+          "$type": "EntityId",
+          "value": "E2-GRANT"
+        },
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "AUTHORITY_IDENTITY"
+          },
+          "namespace": "e2-grant",
+          "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+        },
+        "kind": {
+          "$enum": "EntityKind",
+          "value": "AUTHORITY"
+        },
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "permissions": [
+          {
+            "$enum": "AuthorityClass",
+            "value": "USE"
+          }
+        ],
+        "produced": true,
+        "provenance": {
+          "$type": "Provenance",
+          "excerpt": "{\"authority\": \"E2-GRANT\", \"choice\": \"6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411\", \"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"permission\": \"USE\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"subject\": \"E2-REENTER\"}",
+          "identity": {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "cddac13f5e0b0f460e5d58a68d4ce753ce43cb5d17481be408d9b5f43d616574"
+          },
+          "method": "E2-T03-QUALIFICATION-GRANT-1",
+          "path": "qualification://E2-P02-human-decision",
+          "scope": "E2-QUALIFICATION-ONLY",
+          "section": "/grant"
+        },
+        "scope": "E2-QUALIFICATION-ONLY",
+        "target": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb"
+        },
+        "valid_until": 100,
+        "validated": true,
+        "validation": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "validator": null
+      },
+      "USE_predicate": {
+        "$type": "Predicate",
+        "action": null,
+        "condition": null,
+        "entity": {
+          "$type": "EntityId",
+          "value": "E2-GRANT"
+        },
+        "expected": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb"
+        },
+        "id": {
+          "$type": "PredicateId",
+          "value": "E2-USE-AUTHORITY"
+        },
+        "kind": {
+          "$enum": "PredicateKind",
+          "value": "AUTHORITY"
+        },
+        "knowledge": null,
+        "operands": [],
+        "other": null,
+        "permission": {
+          "$enum": "AuthorityClass",
+          "value": "USE"
+        }
+      },
+      "core_apply_recorded_decision_issues_grant": false,
+      "grant_event_identity": "NOT_RECOVERED; not a field required by RecordedDecision",
+      "grant_payload": {
+        "authority": "E2-GRANT",
+        "choice": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411",
+        "dossier": "6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb",
+        "lineage": "E2-CANONICAL-BASELINE-1",
+        "permission": "USE",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "subject": "E2-REENTER"
+      },
+      "old_materializer_order": "authenticate choice -> prepare record/knowledge -> apply_recorded_decision -> materialize ALLOW USE grant -> Snapshot"
+    },
+    "CHOICE": "ALLOW_QUALIFICATION_MAPPING",
+    "DECISION_ID": {
+      "domain": "ActionId",
+      "value": "E2-DECIDE"
+    },
+    "GENERATION": "E2-GENERATION-1",
+    "ISSUER": "qualification-authority:ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a",
+    "LINEAGE": "E2-CANONICAL-BASELINE-1",
+    "OPTION": "ALLOW_QUALIFICATION_MAPPING",
+    "PROVENANCE": {
+      "$type": "Provenance",
+      "excerpt": "{\"dossier\": \"6a507317bc9cc323fbaa626e97b5954cf3ad934b0bd92d9dc96bd4f63e07bddb\", \"issuer\": \"ed59567bbe5e7c719975a4e64db157696bf349d42cb0e73695115a50606c330a\", \"lineage\": \"E2-CANONICAL-BASELINE-1\", \"option\": \"ALLOW_QUALIFICATION_MAPPING\", \"scope\": \"E2-QUALIFICATION-ONLY\", \"sequence\": 1, \"subject\": \"E2-DECIDE\", \"trust_root\": \"d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0\"}",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+      },
+      "method": "E2-T03-AUTHENTICATED-CHOICE-1",
+      "path": "qualification://E2-P02-human-decision",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "section": "/choice"
+    },
+    "SCOPE": "E2-QUALIFICATION-ONLY",
+    "SUBJECT": "E2-DECIDE",
+    "TRUST_ROOT": "raw-file-sha256:d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0",
+    "choice_sequence_is_not_ExecutionEvent_sequence": true,
+    "fields_not_inline_in_RecordedDecision": [
+      "issuer",
+      "trust_root",
+      "dossier",
+      "scope",
+      "lineage",
+      "provenance",
+      "grant"
+    ],
+    "identity_domains_distinct": true,
+    "native_relationship": "Those terms are immutably bound through exact record/predicate/knowledge, dossier, context and event parent/post Snapshots.",
+    "native_type": "RecordedDecision",
+    "old_report_recorded_decision_identity_is_not_event_id": true,
+    "record_authority_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "AUTHORITY_IDENTITY"
+      },
+      "namespace": "e2-choice-record",
+      "sha256": "6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+    },
+    "record_id": {
+      "domain": "EntityId",
+      "value": "E2-CHOICE-RECORD:6bebc233783b5faa0898ecccb20cf51ce529086c74ca672a113450f6e270a411"
+    },
+    "standalone_decision_result_identity": "NOT_EXPOSED"
+  },
+  "RESULT": "BLOCKED",
+  "RUNTIME_MODIFIED": "NO",
+  "SCOPE_DECISION_READY": "YES_FOR_BOUNDED_ACCEPTANCE_SCOPE_ONLY",
+  "SCOPE_DECISION_REQUIRED": "YES",
+  "SCOPE_DECISION_SUBJECT_ID": "qualification-scope-subject-v1:a210e434c3424bb8919fea0ca1156785f2c42625a38cd4a887b753ca97f913a2",
+  "SCOPE_OPTIONS": [
+    {
+      "consequence": "Retain current original-event requirement; 11/13 bindings and P05 execution blocked until acceptable original native ancestry is supplied.",
+      "option": "RETAIN_P05_A05_NATIVE_ANCESTRY_REQUIREMENT",
+      "selected": false
+    },
+    {
+      "consequence": "Permit a separately sealed new qualification experiment and A05-only prospective END replacement mapping. No event is the original choice/occurrence; original ancestry remains UNPROVEN.",
+      "does_not_issue_new_native_DECIDE_USE_authority": true,
+      "execution_ready": false,
+      "fresh_authenticated_choice_required": true,
+      "later_requirements": [
+        "Seal exact new start/input/current authority applicability",
+        "Obtain a new explicit authenticated synthetic choice bound to that sealed context",
+        "Seal native decision event/parent/ledger/post-state and authority-effect oracle",
+        "Preserve END/N12/N13 and all historical labels",
+        "Qualify actual durable path/restore/replay/negatives before binding"
+      ],
+      "option": "AUTHORIZE_PROSPECTIVE_P05_A05_DECISION_ANCESTRY_QUALIFICATION",
+      "reason": "The retained A04 bundle has a different exact dossier, state, lineage and generation. T03 checks dossier/subject/snapshot; its materializer is baseline-lineage bounded. Old ALLOW cannot be applied to this new context as a fresh authenticated choice.",
+      "scope_decision_ready": true,
+      "selected": false,
+      "semantic_subject_reuse": "E2-DECIDE, exact bounded option vocabulary and semantic decision purpose may be reused; immutable old choice evidence/event identities may not be retagged."
+    },
+    {
+      "candidate": "Only the exact retained P03 RecordedDecision event in this subject, with its exact pins/parent/ledger/context.",
+      "consequence": "Permit an explicit A05-only acceptance-scope contract for this already-qualified native occurrence; no new A05 event/choice or replayed execution is required to recover it. Bind only after the explicit END/N12/N13 replacement mapping is sealed and accepted.",
+      "current_binding_authorized": false,
+      "does_not_preserve_or_claim": [
+        "Original A05 authenticated choice identity/issuer-trust-root envelope",
+        "Original A04-to-A05 causal ancestry",
+        "Original baseline-lineage occurrence",
+        "Grant issuance by RecordedDecision: this candidate grant was already a pre-state premise"
+      ],
+      "fresh_authenticated_choice_required_to_reuse_retained_event": false,
+      "limitations": "No blanket state-only acceptance; no P03 scope reopening; no historical relabeling/splice; no waiver of A06/full-END prefix gap.",
+      "option": "AUTHORIZE_P05_A05_ALTERNATE_NATIVE_EVIDENCE",
+      "preserves": [
+        "Exact native occurrence/payload",
+        "Exact native parent/pre/post states",
+        "Native ledger enrollment/sequence",
+        "Pinned scoped choice and DECIDE/USE relationships",
+        "No automatic root/slot satisfaction"
+      ],
+      "scope_decision_ready": true,
+      "selected": false,
+      "why": "Its distinct P03 synthetic choice is already captured under the pinned P03 authorization. This option concerns acceptance of existing evidence, not creation or reuse of the original T03 human choice."
+    }
+  ],
+  "SEARCH_SUMMARY": {
+    "A05_native_capture_calls": 0,
+    "A05_replay_calls": 0,
+    "A05_result_application_calls": 0,
+    "HEAD_representations": 173,
+    "RecordedDecision_representations": 274,
+    "authorities_issued": 0,
+    "bundle_representations": 590,
+    "choice_evidence_representations": 3,
+    "distinct_A05_event_identities": 1,
+    "documents_parsed": 4169,
+    "embedded_JSON_decoded": 15,
+    "empty_files": 0,
+    "events_appended": 0,
+    "events_constructed": 0,
+    "files_scanned": 4169,
+    "genesis_representations": 4,
+    "grant_entities": 701,
+    "identity_bodies_target": 0,
+    "json_parse_errors": 0,
+    "native_A05_decision_events": 273,
+    "native_events_unique": 113,
+    "original_state_neighbor_events": 0,
+    "record_entities": 689,
+    "recorded_decision_snapshots": 491,
+    "result": "PASS_SEARCH_COMPLETE",
+    "scope": "Retained non-E1 repository structured/native/embedded representations and text hit inventory",
+    "text_A05_event_occurrences": 0,
+    "text_JSON_fragments_parsed": 324,
+    "text_artifacts_inspected": 388
+  },
+  "SECONDARY_CLASSIFICATION": "QUALIFIED_NATIVE_EVENT_EXISTS_OUTSIDE_CURRENT_A05_ACCEPTANCE_SCOPE",
+  "SELECTED_SCOPE_OPTION": null,
+  "T03_MAPPING": "PROVEN_NATIVE_MATERIALIZER/APPLICATION_COMPATIBILITY; no original enclosing ExecutionEvent from T03 persistence",
+  "WORK_PACKAGE": "E2-P05-A05-DECISION-ANCESTRY-RECOVERY",
+  "evidence": {
+    "A05-definition-and-model.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/A05-definition-and-model.json",
+    "P05-binding-frontier.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/P05-binding-frontier.json",
+    "ancestry-contract-and-assurance.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/ancestry-contract-and-assurance.json",
+    "authoritative-source-pins.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/authoritative-source-pins.json",
+    "candidate-and-losslessness-analysis.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/candidate-and-losslessness-analysis.json",
+    "event-search.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/event-search.json",
+    "file-search-manifest.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/file-search-manifest.json",
+    "native-record-search.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/native-record-search.json",
+    "native-state-and-ledger-inspection.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/native-state-and-ledger-inspection.json",
+    "persistence-search.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/persistence-search.json",
+    "scope-applicability.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/scope-applicability.json",
+    "scope-decision-dossier.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/scope-decision-dossier.json",
+    "search-summary.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/search-summary.json",
+    "text-audit.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/text-audit.json",
+    "verification.json": "docs/plans/qualification/E2_P05_A05_DECISION_ANCESTRY_RECOVERY_1/verification.json"
+  },
+  "schema": "DETERMINISTIC-PLANNER-E2-P05-A05-ANCESTRY-RECOVERY-1",
+  "source_pins": [
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.md",
+      "pointer": "",
+      "raw_sha256": "c104d84d209a09f31975b4526a2030c7519e5b006dc5ca2151ca1a78fc036afd"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_EXPERIMENT_1.json",
+      "pointer": "",
+      "raw_sha256": "9c6d8efb6f7cfd901c1582d77c0ee80eeaead6e6357ee839ea687f80d87bac7d"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_CANONICAL_QUALIFICATION_ACCEPTANCE_MATRIX_1.md",
+      "pointer": "",
+      "raw_sha256": "5cc5c5d675ad301ea55454c7068bebf0a36aceac3469dab1b7449b8fa3c6514a"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_END_INPUT_BINDING_1.md",
+      "pointer": "",
+      "raw_sha256": "43657cc51076367d46dbeac65bbdc526bc963f2bef19c9b60c62c05ddf62f27e"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_END_INPUT_BINDING_1.json",
+      "pointer": "",
+      "raw_sha256": "6925d77a6636ded4abec29f5b980a7db4eeeccc74789e1a5641df7097f149968"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A03_PROSPECTIVE_OCCURRENCE_RESULT_1.json",
+      "pointer": "",
+      "raw_sha256": "132220594cb622942348303aae5b2292c711f2b9496c3c4d81fa0ff4164e6d78"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_RESULT_1.md",
+      "pointer": "",
+      "raw_sha256": "8af3de25a5e4339b1b049ab217ea8400d37a513f32de88768f04cab5094c88ae"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_RESULT_1.json",
+      "pointer": "",
+      "raw_sha256": "5f6b4158a50f8b6783bc862d722b7de179f9a59f3b6c3630453f43d80114e8d2"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P05_A04_PROSPECTIVE_ANCESTRY_BUNDLE_1.json",
+      "pointer": "",
+      "raw_sha256": "45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_SYNTHETIC_HUMAN_DECISION_PROTOCOL_1.md",
+      "pointer": "",
+      "raw_sha256": "ae5126c81dfd3cd15c746a1e759a22ce0e643acaae48b36ea8237fbcae0f426f"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_SYNTHETIC_HUMAN_DECISION_PROTOCOL_1.json",
+      "pointer": "",
+      "raw_sha256": "d7478df57c6c7619eff262daa6e258103cd31e226db6e523e5d2de6a5a603da0"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T03_RESULT.md",
+      "pointer": "",
+      "raw_sha256": "374a7db48aee02287738e9213a5b4f9e52c92eea3d4bde07861abdceaf5bd1ee"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_T03_RESULT.json",
+      "pointer": "",
+      "raw_sha256": "0e73b7b4e2d2da989c2ce347ebc0a894843bae47798dda7ad7a6004be5ef2a0c"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_HANDOFF_DECISION_PACKAGE_1.json",
+      "pointer": "",
+      "raw_sha256": "83372b8dd6dfea66867285824ed8203dff90c3668c4f9ce4872c94974b66dfe5"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_AUTHORITATIVE_HANDOFF_REPRODUCTION_1_TRACE.json",
+      "pointer": "",
+      "raw_sha256": "a2fe8ac270f6bc41529b32611945fbeeba065c044db68349e271967bfb083bbd"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_AUTHORITATIVE_HANDOFF_SNAPSHOT_1.json",
+      "pointer": "",
+      "raw_sha256": "9b3d8e6a074687a7aef9dca0279262cf2888492de73b7207768dc48bb0f5edfa"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_RESULT.json",
+      "pointer": "",
+      "raw_sha256": "2dc27638d91d89ecf6f02145da77afe58f44d83b24192e4d4b32a73c42f9dbbc"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_RETRY_1_RESULT.json",
+      "pointer": "",
+      "raw_sha256": "ef158a4c06e7f1d626bb0ab348ddb8b1eee19c33111f754c7496932b0da106da"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_RETRY_1_TRACE.json",
+      "pointer": "",
+      "raw_sha256": "5a7af448c81e4c7833536fbbe30c1f416e263a8c48bd1b7d8650fbba0bc8af35"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_HUMAN_DECISION_ALLOW_POST_SNAPSHOT_1.json",
+      "pointer": "",
+      "raw_sha256": "8d77f7f1997ca884e07490c4c93f5fbe3a31b09278fd57c6c6ea1f9fa26b3aaf"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.md",
+      "pointer": "",
+      "raw_sha256": "e70a7dc313fcf6002cbdcc809841a5acab926ac325a38e171062839eecb50fc0"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P02_RETRY_4_RESULT.json",
+      "pointer": "",
+      "raw_sha256": "1d885295981a90929bfa958a9324da711fb2ab7dfb5a386f099f34774f9c589f"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_CHECKPOINT_SCOPE_DECISION_DOSSIER_1.json",
+      "pointer": "",
+      "raw_sha256": "fc352948b9a23d72ca91c59dc47d424ae6a3b94d4c21ae8fab83fb134a62c6d2"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.md",
+      "pointer": "",
+      "raw_sha256": "d596339d8a9540ccb1a69926e80c2fb86593d04586ebd30cb52609c9ef8c7a88"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.json",
+      "pointer": "",
+      "raw_sha256": "2efaeb92a770cd68d94ee2c053167fb129b4283fe1577a3d9d3197a50117fb9e"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_BUNDLE_1.json",
+      "pointer": "",
+      "raw_sha256": "d1944fe18626778bebfc6c7693c7bdb5303e079668683e5fb99676ecbe46b859"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_EXECUTION_RETRY_1_RESULT.json",
+      "pointer": "",
+      "raw_sha256": "d4df1a5d80dc04e48db8c8e6207d62f0caf4f0c4ff210e6dd3b0301b13ee507f"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P04_CANONICAL_TARGET_BUNDLE_1.json",
+      "pointer": "",
+      "raw_sha256": "3e36b39884db3ea4ecaea0b2371d2af910c34b984fc69c5d3e2b42bc26ce13c2"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_GENESIS_PERSISTENCE_BUNDLE.json",
+      "pointer": "",
+      "raw_sha256": "888fde2845bd3fb2c61f9badcfed7f27051184fe43adbbef59f6026d07365f26"
+    },
+    {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_P03_CHECKPOINT_BUNDLE_QUALIFICATION_1.json",
+      "pointer": "",
+      "raw_sha256": "f8470556168dca904e5aac1065d1cfabd8e0229aa7a7d27a899ce9764796a5c8"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_EXECUTION_1/P05-binding-rerun.json",
+      "pointer": "",
+      "raw_sha256": "74aeb8695f7f84f196ce1cd5984060d1e117fc9307c503f1e2e207f6282e181f"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/input-oracle.json",
+      "pointer": "",
+      "raw_sha256": "4c0fc45ef27c4452dffbd457cd31a6b228e15489643b76e5931223f036dac768"
+    },
+    {
+      "path": "docs/plans/qualification/E2_P05_END_INPUT_BINDING_1/P03-replacement-treatment.json",
+      "pointer": "",
+      "raw_sha256": "55549c50c5d9d881d341dbc3e53693ee6df4927a5540618f9ba2f6005f0f7cc5"
+    },
+    {
+      "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-scope-authority.json",
+      "pointer": "",
+      "raw_sha256": "1a2b67491a41cd1a815608b1873822af2db1bb2cb12f995480549db947baf5ed"
+    },
+    {
+      "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/qualification-contract.json",
+      "pointer": "",
+      "raw_sha256": "3e34062b2106d2efa070138f46b5057bd2f094d9bdcc0f0d7ba142f25fa65e9d"
+    },
+    {
+      "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/choice-evidence.json",
+      "pointer": "",
+      "raw_sha256": "daba5011fd851f567737e8ede4d6e73479af694c68a546004bed94b1d86b3cdf"
+    },
+    {
+      "path": "docs/plans/qualification/P03_PROSPECTIVE_CHECKPOINT_1/sources/grant-source.json",
+      "pointer": "",
+      "raw_sha256": "966a23b17e754fa28b5de64d979c56a91f75677a8b1d49628bc30dfa9f8e5f67"
+    },
+    {
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "b521eac444d89ae5b722f8b5d35015bea14cf257e4f18c75e108ea0026dfe85e"
+    },
+    {
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051"
+    },
+    {
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    {
+      "path": "adapter/planner/human_decision.py",
+      "pointer": "",
+      "raw_sha256": "ff44bb1c34f2c1ca143210940caa592ee9dc64719a09de7b9015d300f760f012"
+    },
+    {
+      "path": "adapter/tests/test_e2_t03_human_decision.py",
+      "pointer": "",
+      "raw_sha256": "9705e67922015dcc1fc88434e6176505c97dd383abe05cd89437dc0bc671767a"
+    },
+    {
+      "path": "adapter/tests/qualify_p03_prospective.py",
+      "pointer": "",
+      "raw_sha256": "ddfdf076983c6064559e6b5782393e1a099ad5d662e628b64e3f9f1ce1a2f3b4"
+    }
+  ]
+}

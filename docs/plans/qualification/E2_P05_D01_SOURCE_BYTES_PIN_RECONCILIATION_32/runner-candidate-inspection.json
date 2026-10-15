@@ -1,0 +1,242 @@
+[
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC01_ORACLE.py",
+      "pointer": "",
+      "raw_sha256": "3064b4eaf1bee26b7879a54a4aad586356c62b29dfa923c2f6948c1d15e3d6a7"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": []
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_ORACLE.py",
+      "pointer": "",
+      "raw_sha256": "415ae952ecde760a0934ae29723f6fee712c4e12556ac381fb8d879983b7236e"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": []
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC03_ORACLE.py",
+      "pointer": "",
+      "raw_sha256": "9d1546baad3d540390de4f01e09c041bfbfcd287280bc7302c0efefa848589ba"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": []
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "adapter/tests/qualify_finish_f03.py",
+      "pointer": "",
+      "raw_sha256": "5d17ee4d036b97424165964950db3c0ff6db60a002c30461955ba2c45b3bd8d7"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "save_bundle",
+        "line": 41,
+        "text": "stored,bid=c.save_bundle(b,path.parent,root);path.write_bytes(stored.read_bytes());return {'path':str(path),'root':str(root),'writer_pid':os.getpid(),'writer_pid_namespace':os.readlink('/proc/self/ns/pid'),'writer_command':sys.argv,'bundle_id':c._wire(bid),'state_id':c._wire(c.snapshot_id(b.current)),'head':c._wire(b.events[-1].identity),'event_count':len(b.events),'boundary':path.stem}"
+      },
+      {
+        "call": "restore",
+        "line": 69,
+        "text": "man=c.parse_json((O/name).read_bytes());root=Path(man.get('root',str(R)));b=c.restore(Path(man['path']),c._unwire(man['bundle_id']),root)"
+      },
+      {
+        "call": "restore",
+        "line": 99,
+        "text": "b=c.restore(base,i.identity(F['initial_checkpoint']['bundle_id']),R)"
+      },
+      {
+        "call": "restore",
+        "line": 118,
+        "text": "_,did=selections();man=c.parse_json((O/'configuration-manifest.json').read_bytes());b=c.restore(Path(man['path']),c._unwire(man['bundle_id']),R)"
+      },
+      {
+        "call": "restore",
+        "line": 226,
+        "text": "man=c.parse_json(Path(manifest_path).read_bytes());root=Path(man.get('root',str(R)));b=c.restore(Path(man['path']),c._unwire(man['bundle_id']),root)"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "adapter/tests/qualify_finish_f03_checks.py",
+      "pointer": "",
+      "raw_sha256": "b09dcdff4c40d60c94fd47af44074906b8ad70bcade540dda6430af12e9240d1"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "restore",
+        "line": 11,
+        "text": "def load_manifest(man):return c.restore(Path(man['path']),c._unwire(man['bundle_id']),R)"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "adapter/tests/qualify_reentry_r05.py",
+      "pointer": "",
+      "raw_sha256": "038bf6347a8556cbbcbb2c8c8fbc5d9fa0851bc960b1c8239becb153e9bb484d"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "restore",
+        "line": 14,
+        "text": "b=c.restore(R/z['path'],c._unwire(z['identity']),R);record=b.current.validation_results[0]"
+      },
+      {
+        "call": "save_bundle",
+        "line": 65,
+        "text": "path,bid=c.save_bundle(trial,O/('permutation-'+mode),R)"
+      },
+      {
+        "call": "restore",
+        "line": 66,
+        "text": "restored=c.restore(path,bid,R);assert r04.view(restored)==expected"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/qualification/E2_P04_CANONICAL_EXECUTION_RETRY_1/verify.py",
+      "pointer": "",
+      "raw_sha256": "09034d0b42dd07fe3b806740ac6dd4fb59717c09474a33d4dc4d1c52e1b4b574"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "restore",
+        "line": 33,
+        "text": "return c.restore(Path(man['path']), c._unwire(man['bundle_id']), R)"
+      },
+      {
+        "call": "restore",
+        "line": 183,
+        "text": "checks.load_manifest = lambda man: c.restore(Path(man['path']), c._unwire(man['bundle_id']), R)"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_A03_PROSPECTIVE_OCCURRENCE_EXECUTION_1/execution_driver.py",
+      "pointer": "",
+      "raw_sha256": "d862db77811fb939792fd4d551f9c774bbf51faf46da7d91156d3b56f0a858e0"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "restore",
+        "line": 122,
+        "text": "bundle = c.restore(ROOT / start['start_bundle']['path'], identity(start['START_BUNDLE_ID']), ROOT)"
+      },
+      {
+        "call": "save_bundle",
+        "line": 291,
+        "text": "checkpoint_path, checkpoint_id = c.save_bundle(updated, run / 'checkpoints' / checkpoint, ROOT)"
+      },
+      {
+        "call": "restore",
+        "line": 315,
+        "text": "bundle = c.restore(path, identity(expected['bundle_id']), ROOT)"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_EXECUTION_1/execution_driver.py",
+      "pointer": "",
+      "raw_sha256": "70afa88d1ebbb07f86ba68a409f44087bcc7593d719422bc53ce919f3df58c42"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "restore",
+        "line": 79,
+        "text": "before = c.restore(path, expected, ROOT)"
+      },
+      {
+        "call": "restore",
+        "line": 193,
+        "text": "bundle=c.restore(directory/('bundle-'+post_id.sha256+'.json'),post_id,ROOT)"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_PC03_END_BINDING_1/binding_v2.py",
+      "pointer": "",
+      "raw_sha256": "c9bb044b1434a13e8660ad8c30f0a61468f57afeedfdaf44b9aa9a224ded4bf7"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": [
+      {
+        "call": "_verify_sources",
+        "line": 181,
+        "text": "c._verify_sources(bundle, ROOT); c._check_snapshot_pins(state, bundle.sources)"
+      },
+      {
+        "call": "_check_snapshot_pins",
+        "line": 181,
+        "text": "c._verify_sources(bundle, ROOT); c._check_snapshot_pins(state, bundle.sources)"
+      }
+    ]
+  },
+  {
+    "AUTHORITY": "Component evidence only; no candidate binds complete E2-D01 runner",
+    "CLASSIFICATION": "OTHER",
+    "DECLARED_BY_SEALED_CONTRACT": false,
+    "INTERPRETATION": "Source/persistence helpers validate required dependencies; no SOURCE_BYTES-specific primary/first/last selection rule",
+    "SINGULAR_PRIMARY_SOURCE_SELECTION_RULE": null,
+    "SOURCE": {
+      "path": "docs/plans/qualification/E2_P05_T01_END_BINDING_1/binding.py",
+      "pointer": "",
+      "raw_sha256": "38a6733dae05ae16e767d5fca180dbceaa59cee1018e1a567e6e7fd20a2fb90e"
+    },
+    "SOURCE_OR_PERSISTENCE_CALLS": []
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "CONSUMPTION_SCHEMA_VERSION": "H77-02-CONSUMPTION-RECORD-1 / H77-02-CONSUMPTION-KEY-1",
+  "DEPENDENCIES": "Python standard library only; no installation performed",
+  "ENTRYPOINT": "python -m adapter.qualification_h77_02_gate.gate --mode {claim-and-launch,recover} --manifest <exact protected entry>; no invocation performed; REAL entry denied pending qualified reader/profile",
+  "H77_PROBE_AUTHORIZED": false,
+  "INTERPRETER_REQUIREMENT": "Python3.8+ on Linux/POSIX with dir_fd/O_NOFOLLOW/flock/fsync; actual interpreter and operating controls unqualified for active entry",
+  "RUNTIME_EXECUTABLE_QUALIFIED": false,
+  "SOURCE_FILES": [
+    {
+      "ENTRYPOINTS": [],
+      "IMPORTS": [],
+      "SOURCE_PATH": "adapter/qualification_h77_02_gate/__init__.py",
+      "SOURCE_SHA256": "59031ec4d8b935b54349707b2d95d1aed16a14b3e26add3d536c0953def2876f"
+    },
+    {
+      "ENTRYPOINTS": [
+        "require",
+        "canonical",
+        "identity",
+        "check_identity",
+        "decode",
+        "open_directory",
+        "read_at",
+        "read_pin",
+        "validate_authority",
+        "consumption_key",
+        "verify_consumption_record",
+        "_write_all",
+        "_exclusive_record",
+        "_audit",
+        "_fixed_real_launch",
+        "claim_and_launch",
+        "recover",
+        "main"
+      ],
+      "IMPORTS": [
+        "import argparse",
+        "import fcntl",
+        "import hashlib",
+        "import json",
+        "import os",
+        "import pathlib",
+        "import re",
+        "import selectors",
+        "import signal",
+        "import socket",
+        "import stat",
+        "import subprocess",
+        "import time"
+      ],
+      "SOURCE_PATH": "adapter/qualification_h77_02_gate/gate.py",
+      "SOURCE_SHA256": "e304e19f32bd74c11118eb096ed83982ff85f8019cedc5174375db265502607c"
+    },
+    {
+      "ENTRYPOINTS": [
+        "require_test_entry",
+        "write_fixture",
+        "make_fixture",
+        "inert",
+        "claimant"
+      ],
+      "IMPORTS": [
+        "import copy",
+        "import hashlib",
+        "import json",
+        "import multiprocessing",
+        "import os",
+        "import pathlib",
+        "import tempfile",
+        "import unittest",
+        "import uuid",
+        "from unittest import mock",
+        "from adapter.qualification_h77_02_gate import gate"
+      ],
+      "SOURCE_PATH": "adapter/tests/test_h77_02_launch_gate.py",
+      "SOURCE_SHA256": "873996de6fabf6d5ef8d862f7a9ad82a5b6c2525feae7bb5ceb4a3427ebb2c38"
+    }
+  ],
+  "SOURCE_IDENTITIES_SEALED": true,
+  "SYNTHETIC_TEST_SUITE": "adapter.tests.test_h77_02_launch_gate.GateSyntheticTests; every active suite entry requires independently sealed controller/environment/fixture/oracle/campaign receipts"
+}

@@ -1,0 +1,1223 @@
+{
+  "A04_DURABLE_TRANSACTION_IMPLEMENTATION_READY": "YES",
+  "A04_EXECUTED": "NO",
+  "ACTUAL_COLD_RESTORE": "NOT_RUN",
+  "ACTUAL_DURABLE_TRANSACTION": "NOT_RUN",
+  "ACTUAL_NEGATIVE_QUALIFICATION": "NOT_RUN",
+  "ACTUAL_REPLAY": "NOT_RUN",
+  "ATOMICITY": {
+    "HEAD_contract": "Existing PLANNER-HEAD-1 fields unchanged: bundle=new ID, previous=expected pre-bundle ID, command=None for SuppliedResult. _read_head/_prefix_bundle must understand detached dossier bindings.",
+    "atomic_semantic_unit": [
+      "actual supplied PREPARE result and bounded knowledge",
+      "complete dossier/typed validations/post-Snapshot",
+      "one native event/ledger append",
+      "exact source additions and replay binding",
+      "post PersistenceBundle and HEAD"
+    ],
+    "conflicting_retry": "Fail if any result/dossier/outcome/output/validation/source/context differs, if original prefix cannot be proven, if another command consumed that parent, or if retry asserts a new current parent for an already completed Action",
+    "durable_invariants": [
+      "No accepted applied result/knowledge/dossier without its occurrence event",
+      "No accepted event without complete archived post-Snapshot and validations",
+      "No Snapshot or validation tuple labeled qualified occurrence without native admitted event",
+      "No accepted bundle with missing source pins/archive/binding",
+      "No canonical append-head advance without complete transaction"
+    ],
+    "failure_injection_points": [
+      "after producer",
+      "after typed validation checks",
+      "after T02/private state",
+      "after Snapshot hashing",
+      "after event/binding construction",
+      "after source stage",
+      "after archive stage",
+      "after event stage",
+      "after bundle stage",
+      "after pre-HEAD fsync/pin verification",
+      "during HEAD replacement",
+      "after HEAD replacement/before acknowledgement"
+    ],
+    "file_order": [
+      "source objects/new raw pinned artifacts",
+      "historical/candidate Snapshot archive objects",
+      "immutable event files",
+      "immutable canonical bundle file",
+      "directory fsync",
+      "HEAD temporary file/fsync, final source verification and parent check",
+      "atomic HEAD replacement and directory fsync"
+    ],
+    "filesystem_semantics": "Existing local flock/immutable-create/fsync/atomic replace protocol; no distributed concurrency guarantee. Post-replace I/O uncertainty is not reported as a rolled-back pre-state.",
+    "identical_retry": "If a verified committed matching intent and exact effect already exist, return historical committed transaction identity and current verified head without producer invocation, ledger append, state reset or new bundle. If descendants exist, preserve them.",
+    "intent_recovery": "Resolve original native prefix using exact expected_bundle and source/binding history. Inspect exactly the next event; derive ActionId and original parent fields from its native envelope/result.",
+    "orphan_files": "Crash-created files before HEAD may remain as unaccepted staging objects; they do not authorize acceptance, graph binding or resume. Never load an orphan as trusted merely by computing its hash.",
+    "precommit_unchanged": "Authoritative pre-bundle/state/ledger/HEAD remain byte-identical through all checks and staging failures",
+    "retry_after_precommit_failure": "No admitted event exists; reload same verified parent and run the NON_EFFECTING producer again. Orphan immutable files must match exact bytes or fail; do not silently mutate them.",
+    "retry_after_uncertain_publication": "Read trusted HEAD under lock; exact transaction present => historical no-op success; pre-state still current => new attempt; divergent head/effect => fail",
+    "retry_effect": "Full canonical SuppliedResult, canonical native validation member values, source pin/content inventory and resulting Snapshot/event/bundle identities",
+    "retry_evidence": "If an already-prepared candidate is resubmitted, require exact canonical result/tuple/source effect equality to archived committed operands. A new source/content/result under same intent is conflict, not a fresh command.",
+    "retry_intent": "(trusted expected pre-bundle ID, original parent Snapshot ID, original parent event ID, native ActionId); all are native identities, no new command namespace",
+    "trusted_readers": "Only restore externally trusted bundle identity or validated HEAD; require complete archive/event/source closure and full replay before exposure. Hashes are integrity bindings, not issuer signatures.",
+    "visibility_boundary": "Atomic replacement of HEAD after complete immutable artifact closure and all semantic checks; artifact existence alone is not acceptance"
+  },
+  "AUTHORIZATION_SUBJECT": "qualification-scope-subject-v1:4b57d7fc27d1c0b63deaece9d0be47c72e8e6d7b40e7a54ea7a56d6a641c85ac",
+  "COLD_RESTORE_CONTRACT": {
+    "inputs": [
+      "externally trusted planner-bundle-v1 identity or audited HEAD",
+      "canonical bundle file",
+      "immutable event files",
+      "immutable Snapshot archive files addressed by event.after_snapshot",
+      "raw source and policy pins"
+    ],
+    "order": [
+      "verify expected bundle hash/known schema/type/canonical wire",
+      "verify policy and source files",
+      "verify unique binding/event correspondence and archive hash/model",
+      "replay complete history with historical archive resolver",
+      "compare final state/Snapshot/source inventory; audit HEAD previous/command when restoring HEAD",
+      "reconstruct exact A04 occurrence, parent, sequence/index, actual result/outputs and typed member bindings"
+    ],
+    "writer_memory_required": false
+  },
+  "COMPARISON_EVENT_ID": "planner-event-v1:2c71adfce820b0fc997e7d1f872439e9ddb43170c95edbeafaf461a4065760f0",
+  "COMPARISON_FUTURE_BUNDLE_ID": "planner-bundle-v1:45c06e9617034dfd86d96a2b5e7a86e156075751973fecb0112d671edb221bc7",
+  "COMPARISON_POST_SNAPSHOT_ID": "planner-snapshot-v1:38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4",
+  "DURABILITY_GAPS": [
+    {
+      "category": "RESULT_APPLICATION",
+      "gap": "Integrate existing T02 admission into durable PREPARE path; do not use ordinary apply_result for fresh dossier"
+    },
+    {
+      "category": "POST_SNAPSHOT_CREATION",
+      "gap": "Existing hash/codec sufficient; retain canonical historical Snapshot body as immutable archive object"
+    },
+    {
+      "category": "EVENT_APPEND",
+      "gap": "Compose unchanged ExecutionEvent from T02 post-state rather than ordinary dispatcher"
+    },
+    {
+      "category": "EVENT_TO_POST_SNAPSHOT_BINDING",
+      "gap": "after_snapshot already supplies identity; implement resolver and historical outcome checks"
+    },
+    {
+      "category": "PERSISTENCE_BUNDLE_COMMIT",
+      "gap": "Atomic source-pin boundary, minimal bundle binding, archive files and existing HEAD protocol"
+    },
+    {
+      "category": "REPLAY",
+      "gap": "Resolve historical Snapshot, extract original typed outcomes, verify pure T02 projection and prefix sources"
+    },
+    {
+      "category": "OTHER",
+      "gap": "Durable semantic retry/conflict detection before producer invocation; state no-op is insufficient"
+    }
+  ],
+  "E1_ARTIFACTS_MODIFIED": 0,
+  "EVENT_BINDING": [
+    "event.result is the actual full SuppliedResult; no invented result-entity or command identity",
+    "event.parent_snapshot == supplied.expected_snapshot == snapshot_id(actual pre-state)",
+    "after == T02(pre-state, actual supplied, actual validations).snapshot",
+    "event.after_snapshot == snapshot_id(after); archive returns exactly that Snapshot",
+    "after.validation_instances contains exact uniquely selected PredicateId/dossier members with full typed values",
+    "Dossier content ID == SHA256(canonical _wire(supplied.dossier)); event and Snapshot retain that same dossier",
+    "event.identity == existing _event_identity(sequence, pre-Snapshot ID, parent event, full supplied, post-Snapshot ID, None)",
+    "bundle contains the exact event and binding, post-state and source pins; HEAD names that native bundle identity"
+  ],
+  "EXISTING_PATH_SATISFIES_CONTRACT_UNCHANGED": "NO",
+  "EXISTING_PREPARE_PATH": {
+    "T02_atomicity_limit": "Immutable state admission only; no event/ledger/source enrollment/HEAD publication",
+    "T02_replay_claim_limit": "Prior T02 encode/decode is Snapshot retention, not event-bearing dossier transaction replay",
+    "existing_sequence": [
+      {
+        "contract": "SuppliedResult plus separate Tuple[ValidationInstance,...]; expected_snapshot binds native pre-state",
+        "exists": true,
+        "step": "typed inputs"
+      },
+      {
+        "contract": "Future fresh bounded producer reads authored source and Action contract, evaluates six rules; no expected oracle input",
+        "exists": "SEALED_SOURCE_RULES; NO_DURABLE_EXECUTOR_INTEGRATION",
+        "step": "bounded producer and independent checks"
+      },
+      {
+        "call": "core.admit_dossier_materialization(snapshot, supplied, validation_instances)",
+        "exists": true,
+        "step": "state admission/result application"
+      },
+      {
+        "contract": "One TransitionReport after model and readiness checks; no persisted event",
+        "exists": true,
+        "step": "private immutable post-state"
+      },
+      {
+        "call": "Snapshot is the returned immutable state; codec.snapshot_bytes / snapshot_id",
+        "exists": true,
+        "step": "Snapshot construction/hash/encoding"
+      },
+      {
+        "call": "record_result -> apply_event -> apply_result, not T02",
+        "exists": "GENERIC_PRIMITIVE_ONLY",
+        "step": "ordinary event construction/append"
+      },
+      {
+        "call": "commit_event -> record_result -> _publish_head -> save_bundle -> bundle_bytes -> _replay",
+        "exists": "GENERIC_PRIMITIVE_ONLY",
+        "step": "bundle/immutable files/HEAD publication"
+      },
+      {
+        "contract": "No historical Snapshot resolver or dossier-event branch",
+        "exists": false,
+        "step": "T02 durable replay integration"
+      }
+    ],
+    "existing_snapshot_is_state": "No separate mutable post-state entity is needed. The returned Snapshot is encoded and hashed as PLANNER-SNAPSHOT-1.",
+    "gaps": [
+      {
+        "category": "RESULT_APPLICATION",
+        "gap": "Integrate existing T02 admission into durable PREPARE path; do not use ordinary apply_result for fresh dossier"
+      },
+      {
+        "category": "POST_SNAPSHOT_CREATION",
+        "gap": "Existing hash/codec sufficient; retain canonical historical Snapshot body as immutable archive object"
+      },
+      {
+        "category": "EVENT_APPEND",
+        "gap": "Compose unchanged ExecutionEvent from T02 post-state rather than ordinary dispatcher"
+      },
+      {
+        "category": "EVENT_TO_POST_SNAPSHOT_BINDING",
+        "gap": "after_snapshot already supplies identity; implement resolver and historical outcome checks"
+      },
+      {
+        "category": "PERSISTENCE_BUNDLE_COMMIT",
+        "gap": "Atomic source-pin boundary, minimal bundle binding, archive files and existing HEAD protocol"
+      },
+      {
+        "category": "REPLAY",
+        "gap": "Resolve historical Snapshot, extract original typed outcomes, verify pure T02 projection and prefix sources"
+      },
+      {
+        "category": "OTHER",
+        "gap": "Durable semantic retry/conflict detection before producer invocation; state no-op is insufficient"
+      }
+    ],
+    "locations": [
+      {
+        "end_line": 335,
+        "line": 320,
+        "path": "adapter/planner/core.py",
+        "pointer": "",
+        "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+        "symbol": "apply_result"
+      },
+      {
+        "end_line": 428,
+        "line": 338,
+        "path": "adapter/planner/core.py",
+        "pointer": "",
+        "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+        "symbol": "admit_dossier_materialization"
+      },
+      {
+        "end_line": 583,
+        "line": 547,
+        "path": "adapter/planner/core.py",
+        "pointer": "",
+        "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+        "symbol": "apply_event"
+      },
+      {
+        "end_line": 180,
+        "line": 178,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "snapshot_bytes"
+      },
+      {
+        "end_line": 184,
+        "line": 183,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "snapshot_id"
+      },
+      {
+        "end_line": 443,
+        "line": 438,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_event_identity"
+      },
+      {
+        "end_line": 548,
+        "line": 446,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_replay"
+      },
+      {
+        "end_line": 578,
+        "line": 565,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "record_result"
+      },
+      {
+        "end_line": 636,
+        "line": 622,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "save_bundle"
+      },
+      {
+        "end_line": 663,
+        "line": 639,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "restore"
+      },
+      {
+        "end_line": 731,
+        "line": 716,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_publish_head"
+      },
+      {
+        "end_line": 762,
+        "line": 734,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_read_head"
+      },
+      {
+        "end_line": 886,
+        "line": 881,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "_prefix_bundle"
+      },
+      {
+        "end_line": 878,
+        "line": 868,
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+        "symbol": "commit_event"
+      },
+      {
+        "end_line": 194,
+        "line": 182,
+        "path": "adapter/planner/validation_transaction.py",
+        "pointer": "",
+        "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+        "symbol": "apply"
+      },
+      {
+        "end_line": 211,
+        "line": 196,
+        "path": "adapter/planner/validation_transaction.py",
+        "pointer": "",
+        "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+        "symbol": "commit"
+      }
+    ],
+    "ordinary_failure_before_append": "validate_result rejects fresh dossier when Action.prepared_dossier is None; SuppliedResult carries no validation tuple",
+    "state_effects": [
+      "PREPARE completed",
+      "actual bounded E2-K-PREPARE admitted",
+      "Action.prepared_dossier set",
+      "Decision.dossier and native stage/history advanced to DECISION_READY",
+      "six ValidationInstances admitted",
+      "native decision Action readiness recomputed; no human choice/authority issued"
+    ]
+  },
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "IDEMPOTENCE": {
+    "conflicting_retry": "Fail if any result/dossier/outcome/output/validation/source/context differs, if original prefix cannot be proven, if another command consumed that parent, or if retry asserts a new current parent for an already completed Action",
+    "identical_retry": "If a verified committed matching intent and exact effect already exist, return historical committed transaction identity and current verified head without producer invocation, ledger append, state reset or new bundle. If descendants exist, preserve them.",
+    "retry_after_precommit_failure": "No admitted event exists; reload same verified parent and run the NON_EFFECTING producer again. Orphan immutable files must match exact bytes or fail; do not silently mutate them.",
+    "retry_after_uncertain_publication": "Read trusted HEAD under lock; exact transaction present => historical no-op success; pre-state still current => new attempt; divergent head/effect => fail",
+    "retry_effect": "Full canonical SuppliedResult, canonical native validation member values, source pin/content inventory and resulting Snapshot/event/bundle identities",
+    "retry_evidence": "If an already-prepared candidate is resubmitted, require exact canonical result/tuple/source effect equality to archived committed operands. A new source/content/result under same intent is conflict, not a fresh command.",
+    "retry_intent": "(trusted expected pre-bundle ID, original parent Snapshot ID, original parent event ID, native ActionId); all are native identities, no new command namespace"
+  },
+  "IDENTITY_CYCLE": "NO",
+  "IDENTITY_DEPENDENCY_ORDER": {
+    "IDENTITY_CYCLE": "NO",
+    "edges": [
+      [
+        "sealed pre-bundle/pins/context",
+        "actual SuppliedResult/dossier/typed validation values"
+      ],
+      [
+        "actual SuppliedResult/dossier/typed validation values",
+        "T02 post-Snapshot canonical bytes/ID"
+      ],
+      [
+        "sealed pre-bundle/pins/context",
+        "T02 post-Snapshot canonical bytes/ID"
+      ],
+      [
+        "T02 post-Snapshot canonical bytes/ID",
+        "native occurrence event bytes/ID"
+      ],
+      [
+        "actual SuppliedResult/dossier/typed validation values",
+        "native occurrence event bytes/ID"
+      ],
+      [
+        "sealed pre-bundle/pins/context",
+        "native occurrence event bytes/ID"
+      ],
+      [
+        "native occurrence event bytes/ID",
+        "DossierMaterializationBinding value"
+      ],
+      [
+        "sealed pre-bundle/pins/context",
+        "DossierMaterializationBinding value"
+      ],
+      [
+        "DossierMaterializationBinding value",
+        "post PersistenceBundle bytes/ID"
+      ],
+      [
+        "T02 post-Snapshot canonical bytes/ID",
+        "post PersistenceBundle bytes/ID"
+      ],
+      [
+        "native occurrence event bytes/ID",
+        "post PersistenceBundle bytes/ID"
+      ],
+      [
+        "post PersistenceBundle bytes/ID",
+        "HEAD pointer"
+      ]
+    ],
+    "event_payload_unchanged": true,
+    "event_type": "ExecutionEvent.result branch SuppliedResult; no new PREPARE event tag",
+    "native_hashes": {
+      "Snapshot": "planner-snapshot-v1",
+      "bundle": "planner-bundle-v1",
+      "dossier": "planner-dossier-sha256",
+      "event": "planner-event-v1"
+    },
+    "new_bundle_field_not_yet_native": true,
+    "no_back_edges": [
+      "Snapshot/context/dossier/validation values never refer to the new event ID, new ledger head or new bundle ID",
+      "event.after_snapshot refers to state before ledger append, whose native Snapshot has no embedded ledger/head field",
+      "binding.expected_bundle refers to the already-existing pre-bundle, never the post-bundle",
+      "ledger pointer is a post-bundle events locator used by readers, not a hashed field of the event"
+    ],
+    "no_new_identity_domains": true,
+    "nodes_in_topological_order": [
+      "sealed pre-bundle/pins/context",
+      "actual SuppliedResult/dossier/typed validation values",
+      "T02 post-Snapshot canonical bytes/ID",
+      "native occurrence event bytes/ID",
+      "DossierMaterializationBinding value",
+      "post PersistenceBundle bytes/ID",
+      "HEAD pointer"
+    ],
+    "result_schema_unchanged": true,
+    "snapshot_schema_unchanged": true,
+    "stage_rule": "Compute state first, then event, then temporal binding and bundle; write immutably, publish HEAD last"
+  },
+  "IMPLEMENTATION_READINESS_GATES": {
+    "PersistenceBundle": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "Snapshot_binding": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "atomicity": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "cold_restore": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "event_binding": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "idempotence": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "identity_order_and_cycles": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "negative_suite": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "replay": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "transaction_operands": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION",
+    "transaction_outputs": "COMPLETE_CONTRACT_NOT_RUNTIME_QUALIFICATION"
+  },
+  "NEGATIVE_CONTRACT": {
+    "durable_cases": [
+      {
+        "case": "wrong PrepareResult",
+        "expected": "Reject before T02/HEAD",
+        "id": "DA01",
+        "mutation": "Outcome/Action/dossier/result contract differs",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "result not actually executed",
+        "expected": "Reject live API bypass; replay verifier is read-only",
+        "id": "DA02",
+        "mutation": "Raw supplied/oracle result presented to live commit without qualified producer context",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "wrong pre-state",
+        "expected": "Reject stale/misbound context",
+        "id": "DA03",
+        "mutation": "expected_snapshot or native pre-state differs",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "wrong parent",
+        "expected": "Reject before append",
+        "id": "DA04",
+        "mutation": "Original head/parent event differs",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "wrong post-Snapshot",
+        "expected": "Reject hash/model/whole-state comparison",
+        "id": "DA05",
+        "mutation": "Archive ID/body differs from event.after_snapshot",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "tampered post-state",
+        "expected": "Reject complete T02 projection equality",
+        "id": "DA06",
+        "mutation": "Unrelated Action/control/knowledge/validation/context changes",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "wrong event",
+        "expected": "Reject native event identity and binding check",
+        "id": "DA07",
+        "mutation": "Envelope/result/sequence/identity branch differs",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "wrong ledger",
+        "expected": "Reject occurrence mapping",
+        "id": "DA08",
+        "mutation": "Event not in externally trusted bundle/prefix",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "wrong append head",
+        "expected": "Reject exact prefix intent",
+        "id": "DA09",
+        "mutation": "HEAD advanced to foreign/conflicting command",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "validation bound to different Snapshot",
+        "expected": "Reject immutable binding",
+        "id": "DA10",
+        "mutation": "Member selector resolves a foreign after-state/dossier",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "missing validation binding",
+        "expected": "Reject complete tuple/reference closure",
+        "id": "DA11",
+        "mutation": "Check/member/dossier/source/binding/archive missing",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "event without result",
+        "expected": "Reject schema or replay effect",
+        "id": "DA12",
+        "mutation": "Missing actual typed result/output",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "result without event",
+        "expected": "Reject P05 occurrence assurance",
+        "id": "DA13",
+        "mutation": "State-only T02/snapshot/report offered as durable occurrence",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "duplicate retry",
+        "expected": "No duplicate durable effect; reject second append and return historical no-op",
+        "id": "DA14",
+        "mutation": "Exact already committed operation resubmitted",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "conflicting retry",
+        "expected": "Reject effect conflict",
+        "id": "DA15",
+        "mutation": "Same intent different result/check tuple/source/context",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "replay creating second occurrence",
+        "expected": "Reject; verify-only replay",
+        "id": "DA16",
+        "mutation": "Replay attempts append/publish or producer invocation",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "source substitution",
+        "expected": "Reject source validation",
+        "id": "DA17",
+        "mutation": "Raw source bytes/provenance/content differ from sealed pin",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "source boundary drift",
+        "expected": "Reject expected pre-bundle/source equality",
+        "id": "DA18",
+        "mutation": "Future source visible in an earlier prefix or omitted at A04",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "archive missing after descendant invalidation",
+        "expected": "Reject restore/replay; history cannot be inferred",
+        "id": "DA19",
+        "mutation": "Latest state substituted for original archived state",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "orphan archive accepted as occurrence",
+        "expected": "Reject graph binding",
+        "id": "DA20",
+        "mutation": "Pre-HEAD files presented without trusted accepted event/bundle",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "binding tampering",
+        "expected": "Reject trusted bundle hash or semantic binding",
+        "id": "DA21",
+        "mutation": "Bundle binding event/pre-bundle/source delta mutated",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "duplicate binding/member",
+        "expected": "Reject uniqueness",
+        "id": "DA22",
+        "mutation": "Duplicate native event binding or PredicateId",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "ordered input reversal",
+        "expected": "Reject sealed ordered input contract; R05 does not declare this tuple unordered",
+        "id": "DA23",
+        "mutation": "ValidationInstance.inputs reversed",
+        "status": "SEALED_NOT_RUN"
+      },
+      {
+        "case": "historical relabeling",
+        "expected": "Reject authorized replacement labeling",
+        "id": "DA24",
+        "mutation": "New event mapped as original A04/A03 ancestry",
+        "status": "SEALED_NOT_RUN"
+      }
+    ],
+    "failure_injection": [
+      "after producer",
+      "after typed validation checks",
+      "after T02/private state",
+      "after Snapshot hashing",
+      "after event/binding construction",
+      "after source stage",
+      "after archive stage",
+      "after event stage",
+      "after bundle stage",
+      "after pre-HEAD fsync/pin verification",
+      "during HEAD replacement",
+      "after HEAD replacement/before acknowledgement"
+    ],
+    "inherited_24_negative_expectations": {
+      "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/negative-contract.json",
+      "pointer": "",
+      "raw_sha256": "164cd1bfdec7137888ed541bce2734442cfc7d89bd86cf67760774d9fecc206c"
+    },
+    "inherited_count": 24,
+    "positive_retry_is_not_rejected": "An identical semantic retry is a success/no-op; the negative is an attempted second result/event/ledger append",
+    "qualification_boundary": "Run only in isolated fixtures in the later implementation/qualification package; no mutations or execution here",
+    "status": "SEALED_NOT_RUN"
+  },
+  "NEW_CAPABILITY": "Generic persisted dossier/PREPARE integration: detached Snapshot resolver, minimal bundle replay/source-boundary binding, T02 event dispatch, durable retry and historical replay. Not a new A04-only store or a defect in all ordinary result transactions.",
+  "NEW_CAPABILITY_SCOPE": "GENERIC_DOSSIER_PREPARE_INTEGRATION",
+  "NEXT_PACKAGE": "Generic native dossier durable admission/replay implementation and independent qualification",
+  "N_REAL_SATISFIED": "NO",
+  "ORIGINAL_A03_HISTORICAL_OCCURRENCE": "UNPROVEN",
+  "ORIGINAL_A04_HISTORICAL_ANCESTRY": "UNPROVEN",
+  "P03_HISTORICAL_CORRESPONDENCE": "UNPROVEN",
+  "P05_BOUND_STAGE_INPUTS": 10,
+  "P05_EXECUTED": "NO",
+  "P05_EXECUTION_READY": "NO",
+  "P06_EXECUTED": "NO",
+  "PERSISTENCE_BUNDLE_CONTRACT": [
+    "unchanged initial Snapshot and CHECK/COLLECT ledger prefix",
+    "A04 full native SuppliedResult occurrence event at sequence3",
+    "current full post-Snapshot",
+    "one DossierMaterializationBinding",
+    "old source pins plus exactly sealed dossier source",
+    "unchanged policy/version/scope",
+    "standalone immutable event/Snapshot/bundle files required for restore"
+  ],
+  "POST_SNAPSHOT_BINDING": {
+    "A04_expected_source_additions": [
+      {
+        "$type": "ArtifactPin",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+        },
+        "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/inputs/dossier-source.json",
+        "pointer": "",
+        "profile": {
+          "$enum": "HashProfile",
+          "value": "raw-file-sha256"
+        }
+      }
+    ],
+    "A04_expected_validation_count": 6,
+    "A04_member_bindings": [
+      {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "ordered_inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-AUTHORITY_BOUNDARY"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "ordered_inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-CONCRETE_ALTERNATIVES"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "ordered_inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-DECISION_FACTS_COMPLETE"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "ordered_inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-INDEPENDENT_VALIDATION"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "ordered_inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-QUESTION_SCOPE"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      },
+      {
+        "dossier": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-dossier-sha256",
+          "sha256": "d0bbd6202b0a36b2524be8c85062c4e5015a0a30c55db90b4623b8769ce56f8b"
+        },
+        "ordered_inputs": [
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "planner-snapshot-v1",
+            "sha256": "3af1c42da8555f4756be47fec23114bc00a8974ef830ef49ece16e67d9d4508f"
+          },
+          {
+            "$type": "ArtifactIdentity",
+            "kind": {
+              "$enum": "IdentityKind",
+              "value": "CONTENT_IDENTITY"
+            },
+            "namespace": "raw-file-sha256",
+            "sha256": "f59fa16e93a2e70ba0df3f68425081e9ed2855deac23d234d69c4fd114c91235"
+          }
+        ],
+        "predicate": {
+          "$type": "PredicateId",
+          "value": "E2-CHECK-SOURCE_PROVENANCE"
+        },
+        "snapshot": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-snapshot-v1",
+          "sha256": "38682b3fd1d13af1d056613048d85af131be2a31c0c918cc49e15c7cf6a808a4"
+        }
+      }
+    ],
+    "additional_provenance_check": "Validate every ValidationInstance.provenance and input-source binding against the historical prefix plus exact additions; do not rely solely on current decision_provenances/external_provenances coverage",
+    "archive": {
+      "authority": "No archive object alone establishes occurrence. Only an accepted event in a trusted complete bundle/HEAD with verified replay correlation does.",
+      "bytes": "Exactly codec.snapshot_bytes(Snapshot): canonical PLANNER-SNAPSHOT-1 envelope",
+      "closure": "Retain one immutable object for every event referenced by dossier_materializations, even after later invalidation/removal of current validation members",
+      "file": "snapshot-<after_snapshot.sha256>.json in the transaction directory",
+      "key": "ExecutionEvent.after_snapshot: existing planner-snapshot-v1 ArtifactIdentity",
+      "private_preflight_resolver": "Frozen in-memory map of verified historical archive plus candidate post-Snapshot; real restore uses only persisted files",
+      "resolver": "resolve_snapshot(ArtifactIdentity) -> Snapshot; reject wrong domain/missing/symlink/noncanonical/type/model/hash mismatch",
+      "same_snapshot_deduplication": "One file per exact SnapshotId; immutable-create conflict rules; archive is physical retention, not a new entity or installation"
+    },
+    "authority_references": "Preserve exact start context and PC01 native Action.authority=None; qualification scope decision remains external sealed authorization, not a new native grant. Any required authority already in pre-state is hashed there.",
+    "bundle_extension": {
+      "collection_semantics": "UNORDERED_UNIQUE_BY_EVENT_IDENTITY",
+      "constraints": [
+        "Exactly one binding per dossier-materialization event; no orphan/duplicate binding",
+        "Binding is covered by trusted final bundle hash, not trusted as a report or an unbound sidecar",
+        "The bound event must be SuppliedResult with a dossier for a decision-input Action; no authority/decision/result variant substitution",
+        "All source additions unique by path/pointer/profile across this and existing introduction mechanisms; existing pins are reused, not reintroduced",
+        "All additions physically verified and referenced by dossier/check/ValidationInstance provenance; reject unrelated pin additions",
+        "Prefix reconstruction filters bindings to included events and excludes later source additions; expected_bundle must equal native reconstructed prefix ID"
+      ],
+      "default": [],
+      "default_omission": "Explicit codec default-omission registration, following P03_FIELDS convention; existing bundles without the field retain exact bytes/IDs",
+      "field": "dossier_materializations",
+      "known_fields_only": true,
+      "type": "Tuple[DossierMaterializationBinding,...]",
+      "wire": "Additive field of PLANNER-BUNDLE-1 PersistenceBundle, native $type registry encoding, canonical tuple as JSON list"
+    },
+    "chosen_representation": "DETACHED_NATIVE_POST_SNAPSHOT_WITH_MINIMAL_BUNDLE_BINDING",
+    "event_and_snapshot_schema_changes": "NONE",
+    "native_relationships": [
+      "event.result is the actual full SuppliedResult; no invented result-entity or command identity",
+      "event.parent_snapshot == supplied.expected_snapshot == snapshot_id(actual pre-state)",
+      "after == T02(pre-state, actual supplied, actual validations).snapshot",
+      "event.after_snapshot == snapshot_id(after); archive returns exactly that Snapshot",
+      "after.validation_instances contains exact uniquely selected PredicateId/dossier members with full typed values",
+      "Dossier content ID == SHA256(canonical _wire(supplied.dossier)); event and Snapshot retain that same dossier",
+      "event.identity == existing _event_identity(sequence, pre-Snapshot ID, parent event, full supplied, post-Snapshot ID, None)",
+      "bundle contains the exact event and binding, post-state and source pins; HEAD names that native bundle identity"
+    ],
+    "new_binding_type": {
+      "fields": [
+        {
+          "name": "event_identity",
+          "namespace": "planner-event-v1",
+          "type": "ArtifactIdentity"
+        },
+        {
+          "name": "expected_bundle",
+          "namespace": "planner-bundle-v1",
+          "type": "ArtifactIdentity"
+        },
+        {
+          "collection_semantics": "UNORDERED_UNIQUE_PIN_SET",
+          "name": "source_additions",
+          "type": "Tuple[ArtifactPin,...]"
+        }
+      ],
+      "frozen": true,
+      "name": "DossierMaterializationBinding",
+      "standalone_identity": false,
+      "why_required": "Pin the exact pre-bundle/source-enrollment boundary in the hash-bound replay context; event already binds result and post-Snapshot, so neither validation bodies nor a second Snapshot reference is needed here"
+    },
+    "new_runtime_types_status": "CONTRACT_ONLY_NOT_IN_CURRENT_TYPE_REGISTRY",
+    "post_bundle_required_contents": [
+      "unchanged initial Snapshot and CHECK/COLLECT ledger prefix",
+      "A04 full native SuppliedResult occurrence event at sequence3",
+      "current full post-Snapshot",
+      "one DossierMaterializationBinding",
+      "old source pins plus exactly sealed dossier source",
+      "unchanged policy/version/scope",
+      "standalone immutable event/Snapshot/bundle files required for restore"
+    ],
+    "tamper_rule": "Any changed validation-covered native post-state member changes canonical SnapshotId and therefore event identity, or fails typed/model admission. A forged replacement hash cannot match the trusted event/bundle/HEAD anchor.",
+    "typed_member_selector": "(event.after_snapshot, native PredicateId, native dossier ArtifactIdentity); no report pointer as native identity",
+    "unordered_semantics": "Snapshot.validation_instances and native declared sets canonicalized per codec; ValidationInstance.inputs remains ordered. Duplicate PredicateIds rejected; no set conversion of ordered input tuple."
+  },
+  "PRODUCTION_EFFECT": "NO",
+  "PROSPECTIVE_A04_EVENT_IS_ORIGINAL_EVENT": "NO",
+  "PROSPECTIVE_A04_EXECUTED": "NO",
+  "PROSPECTIVE_A04_EXECUTION_READY": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "REPLAY_CONTRACT": {
+    "algorithm": [
+      "Validate the complete bundle and native event identities; collect all exact source introductions from existing admissions and new dossier bindings",
+      "Initial replay sources = bundle.sources minus explicitly recorded introductions; validate initial Snapshot/provenance and unchanged policy/scope",
+      "Walk native events in sequence, checking parent_snapshot/current state and parent_event/previous event",
+      "For each ordinary event without a dossier binding preserve existing native dispatch behavior",
+      "For bound dossier event require exact SuppliedResult type/dossier, selected native decision-input Action, original expected_snapshot and binding.expected_bundle == native current prefix bundle ID",
+      "Resolve archive exclusively by event.after_snapshot; verify canonical PLANNER-SNAPSHOT-1 bytes and native identity/model",
+      "Select original ValidationInstances by dossier checks/unique native PredicateIds; verify full subject/proposition/ordered inputs/scope/lineage/provenance/currentness and historical source boundary",
+      "Make exactly the binding source additions available at this event; verify raw source contents and reject duplicate/unrelated introduction",
+      "Invoke unchanged T02 admission as a pure historical state projection using event.result and the resolved original typed records; never call the live producer or independent validator",
+      "Compare entire canonical recomputed Snapshot with archive, not just validations or decision-ready flag; require after_snapshot equality",
+      "Advance event head exactly once; preserve native computed readiness separately from history and persisted outcomes",
+      "For prefixes keep only included binding entries and source introductions; for final bundle require exact current Snapshot hash and exact sources"
+    ],
+    "cold_restore_inputs": [
+      "externally trusted planner-bundle-v1 identity or audited HEAD",
+      "canonical bundle file",
+      "immutable event files",
+      "immutable Snapshot archive files addressed by event.after_snapshot",
+      "raw source and policy pins"
+    ],
+    "cold_restore_order": [
+      "verify expected bundle hash/known schema/type/canonical wire",
+      "verify policy and source files",
+      "verify unique binding/event correspondence and archive hash/model",
+      "replay complete history with historical archive resolver",
+      "compare final state/Snapshot/source inventory; audit HEAD previous/command when restoring HEAD",
+      "reconstruct exact A04 occurrence, parent, sequence/index, actual result/outputs and typed member bindings"
+    ],
+    "exactly_once": "Historical verification folds each committed event once; replay returns the historical bundle/state, never commits a second occurrence or increments HEAD",
+    "fresh_reader_contract": "No writer process/imported expected-state object may supply the archive. Missing disk archive fails even if latest current Snapshot or a report contains an equivalent value.",
+    "historical_outcomes": "ValidationOutcome/currentness is read from the original event-bound archived Snapshot. Readiness/model/binding checks may recompute; independent validation is not rerun as a new epistemic decision.",
+    "later_invalidation": "Retain original archive/event for historical audit. Replay later source/check invalidation separately; current readiness may become false without deleting or rewriting the original occurrence.",
+    "not_allowed": [
+      "latest mutable bundle.current as historical operand for an earlier event",
+      "writer caches or report paths as operand identity",
+      "rerunning PREPARE/source acquisition/independent validation",
+      "adding event/knowledge/result/authority on replay",
+      "inventing missing historical Snapshot/typed outcomes from final state",
+      "serializing computed permission/eligibility"
+    ],
+    "prefix_equivalence": "Reconstructed original prefix must preserve exact sources, bindings, policy, initial/current state and event order; expected_bundle is checked before the new binding is added, avoiding a hash cycle",
+    "qualification_requirements": [
+      "positive durable A04 event/complete state/source boundary",
+      "older 24 negatives plus durable negatives",
+      "injected failures at every precommit boundary",
+      "retry/no-op/conflict with descendants",
+      "cold restore and full replay in fresh processes after writer exit",
+      "replay after later validation/source invalidation retains original archive",
+      "missing archive/forged mapping must fail",
+      "zero live-producer/validator calls during replay",
+      "hash seeds0,1,7,101 and native unordered presentations"
+    ],
+    "result_output_correlation": "Full native event.result values must match the admitted post-state KnowledgeRecords/dossier and exact T02 effect; no separate invented ActionResult identity",
+    "status": "SEALED_CONTRACT_NOT_IMPLEMENTED_OR_QUALIFIED",
+    "validation_correlation": "Immutable after_snapshot selects exact original typed tuple; binding pin introductions authenticate historical provenance; whole-state projection closes correlation",
+    "validation_tamper_rejection": [
+      "wrong archive hash/canonical bytes",
+      "missing or duplicate PredicateId",
+      "wrong dossier/ordered inputs/provenance",
+      "changed generation/context/post-state",
+      "missing new source pin or changed raw source",
+      "wrong prefix/binding expected_bundle",
+      "event.result mismatch"
+    ]
+  },
+  "RESULT": "PASS",
+  "RESULT_SCOPE": "Complete contract and versioned overlay; no native implementation, durable transaction or execution qualification",
+  "REUSED_NATIVE_CAPABILITIES": [
+    "qualified T02 admit_dossier_materialization state semantics",
+    "native Snapshot/model/PLANNER-SNAPSHOT-1 codec and hash",
+    "unchanged ExecutionEvent/SuppliedResult/event identity",
+    "PersistenceBundle canonical model/PLANNER-BUNDLE-1 with default-omitting extension convention",
+    "source/policy pin verification",
+    "immutable file creation and local lock",
+    "PLANNER-HEAD-1 publication/audit"
+  ],
+  "RUNTIME_MODIFIED": "NO",
+  "SELECTED_OPTION": "AUTHORIZE_PROSPECTIVE_P05_A04_ANCESTRY_QUALIFICATION",
+  "TRANSACTION_OPERANDS": [
+    {
+      "binding": "Trusted exact native bundle identity, current Snapshot, append head, source/policy inventory and context",
+      "name": "pre_bundle",
+      "type": "PersistenceBundle"
+    },
+    {
+      "binding": "External trusted pre-bundle/HEAD anchor, not a newly computed trust claim",
+      "name": "expected_bundle",
+      "type": "ArtifactIdentity[planner-bundle-v1]"
+    },
+    {
+      "binding": "Exactly selected unexecuted decision-input producer in pre-state",
+      "name": "action",
+      "type": "ActionId"
+    },
+    {
+      "binding": "Registered trusted producer bound to current Action/source rules; receives pinned inputs only; no caller-supplied executed/validated Boolean",
+      "name": "producer",
+      "type": "Qualified bounded executor callable"
+    },
+    {
+      "binding": "Exact raw bytes for new source pins; immutable path/profile/content and rule/provenance references",
+      "name": "source_artifacts",
+      "type": "Tuple[(ArtifactPin, bytes), ...]"
+    },
+    {
+      "binding": "Existing no-symlink, local-lock, frozen-E1 and immutable-content constraints",
+      "name": "repo_root / output_dir",
+      "type": "Filesystem roots"
+    }
+  ],
+  "TRANSACTION_ORDER": [
+    "Validate exact sealed contract and expected external trust anchor; load pinned pre-bundle and source bytes",
+    "Acquire existing local transaction lock; restore and audit HEAD and native prefix; resolve retry before producer",
+    "For new intent require exact expected bundle/state/head/context/policy and selected unexecuted PREPARE",
+    "Invoke bounded producer on admitted inputs and pinned authored source; capture actual result and independent typed validations",
+    "Validate native result/tuple, provenance, supported check membership, ordered input identities and authority applicability",
+    "Apply unchanged T02 state admission privately; require exact independent result/postcondition oracle",
+    "Encode immutable post-Snapshot as PLANNER-SNAPSHOT-1; compute native SnapshotId",
+    "Construct unchanged native SuppliedResult occurrence event from sequence, pre-Snapshot, parent event, actual result, post-Snapshot ID",
+    "Construct DossierMaterializationBinding for event, trusted pre-bundle and exact new source pins; build updated bundle",
+    "Run full detached-archive replay verifier and occurrence/ancestry/post-state oracles without invoking producer or live validators",
+    "Stage immutable source/archive/event/bundle files, fsync; revalidate all pins and HEAD/pre-state",
+    "Atomically publish existing PLANNER-HEAD-1 with new bundle, previous pre-bundle, command=None; fsync directory; return success"
+  ],
+  "TRANSACTION_OUTPUTS": [
+    "committed PersistenceBundle and native planner-bundle-v1 ID",
+    "native ExecutionEvent and planner-event-v1 ID",
+    "canonical post-Snapshot and planner-snapshot-v1 ID",
+    "full actual SuppliedResult in event.result",
+    "actual KnowledgeRecords and DecisionDossier in post-state",
+    "native ValidationInstances in post-state",
+    "bundle-level DossierMaterializationBinding",
+    "content-addressed archive closure",
+    "HEAD and commit/retry disposition"
+  ],
+  "WORK_PACKAGE": "E2-P05-A04-DURABLE-ADMISSION-CONTRACT",
+  "evidence": {
+    "durable-commit-contract": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/durable-commit-contract.json",
+      "pointer": "",
+      "raw_sha256": "8dada37ea16100832111d12938a080dbf59a465b41cc1feeadcf04b05e7bc604"
+    },
+    "existing-path": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/existing-path.json",
+      "pointer": "",
+      "raw_sha256": "4ea47a749cc8336b86269b44b183ec43dc987dc7c02fddce219d52b7d79a744c"
+    },
+    "identity-order": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/identity-order.json",
+      "pointer": "",
+      "raw_sha256": "416501599df4ee823f3d430524d1a9a0bb05b2262c29336117314faf0a30e957"
+    },
+    "negative-contract": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/negative-contract.json",
+      "pointer": "",
+      "raw_sha256": "0987333f47561f6530c7cd2b2d7053934e602a9be20d96cf12673fed6bdb0e12"
+    },
+    "oracles_prospective-native-binding": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/oracles/prospective-native-binding.json",
+      "pointer": "",
+      "raw_sha256": "a18121ad8828069a4d1881054c54e4e7412f62ee3a7a1cbca025216f1306b984"
+    },
+    "replay-contract": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/replay-contract.json",
+      "pointer": "",
+      "raw_sha256": "363d98ed5b9dc6c9c390eade88c1668628cdffe85f99f59d1520ab38633a6205"
+    },
+    "snapshot-event-binding": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/snapshot-event-binding.json",
+      "pointer": "",
+      "raw_sha256": "5855680ff6c0d56da6aa2f2fda0b0eaf147fbb604e175568dbaa252f3675fed7"
+    },
+    "source-pins": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/source-pins.json",
+      "pointer": "",
+      "raw_sha256": "8d98443df5dadc2fda149b8adc83d7cc481a9b53ef5adc005af9f565c7ccec59"
+    },
+    "transaction-contract": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/transaction-contract.json",
+      "pointer": "",
+      "raw_sha256": "1049b79b2c8f8884c41de8f174a4238e0721176b7daf616b50bc29366134c84b"
+    },
+    "versioned-overlay": {
+      "path": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/versioned-overlay.json",
+      "pointer": "",
+      "raw_sha256": "ad0fdfb4fe3fbd4c5d997de89e3d2ec0d39a1e997d5e649c87834f44e7edf37d"
+    }
+  },
+  "verification_artifact": "docs/plans/qualification/E2_P05_A04_DURABLE_ADMISSION_CONTRACT_1/verification.json"
+}

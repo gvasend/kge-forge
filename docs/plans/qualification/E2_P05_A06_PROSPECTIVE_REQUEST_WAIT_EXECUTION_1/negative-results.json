@@ -1,0 +1,615 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A06_HISTORICAL_REQUEST_WAIT_TRACE": "UNPROVEN",
+  "PROSPECTIVE_A06_TRACE_IS_ORIGINAL_TRACE": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "RESULT": "PASS",
+  "cases": [
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed exact-input guard",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "3f83fb05e7bb059d1580a594f1d6343aedd10ad5ad5be698aedbcec11f34db0e",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:3f83fb05e7bb059d1580a594f1d6343aedd10ad5ad5be698aedbcec11f34db0e"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject pin/content correspondence before event commit",
+      "id": "A06-QN-01",
+      "isolated_mutation": "Change resolution.request",
+      "name": "wrong_request",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native commit_event/apply_receipt",
+        "exception_type": "PlannerError",
+        "reason": "unknown external gate",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native apply_receipt and sealed-input guard",
+      "expected": "Reject unknown/exact-gate mismatch",
+      "id": "A06-QN-02",
+      "isolated_mutation": "Foreign gate ID in command",
+      "name": "wrong_gate",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed known-rule requirement",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "d1bdbc9b4c2fce9a6fe0ad3f6c7b697a06bba7a108ae1a578461aa47213aba72",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:d1bdbc9b4c2fce9a6fe0ad3f6c7b697a06bba7a108ae1a578461aa47213aba72"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject known-rule A06 contract mismatch",
+      "id": "A06-QN-03",
+      "isolated_mutation": "Different requirement/proposition/target or unknown-rule A14",
+      "name": "wrong_dependency",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native ledger/replay",
+        "exception_type": "PlannerError",
+        "reason": "ledger sequence/parent mismatch",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native ledger admission/restore",
+      "expected": "Reject ledger parent continuity",
+      "id": "A06-QN-04",
+      "isolated_mutation": "Foreign or non-null first parent / different second parent",
+      "name": "wrong_parent",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native commit_event/apply_receipt",
+        "exception_type": "PlannerError",
+        "reason": "external event pre-state mismatch",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native apply_receipt",
+      "expected": "Reject external event pre-state mismatch",
+      "id": "A06-QN-05",
+      "isolated_mutation": "Different expected_snapshot",
+      "name": "wrong_pre_state",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native commit_event/apply_receipt",
+        "exception_type": "PlannerError",
+        "reason": "result is not for the currently selected action",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Typed admission plus occurrence oracle",
+      "expected": "Reject or nonmatching trace; no A06 binding",
+      "id": "A06-QN-06",
+      "isolated_mutation": "Replace ExternalEvent with SuppliedResult/reevaluation",
+      "name": "wrong_event_type",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native commit_event/apply_receipt",
+        "exception_type": "PlannerError",
+        "reason": "receipt identity supplied out of phase",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native type/stage admission and oracle",
+      "expected": "Reject phase/schema/payload mismatch",
+      "id": "A06-QN-07",
+      "isolated_mutation": "Change stage/artifact/payload fields",
+      "name": "wrong_event_payload",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed request source/context",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "8e5b63eaa2b173c3975ca58da25e6163a6da9239fffe8dae0f55ac1ca7291cba",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:8e5b63eaa2b173c3975ca58da25e6163a6da9239fffe8dae0f55ac1ca7291cba"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Source/contract input and Snapshot oracle",
+      "expected": "Reject native source/context correspondence",
+      "id": "A06-QN-08",
+      "isolated_mutation": "Same string but different contract content",
+      "name": "wrong_request_binding",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed gate binding",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "56165b0d8d5626fe8806935f6d5f3615f9b3d99cc0afb5aee4bd1994fde1d466",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:56165b0d8d5626fe8806935f6d5f3615f9b3d99cc0afb5aee4bd1994fde1d466"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject exact binding mismatch",
+      "id": "A06-QN-09",
+      "isolated_mutation": "Reentry/held Action or gate source changed",
+      "name": "wrong_gate_binding",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native ledger causal ordering",
+        "exception_type": "PlannerError",
+        "reason": "ledger sequence/parent mismatch",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native apply_receipt/ledger admission",
+      "expected": "Reject illegal external lifecycle transition/ancestry",
+      "id": "A06-QN-10",
+      "isolated_mutation": "Waiting submitted before request-ready or reverse ledger",
+      "name": "wrong_event_ordering",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "trusted exact native ledger oracle",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": {
+            "length": 1076,
+            "raw_sha256": "dc33e4427ba706b5c589a03f66f366956091dc43311efee7165afd108fe37944"
+          },
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": "planner-event-v1:103bbe9df5b2d222297648b59d5cbd979f057eea197768753fb6fab0c2d4aec3",
+          "EXPECTED": {
+            "length": 1076,
+            "raw_sha256": "835fd814876ed3d25937d6dfba79c3d6c1df15892b4c61dd3f6b027e246e9e20"
+          },
+          "FIRST_COUNTEREXAMPLE": "native event bytes",
+          "STATE_ID": "planner-snapshot-v1:ead9e44879abf3140637936723928700869e33ddc8d5f7dd4e0db15aaefcb66b"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Trusted bundle/occurrence oracle",
+      "expected": "Reject exact bundle/lineage/ledger correspondence",
+      "id": "A06-QN-11",
+      "isolated_mutation": "Valid events from another fixture ledger",
+      "name": "wrong_ledger",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native ledger/replay",
+        "exception_type": "PlannerError",
+        "reason": "ledger sequence/parent mismatch",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native ledger admission",
+      "expected": "Reject sequence or exact two-event completeness",
+      "id": "A06-QN-12",
+      "isolated_mutation": "Skip/repeat sequence or insert intervening event",
+      "name": "wrong_ledger_position",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed scope/context authority preflight",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "USE_AUTHORITY",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "AUTHORIZE_PROSPECTIVE_P05_A06_REQUEST_WAIT_QUALIFICATION",
+          "FIRST_COUNTEREXAMPLE": "qualification scope authority",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Scope/context preflight",
+      "expected": "Reject qualification authorization mismatch; no new authority",
+      "id": "A06-QN-13",
+      "isolated_mutation": "Use P03/INSTALL/USE authority instead of scope decision or claim an event grant",
+      "name": "wrong_authority",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "trusted input scope identity",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "4eecd451574124159915b7311ef077e2c5d7337a0f6d945229ca2a74599d50ea",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:4eecd451574124159915b7311ef077e2c5d7337a0f6d945229ca2a74599d50ea"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject trusted scope subject and input identity",
+      "id": "A06-QN-14",
+      "isolated_mutation": "Different scope with recomputed hashes",
+      "name": "wrong_scope",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "trusted input lineage identity",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "924cadc50af860935c83168e4ec3557fbddb506631deefeee10d08a28c336dda",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:924cadc50af860935c83168e4ec3557fbddb506631deefeee10d08a28c336dda"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject, never splice history",
+      "id": "A06-QN-15",
+      "isolated_mutation": "Historical/P03/A03/A04/foreign lineage",
+      "name": "wrong_lineage",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "trusted generation/currentness identity",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "e02e38ded4262e7871814f0ad54b8829576fd0fbd3575c54cbec69ea57441443",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:e02e38ded4262e7871814f0ad54b8829576fd0fbd3575c54cbec69ea57441443"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject exact generation/currentness",
+      "id": "A06-QN-16",
+      "isolated_mutation": "Foreign generation or tick",
+      "name": "wrong_generation",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed source/Snapshot provenance guard",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "cd53444d1912371103c1346793c80dffe1aaec63e28d6aebfedd21331496ee91",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:cd53444d1912371103c1346793c80dffe1aaec63e28d6aebfedd21331496ee91"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Pinned source/Snapshot guard",
+      "expected": "Reject source identity/content correspondence",
+      "id": "A06-QN-17",
+      "isolated_mutation": "Changed origin/method/content",
+      "name": "wrong_provenance",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native commit_event/apply_receipt",
+        "exception_type": "PlannerError",
+        "reason": "illegal external lifecycle transition",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Native apply_receipt",
+      "expected": "Reject illegal adjacent-stage transition",
+      "id": "A06-QN-18",
+      "isolated_mutation": "WAIT command against start",
+      "name": "wait_without_request_ready",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "complete two-event occurrence oracle",
+        "exception_type": "Divergence",
+        "intermediate_native_state_legal": true,
+        "reason": {
+          "ACTUAL": 1,
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": 2,
+          "FIRST_COUNTEREXAMPLE": "exact event count",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Complete occurrence oracle",
+      "expected": "Intermediate state allowed but full A06 trace FAIL; no binding",
+      "id": "A06-QN-19",
+      "isolated_mutation": "Persist only legal event 1",
+      "name": "request_without_wait",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native occurrence type oracle",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "Snapshot",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "PersistenceBundle",
+          "FIRST_COUNTEREXAMPLE": "native trace type",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Occurrence oracle",
+      "expected": "Reject occurrence/order assurance",
+      "id": "A06-QN-20",
+      "isolated_mutation": "Matching final Snapshot without two events",
+      "name": "snapshot_substituted_for_trace",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native occurrence type oracle",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "dict",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "PersistenceBundle",
+          "FIRST_COUNTEREXAMPLE": "native trace type",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Occurrence oracle",
+      "expected": "Reject missing native witness",
+      "id": "A06-QN-21",
+      "isolated_mutation": "PASS prose or hashes without native event bodies",
+      "name": "report_substituted_for_trace",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed nonwaiting pre-occurrence start",
+        "exception_type": "Divergence",
+        "legitimate_pre_control_EXTERNAL_WAIT_rejected": false,
+        "reason": {
+          "ACTUAL": "2818ca4f84eab845a31f6e09bf1cabc16e7e88186b4b2c8381d361095ff91788",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "f78eec6759cf73abcf9c0baffba01e2e4d3ca07a69cb982831bde1ce38dc9124",
+          "FIRST_COUNTEREXAMPLE": "full canonical Snapshot pre-trace",
+          "STATE_ID": "planner-snapshot-v1:2818ca4f84eab845a31f6e09bf1cabc16e7e88186b4b2c8381d361095ff91788"
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Start plus occurrence oracle",
+      "expected": "Reject sealed start/actual trace mismatch; scalar pre-control alone is allowed",
+      "id": "A06-QN-22",
+      "isolated_mutation": "Start already WAITING or point to retained wait Snapshot",
+      "name": "preexisting_wait_instead_of_occurrence",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "native absent-evidence receipt admission",
+        "exception_type": "PlannerError",
+        "reason": "receipt requires admitted concrete bytes",
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Exact event allowlist and post oracle",
+      "expected": "Reject extra phase/side effect; no live repair",
+      "id": "A06-QN-23",
+      "isolated_mutation": "RECEIVED/VALIDATED/REENTRY or added Evidence/receipt/result",
+      "name": "later_evidence_transition",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed historical/END scope mapping guard",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "PROVEN",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "UNPROVEN",
+          "FIRST_COUNTEREXAMPLE": "mapping label ORIGINAL_A06_HISTORICAL_REQUEST_WAIT_TRACE",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Historical/END mapping guard",
+      "expected": "Reject mapping despite any valid new events",
+      "id": "A06-QN-24",
+      "isolated_mutation": "Claim original A06 trace proved/reconstructed",
+      "name": "prospective_labeled_historical",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed historical/END scope mapping guard",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": [
+            "planner-event-v1:9bf3989eb23751878e26de543c1d92fd5dd12ccc4acc0cb13307ec1c1044f1b5",
+            "planner-event-v1:e48d97753ad6a5e2f9b263dc210ff6e92d3c207b94eb39393e1ea3e3d40caaa1"
+          ],
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": null,
+          "FIRST_COUNTEREXAMPLE": "no original identity alias",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Identity/mapping guard",
+      "expected": "Reject historical identity replacement",
+      "id": "A06-QN-25",
+      "isolated_mutation": "Alias prospective event to missing historical ID/parent",
+      "name": "prospective_identity_substituted_original",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed writer input allowlist; comparison event never submitted",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": "COMPARISON_ORACLE",
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": "ACTUAL_RESTORED_STATE_COMMAND",
+          "FIRST_COUNTEREXAMPLE": "writer native operand origin",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Writer input allowlist",
+      "expected": "Reject, only native results from sealed actual transitions qualify",
+      "id": "A06-QN-26",
+      "isolated_mutation": "Supply expected Snapshot/event/bundle to native admission",
+      "name": "oracle_used_as_operation_input",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    },
+    {
+      "RESULT": "PASS",
+      "actual": {
+        "boundary": "sealed historical/END scope mapping guard",
+        "exception_type": "Divergence",
+        "reason": {
+          "ACTUAL": true,
+          "CLASSIFICATION": "SEALED_ORACLE_DIVERGENCE",
+          "EVENT_ID": null,
+          "EXPECTED": false,
+          "FIRST_COUNTEREXAMPLE": "no prefix waiver",
+          "STATE_ID": null
+        },
+        "rejected": true
+      },
+      "actual_execution": "EXECUTED_ISOLATED",
+      "boundary": "Scope mapping guard",
+      "expected": "Reject scope expansion",
+      "id": "A06-QN-27",
+      "isolated_mutation": "Close original prefix/A05/full-END solely from A06 pair",
+      "name": "broadened_full_END_or_A05_mapping",
+      "no_canonical_or_successful_lineage_mutation": true,
+      "successful_lineage_unchanged": true
+    }
+  ],
+  "executed_count": 27,
+  "historical_P05_negatives_not_executed": true,
+  "native_and_acceptance_boundaries_distinguished": true,
+  "sealed_count": 27,
+  "sealed_expectations": {
+    "path": "docs/plans/qualification/E2_P05_A06_PROSPECTIVE_REQUEST_WAIT_CONTRACT_1/sealed-negative-oracles.json",
+    "pointer": "",
+    "raw_sha256": "3a39a3cd3f0da4b463e622aaf85286bcb784369d86c26b936f31177ccd9f3fee"
+  },
+  "successful_lineage_unchanged": true
+}

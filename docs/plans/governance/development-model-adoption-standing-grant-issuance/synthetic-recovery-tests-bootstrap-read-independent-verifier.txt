@@ -1,0 +1,92 @@
+"""Independent static decision reconstruction; no sandbox or test execution."""
+import copy,hashlib,json,pathlib,re,subprocess,tomllib
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';B='synthetic-recovery-tests-v2-';P='synthetic-recovery-tests-bootstrap-read-'
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canon(x)).hexdigest()}
+def read(n,prefix=P):
+ def pairs(items):
+  d={}
+  for k,v in items:assert k not in d;d[k]=v
+  return d
+ return json.loads((D/(prefix+n)).read_text(),object_pairs_hook=pairs)
+old=read('filesystem-serialization-corrected-subject.json',B);base=old['CONTENT'];assert old['IDENTITY']==cid(old['IDENTITY']['namespace'],base)
+spent=read('consumed-suite-attempt.json',B);assert spent['IDENTITY']==cid(spent['IDENTITY']['namespace'],spent['RECORD'])
+assert spent['RECORD']['STATE']=='CONSUMED' and spent['RECORD']['INVOCATIONS_RESERVED_AND_SUBMITTED']==1
+subject=read('owner-decision-subject.json');dossier=read('unselected-owner-decision-dossier.json');ledger=read('dependency-ledger.json')
+helper=base['EXACT_SANDBOX_ARGV'][0];profile=base['PROFILE_NAME'];oldprefix='permissions.'+profile+'.filesystem.';newkey=oldprefix+helper
+assert ledger['MINIMUM_ADDITIONAL_HOME_TREE_READ_BINDINGS']==[{'PATH':helper,'ACCESS':'read','SHA256':base['EXECUTABLE_PINS'][helper]['raw_sha256'],'TYPE':'Exact regular ELF file; no parent-directory subtree grant'}]
+assert ledger['CODEX_HELPER_LOADER_REQUIRED'] is False and ledger['NODE_WRAPPER_OR_INTERPRETER_REQUIRED'] is False
+objects=ledger['ELF_INVENTORY']
+for p,v in objects.items():
+ assert sha(p)==v['SHA256'] and str(pathlib.Path(p).resolve())==v['RESOLVED_PATH']
+ text=subprocess.check_output(['/usr/bin/readelf','-l','-d',p],text=True)
+ needed=re.findall(r'\(NEEDED\).*Shared library: \[([^]]+)\]',text);interp=re.findall(r'Requesting program interpreter: ([^]]+)\]',text)
+ assert needed==v['DT_NEEDED'] and (interp[0] if interp else None)==v['INTERPRETER']
+ assert v['RPATH_RUNPATH']==[]
+ if v['INTERPRETER']:assert v['INTERPRETER'] in objects
+ for name in needed:assert any(e['FROM']==p and e.get('SONAME')==name and e['TO'] in objects for e in ledger['DEPENDENCY_EDGES'])
+assert objects[helper]['DT_NEEDED']==[] and objects[helper]['INTERPRETER'] is None
+for p in ledger['STARTUP_AND_TEST_STDLIB_SOURCE_PINS']:assert sha(p['path'])==p['raw_sha256']
+assert sha(ledger['LD_CACHE_PIN']['path'])==ledger['LD_CACHE_PIN']['raw_sha256']
+assert not pathlib.Path('/etc/ld.so.preload').exists(),'Unlisted actual system preload: close static analysis gap, no runtime'
+for p,h in read('preservation-before.json').items():assert sha(p)==h,p
+expected_policy=dict(base['PERMISSION_RULES']);expected_policy[newkey]='read'
+expected_changed_fields={'PERMISSION_RULES','EXACT_SANDBOX_ARGV','ATTEMPT_POLICY','EVIDENCE_CAPTURE'}
+def validate(v):
+ assert v['IDENTITY']==cid(v['IDENTITY']['namespace'],v['CONTENT']);x=v['CONTENT'];c=x['CORRECTED_EXECUTION_CONTRACT']
+ assert x['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER'
+ assert x['PARENT_CONSUMED_GRANT_IDENTITY']==spent['RECORD']['GRANT_IDENTITY']
+ assert x['PARENT_CONSUMED_RECORD_IDENTITY']==spent['IDENTITY'] and x['PARENT_SUBJECT_IDENTITY']==old['IDENTITY']
+ assert x['PARENT_CONSUMED_RECORD_PIN']['raw_sha256']==sha(D/(B+'consumed-suite-attempt.json'))
+ assert x['PRESERVE_ORIGINAL_RESERVED_INVOCATION'] is True and x['NO_RESET_OR_REFUND'] is True
+ assert x['NEW_ALLOCATION_ID']=='synthetic-recovery-suite-bootstrap-read-1' and x['NEW_LIMITS']==base['LIMITS']
+ assert c['PERMISSION_RULES']==expected_policy
+ assert set(k for k in c if c[k]!=base[k])==expected_changed_fields
+ assert c['ALLOWED_SOURCE_COPIES']==base['ALLOWED_SOURCE_COPIES'] and c['EXECUTABLE_PINS']==base['EXECUTABLE_PINS']
+ assert c['EXCLUSIONS']==base['EXCLUSIONS'] and c['LIMITS']==base['LIMITS'] and c['ENVIRONMENT']==base['ENVIRONMENT']
+ assert c['WORKING_DIRECTORY']==base['WORKING_DIRECTORY'] and c['EXACT_RESOURCE_PAYLOAD']==base['EXACT_RESOURCE_PAYLOAD']
+ a=c['EXACT_SANDBOX_ARGV'];b=base['EXACT_SANDBOX_ARGV'];assert len(a)==len(b)
+ changes=[(i,z) for i,z in enumerate(a) if z!=b[i]];assert len(changes)==1
+ i,value=changes[0];assert a[i-1]=='--config' and b[i].startswith('permissions.'+profile+'.filesystem=')
+ fs=tomllib.loads(value)['permissions'][profile]['filesystem']
+ assert fs=={k[len(oldprefix):]:z for k,z in expected_policy.items() if k.startswith(oldprefix)}
+ assert a[a.index('--')+1:]==base['EXACT_RESOURCE_PAYLOAD']
+ w=pathlib.Path(base['WORKING_DIRECTORY']);assert x['NEW_RESERVATION_PATH']==str(w/'execution-start.bootstrap-read-1.json') and x['NEW_OUTCOME_PATH']==str(w/'outcome.bootstrap-read-1.json')
+ assert x['OLD_RECORD_PATHS_UNCHANGED']==[str(w/'execution-start.json'),str(w/'outcome.json')]
+ assert c['ATTEMPT_POLICY'].startswith(base['ATTEMPT_POLICY'].replace('execution-start.json','execution-start.bootstrap-read-1.json'))
+ assert c['EVIDENCE_CAPTURE']==base['EVIDENCE_CAPTURE'].replace('execution-start.json','execution-start.bootstrap-read-1.json').replace('outcome.json','outcome.bootstrap-read-1.json')
+ assert x['ONLY_NEW_RUNTIME_READ_PERMISSION']=={'PATH':helper,'ACCESS':'read','SHA256':base['EXECUTABLE_PINS'][helper]['raw_sha256']}
+ assert x['DEPENDENCY_LEDGER_PIN']['raw_sha256']==sha(D/(P+'dependency-ledger.json'))
+validate(subject)
+assert dossier['SUBJECT_IDENTITY']==subject['IDENTITY'] and dossier['SUBJECT_PIN']['raw_sha256']==sha(D/(P+'owner-decision-subject.json'))
+assert dossier['STATUS']=='UNSELECTED_PROSPECTIVE' and dossier['SELECTED_OPTION'] is None and dossier['NEW_GRANT_ISSUED'] is False and dossier['NEW_SUITE_EXECUTED'] is False
+assert [v['OPTION_ID'] for v in dossier['OPTIONS']]==['AUTHORIZE_EXACT_CODEX_BOOTSTRAP_READ_AND_ONE_NEW_SYNTHETIC_SUITE','DECLINE_EXACT_CODEX_BOOTSTRAP_READ_AND_ONE_NEW_SYNTHETIC_SUITE']
+mut=[]
+def add(label,f):
+ v=copy.deepcopy(subject);f(v['CONTENT']);v['IDENTITY']=cid(v['IDENTITY']['namespace'],v['CONTENT']);mut.append((label,v))
+add('wrong issuer',lambda x:x.update(ISSUER_ROLE='OTHER'))
+add('old invocation reused',lambda x:x.update(NEW_ALLOCATION_ID='old'))
+add('old receipt overwritten',lambda x:x.update(NEW_RESERVATION_PATH=x['OLD_RECORD_PATHS_UNCHANGED'][0]))
+add('consumption forgotten',lambda x:x.update(PRESERVE_ORIGINAL_RESERVED_INVOCATION=False))
+add('counter refund',lambda x:x.update(NO_RESET_OR_REFUND=False))
+add('full home read',lambda x:x['CORRECTED_EXECUTION_CONTRACT']['PERMISSION_RULES'].update({oldprefix+'/home/gvasend':'read'}))
+add('full nvm read',lambda x:x['CORRECTED_EXECUTION_CONTRACT']['PERMISSION_RULES'].update({oldprefix+'/home/gvasend/.nvm':'read'}))
+add('helper writable',lambda x:x['CORRECTED_EXECUTION_CONTRACT']['PERMISSION_RULES'].update({newkey:'write'}))
+add('helper wrong pin',lambda x:x['ONLY_NEW_RUNTIME_READ_PERMISSION'].update(SHA256='0'*64))
+add('network enabled',lambda x:x['CORRECTED_EXECUTION_CONTRACT']['PERMISSION_RULES'].update({'permissions.'+profile+'.network.enabled':True}))
+add('extra suite allocation',lambda x:x['NEW_LIMITS'].update(SUITE_INVOCATIONS=2))
+add('automatic retry',lambda x:x['NEW_LIMITS'].update(AUTOMATIC_RETRIES=1))
+add('increased CPU',lambda x:x['NEW_LIMITS'].update(CPU_SECONDS=61))
+add('changed witness inputs',lambda x:x['CORRECTED_EXECUTION_CONTRACT']['ALLOWED_SOURCE_COPIES'].pop())
+add('changed resource argv',lambda x:x['CORRECTED_EXECUTION_CONTRACT']['EXACT_RESOURCE_PAYLOAD'].append('--execute'))
+add('lost exclusions',lambda x:x['CORRECTED_EXECUTION_CONTRACT'].update(EXCLUSIONS=[]))
+add('changed cwd',lambda x:x['CORRECTED_EXECUTION_CONTRACT'].update(WORKING_DIRECTORY='/tmp'))
+add('changed evidence rule',lambda x:x['CORRECTED_EXECUTION_CONTRACT'].update(EVIDENCE_CAPTURE='unbounded'))
+rejected=[]
+for name,v in mut:
+ try:validate(v)
+ except (AssertionError,ValueError,TypeError,KeyError):rejected.append(name)
+ else:raise AssertionError('accepted negative '+name)
+result={'RESULT':'PASS','SUBJECT_IDENTITY':subject['IDENTITY'],'ELF_OBJECTS':len(objects),'DEPENDENCY_EDGES':len(ledger['DEPENDENCY_EDGES']),'HELPER_STATIC_NO_EXTERNAL_LOADER_OR_LIBRARIES':True,'ONLY_ONE_ADDITIONAL_EXACT_FILE_READ':True,'DOWNSTREAM_NATIVE_AND_STDLIB_AVAILABILITY':'PASS_STATIC_HOST','COMPILED_NAMESPACE_VISIBILITY':'FRESH_ENTRY_PENDING; not claimed observed','OLD_CONSUMPTION_PRESERVED':True,'NEW_SUITE_LIMIT':1,'AUTOMATIC_RETRIES':0,'NEGATIVE_DESIGNS':len(mut),'NEGATIVE_EXECUTIONS_REJECTED':len(rejected),'NEGATIVE_LABELS':rejected,'HISTORICAL_PRESERVATION':'PASS','NEW_AUTHORITY_ISSUED':False,'NEW_SUITE_EXECUTED':False}
+print(json.dumps(result,sort_keys=True))

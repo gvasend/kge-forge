@@ -1,0 +1,38 @@
+======================================================================
+ERROR: test_conflicting_claims_are_not_overwritten (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 200, in test_conflicting_claims_are_not_overwritten
+    self.assertEqual(validated.current.receipt_observations[0].claims[0].outcome,m.ProofState.DISPROVED)
+IndexError: tuple index out of range
+
+======================================================================
+ERROR: test_pinned_source_shaped_fixture (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 368, in test_pinned_source_shaped_fixture
+    after,identity,noop=c.admit_external_evidence(cold,request,{request.entity.provenance.path:fixture['new_evidence_utf8'].encode()},root/'store',root)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 831, in admit_external_evidence
+    updated = preflight_external_evidence(current,request,source_bytes,repo_root,
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 789, in preflight_external_evidence
+    admitted = _extend_private(current,request)
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 758, in _extend_private
+    after = apply_event(bundle.current,supplied).snapshot
+  File "/home/gvasend/app/kge-forge/adapter/planner/core.py", line 548, in apply_event
+    return apply(snapshot, supplied)
+  File "/home/gvasend/app/kge-forge/adapter/planner/evidence.py", line 117, in apply
+    raise m.PlannerError('FIELD_PROVENANCE')
+adapter.planner.model.PlannerError: FIELD_PROVENANCE
+
+======================================================================
+FAIL: test_validation_and_reentry_separate (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/tests/test_planner_evidence_admission.py", line 96, in test_validation_and_reentry_separate
+    self.assertEqual(validated.current.external_gates[0].stage,m.ExternalStage.EVIDENCE_VALIDATED)
+AssertionError: <ExternalStage.WAITING_FOR_EXTERNAL_EVIDENCE: 'WAITING_FOR_EXTERNAL_EVIDENCE'> != <ExternalStage.EVIDENCE_VALIDATED: 'EVIDENCE_VALIDATED'>
+
+----------------------------------------------------------------------
+Ran 20 tests in 84.715s
+
+FAILED (failures=1, errors=2)

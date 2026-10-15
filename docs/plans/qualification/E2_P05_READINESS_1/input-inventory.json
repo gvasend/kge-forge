@@ -1,0 +1,109 @@
+[
+  {
+    "cases": "ALL",
+    "classification": "PRESENT_CURRENT",
+    "evidence": {
+      "path": "docs/plans/qualification/E2_P05_READINESS_1/canonical-case-contracts.json",
+      "raw_sha256": "7aa609a4374cb52e54b55f6156555c4f3f1aeece4a951084c8ba6f2703f7acd2"
+    },
+    "id": "CANONICAL_PLAN_AND_MATRIX"
+  },
+  {
+    "cases": "P05_INITIAL / D01 / END comparison",
+    "classification": "PRESENT_CURRENT",
+    "evidence": "docs/plans/qualification/E2_P05_READINESS_1/target-inspection.json",
+    "id": "P04_CANONICAL_TARGET"
+  },
+  {
+    "cases": "A09-A13 coverage / N03-N07,N09-N15 / D01",
+    "classification": "PRESENT_CURRENT",
+    "evidence": {
+      "path": "docs/plans/qualification/E2_P05_READINESS_1/P04-input-checkpoints.json",
+      "raw_sha256": "7e2f702c430a1926c358c30b5f11032d07465462c154c66cc0dd4a3b50c16534"
+    },
+    "id": "P04_BOUNDARY_BUNDLES_AND_ORACLES"
+  },
+  {
+    "cases": "A14-A16 / N01-N03,N16",
+    "classification": "PRESENT_CURRENT",
+    "evidence": "docs/plans/DETERMINISTIC_PLANNER_V0_1_P03_PROSPECTIVE_CHECKPOINT_QUALIFICATION_1.json",
+    "id": "P03_GOVERNED_UNKNOWN_AND_INVALIDATION_FIXTURES"
+  },
+  {
+    "cases": "END / D01 / N08,N12",
+    "classification": "MUST_MATERIALIZE",
+    "evidence": {
+      "path": "docs/plans/qualification/E2_P05_READINESS_1/E2-END-input-closure-trace.json",
+      "raw_sha256": "5dd536786da64c2025932a313ae0b4e1178096071b27c62ec346a4d2d8bb71ac"
+    },
+    "id": "CURRENT_NATIVE_E2_END_A01_A13_INPUT_GRAPH",
+    "why": "The current target starts from prospective authored completed-prefix premises; old PC01-PC04 bind a different baseline. No complete native current full-lifecycle binding is established."
+  },
+  {
+    "cases": "END",
+    "classification": "DERIVABLE",
+    "dependency": "CURRENT_NATIVE_E2_END_A01_A13_INPUT_GRAPH",
+    "id": "END_SOURCE_POLICY_AUTHORITY_AND_PARENT_BINDINGS",
+    "limit": "Resolve within exact existing semantic scope; changed authority subjects require separate bounded closure, not reuse of historical grants."
+  },
+  {
+    "cases": "N01-N07,N09-N11,N13-N16",
+    "classification": "DERIVABLE",
+    "evidence": {
+      "path": "docs/plans/qualification/E2_P05_READINESS_1/sealed-negative-oracles.json",
+      "raw_sha256": "1c4df07f6610a4fb34b02afbc72ffdf80efc44bf83215caf064a36ca12a6d401"
+    },
+    "id": "NATIVE_NEGATIVE_OPERANDS"
+  },
+  {
+    "cases": "N08,N12",
+    "classification": "MUST_MATERIALIZE",
+    "dependency": "CURRENT_NATIVE_E2_END_A01_A13_INPUT_GRAPH",
+    "id": "INITIAL_AND_SELECTED_UNEXECUTED_NEGATIVE_OPERANDS"
+  },
+  {
+    "cases": "D01",
+    "classification": "PRESENT_CURRENT",
+    "evidence": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC04_D01.json",
+    "id": "D01_DIMENSIONS_AND_READER_ALLOWLIST"
+  },
+  {
+    "cases": "D01",
+    "classification": "DERIVABLE",
+    "dependency": "CURRENT_NATIVE_E2_END_A01_A13_INPUT_GRAPH",
+    "id": "D01_CASE_CHECKPOINT_PROCESS_BINDINGS"
+  },
+  {
+    "cases": "REG",
+    "classification": "PRESENT_CURRENT",
+    "evidence": "docs/plans/qualification/E2_P05_READINESS_1/static-test-inventory.json",
+    "id": "BASELINE_CURRENT_NATIVE_CLI_IMPORTER_CONSTRUCTOR_TESTS"
+  },
+  {
+    "cases": "REG",
+    "classification": "PRESENT_CURRENT",
+    "evidence": "docs/experiments/E1; baseline preservation pins",
+    "id": "BASELINE_READ_ONLY_E1_CORPUS_AND_POLICY"
+  },
+  {
+    "cases": "N01-N16",
+    "classification": "PRESENT_CURRENT",
+    "evidence": {
+      "path": "docs/plans/qualification/E2_P05_READINESS_1/sealed-negative-oracles.json",
+      "raw_sha256": "1c4df07f6610a4fb34b02afbc72ffdf80efc44bf83215caf064a36ca12a6d401"
+    },
+    "id": "NEGATIVE_EXPECTATIONS"
+  },
+  {
+    "cases": "P06 gate",
+    "classification": "PRESENT_CURRENT",
+    "evidence": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC04_REVIEW.json",
+    "id": "P06_REVIEW_SUBJECT_TEMPLATE"
+  },
+  {
+    "cases": "P05 exit / P06 gate",
+    "classification": "OTHER",
+    "id": "FUTURE_P05_PASS_LOGS",
+    "why": "Outputs of P05 execution, not circular execution-readiness inputs."
+  }
+]

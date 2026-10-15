@@ -1,0 +1,168 @@
+{
+  "APPROVAL": null,
+  "CONTENT": {
+    "APPROVAL_EVIDENCE_INCLUDED_IN_DIGEST": false,
+    "CAMPAIGN_LIMIT": "At most one synthetic campaign, deterministic identity from future issued construction/test grant + exact test manifest; first unexpected failure consumes campaign permission, zero automatic retries; no extra campaigns",
+    "CONTRACT_PINS": [
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/single-use-state-machine.json",
+        "RAW_SHA256": "00204acec29751d94319537ece027478ffba1a49cfd640634fea3669780e34ef"
+      },
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/consumption-key-specification.json",
+        "RAW_SHA256": "a0bcd38eea0bccbb8540ff2b52d3ba1a9a481aee0792d2db43a2249fdb712c80"
+      },
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/atomicity-durability-contract.json",
+        "RAW_SHA256": "1ad78da0815c5734cd1b7f50977242af4a45478f00091c12c133a4acb1aadeaa"
+      },
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/crash-concurrency-matrix.json",
+        "RAW_SHA256": "ccd9e0d29211d4efda214fbcc90a5205c78c7cce2b760f0d21a15190b984a8fe"
+      },
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/minimal-gate-design.json",
+        "RAW_SHA256": "e849bb68ef8233432a76d56729eed0237d7a5f96154fd8a29a85443ebf76253f"
+      },
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-79/synthetic-qualification-plan.json",
+        "RAW_SHA256": "65a56cb7e310302a2e64d2d229aee7116d1a9f6928f71f0606a315242367977d"
+      }
+    ],
+    "EFFECTIVE_CHARTER_LIFECYCLE": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "kge-forge-charter-lifecycle-record-v1",
+      "sha256": "a27516baa0ab7f34a36a1130490b6cfa38c508975ca337e0824c8eac33715cbb"
+    },
+    "ENVIRONMENT_ENTRY_RULE": "Actual host/runtime profile, binary versions/pins, parent permissions and qualified confinement/controller seals must be supplied and verified at future entry; this content is not a sealed runtime or permission grant",
+    "EVIDENCE_PINS": [
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/execution-contract-77/host-capability-test-authorization-subject.json",
+        "RAW_SHA256": "8c6a1e64c932b03a8c24fee823d0b84ae7178fca708db2986308e4610a35bf8f"
+      },
+      {
+        "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/probe-grant-issuance-78/issuance-gap-dossier.json",
+        "RAW_SHA256": "55770a572a2cc2e1009974186580635bb473826fd34413a011968e58a6c4df12"
+      },
+      {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_IMPLEMENTATION_TEST_GRANT_ISSUANCE_71/issued-implementation-test-grant-25395fb3c06be58a8c538c618b9e50b9d118aa415d0843968254d3f8e83dd8fa.json",
+        "RAW_SHA256": "565fc51fbd58497e3df003c25263685515e998e6691d556c2aa8a4fbb1968be7"
+      },
+      {
+        "PATH": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66/effective-charter-reference.json",
+        "RAW_SHA256": "9eec358d829b1139f970ca310ebd83b09adf410def8595e947d667845a4a1b44"
+      },
+      {
+        "PATH": "docs/plans/qualification/E2_P05_D01_A15_NORMATIVE_ADOPTION_ISSUANCE_68/effective-normative-mandate-reference.json",
+        "RAW_SHA256": "de24aa6a1a441b42b1bd8b923b8064c9878e12e1dc067381059a81a371aa4c1c"
+      }
+    ],
+    "EXCLUSIONS": [
+      "H77-02 execution or grant issuance",
+      "A15 adapter/fake/native/real execution or capture",
+      "six-file adapter or native runtime mutation",
+      "production/external access",
+      "security/cgroup changes or elevated privileges",
+      "old campaign reuse",
+      "automatic retry or scope expansion"
+    ],
+    "EXPIRATION_RULE": "No activation until issuance; once issued, ends at scope completion, owner revocation/supersession, unexpected entry/safety/resource failure or campaign ceiling. No implicit repeat",
+    "GOVERNING_CHARTER": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "kge-forge-qualification-governance-charter-v1",
+      "sha256": "d26962c58f17281173e965433dae63a941e078115f3dcc30e2a3512fa21812b8"
+    },
+    "H77_SUBJECT": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "qualification-a15-host-capability-test-subject-v1",
+      "sha256": "762b88071476cea67c08c8e57d5b893f61c2d8843cc7f0f04a07f05b52fe3a80"
+    },
+    "IMPLEMENTATION_PATHS": [
+      "adapter/qualification_h77_02_gate/__init__.py",
+      "adapter/qualification_h77_02_gate/gate.py",
+      "adapter/tests/test_h77_02_launch_gate.py"
+    ],
+    "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY",
+    "MANDATES": "New construction and phase-gated synthetic implementation qualification only; this proposal grants nothing",
+    "NETWORK_POLICY": "No connections or network calls; actual OS process/filesystem/network confinement support must be independently verified before active phase; unknown blocks",
+    "OUTPUT_BOUNDARY": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-implementation-qualification-1",
+    "PERMITTED_TESTS": [
+      "first claim admits one synthetic callback",
+      "duplicate claim rejects",
+      "two simultaneous claims admit at most one callback",
+      "same grant different process/temp path same key rejects",
+      "process restart preserves blocked claim",
+      "controlled crash at each before/after write/fsync/dir-fsync/verification stage; never launch before barrier",
+      "claim/barrier/verifier failure prevents callback",
+      "post-consumption callback failure never resets authority",
+      "unknown outcome remains consumed",
+      "wrong grant rejected",
+      "wrong command rejected",
+      "revoked/expired/unknown epoch rejected",
+      "resource mismatch rejected",
+      "no automatic retry",
+      "existing symlink/partial/conflicting token fail closed",
+      "audit failure never releases claim",
+      "original sources/history/journal unchanged"
+    ],
+    "PHASE_GATES": {
+      "ACTIVE_SYNTHETIC": [
+        "Fresh separately bound campaign under this proposed instrument only; no stopped campaign reuse",
+        "Pinned Python/source/test manifest and fixture/independent expected states",
+        "Exact runtime permission and enforceable CPU/AS/file/FD/child/campaign/written-byte controls",
+        "Actual confinement/isolation: synthetic output allowlist, readonly allowed dependencies/code; unknown denies all active tests",
+        "Independent supervisor wait/kill accounting and no retries; controller qualified before process tests",
+        "No real H77 argv or native A15 dispatch reachable in test mode"
+      ],
+      "CONSTRUCTION": [
+        "Exact issued effective construction grant and owner role",
+        "Path/source baseline verified",
+        "No revoked/superseded/expired scope"
+      ],
+      "PURE_STATIC": [
+        "Construction phase valid; no launch/probe operations"
+      ]
+    },
+    "PURPOSE": "Construct and qualify one independent identity-keyed gate; no actual host probe or A15",
+    "RESOURCE_LIMITS": {
+      "CHILD_AS": 1073741824,
+      "CHILD_CPU": 30,
+      "CHILD_FDS": 64,
+      "CHILD_FSIZE": 16777216,
+      "CHILD_WALL": 60,
+      "MAX_ACTUAL_PROCESS_SLOTS": 4,
+      "MAX_PAYLOAD_LAUNCHES": 128,
+      "RETRIES": 0,
+      "TOTAL_WALL": 600,
+      "TOTAL_WRITES": 67108864
+    },
+    "SCHEMA": "H77-02-GATE-CONSTRUCTION-SYNTHETIC-TEST-SUBJECT-79-1",
+    "SOURCE_CHANGE_BOUNDARY": "Only three explicit paths. All six adapter and native runtime/V3 sources unchanged; no new dependency/package install",
+    "SYNTHETIC_INPUTS": {
+      "ALL_GRANT_SOURCE_COMMAND_IDS": "Synthetic only; real H77 subject is readonly authorization comparison metadata, never executable test input",
+      "LAUNCH_BACKEND": "Inert in-process callback only; child claim tests may invoke pinned Python and authorized test file only",
+      "PREFIX": "qualification-h77-02-gate-synthetic-*",
+      "REAL_INPUTS_PROHIBITED": [
+        "real A15 checkpoint",
+        "real A15 oracles",
+        "real invalidation descriptors",
+        "stopped journal as executable input"
+      ]
+    },
+    "TEMP_BOUNDARY": "One exclusive actor-owned nonsymlink /tmp/kge-h77-02-gate-synthetic-<32lowerhex> root; all synthetic stores/fixtures only inside it, no real consumption store"
+  },
+  "IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h77-02-gate-implementation-test-subject-v1",
+    "sha256": "9c6ccc426dc2acb4126d85006ea6fb6f830b8c21bbfbfcdf8003058e146c9354"
+  },
+  "ISSUED": false
+}

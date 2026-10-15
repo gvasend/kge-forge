@@ -1,0 +1,5102 @@
+{
+  "actual_oracle_instance_sealed": false,
+  "gate_output_used": false,
+  "identity": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h77-02-executable-oracles-v1",
+    "sha256": "2a8bbc4758b8b3d0564c4b4474df4b5bb7bbb942a219f847ab73d122aa074c30"
+  },
+  "remaining_gaps": [],
+  "runtime_parameterization": "Owned path/device/inode fixture binding is reconstructed before RUN; event identity uses exact actor/ordinal; OS errno/message and process IDs retained as per-run observations, no scheduling winner assumed.",
+  "schema": "H77-02-INDEPENDENT-ORACLES-84-1",
+  "source_independent": true,
+  "status": "COMPLETE_STATIC_PARAMETERIZED",
+  "tests": {
+    "test_before_claim_failure_does_not_launch": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "before",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic before-claim fault",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "stage:BEFORE_CLAIM"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic before-claim fault",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "stage:BEFORE_CLAIM"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic before-claim fault",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "stage:BEFORE_CLAIM"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic before-claim fault",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": true
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "synthetic before-claim fault",
+                          "type": "RuntimeError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic before-claim fault",
+              "type": "RuntimeError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "synthetic before-claim fault",
+              "type": "RuntimeError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_concurrent_claimants_at_most_one": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "result0",
+              "alternatives": [
+                {
+                  "classification": "success",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "claim.returned",
+                      "value": {
+                        "result": "$CLAIM_RESULT"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "classification": "locked",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:locked",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:locked",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:locked"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "result1",
+              "alternatives": [
+                {
+                  "classification": "success",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "claim.returned",
+                      "value": {
+                        "result": "$CLAIM_RESULT"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "classification": "locked",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:locked",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:locked",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:locked"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 1,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 11,
+              "message": null,
+              "type": "BlockingIOError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_controlled_crash_points_remain_blocked": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "crash0": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result0",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "DURING_CLAIM"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "crash1": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result1",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "crash2": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result2",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "crash3": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result3",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "crash4": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result4",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "DURING_LAUNCH"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "crash5": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result5",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "crash6": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "crash-result6",
+              "alternatives": [
+                {
+                  "classification": "crash",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    },
+                    {
+                      "kind": "fault.injected",
+                      "value": {
+                        "cause": "CONTROLLED_EXIT_77",
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        },
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "crash0": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "EMPTY",
+          "controlled_crash_point": "DURING_CLAIM",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash1": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim"
+            ],
+            "directory_confirmations": 0,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_FILE_FSYNC",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash2": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim"
+            ],
+            "directory_confirmations": 1,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_DIRECTORY_FSYNC",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash3": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim"
+            ],
+            "directory_confirmations": 1,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_CLAIM_BEFORE_LAUNCH",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash4": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt"
+            ],
+            "directory_confirmations": 3,
+            "file_confirmations": 3,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "DURING_LAUNCH",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash5": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt"
+            ],
+            "directory_confirmations": 3,
+            "file_confirmations": 3,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_LAUNCH_BEFORE_OBSERVATION",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "crash6": {
+          "allowed_failures": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt"
+            ],
+            "directory_confirmations": 3,
+            "file_confirmations": 3,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": "AFTER_COMPLETION_BEFORE_AUDIT",
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        },
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 0,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_directory_fsync_failure_blocks_launch": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "directory",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic directory fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:directory"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic directory fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:directory"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic directory fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:directory"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic directory fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:directory"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic directory fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:directory"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic directory fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": true
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "synthetic directory fsync failure",
+                          "type": "OSError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic directory fsync failure",
+              "type": "OSError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "unknown"
+            ],
+            "directory_confirmations": 0,
+            "file_confirmations": 2,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "OSError",
+          "fault_constraints": [
+            {
+              "message": "synthetic directory fsync failure",
+              "type": "OSError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_file_fsync_failure_blocks_launch": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "file",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:$FILE:claim"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:$FILE:claim"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:$FILE:claim"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:$FILE:unknown"
+                        },
+                        "secondary": true
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "fsync:$FILE:claim"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic fsync failure",
+                            "type": "OSError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": true
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "synthetic fsync failure",
+                          "type": "OSError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic fsync failure",
+              "type": "OSError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "OSError",
+          "fault_constraints": [
+            {
+              "message": "synthetic fsync failure",
+              "type": "OSError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_first_and_duplicate_claim": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "success",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "claim.returned",
+                      "value": {
+                        "result": "$CLAIM_RESULT"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 1,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_independent_reread_failure_blocks_launch": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "reread",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic reread failure",
+                            "type": "GateError"
+                          },
+                          "origin": "readonly-confirmation"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic reread failure",
+                            "type": "GateError"
+                          },
+                          "origin": "readonly-confirmation"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic reread failure",
+                            "type": "GateError"
+                          },
+                          "origin": "readonly-confirmation"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic reread failure",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": true
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "synthetic reread failure",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic reread failure",
+              "type": "GateError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "unknown"
+            ],
+            "directory_confirmations": 2,
+            "file_confirmations": 2,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "GateError",
+          "fault_constraints": [
+            {
+              "message": "synthetic reread failure",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_invalid_grant_pin": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "invalid",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BAD_GRANT_PIN"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "PIN_MISMATCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "PIN_MISMATCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "PIN_MISMATCH",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "PIN_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "PIN_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BAD_GRANT_PIN"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_key_is_independently_reconstructed_and_stable": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 0,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_missing_permissions_and_wrong_subject": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "permission",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:PERMISSION_UNKNOWN"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "ENTRY_UNVERIFIED",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "ENTRY_UNVERIFIED",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "ENTRY_UNVERIFIED",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "invalid",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BAD_SUBJECT_PIN"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "PIN_MISMATCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "PIN_MISMATCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "PIN_MISMATCH",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "ENTRY_UNVERIFIED",
+              "type": "GateError"
+            },
+            {
+              "message": "PIN_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "PERMISSION_UNKNOWN",
+              "BAD_SUBJECT_PIN"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_no_real_launcher_reachable_in_synthetic_mode": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "success",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "claim.returned",
+                      "value": {
+                        "result": "$CLAIM_RESULT"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 1,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_partial_and_conflicting_records": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "partial",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic partial write",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "stage:DURING_CLAIM"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic partial write",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "stage:DURING_CLAIM"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic partial write",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "stage:DURING_CLAIM"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic partial write",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": true
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "synthetic partial write",
+                          "type": "RuntimeError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic partial write",
+              "type": "RuntimeError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "unknown"
+            ],
+            "directory_confirmations": 1,
+            "file_confirmations": 1,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "EMPTY",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "RuntimeError",
+          "fault_constraints": [
+            {
+              "message": "synthetic partial write",
+              "type": "RuntimeError"
+            }
+          ],
+          "recovery_constraints": [
+            {
+              "launch_permitted": false,
+              "retry_allowed": false,
+              "state": "OUTCOME_UNKNOWN"
+            }
+          ],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_post_consumption_failure_unknown_and_no_retry": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "callback",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.exception",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "first": {
+                          "errno": null,
+                          "message": "synthetic callback failure",
+                          "type": "RuntimeError"
+                        }
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:unknown"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic callback failure",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "synthetic callback failure",
+                            "type": "RuntimeError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "synthetic callback failure",
+                          "type": "RuntimeError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 2
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "synthetic callback failure",
+              "type": "RuntimeError"
+            },
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": null,
+            "unknown": "UNKNOWN"
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "unknown"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [
+            {
+              "errno": null,
+              "message": "synthetic callback failure",
+              "type": "RuntimeError"
+            }
+          ],
+          "callback_returns": 0,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": "RuntimeError",
+          "fault_constraints": [
+            {
+              "message": "synthetic callback failure",
+              "type": "RuntimeError"
+            }
+          ],
+          "recovery_constraints": [
+            {
+              "launch_permitted": false,
+              "retry_allowed": false,
+              "state": "CONSUMED"
+            }
+          ],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_process_restart_preserves_claim": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "first",
+              "alternatives": [
+                {
+                  "classification": "success",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:claim"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_FILE_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_DIRECTORY_FSYNC"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_CLAIM_BEFORE_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "readonly-confirmation.request",
+                      "value": {}
+                    },
+                    {
+                      "kind": "readonly-confirmation.confirmed",
+                      "value": {
+                        "identity": "$CLAIM_ID"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:consumed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:attempt"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "DURING_LAUNCH"
+                      }
+                    },
+                    {
+                      "kind": "callback.invoked",
+                      "value": {
+                        "arguments": [],
+                        "callback_identity": "$CALLBACK_ID"
+                      }
+                    },
+                    {
+                      "kind": "callback.returned",
+                      "value": {
+                        "callback_identity": "$CALLBACK_ID",
+                        "value": {
+                          "inert_callback_only": true
+                        }
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_LAUNCH_BEFORE_OBSERVATION"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "AFTER_COMPLETION_BEFORE_AUDIT"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "$FILE:observed"
+                      }
+                    },
+                    {
+                      "kind": "barrier.request",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "barrier.confirmed",
+                      "value": {
+                        "target": "directory"
+                      }
+                    },
+                    {
+                      "kind": "claim.returned",
+                      "value": {
+                        "result": "$CLAIM_RESULT"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            },
+            {
+              "actor": "restart",
+              "alternatives": [
+                {
+                  "classification": "duplicate",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "stage",
+                      "value": {
+                        "point": "BEFORE_CLAIM"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:duplicate",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:duplicate"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 1,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 17,
+              "message": null,
+              "type": "FileExistsError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": "ATTEMPT",
+            "consumed": "CONSUMED",
+            "observed": "OBSERVED",
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [
+              "claim",
+              "consumed",
+              "attempt",
+              "observed"
+            ],
+            "directory_confirmations": 4,
+            "file_confirmations": 4,
+            "readonly_confirmations": 1
+          },
+          "callback_count": 1,
+          "callback_errors": [],
+          "callback_returns": 1,
+          "claim_shape": "COMPLETE",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 2,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 1
+        }
+      }
+    },
+    "test_resource_mismatch": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "resource",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:CPU_MISMATCH"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "RESOURCE_OR_PROFILE_MISMATCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "RESOURCE_OR_PROFILE_MISMATCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "RESOURCE_OR_PROFILE_MISMATCH",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "RESOURCE_OR_PROFILE_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "RESOURCE_OR_PROFILE_MISMATCH",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "CPU_MISMATCH"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_revoked_epoch": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "revoked",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:BASE"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": "REVOKED",
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "REVOKED_EXPIRED_OR_UNKNOWN_EPOCH",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "BASE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_symlink_store_rejected": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "symlink",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:SYMLINK_STORE"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": "$ERROR:symlink",
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": "$ERROR:symlink",
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": "$ERROR:symlink"
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "errno": 20,
+              "message": null,
+              "type": "NotADirectoryError"
+            },
+            {
+              "errno": 40,
+              "message": null,
+              "type": "OSError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": null,
+              "type": "OSError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "SYMLINK_STORE"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    },
+    "test_wrong_command": {
+      "completeness": "COMPLETE_STATIC_PARAMETERIZED",
+      "normative_source": "Package79 irreversible consumption/durability/crash/concurrency rules plus Package82 independent semantic expectations",
+      "operation_comparisons": {
+        "main": {
+          "retry_count": 0,
+          "schema": "H77-02-OPERATION-COMPARISON-84-1",
+          "slots": [
+            {
+              "actor": "parent",
+              "alternatives": [
+                {
+                  "classification": "command",
+                  "events": [
+                    {
+                      "kind": "claim.request",
+                      "value": {
+                        "entry": "$ENTRY:WRONG_COMMAND"
+                      }
+                    },
+                    {
+                      "kind": "fault.observed",
+                      "value": {
+                        "first": {
+                          "exception": {
+                            "errno": null,
+                            "message": "COMMAND_OR_CONTEXT",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "observed": {
+                          "exception": {
+                            "errno": null,
+                            "message": "COMMAND_OR_CONTEXT",
+                            "type": "GateError"
+                          },
+                          "origin": "gate-exception"
+                        },
+                        "secondary": false
+                      }
+                    },
+                    {
+                      "kind": "claim.failed",
+                      "value": {
+                        "exception": {
+                          "errno": null,
+                          "message": "COMMAND_OR_CONTEXT",
+                          "type": "GateError"
+                        }
+                      }
+                    }
+                  ]
+                }
+              ],
+              "ordinal": 1
+            }
+          ],
+          "successful_claims": 0,
+          "unexpected_event_allowed": false,
+          "unmatched_operation_allowed": false
+        }
+      },
+      "variants": {
+        "main": {
+          "allowed_failures": [
+            {
+              "message": "COMMAND_OR_CONTEXT",
+              "type": "GateError"
+            }
+          ],
+          "audit_constraints": {
+            "attempt": null,
+            "consumed": null,
+            "observed": null,
+            "unknown": null
+          },
+          "barrier_constraints": {
+            "confirmed_file_phases": [],
+            "directory_confirmations": 0,
+            "file_confirmations": 0,
+            "readonly_confirmations": 0
+          },
+          "callback_count": 0,
+          "callback_errors": [],
+          "callback_returns": 0,
+          "claim_shape": "ABSENT",
+          "controlled_crash_point": null,
+          "epoch_status": null,
+          "error_type": null,
+          "fault_constraints": [
+            {
+              "message": "COMMAND_OR_CONTEXT",
+              "type": "GateError"
+            }
+          ],
+          "recovery_constraints": [],
+          "request_constraints": {
+            "count": 1,
+            "variants": [
+              "WRONG_COMMAND"
+            ]
+          },
+          "schema": "H77-02-EXECUTABLE-ORACLE-MODEL-83-1",
+          "successful_claims": 0
+        }
+      }
+    }
+  }
+}

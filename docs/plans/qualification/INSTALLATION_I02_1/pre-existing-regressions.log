@@ -1,0 +1,229 @@
+test_conflicting_claims_are_not_overwritten (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ERROR
+test_hash_order_process_determinism (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... FAIL
+test_head_audit_and_claim_conflict (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ERROR
+test_ingress_invalidated_before_receipt (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ok
+test_pinned_source_shaped_fixture (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ERROR
+test_process_crash_each_persistence_boundary (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... FAIL
+test_replay_receipt_not_live_event_and_stale_attestor (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ERROR
+test_source_changed_during_commit_has_no_head (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ok
+test_two_distinct_gates_serialize_against_new_parent (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... ERROR
+test_two_process_writers_one_semantic_receipt (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests) ... FAIL
+/usr/lib/python3.8/subprocess.py:946: ResourceWarning: subprocess 11 is still running
+  _warn("subprocess %s is still running" % self.pid,
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+test_cold_live_receipt_cli_and_replay_once (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... /usr/lib/python3.8/subprocess.py:744: ResourceWarning: unclosed file <_io.TextIOWrapper name=4 encoding='UTF-8'>
+  _cleanup()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.8/subprocess.py:744: ResourceWarning: unclosed file <_io.TextIOWrapper name=7 encoding='UTF-8'>
+  _cleanup()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_crash_before_head_leaves_parent (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_idempotence_conflict_and_parent (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_invalidation_preserves_history_withdraws_support (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_negative_fields_never_commit (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ok
+test_no_standalone_or_backdated_admission (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_payload_pin_and_deleted_source (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_route_stale_before_admission (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ok
+test_unknown_and_negative_claim_never_positive (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_validation_and_reentry_separate (adapter.tests.test_planner_evidence_admission.AdmissionTests) ... ERROR
+test_branch_correspondence_and_invalidation (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_cold_reload_hash_seeds_orderings_and_repeated_control (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_control_matrix_independent_branch_cross_product (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_every_bound_dimension_rejects_substitution (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_governed_external_unknown (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_mixed_runnable_human_and_internal_acquisition (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_receipt_and_positive_reentry_unchanged (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_two_gate_branch_and_contract_ordering (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+test_unbound_missing_and_incomplete_routes (adapter.tests.test_planner_external_unknown.ExternalUnknownTests) ... ok
+
+======================================================================
+ERROR: test_conflicting_claims_are_not_overwritten (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 198, in test_conflicting_claims_are_not_overwritten
+    received,_,_=c.admit_external_evidence(bundle,request,{request.entity.provenance.path:raw},root/'store',root)
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_head_audit_and_claim_conflict (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 336, in test_head_audit_and_claim_conflict
+    received,_,_=self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_pinned_source_shaped_fixture (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 368, in test_pinned_source_shaped_fixture
+    after,identity,noop=c.admit_external_evidence(cold,request,{request.entity.provenance.path:fixture['new_evidence_utf8'].encode()},root/'store',root)
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 779, in admit_external_evidence
+    admitted = _extend_private(current,request)
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 728, in _extend_private
+    after = apply_event(bundle.current,supplied).snapshot
+  File "/tmp/i02-baseline-runtime/adapter/planner/core.py", line 545, in apply_event
+    return apply(snapshot, supplied)
+  File "/tmp/i02-baseline-runtime/adapter/planner/evidence.py", line 114, in apply
+    raise m.PlannerError('FIELD_PROVENANCE')
+adapter.planner.model.PlannerError: FIELD_PROVENANCE
+
+======================================================================
+ERROR: test_replay_receipt_not_live_event_and_stale_attestor (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 207, in test_replay_receipt_not_live_event_and_stale_attestor
+    after,_,_=self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_two_distinct_gates_serialize_against_new_parent (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 321, in test_two_distinct_gates_serialize_against_new_parent
+    received,_,_=c.admit_external_evidence(bundle,first,{first.entity.provenance.path:self.raw},self.store,self.root)
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_crash_before_head_leaves_parent (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 181, in test_crash_before_head_leaves_parent
+    with self.assertRaises(OSError):self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_idempotence_conflict_and_parent (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 119, in test_idempotence_conflict_and_parent
+    after,identity,noop=self.admit();self.assertFalse(noop)
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_invalidation_preserves_history_withdraws_support (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 139, in test_invalidation_preserves_history_withdraws_support
+    after,_,_=self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_no_standalone_or_backdated_admission (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 129, in test_no_standalone_or_backdated_admission
+    after,_,_=self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_payload_pin_and_deleted_source (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 174, in test_payload_pin_and_deleted_source
+    after,identity,_=self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_unknown_and_negative_claim_never_positive (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 166, in test_unknown_and_negative_claim_never_positive
+    received,_,_=c.admit_external_evidence(bundle,request,{request.entity.provenance.path:raw},root/'store',root)
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+ERROR: test_validation_and_reentry_separate (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 94, in test_validation_and_reentry_separate
+    after,_,_=self.admit()
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 65, in admit
+    return c.admit_external_evidence(bundle or self.bundle,request or self.request,
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+======================================================================
+FAIL: test_hash_order_process_determinism (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 234, in test_hash_order_process_determinism
+    self.assertEqual(r.returncode,0,r.stderr);identities.append(r.stdout.strip())
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 7, in <module>
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+
+======================================================================
+FAIL: test_process_crash_each_persistence_boundary (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 293, in test_process_crash_each_persistence_boundary
+    self.assertEqual(dry.returncode,0,dry.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "<string>", line 14, in <module>
+  File "/tmp/i02-baseline-runtime/adapter/planner/codec.py", line 786, in admit_external_evidence
+    raise m.PlannerError('RECEIPT_CHANGED_CONTROL')
+adapter.planner.model.PlannerError: RECEIPT_CHANGED_CONTROL
+
+
+======================================================================
+FAIL: test_two_process_writers_one_semantic_receipt (adapter.tests.test_planner_evidence_admission.AdditionalAdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 266, in test_two_process_writers_one_semantic_receipt
+    out,err=child.communicate();self.assertEqual(child.returncode,0,err);outputs.append(json.loads(out))
+AssertionError: 2 != 0 : RECEIPT_CHANGED_CONTROL
+
+
+======================================================================
+FAIL: test_cold_live_receipt_cli_and_replay_once (adapter.tests.test_planner_evidence_admission.AdmissionTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/i02-baseline-runtime/adapter/tests/test_planner_evidence_admission.py", line 82, in test_cold_live_receipt_cli_and_replay_once
+    self.assertEqual(run.returncode,0,run.stderr)
+AssertionError: 2 != 0 : RECEIPT_CHANGED_CONTROL
+
+
+----------------------------------------------------------------------
+Ran 29 tests in 21.815s
+
+FAILED (failures=4, errors=12)

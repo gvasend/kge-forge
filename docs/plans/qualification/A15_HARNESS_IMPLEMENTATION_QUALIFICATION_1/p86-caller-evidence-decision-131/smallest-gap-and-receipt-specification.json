@@ -1,0 +1,63 @@
+{
+  "CALLER_PARAMETER": "Actual decimal HOST_CALLER_PID plus verified /proc/PID/stat starttime and boot identity, supplied by operator; do not choose inspection self PID",
+  "CALLSITE_RECEIPT": "Raw hash and exact lines of actual existing operator/launcher invocation; pins of caller executable and child127; explicit standard endpoint objects, closure/CLOEXEC/pass_fds and ordering, process/session topology. Snapshot alone insufficient.",
+  "COMMAND_TEMPLATES": [
+    [
+      "/bin/cat",
+      "/proc/<HOST_CALLER_PID>/stat",
+      "/proc/<HOST_CALLER_PID>/status",
+      "/proc/<HOST_CALLER_PID>/cgroup"
+    ],
+    [
+      "/bin/readlink",
+      "--",
+      "/proc/<HOST_CALLER_PID>/exe",
+      "/proc/<HOST_CALLER_PID>/cwd",
+      "/proc/<HOST_CALLER_PID>/ns/user",
+      "/proc/<HOST_CALLER_PID>/ns/mnt",
+      "/proc/<HOST_CALLER_PID>/ns/pid"
+    ],
+    [
+      "/bin/ls",
+      "-l",
+      "--",
+      "/proc/<HOST_CALLER_PID>/fd"
+    ],
+    [
+      "/bin/cat",
+      "/proc/<HOST_CALLER_PID>/fdinfo/<EACH_OBSERVED_FD>"
+    ]
+  ],
+  "ENVIRONMENT_RECEIPT": "Authenticate existing launch configuration assigning exact clean env127; do not dump arbitrary credential-bearing environ. Selected PATH/loader/startup hook evidence may be separately permissioned/redacted; incomplete identity remains UNKNOWN.",
+  "EXISTING_EXECUTABLE_PINS": {
+    "/bin/cat": {
+      "RAW_SHA256": "87e5bd81850e11eeec2d3bb696b626b2a7f45673241cbbd64769c83580432869",
+      "RESOLVED": "/bin/cat"
+    },
+    "/bin/ls": {
+      "RAW_SHA256": "1e39354a6e481dac48375bfebb126fd96aed4e23bab3c53ed6ecf1c5e4d5736d",
+      "RESOLVED": "/bin/ls"
+    },
+    "/bin/readlink": {
+      "RAW_SHA256": "d51208f0931965a9ea6afb5596bb24a1af5f9978819a5f2a9a44c6682706d227",
+      "RESOLVED": "/bin/readlink"
+    }
+  },
+  "EXPECTED_EVIDENCE": [
+    "caller executable raw pin and uid/gid",
+    "birth-bound identity and namespaces/cgroup",
+    "0..2 backing objects/modes and all extra fdinfo flags/CLOEXEC",
+    "existing callsite preventing unintended inherited capabilities before first exec",
+    "exact startup/environment source and permissions"
+  ],
+  "ID": "P131_EXISTING_CALLER_PROC_AND_CALLSITE_RECEIPT",
+  "LIMITS": "No selectable collection subject sealed: actual PID, operator permission, finite collector/output limits and live receipt are missing. Commands are templates, not invented exact executed receipt.",
+  "NOT_PROOF_OF_FUTURE_EXEC": "Configuration/semantics and fresh same-route guard necessary; process FD snapshot is evidence at capture time only",
+  "ORDER": "Caller identified/birth checked, read-only snapshot, source/config authenticated, birth rechecked; changed/reused PID, races or incomplete table UNKNOWN. Independently verify fresh entry under same exact route.",
+  "PERMISSIONS": "Same-user proc reads may be available subject to ptrace/hidepid/policy; verify actual read permission. No sudo/cross-user inference.",
+  "READER": "Existing independently permitted host operator reads a nominated already-running caller via pinned cat/readlink/ls; independent reviewer verifies raw receipt and launch source/configuration",
+  "SCOPE": "Host metadata only; no witness/bwrap/unshare/resource changes/protected descriptor opening; no target process signal or exec",
+  "SEPARATE_AUTHORITY": "Read-only metadata collection only if already independently permitted; otherwise seek scoped permission. Any active descriptor census or launch validation requires separate bounded execution authority.",
+  "STATUS": "PROSPECTIVE_READ_ONLY_RECEIPT_TEMPLATE_NOT_EXECUTED",
+  "TEMPLATE_CONTENT_SHA256": "98b55506329800a051e65f67ca852d06e1f419374433ca07dde70f9369bf0d5f"
+}

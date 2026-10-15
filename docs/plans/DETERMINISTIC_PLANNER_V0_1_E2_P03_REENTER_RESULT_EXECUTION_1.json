@@ -1,0 +1,90 @@
+{
+  "work_package": "E2-P03-REENTER-RESULT-EXECUTION",
+  "result": "BLOCKED",
+  "pre_execution_snapshot_id": "65ec09d5bd0b809078279ffd838425b6819b04bc114b24f061fa8a72b6acabce",
+  "action_definition": {
+    "action_id": "E2-REENTER",
+    "action_type": "DETERMINISTIC_MAPPING",
+    "inputs": [
+      "E2-K-COLLECT",
+      "E2-K-CHECK"
+    ],
+    "prerequisites": [
+      "ACTION_COMPLETED(E2-DECIDE)"
+    ],
+    "decision_inputs": [
+      "recorded E2-DECIDE choice"
+    ],
+    "authority": "E2-USE-AUTHORITY",
+    "execution_semantics": "ordinary native supplied-result admission; no direct completion",
+    "expected_result_type": "SuppliedResult",
+    "result_subject": "E2-K-REENTER",
+    "result_predicate": "E2-KP-REENTER (reserved source contract; not instantiated in live state)",
+    "result_value": "PASS",
+    "result_provenance": {
+      "source": "E2-REENTER definition provenance",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "lineage": "E2-CANONICAL-BASELINE-1"
+    },
+    "downstream_consumers": [
+      "E2-FINISH"
+    ]
+  },
+  "result_contract_fields": {
+    "action": "DEFINED",
+    "result": "DEFINED",
+    "knowledge_output": "DEFINED_IN_PC01_SOURCE_MISSING_IN_LIVE_ACTION",
+    "expected_snapshot": "DEFINED",
+    "provenance": "DEFINED_IN_SOURCE",
+    "accepted_inventory": "MISSING_IN_LIVE_ACTION",
+    "completion_admission": "DEFINED_BY_NATIVE_VALIDATE_RESULT"
+  },
+  "positive_result_fixture": {
+    "status": "PASS_SPECIFICATION_ONLY",
+    "fixture_id": "f61beca32d8cabdf457b9fad284a6532811f34bd2ad41b8369b06d5cf734507d",
+    "result_type": "SuppliedResult",
+    "knowledge_id": "E2-K-REENTER",
+    "outcome": "PASS",
+    "producer": "E2-REENTER",
+    "statement": "Bounded reentry mapping produced",
+    "applied": false
+  },
+  "negative_result_fixtures": [
+    "without execution rejected",
+    "wrong Action rejected",
+    "wrong result type rejected",
+    "wrong subject rejected",
+    "wrong predicate rejected",
+    "wrong outcome rejected",
+    "wrong Evidence/validation/proof/reentry rejected",
+    "wrong authority/scope/lineage rejected",
+    "stale result rejected",
+    "missing provenance rejected",
+    "prospective result substituted for actual result rejected"
+  ],
+  "determinism": "PASS (prospective fixture identity canonical and stable)",
+  "e2_reenter_result_contract": "INCOMPLETE: authoritative PC01 output exists, but live Action.accepted_inventory is empty",
+  "e2_reenter_result_contract_complete": false,
+  "e2_reenter_execution": "NOT_ATTEMPTED",
+  "e2_reenter_result_id": "NOT_CREATED",
+  "result_admission": "NOT_ATTEMPTED",
+  "action_completed_e2_reenter": false,
+  "e2_finish_before_result": "NON_ACTIONABLE",
+  "e2_finish_after_reenter": "NON_ACTIONABLE",
+  "p03_target_state": "UNREACHED",
+  "p03_exit_predicate": false,
+  "persistence": "PRE-EXECUTION CHECKPOINT COLD RESTORE PASS",
+  "cold_restore": "PASS",
+  "replay": "NOT_RUN",
+  "targeted_regressions": "TARGETED E2 T03 PASS (6); native result admission reproduces no accepted bounded result contract",
+  "full_suite_status": "BLOCKED_BY_PREEXISTING_FROZEN_E1_DUPLICATE_IMPORT",
+  "root_cause": "QUALIFICATION_FIXTURE_MATERIALIZER_OMISSION",
+  "next_package": "EVIDENCE-E05 E2-REENTER accepted-result contract materialization",
+  "e2_p03_result": "BLOCKED",
+  "e2_p04_ready": false,
+  "n_real_satisfied": false,
+  "canonical_e2_qualified": false,
+  "e2_finish_executed": false,
+  "e1_artifacts_modified": 0,
+  "production_effect": false
+}

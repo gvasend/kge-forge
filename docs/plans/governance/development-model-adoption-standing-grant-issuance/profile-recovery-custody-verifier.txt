@@ -1,0 +1,44 @@
+import copy,hashlib,json,os,pathlib,sys
+D=pathlib.Path('docs/plans/governance/development-model-adoption-standing-grant-issuance')
+def read(p):return json.loads(pathlib.Path(p).read_text())
+def raw(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def digest(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True).encode()).hexdigest()
+def pin(x):assert raw(x['path'])==x['raw_sha256']
+s=read(D/'profile-recovery-custody-supplement-subject.json');proposal=read(D/'profile-recovery-state-custody-adjudication.json')['PROPOSED_MINIMUM_OWNER_DECISION'];approval=read(D/'profile-recovery-custody-owner-approval.json');g=read(D/'issued-profile-installation-recovery-grant.json');old_effect=read(D/'profile-recovery-effectiveness-reference.json')
+assert digest(s['CONTENT'])==s['IDENTITY']['sha256'] and s['CONTENT']['APPROVED_PROPOSAL']==proposal
+assert digest(approval['CONTENT'])==approval['IDENTITY']['sha256'];pin(approval['CONTENT']['SUBJECT_PIN']);pin(approval['CONTENT']['APPROVED_PROPOSAL_PIN']);assert approval['CONTENT']['SUBJECT_IDENTITY']==s['IDENTITY'] and approval['CONTENT']['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and approval['CONTENT']['CONSUMPTION_OR_RECOVERY_AUTHORIZED'] is False
+assert digest(g['RECORD'])==g['GRANT_IDENTITY']['sha256'] and digest(old_effect['RECORD'])==old_effect['IDENTITY']['sha256']
+assert s['CONTENT']['AFFECTED_GRANT_IDENTITY']==g['GRANT_IDENTITY'] and s['CONTENT']['AFFECTED_EFFECTIVENESS_IDENTITY']==old_effect['IDENTITY'] and s['CONTENT']['ATTEMPT_IDENTITY']==g['RECORD']['SINGLE_ATTEMPT_IDENTITY']
+assert g['RECORD']['ALLOCATION']['RECOVERY_ATTEMPTS']==1 and g['RECORD']['ALLOCATION']['AUTOMATIC_RETRIES']==0
+for p,h in read(D/'profile-recovery-custody-preservation-before.json').items():assert raw(p)==h,p
+assert not pathlib.Path(proposal['PROPOSED_PERMANENT_CONSUMPTION_RECORD']).exists()
+mode=sys.argv[1];name={'candidate':'profile-recovery-custody-adoption-candidate.json','adoption':'profile-recovery-custody-adoption-record.json','effectiveness':'profile-recovery-custody-effectiveness-reference.json'}[mode];v=read(D/name);assert digest(v['RECORD'])==v['IDENTITY']['sha256']
+def validate(x):
+ assert x['ISSUER_ROLE']=='KGE-FORGE-PROJECT-OWNER' and x['APPROVED_SUBJECT_IDENTITY']==s['IDENTITY']
+ assert x['OPERATIVE_BINDINGS']==s['CONTENT']['OPERATIVE_BINDINGS'] and x['AFFECTED_GRANT_IDENTITY']==g['GRANT_IDENTITY'] and x['ATTEMPT_IDENTITY']==g['RECORD']['SINGLE_ATTEMPT_IDENTITY']
+ for k in ['CONSUMPTION_RECORD_CREATED','HOST_RECOVERY_EXECUTED','PROFILE_ACTIVATED','PILOT_EXECUTED']:assert x[k] is False
+ assert x['CHARTER_AND_EXISTING_GRANTS_UNCHANGED'] is True
+ if mode!='effectiveness':
+  assert x['ADOPTED_CONTENT']==s['CONTENT'] and x['EXCLUSIONS']==proposal['EXCLUSIONS'] and x['INITIAL_ATTEMPT_STATE']=='NOT_ESTABLISHED_BY_ADOPTION'
+  assert x['STATUS']=='ADOPTION_RECORDED_PENDING_INDEPENDENT_EFFECTIVENESS_VERIFICATION';pin(x['APPROVED_SUBJECT_PIN']);pin(x['OWNER_APPROVAL_PIN'])
+ else:
+  adopted=read(D/'profile-recovery-custody-adoption-record.json');assert x['ADOPTION_IDENTITY']==adopted['IDENTITY'];pin(x['ADOPTION_PIN']);pin(x['INDEPENDENT_ADOPTION_VERIFICATION_PIN']);pin(x['CONFLICT_RECHECK_PIN']);pin(x['PRESERVATION_RECHECK_PIN'])
+  q=read(x['INDEPENDENT_ADOPTION_VERIFICATION_PIN']['path']);assert q['RESULT']=='PASS' and len(q['RESULTS'])==4 and len({r['semantic_sha256'] for r in q['RESULTS']})==1
+  assert x['NO_BACKDATING'] is True and x['INITIAL_ATTEMPT_STATE']=='REQUIRES_EVIDENCE_RECONCILIATION; NOT_UNUSED_BY_DECLARATION' and x['STATUS']=='EFFECTIVE_RECOVERY_CUSTODY_BINDING_ONLY'
+validate(v['RECORD'])
+if mode!='candidate':
+ receipt=read(D/('profile-recovery-custody-'+mode+'-publication-receipt.json'));pin(receipt['PIN']);assert all(receipt[k] is True for k in ['EXCLUSIVE_NO_OVERWRITE','FILE_FSYNC','DIRECTORY_FSYNC','REREAD_BYTES_MATCH'])
+mutations=[]
+def add(path,value):
+ m=copy.deepcopy(v['RECORD']);p=m
+ for k in path[:-1]:p=p[k]
+ p[path[-1]]=value;mutations.append(m)
+for path,value in [(['ISSUER_ROLE'],'UNAUTHORIZED'),(['APPROVED_SUBJECT_IDENTITY','sha256'],'0'*64),(['OPERATIVE_BINDINGS','ATTEMPT_STATE_CUSTODIAN'],'UNAUTHORIZED'),(['OPERATIVE_BINDINGS','AUTHORITATIVE_RECORD_DOMAIN'],'/tmp/new-store'),(['OPERATIVE_BINDINGS','PERMANENT_CONSUMPTION_RECORD'],'/tmp/new-claim'),(['OPERATIVE_BINDINGS','CONSUMPTION_RULE'],'Overwrite/reset on failure'),(['ATTEMPT_IDENTITY','sha256'],'0'*64),(['CONSUMPTION_RECORD_CREATED'],True),(['HOST_RECOVERY_EXECUTED'],True),(['PROFILE_ACTIVATED'],True),(['PILOT_EXECUTED'],True),(['CHARTER_AND_EXISTING_GRANTS_UNCHANGED'],False),(['INITIAL_ATTEMPT_STATE'],'UNUSED')]:add(path,value)
+if mode=='effectiveness':add(['NO_BACKDATING'],False);add(['INDEPENDENT_ADOPTION_VERIFICATION_PIN','raw_sha256'],'0'*64)
+rejected=0
+for m in mutations:
+ try:validate(m)
+ except (AssertionError,KeyError):rejected+=1
+ else:raise AssertionError('accepted invalid mutation')
+semantic={'stage':mode,'identity':v['IDENTITY'],'subject':s['IDENTITY'],'custodian':'KGE-FORGE-PROJECT-OWNER','record_domain':proposal['PROPOSED_COMPLETE_RECORD_DOMAIN'],'initial_unused_not_inferred':True,'consumption_record_created':False,'preservation':'PASS','negative_designs':len(mutations),'negative_rejected':rejected}
+print(json.dumps({'seed':os.environ['PYTHONHASHSEED'],'semantic':semantic,'semantic_sha256':digest(semantic)},sort_keys=True))

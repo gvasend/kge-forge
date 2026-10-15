@@ -1,0 +1,69 @@
+--- adapter/planner/validation_transaction.py (before)
++++ adapter/planner/validation_transaction.py (after)
+@@ -15,6 +15,17 @@
+ 
+ def identified(value,namespace):
+  c,i=env();w=c._wire(value);w.pop('id');return replace(value,id=i.digest(w,namespace))
++
++def canonical_inputs(values):
++ """Unique identity-set membership projected to the native deterministic tuple.
++
++ The codec treats assessment/result/support inputs as unordered. The legacy
++ ValidationInstance projection is ordered, so materialize it in this order;
++ never let unordered presentation affect admission or historical state IDs.
++ """
++ for identity in values:m.validate_types(identity,m.ArtifactIdentity)
++ m.unique(values,lambda z:(z.kind.value,z.namespace,z.sha256))
++ return tuple(sorted(values,key=lambda z:(z.kind.value,z.namespace,z.sha256)))
+ 
+ def key(command):
+  c,i=env();w=c._wire(command);w.pop('command_key');return i.digest(w,'planner-validation-support-command-v1')
+@@ -71,7 +82,7 @@
+  i.require(binding==cmd.semantic_binding,'VALIDATION_TEMPLATE_BINDING')
+  for pin in i.request_provenances(record.request):i.require(m.ArtifactPin(pin.path,pin.identity) in bundle.sources,'VALIDATION_SOURCE_NOT_PINNED')
+  invalidated={p for e in bundle.events if type(e.result) is m.SourceInvalidation for p in e.result.changed}
+- ids=tuple(sorted({cmd.expected_snapshot,cmd.expected_parent_event,cmd.receipt_reference,entity.identity,a.provenance.identity,cmd.semantic_binding.content_id,cmd.semantic_binding.semantic_evidence_id,*(p.identity for p in i.request_provenances(record.request)),*history},key=lambda z:(z.kind.value,z.namespace,z.sha256)))
++ ids=canonical_inputs({cmd.expected_snapshot,cmd.expected_parent_event,cmd.receipt_reference,entity.identity,a.provenance.identity,cmd.semantic_binding.content_id,cmd.semantic_binding.semantic_evidence_id,*(p.identity for p in i.request_provenances(record.request)),*history})
+  i.require(not invalidated.intersection(ids),'VALIDATION_SOURCE_INVALIDATED')
+  return record,d,b,n,a,x,entity,gate,v,ids
+ 
+@@ -104,7 +115,7 @@
+ 
+ def verify_assessment(cmd,assessment,v,ids):
+  c,i=env();m.validate_types(assessment,m.ValidationAssessment)
+- i.require(assessment==identified(assessment,'planner-validation-assessment-v1') and (assessment.command_key,assessment.input_identities,assessment.validation_contract,assessment.rule_id,assessment.scope,assessment.lineage,assessment.generation,assessment.provenance)==(cmd.command_key,ids,cmd.validation_contract,v['validator_rule'],cmd.scope,cmd.lineage,cmd.generation,cmd.provenance),'VALIDATION_ASSESSMENT_BINDING')
++ i.require(assessment==identified(assessment,'planner-validation-assessment-v1') and (assessment.command_key,canonical_inputs(assessment.input_identities),assessment.validation_contract,assessment.rule_id,assessment.scope,assessment.lineage,assessment.generation,assessment.provenance)==(cmd.command_key,canonical_inputs(ids),cmd.validation_contract,v['validator_rule'],cmd.scope,cmd.lineage,cmd.generation,cmd.provenance),'VALIDATION_ASSESSMENT_BINDING')
+  expected=v['semantic_expectations'];i.require(tuple(z.clause_id for z in assessment.clauses)==tuple(sorted(expected)),'VALIDATION_ASSESSMENT_CLAUSES')
+  for clause in assessment.clauses:
+   actual=c.parse_json(clause.actual_json.encode());exp=c.parse_json(clause.expected_json.encode())
+@@ -126,7 +137,7 @@
+ 
+ def project(snapshot,r):
+  state=m.ValidationState.ACCEPTED if r.outcome is m.ValidationOutcome.PASS else m.ValidationState.REJECTED
+- inst=m.ValidationInstance(predicate_id(r),r.proposition,r.provenance.identity,r.input_identities,r.outcome,r.scope,r.lineage,state,r.provenance)
++ inst=m.ValidationInstance(predicate_id(r),r.proposition,r.provenance.identity,canonical_inputs(r.input_identities),r.outcome,r.scope,r.lineage,state,r.provenance)
+  return replace(snapshot,entities=tuple(replace(e,validated=r.outcome is m.ValidationOutcome.PASS,validation=state) if e.id==r.evidence else e for e in snapshot.entities),validation_results=snapshot.validation_results+(r,),validation_instances=snapshot.validation_instances+(inst,))
+ 
+ def build(bundle,cmd,assessment):
+@@ -206,12 +217,14 @@
+   values=getattr(snapshot,field);m.unique(values,lambda x:x.id)
+  m.unique(snapshot.validation_results,lambda r:(r.evidence,r.validation_contract,r.generation))
+  for support in snapshot.validation_support_records:
++  canonical_inputs(support.input_identities)
+   i.require(any(r.id==support.validation_result_id for r in snapshot.validation_results),'VALIDATION_SUPPORT_WITHOUT_RESULT')
+  for r in snapshot.validation_results:
++  canonical_inputs(r.input_identities)
+   i.require(r==identified(r,'planner-validation-result-record-v1'),'VALIDATION_RESULT_ID')
+   sr=[x for x in snapshot.validation_support_records if x.validation_result_id==r.id]
+   i.require(len(sr)==1,'VALIDATION_SUPPORT_REQUIRED')
+-  s=sr[0];i.require(s==identified(s,'planner-validation-support-record-v1') and s.evidence==r.evidence and s.receipt_reference==r.receipt_reference and s.command_key==r.command_key and s.observation.artifact==r.evidence and s.observation.accepted==(r.outcome is m.ValidationOutcome.PASS) and s.outcome is (m.ValidationSupportOutcome.ACCEPTED_RECEIPT_SUPPORT if s.observation.accepted else m.ValidationSupportOutcome.REJECTED_RECEIPT_OBSERVATION),'VALIDATION_SUPPORT_RECORD')
++  s=sr[0];i.require(s==identified(s,'planner-validation-support-record-v1') and s.evidence==r.evidence and canonical_inputs(s.input_identities)==canonical_inputs(r.input_identities) and s.receipt_reference==r.receipt_reference and s.command_key==r.command_key and s.observation.artifact==r.evidence and s.observation.accepted==(r.outcome is m.ValidationOutcome.PASS) and s.outcome is (m.ValidationSupportOutcome.ACCEPTED_RECEIPT_SUPPORT if s.observation.accepted else m.ValidationSupportOutcome.REJECTED_RECEIPT_OBSERVATION),'VALIDATION_SUPPORT_RECORD')
+  for entity in snapshot.entities:
+   if entity.kind is not m.EntityKind.EVIDENCE or not entity.validated or entity.validation is not m.ValidationState.ACCEPTED:continue
+   claims={claim.requirement for a in snapshot.receipt_admissions if a.artifact==entity.id for claim in a.claims}
+@@ -224,4 +237,4 @@
+   i.require(record.validation is m.ValidationState.ACCEPTED,'VALIDATION_SET_INVALIDATED')
+   i.validate_authority(record.request,snapshot.context)
+   inst=next((v for v in snapshot.validation_instances if v.predicate==predicate_id(r)),None)
+-  i.require(inst is not None and inst.result is m.ValidationOutcome.PASS and inst.currentness is m.ValidationState.ACCEPTED and inst.inputs==r.input_identities and inst.dossier==r.provenance.identity,'VALIDATION_PROJECTION_REQUIRED')
++  i.require(inst is not None and inst.result is m.ValidationOutcome.PASS and inst.currentness is m.ValidationState.ACCEPTED and inst.inputs==canonical_inputs(r.input_identities) and inst.dossier==r.provenance.identity,'VALIDATION_PROJECTION_REQUIRED')

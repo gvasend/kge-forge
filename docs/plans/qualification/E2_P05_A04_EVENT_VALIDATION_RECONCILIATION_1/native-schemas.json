@@ -1,0 +1,408 @@
+{
+  "DecisionCheck": {
+    "fields": [
+      {
+        "field": "kind",
+        "type": "<enum 'DossierCheck'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "predicate",
+        "type": "<class 'adapter.planner.model.PredicateId'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "provenance",
+        "type": "<class 'adapter.planner.model.Provenance'>",
+        "wire_optional_default": false
+      }
+    ],
+    "native_type": "DecisionCheck",
+    "unknown_fields_rejected": true,
+    "unordered_fields": []
+  },
+  "DecisionDossier": {
+    "fields": [
+      {
+        "field": "decision",
+        "type": "<class 'adapter.planner.model.ActionId'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "provenance",
+        "type": "<class 'adapter.planner.model.Provenance'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "question",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "scope",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "alternatives",
+        "type": "typing.Tuple[str, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "checks",
+        "type": "typing.Tuple[adapter.planner.model.DecisionCheck, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "required_facts",
+        "type": "typing.Tuple[adapter.planner.model.PredicateId, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "deferred_downstream_facts",
+        "type": "typing.Tuple[str, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "authority_granted_if_approved",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "authority_excluded",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "default": {
+          "$enum": "ValidationState",
+          "value": "ACCEPTED"
+        },
+        "field": "validation",
+        "type": "<enum 'ValidationState'>",
+        "wire_optional_default": false
+      }
+    ],
+    "native_type": "DecisionDossier",
+    "unknown_fields_rejected": true,
+    "unordered_fields": [
+      "alternatives",
+      "checks",
+      "deferred_downstream_facts",
+      "required_facts"
+    ]
+  },
+  "ExecutionEvent": {
+    "A04_payload_branch": "SuppliedResult",
+    "dedicated_validation_reference_field": false,
+    "envelope_role": "Existing native ExecutionEvent; no dedicated historical PREPARE tag",
+    "existing_transitive_reference": "after_snapshot -> complete immutable Snapshot, including validation_instances",
+    "extra_scope_lineage_command_or_validation_fields_allowed": false,
+    "fields": [
+      {
+        "field": "sequence",
+        "type": "<class 'int'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "parent_snapshot",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "parent_event",
+        "type": "typing.Union[adapter.planner.model.ArtifactIdentity, NoneType]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "result",
+        "type": "typing.Union[adapter.planner.model.SuppliedResult, adapter.planner.model.RecordedDecision, adapter.planner.model.DecisionReentry, adapter.planner.model.ExternalEvent, adapter.planner.model.SourceInvalidation, adapter.planner.model.EvidenceSourceAdmission, adapter.planner.model.TypedProofAdmission, adapter.planner.model.ProofDependencyChange, adapter.planner.model.ActionReevaluation, adapter.planner.model.InstallDefinition, adapter.planner.model.ValidationSupportAdmission]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "after_snapshot",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "identity",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "default": null,
+        "field": "resume_binding",
+        "type": "typing.Union[adapter.planner.model.ArtifactIdentity, NoneType]",
+        "wire_optional_default": true
+      }
+    ],
+    "generic_reference_extension_allowed": false,
+    "inline_validation_instances": false,
+    "native_type": "ExecutionEvent",
+    "payload_field": "result",
+    "reference_domains": {
+      "after_snapshot": "planner-snapshot-v1",
+      "identity": "planner-event-v1",
+      "parent_event": "planner-event-v1",
+      "parent_snapshot": "planner-snapshot-v1"
+    },
+    "result_variants": [
+      "SuppliedResult",
+      "RecordedDecision",
+      "DecisionReentry",
+      "ExternalEvent",
+      "SourceInvalidation",
+      "EvidenceSourceAdmission",
+      "TypedProofAdmission",
+      "ProofDependencyChange",
+      "ActionReevaluation",
+      "InstallDefinition",
+      "ValidationSupportAdmission"
+    ],
+    "unknown_fields_rejected": true,
+    "unordered_fields": []
+  },
+  "PersistenceBundle": {
+    "fields": [
+      {
+        "field": "initial",
+        "type": "<class 'adapter.planner.model.Snapshot'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "events",
+        "type": "typing.Tuple[adapter.planner.model.ExecutionEvent, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "current",
+        "type": "<class 'adapter.planner.model.Snapshot'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "sources",
+        "type": "typing.Tuple[adapter.planner.model.ArtifactPin, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "policy",
+        "type": "<class 'adapter.planner.model.ArtifactPin'>",
+        "wire_optional_default": false
+      },
+      {
+        "default": "E1-SELECTION-1-P01-SUBSET",
+        "field": "policy_version",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "default": "PARTIAL_HISTORICAL_REPLAY",
+        "field": "scope",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      }
+    ],
+    "native_type": "PersistenceBundle",
+    "unknown_fields_rejected": true,
+    "unordered_fields": [
+      "sources"
+    ]
+  },
+  "SuppliedResult": {
+    "decision_checks": "DecisionDossier.checks stores typed check metadata/PredicateId references, not the evaluated outcomes",
+    "direct_event_reference": "ExecutionEvent.result stores the full typed SuppliedResult value, not a separate result ID",
+    "dossier_validation_flag": "Dossier currentness only; cannot substitute for the six independently evaluated records",
+    "fields": [
+      {
+        "field": "action",
+        "type": "<class 'adapter.planner.model.ActionId'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "result",
+        "type": "<enum 'ActionResult'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "knowledge",
+        "type": "typing.Tuple[adapter.planner.model.KnowledgeRecord, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "default": null,
+        "field": "expected_snapshot",
+        "type": "typing.Union[adapter.planner.model.ArtifactIdentity, NoneType]",
+        "wire_optional_default": true
+      },
+      {
+        "default": null,
+        "field": "dossier",
+        "type": "typing.Union[adapter.planner.model.DecisionDossier, NoneType]",
+        "wire_optional_default": true
+      }
+    ],
+    "native_type": "SuppliedResult",
+    "result_meaning": "Actual bounded producer outcome/knowledge and optional prepared dossier",
+    "standalone_ActionResult_entity_or_identity": false,
+    "unknown_fields_rejected": true,
+    "unordered_fields": [
+      "knowledge"
+    ],
+    "validations": "ValidationInstances are a separate T02 argument; not fields of SuppliedResult or DecisionDossier"
+  },
+  "ValidationInstance": {
+    "GraphEntity": false,
+    "computed_fields_not_serialized_as_instances": [
+      "Proof views returned by _evaluate_predicate",
+      "Readiness/Computation"
+    ],
+    "fields": [
+      {
+        "field": "predicate",
+        "type": "<class 'adapter.planner.model.PredicateId'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "proposition",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "dossier",
+        "type": "<class 'adapter.planner.model.ArtifactIdentity'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "inputs",
+        "type": "typing.Tuple[adapter.planner.model.ArtifactIdentity, ...]",
+        "wire_optional_default": false
+      },
+      {
+        "field": "result",
+        "type": "<enum 'ValidationOutcome'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "scope",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "lineage",
+        "type": "<class 'str'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "currentness",
+        "type": "<enum 'ValidationState'>",
+        "wire_optional_default": false
+      },
+      {
+        "field": "provenance",
+        "type": "<class 'adapter.planner.model.Provenance'>",
+        "wire_optional_default": false
+      }
+    ],
+    "immutable_member_binding": "(event.after_snapshot, ValidationInstance.predicate, ValidationInstance.dossier) plus full canonical native member value",
+    "native_storage": "Snapshot.validation_instances: Tuple[ValidationInstance,...]",
+    "native_type": "ValidationInstance",
+    "record_currentness": "Persisted ValidationOutcome/currentness/provenance, subject to native invalidation",
+    "restore_validation_outcome": "Retain original typed evaluation result; do not replace with a new independent validation decision",
+    "standalone_native_identity": false,
+    "unique_native_selector": "PredicateId is unique within a Snapshot; dossier ArtifactIdentity must also match",
+    "unknown_fields_rejected": true,
+    "unordered_fields": []
+  },
+  "codec_locations": [
+    {
+      "end_line": 148,
+      "line": 129,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_wire"
+    },
+    {
+      "end_line": 175,
+      "line": 151,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_unwire"
+    },
+    {
+      "end_line": 184,
+      "line": 183,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "snapshot_id"
+    },
+    {
+      "end_line": 443,
+      "line": 438,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_event_identity"
+    }
+  ],
+  "locations": [
+    {
+      "end_line": 685,
+      "line": 678,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "ExecutionEvent"
+    },
+    {
+      "end_line": 529,
+      "line": 524,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "SuppliedResult"
+    },
+    {
+      "end_line": 427,
+      "line": 416,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "DecisionDossier"
+    },
+    {
+      "end_line": 412,
+      "line": 409,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "DecisionCheck"
+    },
+    {
+      "end_line": 441,
+      "line": 431,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "ValidationInstance"
+    },
+    {
+      "end_line": 520,
+      "line": 491,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "Snapshot"
+    },
+    {
+      "end_line": 711,
+      "line": 704,
+      "path": "adapter/planner/model.py",
+      "pointer": "",
+      "raw_sha256": "0a2efc9b5fa64f9b21629c110dcfc3e5680e87b4ef13eca73e400b377006e759",
+      "symbol": "PersistenceBundle"
+    }
+  ]
+}

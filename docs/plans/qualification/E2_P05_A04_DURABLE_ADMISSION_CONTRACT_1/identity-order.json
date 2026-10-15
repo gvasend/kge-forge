@@ -1,0 +1,81 @@
+{
+  "IDENTITY_CYCLE": "NO",
+  "edges": [
+    [
+      "sealed pre-bundle/pins/context",
+      "actual SuppliedResult/dossier/typed validation values"
+    ],
+    [
+      "actual SuppliedResult/dossier/typed validation values",
+      "T02 post-Snapshot canonical bytes/ID"
+    ],
+    [
+      "sealed pre-bundle/pins/context",
+      "T02 post-Snapshot canonical bytes/ID"
+    ],
+    [
+      "T02 post-Snapshot canonical bytes/ID",
+      "native occurrence event bytes/ID"
+    ],
+    [
+      "actual SuppliedResult/dossier/typed validation values",
+      "native occurrence event bytes/ID"
+    ],
+    [
+      "sealed pre-bundle/pins/context",
+      "native occurrence event bytes/ID"
+    ],
+    [
+      "native occurrence event bytes/ID",
+      "DossierMaterializationBinding value"
+    ],
+    [
+      "sealed pre-bundle/pins/context",
+      "DossierMaterializationBinding value"
+    ],
+    [
+      "DossierMaterializationBinding value",
+      "post PersistenceBundle bytes/ID"
+    ],
+    [
+      "T02 post-Snapshot canonical bytes/ID",
+      "post PersistenceBundle bytes/ID"
+    ],
+    [
+      "native occurrence event bytes/ID",
+      "post PersistenceBundle bytes/ID"
+    ],
+    [
+      "post PersistenceBundle bytes/ID",
+      "HEAD pointer"
+    ]
+  ],
+  "event_payload_unchanged": true,
+  "event_type": "ExecutionEvent.result branch SuppliedResult; no new PREPARE event tag",
+  "native_hashes": {
+    "Snapshot": "planner-snapshot-v1",
+    "bundle": "planner-bundle-v1",
+    "dossier": "planner-dossier-sha256",
+    "event": "planner-event-v1"
+  },
+  "new_bundle_field_not_yet_native": true,
+  "no_back_edges": [
+    "Snapshot/context/dossier/validation values never refer to the new event ID, new ledger head or new bundle ID",
+    "event.after_snapshot refers to state before ledger append, whose native Snapshot has no embedded ledger/head field",
+    "binding.expected_bundle refers to the already-existing pre-bundle, never the post-bundle",
+    "ledger pointer is a post-bundle events locator used by readers, not a hashed field of the event"
+  ],
+  "no_new_identity_domains": true,
+  "nodes_in_topological_order": [
+    "sealed pre-bundle/pins/context",
+    "actual SuppliedResult/dossier/typed validation values",
+    "T02 post-Snapshot canonical bytes/ID",
+    "native occurrence event bytes/ID",
+    "DossierMaterializationBinding value",
+    "post PersistenceBundle bytes/ID",
+    "HEAD pointer"
+  ],
+  "result_schema_unchanged": true,
+  "snapshot_schema_unchanged": true,
+  "stage_rule": "Compute state first, then event, then temporal binding and bundle; write immutably, publish HEAD last"
+}

@@ -1,0 +1,196 @@
+{
+  "APPROVAL": null,
+  "CONTENT": {
+    "ACTIVATION_PREDICATE": [
+      "Future explicit owner selection and independently effective grant for this exact host-only subject",
+      "Actual direct parent matches ubuntu01/Ubuntu20.04.6/kernel5.4.0-216/UID1000 and declared security; no Codex-context substitution",
+      "Exact binary/program pins and clean argv/environment verified; timeout/prlimit/bwrap support and actual acting resource permissions checked without privilege acquisition; unknown denies launch",
+      "Independent direct-parent namespace IDs and one exclusive nonsymlink owned output root sealed before probe; no project/historical data mounted",
+      "One attempt with full cumulative write/process/time accounting; unsupported controls or first unexpected failure stops; no later suite/fake campaign implication"
+    ],
+    "CHARTER_LIFECYCLE_IDENTITY": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "kge-forge-charter-lifecycle-record-v1",
+      "sha256": "a27516baa0ab7f34a36a1130490b6cfa38c508975ca337e0824c8eac33715cbb"
+    },
+    "CONFINEMENT_SPEC_PIN": {
+      "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/execution-contract-77/direct-host-confinement-specification.json",
+      "RAW_SHA256": "04273b4ef4d93f15cedc4d5a75e6d2f0c33ce39a576a8f61627165062ebd7cfe"
+    },
+    "CURRENT_APPROVAL_EVIDENCE": null,
+    "EXCLUSIONS": [
+      "adapter/fake-protocol execution",
+      "native synthetic integration",
+      "real A15 checkpoint/oracles/invalidation/capture/save/restore/replay",
+      "source edits or stopped journal writes",
+      "host security settings/cgroup modifications/elevated privileges",
+      "production/external network/system actions",
+      "campaign renewal or grant self-issuance"
+    ],
+    "FAILURE_RETRY": "First unexpected genuine control/permission/identity/budget failure stops and preserves evidence; no automatic retry/new suite",
+    "GOVERNING_CHARTER_IDENTITY": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "kge-forge-qualification-governance-charter-v1",
+      "sha256": "d26962c58f17281173e965433dae63a941e078115f3dcc30e2a3512fa21812b8"
+    },
+    "HOST_SELECTOR": {
+      "ACTOR_UID": 1000,
+      "DIRECT_PARENT_SECURITY": "NoNewPrivs0, Seccomp0, CapEff0 as supplied; independently confirm before effects",
+      "INTERPRETER": "/usr/bin/python3; exact approved candidate3.8.10/hash must be independently matched at entry, otherwise block",
+      "KERNEL": "5.4.0-216-generic",
+      "NAME": "ubuntu01",
+      "OS": "Ubuntu20.04.6LTS"
+    },
+    "INPUT_ALLOWLIST": [
+      "Only exact single H77-02 namespace program and pinned timeout/prlimit/bwrap/Python runtime libraries",
+      "Read-only actual direct-parent namespace/security/runtime observation interfaces",
+      "Effective charter/normative metadata and future exact host-capability grant; no adapter/checkpoint/oracle/campaign execution input"
+    ],
+    "ISSUED_GRANT_IDENTITY": null,
+    "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY",
+    "NORMATIVE_MANDATE_REFERENCE_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_NORMATIVE_ADOPTION_ISSUANCE_68/effective-normative-mandate-reference.json",
+      "RAW_SHA256": "de24aa6a1a441b42b1bd8b923b8064c9878e12e1dc067381059a81a371aa4c1c"
+    },
+    "OUTPUT_BOUNDARY_RULE": "New exclusive host-only subdirectory under A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/host-capability-verification; campaign subject-derived namespace, never original stopped journal; actual owner/path/inode permissions independently verified at entry",
+    "PERMITTED_EFFECTS": [
+      "One exclusive private host-only scratch/evidence root creation and cleanup",
+      "One fixed namespace metadata payload via exact timeout/prlimit/Bubblewrap argv",
+      "Process-local cap lowering and own timeout cleanup only",
+      "At most1MiB new host-only immutable evidence; no actual A15/source/history/campaign-journal writes"
+    ],
+    "PREDECESSOR_STOPPED_CAMPAIGN": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "qualification-a15-campaign-ledger-raw-v1",
+      "sha256": "3491e9003e1a016dbc4208e3963f8abea0f98c439dc892aa89a3811e73d528eb"
+    },
+    "PROCEDURE": {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "/usr/bin/timeout",
+          "--signal=KILL",
+          "60s",
+          "/usr/bin/prlimit",
+          "--cpu=30:30",
+          "--as=1073741824:1073741824",
+          "--fsize=16777216:16777216",
+          "--nofile=64:64",
+          "/usr/bin/bwrap",
+          "--unshare-user",
+          "--unshare-pid",
+          "--unshare-net",
+          "--proc",
+          "/proc",
+          "--dev",
+          "/dev",
+          "--ro-bind",
+          "/usr",
+          "/usr",
+          "--ro-bind",
+          "/bin",
+          "/bin",
+          "--ro-bind",
+          "/lib",
+          "/lib",
+          "--ro-bind",
+          "/lib64",
+          "/lib64",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/tmp",
+          "/usr/bin/python3",
+          "-c",
+          "import json,os,pathlib; print(json.dumps({'pid_ns':os.readlink('/proc/self/ns/pid'),'net_ns':os.readlink('/proc/self/ns/net'),'mnt_ns':os.readlink('/proc/self/ns/mnt'),'user_ns':os.readlink('/proc/self/ns/user'),'pid':os.getpid(),'routes':pathlib.Path('/proc/net/route').read_text()},sort_keys=True))"
+        ],
+        "CWD": "Direct shell on ubuntu01, private scratch /tmp; no project or real A15 data bound into child",
+        "ENVIRONMENT": {
+          "LC_ALL": "C.UTF-8",
+          "PATH": "/usr/bin:/bin",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "PYTHONHASHSEED": "0"
+        }
+      },
+      "CONTROL_ASSURANCE": "Kernel prlimit caps and external timeout are prescribed; live-process bound derives from fixed trusted timeout/prlimit-exec/bwrap monitor/payload chain, no child-spawning payload. Actual supported binary/permission semantics must be independently verified at entry; otherwise no launch.",
+      "EXCLUSIONS": "No cgroup writes, host policy/configuration change, network connection/send, adapter import, fake/native scenario, extra loop or stress probes",
+      "EXPECTED_RESULT": "Successful child JSON: user/pid/net/mnt namespace IDs differ from separately recorded direct-parent IDs; routes no external default; exact metadata output retained. Failure/unsupported/permission denial yields no compatibility PASS. This checks namespace metadata only, not full network/filesystem/resource qualification.",
+      "FAILURE_RULE": "Single attempt, no fallback/retry, preserve first counterexample and independently observed completion; no next step auto-activated",
+      "PERMITTED_SIDE_EFFECTS": "Only one closed readonly metadata payload, private namespace setup, lowered process-local child caps and capped new host-only evidence; no fixture/publication or adapter invocation",
+      "PROGRAM": {
+        "CONTENT_IDENTITY": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "qualification-host-probe-program-v1",
+          "sha256": "50fc07702c447c8084bd71fb949b4ca63a6b1c09eb6845a8c3a3532cab8d60f5"
+        },
+        "SOURCE": "import json,os,pathlib; print(json.dumps({'pid_ns':os.readlink('/proc/self/ns/pid'),'net_ns':os.readlink('/proc/self/ns/net'),'mnt_ns':os.readlink('/proc/self/ns/mnt'),'user_ns':os.readlink('/proc/self/ns/user'),'pid':os.getpid(),'routes':pathlib.Path('/proc/net/route').read_text()},sort_keys=True))"
+      },
+      "RESOURCE_BUDGET": {
+        "CHILD_AS": 1073741824,
+        "CHILD_CPU": 30,
+        "CHILD_FDS": 64,
+        "CHILD_FSIZE": 16777216,
+        "CHILD_WALL": 60,
+        "MAX_ACTUAL_PROCESS_SLOTS": 4,
+        "MAX_PAYLOAD_LAUNCHES": 1,
+        "RETRIES": 0,
+        "TOTAL_WALL": 600,
+        "TOTAL_WRITES": 1048576
+      },
+      "SELECTED_STEP": "H77-02_NAMESPACE_METADATA_ONLY",
+      "TOOL_BINARY_PINS": [
+        {
+          "PATH": "/usr/bin/timeout",
+          "RAW_SHA256": "91db1e64064f0bf5ee99abda3a054cc6f05748dad2af5a145f890c9172d28d73"
+        },
+        {
+          "PATH": "/usr/bin/prlimit",
+          "RAW_SHA256": "06a57e4767f1bdfcc8c5a39b4b58decb9366447b007a8bdd9d6b12d1e6698d8c"
+        },
+        {
+          "PATH": "/usr/bin/bwrap",
+          "RAW_SHA256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987"
+        },
+        {
+          "PATH": "/usr/bin/python3.8",
+          "RAW_SHA256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06"
+        }
+      ]
+    },
+    "PROCEDURE_PIN": {
+      "PATH": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/execution-contract-77/host-enforcement-verification-procedure.json",
+      "RAW_SHA256": "9bcf9aba85595224de8cde5af15a6c50f41020f846336b0a654e0b894519d3e2"
+    },
+    "PURPOSE": "One non-A15 direct-host namespace/cap metadata probe only; first eligible subset, not full fourteen-step verification or adapter campaign",
+    "RESOURCE_LIMITS": {
+      "AUTOMATIC_RETRIES": 0,
+      "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+      "CHILD_CPU_SECONDS": 30,
+      "CHILD_FILE_BYTES": 16777216,
+      "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+      "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+      "MAX_CAMPAIGN_WALL_SECONDS": 600,
+      "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+      "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+      "MAX_CHILD_WALL_SECONDS": 60,
+      "MAX_LIVE_CHILDREN": 4,
+      "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+    },
+    "RESULT_ASSURANCE": "Namespace metadata capability evidence only. Not full host enforcement, fake campaign, native synthetic or actual A15 authority. No control that is untested may become READY.",
+    "SCHEMA_ID": "A15-HOST-CAPABILITY-AUTHORIZATION-SUBJECT-77-1",
+    "STATUS": "PROPOSED_UNISSUED"
+  },
+  "IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-a15-host-capability-test-subject-v1",
+    "sha256": "762b88071476cea67c08c8e57d5b893f61c2d8843cc7f0f04a07f05b52fe3a80"
+  },
+  "ISSUED": false
+}

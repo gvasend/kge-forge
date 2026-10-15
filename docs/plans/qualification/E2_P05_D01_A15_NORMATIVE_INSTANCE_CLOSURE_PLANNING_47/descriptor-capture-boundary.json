@@ -1,0 +1,67 @@
+{
+  "CAPTURE": {
+    "APPLY_CAPTURE_ATOMICITY": "No frozen requirement for one external apply+capture transaction. record_result owns internal application/occurrence construction; caller must not apply separately then pass TransitionReport as its supplied body. record_result and save are separate supported operations.",
+    "CAPTURE_INPUTS_COMPLETE": false,
+    "CAPTURE_PERFORMED": false,
+    "CAPTURE_SEQUENCE_SELECTED": false,
+    "CURRENT_V3_GAP": "A15 currently dispatches apply_event only and capture reads prior input bundle. Native capture capability exists, but A15 per-target record/save/reader inputs and full-output comparison must be independently sealed before any future runner repair or execution.",
+    "EVENT_CONSTRUCTION_ENTRYPOINT": "adapter.planner.codec.record_result(bundle,supplied,snapshot_resolver=...)",
+    "EVENT_CONSTRUCTION_INPUTS": [
+      "Exact replay-valid input bundle/current Snapshot",
+      "Exact SourceInvalidation operative descriptor",
+      "Explicit original Snapshot archive resolver when required"
+    ],
+    "EVENT_CONSTRUCTION_OUTPUT": "New immutable native PersistenceBundle with updated current Snapshot and appended ExecutionEvent",
+    "EVENT_IDENTITY_RULE": "codec._event_identity(sequence,parent_snapshot,parent_event,supplied,after_snapshot,resume_binding); canonical planner-event-v1",
+    "FROZEN_REQUIRES_HEAD_TRANSACTION": false,
+    "INPUT_AND_FAILURE_STATE": "Pure application/record_result failure does not mutate original immutable bundle. Save failure may leave immutable staged events/archives; do not claim success/read eligibility. Identical immutable-file retry is allowed by native writer; no generic repeat of mutable event execution. Exact row retry/process plan unsealed.",
+    "LEDGER_APPEND_ENTRYPOINT": "codec.append_event internal to record_result; exact duplicate occurrence identity/body replays idempotently; conflict rejected",
+    "NATIVE_CAPABILITY_GAP": null,
+    "NATIVE_SOURCE": {
+      "path": "adapter/planner/codec.py",
+      "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+    },
+    "PARENT_ASSIGNMENT": {
+      "parent_event": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-event-v1",
+        "sha256": "88fb01def0514728ab17bc53f3885448725cd5a968ede91c8a0e52ea7c98fcc6"
+      },
+      "parent_snapshot": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586"
+      },
+      "resume_binding_for_SourceInvalidation": null,
+      "sequence_if_current_bundle_unchanged": 20,
+      "sequence_rule": "len(input.events)+1"
+    },
+    "PERSISTED_OCCURRENCE_REQUIRED": true,
+    "PERSISTENCE_ATOMICITY": "Each immutable file fsync-before-hard-link publication; conflicting existing/symlink targets reject. Event/archive files may be staged before bundle file; no multi-file atomic commit, no HEAD or directory-fsync guarantee from save_bundle. Reader eligibility only after successful complete save and exact publication verification.",
+    "PERSISTENCE_ENTRYPOINT": "adapter.planner.codec.save_bundle(updated_bundle,output_dir,repo_root,snapshot_resolver=...)",
+    "PERSISTENCE_INPUTS": [
+      "Updated replay-valid native bundle including new event",
+      "Exact isolated output directory/source root",
+      "Original archives/resolver if necessary"
+    ],
+    "PERSISTENCE_OUTPUT": "Immutable event-<id>.json files, native canonical bundle-<id>.json and required Snapshot archives; returns path/native bundle ID",
+    "REQUIREMENT_SOURCE": "Frozen A15: canonical before/after identities/event trace and reload preserves invalidation; native bundle replay requires current state reconstructed from exact ordered events",
+    "TRANSACTIONAL_ALTERNATIVE": "codec.commit_event(bundle,supplied,output_dir,repo_root,snapshot_resolver=...) acquires local LOCK, checks authoritative HEAD/parent, records natively, publishes bundle and atomically replaces HEAD with directory fsync. Not selected or authorized here."
+  },
+  "DESCRIPTOR_NATIVE_FIELDS": [
+    "changed: Tuple[ArtifactIdentity]",
+    "expected_snapshot: ArtifactIdentity"
+  ],
+  "NATIVE_CAPABILITY_GAP": null,
+  "PRESTATE": "planner-snapshot-v1:ce54ff49907abcad564ec0ddfe8c7a019fab129936172b67f4ce0ff5ed013586",
+  "ROUTE_RECEIPT_SOURCE_PINS": "Not additional SourceInvalidation fields; source/route/receipt/provenance applicability is validation/evidence context. Do not invent descriptor fields.",
+  "RUNNER_GAP": "V3 apply_event alone does not record/persist occurrence; future exact adapter repair needs separately sealed contract, not applied here"
+}

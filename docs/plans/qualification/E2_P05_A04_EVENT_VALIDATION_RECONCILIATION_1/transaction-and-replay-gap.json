@@ -1,0 +1,127 @@
+{
+  "A04_integration_gap": "No event dispatcher calls T02 with its validation tuple. SuppliedResult has no such operand. Current replay reads only event.result, not post/current state as historical operand.",
+  "HEAD_correlation_gap": "Existing SuppliedResult HEAD.command=None and _prefix_bundle replays only supported event results; a report transaction ID cannot supply missing historical operands.",
+  "T02_report_limit": "T02 runtime_transaction.atomic=true and encode_decode replay PASS refer to state materialization/typed Snapshot retention. No append-only parallel store is claimed; this does not establish complete event-bearing transaction replay.",
+  "durable_visibility": "Canonical transaction is published at trusted HEAD, not at first immutable file write; crash-created orphan files do not establish acceptance",
+  "existing_durable_boundary": "codec.commit_event takes trusted current head under local lock, record_result/apply_event computes post-state, save_bundle validates/replays and writes immutable event/bundle artifacts, then _publish_head atomically replaces HEAD",
+  "implementation_qualified_for_A04_durable_transaction": false,
+  "locations": [
+    {
+      "end_line": 428,
+      "line": 338,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "admit_dossier_materialization"
+    },
+    {
+      "end_line": 583,
+      "line": 547,
+      "path": "adapter/planner/core.py",
+      "pointer": "",
+      "raw_sha256": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "symbol": "apply_event"
+    },
+    {
+      "end_line": 135,
+      "line": 122,
+      "path": "adapter/planner/gates.py",
+      "pointer": "",
+      "raw_sha256": "29023ae8cbee6e5ad8e7e4327cf2a824dbea5fcf0f6969c731e5c7c803db512f",
+      "symbol": "validate_result"
+    },
+    {
+      "end_line": 548,
+      "line": 446,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_replay"
+    },
+    {
+      "end_line": 578,
+      "line": 565,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "record_result"
+    },
+    {
+      "end_line": 636,
+      "line": 622,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "save_bundle"
+    },
+    {
+      "end_line": 663,
+      "line": 639,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "restore"
+    },
+    {
+      "end_line": 731,
+      "line": 716,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_publish_head"
+    },
+    {
+      "end_line": 762,
+      "line": 734,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_read_head"
+    },
+    {
+      "end_line": 878,
+      "line": 868,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "commit_event"
+    },
+    {
+      "end_line": 886,
+      "line": 881,
+      "path": "adapter/planner/codec.py",
+      "pointer": "",
+      "raw_sha256": "1afd8bc90527ca179b67d4977b594110e9febd2aca5345ae0072bac8a8754a3d",
+      "symbol": "_prefix_bundle"
+    },
+    {
+      "end_line": 194,
+      "line": 182,
+      "path": "adapter/planner/validation_transaction.py",
+      "pointer": "",
+      "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+      "symbol": "apply"
+    },
+    {
+      "end_line": 211,
+      "line": 196,
+      "path": "adapter/planner/validation_transaction.py",
+      "pointer": "",
+      "raw_sha256": "8a24ac07c132fa8d4d4c55114bb19b26ec105f211d4c69b3c1d8af473c8cc361",
+      "symbol": "commit"
+    }
+  ],
+  "one_payload_requirement": false,
+  "ordinary_path_fails_for_sealed_start": "Action.prepared_dossier=None; ordinary validate_result compares supplied dossier with None. It also cannot introduce independent typed instances through the result field.",
+  "other_native_validation_transaction": "ValidationSupportAdmission is specialized to Evidence/receipt/validation-contract/support A10. It has typed outcomes and command identity but does not implement dossier/check admission; reuse as A04 would change semantics.",
+  "replay_gap": "PersistenceBundle retains initial/events/current, not a separately addressable after-Snapshot object per event. Event.after_snapshot is a hash, not an object lookup implementation. Current _replay requires apply_event to regenerate each exact after_snapshot.",
+  "source_gap": "Sealed new dossier source is offline. Per-event source-addition/prefix/retry handling recognizes other typed admissions, not T02 materialization.",
+  "state_atomicity_supported": "T02 returns one immutable TransitionReport only after accepted result/dossier/six checks; failure has no partial returned state",
+  "state_effects": [
+    "PREPARE completion",
+    "E2-K-PREPARE knowledge",
+    "Action.prepared_dossier",
+    "Decision.dossier/history/readiness",
+    "Snapshot.validation_instances"
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "ALL_REQUIRED_SEMANTIC_DOMAINS": [
+    "request validation",
+    "worker dispatch",
+    "serialization",
+    "publication",
+    "exit observation",
+    "handoff",
+    "fresh-reader comparison",
+    "failure",
+    "isolation",
+    "determinism"
+  ],
+  "EXECUTABLE_FAILURE_CASE_BINDINGS_COMPLETE": false,
+  "FAILURE_EXPECTATIONS": [
+    {
+      "CASE_ID": "WRONG_GRANT",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "Before dispatch/publication",
+      "EXPECTED_REJECTION": "WRONG_GRANT_IDENTITY"
+    },
+    {
+      "CASE_ID": "WRONG_SCHEMA",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "Before dispatch/publication",
+      "EXPECTED_REJECTION": "WRONG_SCHEMA_VERSION"
+    },
+    {
+      "CASE_ID": "UNKNOWN_FIELD",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "Before dispatch/publication",
+      "EXPECTED_REJECTION": "WRONG_FIELD_SET"
+    },
+    {
+      "CASE_ID": "WRONG_SOURCE",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "Before dispatch/publication",
+      "EXPECTED_REJECTION": "SOURCE_IDENTITY_MISMATCH"
+    },
+    {
+      "CASE_ID": "WRONG_OPERATION",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "Before dispatch/publication",
+      "EXPECTED_REJECTION": "UNAUTHORIZED_OPERATION"
+    },
+    {
+      "CASE_ID": "NONZERO_WORKER",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "No reader eligibility",
+      "EXPECTED_REJECTION": "CHILD_NONZERO_EXIT"
+    },
+    {
+      "CASE_ID": "TIMEOUT",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "Own-child group terminated/reaped; no reader eligibility",
+      "EXPECTED_REJECTION": "WORKER_TIMEOUT"
+    },
+    {
+      "CASE_ID": "MISSING_PUBLICATION",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "No reader eligibility",
+      "EXPECTED_REJECTION": "MISSING_OR_SYMLINK_INPUT"
+    },
+    {
+      "CASE_ID": "CONFLICT_OUTPUT",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "No overwrite; no reader eligibility",
+      "EXPECTED_REJECTION": "IMMUTABLE_OUTPUT_CONFLICT"
+    },
+    {
+      "CASE_ID": "BAD_HANDOFF",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "No reader eligibility",
+      "EXPECTED_REJECTION": "HANDOFF_BINDING_MISMATCH"
+    },
+    {
+      "CASE_ID": "READER_MISMATCH",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "No aggregate PASS",
+      "EXPECTED_REJECTION": "COMPLETE_OUTPUT_MISMATCH"
+    },
+    {
+      "CASE_ID": "STOPPED_LEDGER",
+      "COMPLETENESS": "Exact protocol error and no forbidden effect; exact runtime fixture/argv/fault binding still unsealed",
+      "DERIVATION_RULE": "Existing static schema/guard/source rule; no actual call",
+      "EXPECTED_EFFECT_BOUNDARY": "No launch reservation or retry",
+      "EXPECTED_REJECTION": "GLOBAL_CAMPAIGN_STOPPED"
+    }
+  ],
+  "ORACLES_ARE_ACTUAL_RESULTS": false,
+  "PROCESS_OBSERVATION_RULES": {
+    "DETERMINISM": "Full semantic records/canonical identities identical under four seeds; exact physical bindings independently checked, not normalized away",
+    "DYNAMIC_IDENTITIES": "Actual PID/namespace/path/monotonic observations must be independently recorded/compared at exact invocation boundary; no fabricated values",
+    "EXIT": "Supervisor independently waits own child status0; worker/handoff cannot establish exit",
+    "ISOLATION": "Same immutable initial semantic Snapshot, distinct source/rows/requests/readers; no warm-state/cross-variant reuse",
+    "ORDER": "Writer successful exit and verified exact publication/handoff precede fresh reader start"
+  },
+  "READER_COMPARISON_RECORDS": 8,
+  "REAL_PACKAGE60_ORACLES_USED": false,
+  "SEMANTIC_ORACLE_COMPLETE": true,
+  "SEMANTIC_VARIANT_COUNT": 2,
+  "SUCCESS_EXPECTATIONS_SEALED": true
+}

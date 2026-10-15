@@ -1,0 +1,97 @@
+{
+  "CALLER": {
+    "boot_id": "7c592fd0-8c66-476f-ab0d-548882a9f53e",
+    "collection_UTC": "2026-10-13T00:01:14Z",
+    "executable": "/bin/bash",
+    "executable_sha256": "025cf78cd9d276019e916b97b0decd10cacb14902db8eb9f28233019babfb331",
+    "final_birth_identity": "MATCH",
+    "gid": 1000,
+    "initial_birth_identity": "MATCH",
+    "pid": 3235408,
+    "start_ticks": 218282664,
+    "uid": 1000
+  },
+  "CREATION_CALLS": "0_EVIDENCED_NOT_COMPLETE_SESSION_COUNT",
+  "CURRENT_NO_PRIOR_PROVISIONING": "NOT_VERIFIED",
+  "CURRENT_NO_REVOCATION": "NOT_VERIFIED",
+  "EARLIER_SECURITY_FD_CONTEXT": {
+    "NO_CURRENT_INHERITANCE_OR_ENVIRONMENT_GUARANTEE": true,
+    "NoNewPrivs": 0,
+    "Seccomp": 0,
+    "caller_cwd": "/home/gvasend/app/kge-forge",
+    "cap_eff_zero": true,
+    "fds": [
+      0,
+      1,
+      2,
+      255
+    ],
+    "flags_0_1_2": "02002",
+    "flags_255": "02002002",
+    "ppid": 3235407,
+    "target": "/dev/pts/1"
+  },
+  "EVIDENCE_CLASS": "OWNER_SUPPLIED_DIRECT_HOST_OUTPUT",
+  "GRANT_CHARGED_INSPECTIONS": null,
+  "HOST": "ubuntu01",
+  "INDEPENDENT_METADATA_INSPECTIONS": null,
+  "LIVE_P136_ANCHOR_UNUSED": "NOT_VERIFIED",
+  "NO_NEW_HOST_COMMANDS_REQUESTED": true,
+  "OBSERVATIONS": [
+    {
+      "COMMAND_TEXT": "ll /var/tmp",
+      "ID": "A",
+      "NATIVE_EXPANSION": null,
+      "RESULT": "Mode1777 root/root; no kge-forge listed",
+      "VISIBLE_COMMAND_LINES": 1
+    },
+    {
+      "COMMAND_TEXT": "/usr/bin/stat --format='%n:%d:%i:%f:%u:%g:%h' -- / /var /var/tmp",
+      "ID": "B",
+      "RESULTS": [
+        {
+          "device": 64768,
+          "gid": 0,
+          "inode": 2,
+          "mode_hex": "41ed",
+          "nlink": 25,
+          "path": "/",
+          "uid": 0
+        },
+        {
+          "device": 64768,
+          "gid": 0,
+          "inode": 4456449,
+          "mode_hex": "41ed",
+          "nlink": 15,
+          "path": "/var",
+          "uid": 0
+        },
+        {
+          "device": 64768,
+          "gid": 0,
+          "inode": 4456462,
+          "mode_hex": "43ff",
+          "nlink": 14,
+          "path": "/var/tmp",
+          "uid": 0
+        }
+      ],
+      "VISIBLE_NATIVE_INVOCATIONS": 1
+    },
+    {
+      "COMMAND_TEXT": "/usr/bin/stat -- /var/tmp/kge-forge",
+      "ID": "C",
+      "RESULT": "No such file or directory",
+      "VISIBLE_NATIVE_INVOCATIONS": 1
+    },
+    {
+      "COMMAND_TEXT": null,
+      "ID": "D",
+      "RESULT": "I3 NOT PROVIDED; zero evidenced, not proof of nonexecution"
+    }
+  ],
+  "SESSION_COMPLETENESS": "NOT_ESTABLISHED; additional earlier identity/proc reads not fully inventoried",
+  "SOURCE": "Current user Package139 Existing-Evidence Reconciliation message",
+  "WITNESS_EXECUTION": "NO_REPORTED_EXECUTION"
+}

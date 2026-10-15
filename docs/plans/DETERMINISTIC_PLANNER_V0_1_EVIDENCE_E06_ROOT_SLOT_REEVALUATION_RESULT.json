@@ -1,0 +1,5575 @@
+{
+  "artifact_hashes": {
+    "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_EVENT_REPLAY.json": "82b1832338dddeaf5d9b02cf1ad6f189762223c30d31e575d2a7fba3f71b2de8",
+    "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json": "87dbd8ce65e1758b3dc89c82020e834c57648a8a08a03d367328417cc485de6e",
+    "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_INVALIDATION_SNAPSHOT.json": "25104e2488e47957783c3394540f360a476dff2f52a16127c5a457f174810643",
+    "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json": "c72c5279c0e84e7a5115ca9ffe4b70335ea708001f7c5ada873a2682a18dc717",
+    "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json": "45c9fef31d158e81c713a67e1743fb622dcf19a13dc91042622abff50bed1c11"
+  },
+  "atomicity": "PASS_PURE_VALIDATION_THEN_NATIVE_COMMIT",
+  "authored_contract_types": {
+    "root": "E2-ROOT-PROOF-v1",
+    "slot": "E2-SLOT-PROOF-v1"
+  },
+  "authorized_e2_lifecycle": "PASS",
+  "blocked_action_semantics": "Legacy/default BLOCKED terminal hold; blocked_terminal=False permits prerequisite reevaluation; terminal_failure and WAITING/SELECTED/COMPLETED remain held",
+  "blocked_action_semantics_detail": {
+    "historical_rule": "_actionability holds prior COMPLETED/BLOCKED/WAITING statuses",
+    "legacy_contract_default": "blocked_terminal=True retains the historical terminal hold contract",
+    "nonterminal_contract": "blocked_terminal=False allows authoritative dependency events or ActionReevaluation to recheck an existing prerequisite hold",
+    "selected_completed": "generic reevaluation does not reopen SELECTED or COMPLETED",
+    "terminal_result": "non-PASS result records terminal_failure=True; generic support changes preserve BLOCKED",
+    "waiting": "WAITING remains an explicit lifecycle hold requiring its native reentry transition"
+  },
+  "bounded_dependency_triggers": "PASS_ACTION_CLOSURE",
+  "cold_restore": "PASS_48_FRESH_INTERPRETERS",
+  "cold_restore_runs": {
+    "event_replay": [
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 51,
+        "seed": 0,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 52,
+        "seed": 0,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 53,
+        "seed": 0,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 54,
+        "seed": 1,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 55,
+        "seed": 1,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 56,
+        "seed": 1,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 57,
+        "seed": 7,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 58,
+        "seed": 7,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 59,
+        "seed": 7,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 60,
+        "seed": 101,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 61,
+        "seed": 101,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "actionable": [
+          "E2-FINISH"
+        ],
+        "exit_status": 0,
+        "pid": 62,
+        "seed": 101,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      }
+    ],
+    "governed_unknown": [
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 63,
+        "seed": 0,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 64,
+        "seed": 0,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 65,
+        "seed": 0,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 66,
+        "seed": 1,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 67,
+        "seed": 1,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 68,
+        "seed": 1,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 69,
+        "seed": 7,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 70,
+        "seed": 7,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 71,
+        "seed": 7,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 72,
+        "seed": 101,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 73,
+        "seed": 101,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "ACTION_COMPLETED:E2-REENTER"
+              ]
+            ],
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              [
+                "DECISION_REENTRY_REQUIRED",
+                "EXTERNAL_GATE:E2-GATE",
+                "PREDICATE:E2-PROOF:UNKNOWN"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "WAITING_FOR_EXTERNAL_EVIDENCE"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "EXTERNAL_WAIT"
+          },
+          "defects": [],
+          "frontier": [
+            [
+              {
+                "type": "GateId",
+                "value": "E2-GATE"
+              },
+              [
+                [
+                  [
+                    "ConditionId",
+                    "E2-ROOT"
+                  ],
+                  [
+                    [
+                      "ActionId",
+                      "E2-REENTER"
+                    ]
+                  ]
+                ]
+              ]
+            ]
+          ],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_GOVERNED_UNKNOWN_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 74,
+        "seed": 101,
+        "snapshot": "91017c3947096a0470ba44aff95901872768fa205205d39c7bf60f840f848c9c"
+      }
+    ],
+    "slot": [
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 27,
+        "seed": 0,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 28,
+        "seed": 0,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 29,
+        "seed": 0,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 30,
+        "seed": 1,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 31,
+        "seed": 1,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 32,
+        "seed": 1,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 33,
+        "seed": 7,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 34,
+        "seed": 7,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 35,
+        "seed": 7,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 36,
+        "seed": 101,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 37,
+        "seed": 101,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      },
+      {
+        "computation": {
+          "actionable": [],
+          "blocked": [
+            [
+              {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              [
+                "PRIOR_ATTEMPT_HOLD:BLOCKED"
+              ]
+            ]
+          ],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "DEPENDENCY_BLOCKED"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "PLAN_DEFECT"
+          },
+          "defects": [
+            "UNRESOLVED_GOAL_WITHOUT_CONTROL_PATH"
+          ],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "NO_INTERNAL_ACTION"
+          },
+          "selection": null,
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "BLOCKED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 1,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_SLOT_BOUNDARY_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 38,
+        "seed": 101,
+        "snapshot": "1eff8ccddb4b2dd3f44f2f06f436cd9dd466a96629907e436a4f2feb00364bb9"
+      }
+    ],
+    "target": [
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 39,
+        "seed": 0,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 40,
+        "seed": 0,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 41,
+        "seed": 0,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 42,
+        "seed": 1,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 43,
+        "seed": 1,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 44,
+        "seed": 1,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 45,
+        "seed": 7,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 46,
+        "seed": 7,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 47,
+        "seed": 7,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 48,
+        "seed": 101,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 49,
+        "seed": 101,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      },
+      {
+        "computation": {
+          "actionable": [
+            {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            }
+          ],
+          "blocked": [],
+          "branches": [
+            [
+              {
+                "type": "ConditionId",
+                "value": "E2-ROOT"
+              },
+              {
+                "type": "BranchState",
+                "value": "TERMINAL_SUCCESS"
+              }
+            ]
+          ],
+          "control": {
+            "type": "ControlState",
+            "value": "RUNNABLE"
+          },
+          "defects": [],
+          "frontier": [],
+          "human_batches": [],
+          "human_routing": {
+            "type": "HumanRouting",
+            "value": "RUNNABLE"
+          },
+          "selection": {
+            "criterion": 0,
+            "selected": {
+              "type": "ActionId",
+              "value": "E2-FINISH"
+            },
+            "steps": [
+              "SINGLETON"
+            ],
+            "type": "SelectionTrace"
+          },
+          "statuses": [
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-CHECK"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-COLLECT"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-DECIDE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-FINISH"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "ACTIONABLE"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-PREPARE"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            },
+            {
+              "id": {
+                "type": "ActionId",
+                "value": "E2-REENTER"
+              },
+              "state": {
+                "type": "ActionState",
+                "value": "COMPLETED"
+              },
+              "terminal_failure": false,
+              "type": "ActionStatus"
+            }
+          ],
+          "type": "Computation",
+          "unresolved_roots": 0,
+          "unresolved_slots": 0
+        },
+        "exit_status": 0,
+        "inputs": [
+          "/home/gvasend/app/kge-forge/docs/plans/DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_P03_TARGET_SNAPSHOT.json",
+          "native runtime modules",
+          "proof contract provenance pins (where present)"
+        ],
+        "pid": 50,
+        "seed": 101,
+        "snapshot": "dd0ca0799d6937297f0b7afa6bd145948a3d782cce72653916678a23470a7b9d"
+      }
+    ]
+  },
+  "determinism": "PASS_SEEDS_0_1_7_101",
+  "e06_result": "PARTIAL",
+  "e1_artifacts_modified": 0,
+  "e2_finish_after_root": "ACTIONABLE",
+  "e2_finish_before_root": "NON_ACTIONABLE",
+  "e2_finish_executed": false,
+  "e2_p03_result": "PARTIAL",
+  "e2_p04_ready": false,
+  "e2_reenter_completed": true,
+  "e2_root_proof_admission": "PASS",
+  "e2_root_proof_id": "2205659647e2da6e4c529d82be475639aba3a76c1f63090235350e6126decd0d",
+  "e2_root_state": "SATISFIED",
+  "e2_slot_proof_admission": "PASS",
+  "e2_slot_proof_id": "82e688441cd1712768a641f67a091a805a5e4ab0b4ece6ac4b4fb28a5f5d1172",
+  "e2_slot_state": "SATISFIED (native RESOLVED)",
+  "fixture_definition_boundary": {
+    "action_statuses_unchanged": true,
+    "input": "df74cd4e6582bbd5e472cec6893221d462b5652630943bc187e775fc7bfd267f",
+    "materialized": "b9db6e40ec7129e47c1782d45097be8b1318718e14ee16a60a6bc368275529f0",
+    "source": "PC02-A authenticated fixture admission"
+  },
+  "full_suite_status": "BLOCKED_BY_PREEXISTING_FROZEN_E1_DUPLICATE_IMPORT",
+  "generic_positive_lifecycle": "PASS",
+  "generic_typed_proof_qualification": {
+    "authority_identity_binding": "PASS",
+    "distinct_target_types": "SlotId and ConditionId",
+    "durable_rejection_atomicity": "PASS",
+    "explicit_reevaluation_without_typed_proofs": "PASS",
+    "idempotence": "PASS",
+    "implicit_dependency_cycle_rejection": "PASS",
+    "independent_contract_validation": "PASS",
+    "manual_slot_label_rejection": "PASS",
+    "native_bundle_transaction": "PASS",
+    "native_ledger_replay": "PASS",
+    "no_generic_true_proof": true,
+    "result": "PASS",
+    "root_admission": "PASS",
+    "slot_admission": "PASS",
+    "terminal_failure_preservation": "PASS",
+    "unrelated_nonterminal_blocked_action_preserved": "PASS",
+    "unrelated_proof_boundedness": "PASS"
+  },
+  "idempotence": "PASS",
+  "invalid_transitions": "PASS",
+  "invalidation": {
+    "actionable": [],
+    "root": "UNRESOLVED",
+    "slot": "UNRESOLVED"
+  },
+  "next_package": "P03 checkpoint source-pin and full-bundle reconciliation; receipt-ingress and dossier regression reconciliation",
+  "p03_exit_predicate": false,
+  "p03_exit_terms": {
+    "E2_K_REENTER_CURRENT": true,
+    "E2_REENTER_COMPLETED": true,
+    "FINISH_ACTIONABLE_UNEXECUTED": true,
+    "GOVERNED_UNKNOWN_EXTERNAL_WAIT": true,
+    "GOVERNED_UNKNOWN_ROUTE_INVALIDATION_PLAN_DEFECT": true,
+    "INDEPENDENT_ROOT_PROOF_ACCEPTED": true,
+    "ORIGINAL_CHECKPOINT_PINNED_BUNDLE_FULL_EQUALITY": false,
+    "POST_RELOAD_INVALIDATION": true,
+    "ROOT_SATISFIED": true,
+    "SLOT_PROOF_ACCEPTED": true,
+    "SLOT_SATISFIED": true,
+    "TARGET_COLD_RESTORE_FULL_SNAPSHOT_EQUALITY": true,
+    "TARGET_DETERMINISM": true,
+    "TARGET_REPLAY": true
+  },
+  "p03_unqualified_term": {
+    "e05_input_schema": "PLANNER-SNAPSHOT-1",
+    "no_history_reset_or_fabricated_bundle": true,
+    "reason": "The inherited E05 target has no composed source-pinned policy/event bundle. E06 proves full target Snapshot equality and its own native admission event replay, but cannot substitute those for original P03 full checkpoint-bundle/source/ledger equality. The existing genesis bundle is an older lineage boundary, not the E05 result target.",
+    "result": "NOT_QUALIFIED",
+    "term": "ORIGINAL_CHECKPOINT_PINNED_BUNDLE_FULL_EQUALITY"
+  },
+  "persistence": "PASS",
+  "production_effect": false,
+  "proof_invalidation": {
+    "e2_isolated_withdrawal": {
+      "actionable": [],
+      "root": "UNRESOLVED",
+      "slot": "UNRESOLVED"
+    },
+    "history_retained": true,
+    "qualified_dependencies": [
+      "knowledge",
+      "slot",
+      "root",
+      "accepted proof identity",
+      "contract identity",
+      "authority identity",
+      "source provenance",
+      "scope",
+      "lineage",
+      "generation",
+      "expiry"
+    ],
+    "result": "PASS",
+    "terminal_failure_held": true
+  },
+  "proof_persistence": "PASS_NATIVE_SNAPSHOT_AND_GENERIC_BUNDLE_TEST",
+  "proof_replay": "PASS_NATIVE_TRANSITIONS",
+  "reevaluation_capability": "PASS",
+  "reevaluation_transition": {
+    "action_execution": false,
+    "authority_source_pin_invalidation": "PASS",
+    "entrypoints": [
+      "TypedProofAdmission",
+      "ProofDependencyChange",
+      "ActionReevaluation",
+      "SourceInvalidation",
+      "accepted Action result/knowledge change for nonterminal contracts"
+    ],
+    "global_control": "ordinary recompute returns global control and selection after the bounded transition",
+    "result": "PASS",
+    "steps": [
+      "compute bounded affected dependency closure",
+      "derive proof/slot/root current support using native satisfaction",
+      "invalidate affected nonterminal readiness in a provisional immutable snapshot",
+      "call ordinary native _actionability with the affected Action set",
+      "persist derived Action states and changed-state reevaluation records"
+    ]
+  },
+  "reevaluation_triggers": [
+    "proof admitted",
+    "proof invalidated",
+    "knowledge invalidated",
+    "slot changed",
+    "root changed",
+    "authority invalidated",
+    "source/contract/provenance invalidated"
+  ],
+  "reevaluations": [
+    {
+      "$type": "ReevaluationRecord",
+      "action": {
+        "$type": "ActionId",
+        "value": "E2-FINISH"
+      },
+      "dependencies": [
+        {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "planner-TypedProof-v1",
+          "sha256": "2205659647e2da6e4c529d82be475639aba3a76c1f63090235350e6126decd0d"
+        },
+        {
+          "$type": "ConditionId",
+          "value": "E2-ROOT"
+        }
+      ],
+      "new_state": {
+        "$enum": "ActionState",
+        "value": "ACTIONABLE"
+      },
+      "old_state": {
+        "$enum": "ActionState",
+        "value": "BLOCKED"
+      },
+      "provenance": {
+        "$type": "Provenance",
+        "excerpt": "E2-FIXTURE-AUTHORITY:f7679cad56a78760dfe5b87e4e6a46a4c5a6bd3dff6d3f6c39ff15bd34c5cc75",
+        "identity": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "raw-file-sha256",
+          "sha256": "bd686c73f0020c7610fa52d447831bf3547c83ad79daf3265086a7e6f02a274d"
+        },
+        "method": "AUTHENTICATED_QUALIFICATION_FIXTURE",
+        "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_A_ROOT_SLOT_FIXTURE_RESULT.json",
+        "scope": "E2-QUALIFICATION-ONLY",
+        "section": "/fixture_authority_id"
+      },
+      "support_state": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-snapshot-v1",
+        "sha256": "ac92ad77655d82467d01d4f1b89fffb425771bf6f0f3985343ddeb7fa013d79f"
+      }
+    }
+  ],
+  "regression_evidence": {
+    "current_runtime_targeted": {
+      "causes": [
+        "RECEIPT_CHANGED_CONTROL",
+        "FIELD_PROVENANCE"
+      ],
+      "errors": 12,
+      "failures": 4,
+      "result": "FAIL",
+      "tests": 66
+    },
+    "logs": {
+      "CURRENT_RUNTIME": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_CURRENT_RUNTIME.log",
+      "FULL_COLLECTION": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_FULL_COLLECTION.log",
+      "PLANNER_PY311": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_PLANNER_PY311.log",
+      "PLANNER_PY38": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_PLANNER_PY38.log",
+      "PREEXISTING_COMPARISON": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_PREEXISTING_COMPARISON.log",
+      "TARGETED": "DETERMINISTIC_PLANNER_V0_1_EVIDENCE_E06_TARGETED.log"
+    },
+    "planner_discovery_python311": {
+      "command": "python -m unittest discover -s adapter/tests -p 'test_planner*.py' -q",
+      "errors": 12,
+      "failures": 5,
+      "result": "FAIL",
+      "same_failure_set_as_python38": true,
+      "tests": 190
+    },
+    "planner_discovery_python38": {
+      "additional_cause": "X05 old nine-dossier-check expectation conflicts with the already-present supported-six-check native contract",
+      "command": "python3 -m unittest discover -s adapter/tests -p 'test_planner*.py' -q",
+      "errors": 12,
+      "failures": 5,
+      "result": "FAIL",
+      "tests": 185
+    },
+    "preexisting_core_comparison": {
+      "errors": 2,
+      "failures": 1,
+      "method": "Load the untouched HEAD core.py in an isolated interpreter, retain the supplied preexisting evidence/gates implementations, rerun three representative failing cases",
+      "result": "REPRODUCED",
+      "same_causes": [
+        "RECEIPT_CHANGED_CONTROL",
+        "FIELD_PROVENANCE",
+        "X05 nine-check expectation"
+      ],
+      "tests": 3
+    },
+    "repository_collection": {
+      "collection_errors": 288,
+      "command": "python -m pytest --collect-only -q",
+      "result": "BLOCKED_FROZEN_E1_DUPLICATE_IMPORT",
+      "tests_collected": 383
+    },
+    "targeted": {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest adapter.tests.test_planner_typed_proofs adapter.tests.test_planner_e06_regressions -q",
+      "result": "PASS",
+      "tests": 12
+    }
+  },
+  "regressions": "FAIL_PREEXISTING_CURRENT_RUNTIME_CASES",
+  "replay": "PASS_E06_BOUNDARY_NATIVE_EVENTS",
+  "result": "PARTIAL",
+  "root_oracle": "PASS",
+  "root_proof": {
+    "$type": "TypedProof",
+    "authority": {
+      "$type": "EntityId",
+      "value": "E2-FIXTURE-AUTHORITY:f7679cad56a78760dfe5b87e4e6a46a4c5a6bd3dff6d3f6c39ff15bd34c5cc75"
+    },
+    "authority_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "bd686c73f0020c7610fa52d447831bf3547c83ad79daf3265086a7e6f02a274d"
+    },
+    "contract": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-TypedProofContract-v1",
+      "sha256": "282c8763c45bf276dc3efacf65db641113a26d6724d7d84d4abad2f33167e5b0"
+    },
+    "generation": "E2-GENERATION-1",
+    "id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-TypedProof-v1",
+      "sha256": "2205659647e2da6e4c529d82be475639aba3a76c1f63090235350e6126decd0d"
+    },
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "proof_type": {
+      "$enum": "TypedProofKind",
+      "value": "ROOT_PROOF"
+    },
+    "proposition": "E2-ROOT-PROPOSITION",
+    "provenance": {
+      "$type": "Provenance",
+      "excerpt": "E2-FIXTURE-AUTHORITY:f7679cad56a78760dfe5b87e4e6a46a4c5a6bd3dff6d3f6c39ff15bd34c5cc75",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "bd686c73f0020c7610fa52d447831bf3547c83ad79daf3265086a7e6f02a274d"
+      },
+      "method": "AUTHENTICATED_QUALIFICATION_FIXTURE",
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_A_ROOT_SLOT_FIXTURE_RESULT.json",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "section": "/fixture_authority_id"
+    },
+    "scope": "E2-QUALIFICATION-ONLY",
+    "support_identities": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-proof-support-v1",
+        "sha256": "83ca0ec0fc8606a98e909fa225bf7fbc50736cb277c3244fd70a7010b0de1016"
+      }
+    ],
+    "supports": [
+      {
+        "$type": "SlotId",
+        "value": "E2-SLOT"
+      }
+    ],
+    "target": {
+      "$type": "ConditionId",
+      "value": "E2-ROOT"
+    },
+    "valid_until": 100
+  },
+  "runtime_and_qualification_hashes": {
+    "adapter/planner/codec.py": "ce3af4147c0c8b8723929c84fd83775ed030d4f97ec26f3db486ae9c16f47dac",
+    "adapter/planner/core.py": "6254f0724d6ce36f095b1aa32fce2aa3347f90e989c751d9f65edc6983fec884",
+    "adapter/planner/model.py": "a0faf35edf2141d8fac1b458e449d32981758be240232bac389f56f55b52bb0a",
+    "adapter/planner/typed_proofs.py": "eae1da102a3963ea4aa58f68f56594a7a1d30ddd7753e4479c9a8166ac7cfff5",
+    "adapter/tests/qualify_planner_e06.py": "836d8e94b6905d1c3c0579bfb5d75a633925f81b944a6c1bcb3f38d625dc2865",
+    "adapter/tests/test_planner_e06_regressions.py": "3383229896942fb5254a694a0fd2f8508645fe42f7eef12c896b4a70220f920c",
+    "adapter/tests/test_planner_typed_proofs.py": "f6faf9c67a6e06a1e2ba10c91c92646c811750be85a24f49d5be69f145021dd6"
+  },
+  "slot_oracle": "PASS",
+  "slot_proof": {
+    "$type": "TypedProof",
+    "authority": {
+      "$type": "EntityId",
+      "value": "E2-FIXTURE-AUTHORITY:f7679cad56a78760dfe5b87e4e6a46a4c5a6bd3dff6d3f6c39ff15bd34c5cc75"
+    },
+    "authority_identity": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "raw-file-sha256",
+      "sha256": "bd686c73f0020c7610fa52d447831bf3547c83ad79daf3265086a7e6f02a274d"
+    },
+    "contract": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-TypedProofContract-v1",
+      "sha256": "faa03f0470b9cf12fd4146e50f51ec50271c1b5395b8a0e931d42a5dae56410f"
+    },
+    "generation": "E2-GENERATION-1",
+    "id": {
+      "$type": "ArtifactIdentity",
+      "kind": {
+        "$enum": "IdentityKind",
+        "value": "CONTENT_IDENTITY"
+      },
+      "namespace": "planner-TypedProof-v1",
+      "sha256": "82e688441cd1712768a641f67a091a805a5e4ab0b4ece6ac4b4fb28a5f5d1172"
+    },
+    "lineage": "E2-CANONICAL-BASELINE-1",
+    "proof_type": {
+      "$enum": "TypedProofKind",
+      "value": "SLOT_PROOF"
+    },
+    "proposition": "E2-SLOT-PROPOSITION",
+    "provenance": {
+      "$type": "Provenance",
+      "excerpt": "E2-FIXTURE-AUTHORITY:f7679cad56a78760dfe5b87e4e6a46a4c5a6bd3dff6d3f6c39ff15bd34c5cc75",
+      "identity": {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "raw-file-sha256",
+        "sha256": "bd686c73f0020c7610fa52d447831bf3547c83ad79daf3265086a7e6f02a274d"
+      },
+      "method": "AUTHENTICATED_QUALIFICATION_FIXTURE",
+      "path": "docs/plans/DETERMINISTIC_PLANNER_V0_1_E2_PC02_A_ROOT_SLOT_FIXTURE_RESULT.json",
+      "scope": "E2-QUALIFICATION-ONLY",
+      "section": "/fixture_authority_id"
+    },
+    "scope": "E2-QUALIFICATION-ONLY",
+    "support_identities": [
+      {
+        "$type": "ArtifactIdentity",
+        "kind": {
+          "$enum": "IdentityKind",
+          "value": "CONTENT_IDENTITY"
+        },
+        "namespace": "planner-proof-support-v1",
+        "sha256": "f61beca32d8cabdf457b9fad284a6532811f34bd2ad41b8369b06d5cf734507d"
+      }
+    ],
+    "supports": [
+      {
+        "$type": "KnowledgeId",
+        "value": "E2-K-REENTER"
+      }
+    ],
+    "target": {
+      "$type": "SlotId",
+      "value": "E2-SLOT"
+    },
+    "valid_until": 100
+  },
+  "typed_root_proof_capability": "PASS",
+  "typed_slot_proof_capability": "PASS",
+  "work_package": "EVIDENCE-E06"
+}

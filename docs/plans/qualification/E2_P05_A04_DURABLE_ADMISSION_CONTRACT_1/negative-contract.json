@@ -1,0 +1,195 @@
+{
+  "durable_cases": [
+    {
+      "case": "wrong PrepareResult",
+      "expected": "Reject before T02/HEAD",
+      "id": "DA01",
+      "mutation": "Outcome/Action/dossier/result contract differs",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "result not actually executed",
+      "expected": "Reject live API bypass; replay verifier is read-only",
+      "id": "DA02",
+      "mutation": "Raw supplied/oracle result presented to live commit without qualified producer context",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "wrong pre-state",
+      "expected": "Reject stale/misbound context",
+      "id": "DA03",
+      "mutation": "expected_snapshot or native pre-state differs",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "wrong parent",
+      "expected": "Reject before append",
+      "id": "DA04",
+      "mutation": "Original head/parent event differs",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "wrong post-Snapshot",
+      "expected": "Reject hash/model/whole-state comparison",
+      "id": "DA05",
+      "mutation": "Archive ID/body differs from event.after_snapshot",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "tampered post-state",
+      "expected": "Reject complete T02 projection equality",
+      "id": "DA06",
+      "mutation": "Unrelated Action/control/knowledge/validation/context changes",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "wrong event",
+      "expected": "Reject native event identity and binding check",
+      "id": "DA07",
+      "mutation": "Envelope/result/sequence/identity branch differs",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "wrong ledger",
+      "expected": "Reject occurrence mapping",
+      "id": "DA08",
+      "mutation": "Event not in externally trusted bundle/prefix",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "wrong append head",
+      "expected": "Reject exact prefix intent",
+      "id": "DA09",
+      "mutation": "HEAD advanced to foreign/conflicting command",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "validation bound to different Snapshot",
+      "expected": "Reject immutable binding",
+      "id": "DA10",
+      "mutation": "Member selector resolves a foreign after-state/dossier",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "missing validation binding",
+      "expected": "Reject complete tuple/reference closure",
+      "id": "DA11",
+      "mutation": "Check/member/dossier/source/binding/archive missing",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "event without result",
+      "expected": "Reject schema or replay effect",
+      "id": "DA12",
+      "mutation": "Missing actual typed result/output",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "result without event",
+      "expected": "Reject P05 occurrence assurance",
+      "id": "DA13",
+      "mutation": "State-only T02/snapshot/report offered as durable occurrence",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "duplicate retry",
+      "expected": "No duplicate durable effect; reject second append and return historical no-op",
+      "id": "DA14",
+      "mutation": "Exact already committed operation resubmitted",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "conflicting retry",
+      "expected": "Reject effect conflict",
+      "id": "DA15",
+      "mutation": "Same intent different result/check tuple/source/context",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "replay creating second occurrence",
+      "expected": "Reject; verify-only replay",
+      "id": "DA16",
+      "mutation": "Replay attempts append/publish or producer invocation",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "source substitution",
+      "expected": "Reject source validation",
+      "id": "DA17",
+      "mutation": "Raw source bytes/provenance/content differ from sealed pin",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "source boundary drift",
+      "expected": "Reject expected pre-bundle/source equality",
+      "id": "DA18",
+      "mutation": "Future source visible in an earlier prefix or omitted at A04",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "archive missing after descendant invalidation",
+      "expected": "Reject restore/replay; history cannot be inferred",
+      "id": "DA19",
+      "mutation": "Latest state substituted for original archived state",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "orphan archive accepted as occurrence",
+      "expected": "Reject graph binding",
+      "id": "DA20",
+      "mutation": "Pre-HEAD files presented without trusted accepted event/bundle",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "binding tampering",
+      "expected": "Reject trusted bundle hash or semantic binding",
+      "id": "DA21",
+      "mutation": "Bundle binding event/pre-bundle/source delta mutated",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "duplicate binding/member",
+      "expected": "Reject uniqueness",
+      "id": "DA22",
+      "mutation": "Duplicate native event binding or PredicateId",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "ordered input reversal",
+      "expected": "Reject sealed ordered input contract; R05 does not declare this tuple unordered",
+      "id": "DA23",
+      "mutation": "ValidationInstance.inputs reversed",
+      "status": "SEALED_NOT_RUN"
+    },
+    {
+      "case": "historical relabeling",
+      "expected": "Reject authorized replacement labeling",
+      "id": "DA24",
+      "mutation": "New event mapped as original A04/A03 ancestry",
+      "status": "SEALED_NOT_RUN"
+    }
+  ],
+  "failure_injection": [
+    "after producer",
+    "after typed validation checks",
+    "after T02/private state",
+    "after Snapshot hashing",
+    "after event/binding construction",
+    "after source stage",
+    "after archive stage",
+    "after event stage",
+    "after bundle stage",
+    "after pre-HEAD fsync/pin verification",
+    "during HEAD replacement",
+    "after HEAD replacement/before acknowledgement"
+  ],
+  "inherited_24_negative_expectations": {
+    "path": "docs/plans/qualification/E2_P05_A04_PROSPECTIVE_ANCESTRY_CONTRACT_1/negative-contract.json",
+    "pointer": "",
+    "raw_sha256": "164cd1bfdec7137888ed541bce2734442cfc7d89bd86cf67760774d9fecc206c"
+  },
+  "inherited_count": 24,
+  "positive_retry_is_not_rejected": "An identical semantic retry is a success/no-op; the negative is an attempted second result/event/ledger append",
+  "qualification_boundary": "Run only in isolated fixtures in the later implementation/qualification package; no mutations or execution here",
+  "status": "SEALED_NOT_RUN"
+}

@@ -1,0 +1,53 @@
+{
+  "HEAD_contract": "Existing PLANNER-HEAD-1 fields unchanged: bundle=new ID, previous=expected pre-bundle ID, command=None for SuppliedResult. _read_head/_prefix_bundle must understand detached dossier bindings.",
+  "atomic_semantic_unit": [
+    "actual supplied PREPARE result and bounded knowledge",
+    "complete dossier/typed validations/post-Snapshot",
+    "one native event/ledger append",
+    "exact source additions and replay binding",
+    "post PersistenceBundle and HEAD"
+  ],
+  "conflicting_retry": "Fail if any result/dossier/outcome/output/validation/source/context differs, if original prefix cannot be proven, if another command consumed that parent, or if retry asserts a new current parent for an already completed Action",
+  "durable_invariants": [
+    "No accepted applied result/knowledge/dossier without its occurrence event",
+    "No accepted event without complete archived post-Snapshot and validations",
+    "No Snapshot or validation tuple labeled qualified occurrence without native admitted event",
+    "No accepted bundle with missing source pins/archive/binding",
+    "No canonical append-head advance without complete transaction"
+  ],
+  "failure_injection_points": [
+    "after producer",
+    "after typed validation checks",
+    "after T02/private state",
+    "after Snapshot hashing",
+    "after event/binding construction",
+    "after source stage",
+    "after archive stage",
+    "after event stage",
+    "after bundle stage",
+    "after pre-HEAD fsync/pin verification",
+    "during HEAD replacement",
+    "after HEAD replacement/before acknowledgement"
+  ],
+  "file_order": [
+    "source objects/new raw pinned artifacts",
+    "historical/candidate Snapshot archive objects",
+    "immutable event files",
+    "immutable canonical bundle file",
+    "directory fsync",
+    "HEAD temporary file/fsync, final source verification and parent check",
+    "atomic HEAD replacement and directory fsync"
+  ],
+  "filesystem_semantics": "Existing local flock/immutable-create/fsync/atomic replace protocol; no distributed concurrency guarantee. Post-replace I/O uncertainty is not reported as a rolled-back pre-state.",
+  "identical_retry": "If a verified committed matching intent and exact effect already exist, return historical committed transaction identity and current verified head without producer invocation, ledger append, state reset or new bundle. If descendants exist, preserve them.",
+  "intent_recovery": "Resolve original native prefix using exact expected_bundle and source/binding history. Inspect exactly the next event; derive ActionId and original parent fields from its native envelope/result.",
+  "orphan_files": "Crash-created files before HEAD may remain as unaccepted staging objects; they do not authorize acceptance, graph binding or resume. Never load an orphan as trusted merely by computing its hash.",
+  "precommit_unchanged": "Authoritative pre-bundle/state/ledger/HEAD remain byte-identical through all checks and staging failures",
+  "retry_after_precommit_failure": "No admitted event exists; reload same verified parent and run the NON_EFFECTING producer again. Orphan immutable files must match exact bytes or fail; do not silently mutate them.",
+  "retry_after_uncertain_publication": "Read trusted HEAD under lock; exact transaction present => historical no-op success; pre-state still current => new attempt; divergent head/effect => fail",
+  "retry_effect": "Full canonical SuppliedResult, canonical native validation member values, source pin/content inventory and resulting Snapshot/event/bundle identities",
+  "retry_evidence": "If an already-prepared candidate is resubmitted, require exact canonical result/tuple/source effect equality to archived committed operands. A new source/content/result under same intent is conflict, not a fresh command.",
+  "retry_intent": "(trusted expected pre-bundle ID, original parent Snapshot ID, original parent event ID, native ActionId); all are native identities, no new command namespace",
+  "trusted_readers": "Only restore externally trusted bundle identity or validated HEAD; require complete archive/event/source closure and full replay before exposure. Hashes are integrity bindings, not issuer signatures.",
+  "visibility_boundary": "Atomic replacement of HEAD after complete immutable artifact closure and all semantic checks; artifact existence alone is not acceptance"
+}

@@ -1,0 +1,38 @@
+{
+  "ACTUAL_HOST_DURABILITY_VERIFIED": false,
+  "APPROVED_SUBJECT": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-a15-host-capability-test-subject-v1",
+    "sha256": "762b88071476cea67c08c8e57d5b893f61c2d8843cc7f0f04a07f05b52fe3a80"
+  },
+  "ASSURANCE": "A proposed fsync/exclusive-create protocol is not an independently qualified enforcement mechanism. No host crash durability claimed.",
+  "EXISTING_EVIDENCE": [
+    "Package77 subject only declares one attempt; no consumption schema, stable path or launch gate",
+    "Existing adapter campaign account uses original stopped campaign-budget.jsonl and old implementation grant; prohibited and inapplicable to H77-02",
+    "No consumption file created and no probe attempted in Package78"
+  ],
+  "IMPLEMENTED_LAUNCH_GATE": false,
+  "MISSING_EVIDENCE": [
+    "Exact launch-gate executable identity and invocation implementing these transitions",
+    "Stable actual direct-host consumption directory/ownership/filesystem durability and permission evidence",
+    "Independent qualification of concurrent attempts, crash before/after record durability and launch, malformed tokens, symlink races and authority-copy attempts",
+    "Binding of any future issued grant identity to the one immutable consumption namespace without circular IDs"
+  ],
+  "PROPOSED_MECHANISM": [
+    "One stable grant-derived consumption path shared by all execution attempts; never scratch-randomized",
+    "Verify trusted owned nonsymlink directory via directory descriptor; exclusive no-follow create refuses any existing token",
+    "Complete record binds actual issued grant, approved subject, exact argv/tool pins and direct-host entry evidence; not an issued grant here",
+    "Flush file and parent directory successfully, close, independently reread and validate before launch",
+    "Only process that acquired exclusive create and completed durable reread may launch once; existing/partial/malformed token or uncertain durability denies every launcher",
+    "Never delete/reset/replace token after crash, interruption, timeout or failure; no automatic retry",
+    "Enforce single host/copy/launcher boundary; copying authority to another filesystem must not bypass shared token"
+  ],
+  "REQUIRED_STATE_MACHINE": [
+    "UNCONSUMED -> CONSUMED_BEFORE_LAUNCH",
+    "CONSUMED -> OBSERVED_RESULT_OR_AMBIGUOUS",
+    "No transition back to UNCONSUMED"
+  ],
+  "RETRIES": 0,
+  "SINGLE_PROBE_LIMIT": 1,
+  "STATUS": "PROPOSED_NOT_QUALIFIED"
+}

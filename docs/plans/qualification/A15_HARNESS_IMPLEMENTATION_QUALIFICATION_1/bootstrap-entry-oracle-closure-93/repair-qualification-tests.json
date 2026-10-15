@@ -1,0 +1,93 @@
+{
+  "ADDITIONAL_PRELAUNCH_OR_OBSERVATION_ASSERTIONS": [
+    {
+      "EXPECTED": "207444-byte root stage allowed, pending effective repair grant and scope; never a launch token",
+      "PROCESS_EFFECT": "none; bounded bytes/fd reader isolation, no callback",
+      "PURPOSE": "canonical mathematical max-size root accepts reader size/shape stage only; no activation without real entry proofs",
+      "TEST_ID": "R93-EXACT-ROOT-BOUND"
+    },
+    {
+      "EXPECTED": "ENTRY_TOO_LARGE, no callback/claim",
+      "PROCESS_EFFECT": "none; mocked bounded read stream; no oversized child-written file",
+      "PURPOSE": "one byte above root cap rejected before JSON or claim",
+      "TEST_ID": "R93-ROOT-OVERSIZE"
+    },
+    {
+      "EXPECTED": "65537 private record rejects even if valid JSON and root authority exists",
+      "PROCESS_EFFECT": "none",
+      "PURPOSE": "all ordinary records/epochs/receipts retain65536 ceiling",
+      "TEST_ID": "R93-LEGACY-BOUND"
+    },
+    {
+      "EXPECTED": "strict schema/canonical failure before consumption",
+      "PROCESS_EFFECT": "none",
+      "PURPOSE": "wrong/unknown fields, duplicate keys, BOM/trailing data/NaN/floats, excessive nodes/depth or wrong integer domain reject",
+      "TEST_ID": "R93-CANONICAL-SCHEMA"
+    },
+    {
+      "EXPECTED": "original incomplete-read failure retained; no fallback or consumption",
+      "PROCESS_EFFECT": "inert read fault, no launch",
+      "PURPOSE": "truncated/interrupted root read",
+      "TEST_ID": "R93-PARTIAL-READ"
+    },
+    {
+      "EXPECTED": "exact rejection before claim; no unverified parsed data",
+      "PROCESS_EFFECT": "none",
+      "PURPOSE": "wrong raw pin/canonical identity or role cap",
+      "TEST_ID": "R93-HASH-SUBSTITUTION"
+    },
+    {
+      "EXPECTED": "descriptor or parent fingerprint change rejects; symlink/hardlink/escape rejects; retain first fault",
+      "PROCESS_EFFECT": "controlled synthetic fd metadata fault; no permission/real source changes",
+      "PURPOSE": "pre/post inode/size/mtime/ctime or root namespace substitution",
+      "TEST_ID": "R93-DESCRIPTOR-CHANGE"
+    },
+    {
+      "EXPECTED": "fail despite otherwise matching final record set; preserve raw counterexample",
+      "PROCESS_EFFECT": "inert observation validation; original B89 two helpers only",
+      "PURPOSE": "unknown filename/nonprefix bytes/missing raw actor receipt/second success or callback",
+      "TEST_ID": "R93-CONCURRENT-SNAPSHOT"
+    },
+    {
+      "EXPECTED": "exact reject; consumed/unknown never regain permission",
+      "PROCESS_EFFECT": "inert observed-record negatives; original six B89 helpers only",
+      "PURPOSE": "wrong any six declared store states/record bytes/recovery fields/parent wait status",
+      "TEST_ID": "R93-CRASH-RECOVERY"
+    },
+    {
+      "EXPECTED": "same first type/message/object remains authoritative; all secondary phase receipts retained; zero retry",
+      "PROCESS_EFFECT": "fixed in-memory synthetic errors only, no real grant/store/probe",
+      "PURPOSE": "primary exception plus secondary audit/cleanup/accounting errors",
+      "TEST_ID": "R93-FIRST-COUNTEREXAMPLE"
+    }
+  ],
+  "AUTOMATIC_RETRIES": 0,
+  "EXPECTED_HELPER_LAUNCHES": 10,
+  "NO_ADDITIONAL_CAMPAIGNS": true,
+  "NO_EXTRA_HELPER_LAUNCHES": true,
+  "NO_UNUSED_READER_CAPABILITY_ADDED": true,
+  "ORIGINAL_B89_TOP_LEVEL_TEST_IDS": [
+    "B89-COMMAND_REJECTION",
+    "B89-GRANT_REJECTION",
+    "B89-FIRST_CONSUMPTION",
+    "B89-DUPLICATE_CONSUMPTION",
+    "B89-CONCURRENT_CLAIMS",
+    "B89-PARTIAL_RECORD",
+    "B89-CRASH_BEFORE_LAUNCH",
+    "B89-CRASH_AFTER_CONSUMPTION",
+    "B89-LAUNCH_FAILURE",
+    "B89-UNKNOWN_COMPLETION",
+    "B89-AUDIT_FAILURE",
+    "B89-REVOCATION",
+    "B89-RESOURCE_MISMATCH",
+    "B89-ZERO_RETRIES"
+  ],
+  "ORIGINAL_RUNTIME_VARIANTS": 21,
+  "REFERENCE_TESTS_NOT_APPLICABLE_TO_SELECTED_A": [
+    "missing referenced content",
+    "reference-count exhaustion",
+    "reference-chain cycle",
+    "total referenced-byte exhaustion"
+  ],
+  "SELECTED_DESIGN": "A"
+}

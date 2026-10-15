@@ -1,0 +1,14 @@
+{
+  "FUTURE_RESULT_HANDLING": "Structured error classification + original native/wrapper exception type/message + failing boundary. No source/policy/state repair; no lifecycle mutation or output oracle inferred.",
+  "before writer exit": "WRITER_EXIT_NOT_OBSERVED / RUNTIME_GUARDS_UNMET; supervisor gate before launch",
+  "decode failure": "Native parse_json/_unwire exception recorded with operation boundary restore",
+  "handoff failure": "HANDOFF_IDENTITY_MISMATCH / HANDOFF_CONTENT_MISMATCH",
+  "missing persisted file": "Native PlannerError bundle unavailable (wrapper file read may surface OSError before restore; classified persisted input unavailable)",
+  "validation failure": "Native PlannerError exact message/type retained; no PASS from exit code",
+  "warm-state leakage": "WARM_READER / forbidden input-channel schema; no reader launch",
+  "wrong Snapshot": "RESTORED_CHECKPOINT_MISMATCH",
+  "wrong bytes/hash/bundle ID": "PERSISTED_BYTES_MISMATCH wrapper or native bundle identity mismatch",
+  "wrong policy/P05": "WRONG_FRAME_POLICY_OR_REPLAY_SCOPE or native unsupported selection policy identity/version binding",
+  "wrong replay scope/nonzero history": "WRONG_FRAME_POLICY_OR_REPLAY_SCOPE; reject before claiming success",
+  "wrong source pin": "RESTORED_SOURCE_SET_MISMATCH or native pinned source/provenance validation error"
+}

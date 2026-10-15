@@ -1,0 +1,30 @@
+{
+  "DO_NOT_BYPASS": true,
+  "ITEMS": [
+    {
+      "ACCESS_STATUS": "Not exposed through proc status or inspected config; no privileged retrieval attempted",
+      "ID": "M74-EFFECTIVE-FILTER",
+      "MISSING": "Effective filter/rule bundle for installed launcher/profile, identifying the action on socket(AF_NETLINK=16,type=0x80003,protocol=0)",
+      "RESPONSIBLE_OWNER_ROLE": "Codex managed-profile/linux-sandbox operator"
+    },
+    {
+      "ACCESS_STATUS": "Current argv is observable; original per-command assignment absent",
+      "ID": "M74-POLICY-ORIGIN",
+      "MISSING": "Authoritative source and owner assignment for the managed permission profile used for Package72, linked to installed version/hash and original launch context",
+      "RESPONSIBLE_OWNER_ROLE": "Codex app-server/session permission-profile administrator"
+    },
+    {
+      "ACCESS_STATUS": "Kernel log has no usable record; audit log absent; loaded AppArmor profile listing denied",
+      "ID": "M74-DENIAL-CORRELATION",
+      "MISSING": "Existing syscall-denial audit or policy explanation correlated to Package72 operation, namespace/PID mapping and EPERM",
+      "RESPONSIBLE_OWNER_ROLE": "Launcher operator, with host/LSM security administrator if another layer owns the denial"
+    },
+    {
+      "ACCESS_STATUS": "No authoritative permitted context supplied or discovered",
+      "ID": "M74-PERMITTED-CONTEXT",
+      "MISSING": "Exact approved same-host context allowing necessary private namespace route control while preserving every filesystem/network/process/resource limit",
+      "RESPONSIBLE_OWNER_ROLE": "Actual outer-policy security administrator; project-owner qualification approval remains separately required"
+    }
+  ],
+  "PERMISSION_OR_SECURITY_CHANGES_REQUESTED": false
+}

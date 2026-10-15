@@ -1,0 +1,122 @@
+{
+  "APPROVED_LIMITS": {
+    "AUTOMATIC_RETRIES": 0,
+    "CHILD_ADDRESS_SPACE_BYTES": 1073741824,
+    "CHILD_CPU_SECONDS": 30,
+    "CHILD_FILE_BYTES": 16777216,
+    "CHILD_OPEN_FILE_DESCRIPTORS": 64,
+    "EXTRA_CAMPAIGNS": "Require fresh explicit bounded approval; no implicit repeat after failure/timeout/budget depletion",
+    "MAX_CAMPAIGN_WALL_SECONDS": 600,
+    "MAX_CAMPAIGN_WRITTEN_BYTES": 67108864,
+    "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN": 128,
+    "MAX_CHILD_WALL_SECONDS": 60,
+    "MAX_LIVE_CHILDREN": 4,
+    "STATUS": "PROPOSED_AUTHORIZATION_LIMITS_NOT_OBSERVED_RESOURCE_PERMISSIONS"
+  },
+  "CGROUP_V2_DELEGATION_ASSUMED": false,
+  "HOST_CGROUP_VERSION": "v1 as supplied",
+  "PROBE_SUCCESS_SUBSTITUTED_FOR_LIMIT_EVIDENCE": false,
+  "RESOURCE_ENFORCEMENT_READY": false,
+  "ROWS": [
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 4,
+      "AVAILABLE_NATIVE_MECHANISM": "OS-scoped PID/descendant control where applicable + trusted admission/reservation",
+      "CONTROL_ID": "MAX_LIVE_CHILDREN",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 128,
+      "AVAILABLE_NATIVE_MECHANISM": "One fresh immutable global campaign counter",
+      "CONTROL_ID": "MAX_CHILD_LAUNCHES_PER_APPROVED_CAMPAIGN",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 60,
+      "AVAILABLE_NATIVE_MECHANISM": "Supervisor monotonic deadline + scoped termination/reaping",
+      "CONTROL_ID": "MAX_CHILD_WALL_SECONDS",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 30,
+      "AVAILABLE_NATIVE_MECHANISM": "POSIX RLIMIT_CPU",
+      "CONTROL_ID": "CHILD_CPU_SECONDS",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 1073741824,
+      "AVAILABLE_NATIVE_MECHANISM": "POSIX RLIMIT_AS",
+      "CONTROL_ID": "CHILD_ADDRESS_SPACE_BYTES",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 16777216,
+      "AVAILABLE_NATIVE_MECHANISM": "POSIX RLIMIT_FSIZE",
+      "CONTROL_ID": "CHILD_FILE_BYTES",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 64,
+      "AVAILABLE_NATIVE_MECHANISM": "POSIX RLIMIT_NOFILE + close inherited FDs",
+      "CONTROL_ID": "CHILD_OPEN_FILE_DESCRIPTORS",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 600,
+      "AVAILABLE_NATIVE_MECHANISM": "Single global monotonic campaign clock",
+      "CONTROL_ID": "MAX_CAMPAIGN_WALL_SECONDS",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 67108864,
+      "AVAILABLE_NATIVE_MECHANISM": "Cumulative trusted write accounting/quota including staging/audit",
+      "CONTROL_ID": "MAX_CAMPAIGN_WRITTEN_BYTES",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    },
+    {
+      "ACTUAL_DIRECT_HOST_SUPPORT": "UNDETERMINED until specific verification",
+      "APPROVED_CEILING": 0,
+      "AVAILABLE_NATIVE_MECHANISM": "Exact grant/launcher refusal of automatic retry",
+      "CONTROL_ID": "AUTOMATIC_RETRIES",
+      "CURRENT_STATUS": "UNDETERMINED",
+      "FAIL_CLOSED": "Unknown/unsupported/mismatch denies relevant phase; no weakening",
+      "REQUIRED_PERMISSIONS": "Actual actor ability to apply/inherit/control this exact bounded resource; cgroup changes require actual delegated authority, not project-charter inference",
+      "VERIFICATION_PROCEDURE": "Independently inspect actual host/controller/effective child limits and authorised scoped enforcement; record full tree/writes/deadlines; metadata/test permission required before any probe"
+    }
+  ]
+}

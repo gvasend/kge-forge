@@ -1,0 +1,115 @@
+[
+  {
+    "CAPABILITY_ID": "C69-CHECKPOINT",
+    "COMPONENTS": [
+      "N69-RESTORE"
+    ],
+    "MISSING_BEHAVIOR": "Native restore exists; A15 start gate integration missing",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-INVALIDATION-CAPTURE",
+    "COMPONENTS": [
+      "N69-INVALIDATION",
+      "N69-RECORD",
+      "R69-V3-CAPTURE"
+    ],
+    "MISSING_BEHAVIOR": "Exactly one record_result call; compare updated DTO/events before save",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-PUBLICATION-HANDOFF",
+    "COMPONENTS": [
+      "N69-PUBLISH",
+      "N69-IMMUTABLE",
+      "R69-A14-WRITER"
+    ],
+    "MISSING_BEHAVIOR": "A15 exact immutable manifest and handoff adapter missing",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-WRITER-EXIT",
+    "COMPONENTS": [
+      "R69-A14-SUPERVISOR",
+      "R69-V3-PROCESSES"
+    ],
+    "MISSING_BEHAVIOR": "Own-child exit observation before readers exists generically, not A15 qualified",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-COLD-READERS",
+    "COMPONENTS": [
+      "R69-A14-READER",
+      "R69-V3-PROCESSES"
+    ],
+    "MISSING_BEHAVIOR": "Eight fresh readers, four per variant, full 20-event/DTO/query comparisons missing",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-ISOLATION",
+    "COMPONENTS": [
+      "R69-A14-SUPERVISOR",
+      "R69-CGROUP",
+      "R69-BARRIER"
+    ],
+    "MISSING_BEHAVIOR": "Exact A15 process/row isolation and enforced filesystem/network boundary unqualified",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-FAILURE-RETRY",
+    "COMPONENTS": [
+      "R69-A14-SUPERVISOR",
+      "N69-PUBLISH"
+    ],
+    "MISSING_BEHAVIOR": "Package61 fail-closed failure map not wired to exact supervisor; no automatic retries",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "PARTIALLY_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-EXACT-SUPERVISOR-WORKER",
+    "COMPONENTS": [],
+    "MISSING_BEHAVIOR": "No established Package61 A15 supervisor/writer/reader executable binding",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "NOT_IMPLEMENTED"
+  },
+  {
+    "CAPABILITY_ID": "C69-ENVIRONMENT-SEAL",
+    "COMPONENTS": [],
+    "MISSING_BEHAVIOR": "No actual A15 executable/launcher permission profile sealed",
+    "REQUIRED_PROCESS_CONTRACT_PIN": {
+      "PATH": "docs/plans/qualification/E2_P05_D01_A15_CAPTURE_PERSISTENCE_RESUME_CLOSURE_61/writer-handoff-cold-reader-contracts.json",
+      "RAW_SHA256": "9cdb7d121b65f1bda52e66451a51b4e74b3a8f6e8f21a88104f01554a385f7b1"
+    },
+    "STATUS": "NOT_IMPLEMENTED"
+  }
+]

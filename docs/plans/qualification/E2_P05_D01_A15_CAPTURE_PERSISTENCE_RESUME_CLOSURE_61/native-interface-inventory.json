@@ -1,0 +1,67 @@
+{
+  "APPLY_RESULT_FIELDS": [
+    "snapshot",
+    "action_transitions",
+    "computation"
+  ],
+  "ERRORS": "PlannerError on native contract rejection; filesystem failures may raise OSError. Fail closed on any exception.",
+  "INTERFACES": [
+    {
+      "CALLED": false,
+      "ENTRYPOINT": "adapter.planner.core.apply_event",
+      "LINE": 547,
+      "SIGNATURE": "(snapshot, supplied)",
+      "SOURCE_HASH": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "SOURCE_PATH": "/home/gvasend/app/kge-forge/adapter/planner/core.py"
+    },
+    {
+      "CALLED": false,
+      "ENTRYPOINT": "adapter.planner.codec.record_result",
+      "LINE": 594,
+      "SIGNATURE": "(bundle, supplied, *, snapshot_resolver=None)",
+      "SOURCE_HASH": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "SOURCE_PATH": "/home/gvasend/app/kge-forge/adapter/planner/codec.py"
+    },
+    {
+      "CALLED": false,
+      "ENTRYPOINT": "adapter.planner.codec.save_bundle",
+      "LINE": 677,
+      "SIGNATURE": "(bundle, output_dir, repo_root, *, snapshot_resolver=None, failure_hook=None)",
+      "SOURCE_HASH": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "SOURCE_PATH": "/home/gvasend/app/kge-forge/adapter/planner/codec.py"
+    },
+    {
+      "CALLED": false,
+      "ENTRYPOINT": "adapter.planner.codec.restore",
+      "LINE": 705,
+      "SIGNATURE": "(path, expected_identity, repo_root)",
+      "SOURCE_HASH": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561",
+      "SOURCE_PATH": "/home/gvasend/app/kge-forge/adapter/planner/codec.py"
+    },
+    {
+      "CALLED": false,
+      "ENTRYPOINT": "adapter.planner.core.resume_eligibility",
+      "LINE": 728,
+      "SIGNATURE": "(bundle, source_root=None)",
+      "SOURCE_HASH": "880b5fefc705146492082f9d0c14d0fcbf29bae645c36993b55e1b346d3e2051",
+      "SOURCE_PATH": "/home/gvasend/app/kge-forge/adapter/planner/core.py"
+    }
+  ],
+  "NON_NATIVE_CANDIDATE_LABELS_NOT_EXPOSED": [
+    "RESUME_REASON_CODE",
+    "BLOCKING_DEPENDENCIES",
+    "CONTROL_STATE",
+    "AUTHORITY_STATE",
+    "CURRENTNESS_STATE"
+  ],
+  "RECORD_RESULT_TYPE": "PersistenceBundle",
+  "RESTORE_RESULT_TYPE": "PersistenceBundle",
+  "RESULT_PROOF_AND_RESUME_FIELDS": "Derived queries; not fields on TransitionReport",
+  "RESUME_FIELDS": [
+    "allowed",
+    "actions",
+    "reasons",
+    "supporting_identities"
+  ],
+  "SAVE_RESULT_TYPE": "tuple[Path,ArtifactIdentity]"
+}

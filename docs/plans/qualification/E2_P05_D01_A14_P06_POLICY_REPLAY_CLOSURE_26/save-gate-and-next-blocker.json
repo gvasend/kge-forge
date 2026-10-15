@@ -1,0 +1,53 @@
+{
+  "FIRST_REMAINING_BLOCKER": {
+    "CLASSIFICATION": "SAVE_CONTRACT",
+    "DETAIL": "Seal exact native bundle input-to-future save-return path/identity publication and persisted writer-termination/reader handoff. Existing candidate bytes/precommitment do not prove a performed save or the required cold-reader source."
+  },
+  "KNOWN_STATIC_RULES": {
+    "DURABILITY_LIMIT": "_write_immutable fsyncs newly written file then links it; save_bundle does not publish HEAD and does not itself fsync the containing directory. Do not claim atomic HEAD commit or general crash-durability from its return. Normal writer-exit/fresh-reader visibility differs from crash recovery.",
+    "ENTRYPOINT": {
+      "BODY_AST_IDENTITY": "qualification-D01-A14-handoff-contract-v1:26397d89919aca7d4600f92447a74c76d229542f12bedf458a71d5271837c86b",
+      "ENTRYPOINT": "adapter.planner.codec.save_bundle",
+      "LINE": 677,
+      "SIGNATURE_AST": "arguments(posonlyargs=[], args=[arg(arg='bundle', annotation=None, type_comment=None), arg(arg='output_dir', annotation=None, type_comment=None), arg(arg='repo_root', annotation=None, type_comment=None)], vararg=None, kwonlyargs=[arg(arg='snapshot_resolver', annotation=None, type_comment=None), arg(arg='failure_hook', annotation=None, type_comment=None)], kw_defaults=[Constant(value=None, kind=None), Constant(value=None, kind=None)], kwarg=None, defaults=[])",
+      "SOURCE": {
+        "path": "adapter/planner/codec.py",
+        "pointer": "",
+        "raw_sha256": "9eeb923cc4b977c5b6c74374545e1ebd967a9c3cd75b55f9a0ab650b07dfb561"
+      }
+    },
+    "PRE_EXECUTION_IDENTITY_COMMITMENT": "Not derivable from Snapshot alone. Exact complete bundle bytes must be sealed before any precommitted identity can exist. No value computed here.",
+    "SAVES_PERFORMED": 0,
+    "SAVE_COMPLETION": "Successful return after bundle/source validation and immutable publication; event/archive dependencies staged before bundle file",
+    "SAVE_DEFAULTS": "snapshot_resolver=None, failure_hook=None are explicit native defaults; archive requirements still follow bundle history",
+    "SAVE_FORMAT": "Canonical PLANNER-BUNDLE-1 bytes, native event files and dossier Snapshot archives where required",
+    "SAVE_IDENTITY_RULE": "CONTENT_IDENTITY/planner-bundle-v1 = sha256(canonical full native bundle raw bytes); native return (Path, ArtifactIdentity); filename bundle-<sha256>.json",
+    "SAVE_INPUT": "Native PersistenceBundle with complete native source/policy/history binding; currently unavailable",
+    "SAVE_KIND": "SERIALIZATION_VALIDATION_AND_IMMUTABLE_PUBLICATION_OF_ALREADY_BUILT_BUNDLE; not commit_event, not authority/receipt transaction, not report persistence",
+    "SAVE_TARGETS": {
+      "D01-OBL:E2-A14_OPERANDS": {
+        "DIRECTORY": "/tmp/prospective-d01/8bfd21406a9956b5b8774f193d829096c94b7cf411d2ac582f19734fcb0d7af0/store",
+        "PURPOSE": "Preserved qualification-only per-row isolated future store; directory not created",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_OPERAND_RECONCILIATION_4/reconciled-invocation-drafts.json",
+          "pointer": "",
+          "raw_sha256": "60da56dcfe3e3e0a9f3a4fcf97bbb905cb11cc01876615e3cda59de39a9533fa"
+        }
+      },
+      "D01-OBL:E2-A14_ORACLE": {
+        "DIRECTORY": "/tmp/prospective-d01/8f6427f43ab3c49ebae3494a2fa7a48c987493a0607e5a404b8d4406da6d383c/store",
+        "PURPOSE": "Preserved qualification-only per-row isolated future store; directory not created",
+        "SOURCE": {
+          "path": "docs/plans/qualification/E2_P05_D01_OPERAND_RECONCILIATION_4/reconciled-invocation-drafts.json",
+          "pointer": "",
+          "raw_sha256": "60da56dcfe3e3e0a9f3a4fcf97bbb905cb11cc01876615e3cda59de39a9533fa"
+        }
+      }
+    },
+    "STATUS": "CONTRACT_AND_TARGET_DIRECTORY_RULE_SEALED; INPUT_FORMAT_BYTES_IDENTITY_UNAVAILABLE"
+  },
+  "SAVE_PERFORMED": false,
+  "SAVE_PREFLIGHT": "NOT_RUN_NOT_REQUESTED_TO_REPAIR_NEXT_BLOCKER",
+  "SAVE_PREFLIGHT_ELIGIBLE": true,
+  "SCOPE_NOTE": "No save invocation, no future store directory created, no native restore or qualification reader launched"
+}

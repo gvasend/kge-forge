@@ -1,0 +1,257 @@
+{
+  "HISTORICAL_RECONSTRUCTION": "NO",
+  "ORIGINAL_A06_HISTORICAL_REQUEST_WAIT_TRACE": "UNPROVEN",
+  "PROSPECTIVE_A06_TRACE_IS_ORIGINAL_TRACE": "NO",
+  "QUALIFICATION_TYPE": "PROSPECTIVE_REPLACEMENT",
+  "case_count": 27,
+  "cases": [
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject pin/content correspondence before event commit",
+      "id": "A06-QN-01",
+      "isolated_mutation": "Change resolution.request",
+      "name": "wrong_request",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native apply_receipt and sealed-input guard",
+      "expected": "Reject unknown/exact-gate mismatch",
+      "id": "A06-QN-02",
+      "isolated_mutation": "Foreign gate ID in command",
+      "name": "wrong_gate",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject known-rule A06 contract mismatch",
+      "id": "A06-QN-03",
+      "isolated_mutation": "Different requirement/proposition/target or unknown-rule A14",
+      "name": "wrong_dependency",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native ledger admission/restore",
+      "expected": "Reject ledger parent continuity",
+      "id": "A06-QN-04",
+      "isolated_mutation": "Foreign or non-null first parent / different second parent",
+      "name": "wrong_parent",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native apply_receipt",
+      "expected": "Reject external event pre-state mismatch",
+      "id": "A06-QN-05",
+      "isolated_mutation": "Different expected_snapshot",
+      "name": "wrong_pre_state",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Typed admission plus occurrence oracle",
+      "expected": "Reject or nonmatching trace; no A06 binding",
+      "id": "A06-QN-06",
+      "isolated_mutation": "Replace ExternalEvent with SuppliedResult/reevaluation",
+      "name": "wrong_event_type",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native type/stage admission and oracle",
+      "expected": "Reject phase/schema/payload mismatch",
+      "id": "A06-QN-07",
+      "isolated_mutation": "Change stage/artifact/payload fields",
+      "name": "wrong_event_payload",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Source/contract input and Snapshot oracle",
+      "expected": "Reject native source/context correspondence",
+      "id": "A06-QN-08",
+      "isolated_mutation": "Same string but different contract content",
+      "name": "wrong_request_binding",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject exact binding mismatch",
+      "id": "A06-QN-09",
+      "isolated_mutation": "Reentry/held Action or gate source changed",
+      "name": "wrong_gate_binding",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native apply_receipt/ledger admission",
+      "expected": "Reject illegal external lifecycle transition/ancestry",
+      "id": "A06-QN-10",
+      "isolated_mutation": "Waiting submitted before request-ready or reverse ledger",
+      "name": "wrong_event_ordering",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Trusted bundle/occurrence oracle",
+      "expected": "Reject exact bundle/lineage/ledger correspondence",
+      "id": "A06-QN-11",
+      "isolated_mutation": "Valid events from another fixture ledger",
+      "name": "wrong_ledger",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native ledger admission",
+      "expected": "Reject sequence or exact two-event completeness",
+      "id": "A06-QN-12",
+      "isolated_mutation": "Skip/repeat sequence or insert intervening event",
+      "name": "wrong_ledger_position",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Scope/context preflight",
+      "expected": "Reject qualification authorization mismatch; no new authority",
+      "id": "A06-QN-13",
+      "isolated_mutation": "Use P03/INSTALL/USE authority instead of scope decision or claim an event grant",
+      "name": "wrong_authority",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject trusted scope subject and input identity",
+      "id": "A06-QN-14",
+      "isolated_mutation": "Different scope with recomputed hashes",
+      "name": "wrong_scope",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject, never splice history",
+      "id": "A06-QN-15",
+      "isolated_mutation": "Historical/P03/A03/A04/foreign lineage",
+      "name": "wrong_lineage",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Sealed-input guard",
+      "expected": "Reject exact generation/currentness",
+      "id": "A06-QN-16",
+      "isolated_mutation": "Foreign generation or tick",
+      "name": "wrong_generation",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Pinned source/Snapshot guard",
+      "expected": "Reject source identity/content correspondence",
+      "id": "A06-QN-17",
+      "isolated_mutation": "Changed origin/method/content",
+      "name": "wrong_provenance",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Native apply_receipt",
+      "expected": "Reject illegal adjacent-stage transition",
+      "id": "A06-QN-18",
+      "isolated_mutation": "WAIT command against start",
+      "name": "wait_without_request_ready",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Complete occurrence oracle",
+      "expected": "Intermediate state allowed but full A06 trace FAIL; no binding",
+      "id": "A06-QN-19",
+      "isolated_mutation": "Persist only legal event 1",
+      "name": "request_without_wait",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Occurrence oracle",
+      "expected": "Reject occurrence/order assurance",
+      "id": "A06-QN-20",
+      "isolated_mutation": "Matching final Snapshot without two events",
+      "name": "snapshot_substituted_for_trace",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Occurrence oracle",
+      "expected": "Reject missing native witness",
+      "id": "A06-QN-21",
+      "isolated_mutation": "PASS prose or hashes without native event bodies",
+      "name": "report_substituted_for_trace",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Start plus occurrence oracle",
+      "expected": "Reject sealed start/actual trace mismatch; scalar pre-control alone is allowed",
+      "id": "A06-QN-22",
+      "isolated_mutation": "Start already WAITING or point to retained wait Snapshot",
+      "name": "preexisting_wait_instead_of_occurrence",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Exact event allowlist and post oracle",
+      "expected": "Reject extra phase/side effect; no live repair",
+      "id": "A06-QN-23",
+      "isolated_mutation": "RECEIVED/VALIDATED/REENTRY or added Evidence/receipt/result",
+      "name": "later_evidence_transition",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Historical/END mapping guard",
+      "expected": "Reject mapping despite any valid new events",
+      "id": "A06-QN-24",
+      "isolated_mutation": "Claim original A06 trace proved/reconstructed",
+      "name": "prospective_labeled_historical",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Identity/mapping guard",
+      "expected": "Reject historical identity replacement",
+      "id": "A06-QN-25",
+      "isolated_mutation": "Alias prospective event to missing historical ID/parent",
+      "name": "prospective_identity_substituted_original",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Writer input allowlist",
+      "expected": "Reject, only native results from sealed actual transitions qualify",
+      "id": "A06-QN-26",
+      "isolated_mutation": "Supply expected Snapshot/event/bundle to native admission",
+      "name": "oracle_used_as_operation_input",
+      "successful_lineage_unchanged": true
+    },
+    {
+      "actual_execution": "NOT_EXECUTED",
+      "boundary": "Scope mapping guard",
+      "expected": "Reject scope expansion",
+      "id": "A06-QN-27",
+      "isolated_mutation": "Close original prefix/A05/full-END solely from A06 pair",
+      "name": "broadened_full_END_or_A05_mapping",
+      "successful_lineage_unchanged": true
+    }
+  ],
+  "executed": false,
+  "fail_closed_definition": "No successful A06 acceptance mapping/binding on any mismatching candidate; native rejection where native contract forbids the mutation, otherwise exact pinned acceptance oracle rejection",
+  "no_attacker_rehash_as_trust_anchor": true,
+  "original_expected_oracles_never_edited": true,
+  "schema": "E2-P05-A06-SEALED-NEGATIVE-ORACLES-1"
+}

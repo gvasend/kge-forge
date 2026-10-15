@@ -1,0 +1,89 @@
+"""Documentary amendment only; no target process or reservation."""
+import ast,copy,datetime,hashlib,json,os,pathlib,sys,tempfile
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';B='synthetic-recovery-tests-v2-';L=B+'launch-correction-';P=B+'filesystem-serialization-'
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(canon(x)).hexdigest()}
+def read(n,prefix=B):return json.loads((D/(prefix+n)).read_text())
+def check(x):
+ k='GRANT_IDENTITY' if 'GRANT_IDENTITY' in x else 'IDENTITY';i=x[k];assert i==cid(i['namespace'],x.get('RECORD',x.get('CONTENT')))
+def pin(p):return {'path':str(p),'raw_sha256':sha(p)}
+Q=R/'docs/plans/qualification/E2_P05_D01_A15_NORMATIVE_ADOPTION_ISSUANCE_68/issue.py'
+assert sha(Q)=='ba6c00589e88ffb7d380538758c15ff648d431e55325e933d6f911d04a9af0bc'
+n=next(n for n in ast.parse(Q.read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='publish');ns={'D':D,'json':json,'os':os,'tempfile':tempfile};exec(compile(ast.Module(body=[n],type_ignores=[]),str(Q),'exec'),ns)
+def publish(n,v):return ns['publish'](P+n,v)
+def parents():
+ s=read('corrected-subject.json',L);a=read('issued-amendment.json',L);e=read('effectiveness-reference.json',L);g=read('issued-grant.json');ge=read('effectiveness-reference.json');j=read('entry-filesystem-serialization-failure.json')
+ for v in (s,a,e,g,ge):check(v)
+ assert s['IDENTITY']['sha256']=='961a0eebac6db4b57ca58f99e9a64390d04e799f824e8e79e88a54e8ec30f233'
+ assert a['IDENTITY']['sha256']=='e16b566e6215f65b48294e2f84f046a0bbedd1def8e634974fd0431b63f7a570'
+ assert e['IDENTITY']['sha256']=='85bb4977c95c724405089aa3a267c9f16a1d5d8af834fd9317f7f49762b6b3ee'
+ assert e['RECORD']['AMENDMENT_IDENTITY']==a['IDENTITY'] and e['RECORD']['AMENDMENT_PIN']['raw_sha256']==sha(D/(L+'issued-amendment.json'))
+ assert e['RECORD']['PARENT_GRANT_IDENTITY']==g['GRANT_IDENTITY']==ge['RECORD']['GRANT_IDENTITY']
+ assert g['GRANT_IDENTITY']['sha256']=='a034b2ecb8a48fb35dd77e686a2ac62f86e35da4578e27ad059f22a47fee36a5'
+ assert ge['RECORD']['GRANT_PIN']['raw_sha256']==sha(D/(B+'issued-grant.json'))
+ assert read('effectiveness-verification.json',L)['RESULT']=='PASS' and read('effectiveness-verification.json')['RESULT']=='PASS'
+ return s,a,e,g,ge,j
+
+def preserve():
+ for p,h in read('preservation-before.json',P).items():assert sha(p)==h,p
+
+def conflict():
+ keys=[x['sha256'] for x in (parents()[3]['GRANT_IDENTITY'],parents()[1]['IDENTITY'])];bad=[];scanned=[]
+ for p in D.glob('synthetic-recovery-tests-*.json'):
+  if p.name.startswith(P):continue
+  v=json.loads(p.read_text());r=v.get('RECORD',v.get('CONTENT',v))
+  if not isinstance(r,dict) or not any(k in json.dumps(r) for k in keys):continue
+  scanned.append(str(p))
+  for k in ('STATE','STATUS','RECORD_TYPE','DISPOSITION','EVENT_TYPE'):
+   val=r.get(k,'')
+   if isinstance(val,str) and val.upper() in ('REVOKED','SUPERSEDED','CONSUMED','CONSUMED_BEFORE_WRITE','UNKNOWN_OUTCOME'):bad.append(str(p))
+ assert not bad,bad
+ return {'DOMAIN':'Retained one-off synthetic authority records; no real recovery store traversal','SCANNED_RELEVANT_RECORDS':scanned,'MATCHING_CONFLICTS':bad,'NO_GLOBAL_ABSENCE_CLAIM':True,'NO_NEW_ALLOCATION_OR_RESET':True}
+mode=sys.argv[1]
+if mode=='prepare':
+ s,a,e,g,ge,j=parents()
+ prior={str(p):sha(p) for p in D.glob('synthetic-recovery-tests-*') if p.is_file()}
+ for n in ('recover.py','test_recover.py','recover_test_source.toml'):prior[str(R/n)]=sha(R/n)
+ for p in (D/'policy-effectiveness-reference.json',R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66/effective-charter-reference.json',Q):prior[str(p)]=sha(p)
+ publish('preservation-before.json',prior)
+ policy=json.loads((D/'policy-effectiveness-reference.json').read_text());check(policy);assert policy['RECORD']['STATUS']=='EFFECTIVE_ENGINEERING_POLICY_ONLY'
+ assert json.loads((R/'docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66/effective-charter-reference.json').read_text())['CHARTER_EFFECTIVE']
+ old=s['CONTENT']['EXACT_SANDBOX_ARGV'];new=j['PROPOSED_ARGV_NOT_EFFECTIVE'];prefix='permissions.'+s['CONTENT']['PROFILE_NAME']+'.filesystem.'
+ value=j['PROPOSED_FS_TABLE_CONFIG_ARG'];assert value.startswith('permissions.'+s['CONTENT']['PROFILE_NAME']+'.filesystem=')
+ expected=[];removed=[];i=0;inserted=False
+ while i<len(old):
+  if old[i]=='--config' and old[i+1].startswith(prefix):
+   removed.append(old[i+1])
+   if not inserted:expected+=['--config',value];inserted=True
+   i+=2
+  else:expected.append(old[i]);i+=1
+ assert new==expected
+ fs={k[len(prefix):]:v for k,v in s['CONTENT']['PERMISSION_RULES'].items() if k.startswith(prefix)}
+ assert fs==j['PROPOSED_FILESYSTEM_RULES']
+ resolved=j['DIAGNOSTIC_RESOLVED_PROFILE'];assert resolved['allowed'] and resolved['network_enabled'] is False and resolved['sandbox_mode'] is None and resolved['sandbox_workspace_write'] is None
+ assert {k:v for k,v in resolved['filesystem'].items() if k!='glob_scan_max_depth'}==fs
+ for p in s['CONTENT']['ALLOWED_SOURCE_COPIES']+list(s['CONTENT']['EXECUTABLE_PINS'].values()):assert sha(p['path'])==p['raw_sha256']
+ c=copy.deepcopy(s['CONTENT']);c['EXACT_SANDBOX_ARGV']=new
+ subject={'CONTENT':c,'IDENTITY':cid('kge-forge-synthetic-test-filesystem-serialization-subject-v1',c)}
+ publish('corrected-subject.json',subject)
+ d={'ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','OPTION':'AUTHORIZE_FILESYSTEM_CLI_SERIALIZATION_CORRECTION_ONLY','PROVENANCE':'Current exact user approval of referenced serialization-failure record. No invented signature, identity token or approval of a guessed hash.','APPROVED_DIAGNOSTIC_PIN':pin(D/(B+'entry-filesystem-serialization-failure.json')),'PARENT_GRANT_IDENTITY':g['GRANT_IDENTITY'],'PREDECESSOR_LAUNCH_AMENDMENT_IDENTITY':a['IDENTITY'],'CORRECTED_SUBJECT_IDENTITY':subject['IDENTITY'],'ONLY_CHANGE':'Replace filesystem dotted-key --config overrides with equivalent single TOML-table --config value; all filesystem semantics and all non-filesystem bindings unchanged','EXECUTION_BY_APPROVAL_ALONE':False}
+ publish('owner-approval.json',{'CONTENT':d,'IDENTITY':cid('kge-forge-filesystem-serialization-correction-owner-approval-v1',d)})
+ assert j['SUITE_INVOCATIONS_EXECUTED']==0 and j['SUITE_RESERVATION_CREATED'] is False
+ accounting={'SOURCE_PIN':pin(D/(B+'entry-filesystem-serialization-failure.json')),'CUSTODIAN_RECEIPT_PIN':pin(D/(B+'current-custodian-use-receipt.json')),'RULE_VERBATIM':s['CONTENT']['ATTEMPT_POLICY'],'OBSERVED_OPERATIONS':j['READ_ONLY_RESOLUTION_ATTEMPTS'],'OPERATION_CLASS':'Read-only app-server initialize/profile-list/config-read diagnostics; no thread/command/test invocation','KNOWN_SUITE_CHARGES':0,'REASONS':['Consumption rule is one suite invocation, with exclusive workspace-local execution-start reservation before suite launch','Diagnostic commands were app-server --stdio requests, not the sealed sandbox test vector','Two failures occurred before app-server initialization; successful diagnostic sent only initialize, permissionProfile/list, config/read','Preserved evidence records no reservation, no suite invocation and no test worker'],'FAILED_DIAGNOSTICS_PRESERVED':True,'COUNTERS_RESET':False,'CHARGES_REFUNDED':False,'NEW_ATTEMPT_OR_ALLOCATION':False,'CURRENT_USE_BASIS':j['CURRENT_USE_STATE'],'FRESH_STATE_RULE':'Owner knowledge declaration plus observer history support known zero use. Any newer reservation, conflicting disposition or uncertain actual suite attempt must still deny entry. No absence-only or forensic completeness claim.'}
+ publish('consumption-reconciliation.json',accounting)
+ r={'SCHEMA':'SCOPED-EXACT-LAUNCH-BINDING-AMENDMENT-1','ISSUANCE_RECORD_TYPE':'FILESYSTEM_CLI_SERIALIZATION_ONLY_AMENDMENT','ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','AUTHORITY_ROOT':'Exact owner serialization correction approval; existing engineering policy and qualified documentary publication lifecycle; qualification charter unchanged','PARENT_GRANT_IDENTITY':g['GRANT_IDENTITY'],'PARENT_GRANT_PIN':pin(D/(B+'issued-grant.json')),'PARENT_GRANT_EFFECTIVENESS_IDENTITY':ge['IDENTITY'],'PREDECESSOR_AMENDMENT_IDENTITY':a['IDENTITY'],'PREDECESSOR_AMENDMENT_PIN':pin(D/(L+'issued-amendment.json')),'PREDECESSOR_EFFECTIVENESS_IDENTITY':e['IDENTITY'],'PREDECESSOR_EFFECTIVENESS_PIN':pin(D/(L+'effectiveness-reference.json')),'PREDECESSOR_SUBJECT_IDENTITY':s['IDENTITY'],'PREDECESSOR_SUBJECT_PIN':pin(D/(L+'corrected-subject.json')),'CORRECTED_SUBJECT_IDENTITY':subject['IDENTITY'],'CORRECTED_SUBJECT_PIN':pin(D/(P+'corrected-subject.json')),'OWNER_APPROVAL_PIN':pin(D/(P+'owner-approval.json')),'ACCOUNTING_PIN':pin(D/(P+'consumption-reconciliation.json')),'EXACT_OLD_ARGV':old,'EXACT_CORRECTED_ARGV':new,'FILESYSTEM_RULES_UNCHANGED':fs,'REMOVED_FS_CONFIG_VALUES':removed,'REPLACEMENT_FS_CONFIG_VALUE':value,'LIFECYCLE_RELATIONSHIP':'Scoped second launch amendment to the SAME original one-off grant, dependent on effective one-token predecessor; not replacement grant or new suite allowance. Only filesystem override serialization superseded. Original history and prior effective records retained.','ACCOUNTING_RULE':s['CONTENT']['ATTEMPT_POLICY'],'LIMITS_UNCHANGED':s['CONTENT']['LIMITS'],'EXCLUSIONS_UNCHANGED':s['CONTENT']['EXCLUSIONS'],'STATUS':'AMENDMENT_ISSUED_PENDING_SEPARATE_VERIFIED_EFFECTIVENESS','NO_COUNTER_RESET':True,'NO_REFUND':True,'NO_NEW_ALLOCATION':True,'FRESH_ENTRY_REQUIRED':True,'TESTS_EXECUTED':False,'REVOCATION_SUPERSESSION':'Explicit immutable owner disposition naming original grant or either dependent amendment; uncertainty or spent suite denies use; no automatic retries'}
+ publish('issuance-candidate.json',{'RECORD':r,'IDENTITY':cid('kge-forge-filesystem-cli-serialization-amendment-v1',r)})
+ publish('pre-issuance-conflict-review.json',conflict());preserve()
+elif mode=='issue':
+ preserve();conflict();assert read('candidate-verification.json',P)['RESULT']=='PASS'
+ publish('issued-amendment.json',read('issuance-candidate.json',P))
+ publish('issuance-publication-receipt.json',{'PIN':pin(D/(P+'issued-amendment.json')),'EXCLUSIVE_NO_OVERWRITE':True,'COMPLETE_WRITE':True,'FILE_FSYNC':True,'DIRECTORY_FSYNC':True,'REREAD':True,'INDEPENDENT_VERIFICATION_PENDING':True})
+elif mode=='effect':
+ preserve();publish('pre-effectiveness-conflict-review.json',conflict());assert read('issuance-verification.json',P)['RESULT']=='PASS'
+ s,a,e,g,ge,j=parents()
+ r={'ISSUER_ROLE':'KGE-FORGE-PROJECT-OWNER','AMENDMENT_IDENTITY':read('issued-amendment.json',P)['IDENTITY'],'AMENDMENT_PIN':pin(D/(P+'issued-amendment.json')),'PARENT_GRANT_IDENTITY':g['GRANT_IDENTITY'],'PREDECESSOR_AMENDMENT_EFFECTIVENESS_IDENTITY':e['IDENTITY'],'CORRECTED_SUBJECT_IDENTITY':read('corrected-subject.json',P)['IDENTITY'],'INDEPENDENT_VERIFICATION_PIN':pin(D/(P+'issuance-verification.json')),'STATUS':'EFFECTIVE_FILESYSTEM_CLI_SERIALIZATION_ONLY_AMENDMENT','EFFECTIVE_AT_UTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'NO_BACKDATING':True,'SAME_ORIGINAL_SUITE_AND_ACCOUNTING':True,'NO_COUNTER_RESET':True,'NO_REFUND':True,'NO_NEW_ALLOCATION':True,'ENTRY_READY':False,'TESTS_EXECUTED':False}
+ publish('effectiveness-reference.json',{'RECORD':r,'IDENTITY':cid('kge-forge-filesystem-serialization-amendment-effectiveness-v1',r)})
+ publish('effectiveness-publication-receipt.json',{'PIN':pin(D/(P+'effectiveness-reference.json')),'EXCLUSIVE_NO_OVERWRITE':True,'COMPLETE_WRITE':True,'FILE_FSYNC':True,'DIRECTORY_FSYNC':True,'REREAD':True,'INDEPENDENT_VERIFICATION_PENDING':True})
+else:raise ValueError(mode)
+print(json.dumps({'STAGE':mode,'RESULT':'PASS','TESTS_EXECUTED':0}))

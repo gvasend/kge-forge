@@ -1,0 +1,39 @@
+# Documentary metadata verification, not shell inspection or witness execution.
+import pathlib,json,hashlib,copy,os,shlex
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-direct-shell-caller-132'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'source-authentication.json')
+for n,h in a['PINS'].items():assert raw(R/n)==h,n
+p124=read(B/'p86-isolation-capability-124/exact-candidate-profile.json');p127=read(B/'p86-minimal-host-procedure-127/prospective-parent-procedure.json');assert digest(p124['CONTENT'])==p124['IDENTITY']['sha256'];assert digest(p127['CONTENT'])==p127['IDENTITY']['sha256']
+r=read(O/'nominated-caller-receipt-specification.json');assert digest(r['CONTENT'])==r['IDENTITY']['sha256'];assert r['CONTENT']['ACTUAL_CALLER_NOMINATED'] is False and r['ACTUAL_RECEIPT'] is False
+for n,x in r['CONTENT']['EXISTING_READER_PINS'].items():assert raw(pathlib.Path(n))==x['RAW_SHA256']
+c=read(O/'launch-callsite-contract.json');assert c['P127_VECTOR']==p127['CONTENT']['ARGV'] and c['P124_VECTOR_UNCHANGED']==p124['CONTENT']['ARGV']
+assert shlex.split(c['POSIX_QUOTED_VECTOR_TEMPLATE'])==p127['CONTENT']['ARGV'];assert hashlib.sha256(c['POSIX_QUOTED_VECTOR_TEMPLATE'].encode()).hexdigest()==c['QUOTED_TEMPLATE_RAW_SHA256']
+m=read(O/'entry-execution-matrix.json');old=read(B/'p86-caller-evidence-decision-131/entry-execution-matrix.json');assert len(m['ROWS'])==36 and m['ROWS']==old['ROWS']
+g=read(O/'dependency-graph.json');assert acyclic(g['EDGES'])
+# Pure synthetic identity fixtures, never represented as host observations.
+f={'birth_before':['HOST_FIXTURE','BOOT_FIXTURE',100,222],'birth_after':['HOST_FIXTURE','BOOT_FIXTURE',100,222],'snapshot_future_guarantee':False,'protected_handle':False,'argv':c['P127_VECTOR'],'parent_qualified_claim':False,'permission_claim':False,'timeout_claim':False,'pipe_bound_claim':False,'durability_claim':False,'attempts':1,'retry':0,'authority':False,'future_success_required':False,'actual_receipt_claim':False,'actual_nomination_claim':False,'decision_ready':False,'scope':['P124_STATIC'],'options':[],'graph':g['EDGES']}
+def valid(x):
+ if x['birth_before']!=x['birth_after'] or x['argv']!=p127['CONTENT']['ARGV'] or x['attempts']!=1 or x['retry']!=0 or x['scope']!=['P124_STATIC'] or x['options'] or not acyclic(x['graph']):return False
+ return not any(x[k] for k in ['snapshot_future_guarantee','protected_handle','parent_qualified_claim','permission_claim','timeout_claim','pipe_bound_claim','durability_claim','authority','future_success_required','actual_receipt_claim','actual_nomination_claim','decision_ready'])
+assert valid(f)
+mut=[('PID_reuse','birth_after',['HOST_FIXTURE','BOOT_FIXTURE',100,333]),('boot_identity_changed','birth_after',['HOST_FIXTURE','OTHER_BOOT',100,222]),('start_identity_changed','birth_after',['HOST_FIXTURE','BOOT_FIXTURE',100,444]),('stale_snapshot_future_guarantee','snapshot_future_guarantee',True),('protected_writable_handle','protected_handle',True),('unqualified_parent','parent_qualified_claim',True),('missing_actual_permission','permission_claim',True),('missing_timeout_control_accepted','timeout_claim',True),('unbounded_pipe_output','pipe_bound_claim',True),('failed_durability_success','durability_claim',True),('extra_attempt','attempts',2),('inferred_authority','authority',True),('future_success_before_authority','future_success_required',True),('receipt_manufactured','actual_receipt_claim',True),('role_called_actual_nomination','actual_nomination_claim',True),('premature_decision_ready','decision_ready',True),('silent_retry','retry',1),('P86_scope_added','scope',['P124_STATIC','P86']),('H77_scope_added','scope',['P124_STATIC','H77-02']),('A15_scope_added','scope',['P124_STATIC','A15'])]
+out=[]
+for name,k,v in mut:
+ x=copy.deepcopy(f);x[k]=v;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(f);x['argv'].append('--changed');assert not valid(x);out.append({'DESIGN':'changed_witness_argv','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(f);x['graph'].append(['ACTUAL_WITNESS_OUTPUT','CALLER_QUALIFICATION']);assert not valid(x);out.append({'DESIGN':'own_witness_dependency_cycle','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+before=read(O/'preservation-before.json');assert all((R/n).is_file() and raw(R/n)==h for n,h in before.items())
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+s={'SOURCE_PINS_SHA256':digest(a['PINS']),'P124_IDENTITY':p124['IDENTITY'],'P127_IDENTITY':p127['IDENTITY'],'RECEIPT_SPEC_IDENTITY':r['IDENTITY'],'CALLSITE_SHA256':digest(c),'MATRIX_SHA256':digest(m),'GRAPH_SHA256':digest(g),'ACTUAL_CALLER_NOMINATED':False,'DECISION_READY':False,'OPTIONS':[],'PRESERVATION':'PASS','PRIOR_FILES':len(before),'NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

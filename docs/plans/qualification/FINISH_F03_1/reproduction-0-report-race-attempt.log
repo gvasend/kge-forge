@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 97, in parse_json
+    return json.loads(data, object_pairs_hook=pairs, parse_constant=no_number,
+  File "/usr/lib/python3.8/json/__init__.py", line 370, in loads
+    return cls(**kw).decode(s)
+  File "/usr/lib/python3.8/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.8/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "adapter/tests/qualify_finish_f03.py", line 232, in <module>
+    elif sys.argv[1]=='reproduce':lifecycle('seed-'+sys.argv[2],True)
+  File "adapter/tests/qualify_finish_f03.py", line 109, in lifecycle
+    _,did=selections();man=c.parse_json((O/'configuration-manifest.json').read_bytes());b=c.restore(Path(man['path']),c._unwire(man['bundle_id']),R)
+  File "adapter/tests/qualify_finish_f03.py", line 39, in selections
+    x=c.parse_json((O/'authenticated-decisions.json').read_bytes())
+  File "/home/gvasend/app/kge-forge/adapter/planner/codec.py", line 100, in parse_json
+    raise m.PlannerError('invalid JSON: ' + str(exc)) from exc
+adapter.planner.model.PlannerError: invalid JSON: Expecting value: line 1 column 1 (char 0)

@@ -1,0 +1,65 @@
+{
+  "CONDITIONAL_BAD_SCC_IF_ONLY_SELF_PROOF": [
+    "INSPECTION_ENTRY_REVIEW",
+    "R04_OR_R08_AS_OWN_ENTRY_PROOF"
+  ],
+  "GRAPH_EDGES": [
+    [
+      "EFFECTIVE141_AND_SEALED_VECTORS",
+      "INSPECTION_ENTRY_REVIEW"
+    ],
+    [
+      "INDEPENDENT_PREENTRY_CALLER_PERMISSION_USAGE_EVIDENCE",
+      "INSPECTION_ENTRY_REVIEW"
+    ],
+    [
+      "INSPECTION_ENTRY_REVIEW",
+      "AUTHORIZED_PRE_CREATION_READS"
+    ],
+    [
+      "AUTHORIZED_PRE_CREATION_READS",
+      "ORIGINAL138_CREATION_ENTRY_REVIEW"
+    ],
+    [
+      "CURRENT_ORIGINAL138_CREATION_USAGE_PERMISSION",
+      "ORIGINAL138_CREATION_ENTRY_REVIEW"
+    ],
+    [
+      "ORIGINAL138_CREATION_ENTRY_REVIEW",
+      "SEPARATE_LATER_CREATION_INSTRUCTION"
+    ],
+    [
+      "SEPARATE_LATER_CREATION_INSTRUCTION",
+      "CONDITIONAL_POST_CREATION_READS"
+    ]
+  ],
+  "ISSUES": [
+    {
+      "BINDING_SOURCE": "141FRESH_ENTRY_RULE andsealed140ENTRY_AND_SAFETY, current142section4",
+      "CLASS": "MANDATORY_BLOCKER",
+      "CONSEQUENCE": "Wrong/stalecaller or unsafe/unqualifiedcontext/permission usedforinspection",
+      "COST_OF_INACTION": "Delayofordinarymetadata/provisioning; no broadinfrastructurejustified",
+      "ID": "FRESH_PREENTRY_RECEIPT",
+      "LIKELIHOOD": "UNKNOWN; missingcurrentproof isnot proofhostisunsafe",
+      "MITIGATION": "One actuallypermitted independententryreceipt; do notself-authorizeadmittedvectors",
+      "REVERSIBILITY": "Readpreparationnoneffect; unknownprotectedcontext maybeconsequential"
+    },
+    {
+      "BINDING_SOURCE": "138ENTRY/FAILURE/one-run rules;141AUTHORITY_RELATIONSHIP",
+      "CLASS": "MANDATORY_ORIGINAL_PROVISIONING_ENTRY_PREDICATE",
+      "CONSEQUENCE": "Newreadbudget mistakenfornew/restoredmkdir permission",
+      "ID": "OLD_CREATION_STATE",
+      "MITIGATION": "Independentlyreviewoldcreationeligibility, neverresetcounters"
+    },
+    {
+      "BINDING_SOURCE": "141STEPS/failure rules",
+      "CLASS": "ENGINEERING_UNCERTAINTY",
+      "ID": "RUNTIME_METADATA_RESULTS",
+      "MITIGATION": "Collectonlyafterlegitimateentry; failures charged, partialUNKNOWN, noretry",
+      "NO_FUTURE_RESULT_REQUIRED_FOR_ITS_INITIAL_ENTRY": true
+    }
+  ],
+  "NO146WITNESS_ASSURANCE_TRANSFER": "P136acceptedlimits remain exactseparatepassive-checkscope;141metadataassurancedoesnotqualifythem",
+  "NO_UNIVERSAL_AGGREGATE_ENFORCEMENT_OR_COLD_DURABILITY_REQUIREMENT_ADDED": true,
+  "RULE": "RejectaddingR04/R08own-proofedge; external independentnode is permitted butactualevidencemissing. Noactualauthority/resultcycle asserted or silentlydeleted."
+}

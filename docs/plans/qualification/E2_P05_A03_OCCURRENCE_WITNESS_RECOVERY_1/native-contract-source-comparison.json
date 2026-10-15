@@ -1,0 +1,44 @@
+{
+  "finding": "Legacy tracked and current native A03 event/result fields and hash-body definition agree; no missing standalone ActionResult-ID or alternate earlier event type is implied.",
+  "git_sources": {
+    "codec.py": {
+      "excerpts": {
+        "def _event_identity": {
+          "line": 396,
+          "text": "def _event_identity(sequence, parent, parent_event, result, after, resume_binding=None):\n    body = {'sequence': sequence, 'parent': _wire(parent),\n        'parent_event': _wire(parent_event), 'result': _wire(result), 'after': _wire(after)}\n    if resume_binding is not None:\n        body['resume_binding'] = _wire(resume_binding)\n    return _identity(canonical_bytes(body), 'planner-event-v1')\n\n\ndef _replay(bundle):\n    m.validate_types(bundle, m.PersistenceBundle)\n    from .selector import validate_policy\n    validate_policy(bundle.policy, bundle.policy_version)\n    if bundle.policy_version not in ('E1-SELECTION-1-P01-SUBSET', 'E1-SELECTION-1-P03', 'E1-SELECTION-1-P04', 'E1-SELECTION-1-P05', 'E1-SELECTION-1-P06') or bundle.scope not in ('PARTIAL_HISTORICAL_REPLAY', 'FULL_FROZEN_E1_REPLAY', 'PARTIAL_SYNTHETIC_BUDGET_QUALIFICATION'):\n        raise m.PlannerError('unsupported replay bundle policy/scope')\n    if any(s.budget_matrices for s in (bundle.initial,bundle.current)) and bundle.scope != 'PARTIAL_SYNTHETIC_BUDGET_QUALIFICATION':\n        raise m.PlannerError('synthetic budget contract cannot become real E1 evidence')"
+        },
+        "def record_result": {
+          "line": 511,
+          "text": "def record_result(bundle, supplied):\n    _replay(bundle)\n    after = apply_event(bundle.current, supplied).snapshot\n    sequence = len(bundle.events) + 1\n    parent = snapshot_id(bundle.current)\n    parent_event = bundle.events[-1].identity if bundle.events else None\n    after_id = snapshot_id(after)\n    binding = resume_binding(bundle) if (type(supplied) is m.DecisionReentry or\n        (type(supplied) is m.ExternalEvent and supplied.stage is m.ExternalStage.DEPENDENT_ACTION_REENTRY)) else None\n    event = m.ExecutionEvent(sequence, parent, parent_event, supplied, after_id,\n        _event_identity(sequence, parent, parent_event, supplied, after_id, binding), binding)\n    return append_event(bundle, event)\n\n\ndef _bundle_bytes_admitted(bundle):\n    return canonical_bytes({'schema': 'PLANNER-BUNDLE-1', 'bundle': _wire(bundle)})"
+        }
+      },
+      "git_commit": "b3a2e79e800c20695a5c5cd9213ea5cea035702e",
+      "git_path": "adapter/planner/codec.py",
+      "raw_sha256": "2ebc5b66e0cfa1a9299ba450e9fe79074057cf82fec46b2f96a6e3de472b3127"
+    },
+    "model.py": {
+      "excerpts": {
+        "class ActionResult": {
+          "line": 99,
+          "text": "class ActionResult(Enum):\n    PASS = 'PASS'\n    FAIL = 'FAIL'\n    BLOCKED = 'BLOCKED'\n    AUTHORITY_REQUIRED = 'AUTHORITY_REQUIRED'\n    EXTERNAL_GATE_REQUIRED = 'EXTERNAL_GATE_REQUIRED'\n\n\nclass OperationClass(Enum):\n    SOURCE_ACQUISITION = 'SOURCE_ACQUISITION'\n    DETERMINISTIC_VALIDATION = 'DETERMINISTIC_VALIDATION'\n    DETERMINISTIC_CONSTRUCTION = 'DETERMINISTIC_CONSTRUCTION'\n    DETERMINISTIC_MAPPING = 'DETERMINISTIC_MAPPING'\n    IMPLEMENTATION_PREPARATION = 'IMPLEMENTATION_PREPARATION'\n    SEMANTIC_EVALUATION = 'SEMANTIC_EVALUATION'\n    SEMANTIC_RESOLUTION = 'SEMANTIC_RESOLUTION'"
+        },
+        "class ExecutionEvent": {
+          "line": 650,
+          "text": "class ExecutionEvent:\n    sequence: int\n    parent_snapshot: ArtifactIdentity\n    parent_event: Optional[ArtifactIdentity]\n    result: Union[SuppliedResult, 'RecordedDecision', 'DecisionReentry', 'ExternalEvent', 'SourceInvalidation', 'EvidenceSourceAdmission']\n    after_snapshot: ArtifactIdentity\n    identity: ArtifactIdentity\n    resume_binding: Optional[ArtifactIdentity] = None\n\n\n@dataclass(frozen=True)\nclass PersistenceBundle:\n    initial: Snapshot\n    events: Tuple[ExecutionEvent, ...]\n    current: Snapshot\n    sources: Tuple[ArtifactPin, ...]"
+        },
+        "class PersistenceBundle": {
+          "line": 661,
+          "text": "class PersistenceBundle:\n    initial: Snapshot\n    events: Tuple[ExecutionEvent, ...]\n    current: Snapshot\n    sources: Tuple[ArtifactPin, ...]\n    policy: ArtifactPin\n    policy_version: str = 'E1-SELECTION-1-P01-SUBSET'\n    scope: str = 'PARTIAL_HISTORICAL_REPLAY'\n\n\ndef validate_predicate_contracts(snapshot):\n    \"\"\"C01 closed reference contracts. Future outputs are declarations, not facts.\n\n    Unavailable predicates retain their intended kind and a nonempty reason, but\n    no operative fields. Replacing them requires a new, valid bound predicate.\n    A stale entity remains addressable history; usable() cannot prove it current."
+        },
+        "class SuppliedResult": {
+          "line": 508,
+          "text": "class SuppliedResult:\n    action: ActionId\n    result: ActionResult\n    knowledge: Tuple[KnowledgeRecord, ...]\n    expected_snapshot: Optional[ArtifactIdentity] = None\n    dossier: Optional[DecisionDossier] = None\n\n\ndef validate_types(value, expected):\n    \"\"\"Reject loose strings/lists at the typed API boundary, including nested data.\"\"\"\n    origin, args = get_origin(expected), get_args(expected)\n    if origin is Union:\n        if not any(type(value) is t for t in args):\n            raise PlannerError('wrong typed reference')\n        validate_types(value, type(value))\n    elif origin is tuple:"
+        }
+      },
+      "git_commit": "b3a2e79e800c20695a5c5cd9213ea5cea035702e",
+      "git_path": "adapter/planner/model.py",
+      "raw_sha256": "1aa3987231810c11262d04ae30bd3f29f70452342b170811e7c80ab6a2d7b506"
+    }
+  },
+  "limit": "This is a type/codec contract comparison, not proof of which code or event history executed in the old writer."
+}

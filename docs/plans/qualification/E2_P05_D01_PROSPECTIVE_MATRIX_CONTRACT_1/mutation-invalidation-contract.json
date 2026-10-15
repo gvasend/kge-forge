@@ -1,0 +1,158 @@
+{
+  "invalidation_rule": "Current validation/support withdrawn at designated source only; original ordered receipt/result/event history retained",
+  "invalidations": [
+    {
+      "dimension": {
+        "historical_events_retained": true,
+        "only_declared_source_identity_changes": true,
+        "required_behavior": "{\"source_role\": \"KNOWLEDGE\", \"dependent\": \"held descendant prerequisites\", \"expected\": \"stale/ineligible after recompute\"}"
+      },
+      "obligation": "D01-OBL:INVALIDATE_KNOWLEDGE",
+      "target_source_id_not_sealed": true,
+      "variants": [
+        "D01-VARIANT:INVALIDATE_KNOWLEDGE:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "historical_events_retained": true,
+        "only_declared_source_identity_changes": true,
+        "required_behavior": "{\"source_role\": \"ROOT_PROOF\", \"dependent\": \"E2-ROOT\", \"expected\": \"stale/unresolved\"}"
+      },
+      "obligation": "D01-OBL:INVALIDATE_ROOT_PROOF",
+      "target_source_id_not_sealed": true,
+      "variants": [
+        "D01-VARIANT:INVALIDATE_ROOT_PROOF:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "historical_events_retained": true,
+        "only_declared_source_identity_changes": true,
+        "required_behavior": "{\"source_role\": \"SLOT_PROOF\", \"dependent\": \"E2-SLOT\", \"expected\": \"stale/unresolved\"}"
+      },
+      "obligation": "D01-OBL:INVALIDATE_SLOT_PROOF",
+      "target_source_id_not_sealed": true,
+      "variants": [
+        "D01-VARIANT:INVALIDATE_SLOT_PROOF:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "historical_events_retained": true,
+        "only_declared_source_identity_changes": true,
+        "required_behavior": "{\"source_role\": \"GRANT\", \"dependent\": \"E2-REENTER authority applicability\", \"expected\": \"not applicable\"}"
+      },
+      "obligation": "D01-OBL:INVALIDATE_GRANT",
+      "target_source_id_not_sealed": true,
+      "variants": [
+        "D01-VARIANT:INVALIDATE_GRANT:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "historical_events_retained": true,
+        "only_declared_source_identity_changes": true,
+        "required_behavior": "{\"source_role\": \"EXTERNAL_ROUTE\", \"dependent\": \"governed waiting\", \"expected\": \"PLAN_DEFECT if no alternative\"}"
+      },
+      "obligation": "D01-OBL:INVALIDATE_EXTERNAL_ROUTE",
+      "target_source_id_not_sealed": true,
+      "variants": [
+        "D01-VARIANT:INVALIDATE_EXTERNAL_ROUTE:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "historical_events_retained": true,
+        "only_declared_source_identity_changes": true,
+        "required_behavior": "{\"source_role\": \"RECEIPT\", \"dependent\": \"evidence support\", \"expected\": \"stale/no resume\"}"
+      },
+      "obligation": "D01-OBL:INVALIDATE_RECEIPT",
+      "target_source_id_not_sealed": true,
+      "variants": [
+        "D01-VARIANT:INVALIDATE_RECEIPT:REQUIRED_ROLE"
+      ]
+    }
+  ],
+  "mutation_complement_rule": "Full native field complement must equal independent base; causal candidate history is never written into retained source",
+  "mutations": [
+    {
+      "dimension": {
+        "dimension": "only designated source bytes/pin changes; exact native family and rejection oracle required",
+        "mutation_target_identity_status": "CONCRETE_TARGET_NOT_SEALED",
+        "only_sealed_dimension_changes": true,
+        "unaffected_native_fields_equal": true
+      },
+      "exact_base_and_target_not_sealed": true,
+      "obligation": "D01-OBL:MUTATION_SOURCE",
+      "variants": [
+        "D01-VARIANT:MUTATION_SOURCE:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "dimension": "only designated lineage changes; exact native family and rejection oracle required",
+        "mutation_target_identity_status": "CONCRETE_TARGET_NOT_SEALED",
+        "only_sealed_dimension_changes": true,
+        "unaffected_native_fields_equal": true
+      },
+      "exact_base_and_target_not_sealed": true,
+      "obligation": "D01-OBL:MUTATION_LINEAGE",
+      "variants": [
+        "D01-VARIANT:MUTATION_LINEAGE:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "dimension": "only grant identity/permission/scope changes; exact native family and rejection oracle required",
+        "mutation_target_identity_status": "CONCRETE_TARGET_NOT_SEALED",
+        "only_sealed_dimension_changes": true,
+        "unaffected_native_fields_equal": true
+      },
+      "exact_base_and_target_not_sealed": true,
+      "obligation": "D01-OBL:MUTATION_AUTHORITY",
+      "variants": [
+        "D01-VARIANT:MUTATION_AUTHORITY:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "dimension": "only root/slot predicate or proof source changes; exact native family and rejection oracle required",
+        "mutation_target_identity_status": "CONCRETE_TARGET_NOT_SEALED",
+        "only_sealed_dimension_changes": true,
+        "unaffected_native_fields_equal": true
+      },
+      "exact_base_and_target_not_sealed": true,
+      "obligation": "D01-OBL:MUTATION_PROOF",
+      "variants": [
+        "D01-VARIANT:MUTATION_PROOF:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "dimension": "only gate/requirement/receipt/reentry correspondence changes; exact native family and rejection oracle required",
+        "mutation_target_identity_status": "CONCRETE_TARGET_NOT_SEALED",
+        "only_sealed_dimension_changes": true,
+        "unaffected_native_fields_equal": true
+      },
+      "exact_base_and_target_not_sealed": true,
+      "obligation": "D01-OBL:MUTATION_ROUTE",
+      "variants": [
+        "D01-VARIANT:MUTATION_ROUTE:REQUIRED_ROLE"
+      ]
+    },
+    {
+      "dimension": {
+        "dimension": "only trusted checkpoint/event/source bytes change; exact native family and rejection oracle required",
+        "mutation_target_identity_status": "CONCRETE_TARGET_NOT_SEALED",
+        "only_sealed_dimension_changes": true,
+        "unaffected_native_fields_equal": true
+      },
+      "exact_base_and_target_not_sealed": true,
+      "obligation": "D01-OBL:MUTATION_PERSISTENCE",
+      "variants": [
+        "D01-VARIANT:MUTATION_PERSISTENCE:REQUIRED_ROLE"
+      ]
+    }
+  ]
+}

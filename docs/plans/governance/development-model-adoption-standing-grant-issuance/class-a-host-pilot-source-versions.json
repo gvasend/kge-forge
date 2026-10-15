@@ -1,0 +1,12 @@
+{
+  "fault": {
+    "BYTES": 288,
+    "CONTENT": "# INTENTIONAL SCRATCH-ONLY ORACLE FAULT; retained implementation is not alleged defective.\nimport unittest\nfrom adapter.planner.codec import json_pointer\nclass ScratchFault(unittest.TestCase):\n def test_intentional_fault(self):\n  self.assertEqual(json_pointer({\"a\":[10,20]}, \"/a/01\"),20)\n",
+    "SHA256": "e873b641f51a230fb030560ce411b278dabf8f82a4a4add5ac4244e06364afcb"
+  },
+  "retest": {
+    "BYTES": 648,
+    "CONTENT": "# Corrected scratch-only oracle; original production implementation unchanged.\nimport unittest\nfrom adapter.planner.codec import json_pointer\nfrom adapter.planner.model import PlannerError\nclass ScratchCorrected(unittest.TestCase):\n def test_noncanonical_array_index(self):\n  with self.assertRaises(PlannerError):json_pointer({\"a\":[10,20]}, \"/a/01\")\n def test_literal_escape_and_unicode_key(self):\n  self.assertEqual(json_pointer({\"~1\":\"literal\"}, \"/~01\"),\"literal\")\n  self.assertEqual(json_pointer({\"\u00e9\":\"unicode\"}, \"/\u00e9\"),\"unicode\")\n def test_unicode_array_index(self):\n  with self.assertRaises(PlannerError):json_pointer({\"a\":[10,20]}, \"/a/\u0661\")\n",
+    "SHA256": "d35943f1941d77fef5344111482d486d4fe4af668e0ce5d2ac6dd6f4c0f3eee8"
+  }
+}

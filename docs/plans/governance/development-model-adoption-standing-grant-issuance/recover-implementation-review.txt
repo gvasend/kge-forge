@@ -1,0 +1,88 @@
+Recovery implementation review and conditional operator handoff
+
+Status: implementation complete; runtime qualification pending. This document
+issues no authority and performs no consumption, write, activation or admission.
+
+Implemented utility: /home/gvasend/app/kge-forge/recover.py
+SHA-256: 372512c1c07f8eba6381cf01f50a13965b383b30f9deb191885f6d95447e80cd
+
+Authority: raw pins and canonical identities authenticated from the existing
+recovery subject, issued grant, effectiveness, custody supplement/adoption/
+effectiveness and custodian declaration reconciliation. Subject remains
+053746137f0a34133cf2a3fb1859bfb318f386c373a3c4c497518a9f0c32cc23.
+Custodian reconciliation establishes UNUSED within its knowledge and designated
+record domain; neither file absence nor the preflight snapshot proves unused.
+The adapter rescans current dispositions immediately before and after consumption.
+
+Permanent record: exactly the consumption path already prescribed by the custody
+supplement. No second store or temporary attempt marker is introduced. The
+RECORD/IDENTITY JSON envelope follows retained canonical identity practice.
+Consumption/operation namespace labels are implementation representation tags;
+they do not amend authority or establish a new mandatory normative record schema.
+Qualified publication is reused from the raw-pinned Package 68 publish function
+only, not its issuer module: complete write, file fsync, exclusive final hard-link
+publication, directory fsync, reread. Its temporary publication file is managed
+only by that existing publisher. Permanent consumption is never removed/reset.
+A separate pinned Python reader verifies persisted identity before destination
+writing. Publication failure/uncertainty denies writing and never restores use.
+
+Descriptor review: source authenticated first; all path components are opened
+without following symlinks. Existing destination uses O_RDWR, no create/truncate,
+validated UID/GID1000, mode0600, nlink1, empty state and receipt device64768/inode
+2262825. Nonblocking exclusive flock and same descriptor are held across
+consumption and writing. Named inode rechecked, only positive short-write suffix
+continuation allowed, max1091 bytes, destination fsync, distinct readonly reopen,
+length/hash/owner/mode/link/inode verification. No destination deletion, rename,
+chmod, chown, alternate path or retry. A cooperative flock is not protection
+against an uncooperative same-UID writer; the operator must exclude concurrency.
+Current owner knowledge and disposition records must remain authoritative and
+complete; the scanner is not a claim of forensic detection of unrecorded activity.
+Ten-second independent-reader watchdog and JSON parser-size guards are ordinary
+implementation failure bounds, not new grant budgets or verified aggregate limits.
+
+Static verification: four fresh processes, seeds0/1/7/101, identical results;
+Python3.8 grammar and compilation, original authority raw/canonical pins,
+lock/consume/write/fsync ordering, no destination create/truncate, and preservation
+of20758 prior files passed. No target module imported or target code executed.
+The first reviewer version used unavailable Python3.8 ast.unparse; four failed
+reviewer runs are preserved, corrected using structural AST inspection. Two
+unsuccessful patch matching attempts changed no source; these were editing-tool
+failures, not recovery attempts or synthetic test failures.
+
+Prepared synthetic tests: test_recover.py with recover_test_source.toml; nineteen
+designs cover success, symlink traversal, inode/owner/mode/link/size mismatch,
+existing consumption, uncertain consumption, positive short writes, zero/failed
+writes, pathname replacement, sync failure, no replay, and revocation. Tests inject
+only disposable paths and a mock adapter. No runtime results are claimed, and
+mock success cannot qualify the real adapter. These tests are not the Planner
+pilot and do not consume its twelve-start budget here.
+
+Binding current stop: the broad current session is not the independently admitted
+restricted environment. The existing conditional standing grant requires denied
+protected/credential access and disabled network before engineering execution.
+This task expressly permits implementation and static preparation; synthetic
+execution is conditional on independently applicable permission. No optional
+supervisor qualification is added. Smallest next action: run the prepared suite
+in an already permitted disposable environment, record results, then review actual
+adapter entry permissions and current authority before the single real operation.
+
+Future synthetic invocation (ONLY in independently permitted environment containing
+copies of recover.py, test_recover.py and recover_test_source.toml):
+/usr/bin/python3.8 -I -B /absolute/disposable/working-copy/test_recover.py
+The absolute disposable path is chosen by that admitted environment; this example
+is not an invented real recovery binding or permission to execute here.
+
+Conditional direct ubuntu01 operator handoff: DO NOT EXECUTE IN THIS WORK UNIT.
+First authenticate this utility hash, exact pinned Python3.8, source and current
+authority; confirm UID/GID1000, safe parents, fresh destination receipt, exclusive
+operator, publication permissions and authoritative custodian disposition/use
+coverage. Synthetic verification remains pending. Read-only preflight, when
+independently permitted:
+/usr/bin/python3.8 -I -B /home/gvasend/app/kge-forge/recover.py --preflight
+Only after all applicable fresh guards pass and a separately operative recovery
+instruction permits consumption/write, execute ONCE:
+/usr/bin/python3.8 -I -B /home/gvasend/app/kge-forge/recover.py --execute --expected-device 64768 --expected-inode 2262825 --confirm-exclusive-operator
+Do not change expected identity or substitute another installation mechanism.
+Any stop, interruption or lost result requires custodian reconciliation; never
+rerun --execute. A durable consumption record stays consumed even if writing
+fails. Successful installation does not authorize profile activation or testing.

@@ -1,0 +1,81 @@
+{
+  "APPROVED_PROBE_SUBJECT": {
+    "ACTUAL_LATER_APPROVAL": null,
+    "RETAINED_PACKAGE86_CANDIDATE": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "qualification-h86-system-service-verification-subject-v1",
+      "sha256": "a05d3419b337aa1e851be22d047b58259945f6759684007cb68d28d62a7d1972"
+    }
+  },
+  "ATOMIC_CLAIM": "openat O_CREAT|O_EXCL|O_NOFOLLOW mode0600 permanent reservation; any existing record rejects even identical",
+  "CONSUMPTION_KEY": "exact Package87 six-input rule, stable sorted compact UTF8 JSON/SHA256; no PID/time/random path/result",
+  "CONSUMPTION_STORE": "one immutable host-profile-pinned local owned absolute store; fd/no-follow paths; no /tmp reset, no stopped journal reuse; actual production pin future",
+  "COORDINATOR_ALREADY_QUALIFIED": false,
+  "COORDINATOR_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-bootstrap-coordinator-spec-v1",
+    "sha256": "be54418be7a1fd5feb4cb960b19584e27c585ae58be39a1d31d52562489b4bc2"
+  },
+  "DURABILITY_BARRIER": "complete bounded write + file fsync + store-directory fsync; errors block; reservation never removed",
+  "EVIDENCE_WRITER": "exclusive phase-specific bounded records; claim, attempted handoff, observed result/unknown separate; original failure immutable, secondary errors retained",
+  "EXACT_COMMAND_ARGUMENT_VECTOR": [
+    "/usr/bin/systemd-run",
+    "--no-ask-password",
+    "--quiet",
+    "--wait",
+    "--collect",
+    "--pipe",
+    "--unit=kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service",
+    "--slice=system.slice",
+    "--uid=1000",
+    "--gid=1000",
+    "--working-directory=/",
+    "--property=TasksAccounting=yes",
+    "--property=TasksMax=8",
+    "--property=MemoryAccounting=yes",
+    "--property=MemoryMax=67108864",
+    "--property=RuntimeMaxSec=20s",
+    "--property=TimeoutStopSec=2s",
+    "--property=KillMode=control-group",
+    "--property=SendSIGKILL=yes",
+    "--property=Restart=no",
+    "--property=NoNewPrivileges=yes",
+    "--property=PrivateNetwork=yes",
+    "--property=PrivateTmp=yes",
+    "--property=ProtectSystem=strict",
+    "--property=ProtectHome=yes",
+    "--property=ReadOnlyPaths=/sys/fs/cgroup",
+    "--property=RestrictAddressFamilies=AF_UNIX",
+    "--property=LimitCPU=5",
+    "--property=LimitAS=134217728",
+    "--property=LimitFSIZE=65536",
+    "--property=LimitNOFILE=32",
+    "--property=UMask=0077",
+    "/usr/bin/python3.8",
+    "-I",
+    "-B",
+    "-c",
+    "import os,json,pathlib,time,datetime,sys\nUNIT = 'kge-h86-pids-3afb3ed8455b54c4facb57bb62ef1f3e.service'\nMAX_OUTPUT = 65536\nwritten = 0\ndef emit(value):\n global written\n raw=(json.dumps(value,sort_keys=True,separators=(',',':'))+'\\n').encode()\n if len(raw)>8192 or written+len(raw)>MAX_OUTPUT: raise RuntimeError('OUTPUT_BOUND')\n offset=0\n while offset<len(raw):\n  n=os.write(1,raw[offset:])\n  if n<=0: raise RuntimeError('OUTPUT_WRITE')\n  offset+=n; written+=n\n\ndef snapshot(phase):\n if os.geteuid()!=1000 or os.getegid()!=1000: raise RuntimeError('NONROOT_IDENTITY_MISMATCH')\n entries={}\n for line in pathlib.Path('/proc/self/cgroup').read_text().splitlines():\n  unused,controllers,path=line.split(':',2)\n  for controller in controllers.split(','): entries[controller]=path\n pids=entries.get('pids'); manager=entries.get('name=systemd')\n if pids is None or manager is None: raise RuntimeError('MISSING_V1_CONTROLLER')\n if not pids.startswith('/') or '..' in pids.split('/'): raise RuntimeError('CGROUP_PATH')\n location=pathlib.Path('/sys/fs/cgroup/pids')/pids.lstrip('/')\n maximum=(location/'pids.max').read_text().strip()\n current=(location/'pids.current').read_text().strip()\n record={'schema':'H86-PIDS-METADATA-1','phase':phase,'service_unit':UNIT,\n 'SERVICE_PID':os.getpid(),'SERVICE_PIDS_CGROUP':pids,'SERVICE_SYSTEMD_CGROUP':manager,\n 'KERNEL_PIDS_MAX':maximum,'KERNEL_PIDS_CURRENT':current,\n 'SYSTEMD_TASKS_MAX':None,'OBSERVATION_TIME':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n 'EVIDENCE_PROVENANCE':'service readonly proc/sysfs observation; SYSTEMD_TASKS_MAX supplied only by independent manager query'}\n emit(record)\n if pids!='/system.slice/'+UNIT or maximum!='8' or not current.isdigit() or not 1<=int(current)<=8:\n  raise RuntimeError('SERVICE_SPECIFIC_PIDS_LIMIT_NOT_CONFIRMED')\ntry:\n snapshot('START')\n time.sleep(8)\n snapshot('BEFORE_EXIT')\nexcept BaseException as exc:\n try: emit({'schema':'H86-PIDS-ERROR-1','error_type':type(exc).__name__,'service_unit':UNIT,'retry_allowed':False})\n except BaseException: pass\n sys.exit(2)\n"
+  ],
+  "EXACT_COMMAND_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h86-retained-command-vector-v1",
+    "sha256": "e628c8664ea72357963dc58dddee934c28cad3ab5c84450656a6595e6910fb50"
+  },
+  "EXECUTABLE_PINS": {
+    "/bin/systemctl": "ec3c1aa59f5047dacfdd00a90504e02557032bf4016f0d28799d95792e9005b1",
+    "/usr/bin/python3.8": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06",
+    "/usr/bin/systemd-run": "15c14831822016fd68ab3e2f265223463c46b4cf7fcc4595a91f09c5bbd950eb"
+  },
+  "EXIT_OBSERVER": "independent parent links created PID to observed wait outcome; consumption not inferred from exit",
+  "INDEPENDENT_CONFIRMATION": "separate readonly exact-key/content/inode/device reconstruction, original successful claimant only; reread not power-loss proof",
+  "ISSUED_GRANT_REFERENCE": null,
+  "LAUNCH_CONTROLLER": "one fixed argv only; nonexportable first-claimant capability invalidated before handoff; no shell/scheduling/substitution/retry; INERT mode can invoke only statically approved in-process callback",
+  "NO_RETRY_POLICY": 0,
+  "RECOVERY_RULE": "readonly, never grants launch capability, partial/conflicting/stale/unknown remain blocked",
+  "REQUIREMENT": "only a later explicit effective probe grant matching exact subject/command/profile/epoch may authorize real mode; never a construction grant or normalized fake",
+  "RESOURCE_BOUNDARY": "separate inert contract; original exact Package86 real ceiling only under later real grant",
+  "SCHEMA": "BOOTSTRAP-COORDINATOR-SPEC-1",
+  "SOURCE_CODE_IDENTITY": null,
+  "SOURCE_PATH": "adapter/qualification_bootstrap/systemd_pids_once.py"
+}

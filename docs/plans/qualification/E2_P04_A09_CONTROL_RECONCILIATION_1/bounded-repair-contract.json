@@ -1,0 +1,14 @@
+{
+  "classification": "PRECOMMIT_ORACLE_DEFECT",
+  "complete_oracle": true,
+  "all_18_actual_oracle_terms_pass": true,
+  "diagnosis_runtime_unchanged": true,
+  "original_guard": "core.recompute(pre) == core.recompute(post): full Computation, not only control",
+  "repair": "replace full pre/post equality with exact postcondition from immutable pre-state, authenticated request and E03 receipt semantics; preserve native derived control",
+  "scope": "generic native receipt transaction only; no canonical A09 commit, no Action/control recomputation semantics changed",
+  "sealed_inputs": {
+    "docs/plans/qualification/E2_P04_A09_CONTROL_RECONCILIATION_1/independent-oracle.json": "34644b6e15112448f0f9ed2afcf2a01bb2f835e716ac476fc93c2a7b60ea29c2",
+    "docs/plans/qualification/E2_P04_A09_CONTROL_RECONCILIATION_1/diagnose-trace.json": "5f708f0b554904943e6211ebf8c04fe7748a5d35fe32a60c2fe6d874a8bae720",
+    "docs/plans/qualification/E2_P04_A09_CONTROL_RECONCILIATION_1/pre-work-hashes.json": "a4cb8a732642d331e32b33b6fbe077ba04a32a5723cd5f77db59e23fb596680c"
+  }
+}

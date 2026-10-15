@@ -1,0 +1,80 @@
+import ast,copy,hashlib,json,os,pathlib,re,subprocess
+R=pathlib.Path('/home/gvasend/app/kge-forge');D=R/'docs/plans/governance/development-model-adoption-standing-grant-issuance';P='synthetic-recovery-campaign-round2-'
+def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+def read(n):
+ def pairs(items):
+  d={}
+  for k,v in items:assert k not in d;d[k]=v
+  return d
+ return json.loads((D/(P+n)).read_text(),object_pairs_hook=pairs)
+def cid(ns,x):return {'kind':'CONTENT_IDENTITY','namespace':ns,'sha256':hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=True,allow_nan=False).encode()).hexdigest()}
+s=read('owner-decision-subject.json');c=s['CONTENT'];d=read('unselected-owner-decision-dossier.json');deps=read('runtime-dependencies.json');source=(D/(P+'test_recover.py.txt')).read_text();tree=ast.parse(source);cl=next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='RecoveryTests');methods={n.name:ast.get_source_segment(source,n) for n in cl.body if isinstance(n,ast.FunctionDef)}
+assert len([k for k in methods if k.startswith('test_')])==19
+assert sorted(k for k in methods if k.startswith('test_'))==[x['TEST_ID'] for x in read('oracle-review.json')['TESTS']]
+assert 'with r.directory_fd(self.path.parent)' in methods['setUp']
+for n,e in [('test_symlink_rejected','errno.ELOOP'),('test_ancestor_symlink_rejected','errno.ENOTDIR'),('test_partial_failure_no_retry','errno.EIO')]:assert e in methods[n] and 'error.exception.errno' in methods[n]
+for n in ['test_symlink_rejected','test_ancestor_symlink_rejected']:assert 'error.exception.filename, alias.name' in methods[n]
+assert "patch.object(r, 'EXPECTED_UID', os.getuid() + 1)" not in source and "fields[4] = os.getuid() + 1" in methods['test_wrong_owner']
+assert 'self.assertIs(error.exception, sync_error)' in methods['test_fsync_failure_remains_consumed'] and 'self.assertEqual(sync.call_count, 1)' in methods['test_fsync_failure_remains_consumed']
+for n,t in methods.items():
+ if not n.startswith('test_'):continue
+ if 'self.assertRaises(r.Stop)' in t:raise AssertionError('broad Stop oracle '+n)
+for p,v in deps['ELF_INVENTORY'].items():
+ assert sha(p)==v['SHA256'];t=subprocess.check_output(['/usr/bin/readelf','-l','-d',p],text=True)
+ assert re.findall(r'\(NEEDED\).*Shared library: \[([^]]+)\]',t)==v['DT_NEEDED']
+ assert not re.findall(r'\((?:RPATH|RUNPATH)\)',t)
+ if v['INTERPRETER']:assert pathlib.Path(v['INTERPRETER']).is_file()
+for p in deps['STDLIB_PINS']:assert sha(p['path'])==p['raw_sha256']
+expected=copy.deepcopy(c)
+def validate(v):
+ assert v['IDENTITY']==cid(v['IDENTITY']['namespace'],v['CONTENT']);x=v['CONTENT'];lim=x['LIMITS']
+ assert x==expected # independently expand below before negative validation
+ assert lim['SUITE_INVOCATIONS']==5 and lim['TESTS_PER_INVOCATION']==19 and lim['MANUAL_DIAGNOSTIC_REVISIONS']==3 and lim['AUTOMATIC_RETRIES']==0
+ assert (lim['CPU_SECONDS_PER_INVOCATION'],lim['AS_BYTES_PER_PROCESS'],lim['WALL_SECONDS_PER_INVOCATION'])==(60,536870912,120)
+ assert lim['CPU_SECONDS_CAMPAIGN']==300 and lim['WALL_SECONDS_CAMPAIGN']==600
+ assert x['NO_HISTORY_RESET_OR_REFUND'] and x['EXISTING_CLASS_A_AND_REAL_RECOVERY_AUTHORITY_UNCHANGED']
+ assert sha(x['RUNTIME_DEPENDENCY_PIN']['path'])==x['RUNTIME_DEPENDENCY_PIN']['raw_sha256']
+ for p in x['INPUTS']:assert sha(p['path'])==p['raw_sha256']
+ assert x['INPUTS'][0]['raw_sha256']=='372512c1c07f8eba6381cf01f50a13965b383b30f9deb191885f6d95447e80cd'
+ assert x['INPUTS'][2]['raw_sha256']=='b694333f4c108c8fea455f7e117cda1d003f3c915bb36d78ae7ec466022b47f8'
+ reservations=set();outcomes=set()
+ for i,run in enumerate(x['INVOCATIONS'],1):
+  a=run['EXACT_ARGV'];assert run['ORDINAL']==i and a[0]=='/usr/bin/bwrap';assert '--unshare-net' in a and '--unshare-user' in a and '--unshare-pid' in a
+  assert a[a.index('--bind')+1:a.index('--bind')+3]==[x['HOST_WORKER'],'/tmp'];assert a.count('--bind')==1 and '--ro-bind' in a
+  reads=[]
+  for j,z in enumerate(a):
+   if z=='--ro-bind':assert a[j+1]==a[j+2];reads.append(a[j+1])
+  assert sorted(reads)==sorted(deps['READ_ONLY_FILES']+deps['READ_ONLY_DIRECTORIES'])
+  assert not any(p in ['/', '/tmp'] or p.startswith('/home') for p in reads)
+  assert x['HOST_CONTROL'] not in a and '--clearenv' in a and '--cap-drop' in a
+  assert '--cpu=60:60' in a and '--as=536870912:536870912' in a and '--fsize=65536:65536' in a and '--nofile=128:128' in a
+  assert "'-I' '-B' '/tmp/test_recover.py' '-v'" in a[-1] and 'set -C' in a[-1]
+  assert '/tmp/runs/%02d/stdout.txt'%i in a[-1] and '/tmp/runs/%02d/stderr.txt'%i in a[-1]
+  assert run['RESERVATION_PATH'].startswith(x['HOST_CONTROL']+'/') and run['OUTCOME_PATH'].startswith(x['HOST_CONTROL']+'/')
+  reservations.add(run['RESERVATION_PATH']);outcomes.add(run['OUTCOME_PATH'])
+ assert len(reservations)==len(outcomes)==5 and not reservations&outcomes
+validate(s)
+assert d['SUBJECT_IDENTITY']==s['IDENTITY'] and d['SUBJECT_PIN']['raw_sha256']==sha(D/(P+'owner-decision-subject.json')) and d['SELECTED_OPTION'] is None and not d['GRANT_ISSUED']
+mut=[]
+def add(name,f):
+ v=copy.deepcopy(s);f(v['CONTENT']);v['IDENTITY']=cid(v['IDENTITY']['namespace'],v['CONTENT']);mut.append((name,v))
+add('sixth suite',lambda x:x['LIMITS'].update(SUITE_INVOCATIONS=6))
+add('fourth revision',lambda x:x['LIMITS'].update(MANUAL_DIAGNOSTIC_REVISIONS=4))
+add('automatic retry',lambda x:x['LIMITS'].update(AUTOMATIC_RETRIES=1))
+add('history refund',lambda x:x.update(NO_HISTORY_RESET_OR_REFUND=False))
+add('broad host tmp',lambda x:x['INVOCATIONS'][0]['EXACT_ARGV'].__setitem__(x['INVOCATIONS'][0]['EXACT_ARGV'].index('--bind')+1,'/tmp'))
+add('network shared',lambda x:x['INVOCATIONS'][0]['EXACT_ARGV'].remove('--unshare-net'))
+add('control exposed',lambda x:x['INVOCATIONS'][0]['EXACT_ARGV'].__setitem__(x['INVOCATIONS'][0]['EXACT_ARGV'].index('--bind')+1,x['HOST_CONTROL']))
+add('consumption reused',lambda x:x['INVOCATIONS'][1].update(RESERVATION_PATH=x['INVOCATIONS'][0]['RESERVATION_PATH']))
+add('production source edit',lambda x:x.update(REVISION_SCOPE='recover.py protected source allowed'))
+add('wrong inputs',lambda x:x['INPUTS'][0].update(raw_sha256='0'*64))
+add('no file cap',lambda x:x['INVOCATIONS'][0]['EXACT_ARGV'].remove('--fsize=65536:65536'))
+add('unbounded inherited environment',lambda x:x['INVOCATIONS'][0]['EXACT_ARGV'].remove('--clearenv'))
+add('nineteen not fixed',lambda x:x['LIMITS'].update(TESTS_PER_INVOCATION=18))
+add('future success as entry',lambda x:x['ENTRY_REQUIREMENTS'].append('future19PASS required to authorize initial run'))
+for name,v in mut:
+ try:validate(v)
+ except (AssertionError,KeyError,ValueError,TypeError):pass
+ else:raise AssertionError('accepted negative '+name)
+for p,h in read('preservation-before.json').items():assert sha(p)==h,p
+print(json.dumps({'RESULT':'PASS','SUBJECT_IDENTITY':s['IDENTITY'],'TEST_SOURCE_SHA256':sha(D/(P+'test_recover.py.txt')),'AST_TEST_COUNT':19,'NATIVE_DEPENDENCIES_VERIFIED':len(deps['ELF_INVENTORY']),'NEGATIVE_DESIGNS':len(mut),'NEGATIVE_EXECUTIONS_REJECTED':len(mut),'PRODUCTION_SOURCE_UNCHANGED':True,'FIRST_RUN_PRESERVED':True,'NO_NEW_EXECUTION':True,'ACTUAL_NAMESPACE_ADMISSION':'FUTURE_ENTRY; not claimed tested'},sort_keys=True))

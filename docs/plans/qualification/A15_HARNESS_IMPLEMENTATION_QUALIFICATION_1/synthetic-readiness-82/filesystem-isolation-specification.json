@@ -1,0 +1,15 @@
+{
+  "EVIDENCE_BOUNDARY": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/single-use-gate-implementation-qualification-1",
+  "FILESYSTEM_ISOLATION_VERIFIED": false,
+  "FSYNC_SCOPE": "Verify file and directory barriers independently; warm-cache restart is not power-loss durability",
+  "INPUTS": "Readonly allowed code/dependencies/authority metadata; disposable synthetic authority fixtures only",
+  "NO_REAL_INPUTS": [
+    "actual H77 issued grant as fixture",
+    "A15 checkpoint/oracles/descriptors",
+    "stopped campaign journal"
+  ],
+  "RECOVERY_PRESERVATION": "Retain all partial/consumed stores until independent campaign audit; gate never resets them; qualified controller may later clean only disposable synthetic roots under exact authority",
+  "REQUIRED": "One exclusive owned nonsymlink /tmp/kge-h77-02-gate-synthetic-<32lowerhex> campaign root; per-test descendants only",
+  "ROOTS_CREATED_IN_PACKAGE82": 0,
+  "SOURCE_CONFLICT": "setUp creates a new top-level root for each test (18 per suite/seed), contrary to one campaign root"
+}

@@ -1,0 +1,145 @@
+{
+  "AUTHORITY_LIFECYCLE": "DRAFT->REVIEWED->APPROVED->EFFECTIVE is ordered/acyclic, not a defect",
+  "DIRECTION": "dependent -> required prerequisite; edge types are explicit",
+  "EDGES": [
+    {
+      "DERIVATION": "Full original synthetic-test entry contract requires verified host resources",
+      "FROM": "GATE_ACTIVE_QUALIFICATION",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/construction-and-test-entry-assessment.json",
+        "raw_sha256": "206612bae46cf555011583d49182f2d4e52e9d9befe238b7078bd5793a502518"
+      },
+      "TO": "HOST_RESOURCE_ENFORCEMENT_QUALIFICATION",
+      "TYPE": "ENVIRONMENT_CAPABILITY"
+    },
+    {
+      "DERIVATION": "Host pids control cannot be qualified from configuration acceptance alone",
+      "FROM": "HOST_RESOURCE_ENFORCEMENT_QUALIFICATION",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/direct-host-enforcement-85/remaining-gap-dossier.json",
+        "raw_sha256": "e3a57bce8232dc2e6e3bbfa0dac6af5a8586c73c2299295698c8dd866fd0308b"
+      },
+      "TO": "INDEPENDENT_EVIDENCE",
+      "TYPE": "EVIDENCE_PREREQUISITE"
+    },
+    {
+      "DERIVATION": "Chosen prospective system-level service must produce independently captured membership and kernel values",
+      "FROM": "INDEPENDENT_EVIDENCE",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-process-enforcement-86/cgroup-verification-procedure.json",
+        "raw_sha256": "bbf709e5ecd9656b2b062bdb3253f6efa53f87880e1d291eb1740dc25c9fdba6"
+      },
+      "TO": "SYSTEM_LEVEL_PROBE",
+      "TYPE": "EVIDENCE_PRODUCTION"
+    },
+    {
+      "DERIVATION": "Probe single-attempt contract requires durable consumption before launch",
+      "FROM": "SYSTEM_LEVEL_PROBE",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-probe-authority-87/one-attempt-consumption-requirements.json",
+        "raw_sha256": "946f70335e999b959b3c038cde12b94b0e29a7d5e1c729f77d08669ff1429aaa"
+      },
+      "TO": "QUALIFIED_ONE_USE_LAUNCH",
+      "TYPE": "AUTHORITY_SAFETY_PREREQUISITE"
+    },
+    {
+      "DERIVATION": "Current strategy treats qualification of the selected H77 gate/launch bridge as route to one-use proof",
+      "FROM": "QUALIFIED_ONE_USE_LAUNCH",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-probe-authority-87/remaining-gap-dossier.json",
+        "raw_sha256": "ab2d3573658f70040aec82a5d8e6ab5eb19fda8e15b5944bf76db277cfe2450e"
+      },
+      "TO": "GATE_ACTIVE_QUALIFICATION",
+      "TYPE": "STRATEGY_CHOICE"
+    },
+    {
+      "DERIVATION": "Exact construction/test/campaign authority",
+      "FROM": "GATE_ACTIVE_QUALIFICATION",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/gate-construction-grant-80/construction-and-test-entry-assessment.json",
+        "raw_sha256": "206612bae46cf555011583d49182f2d4e52e9d9befe238b7078bd5793a502518"
+      },
+      "TO": "EFFECTIVE_AUTHORITY",
+      "TYPE": "AUTHORITY_PREREQUISITE"
+    },
+    {
+      "DERIVATION": "Exact probe grant and actual OS permission",
+      "FROM": "SYSTEM_LEVEL_PROBE",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-probe-authority-87/remaining-gap-dossier.json",
+        "raw_sha256": "ab2d3573658f70040aec82a5d8e6ab5eb19fda8e15b5944bf76db277cfe2450e"
+      },
+      "TO": "EFFECTIVE_AUTHORITY",
+      "TYPE": "AUTHORITY_PREREQUISITE"
+    },
+    {
+      "DERIVATION": "New bootstrap scope must have separate adoption/construction/test authority",
+      "FROM": "BOOTSTRAP_MECHANISM",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-probe-authority-87/remaining-gap-dossier.json",
+        "raw_sha256": "ab2d3573658f70040aec82a5d8e6ab5eb19fda8e15b5944bf76db277cfe2450e"
+      },
+      "TO": "EFFECTIVE_AUTHORITY",
+      "TYPE": "AUTHORITY_PREREQUISITE"
+    },
+    {
+      "DERIVATION": "Independently qualify narrower trusted fixed-program baseline without a pids-service result",
+      "FROM": "BOOTSTRAP_MECHANISM",
+      "SOURCE_PIN": {
+        "path": "docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1/system-probe-authority-87/remaining-gap-dossier.json",
+        "raw_sha256": "ab2d3573658f70040aec82a5d8e6ab5eb19fda8e15b5944bf76db277cfe2450e"
+      },
+      "TO": "BASIC_POSIX_AND_TRUSTED_OPERATOR_EVIDENCE",
+      "TYPE": "EVIDENCE_PREREQUISITE"
+    }
+  ],
+  "IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "qualification-h88-typed-prerequisite-graph-v1",
+    "sha256": "2381682bd183c7bfeed7341f28b57affd026af8f4904f64527112ed91722a0c1"
+  },
+  "NATIVE_EXECUTION": false,
+  "NODES": {
+    "BASIC_POSIX_AND_TRUSTED_OPERATOR_EVIDENCE": {
+      "DESCRIPTION": "scoped trusted operator and fixed inert participants, local filesystem barriers, independent parent observations; not full H77 host-control qualification",
+      "STATE": "MISSING_ACTUAL_PROFILE_AND_QUALIFICATION",
+      "TYPE": "INDEPENDENT_BOOTSTRAP_ASSURANCE_ROOT"
+    },
+    "BOOTSTRAP_MECHANISM": {
+      "DESCRIPTION": "independently qualified smaller command-specific launch bridge",
+      "STATE": "PROPOSED_UNQUALIFIED",
+      "TYPE": "ALTERNATIVE_EXECUTION_CAPABILITY"
+    },
+    "EFFECTIVE_AUTHORITY": {
+      "DESCRIPTION": "existing governance root; each execution/construction still requires its own exact grant",
+      "STATE": "CHARTER_EFFECTIVE_SCOPED_PROBE_GRANT_UNISSUED",
+      "TYPE": "AUTHORITY_ROOT_AND_SCOPED_GRANTS"
+    },
+    "GATE_ACTIVE_QUALIFICATION": {
+      "DESCRIPTION": "active synthetic concurrency/crash qualification of current H77 gate",
+      "STATE": "NOT_QUALIFIED",
+      "TYPE": "CAPABILITY_QUALIFICATION"
+    },
+    "HOST_RESOURCE_ENFORCEMENT_QUALIFICATION": {
+      "DESCRIPTION": "complete original campaign resource contract; system pids metadata is one prerequisite, not full completion",
+      "STATE": "UNQUALIFIED",
+      "TYPE": "ENVIRONMENT_QUALIFICATION"
+    },
+    "INDEPENDENT_EVIDENCE": {
+      "DESCRIPTION": "independent live service-specific pids observations needed by host-control qualification",
+      "STATE": "UNAVAILABLE",
+      "TYPE": "EVIDENCE_PRODUCT"
+    },
+    "QUALIFIED_ONE_USE_LAUNCH": {
+      "DESCRIPTION": "applicable durable one-attempt control for exact Package86 probe",
+      "STATE": "UNESTABLISHED",
+      "TYPE": "EXECUTION_CAPABILITY"
+    },
+    "SYSTEM_LEVEL_PROBE": {
+      "DESCRIPTION": "exact Package86 system-level service metadata command",
+      "STATE": "NOT_AUTHORIZED_NOT_EXECUTED",
+      "TYPE": "ACTIVE_VERIFICATION_OPERATION"
+    }
+  },
+  "STRATEGY_SCOPE": "Current selected route only; no assertion every possible gate implementation must have this cycle"
+}

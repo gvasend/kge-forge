@@ -1,0 +1,215 @@
+{
+  "CHARTER_ID": "KGE-FORGE-QUALIFICATION-GOVERNANCE-CHARTER",
+  "CHARTER_VERSION": "1.0",
+  "DELEGATION": {
+    "EFFECTIVE_AUTHORITY_GRANTED": false,
+    "EXISTING_DELEGATIONS_CREATED": [],
+    "ISSUING_ROLE": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY",
+    "REQUIRED_FIELDS": [
+      "delegate_identity_or_explicit_role",
+      "owner_designation_evidence",
+      "charter_content_identity_and_version",
+      "exact_delegation_scope",
+      "permitted_mandates_and_operations",
+      "exact_subjects_or_finite_membership_rule",
+      "effective_boundary",
+      "revocation_or_expiration_rule",
+      "resource_permission_boundary",
+      "evidence_pins"
+    ],
+    "RULES": [
+      "No implicit delegation from title, participation, technical qualification or role authentication",
+      "No transitive delegation or subdelegation; delegate cannot delegate onward",
+      "Each of normative approval, native qualification execution and evidence capture requires explicit delegated power; rights are not inferred from one another",
+      "Delegate scope/version/subject/operations must be exact, no wildcard execution",
+      "Delegation grants no external/system/production privileges or security bypass",
+      "Delegation source and actual issuer power must be outside the delegate's own proposed grant",
+      "Owner retains charter/version amendment, supersession and revocation authority; a qualification delegation does not amend this charter",
+      "Revocation/expiration/effective status must be checked before each use; uncertainty denies activation",
+      "No retroactive promotion or mutation of historical records"
+    ],
+    "SCHEMA_ID": "KGE-FORGE-QUALIFICATION-DELEGATION-CONTRACT-1"
+  },
+  "EVIDENCE_AUTHORITY": {
+    "DURABILITY": "Only assurance established by selected native contract; file fsync, immutable publication, directory durability, writer termination and cold restore are distinct. No implied general crash durability.",
+    "HISTORICAL_IMMUTABILITY": true,
+    "NATIVE_IDENTITIES": "Preserve complete existing kind/namespace/hash domain, source/policy pins, occurrence versus Snapshot/content distinctions, ordered native history and exact canonical bytes. Do not fabricate events for logical calculations.",
+    "OPERATIONS": [
+      "native result capture",
+      "immutable publication",
+      "save/persistence",
+      "restore",
+      "replay",
+      "audit"
+    ],
+    "POLICY": "Explicit evidence mandate and exact artifacts/paths/identity/provenance/observer boundaries required. Native state application is not persisted occurrence capture; handoff does not establish writer exit."
+  },
+  "EXCLUSIONS": [
+    "General engineering governance authority",
+    "Production execution authority",
+    "External system permissions",
+    "Government-controlled environment permissions",
+    "Authority to bypass organizational security controls",
+    "Unrestricted native execution",
+    "Automatic approval of prospective qualification scenarios",
+    "Automatic A15 execution authority"
+  ],
+  "GOVERNING_AUTHORITY": {
+    "DECLARATION_PIN": {
+      "PATH": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/owner-declaration-provenance.json",
+      "RAW_SHA256": "a5bae01f96b74b5ddd458ca107b5fb91ef0b88b33b22d08fac2027680cd90b37",
+      "SOURCE_POINTER": "/"
+    },
+    "DECLARATION_SOURCE_PIN": {
+      "PATH": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/owner-declaration-source.txt",
+      "RAW_SHA256": "cc78f21cd0073dc3c6c634504751cd8a842569fdd90527890dd17129bc7725c3",
+      "SOURCE_POINTER": "/"
+    },
+    "NAMED_PERSON_OR_NATIVE_AUTHORITY_ENTITY_CREATED": false,
+    "NOT_AN_EXECUTION_GRANT": true,
+    "PERMITTED_GOVERNANCE_DOMAIN": "Qualification policy only, within actual owner-controlled resources/permissions",
+    "ROLE_BASIS": "Explicit initiating owner declaration supplied in work package65",
+    "ROLE_ID": "KGE-FORGE-PROJECT-OWNER-QUALIFICATION-GOVERNING-AUTHORITY"
+  },
+  "IDENTITY_AND_PROVENANCE": {
+    "APPROVAL_RULE": "Actual owner decision references exact charter content identity/version and owner-declaration/evidence; its identity is not included in charter content",
+    "AUTHORITY_ROOT": "Initiating owner declaration and actual resource permissions are outside this charter; charter does not authorize itself or prove ownership beyond declared scope",
+    "CONTENT_IDENTITY_RULE": "Canonical compact sorted-key UTF-8 JSON of this immutable content; identity wrapper/lifecycle/approval/issuance records excluded",
+    "GRANT_RULE": "Qualification grant independently binds effective charter, exact issuer/delegation, subject/operations and actual decision evidence; neither grant hash nor draft creates permission",
+    "LIFECYCLE_RULE": "Append-only transition identities depend on content, actor/decision evidence and prior lifecycle record, never backwards on a future transition",
+    "NO_NATIVE_AUTHORITY_SCHEMA_MODIFICATION": true
+  },
+  "LIFECYCLE_POLICY": {
+    "EVENT_REQUIRED_FIELDS": [
+      "charter_content_identity",
+      "charter_version",
+      "from_state",
+      "to_state",
+      "actor_identity_or_authorized_role",
+      "actor_authority_evidence",
+      "decision_evidence_identity",
+      "effective_boundary",
+      "predecessor_lifecycle_record_identity",
+      "historical_exclusions"
+    ],
+    "INITIAL_STATE": "DRAFT",
+    "MULTI_TRANSITION_DECISION": "One authenticated owner decision may expressly acknowledge review, approve and make effective; create three ordered records referencing the same decision and distinct predecessor links. No selection or record is created now.",
+    "ORDER_RULE": "Append-only explicit transitions; no skipped state, implicit transitive approval, backdating or proposal-as-authority. DRAFT is recorded under the preparation request; all later transitions require explicit authority evidence.",
+    "SCHEMA_ID": "KGE-FORGE-QUALIFICATION-CHARTER-LIFECYCLE-1",
+    "STATES": [
+      "DRAFT",
+      "REVIEWED",
+      "APPROVED",
+      "EFFECTIVE",
+      "SUPERSEDED",
+      "REVOKED"
+    ],
+    "TRANSITIONS": [
+      {
+        "ACTOR": "Project owner or separately explicitly designated charter reviewer",
+        "EVIDENCE": "Exact charter digest/version, reviewer identity or role designation, independent qualification report pin, explicit review acknowledgement; preparation/test PASS alone is not a transition",
+        "FROM": "DRAFT",
+        "TO": "REVIEWED"
+      },
+      {
+        "ACTOR": "Project owner acting under the initiating declaration",
+        "EVIDENCE": "Authenticated explicit charter approval of exact digest/version, scope and exclusions; no inferred selection",
+        "FROM": "REVIEWED",
+        "TO": "APPROVED"
+      },
+      {
+        "ACTOR": "Project owner",
+        "EVIDENCE": "Explicit effective/adoption boundary for same approved digest/version; record distinct ordered transition even if one decision expressly includes approval and activation",
+        "FROM": "APPROVED",
+        "TO": "EFFECTIVE"
+      },
+      {
+        "ACTOR": "Project owner",
+        "EVIDENCE": "Explicit successor version/digest approved and made effective, predecessor reference and effective boundary; preserve old charter/grants/evidence unchanged",
+        "FROM": "EFFECTIVE",
+        "TO": "SUPERSEDED"
+      },
+      {
+        "ACTOR": "Project owner",
+        "EVIDENCE": "Explicit revocation record naming charter digest/version, boundary and dependent-grant disposition; do not rewrite historical validity",
+        "FROM": "EFFECTIVE",
+        "TO": "REVOKED"
+      }
+    ]
+  },
+  "MANDATE_COMPOSITION": {
+    "CHARTER_ADOPTION_INCLUDES_A15_MANDATES": false,
+    "CONDITIONS": [
+      "Charter actually EFFECTIVE",
+      "Owner issuer within actual resources/permissions, or exact delegate explicitly empowered for each included mandate",
+      "Each normative, execution and evidence section has exact subject/version/pins/boundaries and separate explicit approval, not a blanket or inferred grant",
+      "Execution activation is conditional on prior normative scope approval and all technical/environment/issuer gates; evidence operations need their own explicit permission",
+      "Approval/adoption is not evidence of execution; execution permission does not amend normative scope"
+    ],
+    "CURRENT_COMBINED_A15_GRANT_PERMITTED_BY_EFFECTIVE_CHARTER": false,
+    "ONE_INSTRUMENT_THREE_MANDATES_PERMITTED_CONDITIONALLY": true,
+    "POLICY_ID": "KGE-FORGE-EXPLICIT-QUALIFICATION-MANDATE-COMPOSITION-1",
+    "SEPARATE_SEQUENTIAL_GRANTS": "Required when issuing power or any explicit mandate section/approval cannot cover all scopes in one instrument; no automatic combination or inheritance",
+    "THREE_INSTRUMENTS_UNIVERSALLY_REQUIRED": false
+  },
+  "NORMATIVE_QUALIFICATION_AUTHORITY": {
+    "FROZEN_ACCEPTANCE": "No silent modification. Any proposed amendment must be separately identified/versioned with exact before/after clauses, assurance effects, owner approval and immutable preservation of original obligations/evidence; execution may not weaken or substitute its oracle to pass.",
+    "MANDATE_TO_EXECUTE_IMPLIED": false,
+    "POLICY": "Prospective scenarios, normative rules, coverage boundaries and acceptance interpretations require explicit scoped approval. Technical design/verification is not adoption.",
+    "REQUIRED_APPROVAL_FIELDS": [
+      "exact_scenario_identity",
+      "versioned_normative_rules",
+      "owner_support_requiredness_and_coverage_boundary",
+      "acceptance_interpretation",
+      "protected_identities_and_effects",
+      "historical_and_prospective_assurance_exclusions",
+      "frozen_acceptance_traceability",
+      "independent_qualification_evidence",
+      "issuing_role_and_authority_evidence"
+    ]
+  },
+  "OWNER_DECLARATION_PIN": {
+    "PATH": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/owner-declaration-provenance.json",
+    "RAW_SHA256": "a5bae01f96b74b5ddd458ca107b5fb91ef0b88b33b22d08fac2027680cd90b37",
+    "SOURCE_POINTER": "/"
+  },
+  "OWNER_DECLARATION_SOURCE_PIN": {
+    "PATH": "docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_65/owner-declaration-source.txt",
+    "RAW_SHA256": "cc78f21cd0073dc3c6c634504751cd8a842569fdd90527890dd17129bc7725c3",
+    "SOURCE_POINTER": "/"
+  },
+  "QUALIFICATION_EXECUTION_AUTHORITY": {
+    "ACTIVATION_PRECONDITIONS": [
+      "effective charter and actual issuer/direct or delegated authority",
+      "explicit normative scope approval where required",
+      "sealed exact inputs, independent full expected outputs, protection and failure/retry rules",
+      "exact qualified executable/invocation/environment and actual resource/security permissions",
+      "explicit execution/evidence permissions and current effective/lifecycle status"
+    ],
+    "FAIL_CLOSED": "Stop on unknown scope, missing input/approval, mismatch, unqualified executable or failed comparison. No automatic retry or additional variant; retry only under its exact explicit bounded permission from approved immutable starting state.",
+    "POLICY": "Explicit bounded qualification execution grant required; issuer must be owner under effective charter or exact delegate with this power. Charter effectiveness/normative approval is not an execution grant.",
+    "REQUIRED_AUTHORIZATION_FIELDS": [
+      "Exact qualification subject",
+      "Permitted operations",
+      "Starting state",
+      "Input identities",
+      "Execution environment",
+      "Output boundaries",
+      "Failure/retry limits",
+      "Historical exclusions"
+    ]
+  },
+  "QUALIFICATION_SCOPE": "KGE-Forge qualification governance only",
+  "RESOURCE_AND_SECURITY_BOUNDARY": {
+    "DOMAIN": "Only actual project-owner-controlled resources and permissions",
+    "GOVERNMENT_ENVIRONMENT_PERMISSION_CREATED": false,
+    "NO_EXTERNAL_PRIVILEGE_CREATION": true,
+    "ORG_SECURITY_CONTROLS_BINDING": true,
+    "UNKNOWN_RESOURCE_PERMISSION": "Deny activation; obtain actual applicable permission, not a charter inference"
+  },
+  "VERSIONING": {
+    "CHANGES": "Every change requires new exact version/content digest and explicit owner review/approval/effectiveness. Never select newest file by date. Historical instruments/evidence remain immutable.",
+    "INITIAL_VERSION": "1.0 proposed",
+    "OLD_GRANT_HANDLING": "Do not silently rewrite/rebind old grants to a new version. Exact prospective continuation/migration requires owner-specified disposition; historical validity assessed under original authority."
+  }
+}

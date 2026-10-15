@@ -1,0 +1,89 @@
+{
+  "AUTHORITY": null,
+  "CONTEXT": {
+    "$type": "EvaluationContext",
+    "allowed_effects": [],
+    "generation": "E2-P03-PROSPECTIVE-GENERATION-1",
+    "lineage": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+    "scope": "E2-QUALIFICATION-ONLY",
+    "tick": 0
+  },
+  "CONTROL_STATE": {
+    "$enum": "ControlState",
+    "value": "RUNNABLE"
+  },
+  "DEPENDENCIES": [],
+  "FINISH_IDENTITY": {
+    "$type": "ActionId",
+    "value": "E2-FINISH"
+  },
+  "GENERATION": "E2-P03-PROSPECTIVE-GENERATION-1",
+  "LINEAGE": "E2-P03-PROSPECTIVE-QUALIFICATION-1",
+  "NATIVE_RESUME_ROUTES": [
+    {
+      "ID": {
+        "$type": "GateId",
+        "value": "E2-GATE"
+      },
+      "LIVE_NAMED_ACTIONS": [],
+      "NAMED_ACTIONS": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "TYPE": "EXTERNAL"
+    },
+    {
+      "ID": {
+        "$type": "ActionId",
+        "value": "E2-DECIDE"
+      },
+      "LIVE_NAMED_ACTIONS": [],
+      "NAMED_ACTIONS": [
+        {
+          "$type": "ActionId",
+          "value": "E2-REENTER"
+        }
+      ],
+      "TYPE": "DECISION"
+    }
+  ],
+  "READINESS": {
+    "$type": "ActionStatus",
+    "id": {
+      "$type": "ActionId",
+      "value": "E2-FINISH"
+    },
+    "state": {
+      "$enum": "ActionState",
+      "value": "ACTIONABLE"
+    }
+  },
+  "REQUIRED_SUPPORTS": [
+    {
+      "$type": "Gate",
+      "kind": {
+        "$enum": "GateKind",
+        "value": "ACTION_COMPLETED"
+      },
+      "target": {
+        "$type": "ActionId",
+        "value": "E2-REENTER"
+      }
+    },
+    {
+      "$type": "Gate",
+      "kind": {
+        "$enum": "GateKind",
+        "value": "CONDITION_SATISFIED"
+      },
+      "target": {
+        "$type": "ConditionId",
+        "value": "E2-ROOT"
+      }
+    }
+  ],
+  "RESUME_ELIGIBILITY": "Full native report not invoked; existing necessary-condition check denies named completed E2-REENTER routes; no assumption FINISH itself is a named resume route",
+  "SCOPE": "E2-QUALIFICATION-ONLY"
+}

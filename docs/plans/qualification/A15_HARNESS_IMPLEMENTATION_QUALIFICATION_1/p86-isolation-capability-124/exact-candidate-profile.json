@@ -1,0 +1,419 @@
+{
+  "CONTENT": {
+    "ARGV": [
+      "/usr/bin/bwrap",
+      "--unshare-user",
+      "--uid",
+      "1000",
+      "--gid",
+      "1000",
+      "--unshare-pid",
+      "--unshare-net",
+      "--unshare-ipc",
+      "--unshare-uts",
+      "--cap-drop",
+      "ALL",
+      "--die-with-parent",
+      "--dir",
+      "/bin",
+      "--dir",
+      "/lib",
+      "--dir",
+      "/lib/x86_64-linux-gnu",
+      "--dir",
+      "/lib64",
+      "--dir",
+      "/dev",
+      "--dir",
+      "/proc",
+      "--dir",
+      "/work",
+      "--ro-bind",
+      "/bin/findmnt",
+      "/bin/findmnt",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/ld-2.31.so",
+      "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libblkid.so.1.1.0",
+      "/lib/x86_64-linux-gnu/libblkid.so.1",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libc-2.31.so",
+      "/lib/x86_64-linux-gnu/libc.so.6",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libdl-2.31.so",
+      "/lib/x86_64-linux-gnu/libdl.so.2",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libmount.so.1.1.0",
+      "/lib/x86_64-linux-gnu/libmount.so.1",
+      "--ro-bind",
+      "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0",
+      "/lib/x86_64-linux-gnu/libpcre2-8.so.0",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libpthread-2.31.so",
+      "/lib/x86_64-linux-gnu/libpthread.so.0",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libselinux.so.1",
+      "/lib/x86_64-linux-gnu/libselinux.so.1",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libsmartcols.so.1.1.0",
+      "/lib/x86_64-linux-gnu/libsmartcols.so.1",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/libudev.so.1.6.17",
+      "/lib/x86_64-linux-gnu/libudev.so.1",
+      "--ro-bind",
+      "/lib/x86_64-linux-gnu/ld-2.31.so",
+      "/lib64/ld-linux-x86-64.so.2",
+      "--proc",
+      "/proc",
+      "--remount-ro",
+      "/proc",
+      "--tmpfs",
+      "/work",
+      "--remount-ro",
+      "/",
+      "--chdir",
+      "/work",
+      "--setenv",
+      "PATH",
+      "/bin",
+      "--setenv",
+      "LC_ALL",
+      "C",
+      "--setenv",
+      "LANG",
+      "C",
+      "--",
+      "/bin/findmnt",
+      "--json",
+      "--output",
+      "TARGET,SOURCE,FSTYPE,OPTIONS"
+    ],
+    "ARGV_SHA256": "4b999d95236cc821f9cbe4bfdcba3d6d3cce2a34eca89afe0a0d4da8f42a6109",
+    "BWRAP_PIN": {
+      "PATH": "/usr/bin/bwrap",
+      "RAW_SHA256": "af662c55cd85178a58da083220a9348c4a7d3c24333fd0bc7badb18c93392987",
+      "VERSION_SOURCE": "Retained123 installed package0.4.0-1ubuntu4.1; no version execution"
+    },
+    "DESCRIPTOR_ENTRY_RULE": "Outside qualified controller closes every FD>=3 except separately scoped bwrap setup handles with proven non-host mutation route; stdinreadonlynull, stdout/stderrbounded pipes to outside observer. No info/data/socket FD option allowed. Exact closure implementation/receipt unbound.",
+    "DEV": "Empty /dev directory under readonly root, no host devices/devtmpfs/dev-bind; inherited stdin/out/err must be separately qualified approved channels only",
+    "ENVIRONMENT_RULE": "Trusted outer exec must provide exactly this envp with no inherited LD_*, PYTHON*, proxies, credentials or tool sockets. bwrap0.4clearenvnot assumed; outside owner implementation/receipt missing.",
+    "EXECUTABLE_PROFILE_COMPLETE": false,
+    "EXPECTED_WRITABLE_FS_MOUNTS": [
+      "/work"
+    ],
+    "HOST_CALLER_UID_GID_REQUIRED": [
+      1000,
+      1000
+    ],
+    "INSIDE_UID_GID_REQUESTED": [
+      1000,
+      1000
+    ],
+    "MOUNT_CONSTRUCTION_ORDER": "Create empty dirs; bind exact held/sealed input files read-only; mount private proc and remount itro; mount/workprivate tmpfs; remount rootro without assuming recursive child remount; start pinned passive payload after outside guard.",
+    "NAMESPACE_SETTINGS": [
+      "new user namespace",
+      "new PID namespace with default bwrap init; no --as-pid-1",
+      "new network namespace",
+      "new IPC namespace",
+      "new UTS namespace",
+      "bwrap-created mount namespace"
+    ],
+    "NO_EXECUTION_AUTHORITY": true,
+    "OUTER_EXEC_ENVIRONMENT": {
+      "HOME": "/nonexistent",
+      "LANG": "C",
+      "LC_ALL": "C",
+      "PATH": "/bin"
+    },
+    "PROC": "New /proc for private PID namespace, explicitly remountedreadonly; no host proc bind",
+    "PROFILE_ACTIVE": false,
+    "QUALIFICATION_LIMIT": "Static DT_NEEDED/interpreter closure only; not a runtime dlopen/NSS/config/syscall/no-child proof. Unlisted dependency demand must fail closed; no extra broad mount to make a run pass.",
+    "READ_ONLY_FILE_MOUNTS": [
+      {
+        "DESTINATION": "/bin/findmnt",
+        "READ_ONLY": true,
+        "SOURCE": "/bin/findmnt",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libmount.so.1",
+            "libsmartcols.so.1",
+            "libblkid.so.1",
+            "libudev.so.1",
+            "libc.so.6"
+          ],
+          "ELF_INTERPRETERS": [
+            "/lib64/ld-linux-x86-64.so.2"
+          ],
+          "GID": 65534,
+          "INODE": 10485820,
+          "MODE": "0o755",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 73128,
+          "RAW_SHA256": "d0a7b38954dbe00b6f7c733eb038eeefaf7c4c64bfbb1f346ffe6ce3dfd383bc",
+          "SOURCE_PATH": "/bin/findmnt",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/ld-2.31.so",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2231964,
+          "MODE": "0o755",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 191504,
+          "RAW_SHA256": "cfd44e4341767033532d1483c8250d200ad4cdf535d0abc19064ae34cdc51ca0",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/ld-2.31.so",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libblkid.so.1",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libblkid.so.1.1.0",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2228406,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 351352,
+          "RAW_SHA256": "8b89d8dc862cd889eeb302395604f500bbad60fbaa4206de31346a1f4f6db618",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libblkid.so.1.1.0",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libc.so.6",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libc-2.31.so",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [
+            "/lib64/ld-linux-x86-64.so.2"
+          ],
+          "GID": 65534,
+          "INODE": 2232802,
+          "MODE": "0o755",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 2029592,
+          "RAW_SHA256": "53b909551f8e581120ddc2d24cfb5df76c52e3c2e2a5dac0d202b25638b3e902",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libc-2.31.so",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libdl.so.2",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libdl-2.31.so",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2232817,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 18848,
+          "RAW_SHA256": "e0d0cace80b627e50ca3f7b621b64917677c27c74077080854d57cf4e548edc6",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libdl-2.31.so",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libmount.so.1",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libmount.so.1.1.0",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libblkid.so.1",
+            "libselinux.so.1",
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2228412,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 387768,
+          "RAW_SHA256": "a0bbb844c8e96be13147e5e2abdb8b975cedefcb12db4bce25ad8ce417d12454",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libmount.so.1.1.0",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libpcre2-8.so.0",
+        "READ_ONLY": true,
+        "SOURCE": "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libpthread.so.0",
+            "libc.so.6"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 11288529,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 588488,
+          "RAW_SHA256": "2ee0f443107012eefbce274fe61b18cd3a04d7e7824200eaae0c55fb65e6f1ea",
+          "SOURCE_PATH": "/usr/lib/x86_64-linux-gnu/libpcre2-8.so.0.9.0",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libpthread.so.0",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libpthread-2.31.so",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [
+            "/lib64/ld-linux-x86-64.so.2"
+          ],
+          "GID": 65534,
+          "INODE": 2233072,
+          "MODE": "0o755",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 157224,
+          "RAW_SHA256": "af27ed906f6185e0143b9c0d0da287788efa7eb6b2639e44d48fb2939415fdc5",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libpthread-2.31.so",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libselinux.so.1",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libselinux.so.1",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libpcre2-8.so.0",
+            "libdl.so.2",
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2228353,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 163200,
+          "RAW_SHA256": "21801f05810593a6d7699bd81df3a37a47dfd029a64156d6b1b2a14cad9f2982",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libselinux.so.1",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libsmartcols.so.1",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libsmartcols.so.1.1.0",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2228448,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 243992,
+          "RAW_SHA256": "97aa9f48b2534234256eaca902c632796846b4ad1fc519ed108bc9d4ef020e00",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libsmartcols.so.1.1.0",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib/x86_64-linux-gnu/libudev.so.1",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/libudev.so.1.6.17",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [
+            "libpthread.so.0",
+            "libc.so.6",
+            "ld-linux-x86-64.so.2"
+          ],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2229089,
+          "MODE": "0o644",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 178528,
+          "RAW_SHA256": "e8fd959b49c39585845c036bca033ae90bdedc173758c0a60bd521bfe29744cd",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/libudev.so.1.6.17",
+          "UID": 65534
+        }
+      },
+      {
+        "DESTINATION": "/lib64/ld-linux-x86-64.so.2",
+        "READ_ONLY": true,
+        "SOURCE": "/lib/x86_64-linux-gnu/ld-2.31.so",
+        "SOURCE_IDENTITY": {
+          "DEVICE": 64768,
+          "DT_NEEDED": [],
+          "ELF_INTERPRETERS": [],
+          "GID": 65534,
+          "INODE": 2231964,
+          "MODE": "0o755",
+          "NLINK": 1,
+          "PROVENANCE": "Current Codex read-only file metadata; direct ubuntu01 equality/ownership/startup/freshness remain pre-entry obligations",
+          "RAW_BYTES": 191504,
+          "RAW_SHA256": "cfd44e4341767033532d1483c8250d200ad4cdf535d0abc19064ae34cdc51ca0",
+          "SOURCE_PATH": "/lib/x86_64-linux-gnu/ld-2.31.so",
+          "UID": 65534
+        }
+      }
+    ],
+    "REAL_COMMAND_NOT_INCLUDED": "No Package86systemd/sudo service vector, H77-02 or A15 command",
+    "ROOT_LAYOUT": "Empty private bwrap filesystem; root remounted readonly; no broad host /,/usr,/home,/etc,/run,/var,/tmp bind",
+    "SCHEMA": "QUALIFICATION-P86-PASSIVE-ISOLATION-CANDIDATE-124-V1",
+    "STATIC_ARGV_AND_FILE_MANIFEST_DEFINED": true,
+    "TARGET_HOST": "ubuntu01; direct host identity/fresh permission and binary equality not independently reproduced here",
+    "UID_GID_MAP_EXPECTATION": "Only caller hostUID/GID1000 mapped for requested namespace identity; exact actual map is separately observed, not inferred from an option or prior invocation. Host root/delegated admin mapping forbidden.",
+    "WORKING_DIRECTORY": "/work",
+    "WRITABLE_ROOT": "One private tmpfs/work created inside namespace; no host directory bind or protected alias",
+    "WRITABLE_STORAGE_POLICY": "No payload regular-file writes authorized. Private tmpfs occupancy hard cap/metadata page accounting remains UNDETERMINED; proposed memory envelope is not silently a storage quota."
+  },
+  "IDENTITY": {
+    "namespace": "qualification-p86-passive-isolation-profile-candidate-v1",
+    "sha256": "2f36be1b7123770d889be302a090cfef16149b270140a9ea901ba992095f46ca"
+  }
+}

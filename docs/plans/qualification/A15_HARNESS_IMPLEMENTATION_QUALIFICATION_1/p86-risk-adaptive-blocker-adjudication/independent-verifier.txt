@@ -1,0 +1,64 @@
+# Metadata-only independent reconstruction; never imports or runs prospective launch mechanisms.
+import pathlib,json,hashlib,copy,os,collections
+R=pathlib.Path.cwd();B=R/'docs/plans/qualification/A15_HARNESS_IMPLEMENTATION_QUALIFICATION_1';O=B/'p86-risk-adaptive-blocker-adjudication'
+REG='docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.json';MD='docs/plans/PLANNER_REASONING_LESSONS_REGISTER_1.md'
+def read(p):return json.loads(p.read_text())
+def canon(x):return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+def digest(x):return hashlib.sha256(canon(x)).hexdigest()
+def eventhash(x):return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+def raw(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def acyclic(edges):
+ nodes={n for e in edges for n in e};done=set()
+ while nodes-done:
+  ready={n for n in nodes-done if all(a in done for a,b in edges if b==n)}
+  if not ready:return False
+  done|=ready
+ return True
+a=read(O/'authentication-ledger.json')
+for n,h in a['PINS'].items():
+ p=O/('historical-'+pathlib.Path(n).name) if n in [REG,MD] else R/n
+ assert raw(p)==h,n
+clauses=read(O/'effective-clause-ledger.json');ch=read(R/next(iter(clauses.values()))['SOURCE'])
+for ptr,x in clauses.items():
+ assert raw(R/x['SOURCE'])==x['RAW_SHA256'] and x['EFFECTIVE'] is True
+ value=ch
+ for k in ptr.strip('/').split('/'):value=value[int(k)] if isinstance(value,list) else value[k]
+ assert value==x['EXACT_CLAUSE']
+gov=read(O/'governance-before-lesson-reader.txt');assert digest(gov['RECONSTRUCTION'])==gov['SEMANTIC_SHA256'];assert gov['RECONSTRUCTION']['CHARTER_EFFECTIVE'] and gov['RECONSTRUCTION']['AMENDMENT_EFFECTIVE']
+mat=read(O/'blocker-adjudication-matrix.json');rows=mat['ROWS'];assert len(rows)==24
+allowed={'MANDATORY_BLOCKER','UNACCEPTABLE_RISK','MANAGEABLE_RISK','ENGINEERING_UNCERTAINTY','INSUFFICIENT_EVIDENCE'}
+for x in rows:
+ assert x['DECISION'] in allowed and all(x[k] for k in ['A_AUTHORITY','B_CONSEQUENCE','C_LIKELIHOOD','D_MITIGATION','E_REVERSIBILITY','F_OPPORTUNITY_COST','G_REASON'])
+ assert raw(R/x['SOURCE'])==x['RAW_SHA256'],x['ID']
+ if x['DECISION']=='MANDATORY_BLOCKER':assert x['AUTHORITY_LEVEL']==1 and x['SOURCE'].endswith('charter-content.json') and x['POINTER'] in clauses
+byid={x['ID']:x for x in rows};assert byid['R09']['DECISION']=='MANAGEABLE_RISK';assert byid['R22']['DECISION']=='MANAGEABLE_RISK'
+assert [x['ID'] for x in rows if x['PREVENTS_OWNER_REVIEW_NOW']]==['R02'];assert len([x for x in rows if x['DECISION']=='MANDATORY_BLOCKER'])==4
+proc=read(O/'minimum-sufficient-procedure-assessment.json');policy=proc['REGULARFILE_BOUND_POLICY_PROPOSAL'];assert policy['PER_FILE_BYTES']*2==policy['COMBINED_CAPTURE_BYTES']==8658872;assert policy['PER_FILE_BYTES']==4329436
+for n,h in proc['SOURCE_MANUAL_PINS'].items():assert raw(pathlib.Path(n))==h
+assert proc['QUALIFIED_BESPOKE_DUALSTREAM_COLLECTOR_UNIVERSALLY_REQUIRED'] is False and proc['FULL_EXACT_CALLSITE_COMPLETE'] is False
+m=read(O/'entry-execution-review.json');old=read(B/'p86-direct-shell-callsite-134/entry-execution-matrix.json');assert len(m['ROWS'])==36 and m['ROWS']==old['ROWS']
+g=read(O/'dependency-graph.json');assert acyclic(g['EDGES'])
+oldreg=read(O/'historical-PLANNER_REASONING_LESSONS_REGISTER_1.json');newreg=read(R/REG);assert newreg['EVENTS'][:-1]==oldreg['EVENTS'] and len(oldreg['EVENTS'])==122
+assert {k:v for k,v in newreg.items() if k!='EVENTS'}=={k:v for k,v in oldreg.items() if k!='EVENTS'}
+prev='0'*64
+for e in newreg['EVENTS']:
+ x=dict(e);h=x.pop('EVENT_HASH');assert x['PREVIOUS_EVENT_HASH']==prev and eventhash(x)==h;prev=h
+assert newreg['EVENTS'][-1]==read(O/'lesson-append-candidate.json');assert newreg['EVENTS'][-1]['LESSON']['LESSON_ID']=='LL-12'
+assert newreg['EVENTS'][-2]['LESSON']['LESSON_ID']=='LL-11' and newreg['EVENTS'][-2]['EVENT_HASH']=='885fd0eaceb15847201dfd058217682741fb43c255298713ccbc1e7251eec791'
+for x in newreg['EVENTS'][-1]['LESSON']['EVIDENCE']:assert raw(R/x['path'])==x['raw_sha256']
+pub=read(O/'lesson-publication-receipt.json');text=(R/REG).read_text();offset=pub['INSERT_CHARACTER_OFFSET'];insert=pub['INSERT_TEXT'];assert text[offset:offset+len(insert)]==insert;assert (text[:offset]+text[offset+len(insert):]).encode()==(O/'historical-PLANNER_REASONING_LESSONS_REGISTER_1.json').read_bytes()
+oldmd=(O/'historical-PLANNER_REASONING_LESSONS_REGISTER_1.md').read_bytes();assert (R/MD).read_bytes().startswith(oldmd)
+before=read(O/'preservation-before.json');bad=[n for n,h in before.items() if n not in [REG,MD] and (not (R/n).is_file() or raw(R/n)!=h)];assert not bad,bad
+extra=[str(p.relative_to(R)) for root in ['docs','adapter','rust'] for p in (R/root).rglob('*') if p.is_file() and not p.is_symlink() and str(p.relative_to(R)) not in before and O not in p.parents];assert not extra,extra
+facts={'collector_mandatory':False,'design_adopted':False,'permission_waived':False,'requires_own_future_success':False,'independent_behavioral_proof_universal':False,'perfile':4329436,'total':8658872,'file_extent_is_cumulative':False,'timeout_proves_tree':False,'AS_is_tmpfs_quota':False,'snapshot_is_live':False,'observer_needs_own_future_result':False,'inaction_omitted':False,'no_effective_grant_allows_launch':False,'changed127_claim_unchanged':False,'oldlesson_edited':False,'risk_implies_authority':False,'decision_ready':False,'options':[],'graph':g['EDGES']}
+def valid(x):
+ if 2*x['perfile']!=x['total'] or x['total']!=8658872 or x['options'] or not acyclic(x['graph']):return False
+ return not any(x[k] for k in ['collector_mandatory','design_adopted','permission_waived','requires_own_future_success','independent_behavioral_proof_universal','file_extent_is_cumulative','timeout_proves_tree','AS_is_tmpfs_quota','snapshot_is_live','observer_needs_own_future_result','inaction_omitted','no_effective_grant_allows_launch','changed127_claim_unchanged','oldlesson_edited','risk_implies_authority','decision_ready'])
+assert valid(facts)
+mut=[('optional_collector_charter_blocker','collector_mandatory',True),('unissued_design_effective','design_adopted',True),('owner_waives_actual_permission','permission_waived',True),('future_success_before_authority','requires_own_future_success',True),('all_controls_require_live_demo','independent_behavioral_proof_universal',True),('file_extent_called_cumulative_write_budget','file_extent_is_cumulative',True),('timeout_called_tree_proof','timeout_proves_tree',True),('AS_called_tmpfs_quota','AS_is_tmpfs_quota',True),('snapshot_called_live','snapshot_is_live',True),('observer_own_result_root','observer_needs_own_future_result',True),('inaction_omitted','inaction_omitted',True),('no_effective_grant_launch_allowed','no_effective_grant_allows_launch',True),('newcallsite_claimed_unchanged127','changed127_claim_unchanged',True),('oldlesson_modified','oldlesson_edited',True),('positive_risk_reward_grants_authority','risk_implies_authority',True),('incomplete_subject_ready','decision_ready',True),('arbitrary_output_split','perfile',4329437),('raised_output_allocation','total',8658873)]
+out=[]
+for name,k,v in mut:
+ x=copy.deepcopy(facts);x[k]=v;assert not valid(x),name;out.append({'DESIGN':name,'MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+x=copy.deepcopy(facts);x['graph'].append(['ACTUAL_WITNESS_EXIT_USAGE','OWNER_REVIEW_SUBJECT']);assert not valid(x);out.append({'DESIGN':'own_result_dependency_cycle','MUTATION_SHA256':digest(x),'RESULT':'REJECTED'})
+s={'PIN_LEDGER_SHA256':digest(a),'ADJUDICATION_SHA256':digest(mat),'CLASSIFICATION_COUNTS':dict(collections.Counter(x['DECISION'] for x in rows)),'OWNER_REVIEW_GAP':['R02'],'ENTRY_GATES':['R01','R03','R04'],'PROCEDURE_SHA256':digest(proc),'MATRIX_SHA256':digest(m),'GRAPH_SHA256':digest(g),'LESSON_HEAD':prev,'OLD_EVENTS_PRESERVED':122,'REGISTER_EVENTS':123,'ALL_OTHER_PRIOR_FILES_UNCHANGED':len(before)-2,'DECISION_READY':False,'OPTIONS':[],'NEGATIVES':out}
+print(json.dumps({'SEED':os.environ.get('PYTHONHASHSEED'),'SEMANTIC_SHA256':digest(s),'SEMANTIC':s},sort_keys=True))

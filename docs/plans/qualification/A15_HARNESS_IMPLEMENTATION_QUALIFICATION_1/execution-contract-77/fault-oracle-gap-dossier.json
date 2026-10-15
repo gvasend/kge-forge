@@ -1,0 +1,17 @@
+{
+  "IMPLEMENTATION_FINDINGS": [
+    "No failure SUPERVISOR_RESULT schema; exceptions/exit2 only",
+    "Validation before run_supervisor try produces no first-counterexample audit",
+    "Campaign.fail_closed calls account(stop) before audit; failing/stopped/expired accounting can suppress audit",
+    "launch_child finally.release can mask original exception",
+    "No reader-specific fault enum/injection interface",
+    "Resource counters charge after output/publication; full bounded enforcement unqualified"
+  ],
+  "MANDATORY_UNDETERMINED_FIELDS": [
+    "Exact synthetic fault descriptor/control-flow boundary for reader mismatch/resource exhaustion/protected path/retry",
+    "Worker-result/corrupt-handoff identity and full exact packet for invalid-handoff case",
+    "Complete audit and first-counterexample under cleanup/stop accounting errors",
+    "Fresh journal/authority/source adaptation and exact physical invocation/profile bindings"
+  ],
+  "NO_SOURCE_FIX_APPLIED": true
+}

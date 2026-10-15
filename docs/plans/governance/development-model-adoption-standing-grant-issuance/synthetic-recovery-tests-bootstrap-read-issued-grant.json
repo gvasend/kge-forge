@@ -1,0 +1,370 @@
+{
+  "GRANT_IDENTITY": {
+    "kind": "CONTENT_IDENTITY",
+    "namespace": "kge-forge-bootstrap-read-synthetic-issued-grant-v1",
+    "sha256": "02ed8c32f25f7800cff2ac811cb72335620153296328f55cc6f6b2f30b11246d"
+  },
+  "RECORD": {
+    "ALLOCATION_ID": "synthetic-recovery-suite-bootstrap-read-1",
+    "APPROVED_CONTENT": {
+      "CORRECTED_EXECUTION_CONTRACT": {
+        "ALLOWED_SOURCE_COPIES": [
+          {
+            "path": "/home/gvasend/app/kge-forge/recover.py",
+            "raw_sha256": "372512c1c07f8eba6381cf01f50a13965b383b30f9deb191885f6d95447e80cd"
+          },
+          {
+            "path": "/home/gvasend/app/kge-forge/test_recover.py",
+            "raw_sha256": "0f69b79e3d07413062094187c533926d74813ac7ceab488df406e1d4eaac9e59"
+          },
+          {
+            "path": "/home/gvasend/app/kge-forge/recover_test_source.toml",
+            "raw_sha256": "b694333f4c108c8fea455f7e117cda1d003f3c915bb36d78ae7ec466022b47f8"
+          }
+        ],
+        "ATTEMPT_POLICY": "One suite invocation. Operator/custodian reconciles prior use; exclusive workspace-local execution-start.bootstrap-read-1.json reservation before launch; interrupted/failed/unknown invocation remains spent. This record is only for this synthetic grant, never the real recovery attempt. No automatic rerun, refund or counter reset. Distinct new allocation; preserve original spent execution-start.json and outcome.json permanently. No restoration, reset or refund of earlier grant.",
+        "AUTHORITY_ROOT": "Current explicit owner one-off synthetic test issuance approval; independent of conditional Class A standing grant. Existing charter durable lifecycle reused without expanding its qualification-only authority.",
+        "CHARTER_IDENTITY": {
+          "$type": "ArtifactIdentity",
+          "kind": {
+            "$enum": "IdentityKind",
+            "value": "CONTENT_IDENTITY"
+          },
+          "namespace": "kge-forge-qualification-governance-charter-v1",
+          "sha256": "d26962c58f17281173e965433dae63a941e078115f3dcc30e2a3512fa21812b8"
+        },
+        "CONDITIONAL_EXECUTION": "Effective issuance does not admit environment; current broad Codex session cannot execute the tests. Existing host launcher may apply this independent inline permission profile, after outside-workload configuration/enforcement verification; no reliance on recovered Class A file.",
+        "ENTRY_REQUIREMENTS": [
+          "effective exact one-off grant and current unrevoked/unsuperseded unused state",
+          "fresh safe workspace and copies admitted",
+          "host-resolved permission rules exactly deny protected repository/profile/store/credentials/sockets; writable roots only workspace",
+          "network disabled; no inherited network/credential FDs",
+          "actual nonprivileged host and pinned executable permissions",
+          "native limits and nominal deadline available",
+          "separate stdout/stderr admission and observer preserves exit/resource provenance",
+          "no inherited write handles to protected stores; no unsafe startup environment",
+          "host launcher is usable from host context; managed legacy sandbox must not override this profile; no bypass"
+        ],
+        "ENVIRONMENT": {
+          "HOME": "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/.home",
+          "LANG": "C",
+          "LC_ALL": "C",
+          "PATH": "/usr/bin:/bin",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "TMPDIR": "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/.scratch"
+        },
+        "ENVIRONMENT_RULE": "Clear inherited environment; no credentials, LD_/PYTHON startup variables or arbitrary hooks. Host launcher configuration authenticated outside worker; no protected path/socket exemptions inside worker.",
+        "EVIDENCE_CAPTURE": "Trusted outside-workload observer records argv/input hashes, start/end UTC, wall elapsed, exit/timeout, CPU user/system and maximum RSS if supplied by existing host execution accounting; otherwise resource observations explicitly unavailable. Fixed stdout.txt/stderr.txt created with Bash noclobber with mode0600 under umask077, no pipeline. Exit preserved by exec; collector failure/overflow yields INCOMPLETE, not PASS. Write observer records execution-start.bootstrap-read-1.json and outcome.bootstrap-read-1.json only inside workspace; later repository evidence publication is separate authorized documentary action.",
+        "EXACT_RESOURCE_PAYLOAD": [
+          "/usr/bin/prlimit",
+          "--cpu=60:60",
+          "--as=536870912:536870912",
+          "--nofile=128:128",
+          "--fsize=65536:65536",
+          "--",
+          "/usr/bin/timeout",
+          "--signal=TERM",
+          "--kill-after=1s",
+          "119s",
+          "/bin/bash",
+          "--noprofile",
+          "--norc",
+          "-c",
+          "umask 077; set -C; exec '/usr/bin/python3.8' '-I' '-B' '/tmp/kge-forge-recovery-synthetic-once-20261014-v1/test_recover.py' > '/tmp/kge-forge-recovery-synthetic-once-20261014-v1/stdout.txt' 2> '/tmp/kge-forge-recovery-synthetic-once-20261014-v1/stderr.txt'"
+        ],
+        "EXACT_SANDBOX_ARGV": [
+          "/home/gvasend/.nvm/versions/node/v20.20.2/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+          "sandbox",
+          "--permission-profile",
+          "kge-forge-recovery-synthetic-once",
+          "--include-managed-config",
+          "--cd",
+          "/tmp/kge-forge-recovery-synthetic-once-20261014-v1",
+          "--config",
+          "default_permissions=\"kge-forge-recovery-synthetic-once\"",
+          "--config",
+          "approval_policy=\"never\"",
+          "--config",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem={\"/home/gvasend/.aws\" = \"deny\", \"/home/gvasend/.codex\" = \"deny\", \"/home/gvasend/.ssh\" = \"deny\", \"/home/gvasend/app/kge-forge\" = \"deny\", \"/tmp/kge-forge-recovery-synthetic-once-20261014-v1/.scratch\" = \"write\", \":minimal\" = \"read\", \":root\" = \"deny\", \":slash_tmp\" = \"deny\", \":tmpdir\" = \"deny\", \":workspace_roots\" = {\".\" = \"write\"}, \"/home/gvasend/.nvm/versions/node/v20.20.2/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex\" = \"read\"}",
+          "--config",
+          "permissions.kge-forge-recovery-synthetic-once.network.enabled=false",
+          "--",
+          "/usr/bin/prlimit",
+          "--cpu=60:60",
+          "--as=536870912:536870912",
+          "--nofile=128:128",
+          "--fsize=65536:65536",
+          "--",
+          "/usr/bin/timeout",
+          "--signal=TERM",
+          "--kill-after=1s",
+          "119s",
+          "/bin/bash",
+          "--noprofile",
+          "--norc",
+          "-c",
+          "umask 077; set -C; exec '/usr/bin/python3.8' '-I' '-B' '/tmp/kge-forge-recovery-synthetic-once-20261014-v1/test_recover.py' > '/tmp/kge-forge-recovery-synthetic-once-20261014-v1/stdout.txt' 2> '/tmp/kge-forge-recovery-synthetic-once-20261014-v1/stderr.txt'"
+        ],
+        "EXACT_TEST_ARGV": [
+          "/usr/bin/python3.8",
+          "-I",
+          "-B",
+          "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/test_recover.py"
+        ],
+        "EXCLUSIONS": [
+          "real Codex profile access/write",
+          "authoritative recovery store access by test worker",
+          "real recovery consumption",
+          "profile activation",
+          "Planner pilot",
+          "Class A standing accounting consumption/reset",
+          "directory provisioning under Packages138/141",
+          "production",
+          "protected promotion",
+          "Package124",
+          "Package86",
+          "H77-02",
+          "A15",
+          "privilege escalation",
+          "network",
+          "automatic retries",
+          "source revisions or additional suite invocations"
+        ],
+        "EXECUTABLE_PINS": {
+          "/bin/bash": {
+            "path": "/bin/bash",
+            "raw_sha256": "025cf78cd9d276019e916b97b0decd10cacb14902db8eb9f28233019babfb331"
+          },
+          "/home/gvasend/.nvm/versions/node/v20.20.2/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex": {
+            "path": "/home/gvasend/.nvm/versions/node/v20.20.2/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+            "raw_sha256": "12eb3e81114588aca3b7998f4f19e8997b056aca08e57a7ca7c8a3ec8c652aad"
+          },
+          "/usr/bin/prlimit": {
+            "path": "/usr/bin/prlimit",
+            "raw_sha256": "06a57e4767f1bdfcc8c5a39b4b58decb9366447b007a8bdd9d6b12d1e6698d8c"
+          },
+          "/usr/bin/python3.8": {
+            "path": "/usr/bin/python3.8",
+            "raw_sha256": "298a9e830ed52f36c299427565485d717d1ce0179c0597cc16560513eb780b06"
+          },
+          "/usr/bin/timeout": {
+            "path": "/usr/bin/timeout",
+            "raw_sha256": "91db1e64064f0bf5ee99abda3a054cc6f05748dad2af5a145f890c9172d28d73"
+          }
+        },
+        "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER",
+        "LIMITS": {
+          "AS_BYTES": 536870912,
+          "AUTOMATIC_RETRIES": 0,
+          "COMBINED_CAPTURE_BYTES": 131072,
+          "CPU_SECONDS": 60,
+          "FD_LIMIT": 128,
+          "FILE_EXTENT_BYTES": 65536,
+          "KILL_GRACE_SECONDS": 1,
+          "NATIVE_TIMEOUT_SECONDS": 119,
+          "STDERR_BYTES": 65536,
+          "STDOUT_BYTES": 65536,
+          "SUITE_INVOCATIONS": 1,
+          "WALL_SECONDS": 120
+        },
+        "LIMIT_BASIS": "Owner CPU/AS/wall/no-retry allocations unchanged. Two64KiB regular captures are an engineering selection for bounded output; expected unittest output is small. RLIMIT_FSIZE limits each file extent, not aggregate storage or cumulative writes. CPU/AS limits are per process inherited by fixed trusted watchdog/worker topology, not proof of kernel aggregate enforcement. Timeout grace reserved within120s nominal deadline; resource consumption observed, overrun/unknown denies PASS.",
+        "PERMISSION_RULES": {
+          "approval_policy": "never",
+          "default_permissions": "kge-forge-recovery-synthetic-once",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem./home/gvasend/.aws": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem./home/gvasend/.codex": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem./home/gvasend/.nvm/versions/node/v20.20.2/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex": "read",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem./home/gvasend/.ssh": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem./home/gvasend/app/kge-forge": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem./tmp/kge-forge-recovery-synthetic-once-20261014-v1/.scratch": "write",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem.:minimal": "read",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem.:root": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem.:slash_tmp": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem.:tmpdir": "deny",
+          "permissions.kge-forge-recovery-synthetic-once.filesystem.:workspace_roots": {
+            ".": "write"
+          },
+          "permissions.kge-forge-recovery-synthetic-once.network.enabled": false
+        },
+        "POLICY_EFFECTIVENESS_IDENTITY": {
+          "kind": "CONTENT_IDENTITY",
+          "namespace": "kge-forge-engineering-policy-effectiveness-reference-v1",
+          "sha256": "1d138a7ee786396ff77cab1bb7ba0b63a036c0d344c404da72ef5c547fab2019"
+        },
+        "PREPARATION": "After effectiveness and independently permitted host setup: exclusive fresh UID/GID1000 mode0700 root; create only .scratch and .home beneath it; copy exactly the three pinned inputs with no overwrite, regular-file/no-symlink checks and independent hash reread. No actual creation/copy authorized before entry.",
+        "PROFILE_NAME": "kge-forge-recovery-synthetic-once",
+        "STDIN": "readonly /dev/null",
+        "TEST_SUCCESS_NOT_AN_ENTRY_PREDICATE": true,
+        "UID_GID": [
+          1000,
+          1000
+        ],
+        "UMASK": "077",
+        "WORKING_DIRECTORY": "/tmp/kge-forge-recovery-synthetic-once-20261014-v1",
+        "WRITE_BOUNDARY": "All fixture files, aliases, mocks, caches and stdout/stderr within exact workspace. TMPDIR is .scratch so tempfile siblings remain inside workspace. No target-code access to live repository, profile, authority store, credentials or host sockets. Only runtime tool/stdlib/dev-null minimal reads permitted."
+      },
+      "DECISION_SCOPE": "Prospective exact helper-file read correction plus one NEW separately budgeted synthetic suite invocation; no current issuance/effectiveness/execution",
+      "DEPENDENCY_LEDGER_PIN": {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-bootstrap-read-dependency-ledger.json",
+        "raw_sha256": "acae7648e3a95a145f5f36f720b176e1a18fb9a407647099e26fb103c9944bd3"
+      },
+      "ENTRY_GUARDS": [
+        "current exact newly effective authority, unrevoked/unsuperseded and unused new reservation",
+        "old consumed record and outcome still intact; no reset/refund",
+        "reverify prepared workspace and same three input hashes; no recopy/recreate/cleanup",
+        "same native tools and inventoried loader/library/source identities available, exact helper leaf included read-only",
+        "same :minimal/denies/network-off policy; no full home/.nvm/credential/repository exposure",
+        "cleared environment and approved resource/capture/context guards",
+        "new reservation/outcome absent; existing stdout/stderr absent or stop without overwrite",
+        "reserve distinct new attempt before submitting exact corrected vector once; failure/unknown stays spent"
+      ],
+      "ISSUANCE_AND_EFFECTIVENESS_RULE": "Owner selection followed by qualified exclusive durable issuance and separate independently verified effectiveness of NEW grant; no implicit reuse of consumed authority",
+      "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER",
+      "NEW_ALLOCATION_ID": "synthetic-recovery-suite-bootstrap-read-1",
+      "NEW_LIMITS": {
+        "AS_BYTES": 536870912,
+        "AUTOMATIC_RETRIES": 0,
+        "COMBINED_CAPTURE_BYTES": 131072,
+        "CPU_SECONDS": 60,
+        "FD_LIMIT": 128,
+        "FILE_EXTENT_BYTES": 65536,
+        "KILL_GRACE_SECONDS": 1,
+        "NATIVE_TIMEOUT_SECONDS": 119,
+        "STDERR_BYTES": 65536,
+        "STDOUT_BYTES": 65536,
+        "SUITE_INVOCATIONS": 1,
+        "WALL_SECONDS": 120
+      },
+      "NEW_OUTCOME_PATH": "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/outcome.bootstrap-read-1.json",
+      "NEW_RESERVATION_PATH": "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/execution-start.bootstrap-read-1.json",
+      "NEXT_AFTER_APPROVAL": "Separately issue/verify new one-off authority; resume existing guard using prepared workspace; run once only if entry passes.",
+      "NO_RESET_OR_REFUND": true,
+      "OLD_RECORD_PATHS_UNCHANGED": [
+        "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/execution-start.json",
+        "/tmp/kge-forge-recovery-synthetic-once-20261014-v1/outcome.json"
+      ],
+      "ONLY_NEW_RUNTIME_READ_PERMISSION": {
+        "ACCESS": "read",
+        "PATH": "/home/gvasend/.nvm/versions/node/v20.20.2/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+        "SHA256": "12eb3e81114588aca3b7998f4f19e8997b056aca08e57a7ca7c8a3ec8c652aad"
+      },
+      "PARENT_CONSUMED_GRANT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "kge-forge-one-off-synthetic-recovery-test-issued-grant-v1",
+        "sha256": "a034b2ecb8a48fb35dd77e686a2ac62f86e35da4578e27ad059f22a47fee36a5"
+      },
+      "PARENT_CONSUMED_RECORD_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "kge-forge-one-off-synthetic-suite-use-result-v1",
+        "sha256": "81a0bb3ee1edcec4f6b8e60282a296e13ddbdfa7bbf0864b4cefbb0b01f54868"
+      },
+      "PARENT_CONSUMED_RECORD_PIN": {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-consumed-suite-attempt.json",
+        "raw_sha256": "355732019ae7a5cef6e6f0c899452ff6a99f944ae1799fbea76eb7911de94413"
+      },
+      "PARENT_SUBJECT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "kge-forge-synthetic-test-filesystem-serialization-subject-v1",
+        "sha256": "a7fe0a5d790edc571af8ef4416a02b1f2eb95bc1f6474173aa07d2fe3e7d3c1c"
+      },
+      "PRESERVE_ORIGINAL_RESERVED_INVOCATION": true,
+      "RISK_JUDGMENT": "One public pinned executable read-only is minimum correction for demonstrated bootstrap absence. No shared libraries/Node/home subtree required for this static helper. Other runtime objects stay in existing minimal system scope. Finite unsuccessful execution is possible and useful; no guarantee of success or mandatory new supervisor.",
+      "STATIC_VERIFICATION_SCOPE": "ELF machine/type/loader/DT_NEEDED closure, real paths and hashes, existing executable pins, Python stdlib/builtin/extension availability, full command/resource/capture equivalence. Future compiled namespace/control/caller/current-state checks remain fail-closed entry."
+    },
+    "APPROVED_SUBJECT_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "kge-forge-exact-bootstrap-read-new-synthetic-suite-subject-v1",
+      "sha256": "f872c8902166fccfac2a690c912627de9b3950e236bc4ac697ac234e0b9392a0"
+    },
+    "APPROVED_SUBJECT_PIN": {
+      "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-bootstrap-read-owner-decision-subject.json",
+      "raw_sha256": "ffdfd227880fe5fdf620d618dc014d5c3abbd5a41ddfa3fdc63c133fa7647a35"
+    },
+    "AUTHORITY_ROOT": "Exact current owner approval; independent new one-off allocation, existing engineering policy; charter qualified publication lifecycle reused without widening charter scope",
+    "AUTOMATIC_RETRIES": 0,
+    "EFFECTIVENESS_RULE": "Independent persisted four-seed verification, preserved prior records, scoped conflict/revocation recheck, separate durable identity-bearing effectiveness reference; fresh external current use/revocation and host entry remain required",
+    "ENVIRONMENT_ADMITTED": false,
+    "EXCLUSIONS": [
+      "real Codex profile access/write",
+      "authoritative recovery store access by test worker",
+      "real recovery consumption",
+      "profile activation",
+      "Planner pilot",
+      "Class A standing accounting consumption/reset",
+      "directory provisioning under Packages138/141",
+      "production",
+      "protected promotion",
+      "Package124",
+      "Package86",
+      "H77-02",
+      "A15",
+      "privilege escalation",
+      "network",
+      "automatic retries",
+      "source revisions or additional suite invocations"
+    ],
+    "INVOCATION_IDENTITY": {
+      "kind": "CONTENT_IDENTITY",
+      "namespace": "kge-forge-bootstrap-read-synthetic-invocation-v1",
+      "sha256": "2186ded3119a1ba000ff597117a6846f27605be3fce42da9a04ab637be056325"
+    },
+    "INVOCATION_LIMIT": 1,
+    "INVOCATION_RESERVED": false,
+    "ISSUER_ROLE": "KGE-FORGE-PROJECT-OWNER",
+    "NO_RESET_OR_REFUND": true,
+    "OWNER_DECISION_PIN": {
+      "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-bootstrap-read-owner-approval.json",
+      "raw_sha256": "6d1c9fa6845a013880a7e290b51c54e9eb97059d71bec462a809f7b3b7d468e3"
+    },
+    "PARENT_AUTHORITY_PINS": [
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-issued-grant.json",
+        "raw_sha256": "54b2df98a6e722d4dbdfbea636c4c0141546e1de10524a3ec9870c8ce94d0f9b"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-effectiveness-reference.json",
+        "raw_sha256": "34f3412a855fee9fe721dde407a5c5ae53a925e9fccb4c2a7efa614495a899ea"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-launch-correction-issued-amendment.json",
+        "raw_sha256": "1f36e14e23a67b1100dafe151a566b7793f1ef4933887480d05bf8dacc8a3cee"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-launch-correction-effectiveness-reference.json",
+        "raw_sha256": "7922d1a2f286a1fb6b537ebd90620a1214a8c4cdc6f6fa86b21af18126e3f22b"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-filesystem-serialization-issued-amendment.json",
+        "raw_sha256": "0f00f6d1ca5cd51498e4f6053205a57b7445c4893cafb8d895296bf44b710099"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-filesystem-serialization-effectiveness-reference.json",
+        "raw_sha256": "f9169217e309880f88b5e693a7ea498ad8cebea0a996c00f14b3ac8743994ba5"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/synthetic-recovery-tests-v2-consumed-suite-attempt.json",
+        "raw_sha256": "355732019ae7a5cef6e6f0c899452ff6a99f944ae1799fbea76eb7911de94413"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/qualification/KGE_FORGE_QUALIFICATION_GOVERNANCE_CHARTER_ADOPTION_66/effective-charter-reference.json",
+        "raw_sha256": "9eec358d829b1139f970ca310ebd83b09adf410def8595e947d667845a4a1b44"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/policy-adoption-record.json",
+        "raw_sha256": "e65c8fde709ef65a131d2a5166f5f3b999ec8e2bee9ab7036d29f097de7c399a"
+      },
+      {
+        "path": "/home/gvasend/app/kge-forge/docs/plans/governance/development-model-adoption-standing-grant-issuance/policy-effectiveness-reference.json",
+        "raw_sha256": "bcde0f5e03375c84629de14c57a3430096d99c57295f49ac7b0c8f3e1ac512aa"
+      }
+    ],
+    "PREVIOUS_INVOCATION_PERMANENTLY_CONSUMED": true,
+    "PUBLICATION_MECHANISM_PIN": {
+      "path": "/home/gvasend/app/kge-forge/docs/plans/qualification/E2_P05_D01_A15_NORMATIVE_ADOPTION_ISSUANCE_68/issue.py",
+      "raw_sha256": "ba6c00589e88ffb7d380538758c15ff648d431e55325e933d6f911d04a9af0bc"
+    },
+    "SCHEMA": "SCOPED-ONE-OFF-SYNTHETIC-TEST-GRANT-1",
+    "STATUS": "ISSUED_REQUIRES_SEPARATE_EFFECTIVENESS_REFERENCE",
+    "SUITE_EXECUTED": false
+  }
+}

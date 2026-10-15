@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "adapter/tests/qualify_finish_f03_checks.py", line 144, in <module>
+    if __name__=='__main__':{'boundaries':boundaries,'negatives':negatives,'prepare-readers':prepare_readers,'readers':readers,'generic-readers':lambda:readers(True),'permutations':permutations}[sys.argv[1]]()
+  File "adapter/tests/qualify_finish_f03_checks.py", line 144, in <lambda>
+    if __name__=='__main__':{'boundaries':boundaries,'negatives':negatives,'prepare-readers':prepare_readers,'readers':readers,'generic-readers':lambda:readers(True),'permutations':permutations}[sys.argv[1]]()
+  File "adapter/tests/qualify_finish_f03_checks.py", line 128, in readers
+    results.append(done.result());q.emit(output,sorted(results,key=lambda x:(x['boundary'],x['seed'],x['reader'])))
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 437, in result
+    return self.__get_result()
+  File "/usr/lib/python3.8/concurrent/futures/_base.py", line 389, in __get_result
+    raise self._exception
+  File "/usr/lib/python3.8/concurrent/futures/thread.py", line 57, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "adapter/tests/qualify_finish_f03_checks.py", line 123, in run
+    assert p.returncode==0,(path,seed,index,p.stderr)
+AssertionError: (PosixPath('/home/gvasend/app/kge-forge/docs/plans/qualification/FINISH_F03_1/generic-reader-manifest.json'), 1, 1, 'Traceback (most recent call last):\n  File "adapter/tests/qualify_finish_f03.py", line 225, in <module>\n    else:{\'generic\':generic,\'generic-checkpoint\':generic_checkpoint,\'apply\':apply}.get(sys.argv[1],lambda:reader(sys.argv[2]))()\n  File "adapter/tests/qualify_finish_f03.py", line 225, in <lambda>\n    else:{\'generic\':generic,\'generic-checkpoint\':generic_checkpoint,\'apply\':apply}.get(sys.argv[1],lambda:reader(sys.argv[2]))()\n  File "adapter/tests/qualify_finish_f03.py", line 221, in reader\n    print(json.dumps({\'pid\':os.getpid(),\'seed\':os.environ.get(\'PYTHONHASHSEED\'),\'bundle\':man[\'bundle_id\'],\'state\':man[\'state_id\'],\'head\':man[\'head\'],\'currentness\':\'PASS\',\'replay\':\'PASS\',\'control\':core.recompute(b.current).control.value,\'semantic\':semantic}),flush=True)\nAttributeError: \'NoneType\' object has no attribute \'value\'\n')

@@ -1,0 +1,513 @@
+{
+  "BOUNDING_RULE": "Sequential sealed finite14-step suite; no arbitrary program or input paths; forbid source edits and all adapter/native imports. Actual controller must demonstrate admission/byte/deadline controls before effecting probes. If unavailable, deny entry, not expand scope.",
+  "CONTROLLER_ALGORITHM": [
+    "Authenticate exact issued host-capability grant, direct-host selector and read-only runtime hashes; deny absent/different identity or privilege",
+    "Create one exclusive private root /tmp/kge-a15-harness-test-<lowercase32hex>; mode0700 and actual actor owner; refuse symlink/existing root",
+    "Independently seal programs, fixture bytes, executable argv/paths, clean environment, readonly system/code/data and one-row writable mount layout before child",
+    "Lower four child hard/soft rlimits to exact ceilings before exec; verify support, no elevated access",
+    "Reserve physical bwrap/payload launch slots and bounded write allowance before every child; fixed sealed payloads have no fork/subprocess API",
+    "At most one child pair active; own parent deadlines/kill/reap; count all launches, staging/audit/output bytes and campaign time without reset",
+    "Independently compare actual namespace/mount/error/cap/exit observations to step oracle; do not trust child summary alone",
+    "Append exact result and first counterexample; stop genuine control failure; cleanup owned tmp only after audit copy; no parent/global security changes"
+  ],
+  "CONTROLLER_IMPLEMENTATION_STATUS": "Exact bounded control algorithm prescribed below; actual independent controller/evidence seals required at entry",
+  "EXACT_GAPS": [
+    "H77-06 and H77-12 inventory program does not implement the required counter/admission tests; precise independent controller/test implementation missing",
+    "Full procedure parent/child/evidence/case paths and expected runtime evaluator identities remain unsealed",
+    "Protected-path/symlink and exit/fresh-reader tests require exact controlled fixtures and timing/ownership bindings"
+  ],
+  "EXECUTED": false,
+  "FULL_FOURTEEN_STEP_EXECUTABLE_BINDINGS_COMPLETE": false,
+  "HOST_TEST_IS_ADAPTER_FAKE_CAMPAIGN": false,
+  "PROGRAMS": {
+    "as": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "9f6329826b6710d3e44a6d900ef40a76cd46539f7510d80d21dd6b78f227d569"
+      },
+      "SOURCE": "import resource; print(resource.getrlimit(resource.RLIMIT_AS))\ntry: x=bytearray(1073741824); raise SystemExit(2)\nexcept MemoryError: print('EXPECTED_MEMORY_LIMIT')"
+    },
+    "cpu": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "3a235b810efc04ca039743dc7e9915a2f95c12c6a1a44cfa10481de16306131e"
+      },
+      "SOURCE": "import resource; print(resource.getrlimit(resource.RLIMIT_CPU),flush=True)\nwhile True: pass"
+    },
+    "fd": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "c76392e5dac4d139419689ce850d45cd855a901d0944e2749a057839452da7d0"
+      },
+      "SOURCE": "import errno,os,resource; print(resource.getrlimit(resource.RLIMIT_NOFILE)); f=[]\ntry:\n while True: f.append(os.open('/dev/null',os.O_RDONLY))\nexcept OSError as e:\n print('EXPECTED_EMFILE' if e.errno==errno.EMFILE else 'UNEXPECTED:'+str(e.errno))\nfinally:\n for n in f: os.close(n)"
+    },
+    "file": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "9b3d9b6e91d5c5fd2a6f9b1adfee4f4791ca18427c67b9abcc65f99cd27950c1"
+      },
+      "SOURCE": "import errno,os,signal,sys; signal.signal(signal.SIGXFSZ,signal.SIG_IGN); p=sys.argv[1]; f=open(p,'wb')\ntry:\n for n in range(17): f.write(b'x'*1048576); f.flush()\n raise SystemExit(2)\nexcept OSError as e: print('EXPECTED_FILE_LIMIT' if e.errno==errno.EFBIG else 'UNEXPECTED:'+str(e.errno))\nfinally: f.close()\nassert os.path.getsize(p)<=16777216"
+    },
+    "inventory": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "599a754a1f080f2bc1e1141f6e1b29607771cff1ba26b173ed54d6e5e3aa9c8a"
+      },
+      "SOURCE": "import json,os,platform,resource; print(json.dumps({'host':platform.node(),'kernel':platform.release(),'uid':os.getuid(),'limits':{n:list(resource.getrlimit(getattr(resource,n))) for n in ['RLIMIT_CPU','RLIMIT_AS','RLIMIT_FSIZE','RLIMIT_NOFILE']}},sort_keys=True))"
+    },
+    "namespace": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "50fc07702c447c8084bd71fb949b4ca63a6b1c09eb6845a8c3a3532cab8d60f5"
+      },
+      "SOURCE": "import json,os,pathlib; print(json.dumps({'pid_ns':os.readlink('/proc/self/ns/pid'),'net_ns':os.readlink('/proc/self/ns/net'),'mnt_ns':os.readlink('/proc/self/ns/mnt'),'user_ns':os.readlink('/proc/self/ns/user'),'pid':os.getpid(),'routes':pathlib.Path('/proc/net/route').read_text()},sort_keys=True))"
+    },
+    "output": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "a4cb4edc5806dbdbebf7c5673e7b5e674d4d54a9b972ab2d2e2b7bcd22043e8f"
+      },
+      "SOURCE": "import pathlib,sys; p=pathlib.Path(sys.argv[1]); p.write_bytes(b'HOST-CAPABILITY-ONLY'); print(p.read_bytes().decode())"
+    },
+    "reader": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "4a2637487e32bd632f158d242db1a7e571a708e397e8171f40b1f983aa992feb"
+      },
+      "SOURCE": "import hashlib,pathlib,sys; p=pathlib.Path(sys.argv[1]); print(hashlib.sha256(p.read_bytes()).hexdigest())"
+    },
+    "readonly": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "f445fcc73486b0ea00e5e616d6e163711fbccc90ad3d0c81fe0349474f01c0bb"
+      },
+      "SOURCE": "import os,sys; p=sys.argv[1];\ntry: f=open(p,'ab'); f.write(b'FORBIDDEN'); f.close(); raise SystemExit(2)\nexcept OSError as e: print('EXPECTED_DENIAL:'+str(e.errno))"
+    },
+    "wall": {
+      "CONTENT_IDENTITY": {
+        "kind": "CONTENT_IDENTITY",
+        "namespace": "qualification-host-probe-program-v1",
+        "sha256": "0415d1cdd05af240244176678afd85776463581c169c24a9c8f3d8f3081abc28"
+      },
+      "SOURCE": "import time; time.sleep(61)"
+    }
+  },
+  "SCHEMA_ID": "A15-NON-ADAPTER-HOST-CAPABILITY-PROCEDURE-77-1",
+  "STEPS": [
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:inventory",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "inventory"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-01.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Direct host/actor/kernel and all four exact caps recorded; reject mismatch",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-01"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:namespace",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "namespace"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-02.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "User/PID/net/mnt namespace IDs differ from trusted parent; no external route",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-02"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:readonly",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "readonly"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-03.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Append to own mounted readonly fixture is denied; bytes unchanged",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-03"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:output",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "output"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-04.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Own output row succeeds; outside-row path inaccessible/readonly",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-04"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:readonly",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "readonly"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-05.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Planned own symlink/path-escape target fails boundary; no protected path touched",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-05"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:inventory",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "inventory"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-06.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Trusted counter rejects fifth live/129th launch before spawn; whole fixed-role tree observed; do not claim arbitrary PID kernel containment",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-06"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:cpu",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "cpu"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-07.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Exact30s CPU hard/soft cap; supervisor independently observes signal termination before<=60s deadline; no PASS from child assertion",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-07"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:as",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "as"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-08.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Exact1GiB address-space cap, forbidden allocation fails",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-08"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:file",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "file"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-09.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Exact16MiB file cap, planned oversize attempt denied and file<=16MiB",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-09"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:fd",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "fd"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-10.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Exact64 FD cap, planned additional open denied EMFILE",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-10"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:wall",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "wall"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-11.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Own sleeping child killed/reaped at<=60s scoped deadline",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-11"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:inventory",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "inventory"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-12.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Global600s/64MiB admission checks reject prospective overbudget before action; cumulative counter/evidence valid",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-12"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:output",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "output"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-13.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Own writer status0 independently waited/reaped, publication bytes verified before successor",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-13"
+    },
+    {
+      "COMMAND_OR_TEST": {
+        "ARGV": [
+          "-c",
+          "PROGRAM:reader",
+          "ONLY_SEALED_OWNED_CASE_ARGUMENTS_IF_REQUIRED"
+        ],
+        "EXECUTION_CONTEXT": "Concrete bwrap recipe + exact host-only owned fixture bindings; controller outside payload",
+        "INTERPRETER": "/usr/bin/python3",
+        "PROGRAM_REF": "reader"
+      },
+      "EVIDENCE_OUTPUT": "host-probe-H77-14.json under separately approved host-control evidence namespace",
+      "EXPECTED_RESULT": "Fresh independent reader starts after writer exit and hashes exact owned publication; no warm state",
+      "FAILURE_RULE": "Unexpected/unsupported/unknown control stops probe campaign; preserve counterexample; no repeat",
+      "PERMITTED_SIDE_EFFECTS": "Only private campaign-owned tmp metadata/fixture/output files, process-local rlimits and owned child signals/reaping; no project source, historical input, cgroup or host security mutation",
+      "RESOURCE_BUDGET": {
+        "AS_MAX": 1073741824,
+        "CHILD_CPU_MAX": 30,
+        "CHILD_WALL_MAX": 60,
+        "FDS_MAX": 64,
+        "FSIZE_MAX": 16777216,
+        "GLOBAL_WALL_MAX": 600,
+        "GLOBAL_WRITES_MAX": 67108864,
+        "LIVE_CHILDREN_MAX": 4,
+        "RETRIES": 0,
+        "TOTAL_LAUNCHES_MAX": 128
+      },
+      "STEP_ID": "H77-14"
+    }
+  ]
+}
